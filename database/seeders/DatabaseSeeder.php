@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
                 'status' => 'dang_hoat_dong',
             ]
         );
+
+        $this->call(SampleDataSeeder::class);
     }
 }
