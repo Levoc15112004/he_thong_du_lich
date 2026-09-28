@@ -191,6 +191,7 @@ Route::middleware('checkUser')->group(function () {
 
     Route::get('/order', [UserOrderController::class, 'order'])->name('user.order.index');
     Route::post('/order/store', [UserOrderController::class, 'addOrder'])->name('user.order.store');
+    Route::get('/order/success/{order_id}', [UserOrderController::class, 'orderSuccess'])->name('user.order.success');
 
     Route::get('/order/thanh-toan-coc/{order_id}', [BookingController::class, 'showDepositPage'])->name('user.tour.deposit');
     Route::post('/tour/deposit/pay', [BookingController::class, 'processPayment'])->name('user.tour.deposit.pay');
@@ -222,16 +223,13 @@ Route::get('/cart', [CartController::class, 'Cart'])->name('user.cart');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('user.cart.add');
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
 Route::delete('/cart/remove/{id}', [CartController::class, 'delete'])->name('user.cart.remove');
+Route::get('/cart/remove/{id}', [CartController::class, 'delete']);
 Route::post('/cart/apply-voucher', [CartController::class, 'applyVoucher'])->name('user.cart.applyVoucher');
 
 Route::post('/payment', [UserPaymentController::class, 'payment'])->name('user.payment');
 Route::get('/payment/thanks/{order_id}', [UserPaymentController::class, 'thankYou'])->name('tour.thankyou');
 Route::get('/payment/final/thanks/{order_id}', [UserPaymentController::class, 'thankYouFinal'])->name('tour.thankyou.final');
 Route::post('/order/cancel/{order}', [UserPaymentController::class, 'cancelOrder'])->name('order.cancel');
-
-Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('user.cart.update');
-
-Route::delete('/cart/remove/{id}', [CartController::class, 'delete'])->name('user.cart.remove');
 
 // thanh toán momo
 Route::post('/payment/momo/deposit/{order}', [MomoController::class, 'createDeposit'])->name('momo.deposit');

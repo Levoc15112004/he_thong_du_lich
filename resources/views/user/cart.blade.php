@@ -25,10 +25,22 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-8">
                 <h1 class="text-2xl md:text-3xl font-bold text-dark">Giỏ hàng của bạn</h1>
-                <a href="index.html" class="text-primary font-medium hover:underline text-sm"><i
+                <a href="{{ route('user.home') }}" class="text-primary font-medium hover:underline text-sm"><i
                         class="fa-solid fa-arrow-left mr-1"></i> Tiếp tục tìm tour</a>
             </div>
 
+            @if(!($cartTour ?? null))
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center max-w-xl mx-auto">
+                    <div class="w-20 h-20 bg-sky-50 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-cart-shopping text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-2">Giỏ hàng của bạn đang trống</h3>
+                    <p class="text-gray-500 mb-6 text-sm">Chưa có chuyến đi nào được chọn. Hãy khám phá những điểm đến tuyệt vời ngay!</p>
+                    <a href="{{ route('user.home') }}" class="inline-flex items-center px-6 py-3.5 bg-primary hover:bg-sky-600 text-white font-bold rounded-xl transition-all shadow-lg shadow-sky-500/30">
+                        <i class="fa-solid fa-compass mr-2"></i> Khám phá Tour ngay
+                    </a>
+                </div>
+            @else
             <div class="flex flex-col lg:flex-row gap-8">
 
                 <!-- Cột trái: Danh sách các tour trong giỏ hàng -->
@@ -41,36 +53,34 @@
                             <!-- Ảnh Tour -->
                             <div
                                 class="w-full md:w-1/3 lg:w-1/4 h-32 md:h-auto relative rounded-xl overflow-hidden flex-shrink-0">
-                                @if($cartTour)
                                 <img src="{{ Str::startsWith($cartTour->image, 'http') ? $cartTour->image : asset($cartTour->image) }}"
                                     alt="{{ $cartTour->name }}" class="w-full h-full object-cover">
-                                @else
-                                <img src="https://images.unsplash.com/photo-1540304618210-91a030046645?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                    alt="Tour placeholder" class="w-full h-full object-cover">
-                                @endif
                                 <span
-                                    class="absolute top-2 left-2 bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider">{{ $cartTour && $cartTour->category ? $cartTour->category->name : 'Premium' }}</span>
+                                    class="absolute top-2 left-2 bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider">{{ $cartTour->category ? $cartTour->category->name : 'Premium' }}</span>
                             </div>
 
                             <!-- Thông tin Tour -->
                             <div class="w-full md:w-2/3 lg:w-3/4 flex flex-col justify-between">
                                 <div class="flex justify-between items-start mb-2">
                                     <div>
-                                        <a href="{{ $cartTour ? route('user.tourDetail.index', ['id' => $cartTour->id]) : '#' }}"
+                                        <a href="{{ route('user.tourDetail.index', ['id' => $cartTour->id]) }}"
                                             class="text-lg md:text-xl font-bold text-dark hover:text-primary transition-colors line-clamp-2 leading-tight">
-                                            {{ $cartTour ? $cartTour->name : 'Hành Trình Di Sản Miền Trung: Hội An - Đà Nẵng - Huế' }}
+                                            {{ $cartTour->name }}
                                         </a>
                                         <div class="flex flex-wrap items-center text-sm text-gray-500 mt-2 gap-y-1">
                                             <span class="mr-4"><i class="fa-regular fa-clock mr-1 text-primary"></i> 
-                                                {{ $cartTour ? $cartTour->time : '4 Ngày 3 Đêm' }}
+                                                {{ $cartTour->time ?? 'Theo lịch trình' }}
                                             </span>
-                                            <span><i class="fa-solid fa-barcode mr-1 text-gray-400"></i> WL-{{ $cartTour ? $cartTour->id : 'MT4N3D' }}</span>
+                                            <span><i class="fa-solid fa-barcode mr-1 text-gray-400"></i> WL-{{ $cartTour->id }}</span>
                                         </div>
                                     </div>
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors p-1"
-                                        onclick="removeItem('cart-item-1')" title="Xóa khỏi giỏ hàng">
-                                        <i class="fa-solid fa-trash-can text-lg"></i>
-                                    </button>
+                                    <form action="{{ route('user.cart.remove', ['id' => $cartTour->id]) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa tour này khỏi giỏ hàng?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-gray-400 hover:text-red-500 transition-colors p-1" title="Xóa khỏi giỏ hàng">
+                                            <i class="fa-solid fa-trash-can text-lg"></i>
+                                        </button>
+                                    </form>
                                 </div>
 
                                 <!-- Ngày khởi hành -->
@@ -80,10 +90,9 @@
                                         <i class="fa-regular fa-calendar text-primary mr-2 text-lg"></i>
                                         <div>
                                             <p class="text-xs text-gray-500 font-medium">Khởi hành</p>
-                                            <p class="font-bold text-dark">{{ $cartTour && $cartTour->start_date ? \Carbon\Carbon::parse($cartTour->start_date)->format('d/m/Y') : 'Đang cập nhật' }}</p>
+                                            <p class="font-bold text-dark">{{ $cartTour->start_date ? \Carbon\Carbon::parse($cartTour->start_date)->format('d/m/Y') : 'Khởi hành hàng tuần' }}</p>
                                         </div>
                                     </div>
-                                    <button class="text-primary text-sm font-medium hover:underline">Đổi ngày</button>
                                 </div>
 
                                 <!-- Điều chỉnh số lượng và giá -->
@@ -94,15 +103,15 @@
                                             class="flex items-center justify-between bg-white border border-gray-200 rounded-lg p-1.5 shadow-sm">
                                             <div class="ml-2">
                                                 <p class="text-sm font-medium text-dark">Khách hàng</p>
-                                                <p class="text-[10px] text-gray-500">{{ $cartTour ? number_format($cartTour->sale_price, 0, ',', '.') : '5.900.000' }}đ/khách</p>
+                                                <p class="text-[10px] text-gray-500">{{ number_format($cartTour->sale_price, 0, ',', '.') }}đ/khách</p>
                                             </div>
                                             <div class="flex items-center bg-gray-50 rounded-md">
-                                                <button type="button" @if($cartTour) onclick="updateQty('guest-qty', -1)" @endif
+                                                <button type="button" onclick="updateQty('guest-qty', -1)"
                                                     class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors hover:bg-gray-100 rounded-l-md font-bold">-</button>
                                                 <input type="number" id="guest-qty" value="{{ $qty ?? 1 }}" min="1"
-                                                    max="{{ $cartTour ? $cartTour->quantity : 10 }}" readonly
+                                                    max="{{ $cartTour->quantity > 0 ? $cartTour->quantity : 10 }}" readonly
                                                     class="w-8 text-center text-sm font-bold bg-transparent text-dark focus:outline-none">
-                                                <button type="button" @if($cartTour) onclick="updateQty('guest-qty', 1)" @endif
+                                                <button type="button" onclick="updateQty('guest-qty', 1)"
                                                     class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition-colors hover:bg-gray-100 rounded-r-md font-bold">+</button>
                                             </div>
                                         </div>
@@ -112,7 +121,7 @@
                                     <div class="text-right border-t sm:border-0 border-gray-100 pt-3 sm:pt-0 mt-2 sm:mt-0">
                                         <p class="text-xs text-gray-500 mb-1">Tổng cộng:</p>
                                         <p class="text-xl md:text-2xl font-bold text-emerald-600" id="item-total">
-                                            11.800.000đ</p>
+                                            {{ number_format(($qty ?? 1) * $cartTour->sale_price, 0, ',', '.') }}đ</p>
                                     </div>
                                 </div>
                             </div>
@@ -152,13 +161,13 @@
                             <!-- Tính toán chi phí -->
                             <div class="space-y-4 mb-6 border-b border-gray-100 pb-6">
                                 <div class="flex justify-between items-center text-gray-600 text-sm">
-                                    <span>Tạm tính (<span id="total-guests">1</span> khách)</span>
-                                    <span class="font-medium text-dark" id="subtotal">11.800.000đ</span>
+                                    <span>Tạm tính (<span id="total-guests">{{ $qty ?? 1 }}</span> khách)</span>
+                                    <span class="font-medium text-dark" id="subtotal">{{ number_format(($qty ?? 1) * $cartTour->sale_price, 0, ',', '.') }}đ</span>
                                 </div>
-                                <div id="discount-row" class="flex justify-between items-center text-sm hidden">
+                                <div id="discount-row" class="flex justify-between items-center text-sm {{ ($discount ?? 0) > 0 ? '' : 'hidden' }}">
                                     <span class="text-emerald-600 flex items-center"><i
                                             class="fa-solid fa-tag text-xs mr-2"></i> Khuyến mãi</span>
-                                    <span class="font-bold text-emerald-600" id="discount-amount">-0đ</span>
+                                    <span class="font-bold text-emerald-600" id="discount-amount">-{{ number_format($discount ?? 0, 0, ',', '.') }}đ</span>
                                 </div>
                                 <div class="flex justify-between items-center text-gray-600 text-sm">
                                     <span>Thuế phí</span>
@@ -173,7 +182,7 @@
                                     <p class="text-xs text-gray-400">Đã bao gồm VAT</p>
                                 </div>
                                 <div class="text-right">
-                                    <p class="text-3xl font-bold text-primary" id="final-total">11.800.000đ</p>
+                                    <p class="text-3xl font-bold text-primary" id="final-total">{{ number_format($finalTotal ?? (($qty ?? 1) * $cartTour->sale_price), 0, ',', '.') }}đ</p>
                                 </div>
                             </div>
 
@@ -204,17 +213,16 @@
                 </div>
 
             </div>
+            @endif
         </div>
     </section>
 
-
-
     <script>
         // Cấu hình giá cơ bản
-        const TOUR_PRICE = {{ $cartTour ? $cartTour->sale_price : 5900000 }};
-        const MAX_SLOTS = {{ $cartTour ? $cartTour->quantity : 10 }};
-        let isVoucherApplied = false;
-        let discountPercent = 0; // % giảm giá
+        const TOUR_PRICE = {{ ($cartTour ?? null) ? $cartTour->sale_price : 0 }};
+        const MAX_SLOTS = {{ ($cartTour ?? null) ? ($cartTour->quantity > 0 ? $cartTour->quantity : 10) : 10 }};
+        let isVoucherApplied = {{ ($discount ?? 0) > 0 ? 'true' : 'false' }};
+        let discountPercent = 0;
 
         // Định dạng tiền tệ VNĐ
         function formatMoney(amount) {
@@ -224,101 +232,111 @@
         // Hàm cập nhật số lượng
         function updateQty(inputId, change) {
             const inputEle = document.getElementById(inputId);
+            if (!inputEle) return;
             let currentVal = parseInt(inputEle.value);
             let newVal = currentVal + change;
 
             // Ràng buộc số lượng
             if (newVal < 1) newVal = 1;
-            if (newVal > MAX_SLOTS) newVal = MAX_SLOTS; // Giới hạn tối đa
+            if (newVal > MAX_SLOTS) newVal = MAX_SLOTS;
 
             inputEle.value = newVal;
 
             calculateTotals();
+
+            // Đồng bộ giỏ hàng lên server
+            @if($cartTour ?? null)
+            fetch("{{ route('user.cart.update', ['id' => $cartTour->id]) }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: new URLSearchParams({
+                    id: "{{ $cartTour->id }}",
+                    quantity: newVal
+                })
+            }).catch(e => console.log('Sync cart error:', e));
+            @endif
         }
 
         // Hàm tính toán tổng tiền
         function calculateTotals() {
-            const guestQty = parseInt(document.getElementById('guest-qty').value) || 1;
+            const guestInput = document.getElementById('guest-qty');
+            if (!guestInput) return;
+            const guestQty = parseInt(guestInput.value) || 1;
 
             const itemTotal = guestQty * TOUR_PRICE;
             const totalGuests = guestQty;
 
             // Cập nhật giao diện của item
-            document.getElementById('item-total').innerText = formatMoney(itemTotal);
-            document.getElementById('total-guests').innerText = totalGuests;
-            document.getElementById('subtotal').innerText = formatMoney(itemTotal);
+            const itemTotalEl = document.getElementById('item-total');
+            const totalGuestsEl = document.getElementById('total-guests');
+            const subtotalEl = document.getElementById('subtotal');
+            const finalTotalEl = document.getElementById('final-total');
+
+            if (itemTotalEl) itemTotalEl.innerText = formatMoney(itemTotal);
+            if (totalGuestsEl) totalGuestsEl.innerText = totalGuests;
+            if (subtotalEl) subtotalEl.innerText = formatMoney(itemTotal);
 
             // Xử lý Voucher và tính tổng thanh toán
             let discountAmount = 0;
             if (isVoucherApplied) {
                 discountAmount = (itemTotal * discountPercent) / 100;
-                document.getElementById('discount-amount').innerText = '-' + formatMoney(discountAmount);
+                const discEl = document.getElementById('discount-amount');
+                if (discEl) discEl.innerText = '-' + formatMoney(discountAmount);
             }
 
-            const finalTotal = itemTotal - discountAmount;
-            document.getElementById('final-total').innerText = formatMoney(finalTotal);
-        }
-
-        // Xóa item (Mô phỏng)
-        function removeItem(itemId) {
-            const item = document.getElementById(itemId);
-            if (item) {
-                item.style.opacity = '0';
-                item.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                    // Đặt lại số lượng bằng 0 để tính toán hiển thị giỏ hàng trống (trong thực tế sẽ làm phức tạp hơn)
-                    document.getElementById('guest-qty').value = 0;
-                    calculateTotals();
-                    alert("Đã xóa tour khỏi giỏ hàng!");
-                }, 300);
-            }
+            const finalTotal = Math.max(0, itemTotal - discountAmount);
+            if (finalTotalEl) finalTotalEl.innerText = formatMoney(finalTotal);
         }
 
         // Logic Voucher
         function applyVoucher() {
-            const codeInput = document.getElementById('voucher-code').value.trim().toUpperCase();
+            const codeInput = document.getElementById('voucher-code');
+            if (!codeInput) return;
+            const code = codeInput.value.trim().toUpperCase();
             const msgEle = document.getElementById('voucher-message');
             const discountRow = document.getElementById('discount-row');
 
-            // Mô phỏng check mã
-            if (codeInput === '') {
+            if (code === '') {
                 msgEle.innerText = "Vui lòng nhập mã giảm giá.";
                 msgEle.className = "text-xs mt-2 text-red-500 block";
                 return;
             }
 
-            if (codeInput === 'WANDERLUST' || codeInput === 'SUMMER2026') {
-                isVoucherApplied = true;
-                discountPercent = 10; // Giảm 10%
-
-                // Hiển thị thông báo thành công
-                msgEle.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> Áp dụng thành công! Giảm ' +
-                    discountPercent + '%';
-                msgEle.className = "text-xs mt-2 text-emerald-600 block font-medium";
-
-                // Khóa ô input
-                document.getElementById('voucher-code').readOnly = true;
-                document.getElementById('voucher-code').classList.add('text-emerald-600', 'font-bold');
-
-                // Hiển thị dòng giảm giá
-                discountRow.classList.remove('hidden');
-
-                // Tính toán lại
-                calculateTotals();
-            } else {
-                isVoucherApplied = false;
-                discountPercent = 0;
-                discountRow.classList.add('hidden');
-
-                msgEle.innerHTML =
-                    '<i class="fa-solid fa-circle-xmark mr-1"></i> Mã giảm giá không hợp lệ hoặc đã hết hạn.';
+            fetch("{{ route('user.cart.applyVoucher') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    "Accept": "application/json"
+                },
+                body: new URLSearchParams({ voucher_code: code })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    msgEle.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> ' + (data.message || 'Áp dụng voucher thành công!');
+                    msgEle.className = "text-xs mt-2 text-emerald-600 block font-medium";
+                    codeInput.readOnly = true;
+                    codeInput.classList.add('text-emerald-600', 'font-bold');
+                    discountRow.classList.remove('hidden');
+                    const discEl = document.getElementById('discount-amount');
+                    if (discEl) discEl.innerText = '-' + formatMoney(data.discount || 0);
+                    const finalTotalEl = document.getElementById('final-total');
+                    if (finalTotalEl) finalTotalEl.innerText = formatMoney(data.finalTotal);
+                } else {
+                    msgEle.innerHTML = '<i class="fa-solid fa-circle-xmark mr-1"></i> ' + (data.message || 'Mã giảm giá không hợp lệ.');
+                    msgEle.className = "text-xs mt-2 text-red-500 block font-medium";
+                }
+            })
+            .catch(err => {
+                msgEle.innerHTML = '<i class="fa-solid fa-circle-xmark mr-1"></i> Lỗi áp dụng mã giảm giá.';
                 msgEle.className = "text-xs mt-2 text-red-500 block font-medium";
-                calculateTotals();
-            }
+            });
         }
 
-        // Chạy tính toán ngay khi tải trang để format đúng
         window.onload = function() {
             calculateTotals();
         };

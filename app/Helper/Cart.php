@@ -214,9 +214,14 @@ class Cart
         }
 
         if (isset($this->items[$id])) {
-
             $this->items[$id]['quantity'] = $quantity;
-
+        } else {
+            foreach ($this->items as $k => $item) {
+                if (($item['tour_id'] ?? null) == $id) {
+                    $this->items[$k]['quantity'] = $quantity;
+                    break;
+                }
+            }
         }
 
         session(['cart' => $this->items]);
@@ -228,9 +233,14 @@ class Cart
     public function delete($id)
     {
         if (isset($this->items[$id])) {
-
             unset($this->items[$id]);
-
+        } else {
+            foreach ($this->items as $k => $item) {
+                if (($item['tour_id'] ?? null) == $id) {
+                    unset($this->items[$k]);
+                    break;
+                }
+            }
         }
 
         session(['cart' => $this->items]);

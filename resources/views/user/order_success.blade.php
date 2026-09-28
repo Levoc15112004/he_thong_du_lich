@@ -108,11 +108,11 @@
                     class="bg-dark text-white p-6 md:p-8 flex flex-col md:flex-row justify-between items-center md:items-start">
                     <div class="text-center md:text-left mb-4 md:mb-0">
                         <p class="text-gray-400 text-sm mb-1 uppercase tracking-wider font-semibold">Mã Đơn Hàng</p>
-                        <h2 class="text-2xl font-bold tracking-wider text-sky-400">WL-892451A</h2>
+                        <h2 class="text-2xl font-bold tracking-wider text-sky-400">WL-{{ str_pad($order->id, 6, '0', STR_PAD_LEFT) }}</h2>
                     </div>
                     <div class="text-center md:text-right">
                         <p class="text-gray-400 text-sm mb-1">Ngày đặt</p>
-                        <p class="font-medium">17/08/2026 - 10:45 AM</p>
+                        <p class="font-medium">{{ $order->created_at->format('d/m/Y - h:i A') }}</p>
                     </div>
                 </div>
 
@@ -120,20 +120,29 @@
                 <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 bg-sky-50/50">
                     <div>
                         <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-2">Thông tin khách hàng</p>
-                        <p class="font-bold text-dark text-lg">Nguyễn Văn A</p>
-                        <p class="text-sm text-gray-600 mt-1"><i class="fa-solid fa-phone w-4 text-gray-400"></i> 0912 345
-                            678</p>
-                        <p class="text-sm text-gray-600 mt-1"><i class="fa-solid fa-envelope w-4 text-gray-400"></i>
-                            email@example.com</p>
+                        <p class="font-bold text-dark text-lg">{{ $order->name }}</p>
+                        <p class="text-sm text-gray-600 mt-1"><i class="fa-solid fa-phone w-4 text-gray-400"></i> {{ $order->phone }}</p>
+                        <p class="text-sm text-gray-600 mt-1"><i class="fa-solid fa-envelope w-4 text-gray-400"></i> {{ $order->email }}</p>
                     </div>
                     <div>
                         <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-2">Phương thức thanh toán</p>
+                        @php
+                            $payment = $order->payments ? $order->payments->first() : null;
+                            $methodName = 'Thanh toán trực tiếp / Chuyển khoản';
+                            if ($payment) {
+                                if ($payment->payment_method === 'momo') $methodName = 'Ví MoMo';
+                                elseif ($payment->payment_method === 'vnpay') $methodName = 'Cổng VNPAY / Thẻ ATM';
+                            }
+                        @endphp
                         <div class="flex items-center">
-                            <i class="fa-solid fa-credit-card text-xl text-[#005baa] mr-2"></i>
-                            <p class="font-bold text-dark">Thanh toán qua VNPAY</p>
+                            <i class="fa-solid fa-credit-card text-xl text-primary mr-2"></i>
+                            <p class="font-bold text-dark">{{ $methodName }}</p>
                         </div>
-                        <p class="text-sm text-emerald-600 font-medium mt-1"><i class="fa-solid fa-circle-check mr-1"></i>
-                            Đã thanh toán thành công</p>
+                        @if($payment && $payment->status == 1)
+                            <p class="text-sm text-emerald-600 font-medium mt-1"><i class="fa-solid fa-circle-check mr-1"></i> Đã thanh toán thành công</p>
+                        @else
+                            <p class="text-sm text-amber-600 font-medium mt-1"><i class="fa-solid fa-clock mr-1"></i> Đã ghi nhận - Chờ xác nhận</p>
+                        @endif
                     </div>
                 </div>
 
@@ -142,18 +151,19 @@
                     <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Chi tiết dịch vụ</p>
 
                     <div class="flex flex-col sm:flex-row gap-4 mb-6">
-                        <img src="https://images.unsplash.com/photo-1540304618210-91a030046645?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
-                            alt="Tour Thumbnail" class="w-full sm:w-24 h-24 object-cover rounded-xl shadow-sm">
+                        @if($order->tour)
+                        <img src="{{ Str::startsWith($order->tour->image, 'http') ? $order->tour->image : asset($order->tour->image) }}"
+                            alt="{{ $order->tour->name }}" class="w-full sm:w-24 h-24 object-cover rounded-xl shadow-sm">
                         <div class="flex-1">
-                            <h3 class="text-lg font-bold text-dark leading-tight mb-2">Hành Trình Di Sản Miền Trung: Hội An
-                                - Đà Nẵng - Huế</h3>
+                            <h3 class="text-lg font-bold text-dark leading-tight mb-2">{{ $order->tour->name }}</h3>
                             <div class="grid grid-cols-2 gap-2 text-sm text-gray-600">
-                                <p><i class="fa-regular fa-calendar text-primary w-4"></i> 15/09/2026</p>
-                                <p><i class="fa-regular fa-clock text-primary w-4"></i> 4 Ngày 3 Đêm</p>
-                                <p><i class="fa-solid fa-user-group text-primary w-4"></i> 2 Người lớn</p>
-                                <p><i class="fa-solid fa-barcode text-primary w-4"></i> WL-MT4N3D</p>
+                                <p><i class="fa-regular fa-calendar text-primary w-4"></i> {{ $order->tour->start_date ? \Carbon\Carbon::parse($order->tour->start_date)->format('d/m/Y') : 'Khởi hành hàng tuần' }}</p>
+                                <p><i class="fa-regular fa-clock text-primary w-4"></i> {{ $order->time ?? ($order->tour->time ?? 'Theo lịch trình') }}</p>
+                                <p><i class="fa-solid fa-user-group text-primary w-4"></i> {{ $order->quantity }} Khách</p>
+                                <p><i class="fa-solid fa-barcode text-primary w-4"></i> WL-{{ $order->tour->id }}</p>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
 
@@ -164,13 +174,15 @@
                 <div class="p-6 md:p-8 bg-gray-50">
                     <div class="space-y-3 mb-4 text-sm">
                         <div class="flex justify-between items-center text-gray-600">
-                            <span>Tạm tính (2 khách)</span>
-                            <span class="font-medium text-dark">11.800.000đ</span>
+                            <span>Tạm tính ({{ $order->quantity }} khách)</span>
+                            <span class="font-medium text-dark">{{ number_format(($order->total_price + ($order->discount_amount ?? 0)), 0, ',', '.') }}đ</span>
                         </div>
+                        @if(($order->discount_amount ?? 0) > 0)
                         <div class="flex justify-between items-center">
-                            <span class="text-emerald-600">Voucher WANDERLUST</span>
-                            <span class="font-medium text-emerald-600">-1.180.000đ</span>
+                            <span class="text-emerald-600">Voucher {{ $order->voucher ? $order->voucher->code : 'Áp dụng' }}</span>
+                            <span class="font-medium text-emerald-600">-{{ number_format($order->discount_amount, 0, ',', '.') }}đ</span>
                         </div>
+                        @endif
                     </div>
 
                     <div class="border-t border-gray-200 pt-4 flex justify-between items-end">
@@ -179,7 +191,7 @@
                             <p class="text-xs text-gray-500">Đã bao gồm VAT</p>
                         </div>
                         <div class="text-right">
-                            <p class="text-3xl font-bold text-primary">10.620.000đ</p>
+                            <p class="text-3xl font-bold text-primary">{{ number_format($order->total_price, 0, ',', '.') }}đ</p>
                         </div>
                     </div>
                 </div>
@@ -187,28 +199,24 @@
 
             <!-- Khu vực các nút thao tác -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <!-- Nút tải PDF -->
-                <button
-                    class="bg-white border-2 border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50 font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center">
-                    <i class="fa-solid fa-download mr-2"></i> Tải Biên Lai
-                </button>
-
-                <!-- Nút Xem chi tiết tour -->
-                <a href="tour-detail.html"
-                    class="bg-white border-2 border-primary text-primary hover:bg-sky-50 font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center">
-                    <i class="fa-solid fa-map-location-dot mr-2"></i> Xem Lịch Trình Tour
+                <!-- Nút Về Trang Chủ -->
+                <a href="{{ route('user.home') }}"
+                    class="bg-primary hover:bg-sky-600 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-sky-500/30">
+                    <i class="fa-solid fa-house mr-2"></i> Về Trang Chủ
                 </a>
 
-                <!-- Nút Đánh giá -->
-                <button onclick="openReviewModal()"
-                    class="bg-primary hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-sky-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center">
-                    <i class="fa-regular fa-star mr-2"></i> Đánh Giá Trải Nghiệm
-                </button>
+                @if($order->tour_id)
+                <!-- Nút Xem chi tiết tour -->
+                <a href="{{ route('user.tourDetail.index', ['id' => $order->tour_id]) }}"
+                    class="bg-white border-2 border-primary text-primary hover:bg-sky-50 font-bold py-3.5 px-6 rounded-xl transition-all duration-300 flex items-center justify-center">
+                    <i class="fa-solid fa-map-location-dot mr-2"></i> Xem Lịch Trình Tour
+                </a>
+                @endif
             </div>
 
             <!-- Ghi chú hỗ trợ -->
             <p class="text-center text-sm text-gray-500 mt-10">
-                Cần hỗ trợ về đơn hàng? Vui lòng liên hệ Hotline <a href="#"
+                Cần hỗ trợ về đơn hàng? Vui lòng liên hệ Hotline <a href="tel:19001234"
                     class="font-bold text-primary hover:underline">1900 1234</a>.
             </p>
 

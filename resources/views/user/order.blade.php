@@ -38,12 +38,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-8">
                 <h1 class="text-2xl md:text-3xl font-bold text-dark">Hoàn tất đặt tour</h1>
-                <a href="cart.html" class="text-gray-500 hover:text-primary font-medium text-sm transition-colors"><i
+                <a href="{{ route('user.cart') }}" class="text-gray-500 hover:text-primary font-medium text-sm transition-colors"><i
                         class="fa-solid fa-arrow-left mr-1"></i> Quay lại giỏ hàng</a>
             </div>
 
             <!-- Form bao quanh toàn bộ khu vực để submit -->
-            <form id="checkout-form" class="flex flex-col lg:flex-row gap-8" onsubmit="handleCheckout(event)">
+            <form id="checkout-form" action="{{ route('user.order.store') }}" method="POST" class="flex flex-col lg:flex-row gap-8" onsubmit="handleCheckout(event)">
+                @csrf
 
                 <!-- Cột trái: Thông tin khách hàng & Phương thức thanh toán -->
                 <div class="w-full lg:w-2/3 space-y-8">
@@ -65,7 +66,7 @@
                                 <div
                                     class="relative flex items-center input-field border border-gray-200 rounded-xl bg-gray-50 transition-all overflow-hidden">
                                     <i class="fa-regular fa-user absolute left-4 text-gray-400"></i>
-                                    <input type="text" required placeholder="VD: Nguyễn Văn A"
+                                    <input type="text" name="name" required value="{{ old('name', Auth::user()->name ?? '') }}" placeholder="VD: Nguyễn Văn A"
                                         class="w-full bg-transparent py-3.5 pl-11 pr-4 text-sm text-dark focus:outline-none">
                                 </div>
                             </div>
@@ -77,7 +78,7 @@
                                 <div
                                     class="relative flex items-center input-field border border-gray-200 rounded-xl bg-gray-50 transition-all overflow-hidden">
                                     <i class="fa-solid fa-phone absolute left-4 text-gray-400"></i>
-                                    <input type="tel" required pattern="[0-9]{10,11}" placeholder="VD: 0912345678"
+                                    <input type="tel" name="phone" required pattern="[0-9]{10,11}" value="{{ old('phone', Auth::user()->phone ?? '') }}" placeholder="VD: 0912345678"
                                         class="w-full bg-transparent py-3.5 pl-11 pr-4 text-sm text-dark focus:outline-none">
                                 </div>
                             </div>
@@ -89,7 +90,7 @@
                                 <div
                                     class="relative flex items-center input-field border border-gray-200 rounded-xl bg-gray-50 transition-all overflow-hidden">
                                     <i class="fa-regular fa-envelope absolute left-4 text-gray-400"></i>
-                                    <input type="email" required placeholder="VD: email@example.com"
+                                    <input type="email" name="email" required value="{{ old('email', Auth::user()->email ?? '') }}" placeholder="VD: email@example.com"
                                         class="w-full bg-transparent py-3.5 pl-11 pr-4 text-sm text-dark focus:outline-none">
                                 </div>
                                 <p class="text-[10px] text-gray-500 mt-1">Vé điện tử sẽ được gửi về email này.</p>
@@ -101,7 +102,7 @@
                                 <div
                                     class="relative flex items-center input-field border border-gray-200 rounded-xl bg-gray-50 transition-all overflow-hidden">
                                     <i class="fa-solid fa-location-dot absolute left-4 text-gray-400"></i>
-                                    <input type="text" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố"
+                                    <input type="text" name="address" value="{{ old('address', Auth::user()->address ?? '') }}" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố"
                                         class="w-full bg-transparent py-3.5 pl-11 pr-4 text-sm text-dark focus:outline-none">
                                 </div>
                             </div>
@@ -113,8 +114,8 @@
                                 <div
                                     class="relative flex items-start input-field border border-gray-200 rounded-xl bg-gray-50 transition-all overflow-hidden">
                                     <i class="fa-regular fa-comment-dots absolute left-4 top-4 text-gray-400"></i>
-                                    <textarea rows="3" placeholder="Ví dụ: Ăn chay, dị ứng hải sản, phụ nữ có thai..."
-                                        class="w-full bg-transparent py-3.5 pl-11 pr-4 text-sm text-dark focus:outline-none resize-none"></textarea>
+                                    <textarea name="note" rows="3" placeholder="Ví dụ: Ăn chay, dị ứng hải sản, phụ nữ có thai..."
+                                        class="w-full bg-transparent py-3.5 pl-11 pr-4 text-sm text-dark focus:outline-none resize-none">{{ old('note') }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -253,33 +254,32 @@
                     <div class="bg-white rounded-2xl shadow-soft border border-gray-100 sticky top-28">
 
                         <div class="p-6">
-                            <h2 class="text-lg font-bold text-dark mb-4 border-b border-gray-100 pb-4">Tóm tắt đơn hàng
-                            </h2>
+                            <h2 class="text-lg font-bold text-dark mb-4 border-b border-gray-100 pb-4">Tóm tắt đơn hàng</h2>
 
                             <!-- Thông tin Tour -->
                             <div class="flex gap-4 mb-6">
-                                <img src="https://images.unsplash.com/photo-1540304618210-91a030046645?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
-                                    alt="Tour Thumbnail" class="w-20 h-20 object-cover rounded-lg">
+                                <img src="{{ Str::startsWith($cartTour->image, 'http') ? $cartTour->image : asset($cartTour->image) }}"
+                                    alt="{{ $cartTour->name }}" class="w-20 h-20 object-cover rounded-lg">
                                 <div>
-                                    <h3 class="text-sm font-bold text-dark line-clamp-2 leading-tight mb-1">Hành Trình Di
-                                        Sản Miền Trung: Hội An - Đà Nẵng - Huế</h3>
+                                    <h3 class="text-sm font-bold text-dark line-clamp-2 leading-tight mb-1">{{ $cartTour->name }}</h3>
                                     <p class="text-xs text-gray-500"><i class="fa-regular fa-calendar mr-1"></i>
-                                        15/09/2026</p>
-                                    <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-user-group mr-1"></i> 2
-                                        Người lớn, 0 Trẻ em</p>
+                                        {{ $cartTour->start_date ? \Carbon\Carbon::parse($cartTour->start_date)->format('d/m/Y') : 'Khởi hành hàng tuần' }}</p>
+                                    <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-user-group mr-1"></i> {{ $totalQuantity }} Khách</p>
                                 </div>
                             </div>
 
-                            <!-- Tính toán chi phí (Kế thừa từ bước giỏ hàng) -->
+                            <!-- Tính toán chi phí -->
                             <div class="space-y-3 mb-6 border-y border-gray-100 py-4">
                                 <div class="flex justify-between items-center text-gray-600 text-sm">
-                                    <span>Giá tour (2 khách)</span>
-                                    <span class="font-medium text-dark">11.800.000đ</span>
+                                    <span>Giá tour ({{ $totalQuantity }} khách)</span>
+                                    <span class="font-medium text-dark">{{ number_format($totalPrice, 0, ',', '.') }}đ</span>
                                 </div>
+                                @if(($discount ?? 0) > 0)
                                 <div class="flex justify-between items-center text-sm">
                                     <span class="text-emerald-600 flex items-center">Voucher áp dụng</span>
-                                    <span class="font-bold text-emerald-600">-1.180.000đ</span>
+                                    <span class="font-bold text-emerald-600">-{{ number_format($discount, 0, ',', '.') }}đ</span>
                                 </div>
+                                @endif
                             </div>
 
                             <!-- Tổng thanh toán -->
@@ -289,13 +289,13 @@
                                     <p class="text-[10px] text-gray-400">Đã bao gồm VAT & Thuế phí</p>
                                 </div>
                                 <div class="text-right">
-                                    <p class="text-3xl font-bold text-primary">10.620.000đ</p>
+                                    <p class="text-3xl font-bold text-primary">{{ number_format($finalTotal, 0, ',', '.') }}đ</p>
                                 </div>
                             </div>
 
                             <!-- Điều khoản -->
                             <div class="mb-6 flex items-start">
-                                <input type="checkbox" id="terms" required
+                                <input type="checkbox" id="terms" required checked
                                     class="mt-1 w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary cursor-pointer">
                                 <label for="terms" class="ml-2 text-xs text-gray-500 cursor-pointer">
                                     Tôi đã đọc và đồng ý với các <a href="#"
@@ -306,7 +306,6 @@
                             </div>
 
                             <!-- Nút Xác nhận Thanh toán -->
-                            <!-- Chú ý: Vì dùng thẻ <form>, nút này phải có type="submit" -->
                             <button type="submit" id="submit-btn"
                                 class="w-full bg-primary hover:bg-sky-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-sky-500/30 transition-all duration-300 transform hover:-translate-y-1 flex justify-center items-center group relative">
                                 <span class="btn-text flex items-center">
@@ -335,45 +334,19 @@
     </section>
     <script>
         function handleCheckout(event) {
-            // Ngăn chặn form submit mặc định để chạy hiệu ứng
-            event.preventDefault();
-
-            const form = event.target;
+            const form = document.getElementById('checkout-form');
             const submitBtn = document.getElementById('submit-btn');
 
-            // Validate (HTML5 validation đã xử lý một phần do có thuộc tính required)
             if (!form.checkValidity()) {
                 form.reportValidity();
+                event.preventDefault();
                 return;
             }
 
-            // Lấy phương thức thanh toán đang chọn
-            const selectedPayment = document.querySelector('input[name="payment_method"]:checked').value;
-
-            // Thêm class is-loading để hiển thị spinner
             submitBtn.classList.add('is-loading');
             submitBtn.disabled = true;
-
-            // Mô phỏng quá trình xử lý (gọi API...) mất khoảng 1.5 giây
-            setTimeout(() => {
-                // Tùy thuộc vào phương thức thanh toán để xử lý bước tiếp theo
-                if (selectedPayment === 'momo') {
-                    alert("Đang chuyển hướng đến cổng thanh toán MoMo...");
-                    // window.location.href = 'link-momo';
-                } else if (selectedPayment === 'vnpay') {
-                    alert("Đang chuyển hướng đến cổng thanh toán VNPAY...");
-                    // window.location.href = 'link-vnpay';
-                } else {
-                    alert("Đặt tour thành công! Hướng dẫn chuyển khoản đã được gửi vào email của bạn.");
-                    // Chuyển đến trang Cảm ơn/Hoàn tất (Step 3)
-                    // window.location.href = 'success.html';
-                }
-
-                // Xóa trạng thái loading (thường thì khi chuyển trang sẽ không cần bước này, nhưng để demo thì khôi phục lại nút)
-                submitBtn.classList.remove('is-loading');
-                submitBtn.disabled = false;
-
-            }, 1500);
+            const btnText = submitBtn.querySelector('.btn-text');
+            if (btnText) btnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Đang xử lý đặt tour...';
         }
     </script>
 

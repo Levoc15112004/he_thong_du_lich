@@ -18,7 +18,7 @@ class LoginController extends Controller
 {
     public function account()
     {
-        if (! str_contains(url()->previous(), 'account')) {
+        if (! str_contains((string) url()->previous(), 'account')) {
             session(['ads' => url()->previous()]);
         }
 
@@ -27,10 +27,10 @@ class LoginController extends Controller
 
     public function user()
     {
-        $categories = Category::all();
-        $orders = Order::where('id_user', Auth::id())->with('orderDetail.product')->get();
+        $categories = Category::where('status', 1)->get();
+        $orders = Order::where('user_id', Auth::id())->with(['tour', 'payments'])->latest()->get();
 
-        return view('users', compact('categories', 'orders'));
+        return redirect()->route('user.home');
     }
 
     public function register(Request $req)
@@ -102,7 +102,7 @@ class LoginController extends Controller
 
         session()->put('chat_session_id', $chatSessionId);
 
-        if (str_contains(Session::get('ads'), 'cart')) {
+        if (str_contains((string) Session::get('ads'), 'cart')) {
             Session::forget('ads');
 
             return redirect()->route('user.order.index');
@@ -152,7 +152,7 @@ class LoginController extends Controller
                 return redirect()->route('admin.home');
             }
 
-            if (str_contains(Session::get('ads'), 'cart')) {
+            if (str_contains((string) Session::get('ads'), 'cart')) {
                 Session::forget('ads');
 
                 return redirect()->route('user.order.index');
@@ -172,7 +172,7 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('user');
+        return redirect()->route('user.home')->with('success', 'Đăng xuất thành công!');
     }
 
     public function update(Request $request)

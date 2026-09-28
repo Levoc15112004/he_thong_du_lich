@@ -89,29 +89,40 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                <a href="{{ route('user.home') }}" class="flex-shrink-0 flex items-center cursor-pointer">
                     <i class="fa-solid fa-plane-departure text-primary text-3xl mr-2"></i>
                     <span class="font-bold text-2xl text-dark tracking-tight">Wander<span
                             class="text-primary">lust</span></span>
-                </div>
+                </a>
 
                 <!-- Desktop Menu -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#"
+                    <a href="{{ route('user.home') }}"
                         class="text-dark font-medium hover:text-primary transition-colors duration-200">Trang chủ</a>
-                    <a href="#tours"
+                    <a href="{{ route('user.home') }}#tours"
                         class="text-gray-600 font-medium hover:text-primary transition-colors duration-200">Điểm đến</a>
-                    <a href="#hot-tours"
+                    <a href="{{ route('user.home') }}#hot-tours"
                         class="text-gray-600 font-medium hover:text-primary transition-colors duration-200">Tour Ưu
                         đãi</a>
-                    <a href="#reviews"
+                    <a href="{{ route('user.home') }}#reviews"
                         class="text-gray-600 font-medium hover:text-primary transition-colors duration-200">Cẩm nang</a>
-                    <a href="#"
+                    <a href="{{ route('user.home') }}#footer"
                         class="text-gray-600 font-medium hover:text-primary transition-colors duration-200">Liên hệ</a>
                 </nav>
 
                 <!-- Action Buttons -->
                 <div class="hidden md:flex items-center space-x-4">
+                    <!-- Giỏ hàng -->
+                    <a href="{{ route('user.cart') }}" class="relative text-gray-600 hover:text-primary transition-colors p-2" title="Giỏ hàng">
+                        <i class="fa-solid fa-cart-shopping text-xl"></i>
+                        @php
+                            $cartCount = count(session('cart', []));
+                        @endphp
+                        @if($cartCount > 0)
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">{{ $cartCount }}</span>
+                        @endif
+                    </a>
+
                     @auth
                         <div class="relative group cursor-pointer pt-4 pb-4">
                             <div class="flex items-center space-x-2 text-gray-600 hover:text-primary transition-colors">
@@ -120,8 +131,8 @@
                             </div>
                             <!-- Dropdown -->
                             <div class="absolute right-0 top-full mt-0 w-48 bg-white border border-gray-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                                <a href="#" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-sky-50 hover:text-primary transition-colors rounded-t-xl">Tài khoản</a>
-                                <a href="#" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-sky-50 hover:text-primary transition-colors">Đơn hàng của tôi</a>
+                                <a href="{{ route('user.home') }}" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-sky-50 hover:text-primary transition-colors rounded-t-xl">Trang chủ</a>
+                                <a href="{{ route('user.cart') }}" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-sky-50 hover:text-primary transition-colors">Giỏ hàng của tôi</a>
                                 <div class="border-t border-gray-100"></div>
                                 <form action="{{ route('user.logout') }}" method="POST" class="block">
                                     @csrf
@@ -130,11 +141,11 @@
                             </div>
                         </div>
                     @else
-                        <a href="{{ route('account') }}" class="text-gray-600 hover:text-primary transition-colors">
+                        <a href="{{ route('account') }}" class="text-gray-600 hover:text-primary transition-colors" title="Đăng nhập / Đăng ký">
                             <i class="fa-regular fa-user text-xl"></i>
                         </a>
                     @endauth
-                    <a href="#"
+                    <a href="{{ route('user.home') }}#tours"
                         class="bg-primary hover:bg-sky-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50">
                         Đặt Tour Ngay
                     </a>
