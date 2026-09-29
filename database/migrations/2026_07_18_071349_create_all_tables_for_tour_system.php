@@ -43,6 +43,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->string('link')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
 

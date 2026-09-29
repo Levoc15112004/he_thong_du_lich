@@ -14,14 +14,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function Cart(Request $request)
+    public function Cart()
     {
+
         $categories = Category::where('status', 1)
-            ->whereNull('category_id')
+            ->whereNull('parent_id')
             ->with('children')
             ->orderByDesc('id')
             ->take(10)
             ->get();
+
 
         $notifications = Notification::where('user_id', Auth::id())
             ->orderByDesc('created_at')
@@ -32,25 +34,9 @@ class CartController extends Controller
             ->where('status', 'unread')
             ->count();
 
+
+
         $cart = new Cart;
-
-        if ($request->filled('tour_id')) {
-            $tour = Tour::find($request->tour_id);
-            if ($tour) {
-                $qty = max(1, (int)$request->get('qty', 1));
-                $cart->add(
-                    $tour,
-                    $qty,
-                    $request->get('transport', 'Xe du lịch'),
-                    $request->get('tour_type', 'Tiêu chuẩn')
-                );
-            }
-        }
-
-        $items = $cart->getItems();
-        $firstItem = !empty($items) ? reset($items) : null;
-        $cartTour = $firstItem ? Tour::with('category')->find($firstItem['tour_id']) : null;
-        $qty = $firstItem ? ($firstItem['quantity'] ?? 1) : 1;
 
         $totalPrice = $cart->getTotalPrice();
         $totalQuantity = $cart->getTotalQuantity();
@@ -59,18 +45,16 @@ class CartController extends Controller
 
         $voucher = session('voucher');
 
+
         $userVouchers = UserVoucher::where('user_id', auth()->id())
             ->where('status', '0')
             ->with('voucher')
             ->get()
             ->pluck('voucher');
 
-        return view('user.cart', compact(
+        return view('users.cart', compact(
             'categories',
             'cart',
-            'cartTour',
-            'qty',
-            'items',
             'totalPrice',
             'totalQuantity',
             'discount',
@@ -89,14 +73,12 @@ class CartController extends Controller
 
         $cart = new Cart;
 
-        if ($tour) {
-            $cart->add(
-                $tour,
-                $req->quantity ?? 1,
-                $req->transport ?? 'Xe du lịch',
-                $req->tour_type ?? 'Tiêu chuẩn'
-            );
-        }
+        $cart->add(
+            $tour,
+            $req->quantity,
+            $req->transport,
+            $req->tour_type
+        );
 
         return redirect()->route('user.cart');
     }
@@ -110,16 +92,6 @@ class CartController extends Controller
             $req->id,
             $req->quantity
         );
-
-        if ($req->ajax() || $req->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'totalPrice' => $cart->getTotalPrice(),
-                'totalQuantity' => $cart->getTotalQuantity(),
-                'discount' => $cart->getDiscount(),
-                'finalTotal' => $cart->getFinalPrice(),
-            ]);
-        }
 
         return redirect()->route('user.cart');
     }
@@ -136,44 +108,32 @@ class CartController extends Controller
 
     public function applyVoucher(Request $request)
     {
-        $code = trim((string)$request->voucher_code);
+        $code = $request->voucher_code;
 
         if (! $code) {
+
             session()->forget('voucher');
-            if ($request->ajax() || $request->wantsJson()) {
-                return response()->json(['success' => false, 'message' => 'Vui lòng nhập mã giảm giá']);
-            }
+
             return back();
         }
 
         $voucher = Voucher::where('code', $code)->first();
 
         if (! $voucher) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response()->json(['success' => false, 'message' => 'Mã giảm giá không tồn tại']);
-            }
+
             return back()->with('error', 'Mã giảm giá không tồn tại');
+
         }
 
         $cart = new Cart;
 
         if (! $cart->canUseVoucher($voucher)) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response()->json(['success' => false, 'message' => 'Không đủ điều kiện sử dụng voucher']);
-            }
+
             return back()->with('error', 'Không đủ điều kiện sử dụng voucher');
+
         }
 
-        $cart->applyVoucher($code);
-
-        if ($request->ajax() || $request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Áp dụng voucher thành công',
-                'discount' => $cart->getDiscount(),
-                'finalTotal' => $cart->getFinalPrice(),
-            ]);
-        }
+        $cart->applyVoucher($code); // đúng
 
         return back()->with('success', 'Áp dụng voucher thành công');
     }

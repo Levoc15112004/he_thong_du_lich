@@ -16,7 +16,7 @@ class ChatmessageController extends Controller
     {
         $search = $request->input('search');
 
-        $chats = ChatSession::with('user')
+        $sessions = ChatSession::with('user')
             ->when($search, function ($query) use ($search) {
                 $query->whereHas('user', function ($q) use ($search) {
                     $q->where('name', 'like', '%' . $search . '%')
@@ -27,7 +27,7 @@ class ChatmessageController extends Controller
             ->orderBy('started_at', 'desc')
             ->paginate(7);
 
-        return view('admin.chat.home', compact('chats', 'search'));
+        return view('admins.Chat.index', compact('sessions', 'search'));
     }
 
 
@@ -39,7 +39,7 @@ class ChatmessageController extends Controller
             ->orderBy('created_at', 'asc')
             ->get();
 
-        return view('admin.chat.home', [
+        return view('admins.Chat.show', [
             'session'  => $session,
             'messages' => $messages,
         ]);
@@ -56,7 +56,7 @@ class ChatmessageController extends Controller
         ]);
 
         return redirect()
-            ->route('admin.chat.home')
+            ->route('admin.chat.index')
             ->with('success', 'Phiên chat đã được kết thúc.');
     }
 
@@ -69,7 +69,7 @@ class ChatmessageController extends Controller
         });
 
         return redirect()
-            ->route('admin.chat.home')
+            ->route('admin.chat.index')
             ->with('success', 'Đã xóa phiên chat và toàn bộ tin nhắn.');
     }
 

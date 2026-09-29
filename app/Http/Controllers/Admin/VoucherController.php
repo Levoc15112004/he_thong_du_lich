@@ -30,22 +30,29 @@ class VoucherController extends Controller
                 'status' => 0,
             ]);
 
-        $totalVouchers = Voucher::count();
-        $activeVouchers = Voucher::where('status', 1)->count();
-        $inactiveVouchers = Voucher::where('status', 0)->count();
+        $vouchers = Voucher::latest()->get();
 
-        $expiringSoon = Voucher::whereNotNull('end_date')
-            ->where('end_date', '>=', now())
-            ->where('end_date', '<=', now()->addDays(7))
-            ->count();
+        $totalVouchers = $vouchers->count();
 
-        $vouchers = Voucher::latest()->paginate(7);
+        $activeVouchers = $vouchers->where('status', 1)->count();
 
-        return view('admin.voucher.home', compact(
+        $expiringSoon = $vouchers->filter(function ($voucher) {
+
+            if (! $voucher->end_date) {
+                return false;
+            }
+
+            return \Carbon\Carbon::parse($voucher->end_date)->between(
+                now(),
+                now()->addDays(7)
+            );
+
+        })->count();
+
+        return view('admins.Vouchers.index', compact(
             'vouchers',
             'totalVouchers',
             'activeVouchers',
-            'inactiveVouchers',
             'expiringSoon'
         ));
     }
@@ -57,7 +64,7 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        return view('admin.voucher.create');
+        return view('admins.Vouchers.create');
 
     }
 
@@ -82,7 +89,7 @@ class VoucherController extends Controller
 
         Voucher::create($request->all());
 
-        return redirect()->route('admin.voucher.home')->with('success', 'Voucher đã được tạo thành công.');
+        return redirect()->route('admin.vouchers.index')->with('success', 'Voucher đã được tạo thành công.');
     }
 
     /**
@@ -106,7 +113,7 @@ class VoucherController extends Controller
     {
         $voucher = Voucher::findOrFail($id);
 
-        return view('admin.voucher.update', compact('voucher'));
+        return view('admins.Vouchers.edit', compact('voucher'));
     }
 
     /**
@@ -147,7 +154,7 @@ class VoucherController extends Controller
             'event_type' => $request->event_type,
         ]);
 
-        return redirect()->route('admin.voucher.home')->with('success', 'Voucher được câp nhật thành công.');
+        return redirect()->route('admin.vouchers.index')->with('success', 'Voucher được câp nhật thành công.');
     }
 
     /**
@@ -161,6 +168,6 @@ class VoucherController extends Controller
         $voucher = Voucher::findOrFail($id);
         $voucher->delete();
 
-        return redirect()->route('admin.voucher.home')->with('success', 'Voucher deleted successfully.');
+        return redirect()->route('admin.vouchers.index')->with('success', 'Voucher deleted successfully.');
     }
 }

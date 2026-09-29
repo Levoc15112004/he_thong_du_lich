@@ -15,8 +15,9 @@ class AttrController extends Controller
      */
     public function index()
     {
-        $attrs = AttrTour::paginate(10);
-        return view('admin.attr.home', compact('attrs'));
+        $attrTransport = AttrTour::where('name', 'transport')->get();
+        $tourType = AttrTour::where('name', 'tour_type')->get();
+        return view('admins.AttrsTour.index', compact('attrTransport', 'tourType',));
     }
 
     /**
@@ -26,7 +27,7 @@ class AttrController extends Controller
      */
     public function create()
     {
-        return view('admin.attr.create');
+        return view('admins.AttrsTour.create');
     }
 
     /**
@@ -50,7 +51,7 @@ class AttrController extends Controller
             'name' => $request->name,
             'value' => $request->value,
         ]);
-        return redirect()->route('admin.attr.home');
+        return redirect()->route('admin.attr.index');
     }
 
     /**
@@ -73,7 +74,7 @@ class AttrController extends Controller
     public function edit($id)
     {
         $attr = AttrTour::find($id);
-        return view('admin.attr.update', compact('attr'));
+        return view('admins.AttrsTour.update', compact('attr'));
     }
 
     /**
@@ -96,7 +97,7 @@ class AttrController extends Controller
         ]);
         $attr = AttrTour::find($id);
         $attr->update($request->only('name', 'value'));
-        return redirect()->route('admin.attr.home');
+        return redirect()->route('admin.attr.index');
     }
 
     /**
@@ -109,6 +110,6 @@ class AttrController extends Controller
     {
         $attr = AttrTour::find($id);
         $attr->delete();
-        return redirect()->route('admin.attr.home');
+        return redirect()->route('admin.attr.index');
     }
 }

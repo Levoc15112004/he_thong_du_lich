@@ -22,7 +22,7 @@ class UserVoucherController extends Controller
         $search = $request->search;
         $status = $request->status;
 
-        $user_vouchers = UserVoucher::with(['user', 'voucher'])
+        $userVouchers = UserVoucher::with(['user', 'voucher'])
             ->when($search, function ($query) use ($search) {
                 $query->whereHas('user', function ($q) use ($search) {
                     $q->where('name', 'like', "%{$search}%")
@@ -79,8 +79,8 @@ class UserVoucherController extends Controller
 
         $summerVouchers = Voucher::latest()->get();
 
-        return view('admin.user_voucher.home', compact(
-            'user_vouchers',
+        return view('admins.UserVoucher.index', compact(
+            'userVouchers',
             'users',
             'availableVouchers',
             'stats',
@@ -103,7 +103,7 @@ class UserVoucherController extends Controller
             ->whereColumn('used_count', '<', 'quantity')
             ->get();
 
-        return view('admin.user_voucher.create', compact('users', 'vouchers'));
+        return view('admins.UserVoucher.create', compact('users', 'vouchers'));
     }
 
     /**
@@ -171,18 +171,18 @@ class UserVoucherController extends Controller
 
             if ($assignedCount === 0) {
                 return redirect()
-                    ->route('admin.user_voucher.home')
+                    ->route('admin.user_vouchers.index')
                     ->with('error', 'Không có voucher nào được gán. Có thể voucher đã tồn tại, hết hạn hoặc hết số lượng.');
             }
 
             return redirect()
-                ->route('admin.user_voucher.home')
+                ->route('admin.user_vouchers.index')
                 ->with('success', "Đã gán thành công {$assignedCount} voucher cho người dùng.");
         } catch (\Throwable $th) {
             DB::rollBack();
 
             return redirect()
-                ->route('admin.user_voucher.home')
+                ->route('admin.user_vouchers.index')
                 ->with('error', 'Có lỗi xảy ra khi gán voucher: '.$th->getMessage());
         }
     }
@@ -206,14 +206,14 @@ class UserVoucherController extends Controller
      */
     public function edit($id)
     {
-        $user_voucher = UserVoucher::findOrFail($id);
+        $userVoucher = UserVoucher::findOrFail($id);
 
         $users = User::select('id', 'name')->get();
 
         $vouchers = Voucher::all();
 
-        return view('admin.user_voucher.update',
-            compact('user_voucher', 'users', 'vouchers')
+        return view('admins.UserVoucher.edit',
+            compact('userVoucher', 'users', 'vouchers')
         );
     }
 
@@ -241,7 +241,7 @@ class UserVoucherController extends Controller
 
         $userVoucher->update($data);
 
-        return redirect()->route('admin.user_voucher.home')
+        return redirect()->route('admin.user_vouchers.index')
             ->with('success', 'Cập nhật thành công');
     }
 
@@ -257,7 +257,7 @@ class UserVoucherController extends Controller
         $userVoucher->delete();
 
         return redirect()
-            ->route('admin.user_voucher.home')
+            ->route('admin.user_vouchers.index')
             ->with('success', 'Đã xóa voucher khỏi người dùng.');
     }
 
@@ -283,7 +283,7 @@ class UserVoucherController extends Controller
                 DB::rollBack();
 
                 return redirect()
-                    ->route('admin.user_voucher.home')
+                    ->route('admin.user_vouchers.index')
                     ->with('error', 'Voucher hiện không hoạt động.');
             }
 
@@ -291,7 +291,7 @@ class UserVoucherController extends Controller
                 DB::rollBack();
 
                 return redirect()
-                    ->route('admin.user_voucher.home')
+                    ->route('admin.user_vouchers.index')
                     ->with('error', 'Voucher chưa đến thời gian áp dụng.');
             }
 
@@ -299,7 +299,7 @@ class UserVoucherController extends Controller
                 DB::rollBack();
 
                 return redirect()
-                    ->route('admin.user_voucher.home')
+                    ->route('admin.user_vouchers.index')
                     ->with('error', 'Voucher đã hết hạn.');
             }
 
@@ -309,7 +309,7 @@ class UserVoucherController extends Controller
                 DB::rollBack();
 
                 return redirect()
-                    ->route('admin.user_voucher.home')
+                    ->route('admin.user_vouchers.index')
                     ->with('error', 'Voucher đã hết số lượng để phát.');
             }
 
@@ -328,7 +328,7 @@ class UserVoucherController extends Controller
                 DB::rollBack();
 
                 return redirect()
-                    ->route('admin.user_voucher.home')
+                    ->route('admin.user_vouchers.index')
                     ->with('error', 'Không còn user phù hợp để phát voucher này.');
             }
 
@@ -361,13 +361,13 @@ class UserVoucherController extends Controller
             DB::commit();
 
             return redirect()
-                ->route('admin.user_voucher.home')
+                ->route('admin.user_vouchers.index')
                 ->with('success', "Đã phát voucher [{$voucher->code}] cho {$assignedCount} người dùng ngẫu nhiên.");
         } catch (\Throwable $th) {
             DB::rollBack();
 
             return redirect()
-                ->route('admin.user_voucher.home')
+                ->route('admin.user_vouchers.index')
                 ->with('error', 'Có lỗi xảy ra khi phát voucher ngẫu nhiên: '.$th->getMessage());
         }
     }

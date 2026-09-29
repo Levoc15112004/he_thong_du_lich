@@ -41,7 +41,7 @@ class TourController extends Controller
 
         $tourSchedules = TourSchedule::all();
 
-        return view('admin.tour.home', compact('tours', 'tourSchedules'));
+        return view('admins.Tours.index', compact('tours', 'tourSchedules'));
     }
 
     /**
@@ -54,14 +54,14 @@ class TourController extends Controller
         $attrTransport = AttrTour::where('name', 'transport')->get();
         $tourType = AttrTour::where('name', 'tour_type')->get();
 
-        $categories = Category::with('children')->whereNull('category_id')->get();
+        $categories = Category::with('children')->whereNull('parent_id')->get();
 
         $options = [];
         $categoryOptions = $this->buildCategoryOptions($categories, '', $options, old('category_id'));
 
-        // Skip the toTree() call
+        $categories = Category::defaultOrder()->get()->toTree();
 
-        return view('admin.tour.create', compact(
+        return view('admins.Tours.create', compact(
             'categories',
             'attrTransport',
             'tourType',
@@ -80,8 +80,8 @@ class TourController extends Controller
             'name' => 'required|string|max:255|unique:tours,name',
             'time' => 'required|string|max:255',
             'sale_price' => 'required|numeric|min:0',
-            'file' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
-            'files.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'file' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'files.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'start_location' => 'required|string|max:255',
             'end_location' => 'required|string|max:255',
             'start_date' => 'required|date|after_or_equal:today',
@@ -162,17 +162,19 @@ class TourController extends Controller
     public function edit($id)
     {
         $tour = Tour::with(['images', 'attrTours', 'schedules'])->findOrFail($id);
-        // Skip the failing toTree call
+        $categories = Category::get()->toTree();
         $attrs = AttrTour::all();
         $attrTransport = AttrTour::where('name', 'transport')->get();
         $tourType = AttrTour::where('name', 'tour_type')->get();
 
-        $categories = Category::with('children')->whereNull('category_id')->get();
+        $categories = Category::with('children')->whereNull('parent_id')->get();
 
         $options = [];
         $categoryOptions = $this->buildCategoryOptions($categories, '', $options, old('category_id'));
 
-        return view('admin.tour.update', compact('tour', 'categories', 'attrs', 'categoryOptions', 'attrTransport', 'tourType'));
+        $categories = Category::defaultOrder()->get()->toTree();
+
+        return view('admins.Tours.edit', compact('tour', 'categories', 'attrs', 'categories', 'categoryOptions', 'attrTransport', 'tourType'));
     }
 
     /**
@@ -190,8 +192,8 @@ class TourController extends Controller
             'name' => 'required|string|max:255|unique:tours,name,'.$tour->id,
             'time' => 'required|string|max:255',
             'sale_price' => 'required|numeric|min:0',
-            'file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
-            'files.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'files.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'start_location' => 'required|string|max:255',
             'end_location' => 'required|string|max:255',
             'start_date' => 'required|date',

@@ -16,7 +16,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::latest()->paginate(10);
-        return view('admin.user.home', compact('users'));
+        return view('admins.Users.index', compact('users'));
     }
 
     /**
@@ -60,7 +60,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.user.update', compact('user'));
+        return view('admins.Users.update', compact('user'));
     }
 
     /**
@@ -112,7 +112,7 @@ class UsersController extends Controller
     $user->update($data);
 
     return redirect()
-        ->route('admin.user.home')
+        ->route('admin.users.index')
         ->with('success', 'Cập nhật người dùng thành công!');
 }
 
@@ -130,6 +130,6 @@ class UsersController extends Controller
             'status' => 'dung_hoat_dong',
         ]);
 
-        return redirect()->route('admin.user.home')->with('success','Dừng hoạt động người dùng hành công');
+        return redirect()->route('admin.users.index')->with('success','Dừng hoạt động người dùng hành công');
     }
 }

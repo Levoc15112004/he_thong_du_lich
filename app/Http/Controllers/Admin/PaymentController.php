@@ -20,7 +20,7 @@ class PaymentController extends Controller
             ->orderByDesc('created_at')
             ->paginate(6);
 
-        return view('admin.payment.home', compact('payments'));
+        return view('admins.Payment.index', compact('payments'));
     }
 
     /**
@@ -34,7 +34,7 @@ class PaymentController extends Controller
                 'transactions'
             ])->findOrFail($id);
 
-        return redirect()->route('admin.payment.home');
+        return view('admins.Payment.show', compact('payment'));
     }
 
     /**
@@ -65,7 +65,7 @@ class PaymentController extends Controller
         $payment->delete();
 
         return redirect()
-            ->route('admin.payment.home')
+            ->route('admin.Payment.index')
             ->with('success', 'Đã xóa thanh toán!');
     }
 }

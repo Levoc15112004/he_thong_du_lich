@@ -24,7 +24,7 @@ class TourDetailController extends Controller
     public function index($id)
     {
         $categories = Category::where('status', 1)
-            ->whereNull('category_id')
+            ->whereNull('parent_id')
             ->with('children')
             ->orderByDesc('id')
             ->take(10)
@@ -79,14 +79,11 @@ class TourDetailController extends Controller
             ->where('name', 'tour_type')
             ->value('value');
 
-        if ($tourType === 'Tour ghép') {
-            $booked = Order::where('tour_id', $tour->id)->sum('quantity');
-            $slots = max($quantity - $booked, 0);
-        } else {
-            $slots = $quantity;
-        }
+        // Tính số lượng chỗ còn trống (Mặc định - Đã đặt trong Order)
+        $booked = Order::where('tour_id', $tour->id)->sum('quantity');
+        $slots = max($quantity - $booked, 0);
 
-        $relatedTours = Tour::where('category_id', $tour->category_id)
+        $tourRelate = Tour::where('category_id', $tour->category_id)
             ->where('id', '!=', $tour->id)
             ->limit(4)
             ->get();
@@ -123,10 +120,10 @@ class TourDetailController extends Controller
 
         $avgRating = Review::whereIn('order_id', $orderIds)->avg('rating');
 
-        return view('user.tour_detail', compact(
+        return view('users.tourDetail', compact(
             'tour',
             'categories',
-            'relatedTours',
+            'tourRelate',
             'attributesGrouped',
             'images',
             'transportValues',

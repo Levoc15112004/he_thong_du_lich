@@ -3,12 +3,29 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Order;
 
 class BillController extends Controller
 {
-    public function export($order_id)
+    public function export($orderId)
     {
-        return redirect()->route('user.order.success', ['order_id' => $order_id]);
+        // Lấy order + tour + user
+        $order = Order::with(['tour', 'user'])->findOrFail($orderId);
+
+        if (class_exists(\Barryvdh\DomPDF\Facade\Pdf::class)) {
+            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('users.export.pdf', [
+                'order' => $order,
+                'tour'  => $order->tour,
+                'user'  => $order->user,
+            ])->setPaper('a4');
+
+            return $pdf->download('hoa_don_' . $order->id . '.pdf');
+        }
+
+        return view('users.export.pdf', [
+            'order' => $order,
+            'tour'  => $order->tour,
+            'user'  => $order->user,
+        ]);
     }
 }

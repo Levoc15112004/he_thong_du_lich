@@ -23,6 +23,7 @@ class SampleDataSeeder extends Seeder
         Banner::firstOrCreate(['name' => 'Khám Phá Hè 2026'], [
             'image' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80',
             'link' => '#hot-tours',
+            'status' => 1,
         ]);
 
         AttrTour::firstOrCreate(['name' => 'Phương tiện', 'value' => 'Xe du lịch đời mới']);

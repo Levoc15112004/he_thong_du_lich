@@ -7,46 +7,36 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Notification;
 use App\Models\Order;
-use App\Models\Payment;
-use App\Models\Tour;
+use App\Models\User;
+use App\Models\UserVoucher;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     public function order()
     {
         $cart = new Cart;
-        $items = $cart->getItems();
 
-        if (empty($items)) {
-            return redirect()->route('user.cart')->with('error', 'Giỏ hàng của bạn đang trống! Vui lòng chọn tour trước.');
-        }
-
-        $firstItem = reset($items);
-        $cartTour = Tour::with('category')->find($firstItem['tour_id']);
-
-        if (!$cartTour) {
-            $cart->clear();
-            return redirect()->route('user.home')->with('error', 'Tour đã chọn không còn tồn tại.');
-        }
-
+        // ===== cart =====
         $totalPrice = $cart->getTotalPrice();
         $totalQuantity = $cart->getTotalQuantity();
+
+        // thêm để dùng voucher
         $discount = $cart->getDiscount();
         $finalTotal = $cart->getFinalPrice();
         $voucher = session('voucher');
-        $user = Auth::user();
 
+        // ===== category =====
         $categories = Category::where('status', 1)
-            ->whereNull('category_id')
+            ->whereNull('parent_id')
             ->with('children')
             ->orderByDesc('id')
             ->take(10)
             ->get();
 
+        // ===== notification =====
         $notifications = Notification::where('user_id', Auth::id())
             ->orderByDesc('created_at')
             ->take(10)
@@ -56,115 +46,93 @@ class OrderController extends Controller
             ->where('status', 'unread')
             ->count();
 
-        return view('user.order', compact(
+        // ===== user =====
+        $user = User::findOrFail(Auth::user()->id);
+
+        return view('users.order', compact(
             'cart',
-            'cartTour',
-            'firstItem',
             'totalPrice',
             'totalQuantity',
             'discount',
             'finalTotal',
             'voucher',
-            'user',
             'categories',
+            'user',
             'notifications',
             'unreadCount'
         ));
     }
 
-    public function addOrder(Request $request)
+    public function addOrder(Request $req)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'email' => 'required|email|max:255',
-            'address' => 'nullable|string|max:255',
-            'note' => 'nullable|string|max:1000',
-            'payment_method' => 'required|string',
-        ]);
-
         $cart = new Cart;
         $items = $cart->getItems();
 
-        if (empty($items)) {
-            return redirect()->route('user.cart')->with('error', 'Giỏ hàng của bạn đang trống!');
+        if (! $items || count($items) == 0) {
+            return redirect()->back()->with('error', 'Giỏ hàng đang trống!');
         }
+
+        $totalPrice = $cart->getTotalPrice();
+        $totalQuantity = $cart->getTotalQuantity();
+        $discount = $cart->getDiscount();
+        $finalPrice = $cart->getFinalPrice();
+
+        $voucher = session('voucher');
 
         $firstItem = reset($items);
-        $tour = Tour::find($firstItem['tour_id']);
 
-        if (!$tour) {
-            $cart->clear();
-            return redirect()->route('user.home')->with('error', 'Tour này hiện không tồn tại.');
+        $tourId = $firstItem['tour_id'] ?? null;
+        $time = $firstItem['time'] ?? null;
+        $qtyForOrder = (int) ($firstItem['quantity'] ?? $totalQuantity);
+
+        if (! $tourId) {
+            return redirect()->back()->with('error', 'Không tìm thấy tour_id trong giỏ hàng.');
         }
 
-        DB::beginTransaction();
-        try {
-            $voucher = session('voucher');
-            $voucherId = is_array($voucher) ? ($voucher['id'] ?? null) : ($voucher->id ?? null);
+        $order = Order::create([
+            'user_id' => auth()->id(),
+            'name' => $req->name,
+            'phone' => $req->phone,
+            'email' => $req->email,
+            'address' => $req->address,
+            'note' => $req->note,
 
-            $order = Order::create([
-                'tour_id' => $tour->id,
-                'user_id' => Auth::id(),
-                'name' => $request->name,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'address' => $request->address,
-                'note' => $request->note,
-                'total_price' => $cart->getFinalPrice(),
-                'voucher_id' => $voucherId,
-                'discount_amount' => $cart->getDiscount(),
-                'status' => 0, // 0: Chờ xác nhận
-                'time' => $tour->time ?? 'Theo lịch trình',
-                'quantity' => $cart->getTotalQuantity(),
-            ]);
+            'total_price' => $finalPrice, // giá sau giảm
+            'discount_amount' => $discount,
 
-            Payment::create([
-                'order_id' => $order->id,
-                'amount' => $cart->getFinalPrice(),
-                'payment_type' => 'full',
-                'payment_method' => $request->payment_method ?? 'direct',
-                'status' => ($request->payment_method === 'direct' ? 0 : 1),
-                'payment_date' => now(),
-            ]);
+            'voucher_id' => $voucher->id ?? null,
 
+            'quantity' => $qtyForOrder,
+            'tour_id' => $tourId,
+            'time' => $time,
+            'status' => 0,
+        ]);
+
+         if ($order) {
+            // Nếu có voucher thì cập nhật trạng thái user_vouchers = 2
+            if ($voucher && isset($voucher['id'])) {
+                $userVoucher = UserVoucher::where('user_id', auth()->id())
+                    ->where('voucher_id', $voucher['id'])
+                    ->where('status', 0)
+                    ->latest()
+                    ->first();
+
+                if ($userVoucher) {
+                    $userVoucher->update([
+                        'status' => 2
+                    ]);
+                }
+            }
+         }
+
+        if ($order) {
+
+            // xóa cart sau khi đặt hàng
             $cart->clear();
 
-            DB::commit();
-
-            return redirect()->route('user.order.success', ['order_id' => $order->id])
-                ->with('success', 'Đặt tour thành công! Cảm ơn quý khách.');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return back()->with('error', 'Có lỗi xảy ra: ' . $e->getMessage())->withInput();
+            return redirect()->route('user.tour.deposit', ['order_id' => $order->id]);
         }
-    }
 
-    public function orderSuccess($order_id)
-    {
-        $order = Order::with(['tour.category', 'payments', 'voucher'])->findOrFail($order_id);
-
-        $categories = Category::where('status', 1)
-            ->whereNull('category_id')
-            ->with('children')
-            ->orderByDesc('id')
-            ->take(10)
-            ->get();
-
-        $notifications = Notification::where('user_id', Auth::id())
-            ->orderByDesc('created_at')
-            ->take(10)
-            ->get();
-
-        $unreadCount = Notification::where('user_id', Auth::id())
-            ->where('status', 'unread')
-            ->count();
-
-        return view('user.order_success', compact(
-            'order',
-            'categories',
-            'notifications',
-            'unreadCount'
-        ));
+        return redirect()->back()->with('error', 'Không thể tạo đơn hàng!');
     }
 }

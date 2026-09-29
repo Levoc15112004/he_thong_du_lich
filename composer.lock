@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "65e85f9f959c0b087110331754d451cf",
+    "content-hash": "9e76b8003f4f94e6fae417522fdaa37f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1188,6 +1188,69 @@
                 }
             ],
             "time": "2026-07-17T13:53:03+00:00"
+        },
+        {
+            "name": "kalnoy/nestedset",
+            "version": "v6.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lazychaser/laravel-nestedset.git",
+                "reference": "e73b872bc9c5419512e5b69829c0ba09d2dd6b2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/e73b872bc9c5419512e5b69829c0ba09d2dd6b2b",
+                "reference": "e73b872bc9c5419512e5b69829c0ba09d2dd6b2b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": ">=7.0,<=12.0",
+                "illuminate/events": ">=7.0,<=12.0",
+                "illuminate/support": ">=7.0,<=12.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Kalnoy\\Nestedset\\NestedSetServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "v5.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kalnoy\\Nestedset\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kalnoy",
+                    "email": "lazychaser@gmail.com"
+                }
+            ],
+            "description": "Nested Set Model for Laravel 5.7 and up",
+            "keywords": [
+                "database",
+                "hierarchy",
+                "laravel",
+                "nested sets",
+                "nsm"
+            ],
+            "support": {
+                "issues": "https://github.com/lazychaser/laravel-nestedset/issues",
+                "source": "https://github.com/lazychaser/laravel-nestedset/tree/v6.0.7"
+            },
+            "time": "2026-04-11T13:39:46+00:00"
         },
         {
             "name": "laravel/framework",

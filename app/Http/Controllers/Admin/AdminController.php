@@ -14,7 +14,6 @@ class AdminController extends Controller
     {
         $orders = Order::all();
         $totalRevenue = $orders->sum('total_price');
-        $totalOrders = $orders->count();
 
         $todayOrders = Order::whereBetween('created_at', [
             now()->startOfMonth(),
@@ -76,22 +75,19 @@ class AdminController extends Controller
         $pendingOrders = Order::where('status', '0')->count();
         $completedOrders = Order::where('status', '1')->count();
 
-        
-        $orderPending = Order::where('status', '0')->count();
-        $orderCompleted = Order::where('status', '1')->count();
-        $orderCancelled = Order::where('status', '2')->count();
-        $orderConfirmed = Order::where('status', '3')->count();
+        $latestBlogs = DB::table('blogs')->orderBy('created_at', 'desc')->limit(5)->get();
 
-        $topTours = \App\Models\Tour::with('category')
-            ->withCount('orders')
-            ->withSum('views', 'view')
-            ->orderByDesc('orders_count')
-            ->limit(5)
-            ->get();
-
-        $recentOrders = \App\Models\Order::with('user')
-            ->orderByDesc('created_at')
-            ->limit(5)
+        $topViewedTours = DB::table('views')
+            ->join('tours', 'views.tour_id', '=', 'tours.id')
+            ->select(
+                'tours.id',
+                'tours.name',
+                'tours.image',
+                DB::raw('SUM(views.view) as view_count')
+            )
+            ->groupBy('tours.id', 'tours.name', 'tours.image')
+            ->orderByDesc('view_count')
+            ->limit(3)
             ->get();
 
         $monthlyRevenue = Order::selectRaw('MONTH(created_at) as month, YEAR(created_at) as year, SUM(total_price) as total')
@@ -100,20 +96,17 @@ class AdminController extends Controller
             ->orderBy('month')
             ->get();
 
-        return view('admin.dashboard', compact(
+        return view('admins.home', compact(
             'orders',
-            'totalOrders',
             'views',
             'totalRevenue',
             'totalUsers',
             'totalTours',
             'todayOrders',
-            'orderPending',
-            'orderCompleted',
-            'orderCancelled',
-            'orderConfirmed',
-            'topTours',
-            'recentOrders',
+            'pendingOrders',
+            'completedOrders',
+            'latestBlogs',
+            'topViewedTours',
             'userChange',
             'tourChange',
             'orderChange',
@@ -125,7 +118,7 @@ class AdminController extends Controller
 
     public function login()
     {
-        return view('admin.login');
+        return view('admins.login');
     }
 
     public function postLogin(Request $request)

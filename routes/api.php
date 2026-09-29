@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\User\ChatbotController;
 use Illuminate\Http\Request;
+// use App\Http\Controllers\Admin\ChatbotController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
 });
+// Route::post('/chat', [ChatbotController::class, 'generateContent']);
+
+// Route::post('/chat', [ChatbotController::class, 'chat']);
+// Route::get('/chat/history', [ChatbotController::class, 'history']);

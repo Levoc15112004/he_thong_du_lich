@@ -18,7 +18,7 @@ class OrderController extends Controller
         $orders = Order::with(['tour', 'user'])
             ->orderBy('id', 'desc')
             ->paginate(7);
-        return view('admin.order.home', compact('orders'));
+        return view('admins.Orders.index', compact('orders'));
     }
 
     /**
@@ -56,7 +56,7 @@ class OrderController extends Controller
             'payments.transactions'
         ])->findOrFail($id);
 
-        return view('admin.order.detail', compact('order'));
+        return view('admins.Orders.show', compact('order'));
     }
 
     /**
@@ -69,7 +69,7 @@ class OrderController extends Controller
     {
         $order = Order::with(['tour', 'user'])->findOrFail($id);
 
-        return view('admin.order.detail', compact('order'));
+        return view('admins.Orders.edit', compact('order'));
     }
 
     /**
@@ -92,7 +92,7 @@ class OrderController extends Controller
         ]);
 
         return redirect()
-            ->route('admin.order.detail', $order->id)
+            ->route('admin.orders.index', $order->id)
             ->with('success', 'Cập nhật trạng thái đơn hàng thành công!');
     }
     /**
@@ -105,6 +105,6 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
         $order->delete();
-        return redirect()->route('admin.order.home')->with('success', 'Xóa đơn hàng thành công!');
+        return redirect()->route('orders.index')->with('success', 'Xóa đơn hàng thành công!');
     }
 }

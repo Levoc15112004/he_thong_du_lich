@@ -17,8 +17,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\UserVoucherController;
 use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\Auth\GoogleController;
-use App\Http\Controllers\User\LoginController;
-use App\Http\Controllers\User\AccountControler;
+use App\Http\Controllers\User\AccountController;
 use App\Http\Controllers\User\BillController;
 use App\Http\Controllers\User\BlogController;
 use App\Http\Controllers\User\BookingController;
@@ -149,6 +148,7 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('user.home');
     Route::get('/weather/ajax', [HomeController::class, 'ajax'])->name('weather.ajax');
+    Route::get('/tours', [HomeController::class, 'allTours'])->name('user.tours');
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
@@ -163,18 +163,19 @@ Route::prefix('/')->group(function () {
     Route::post('/search', [HomeController::class, 'searchHome'])->name('user.home.search');
     Route::get('/search/default', [HomeController::class, 'default'])->name('user.search.default');
     Route::get('/category/{id}', [HomeController::class, 'TourCate'])->name('user.category');
+    Route::get('/destination/{location}', [HomeController::class, 'destination'])->name('user.destination');
     // Route::get('/blog/{id}', [HomeController::class, 'blogs'])->name('user.blogs');
     Route::get('/weather/ajax', [WeatherController::class, 'searchAjax'])->name('weather.ajax');
 
-    Route::get('/account', [LoginController::class, 'account'])->name('account');
-    Route::post('/login', [LoginController::class, 'login'])->name('user.login');
-    Route::post('/register', [LoginController::class, 'register'])->name('user.register');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('user.logout');
+    Route::get('/account', [AccountController::class, 'account'])->name('account');
+    Route::post('/login', [AccountController::class, 'login'])->name('user.login');
+    Route::post('/register', [AccountController::class, 'register'])->name('user.register');
+    Route::post('/logout', [AccountController::class, 'logout'])->name('user.logout');
 
-    Route::get('/forgot-password', [LoginController::class, 'showForgotForm'])->name('password.request');
-    Route::post('/forgot-password', [LoginController::class, 'sendOtp'])->name('password.email');
-    Route::get('/reset-password', [LoginController::class, 'showResetForm'])->name('password.reset');
-    Route::post('/reset-password', [LoginController::class, 'resetPassword'])->name('password.update');
+    Route::get('/forgot-password', [AccountController::class, 'showForgotForm'])->name('password.request');
+    Route::post('/forgot-password', [AccountController::class, 'sendOtp'])->name('password.email');
+    Route::get('/reset-password', [AccountController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset-password', [AccountController::class, 'resetPassword'])->name('password.update');
 
     Route::get('/tour-detail/{id}', [TourDetailController::class, 'index'])->name('user.tourDetail.index');
     Route::get('/tour/schedule/{id}/json', [TourDetailController::class, 'getScheduleByTour']);
@@ -185,13 +186,12 @@ Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
 
 Route::middleware('checkUser')->group(function () {
 
-    Route::get('/user', [LoginController::class, 'user'])->name('user');
-    Route::post('/user/change-password', [LoginController::class, 'update'])->name('user.change.password');
+    Route::get('/user', [AccountController::class, 'user'])->name('user');
+    Route::post('/user/change-password', [AccountController::class, 'update'])->name('user.change.password');
     Route::get('/thong-bao/{id}/read', [HomeController::class, 'markAsRead'])->name('user.notifications.read');
 
     Route::get('/order', [UserOrderController::class, 'order'])->name('user.order.index');
     Route::post('/order/store', [UserOrderController::class, 'addOrder'])->name('user.order.store');
-    Route::get('/order/success/{order_id}', [UserOrderController::class, 'orderSuccess'])->name('user.order.success');
 
     Route::get('/order/thanh-toan-coc/{order_id}', [BookingController::class, 'showDepositPage'])->name('user.tour.deposit');
     Route::post('/tour/deposit/pay', [BookingController::class, 'processPayment'])->name('user.tour.deposit.pay');

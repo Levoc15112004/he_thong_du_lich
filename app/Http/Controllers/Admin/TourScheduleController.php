@@ -15,8 +15,8 @@ class TourScheduleController extends Controller
      */
     public function index()
     {
-        $tour_details = TourSchedule::with('tour')->latest()->paginate(5);
-        return view('admin.tour_detail.home', compact('tour_details'));
+        $tourSchedules = TourSchedule::with('tour')->latest()->paginate(5);
+        return view('admins.TourSchedules.index', compact('tourSchedules'));
     }
 
     /**
@@ -25,7 +25,7 @@ class TourScheduleController extends Controller
     public function create()
     {
         $tours = Tour::all(['id', 'name']);
-        return view('admin.tour_detail.create', compact('tours'));
+        return view('admins.TourSchedules.create', compact('tours'));
     }
 
     /**
@@ -39,7 +39,7 @@ class TourScheduleController extends Controller
                 'day_number' => 'required|integer|min:1',
                 'title' => 'required|max:255',
                 'description' => 'nullable|string',
-                'location_name' => 'nullable|max:255',
+                'location_name' => 'required|max:255',
                 'latitude' => 'nullable|numeric|between:-90,90',
                 'longitude' => 'nullable|numeric|between:-180,180',
                 'map_link' => 'nullable|url|max:500',
@@ -50,6 +50,7 @@ class TourScheduleController extends Controller
                 'day_number.required' => 'Vui lòng nhập ngày thứ mấy!',
                 'day_number.integer' => 'Ngày phải là số!',
                 'title.required' => 'Vui lòng nhập tiêu đề!',
+                'location_name.required' => 'Vui lòng nhập tên địa điểm!',
                 'image.image' => 'File tải lên phải là hình ảnh!',
             ]);
 
@@ -68,14 +69,14 @@ class TourScheduleController extends Controller
                 'day_number' => $validated['day_number'],
                 'title' => $validated['title'],
                 'description' => $request->description,
-                'location_name' => $validated['location_name'] ?? null,
+                'location_name' => $validated['location_name'],
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
                 'map_link' => $request->map_link,
                 'image' => $imagePath,
             ]);
 
-            return redirect()->route('admin.tour_detail.home')
+            return redirect()->route('admin.tour_schedules.index')
                 ->with('success', ' Thêm lịch trình Tour thành công!');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->validator)->withInput();
@@ -94,7 +95,7 @@ class TourScheduleController extends Controller
     public function show($id)
     {
         $schedule = TourSchedule::with('tour')->findOrFail($id);
-        return view('admin.tour_detail.home', compact('schedule'));
+        return view('admins.TourSchedules.show', compact('schedule'));
     }
 
     /**
@@ -102,12 +103,12 @@ class TourScheduleController extends Controller
      */
     public function edit($id)
     {
-        $tour_detail = TourSchedule::findOrFail($id);
+        $schedule = TourSchedule::findOrFail($id);
 
         // Lấy toàn bộ tour để select
         $tours = Tour::orderBy('name')->get();
 
-        return view('admin.tour_detail.update', compact('tour_detail', 'tours'));
+        return view('admins.TourSchedules.edit', compact('schedule', 'tours'));
     }
 
     /**
@@ -123,7 +124,7 @@ class TourScheduleController extends Controller
                 'day_number' => 'required|integer|min:1',
                 'title' => 'required|max:255',
                 'description' => 'nullable|string',
-                'location_name' => 'nullable|max:255',
+                'location_name' => 'required|max:255',
                 'latitude' => 'nullable|numeric|between:-90,90',
                 'longitude' => 'nullable|numeric|between:-180,180',
                 'map_link' => 'nullable|url|max:500',
@@ -134,15 +135,12 @@ class TourScheduleController extends Controller
                 'day_number.required' => 'Vui lòng nhập ngày thứ mấy!',
                 'day_number.integer' => 'Ngày phải là số!',
                 'title.required' => 'Vui lòng nhập tiêu đề!',
+                'location_name.required' => 'Vui lòng nhập tên địa điểm!',
                 'image.image' => 'File tải lên phải là hình ảnh!',
             ]);
 
             $imagePath = $schedule->image;
             if ($request->hasFile('image')) {
-                if ($schedule->image && \Illuminate\Support\Facades\File::exists(public_path($schedule->image))) {
-                    \Illuminate\Support\Facades\File::delete(public_path($schedule->image));
-                }
-
                 $file = $request->file('image');
                 $fileName = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('images/schedules'), $fileName);
@@ -154,14 +152,14 @@ class TourScheduleController extends Controller
                 'day_number' => $validated['day_number'],
                 'title' => $validated['title'],
                 'description' => $request->description,
-                'location_name' => $validated['location_name'] ?? null,
+                'location_name' => $validated['location_name'],
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
                 'map_link' => $request->map_link,
                 'image' => $imagePath,
             ]);
 
-            return redirect()->route('admin.tour_detail.home')
+            return redirect()->route('admin.tour_schedules.index')
                 ->with('success', ' Cập nhật lịch trình Tour thành công!');
         } catch (\Exception $e) {
             Log::error(' Lỗi cập nhật lịch trình Tour: ' . $e->getMessage());
@@ -176,11 +174,8 @@ class TourScheduleController extends Controller
     {
         try {
             $schedule = TourSchedule::findOrFail($id);
-            if ($schedule->image && \Illuminate\Support\Facades\File::exists(public_path($schedule->image))) {
-                \Illuminate\Support\Facades\File::delete(public_path($schedule->image));
-            }
             $schedule->delete();
-            return redirect()->route('admin.tour_detail.home')
+            return redirect()->route('admin.tour_schedules.index')
                 ->with('success', ' Xóa lịch trình thành công!');
         } catch (\Exception $e) {
             Log::error(' Lỗi xóa lịch trình: ' . $e->getMessage());

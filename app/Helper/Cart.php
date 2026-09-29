@@ -133,8 +133,9 @@ class Cart
             return;
         }
 
-        // FIX: voucher là array
-        $voucher = Voucher::find($this->voucher['id'] ?? null);
+        // FIX: voucher là array hoặc object
+        $voucherId = is_array($this->voucher) ? ($this->voucher['id'] ?? null) : (is_object($this->voucher) ? ($this->voucher->id ?? null) : null);
+        $voucher = $voucherId ? Voucher::find($voucherId) : null;
 
         if (! $voucher) {
 

@@ -18,42 +18,85 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
+    private function getAdviceScore($weatherId, $temp)
+    {
+        $advice = 'Thời tiết khá lý tưởng. Chuẩn bị trang phục năng động và thoải mái.';
+        $score = '9.0 / 10 Tốt';
+        $bg = 'bg-emerald-100';
+        $text = 'text-emerald-700';
+
+        if ($weatherId >= 200 && $weatherId < 300) {
+            $advice = 'Có dông sét nguy hiểm. Tránh các hoạt động ngoài trời, cáp treo hay tắm biển. Hãy chọn áo khoác chống nước và ưu tiên điểm du lịch trong nhà.';
+            $score = '2.0 / 10 Rất Xấu';
+            $bg = 'bg-rose-100';
+            $text = 'text-rose-700';
+        } elseif ($weatherId >= 300 && $weatherId < 600) {
+            $advice = 'Trời có mưa. Nhớ mang theo ô (dù), áo mưa tiện lợi và túi chống nước cho thiết bị. Có thể mix đồ vintage để sống ảo ở các quán cafe.';
+            $score = '5.0 / 10 Trung Bình';
+            $bg = 'bg-slate-100';
+            $text = 'text-slate-700';
+        } elseif ($weatherId >= 600 && $weatherId < 700) {
+            $advice = 'Săn tuyết hoặc băng giá! Hãy mặc áo ấm dày, áo phao măng tô, găng tay và giày bám tuyết thật tốt.';
+            $score = '7.5 / 10 Khá Tốt';
+            $bg = 'bg-sky-100';
+            $text = 'text-sky-700';
+        } elseif ($weatherId >= 700 && $weatherId < 800) {
+            $advice = 'Sương mù hoặc tầm nhìn kém. Thời tiết lãng mạn dạo phố nhẹ nhàng hoặc săn mây trên đồi. Lái xe cẩn thận nhé!';
+            $score = '7.0 / 10 Khá Tốt';
+            $bg = 'bg-amber-100';
+            $text = 'text-amber-700';
+        } elseif ($weatherId === 800) {
+            if ($temp > 30) {
+                $advice = 'Nắng gắt, lên hình rực rỡ! Cực hợp váy maxi, bikini đi biển. Tuyệt đối không quên kem chống nắng, mũ rộng vành và kính râm.';
+                $score = '9.5 / 10 Tuyệt Vời';
+                $bg = 'bg-amber-100';
+                $text = 'text-amber-700';
+            } else {
+                $advice = 'Trời quang mây tạnh, mát mẻ! Thời điểm vàng cho mọi bức ảnh check-in và hoạt động cắm trại, trekking ngoài trời.';
+                $score = '10 / 10 Hoàn Hảo';
+                $bg = 'bg-emerald-100';
+                $text = 'text-emerald-700';
+            }
+        } elseif ($weatherId > 800) {
+            $advice = 'Trời nhiều mây, ánh sáng dịu. Mặc trang phục sáng màu (trắng, vàng, pastel) để nổi bật khung hình. Thuận tiện dạo chơi không sợ nắng hắt.';
+            $score = '8.5 / 10 Tốt';
+            $bg = 'bg-sky-100';
+            $text = 'text-sky-700';
+        }
+
+        return [
+            'advice' => $advice,
+            'scoreText' => $score,
+            'scoreBg' => $bg,
+            'scoreColor' => $text,
+        ];
+    }
+
     public function index(Request $request)
     {
         if (! Session::get('viewed')) {
             Session::put('viewed', true);
             DB::table('views')->insert([
                 'view' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
 
-        $notifications = Notification::where('user_id', Auth::id())
-            ->orderByDesc('created_at')
-            ->take(10)
-            ->get();
+        $userId = Auth::id();
+        $notifications = $userId ? Notification::where('user_id', $userId)->orderByDesc('created_at')->take(10)->get() : collect();
+        $unreadCount = $userId ? Notification::where('user_id', $userId)->where('status', 'unread')->count() : 0;
 
-        $unreadCount = Notification::where('user_id', Auth::id())
-            ->where('status', 'unread')
-            ->count();
+// Lấy trực tiếp banners mới nhất mà không lọc theo status
+$banners = Banner::latest()->take(4)->get();
+        $categories = Category::where('status', 1)->whereNull('parent_id')->with('children')->orderByDesc('id')->take(10)->get();
+        $tours = Tour::where('status', 1)->orderByDesc('id')->paginate(8);
 
-        $banners = Banner::latest()->take(2)->get();
-        $categories = Category::where('status', 1)
-            ->whereNull('category_id')
-            ->with('children')
-            ->orderByDesc('id')
-            ->take(10)
-            ->get();
-
-        $tours = Tour::where('status', 1)
-            ->orderByDesc('id')
-            ->paginate(8);
-
-        //  tour hot nhất
+        // Top Buy Tours
         $bookedTourIds = DB::table('orders')->pluck('tour_id')->toArray();
         $counted = array_count_values($bookedTourIds);
         arsort($counted);
         $sortedIds = array_keys($counted);
-
         $topBuy = collect();
         if (! empty($sortedIds)) {
             $topBuy = Tour::where('status', 1)
@@ -62,102 +105,90 @@ class HomeController extends Controller
                 ->take(5)
                 ->get();
         }
-
         $mainTour = $topBuy->first();
         $otherTours = $topBuy->slice(1);
 
-        //  danh mục con
-        $subCategories = Category::where('status', 1)
-            ->whereNotNull('category_id')
-            ->with('parent')
-            ->orderByDesc('id')
-            ->take(10)
-            ->get();
-
         // Tour theo danh mục con
+        $subCategories = Category::where('status', 1)->whereNotNull('parent_id')->with('parent')->orderByDesc('id')->take(10)->get();
         $categoryId = $request->query('category');
         $tourCate = Tour::where('status', 1)
-            ->when($categoryId, function ($query) use ($categoryId) {
-                $query->where('category_id', $categoryId);
-            })
+            ->when($categoryId, fn ($q) => $q->where('category_id', $categoryId))
             ->orderByDesc('id')
             ->paginate(4)
-            ->withQueryString(); // giữ category khi chuyển trang
+            ->withQueryString();
 
-        $user = Auth::check() ? Auth::user() : null;
+        $user = Auth::user();
+        $blogs = Blog::where('status', 1)->latest()->paginate(6);
+        $recentBlogs = $blogs;
 
-        $blogs = Blog::where('status', 1)
-            ->latest()
-            ->paginate(6);
-
-        // Thời tiết
-        $weatherData = null;
-        $forecastData = [];
-
-        try {
-            $response = Http::timeout(10)
-                ->retry(2, 500)
-                ->get('https://api.openweathermap.org/data/2.5/forecast', [
-                    'q' => 'Hanoi,VN',
-                    'appid' => config('services.openweather.key'),
-                    'units' => 'metric',
-                    'lang' => 'vi',
-                ]);
-
-            if ($response->successful()) {
-                $data = $response->json();
-
-                if (! empty($data['list'][0])) {
-                    //  Thời tiết hiện tại
-                    $weatherData = [
-                        'city' => $data['city']['name'],
-                        'temp' => round($data['list'][0]['main']['temp']),
-                        'desc' => $data['list'][0]['weather'][0]['description'],
-                        'icon' => $data['list'][0]['weather'][0]['icon'],
-                    ];
-
-                    // dự báo 5 ngày
-                    $forecastData = collect($data['list'])
-                        ->filter(fn ($item) => str_contains($item['dt_txt'], '12:00:00'))
-                        ->take(5)
-                        ->map(fn ($item) => [
-                            'date' => Carbon::parse($item['dt_txt'])->format('d/m'),
-                            'temp' => round($item['main']['temp']),
-                            'icon' => $item['weather'][0]['icon'],
-                        ])
-                        ->values()
-                        ->toArray();
-                }
-            }
-        } catch (\Exception $e) {
-            // Không làm crash trang web khi lỗi API thời tiết
-        }
-
-        // Cập nhật các biến cho home view mới
-        $hotTours = Tour::select('tours.*')
-            ->selectSub(function ($query) {
-             $query->from('views')
-            ->selectRaw('COALESCE(SUM(views.view), 0)')
-            ->whereColumn('views.tour_id', 'tours.id');
-            }, 'total_views')
-            ->with('category')
-            ->where('tours.status', 1)
+        // Hot Tours tính theo views
+        $hotTours = Tour::where('status', 1)
+            ->withCount(['views as total_views' => function ($query) {
+                $query->select(DB::raw('coalesce(sum(view), 0)'));
+            }])
             ->orderByDesc('total_views')
             ->limit(4)
             ->get();
 
-        $destinations = Tour::select('end_location', DB::raw('MIN(image) as image'), DB::raw('COUNT(*) as total_tours'))
-            ->where('status', 1)
+        // 8 Điểm đến
+        $destinations = Tour::where('status', 1)
+            ->whereNotNull('end_location')
+            ->select('end_location', DB::raw('MAX(image) as image'), DB::raw('COUNT(*) as total_tours'))
             ->groupBy('end_location')
+            ->orderByDesc('total_tours')
             ->limit(8)
             ->get();
 
-        $recentBlogs = Blog::where('status', 1)
-            ->latest()
-            ->take(3)
-            ->get();
+        // Thời tiết OpenWeather (fallback an toàn nếu API lỗi hoặc hết quota)
+        $weatherData = null;
+        $forecastData = [];
+        try {
+            $apiKey = config('services.openweather.key');
+            if ($apiKey) {
+                $response = Http::timeout(5)
+                    ->withOptions(['verify' => false])
+                    ->get('https://api.openweathermap.org/data/2.5/forecast', [
+                        'q' => 'Hanoi,VN',
+                        'appid' => $apiKey,
+                        'units' => 'metric',
+                        'lang' => 'vi',
+                    ]);
 
-        return view('user.home', compact(
+                if ($response->successful()) {
+                    $data = $response->json();
+                    if (! empty($data['list'][0])) {
+                        $weatherId = $data['list'][0]['weather'][0]['id'];
+                        $adviceData = $this->getAdviceScore($weatherId, round($data['list'][0]['main']['temp']));
+
+                        $weatherData = [
+                            'city' => $data['city']['name'] ?? 'Hà Nội',
+                            'temp' => round($data['list'][0]['main']['temp']),
+                            'desc' => $data['list'][0]['weather'][0]['description'] ?? 'Trời quang',
+                            'icon' => $data['list'][0]['weather'][0]['icon'] ?? null,
+                            'advice' => $adviceData['advice'],
+                            'scoreText' => $adviceData['scoreText'],
+                            'scoreBg' => $adviceData['scoreBg'],
+                            'scoreColor' => $adviceData['scoreColor'],
+                        ];
+
+                        $forecastData = collect($data['list'])
+                            ->filter(fn ($item) => str_contains($item['dt_txt'], '12:00:00'))
+                            ->take(5)
+                            ->map(fn ($item) => [
+                                'date' => Carbon::parse($item['dt_txt'])->format('d/m'),
+                                'temp' => round($item['main']['temp']),
+                                'icon' => $item['weather'][0]['icon'],
+                            ])
+                            ->values()
+                            ->toArray();
+                    }
+                }
+            }
+        } catch (\Throwable $e) {
+            // Không ngắt trang nếu API bên ngoài gặp lỗi kết nối
+        }
+
+        return view('users.home', compact(
             'banners',
             'categories',
             'tours',
@@ -168,35 +199,46 @@ class HomeController extends Controller
             'categoryId',
             'user',
             'blogs',
+            'recentBlogs',
+            'hotTours',
+            'destinations',
             'weatherData',
             'forecastData',
             'notifications',
-            'unreadCount',
-            'hotTours',
-            'destinations',
-            'recentBlogs'
+            'unreadCount'
         ));
+    }
+
+    public function allTours()
+    {
+        $categories = Category::where('status', 1)
+            ->whereNull('parent_id')
+            ->orderByDesc('id')
+            ->take(10)
+            ->get();
+
+        $userId = Auth::id();
+        $notifications = $userId ? Notification::where('user_id', $userId)->orderByDesc('created_at')->take(10)->get() : collect();
+        $unreadCount = $userId ? Notification::where('user_id', $userId)->where('status', 'unread')->count() : 0;
+
+        $tours = Tour::where('status', 1)->orderByDesc('id')->paginate(8);
+
+        return view('users.tours', compact('tours', 'categories', 'notifications', 'unreadCount'));
     }
 
     public function ajax(Request $request)
     {
         $city = $request->get('city', 'Hanoi');
 
-        try {
-            $response = Http::timeout(10)
-                ->get('https://api.openweathermap.org/data/2.5/forecast', [
-                    'q' => $city,
-                    'appid' => config('services.openweather.key'),
-                    'units' => 'metric',
-                    'lang' => 'vi',
-                ]);
+        $response = Http::timeout(10)
+            ->get('https://api.openweathermap.org/data/2.5/forecast', [
+                'q' => $city,
+                'appid' => config('services.openweather.key'),
+                'units' => 'metric',
+                'lang' => 'vi',
+            ]);
 
-            if ($response->failed()) {
-                return response()->json([
-                    'error' => 'Không lấy được dữ liệu thời tiết',
-                ], 500);
-            }
-        } catch (\Exception $e) {
+        if ($response->failed()) {
             return response()->json([
                 'error' => 'Không lấy được dữ liệu thời tiết',
             ], 500);
@@ -274,7 +316,7 @@ class HomeController extends Controller
     public function searchHome(Request $request)
     {
         $categories = Category::where('status', 1)
-            ->whereNull('category_id')
+            ->whereNull('parent_id')
             ->with('children')
             ->orderByDesc('id')
             ->take(10)
@@ -301,13 +343,38 @@ class HomeController extends Controller
             ->orderByDesc('id')
             ->paginate(8);
 
-        return view('user.searchPage', compact('tours', 'categories', 'notifications', 'unreadCount'));
+        return view('users.searchPage', compact('tours', 'categories', 'notifications', 'unreadCount'));
+    }
+
+    public function destination($location)
+    {
+        $categories = Category::where('status', 1)
+            ->whereNull('parent_id')
+            ->with('children')
+            ->orderByDesc('id')
+            ->take(10)
+            ->get();
+
+        $notifications = Notification::where('user_id', Auth::id())
+            ->orderByDesc('created_at')
+            ->take(10)
+            ->get();
+
+        $unreadCount = Notification::where('user_id', Auth::id())
+            ->where('status', 'unread')
+            ->count();
+
+        $tours = Tour::where('end_location', '=', $location)
+            ->orderByDesc('id')
+            ->paginate(8);
+
+        return view('users.destination', compact('tours', 'categories', 'notifications', 'unreadCount', 'location'));
     }
 
     public function TourCate($id)
     {
         $categories = Category::where('status', 1)
-            ->whereNull('category_id')
+            ->whereNull('parent_id')
             ->with('children')
             ->orderByDesc('id')
             ->take(10)
@@ -323,7 +390,7 @@ class HomeController extends Controller
             ->count();
 
         $subCategories = Category::where('status', 1)
-            ->whereNotNull('category_id')
+            ->whereNotNull('parent_id')
             ->with('parent')
             ->orderByDesc('id')
             ->take(10)
@@ -335,7 +402,7 @@ class HomeController extends Controller
             ->orderByDesc('id')
             ->paginate(8);
 
-        return view('user.TourCate', compact(
+        return view('users.TourCate', compact(
             'categories',
             'subCategories',
             'tourCate',
@@ -348,7 +415,7 @@ class HomeController extends Controller
     public function profile($id)
     {
         $categories = Category::where('status', 1)
-            ->whereNull('category_id')
+            ->whereNull('parent_id')
             ->with('children')
             ->orderByDesc('id')
             ->take(10)
@@ -365,7 +432,7 @@ class HomeController extends Controller
 
         $user = User::findOrFail($id);
 
-        return view('user.profile', compact('user', 'categories', 'notifications', 'unreadCount'));
+        return view('users.profile', compact('user', 'categories', 'notifications', 'unreadCount'));
     }
 
     public function updateProfile(Request $request)
@@ -398,7 +465,7 @@ class HomeController extends Controller
     public function contact()
     {
         $categories = Category::where('status', 1)
-            ->whereNull('category_id')
+            ->whereNull('parent_id')
             ->with('children')
             ->orderByDesc('id')
             ->take(10)
@@ -413,6 +480,6 @@ class HomeController extends Controller
             ->where('status', 'unread')
             ->count();
 
-        return view('user.contact', compact('categories', 'notifications', 'unreadCount'));
+        return view('users.contact', compact('categories', 'notifications', 'unreadCount'));
     }
 }
