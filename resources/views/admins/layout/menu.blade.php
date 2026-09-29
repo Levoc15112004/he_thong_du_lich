@@ -1,18 +1,20 @@
 <!-- SIDEBAR CONTENT -->
-<div class="flex flex-col w-full min-h-screen pt-16 lg:pt-20 bg-white pb-6">
+<div class="flex flex-col w-full min-h-screen pt-16 lg:pt-20 bg-white dark:bg-slate-900 pb-6 transition-colors duration-200">
 
     <!-- USER INFO -->
-    <div class="px-6 py-6 border-b border-slate-100 flex items-center gap-4">
+    <div class="px-6 py-6 border-b border-slate-100 dark:border-slate-800 flex items-center gap-4">
         <div class="relative shrink-0">
-            <img src="{{ url('assest/img/admin.jpg') }}"
-                class="w-12 h-12 rounded-full border-2 border-emerald-50 shadow-sm object-cover">
-            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'Admin') }}&background=10b981&color=fff&bold=true"
+                onerror="this.onerror=null; this.src='{{ asset('assets/img/admin.jpg') }}';"
+                class="w-12 h-12 rounded-full border-2 border-emerald-500/20 shadow-sm object-cover"
+                alt="Admin Avatar">
+            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white dark:border-slate-800 rounded-full"></div>
         </div>
         <div class="flex-1 overflow-hidden">
-            <p class="font-bold text-slate-800 truncate text-sm">
+            <p class="font-bold text-slate-800 dark:text-white truncate text-sm">
                 {{ Auth::user()->name ?? 'Administrator' }}
             </p>
-            <p class="text-xs text-slate-500 mt-0.5 truncate">
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate">
                 Quản trị viên
             </p>
         </div>

@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>WanderVibe - Tour Du Lịch Việt Nam & Trải Nghiệm Thế Hệ Mới</title>
-    <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('assest/img/logo_title.svg') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/logo_title.svg') }}">
+    <script>
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ url('assest') . '/fontend/css/base.css' }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
      <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -142,6 +150,83 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    /* Dark Theme Core Styles */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark body {
+      background-color: #0b1120 !important;
+      background-image: 
+        radial-gradient(at 10% 12%, rgba(16, 185, 129, 0.12) 0px, transparent 40%),
+        radial-gradient(at 90% 20%, rgba(6, 182, 212, 0.10) 0px, transparent 45%),
+        radial-gradient(at 50% 65%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
+        radial-gradient(at 85% 85%, rgba(16, 185, 129, 0.10) 0px, transparent 45%) !important;
+      color: #f1f5f9 !important;
+    }
+    html.dark .glass-panel-light {
+      background: rgba(15, 23, 42, 0.88) !important;
+      border-color: rgba(51, 65, 85, 0.8) !important;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4) !important;
+    }
+    html.dark .glass-card-interactive {
+      background: rgba(30, 41, 59, 0.85) !important;
+      border-color: rgba(51, 65, 85, 0.85) !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+      color: #f1f5f9 !important;
+    }
+    html.dark .glass-card-interactive:hover {
+      background: rgba(30, 41, 59, 0.98) !important;
+      border-color: rgba(16, 185, 129, 0.6) !important;
+      box-shadow: 0 22px 45px -10px rgba(16, 185, 129, 0.25) !important;
+    }
+    html.dark .bg-white {
+      background-color: #1e293b !important;
+      color: #f1f5f9;
+    }
+    html.dark .bg-slate-50, html.dark .bg-gray-50, html.dark .bg-\[\#f8fafc\] {
+      background-color: #0b1120 !important;
+    }
+    html.dark .bg-slate-100, html.dark .bg-gray-100 {
+      background-color: #334155 !important;
+      color: #f1f5f9;
+    }
+    html.dark .text-slate-900, html.dark .text-slate-800, html.dark .text-gray-900, html.dark .text-gray-800 {
+      color: #f8fafc !important;
+    }
+    html.dark .text-slate-700, html.dark .text-gray-700, html.dark .text-slate-600 {
+      color: #cbd5e1 !important;
+    }
+    html.dark .text-slate-500, html.dark .text-gray-500 {
+      color: #94a3b8 !important;
+    }
+    html.dark .border-slate-100, html.dark .border-slate-200, html.dark .border-gray-200, html.dark .border-gray-100 {
+      border-color: #334155 !important;
+    }
+    html.dark #mainHeader:not(.bg-transparent) {
+      background-color: rgba(15, 23, 42, 0.95) !important;
+      border-color: #1e293b !important;
+    }
+    html.dark #mobileDrawer {
+      background-color: rgba(15, 23, 42, 0.98) !important;
+      border-color: #334155 !important;
+      color: #f1f5f9 !important;
+    }
+    html.dark footer {
+      background-color: #0b1120 !important;
+      border-color: #1e293b !important;
+      color: #94a3b8 !important;
+    }
+    html.dark footer .text-slate-900 {
+      color: #f8fafc !important;
+    }
+    html.dark input:not([type="checkbox"]):not([type="radio"]), 
+    html.dark select, 
+    html.dark textarea {
+      background-color: #1e293b !important;
+      color: #f8fafc !important;
+      border-color: #475569 !important;
+    }
   </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-800 font-sans antialiased overflow-x-hidden relative selection:bg-emerald-500 selection:text-white">
@@ -243,6 +328,12 @@
                     @endif
                 </a>
 
+                <!-- Dark / Light Mode Toggle Button -->
+                <button type="button" class="theme-toggle-btn relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm text-slate-700 dark:text-amber-400 hover:bg-slate-50 dark:hover:bg-slate-700' }} flex items-center justify-center transition-all cursor-pointer" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon text-[15px] md:text-base dark:hidden pointer-events-none"></i>
+                    <i class="fa-solid fa-sun text-[15px] md:text-base hidden dark:inline-block pointer-events-none text-amber-400"></i>
+                </button>
+
                 <!-- Notifications Bell -->
                 @if(isset($notifications))
                     <div class="relative inline-block z-20" id="notificationDropdownTrigger">
@@ -325,7 +416,7 @@
                                 <a href="{{ route('user.cart') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-cart-shopping"></i></div> Giỏ hàng của tôi
                                 </a>
-                                <a href="{{ route('tourBooked') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
+                                <a href="{{ route('user.tours.booked') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-clock-rotate-left"></i></div> Lịch sử đặt tour
                                 </a>
                                 <a href="{{ route('password.request') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
@@ -382,6 +473,12 @@
             <a href="{{ route('contact') }}" class="mobile-nav-link block text-base font-bold text-slate-700 hover:text-emerald-600 px-4 py-3 bg-white rounded-xl border border-slate-100 shadow-sm">
                 <i class="fa-solid fa-headset w-6 text-center text-slate-400 mr-2"></i> Tư Vấn & Liên Hệ
             </a>
+
+            <!-- Mobile Theme Switcher -->
+            <button type="button" class="theme-toggle-btn w-full text-left text-base font-bold text-slate-700 dark:text-slate-200 hover:text-emerald-600 px-4 py-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm flex items-center justify-between transition-colors">
+                <span class="flex items-center"><i class="fa-solid fa-circle-half-stroke w-6 text-center text-emerald-500 mr-2"></i> Giao diện Sáng / Tối</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-semibold">Chuyển đổi</span>
+            </button>
         </div>
     </header>
 
@@ -923,6 +1020,12 @@
         });
     </script>
 
+    <!-- Global Floating Theme Toggle Button -->
+    <button type="button" class="theme-toggle-btn fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-amber-400 shadow-2xl border border-slate-200 dark:border-slate-700 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Theme">
+        <i class="fa-solid fa-moon text-lg dark:hidden group-hover:rotate-12 transition-transform"></i>
+        <i class="fa-solid fa-sun text-lg hidden dark:inline-block text-amber-400 group-hover:rotate-45 transition-transform"></i>
+    </button>
+
     <!-- AI Chatbot Widget -->
     <div id="aiChatbotWidget" class="fixed bottom-6 right-6 lg:right-8 z-50 font-sans">
         <!-- Chatbot Avatar/Button -->
@@ -1114,6 +1217,15 @@
                     appendMessage("WanderBot AI hiện đang không thể kết nối tới máy chủ. Xin vui lòng thử lại sau!", 'bot');
                 }
             });
+        });
+
+        // Global Theme Switcher
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+        document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+            btn.addEventListener('click', toggleTheme);
         });
     </script>
 </body>

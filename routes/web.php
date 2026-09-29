@@ -206,6 +206,7 @@ Route::middleware('checkUser')->group(function () {
     Route::post('/paypal/capture-final', [PayPalController::class, 'captureFinal'])->name('paypal.captureFinal');
 
     Route::get('/my-tours', [TourBookedController::class, 'myBookedTours'])->name('user.tours.booked');
+    Route::get('/booked-tours', [TourBookedController::class, 'myBookedTours'])->name('tourBooked');
     Route::get('/my-tours/schedule/{order_id}', [TourBookedController::class, 'showSchedule'])->name('my-tour.schedules');
     Route::get('/my-tours/schedule/{order_id}/json', [TourBookedController::class, 'getScheduleData'])->name('my-tour.schedules.json');
 
