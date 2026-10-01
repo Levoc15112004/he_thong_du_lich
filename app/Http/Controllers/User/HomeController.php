@@ -502,7 +502,7 @@ $banners = Banner::latest()->take(4)->get();
             'message' => 'nullable|string|max:2000',
         ]);
 
-        $targetEmail = '22010058@st.phenikaa-uni.edu.vn';
+        $targetEmail = env('ADMIN_CONSULTATION_EMAIL', '22010058@st.phenikaa-uni.edu.vn');
         $senderName = $validated['name'];
         $senderPhone = $validated['phone'];
         $senderEmail = !empty($validated['email']) ? $validated['email'] : 'Không cung cấp';
@@ -516,7 +516,7 @@ $banners = Banner::latest()->take(4)->get();
             . "• Điểm đến / Gói quan tâm: " . $destination . "\n"
             . "• Lời nhắn / Ghi chú: " . $note . "\n"
             . "• Thời gian gửi yêu cầu: " . now()->format('d/m/Y H:i:s') . "\n\n"
-            . "Hệ thống tự động chuyển tiếp từ website WanderVibe (hello@wandervibe.me).";
+            . "Hệ thống tự động chuyển tiếp từ website WanderVibe.";
 
         try {
             Mail::raw($content, function ($m) use ($targetEmail, $senderName) {
@@ -531,14 +531,14 @@ $banners = Banner::latest()->take(4)->get();
 
         // Lưu thông báo cho Admin phòng khi SMTP bị lỗi mạng trên server/cloud
         try {
-            $adminUser = \App\Models\User::where('role', 'admin')->first();
-            if ($adminUser) {
+            $adminUsers = \App\Models\User::where('role', 'admin')->get();
+            foreach ($adminUsers as $admin) {
                 \App\Models\Notification::create([
-                    'user_id' => $adminUser->id,
+                    'user_id' => $admin->id,
                     'title' => 'Yêu cầu tư vấn tour mới',
                     'message' => "Khách hàng {$senderName} ({$senderPhone}) yêu cầu tư vấn: {$destination}. Lời nhắn: {$note}",
-                    'type' => 'info',
-                    'is_read' => false,
+                    'type' => 'system',
+                    'status' => 'unread',
                 ]);
             }
         } catch (\Throwable $ex) {
@@ -548,12 +548,12 @@ $banners = Banner::latest()->take(4)->get();
         if ($request->ajax() || $request->wantsJson()) {
             return response()->json([
                 'success' => true,
-                'message' => 'Yêu cầu tư vấn đã được gửi thành công đến 22010058@st.phenikaa-uni.edu.vn! Chúng tôi sẽ liên hệ lại trong giây lát.',
+                'message' => 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công. WanderVibe sẽ liên hệ lại qua SĐT trong ít phút!',
                 'mail_sent' => $mailSuccess,
             ]);
         }
 
-        return back()->with('success', 'Yêu cầu tư vấn của bạn đã được gửi thành công! Đội ngũ tư vấn sẽ liên hệ lại qua SĐT/Zalo trong giây lát.');
+        return back()->with('success', 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công. WanderVibe sẽ liên hệ lại qua SĐT trong ít phút!');
     }
 
 }

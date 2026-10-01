@@ -630,7 +630,7 @@
                         
                         if (response.ok && data.success) {
                             if (homeFeedback) {
-                                homeFeedback.textContent = 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi về mail 22010058@st.phenikaa-uni.edu.vn. WanderVibe sẽ liên hệ lại qua SĐT trong ít phút!';
+                                homeFeedback.textContent = data.message || 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công. WanderVibe sẽ liên hệ lại qua SĐT trong ít phút!';
                                 homeFeedback.className = 'block rounded-xl p-3 text-xs font-semibold text-center bg-emerald-50 text-emerald-700 border border-emerald-200 transition-all';
                             }
                             homeContactForm.reset();

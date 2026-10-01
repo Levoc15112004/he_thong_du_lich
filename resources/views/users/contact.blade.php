@@ -244,7 +244,7 @@
                     const data = await res.json();
                     if (res.ok && data.success) {
                         if (formStatus) {
-                            formStatus.textContent = 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công đến 22010058@st.phenikaa-uni.edu.vn. Chuyên viên WanderVibe sẽ liên hệ lại trong vòng 30 phút!';
+                            formStatus.textContent = data.message || 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công. Chuyên viên WanderVibe sẽ liên hệ lại trong vòng 30 phút!';
                             formStatus.className = 'block p-5 rounded-2xl text-sm font-bold animate-fade-in bg-emerald-50 text-emerald-700 border border-emerald-200';
                         }
                         form.reset();
