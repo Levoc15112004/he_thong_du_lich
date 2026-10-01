@@ -529,6 +529,22 @@ $banners = Banner::latest()->take(4)->get();
             $mailSuccess = false;
         }
 
+        // Lưu thông báo cho Admin phòng khi SMTP bị lỗi mạng trên server/cloud
+        try {
+            $adminUser = \App\Models\User::where('role', 'admin')->first();
+            if ($adminUser) {
+                \App\Models\Notification::create([
+                    'user_id' => $adminUser->id,
+                    'title' => 'Yêu cầu tư vấn tour mới',
+                    'message' => "Khách hàng {$senderName} ({$senderPhone}) yêu cầu tư vấn: {$destination}. Lời nhắn: {$note}",
+                    'type' => 'info',
+                    'is_read' => false,
+                ]);
+            }
+        } catch (\Throwable $ex) {
+            \Illuminate\Support\Facades\Log::warning('Create consultation notification error: ' . $ex->getMessage());
+        }
+
         if ($request->ajax() || $request->wantsJson()) {
             return response()->json([
                 'success' => true,
