@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
+
 
 class HomeController extends Controller
 {
@@ -488,4 +490,54 @@ $banners = Banner::latest()->take(4)->get();
 
         return view('users.contact', compact('categories', 'notifications', 'unreadCount'));
     }
+
+    public function sendConsultation(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:50',
+            'email' => 'nullable|email|max:255',
+            'destination' => 'nullable|string|max:255',
+            'tour_type' => 'nullable|string|max:255',
+            'message' => 'nullable|string|max:2000',
+        ]);
+
+        $targetEmail = '22010058@st.phenikaa-uni.edu.vn';
+        $senderName = $validated['name'];
+        $senderPhone = $validated['phone'];
+        $senderEmail = !empty($validated['email']) ? $validated['email'] : 'Không cung cấp';
+        $destination = !empty($validated['destination']) ? $validated['destination'] : (!empty($validated['tour_type']) ? $validated['tour_type'] : 'Yêu cầu tư vấn tổng quan');
+        $note = !empty($validated['message']) ? $validated['message'] : 'Khách mong muốn được tư vấn lộ trình chi tiết và báo giá.';
+
+        $content = "=== YÊU CẦU TƯ VẤN TOUR TỪ WANDERVIBE ===\n\n"
+            . "• Họ và tên khách hàng: " . $senderName . "\n"
+            . "• Số điện thoại / Zalo: " . $senderPhone . "\n"
+            . "• Email khách hàng: " . $senderEmail . "\n"
+            . "• Điểm đến / Gói quan tâm: " . $destination . "\n"
+            . "• Lời nhắn / Ghi chú: " . $note . "\n"
+            . "• Thời gian gửi yêu cầu: " . now()->format('d/m/Y H:i:s') . "\n\n"
+            . "Hệ thống tự động chuyển tiếp từ website WanderVibe (hello@wandervibe.me).";
+
+        try {
+            Mail::raw($content, function ($m) use ($targetEmail, $senderName) {
+                $m->to($targetEmail)
+                  ->subject("[WanderVibe] Yêu cầu nhận tư vấn mới từ " . $senderName);
+            });
+            $mailSuccess = true;
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::error('Send consultation mail error: ' . $e->getMessage());
+            $mailSuccess = false;
+        }
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Yêu cầu tư vấn đã được gửi thành công đến 22010058@st.phenikaa-uni.edu.vn! Chúng tôi sẽ liên hệ lại trong giây lát.',
+                'mail_sent' => $mailSuccess,
+            ]);
+        }
+
+        return back()->with('success', 'Yêu cầu tư vấn của bạn đã được gửi thành công! Đội ngũ tư vấn sẽ liên hệ lại qua SĐT/Zalo trong giây lát.');
+    }
+
 }

@@ -117,10 +117,10 @@
                     <div class="icon-box bg-violet-50 text-violet-600 mb-6 group-hover:bg-violet-600 group-hover:text-white group-hover:rotate-6">
                         <i class="fas fa-envelope-open-text text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 ">Email hỗ trợ</h3>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 ">Email tư vấn & hỗ trợ</h3>
                     <p class="text-slate-400 text-xs font-bold   mb-2">Phản hồi nhanh</p>
-                    <a href="mailto:support@travelgo.com" class="text-lg font-bold text-slate-900 hover:text-blue-600 transition-colors">
-                        travelgo@gmail.com
+                    <a href="mailto:hello@wandervibe.me" class="text-lg font-bold text-slate-900 hover:text-emerald-600 transition-colors">
+                        hello@wandervibe.me
                     </a>
                 </div>
             </div>
@@ -134,36 +134,36 @@
                         <h2 class="text-3xl font-bold text-slate-900 mb-2  ">Gửi yêu cầu <span class="text-blue-600">tư vấn</span></h2>
                         <p class="text-slate-400 text-sm font-medium mb-12  ">Chúng tôi sẽ liên hệ lại trong vòng 30 phút</p>
 
-                        <form id="contactForm" class="space-y-8">
+                        <form id="contactForm" method="POST" action="{{ route('consultation.send') }}" class="space-y-8">
                             @csrf
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div class="group">
                                     <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Họ và tên *</label>
-                                    <input type="text" required placeholder="VD: Nguyễn Văn A"
+                                    <input type="text" name="name" required placeholder="VD: Nguyễn Văn A"
                                         class="w-full bg-slate-50 input-modern rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 placeholder:text-slate-300 placeholder:font-medium">
                                 </div>
                                 <div class="group">
                                     <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Số điện thoại *</label>
-                                    <input type="tel" required placeholder="09xx xxx xxx"
+                                    <input type="tel" name="phone" required placeholder="09xx xxx xxx"
                                         class="w-full bg-slate-50 input-modern rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 placeholder:text-slate-300 placeholder:font-medium">
                                 </div>
                             </div>
 
                             <div class="group">
                                 <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Địa chỉ Email</label>
-                                <input type="email" placeholder="example@email.com"
+                                <input type="email" name="email" placeholder="example@email.com"
                                     class="w-full bg-slate-50 input-modern rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 placeholder:text-slate-300 placeholder:font-medium">
                             </div>
 
                             <div class="group">
                                 <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Loại hình Tour quan tâm</label>
                                 <div class="relative">
-                                    <select class="w-full bg-slate-50 input-modern rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 appearance-none cursor-pointer">
+                                    <select name="tour_type" class="w-full bg-slate-50 input-modern rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 appearance-none cursor-pointer">
                                         <option value="">Chọn loại tour</option>
-                                        <option value="domestic">Du lịch Trong nước</option>
-                                        <option value="international">Du lịch Nước ngoài</option>
-                                        <option value="custom">Tour thiết kế riêng </option>
-                                        <option value="custom">Tour thiết kế ghép </option>
+                                        <option value="Du lịch Trong nước">Du lịch Trong nước</option>
+                                        <option value="Du lịch Nước ngoài">Du lịch Nước ngoài</option>
+                                        <option value="Tour thiết kế riêng">Tour thiết kế riêng </option>
+                                        <option value="Tour ghép theo đoàn">Tour ghép theo đoàn </option>
                                     </select>
                                     <i class="fas fa-chevron-down absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
                                 </div>
@@ -171,13 +171,13 @@
 
                             <div class="group">
                                 <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Lời nhắn của bạn</label>
-                                <textarea rows="5" placeholder="Hãy cho chúng tôi biết nhu cầu hoặc thắc mắc của bạn..."
+                                <textarea name="message" rows="5" placeholder="Hãy cho chúng tôi biết nhu cầu hoặc thắc mắc của bạn..."
                                     class="w-full bg-slate-50 input-modern rounded-[2rem] py-5 px-6 text-sm font-bold text-slate-900 placeholder:text-slate-300 placeholder:font-medium resize-none"></textarea>
                             </div>
 
                             <div id="formStatus" class="hidden p-5 rounded-2xl text-sm font-bold animate-fade-in"></div>
 
-                            <button type="submit"
+                            <button type="submit" id="contactSubmitBtn"
                                 class="btn-gradient w-full text-white font-bold py-5 rounded-[2rem] text-lg shadow-xl shadow-blue-100 flex items-center justify-center gap-3">
                                 Gửi yêu cầu ngay <i class="fas fa-paper-plane text-sm"></i>
                             </button>
@@ -210,4 +210,59 @@
         </div>
     </main>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('contactSubmitBtn');
+
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                if (!submitBtn) return;
+
+                const origHtml = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Đang gửi yêu cầu... <i class="fas fa-spinner fa-spin text-sm"></i>';
+
+                if (formStatus) {
+                    formStatus.classList.add('hidden');
+                    formStatus.className = 'hidden p-5 rounded-2xl text-sm font-bold animate-fade-in';
+                }
+
+                try {
+                    const formData = new FormData(form);
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json'
+                        },
+                        body: formData
+                    });
+
+                    const data = await res.json();
+                    if (res.ok && data.success) {
+                        if (formStatus) {
+                            formStatus.textContent = 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công đến 22010058@st.phenikaa-uni.edu.vn. Chuyên viên WanderVibe sẽ liên hệ lại trong vòng 30 phút!';
+                            formStatus.className = 'block p-5 rounded-2xl text-sm font-bold animate-fade-in bg-emerald-50 text-emerald-700 border border-emerald-200';
+                        }
+                        form.reset();
+                    } else {
+                        throw new Error(data.message || 'Không thể gửi yêu cầu lúc này.');
+                    }
+                } catch (err) {
+                    if (formStatus) {
+                        formStatus.textContent = err.message || 'Có lỗi xảy ra khi gửi. Vui lòng liên hệ hotline 1900 123 456!';
+                        formStatus.className = 'block p-5 rounded-2xl text-sm font-bold animate-fade-in bg-rose-50 text-rose-700 border border-rose-200';
+                    }
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = origHtml;
+                }
+            });
+        }
+    });
+</script>
+
 @endsection

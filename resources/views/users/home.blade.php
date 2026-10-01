@@ -451,7 +451,7 @@
                                 </div>
                                 <div>
                                     <span class="text-xs text-slate-500 block">Email tư vấn & báo giá</span>
-                                    <span class="text-lg font-bold tracking-wide text-slate-900">hello@wandervibe.vn</span>
+                                    <a href="mailto:hello@wandervibe.me" class="text-lg font-bold tracking-wide text-slate-900 hover:text-emerald-600 transition-colors">hello@wandervibe.me</a>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4">
@@ -471,7 +471,7 @@
                         <h3 class="text-xl font-bold mb-1 text-slate-900">Gửi Yêu Cầu Cho Chúng Tôi</h3>
                         <p class="text-xs text-slate-500 mb-6">Nhận báo giá và lịch trình mẫu qua Zalo/Email trong vòng 10 phút</p>
 
-                        <form id="contactForm" method="POST" action="#" class="space-y-4 text-slate-800">
+                        <form id="contactForm" method="POST" action="{{ route('consultation.send') }}" class="space-y-4 text-slate-800">
                             @csrf
                             <div>
                                 <label for="contactName" class="block text-xs font-bold text-slate-700 mb-1">Họ và tên của bạn</label>
@@ -498,7 +498,9 @@
                                     class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 transition-all resize-none"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all">
+                            <div id="homeConsultationFeedback" class="hidden rounded-xl p-3 text-xs font-semibold text-center transition-all"></div>
+
+                            <button type="submit" id="homeConsultationBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all">
                                 <i class="fa-solid fa-paper-plane mr-2"></i> Nhận Tư Vấn Miễn Phí
                             </button>
                         </form>
@@ -593,6 +595,60 @@
                     }
                 });
             }
+
+            // Consultation Form Submit
+            const homeContactForm = document.getElementById('contactForm');
+            const homeFeedback = document.getElementById('homeConsultationFeedback');
+            const homeSubmitBtn = document.getElementById('homeConsultationBtn');
+
+            if (homeContactForm) {
+                homeContactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    if (!homeSubmitBtn) return;
+                    
+                    const originalBtnHtml = homeSubmitBtn.innerHTML;
+                    homeSubmitBtn.disabled = true;
+                    homeSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Đang gửi yêu cầu...';
+                    
+                    if (homeFeedback) {
+                        homeFeedback.classList.add('hidden');
+                        homeFeedback.className = 'hidden rounded-xl p-3 text-xs font-semibold text-center transition-all';
+                    }
+
+                    try {
+                        const formData = new FormData(homeContactForm);
+                        const response = await fetch(homeContactForm.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Accept': 'application/json'
+                            },
+                            body: formData
+                        });
+
+                        const data = await response.json();
+                        
+                        if (response.ok && data.success) {
+                            if (homeFeedback) {
+                                homeFeedback.textContent = 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi về mail 22010058@st.phenikaa-uni.edu.vn. WanderVibe sẽ liên hệ lại qua SĐT trong ít phút!';
+                                homeFeedback.className = 'block rounded-xl p-3 text-xs font-semibold text-center bg-emerald-50 text-emerald-700 border border-emerald-200 transition-all';
+                            }
+                            homeContactForm.reset();
+                        } else {
+                            throw new Error(data.message || 'Có lỗi xảy ra khi gửi yêu cầu.');
+                        }
+                    } catch (err) {
+                        if (homeFeedback) {
+                            homeFeedback.textContent = err.message || 'Không thể gửi yêu cầu lúc này. Vui lòng liên hệ hotline 1900 888 999!';
+                            homeFeedback.className = 'block rounded-xl p-3 text-xs font-semibold text-center bg-rose-50 text-rose-700 border border-rose-200 transition-all';
+                        }
+                    } finally {
+                        homeSubmitBtn.disabled = false;
+                        homeSubmitBtn.innerHTML = originalBtnHtml;
+                    }
+                });
+            }
+
         });
     </script>
 @endsection

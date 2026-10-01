@@ -152,6 +152,9 @@ Route::prefix('/')->group(function () {
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::post('/tu-van', [HomeController::class, 'sendConsultation'])->name('consultation.send');
+    Route::post('/contact/send', [HomeController::class, 'sendConsultation'])->name('contact.send');
+
     // Route::get('/chat/history', [ChatbotController::class, 'history']);
 
     // Route::post('/api/chat', [ChatbotController::class, 'generateContent'])->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
@@ -238,6 +241,8 @@ Route::post('/payment/momo/final/{order}', [MomoController::class, 'createFinal'
 Route::post('/momo/ipn', [MomoController::class, 'ipn'])->name('momo.ipn');
 Route::get('/momo/return', [MomoController::class, 'return'])->name('momo.return');
 
-Route::get('/chat', [ChatbotController::class, 'chat']);
+Route::match(['get', 'post'], '/chat', [ChatbotController::class, 'chat'])->name('chatbot.chat');
+Route::post('/api/chat', [ChatbotController::class, 'chat'])->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
 Route::get('/chat-stream', [ChatbotController::class, 'chatStream']);
 Route::get('/chat/history', [ChatbotController::class, 'history']);
+Route::get('/api/chat/history', [ChatbotController::class, 'history'])->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);

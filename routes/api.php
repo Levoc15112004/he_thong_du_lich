@@ -22,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 // Route::post('/chat', [ChatbotController::class, 'generateContent']);
 
-// Route::post('/chat', [ChatbotController::class, 'chat']);
-// Route::get('/chat/history', [ChatbotController::class, 'history']);
+Route::match(['get', 'post'], '/chat', [ChatbotController::class, 'chat']);
+Route::get('/chat/history', [ChatbotController::class, 'history']);
