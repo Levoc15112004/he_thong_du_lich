@@ -508,6 +508,7 @@ $banners = Banner::latest()->take(4)->get();
         $senderEmail = !empty($validated['email']) ? $validated['email'] : 'Không cung cấp';
         $destination = !empty($validated['destination']) ? $validated['destination'] : (!empty($validated['tour_type']) ? $validated['tour_type'] : 'Yêu cầu tư vấn tổng quan');
         $note = !empty($validated['message']) ? $validated['message'] : 'Khách mong muốn được tư vấn lộ trình chi tiết và báo giá.';
+        $subject = "[WanderVibe] Yêu cầu nhận tư vấn mới từ " . $senderName;
 
         $content = "=== YÊU CẦU TƯ VẤN TOUR TỪ WANDERVIBE ===\n\n"
             . "• Họ và tên khách hàng: " . $senderName . "\n"
@@ -518,15 +519,81 @@ $banners = Banner::latest()->take(4)->get();
             . "• Thời gian gửi yêu cầu: " . now()->format('d/m/Y H:i:s') . "\n\n"
             . "Hệ thống tự động chuyển tiếp từ website WanderVibe.";
 
-        try {
-            Mail::raw($content, function ($m) use ($targetEmail, $senderName) {
-                $m->to($targetEmail)
-                  ->subject("[WanderVibe] Yêu cầu nhận tư vấn mới từ " . $senderName);
-            });
-            $mailSuccess = true;
-        } catch (\Throwable $e) {
-            \Illuminate\Support\Facades\Log::error('Send consultation mail error: ' . $e->getMessage());
-            $mailSuccess = false;
+        $htmlContent = "
+            <div style='font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;'>
+                <div style='background: linear-gradient(135deg, #059669, #10b981); padding: 20px; text-align: center; color: white;'>
+                    <h2 style='margin: 0; font-size: 20px;'>YÊU CẦU TƯ VẤN TOUR MỚI</h2>
+                    <p style='margin: 5px 0 0; opacity: 0.9; font-size: 13px;'>Từ website WanderVibe</p>
+                </div>
+                <div style='padding: 24px;'>
+                    <table style='width: 100%; border-collapse: collapse;'>
+                        <tr>
+                            <td style='padding: 8px 0; font-weight: bold; width: 140px; color: #64748b;'>Họ và tên:</td>
+                            <td style='padding: 8px 0; font-weight: bold; color: #0f172a;'>" . htmlspecialchars($senderName) . "</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 8px 0; font-weight: bold; color: #64748b;'>Số điện thoại:</td>
+                            <td style='padding: 8px 0; color: #059669; font-weight: bold; font-size: 16px;'>" . htmlspecialchars($senderPhone) . "</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 8px 0; font-weight: bold; color: #64748b;'>Email:</td>
+                            <td style='padding: 8px 0; color: #334155;'>" . htmlspecialchars($senderEmail) . "</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 8px 0; font-weight: bold; color: #64748b;'>Điểm đến / Gói:</td>
+                            <td style='padding: 8px 0; color: #334155;'>" . htmlspecialchars($destination) . "</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 8px 0; font-weight: bold; color: #64748b; vertical-align: top;'>Lời nhắn:</td>
+                            <td style='padding: 8px 0; color: #334155;'>" . nl2br(htmlspecialchars($note)) . "</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 8px 0; font-weight: bold; color: #64748b;'>Thời gian gửi:</td>
+                            <td style='padding: 8px 0; color: #64748b; font-size: 12px;'>" . now()->format('d/m/Y H:i:s') . "</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style='background: #f8fafc; padding: 12px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0;'>
+                    Thông báo tự động từ hệ thống WanderVibe.
+                </div>
+            </div>
+        ";
+
+        $mailSuccess = false;
+        $resendApiKey = env('RESEND_API_KEY');
+
+        // Gửi qua Resend HTTP API (Port 443 HTTPS - Hoạt động hoàn hảo trên Render không bị chặn SMTP)
+        if (!empty($resendApiKey)) {
+            try {
+                $fromEmail = env('RESEND_FROM_EMAIL', 'WanderVibe <onboarding@resend.dev>');
+                $response = Http::withToken($resendApiKey)
+                    ->timeout(10)
+                    ->post('https://api.resend.com/emails', [
+                        'from' => $fromEmail,
+                        'to' => [$targetEmail],
+                        'subject' => $subject,
+                        'html' => $htmlContent,
+                        'text' => $content,
+                    ]);
+
+                if ($response->successful()) {
+                    $mailSuccess = true;
+                } else {
+                    \Illuminate\Support\Facades\Log::error('Resend mail error: ' . $response->body());
+                }
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::error('Resend request exception: ' . $e->getMessage());
+            }
+        } else {
+            // Fallback gửi qua SMTP thông thường nếu chưa set RESEND_API_KEY
+            try {
+                Mail::raw($content, function ($m) use ($targetEmail, $subject) {
+                    $m->to($targetEmail)->subject($subject);
+                });
+                $mailSuccess = true;
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::error('Send consultation mail error: ' . $e->getMessage());
+            }
         }
 
         // Lưu thông báo cho Admin phòng khi SMTP bị lỗi mạng trên server/cloud
