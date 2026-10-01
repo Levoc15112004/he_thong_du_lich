@@ -105,7 +105,8 @@
                             <div id="profileCard" class="cursor-pointer bg-white border border-slate-100/80 hover:border-emerald-300 rounded-[1.5rem] p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 active:scale-[0.98]">
                                 <div class="flex items-center gap-4">
                                     <div class="relative">
-                                        <img src="{{ auth()->user()->avatar ?? 'https://ui-avatars.com/api/?name='.urlencode(auth()->user()->name).'&background=10b981&color=fff' }}"
+                                        <img src="{{ auth()->user()->avatar_url }}"
+                                             onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=10b981&color=fff';"
                                              class="w-16 h-16 rounded-full object-cover border-4 border-emerald-50 shadow-md">
                                         <div class="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></div>
                                     </div>
@@ -225,16 +226,26 @@
                                 @php $tour = \App\Models\Tour::find($item['tour_id']); @endphp
                                 @if ($tour)
                                     <div class="group relative flex gap-4 p-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-emerald-200 transition-all duration-300">
-                                        <img src="{{ asset($tour->image) }}" class="w-20 h-20 rounded-xl object-cover shrink-0" alt="{{ $tour->name }}">
+                                        <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" class="w-20 h-20 rounded-xl object-cover shrink-0" alt="{{ $tour->name }}">
                                         <div class="flex flex-col justify-center flex-1">
                                             <h4 class="text-sm font-bold text-slate-800 line-clamp-2 leading-tight group-hover:text-emerald-600 transition-colors">{{ $tour->name }}</h4>
-                                            <div class="flex items-center gap-3 mt-2">
+                                            <div class="flex flex-wrap items-center gap-2.5 mt-2">
                                                 <p class="text-[10px] text-slate-500 font-semibold flex items-center gap-1">
                                                     <i class="fa-regular fa-calendar text-emerald-500"></i> {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}
                                                 </p>
                                                 <p class="text-[10px] text-slate-500 font-semibold flex items-center gap-1">
                                                     <i class="fa-solid fa-user-group text-emerald-500"></i> {{ $item['quantity'] }} KH
                                                 </p>
+                                                @if(!empty($item['transport']))
+                                                    <p class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-semibold flex items-center gap-1 border border-emerald-100">
+                                                        <i class="fa-solid fa-plane-departure text-emerald-500"></i> {{ $item['transport'] }}
+                                                    </p>
+                                                @endif
+                                                @if(!empty($item['tour_type']))
+                                                    <p class="text-[10px] text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md font-semibold flex items-center gap-1 border border-sky-100">
+                                                        <i class="fa-solid fa-hotel text-sky-500"></i> {{ $item['tour_type'] }}
+                                                    </p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

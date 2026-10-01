@@ -111,6 +111,21 @@
                                             </span>
                                         </div>
 
+                                        @php
+                                            $bookedTransport = null;
+                                            if ($order->note && preg_match('/\[Phương tiện:\s*([^\]|]+)/u', $order->note, $tm)) {
+                                                $bookedTransport = trim($tm[1]);
+                                            }
+                                        @endphp
+                                        @if($bookedTransport)
+                                            <div class="flex items-center text-sm text-gray-600 mt-1">
+                                                <i data-lucide="plane" class="w-4 h-4 mr-2 text-indigo-500"></i>
+                                                Phương tiện:
+                                                <span class="font-medium ml-1 text-slate-800">
+                                                    {{ $bookedTransport }}
+                                                </span>
+                                            </div>
+                                        @endif
                                         @if ($order->status >= 1)
                                             <div class="flex items-center text-sm text-gray-600 mt-1">
                                                 <i data-lucide="wallet" class="w-4 h-4 mr-2 text-green-500"></i>

@@ -71,6 +71,14 @@
                                 <span class="text-sm font-bold text-slate-500">Tổng thanh toán</span>
                                 <span class="text-lg font-bold text-emerald-600">{{ number_format($order->total_price) }} ₫</span>
                             </li>
+                            @if($order->note)
+                                <li class="flex flex-col border-t border-slate-100 pt-3 mt-2">
+                                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Phương tiện & Ghi chú</span>
+                                    <div class="text-xs font-semibold text-slate-700 bg-white p-3 rounded-xl border border-slate-200 leading-relaxed shadow-sm">
+                                        {{ $order->note }}
+                                    </div>
+                                </li>
+                            @endif
                         </ul>
                     </div>
 

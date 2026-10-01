@@ -51,7 +51,8 @@
                                 <div
                                     class="w-16 h-16 rounded-full p-1 border-2 border-dashed border-brand-300 group-hover:border-brand-500 transition">
                                     <img id="avatarPreviews"
-                                        src="{{ $user->avatar ? asset($user->avatar) : asset('fontend/img/img_default.jpg') }}"
+                                        src="{{ $user->avatar_url }}"
+                                        onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=10b981&color=fff';"
                                         alt="{{ $user->name }}" class="w-full h-full rounded-full object-cover">
                                 </div>
                                 <label for="avatarInput"

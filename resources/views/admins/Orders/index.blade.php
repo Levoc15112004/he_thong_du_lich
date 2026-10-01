@@ -90,9 +90,12 @@
 
                             <td class="px-6 py-5">
                                 <h6 class="font-bold text-slate-700 text-sm mb-1.5 line-clamp-2 leading-relaxed" title="{{ $order->tour->name }}">{{ $order->tour->name }}</h6>
-                                <div class="flex items-center gap-4 text-xs font-semibold">
+                                <div class="flex flex-wrap items-center gap-2 text-xs font-semibold">
                                     <span class="bg-blue-50 text-blue-600 border border-blue-100 px-2.5 py-1 rounded-md shadow-sm"><i class="fa-regular fa-calendar shrink-0 mr-1"></i>{{ \Carbon\Carbon::parse($order->tour->start_date)->format('d/m/Y') }}</span>
                                     <span class="bg-orange-50 text-orange-600 border border-orange-100 px-2.5 py-1 rounded-md shadow-sm"><i class="fa-solid fa-user-group shrink-0 mr-1"></i>{{ $order->quantity }} Chỗ</span>
+                                    @if($order->note && preg_match('/\[Phương tiện:\s*([^\]|]+)/u', $order->note, $tm))
+                                        <span class="bg-teal-50 text-teal-700 border border-teal-100 px-2.5 py-1 rounded-md shadow-sm"><i class="fa-solid fa-plane shrink-0 mr-1"></i>{{ trim($tm[1]) }}</span>
+                                    @endif
                                 </div>
                             </td>
 

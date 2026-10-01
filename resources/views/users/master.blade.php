@@ -400,7 +400,9 @@
                 @auth('web')
                     <div class="relative group cursor-pointer inline-block z-10" id="userDropdownTrigger">
                         <div class="w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden border-2 border-emerald-400 hover:border-white transition-colors shadow-lg">
-                            <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->name).'&background=10b981&color=fff' }}" alt="User Avatar" class="w-full h-full object-cover">
+                            <img src="{{ Auth::user()->avatar_url }}" 
+                                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=10b981&color=fff';" 
+                                 alt="User Avatar" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Dropdown Menu -->
@@ -442,6 +444,17 @@
         </div>
 
         <div id="mobileDrawer" class="hidden xl:hidden bg-white/95 backdrop-blur-2xl border-b border-slate-200 px-6 py-6 space-y-4 shadow-2xl text-slate-800 max-h-[80vh] overflow-y-auto">
+            @auth('web')
+                <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-2xl border border-slate-100 mb-2">
+                    <img src="{{ Auth::user()->avatar_url }}" 
+                         onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=10b981&color=fff';" 
+                         class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500/20 shadow-sm" alt="Avatar">
+                    <div class="flex-1 min-w-0">
+                        <p class="font-bold text-slate-800 truncate text-sm">{{ Auth::user()->name }}</p>
+                        <p class="text-xs text-slate-500 truncate">{{ Auth::user()->email }}</p>
+                    </div>
+                </div>
+            @endauth
             <a href="{{ url('/') }}" class="mobile-nav-link block text-base font-extrabold text-emerald-600 hover:text-emerald-700 bg-emerald-50 px-4 py-3 rounded-xl border border-emerald-100">
                 <i class="fa-solid fa-house w-6 text-center mr-2"></i> Trang chủ
             </a>
@@ -680,20 +693,33 @@
 
         const toggleVideoPlayBtn = document.getElementById('toggleVideoPlayBtn');
         if (toggleVideoPlayBtn) {
-            toggleVideoPlayBtn.addEventListener('click', () => {
-                const video = document.getElementById('heroVideo');
-                const icon = document.getElementById('playIcon');
-                const text = document.getElementById('playText');
-                if (!video) return;
+            const video = document.getElementById('heroVideo');
+            const icon = document.getElementById('playIcon');
+            const text = document.getElementById('playText');
 
+            function syncVideoBtn() {
+                if (!video) return;
                 if (video.paused) {
-                    video.play();
-                    if (icon) icon.className = 'fa-solid fa-pause';
-                    if (text) text.textContent = 'Dừng video';
-                } else {
-                    video.pause();
                     if (icon) icon.className = 'fa-solid fa-play';
                     if (text) text.textContent = 'Phát video';
+                } else {
+                    if (icon) icon.className = 'fa-solid fa-pause';
+                    if (text) text.textContent = 'Dừng video';
+                }
+            }
+
+            if (video) {
+                video.addEventListener('play', syncVideoBtn);
+                video.addEventListener('pause', syncVideoBtn);
+                video.addEventListener('loadeddata', syncVideoBtn);
+            }
+
+            toggleVideoPlayBtn.addEventListener('click', () => {
+                if (!video) return;
+                if (video.paused) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
                 }
             });
         }

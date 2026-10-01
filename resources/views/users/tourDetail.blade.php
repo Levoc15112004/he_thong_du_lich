@@ -168,21 +168,21 @@
                         <!-- ===== TAB CONTENT: LỊCH TRÌNH ===== -->
                         <div id="content-schedule" class="space-y-6">
 
-                            <div id="schedule-wrapper">
+                            <div id="schedule-wrapper" class="space-y-6">
 
                                 @foreach ($tourSchedules as $index => $day)
-                                    <div class="schedule-item {{ $index >= 2 ? 'hidden extra-day' : '' }}">
+                                    <div class="schedule-item">
 
-                                        <div class="relative pl-8 border-l-2 border-teal-100">
+                                        <div class="relative pl-8 border-l-2 border-teal-200">
 
                                             <!-- DOT -->
                                             <span
-                                                class="absolute -left-[9px] top-5 bg-teal-500 w-4 h-4 rounded-full border-2 border-white"></span>
+                                                class="absolute -left-[9px] top-5 bg-teal-500 w-4 h-4 rounded-full border-2 border-white shadow-sm"></span>
 
                                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
                                                 <!-- TEXT -->
-                                                <div class="mt-4 md:col-span-2 space-y-2">
+                                                <div class="mt-2 md:col-span-2 space-y-2">
                                                     <h4 class="font-bold text-base text-gray-800">
                                                         Ngày {{ $day->day_number }}: {{ $day->title }}
                                                     </h4>
@@ -195,9 +195,9 @@
                                                 <!-- IMAGE -->
                                                 @if ($day->image)
                                                     <div class="flex justify-center md:justify-end">
-                                                        <img src="{{ asset($day->image) }}"
-                                                            class="w-full md:w-68 h-44 object-cover rounded-xl shadow-md
-                                transition-transform duration-300 hover:scale-105">
+                                                        <img src="{{ Str::startsWith($day->image, ['http://', 'https://']) ? $day->image : asset($day->image) }}"
+                                                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=600&q=80';"
+                                                            class="w-full md:w-68 h-44 object-cover rounded-2xl shadow-md transition-transform duration-300 hover:scale-105">
                                                     </div>
                                                 @endif
 
@@ -208,18 +208,6 @@
                                 @endforeach
 
                             </div>
-
-                            <!-- BUTTON -->
-                            @if ($tourSchedules->count() > 2)
-                                <div class="mt-4 flex justify-center">
-                                    <button onclick="toggleSchedule()" id="btn-schedule"
-                                        class="flex items-center gap-2 text-teal-600 font-semibold hover:underline">
-
-                                        <span id="btn-text">Xem thêm lịch trình</span>
-                                        <i id="btn-icon" class="fa-solid fa-chevron-down"></i>
-                                    </button>
-                                </div>
-                            @endif
 
 
                         </div>

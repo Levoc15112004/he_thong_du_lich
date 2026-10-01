@@ -51,6 +51,26 @@ class User extends Authenticatable
         'birthday' => 'date',
     ];
 
+    protected $appends = [
+        'avatar_url',
+    ];
+
+    public function getAvatarUrlAttribute()
+    {
+        if (!empty($this->avatar)) {
+            if (\Illuminate\Support\Str::startsWith($this->avatar, ['http://', 'https://'])) {
+                return $this->avatar;
+            }
+            if (file_exists(public_path($this->avatar))) {
+                return asset($this->avatar);
+            }
+            if (file_exists(public_path('fontend/img/' . basename($this->avatar)))) {
+                return asset('fontend/img/' . basename($this->avatar));
+            }
+        }
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name ?: 'User') . '&background=10b981&color=fff&bold=true';
+    }
+
     public function chatSessions()
     {
         return $this->hasMany(ChatSession::class);

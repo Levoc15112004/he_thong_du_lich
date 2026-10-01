@@ -147,7 +147,6 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('user.home');
-    Route::get('/weather/ajax', [HomeController::class, 'ajax'])->name('weather.ajax');
     Route::get('/tours', [HomeController::class, 'allTours'])->name('user.tours');
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');

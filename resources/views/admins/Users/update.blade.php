@@ -187,7 +187,9 @@
                     {{-- Avatar Preview --}}
                     <div class="mt-6 flex flex-col sm:flex-row gap-6 items-center">
                         <div class="relative shrink-0">
-                            <img id="avatar-preview" src="{{ $user->avatar ? asset($user->avatar) : asset('fontend/img/img_default.jpg') }}" class="w-32 h-32 md:w-40 md:h-40 rounded-[2rem] object-cover shadow-lg border-4 border-white">
+                            <img id="avatar-preview" src="{{ $user->avatar_url }}" 
+                                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=10b981&color=fff';" 
+                                 class="w-32 h-32 md:w-40 md:h-40 rounded-[2rem] object-cover shadow-lg border-4 border-white">
                             <div class="absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow">
                                 <i class="fa-solid fa-camera text-slate-400 text-sm"></i>
                             </div>

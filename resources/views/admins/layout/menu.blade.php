@@ -4,8 +4,8 @@
     <!-- USER INFO -->
     <div class="px-6 py-6 border-b border-slate-100 dark:border-slate-800 flex items-center gap-4">
         <div class="relative shrink-0">
-            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'Admin') }}&background=10b981&color=fff&bold=true"
-                onerror="this.onerror=null; this.src='{{ asset('assets/img/admin.jpg') }}';"
+            <img src="{{ Auth::user()->avatar_url ?? 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->name ?? 'Admin').'&background=10b981&color=fff&bold=true' }}"
+                onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'Admin') }}&background=10b981&color=fff&bold=true';"
                 class="w-12 h-12 rounded-full border-2 border-emerald-500/20 shadow-sm object-cover"
                 alt="Admin Avatar">
             <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white dark:border-slate-800 rounded-full"></div>

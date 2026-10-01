@@ -70,8 +70,24 @@ class TourDetailController extends Controller
             return $group->pluck('value')->toArray();
         });
 
-        $transportValues = $attributesGrouped->get('transport', []);
-        $tourTypeValues = $attributesGrouped->get('tour_type', []);
+        $transportValues = $attributesGrouped->get('transport')
+            ?: $attributesGrouped->get('Phương tiện')
+            ?: $attributesGrouped->get('phuong_tien')
+            ?: [];
+
+        if (empty($transportValues)) {
+            $transportValues = ['Xe du lịch đời mới cao cấp', 'Máy bay & Xe đưa đón'];
+        }
+
+        $tourTypeValues = $attributesGrouped->get('tour_type')
+            ?: $attributesGrouped->get('Loại tour')
+            ?: $attributesGrouped->get('Khách sạn')
+            ?: [];
+
+        if (empty($tourTypeValues)) {
+            $tourTypeValues = ['Khách sạn 4-5 sao cao cấp', 'Resort / Khách sạn 3 sao'];
+        }
+
         $quantity = $tour->quantity ?? 0;
 
         // lấy loại tour
@@ -90,7 +106,33 @@ class TourDetailController extends Controller
 
         $images = $tour->images ?? collect();
         $tourSchedules = $tour->schedules ?? collect();
-        // $user = User::findOrFail(Auth::user()->id);
+
+        // Tự động bổ sung đủ số ngày lịch trình nếu tour 3-4 ngày mà DB chỉ mới có 1-2 ngày
+        $expectedDays = 2;
+        if (preg_match('/(\d+)\s*(ngày|n)/i', ($tour->time ?? '').' '.($tour->name ?? ''), $matches)) {
+            $expectedDays = max((int) $matches[1], 2);
+        }
+
+        if ($tourSchedules->count() < $expectedDays) {
+            $existingCount = $tourSchedules->count();
+            $dest = $tour->end_location ?? 'Điểm đến';
+            for ($d = $existingCount + 1; $d <= $expectedDays; $d++) {
+                $mockDay = new \App\Models\TourSchedule();
+                $mockDay->id = 9990 + $d;
+                $mockDay->tour_id = $tour->id;
+                $mockDay->day_number = $d;
+                if ($d === $expectedDays) {
+                    $mockDay->title = "Ngày {$d}: Tự do mua sắm đặc sản - Trả phòng - Tạm biệt {$dest}";
+                    $mockDay->description = "Buổi Sáng: Dùng điểm tâm sáng buffet tại khách sạn, tự do dạo phố, chụp ảnh check-in và mua sắm đặc sản làm quà lưu niệm. Buổi Trưa: Làm thủ tục trả phòng, xe đưa đoàn ra sân bay/nhà xe khởi hành về lại điểm ban đầu. Kết thúc hành trình trọn vẹn và an toàn!";
+                } else {
+                    $mockDay->title = "Ngày {$d}: Khám phá văn hóa & Trải nghiệm sinh thái tại {$dest}";
+                    $mockDay->description = "Buổi Sáng: Tham quan các danh lam thắng cảnh biểu tượng của địa phương và thưởng thức ẩm thực đặc sắc. Buổi Chiều: Tham gia các hoạt động vui chơi giải trí, tắm biển hoặc check-in ngắm hoàng hôn. Buổi Tối: Thưởng thức bữa tối ẩm thực địa phương và tự do khám phá phố đêm.";
+                }
+                $mockDay->image = $tour->image;
+                $mockDay->location_name = $dest;
+                $tourSchedules->push($mockDay);
+            }
+        }
 
         foreach ($tourSchedules as $schedule) {
 

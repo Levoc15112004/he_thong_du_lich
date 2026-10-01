@@ -127,7 +127,7 @@ $banners = Banner::latest()->take(4)->get();
                 $query->select(DB::raw('coalesce(sum(view), 0)'));
             }])
             ->orderByDesc('total_views')
-            ->limit(4)
+            ->limit(8)
             ->get();
 
         // 8 Điểm đến
@@ -148,7 +148,7 @@ $banners = Banner::latest()->take(4)->get();
                 $response = Http::timeout(5)
                     ->withOptions(['verify' => false])
                     ->get('https://api.openweathermap.org/data/2.5/forecast', [
-                        'q' => 'Hanoi,VN',
+                        'q' => 'Da Lat,VN',
                         'appid' => $apiKey,
                         'units' => 'metric',
                         'lang' => 'vi',
@@ -161,10 +161,10 @@ $banners = Banner::latest()->take(4)->get();
                         $adviceData = $this->getAdviceScore($weatherId, round($data['list'][0]['main']['temp']));
 
                         $weatherData = [
-                            'city' => $data['city']['name'] ?? 'Hà Nội',
+                            'city' => $data['city']['name'] ?? 'Đà Lạt',
                             'temp' => round($data['list'][0]['main']['temp']),
-                            'desc' => $data['list'][0]['weather'][0]['description'] ?? 'Trời quang',
-                            'icon' => $data['list'][0]['weather'][0]['icon'] ?? null,
+                            'desc' => $data['list'][0]['weather'][0]['description'] ?? 'Se lạnh',
+                            'icon' => $data['list'][0]['weather'][0]['icon'] ?? '02d',
                             'advice' => $adviceData['advice'],
                             'scoreText' => $adviceData['scoreText'],
                             'scoreBg' => $adviceData['scoreBg'],
@@ -186,6 +186,12 @@ $banners = Banner::latest()->take(4)->get();
             }
         } catch (\Throwable $e) {
             // Không ngắt trang nếu API bên ngoài gặp lỗi kết nối
+        }
+
+        if (empty($weatherData)) {
+            $defaultWeather = \App\Http\Controllers\User\WeatherController::getFallbackWeatherData('Đà Lạt');
+            $weatherData = $defaultWeather['current'];
+            $forecastData = $defaultWeather['forecast'];
         }
 
         return view('users.home', compact(

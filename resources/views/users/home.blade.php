@@ -260,7 +260,7 @@
 
             <!-- Loop Hot Tours from Controller -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                @forelse($hotTours->take(4) as $tour)
+                @forelse($hotTours->take(8) as $tour)
                     <div class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col group cursor-pointer bg-white">
                         <div class="relative h-56 overflow-hidden">
                             @php

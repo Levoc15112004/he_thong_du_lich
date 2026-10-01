@@ -84,7 +84,9 @@
                                 <div class="flex items-center gap-4">
                                     <div class="relative">
                                         <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md bg-slate-100 flex items-center justify-center">
-                                            <img src="{{ $user->avatar ? asset($user->avatar) : asset('fontend/img/img_default.jpg') }}" alt="{{ $user->name }}" class="w-full h-full object-cover">
+                                            <img src="{{ $user->avatar_url }}" 
+                                                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=10b981&color=fff';" 
+                                                 alt="{{ $user->name }}" class="w-full h-full object-cover">
                                         </div>
                                         <div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white {{ $user->status == 'dang_hoat_dong' ? 'bg-emerald-500' : 'bg-slate-300' }}"></div>
                                     </div>
@@ -175,7 +177,9 @@
                     <div class="flex items-center gap-4 mb-4">
                         <div class="relative">
                             <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-md bg-slate-100 flex items-center justify-center shrink-0">
-                                <img src="{{ $user->avatar ? asset($user->avatar) : asset('fontend/img/img_default.jpg') }}" class="w-full h-full object-cover">
+                                <img src="{{ $user->avatar_url }}" 
+                                     onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=10b981&color=fff';" 
+                                     class="w-full h-full object-cover">
                             </div>
                             <div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white {{ $user->status == 'dang_hoat_dong' ? 'bg-emerald-500' : 'bg-slate-300' }}"></div>
                         </div>

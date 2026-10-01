@@ -89,13 +89,21 @@ class OrderController extends Controller
             return redirect()->back()->with('error', 'Không tìm thấy tour_id trong giỏ hàng.');
         }
 
+        $transport = $firstItem['transport'] ?? '';
+        $tourType = $firstItem['tour_type'] ?? '';
+        $orderNote = $req->note;
+        if ($transport || $tourType) {
+            $attrNote = 'Phương tiện: ' . ($transport ?: 'Tiêu chuẩn') . ($tourType ? ' | Lưu trú: ' . $tourType : '');
+            $orderNote = $orderNote ? "[{$attrNote}] " . $orderNote : "[{$attrNote}]";
+        }
+
         $order = Order::create([
             'user_id' => auth()->id(),
             'name' => $req->name,
             'phone' => $req->phone,
             'email' => $req->email,
             'address' => $req->address,
-            'note' => $req->note,
+            'note' => $orderNote,
 
             'total_price' => $finalPrice, // giá sau giảm
             'discount_amount' => $discount,

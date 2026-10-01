@@ -26,6 +26,10 @@ class SampleDataSeeder extends Seeder
             'status' => 1,
         ]);
 
+        $attrTransport1 = AttrTour::firstOrCreate(['name' => 'transport', 'value' => 'Xe du lịch đời mới cao cấp']);
+        $attrTransport2 = AttrTour::firstOrCreate(['name' => 'transport', 'value' => 'Máy bay & Xe đưa đón VIP']);
+        $attrTourType1 = AttrTour::firstOrCreate(['name' => 'tour_type', 'value' => 'Khách sạn 4-5 sao cao cấp']);
+        $attrTourType2 = AttrTour::firstOrCreate(['name' => 'tour_type', 'value' => 'Resort / Khách sạn 3 sao']);
         AttrTour::firstOrCreate(['name' => 'Phương tiện', 'value' => 'Xe du lịch đời mới']);
         AttrTour::firstOrCreate(['name' => 'Khách sạn', 'value' => 'Tiêu chuẩn 4-5 sao']);
         AttrTour::firstOrCreate(['name' => 'Ăn uống', 'value' => 'Bao gồm bữa ăn chính']);
@@ -87,11 +91,20 @@ class SampleDataSeeder extends Seeder
 
         foreach ($tours as $t) {
             $tour = Tour::firstOrCreate(['name' => $t['name']], $t);
+
+            // Gắn thuộc tính Phương tiện và Loại hình lưu trú vào tour
+            DB::table('tour_attrs')->insertOrIgnore([
+                ['tour_id' => $tour->id, 'attr_tour_id' => $attrTransport1->id],
+                ['tour_id' => $tour->id, 'attr_tour_id' => $attrTransport2->id],
+                ['tour_id' => $tour->id, 'attr_tour_id' => $attrTourType1->id],
+                ['tour_id' => $tour->id, 'attr_tour_id' => $attrTourType2->id],
+            ]);
+
             TourSchedule::firstOrCreate(
                 ['tour_id' => $tour->id, 'day_number' => 1],
                 [
                     'title' => 'Ngày 1: Khởi hành - Tham quan và nhận phòng',
-                    'description' => 'Xe đón đoàn tại điểm hẹn, khởi hành đi tham quan và làm thủ tục nhận phòng khách sạn.',
+                    'description' => 'Buổi Sáng: Xe và hướng dẫn viên đón đoàn tại điểm hẹn, khởi hành đi tham quan. Buổi Trưa: Dùng bữa trưa đặc sản vùng miền. Buổi Chiều: Nhận phòng khách sạn nghỉ ngơi, tự do dạo biển/phố. Buổi Tối: Thưởng thức bữa tối và ngắm cảnh đêm.',
                     'location_name' => $t['end_location'],
                 ]
             );
@@ -99,10 +112,30 @@ class SampleDataSeeder extends Seeder
                 ['tour_id' => $tour->id, 'day_number' => 2],
                 [
                     'title' => 'Ngày 2: Trải nghiệm danh lam thắng cảnh',
-                    'description' => 'Khám phá các điểm du lịch đặc sắc nhất theo lịch trình cùng hướng dẫn viên.',
+                    'description' => 'Buổi Sáng: Dùng điểm tâm buffet, khám phá các điểm du lịch đặc sắc nhất theo lịch trình cùng hướng dẫn viên. Buổi Chiều: Tham gia các hoạt động trải nghiệm văn hóa bản địa. Buổi Tối: Tự do khám phá ẩm thực đường phố.',
                     'location_name' => $t['end_location'],
                 ]
             );
+            TourSchedule::firstOrCreate(
+                ['tour_id' => $tour->id, 'day_number' => 3],
+                [
+                    'title' => 'Ngày 3: Khám phá sinh thái - Trải nghiệm văn hóa',
+                    'description' => 'Buổi Sáng: Ngắm bình minh, tham quan làng nghề truyền thống hoặc trải nghiệm cáp treo/cano. Buổi Chiều: Check-in các danh thắng nổi tiếng và chụp ảnh kỷ niệm. Buổi Tối: Tiệc tối giao lưu ấm cúng.',
+                    'location_name' => $t['end_location'],
+                ]
+            );
+
+            // Với tour 4 ngày 3 đêm, tạo thêm Ngày 4 đầy đủ
+            if (str_contains($t['time'], '4')) {
+                TourSchedule::firstOrCreate(
+                    ['tour_id' => $tour->id, 'day_number' => 4],
+                    [
+                        'title' => 'Ngày 4: Tự do mua sắm - Trả phòng - Tạm biệt đoàn',
+                        'description' => 'Buổi Sáng: Dùng điểm tâm sáng, tự do dạo chợ mua sắm đặc sản và quà lưu niệm. Buổi Trưa: Làm thủ tục trả phòng khách sạn. Buổi Chiều: Xe tiễn đoàn ra sân bay/nhà xe về lại điểm đón ban đầu. Kết thúc chuyến đi tốt đẹp!',
+                        'location_name' => $t['end_location'],
+                    ]
+                );
+            }
         }
 
         Voucher::firstOrCreate(['code' => 'WANDERLUST'], [

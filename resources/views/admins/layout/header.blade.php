@@ -41,8 +41,8 @@
             <!-- User Button -->
             <button id="userMenuBtn" class="flex items-center gap-2 sm:gap-3 p-1 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors focus:outline-none">
 
-                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'Admin') }}&background=10b981&color=fff&bold=true" 
-                     onerror="this.onerror=null; this.src='{{ asset('assets/img/admin.jpg') }}';"
+                <img src="{{ Auth::user()->avatar_url ?? 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->name ?? 'Admin').'&background=10b981&color=fff&bold=true' }}" 
+                     onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'Admin') }}&background=10b981&color=fff&bold=true';"
                      class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200 dark:border-slate-700 shadow-sm object-cover"
                      alt="Admin Avatar">
 
