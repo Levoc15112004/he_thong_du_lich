@@ -72,7 +72,7 @@
                 Hỗ trợ tận tâm 24/7
             </div>
             <h1 class="text-5xl md:text-7xl font-bold text-slate-900  mb-6">
-                Kết nối với <span class="text-gradient">TravelGo</span>
+                Kết nối với <span class="text-gradient">WanderVibe</span>
             </h1>
             <p class="text-slate-500 font-medium text-lg max-w-2xl mx-auto leading-relaxed">
                 Chúng tôi luôn sẵn sàng lắng nghe và đồng hành cùng bạn trong mọi chuyến hành trình khám phá thế giới.
@@ -190,7 +190,7 @@
         {{-- Map / Social Support --}}
         <div class="mt-20 premium-card p-10 flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
             <div>
-                <h4 class="text-2xl font-bold text-black  mb-2 ">Theo dõi hành trình của <span class="text-blue-400">TravelGo</span></h4>
+                <h4 class="text-2xl font-bold text-white mb-2">Theo dõi hành trình của <span class="text-emerald-400">WanderVibe</span></h4>
                 <p class="text-slate-400 text-sm font-medium">Cập nhật những điểm đến mới nhất và ưu đãi độc quyền hàng ngày.</p>
             </div>
             <div class="flex gap-4 text-slate-900">

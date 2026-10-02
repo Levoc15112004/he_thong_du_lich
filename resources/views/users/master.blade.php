@@ -244,6 +244,12 @@
       100% { background-position: 0% 50%; }
     }
 
+    .nav-link {
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      flex-shrink: 0 !important;
+    }
+
     /* Dark Theme Core Styles */
     html.dark {
       color-scheme: dark;
@@ -320,6 +326,14 @@
       color: #f8fafc !important;
       border-color: #475569 !important;
     }
+    html.dark input::placeholder,
+    html.dark textarea::placeholder {
+      color: #94a3b8 !important;
+      opacity: 1 !important;
+    }
+    html.dark #contact .text-slate-500 {
+      color: #34d399 !important;
+    }
   </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-800 font-sans antialiased overflow-x-hidden relative selection:bg-emerald-500 selection:text-white">
@@ -350,8 +364,8 @@
             </a>
 
             <!-- NAVIGATION MAIN (More spaced out, no heavy pill background) -->
-            <nav id="mainNav" class="hidden xl:flex flex-1 items-center justify-center space-x-1 lg:space-x-2">
-                <a href="{{ url('/') }}" class="nav-link px-4 py-2 rounded-full text-[15px] font-bold {{ $isHomePage ? 'text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all">Trang chủ</a>
+            <nav id="mainNav" class="hidden xl:flex flex-1 items-center justify-center gap-1 2xl:gap-2 flex-nowrap shrink-0">
+                <a href="{{ url('/') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all">Trang chủ</a>
                 
                 @php
                     $navCategories = \App\Models\Category::where('status', 1)
@@ -362,16 +376,16 @@
                 @endphp
                 @foreach ($navCategories as $cat)
                     @if($cat->children->count() > 0)
-                        <div class="relative group">
-                            <button class="nav-link px-4 py-2 rounded-full text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all flex items-center gap-1.5 focus:outline-none">
-                                {{ $cat->name }}
+                        <div class="relative group shrink-0">
+                            <button class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all flex items-center gap-1.5 focus:outline-none">
+                                <span>{{ $cat->name }}</span>
                                 <i class="fa-solid fa-angle-down text-[10px] opacity-70 group-hover:-rotate-180 transition-transform duration-300"></i>
                             </button>
                             <!-- Dropdown -->
                             <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                                 <div class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 p-2 transform scale-95 group-hover:scale-100 transition-all origin-top">
                                     @foreach($cat->children as $child)
-                                        <a href="{{ route('user.category', $child->id) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
+                                        <a href="{{ route('user.category', $child->id) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors whitespace-nowrap">
                                             <i class="fa-solid fa-hashtag text-emerald-400/50 text-xs"></i> {{ $child->name }}
                                         </a>
                                     @endforeach
@@ -381,13 +395,13 @@
                     @else
                         <!-- Filter out exact duplicates if data is messy, otherwise render normally -->
                         @if(strtolower($cat->name) !== 'trang chủ' && strtolower($cat->name) !== 'liên hệ')
-                            <a href="{{ route('user.category', $cat->id) }}" class="nav-link px-4 py-2 rounded-full text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all">
+                            <a href="{{ route('user.category', $cat->id) }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all shrink-0">
                                 {{ $cat->name }}
                             </a>
                         @endif
                     @endif
                 @endforeach
-                <a href="{{ route('contact') }}" class="nav-link px-4 py-2 rounded-full text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all">Liên hệ</a>
+                <a href="{{ route('contact') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all shrink-0">Liên hệ</a>
             </nav>
 
             <!-- RIGHT ACTIONS -->

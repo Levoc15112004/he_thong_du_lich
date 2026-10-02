@@ -306,8 +306,9 @@
             <!-- Loop Hot Tours from Controller -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @forelse($hotTours->take(8) as $tour)
-                    <div class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col group cursor-pointer bg-white">
-                        <div class="relative h-56 overflow-hidden">
+                    <div class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col group cursor-pointer bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+                        onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
+                        <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="relative h-56 overflow-hidden block">
                             @php
                                 $imgSrc = $tour->image ? (Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image)) : 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=700&q=80';
                             @endphp
@@ -317,9 +318,9 @@
                                 <i class="fa-solid fa-fire"></i> Hot {{ $tour->total_views ?? 0 }} views
                             </span>
                             <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-white text-xs font-semibold px-2.5 py-1 rounded-full border border-slate-700">
-                                <i class="fa-regular fa-clock"></i> {{ $tour->duration ?? '3N2Đ' }}
+                                <i class="fa-regular fa-clock"></i> {{ $tour->time ?? $tour->duration ?? '3N2Đ' }}
                             </span>
-                        </div>
+                        </a>
                         <div class="p-5 flex-1 flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
@@ -330,9 +331,11 @@
                                         <i class="fa-solid fa-star"></i> {{ number_format($tour->rating ?? 4.9, 1) }}
                                     </span>
                                 </div>
-                                <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-2 leading-snug">
-                                    {{ $tour->name }}
-                                </h3>
+                                <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="block">
+                                    <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-2 leading-snug">
+                                        {{ $tour->name }}
+                                    </h3>
+                                </a>
                                 <p class="mt-2 text-xs text-slate-500 line-clamp-2">
                                     {{ $tour->description ?? 'Lịch trình khám phá danh lam thắng cảnh tự do, hỗ trợ xe đưa đón tận nơi và hướng dẫn viên bản địa.' }}
                                 </p>
@@ -344,8 +347,9 @@
                                     </div>
                                 </div>
                                 <a href="{{ route('user.tourDetail.index', $tour->id) }}"
-                                    class="px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 group-hover:bg-emerald-500 group-hover:text-white font-bold text-xs transition-all flex items-center gap-1.5 border border-emerald-100">
-                                    <span>Đặt Tour</span>
+                                    class="px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 group-hover:bg-emerald-500 group-hover:text-white font-bold text-xs transition-all flex items-center gap-1.5 border border-emerald-100 shadow-sm"
+                                    onclick="event.stopPropagation()">
+                                    <span>Xem Chi Tiết</span>
                                     <i class="fa-solid fa-chevron-right text-[10px]"></i>
                                 </a>
                             </div>
@@ -424,32 +428,34 @@
                     @php
                         $postImg = $post->image ? (Str::startsWith($post->image, ['http://', 'https://']) ? $post->image : asset($post->image)) : 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80';
                     @endphp
-                    <article class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col group cursor-pointer bg-white"
+                    <article class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col group cursor-pointer bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
                         onclick="window.location.href='{{ route('blog.show', $post->id ?? 1) }}'">
-                        <div class="relative h-48 overflow-hidden">
+                        <a href="{{ route('blog.show', $post->id ?? 1) }}" class="relative h-48 overflow-hidden block">
                             <img src="{{ $postImg }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                             <span class="absolute bottom-3 left-3 bg-white/95 backdrop-blur-md border border-slate-200 text-emerald-700 text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
                                 {{ $post->category->name ?? 'Cẩm Nang' }}
                             </span>
-                        </div>
+                        </a>
                         <div class="p-5 flex-1 flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center gap-3 text-xs text-slate-500 mb-2 font-medium">
                                     <span><i class="fa-regular fa-calendar text-emerald-500"></i> {{ $post->created_at ? $post->created_at->format('d/m/Y') : date('d/m/Y') }}</span>
                                     <span>• 5 phút đọc</span>
                                 </div>
-                                <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-2">
-                                    {{ $post->title }}
-                                </h3>
+                                <a href="{{ route('blog.show', $post->id ?? 1) }}" class="block">
+                                    <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-2">
+                                        {{ $post->title }}
+                                    </h3>
+                                </a>
                                 <p class="text-slate-500 text-xs mt-2 line-clamp-2 leading-relaxed">
                                     {{ Str::limit(strip_tags($post->content ?? $post->summary ?? 'Kinh nghiệm du lịch thực tế, lịch trình và các điểm check-in hấp dẫn.'), 90) }}
                                 </p>
                             </div>
-                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                                <span class="text-xs font-bold text-emerald-600 group-hover:underline">Đọc tiếp</span>
+                            <a href="{{ route('blog.show', $post->id ?? 1) }}" class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-600 group-hover:underline">
+                                <span>Đọc bài viết</span>
                                 <i class="fa-solid fa-arrow-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
-                            </div>
+                            </a>
                         </div>
                     </article>
                 @empty
@@ -464,88 +470,88 @@
     {{-- ================= CONTACT SECTION ================= --}}
     <section id="contact" class="py-20 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="rounded-3xl glass-panel-light p-8 sm:p-12 lg:p-16 text-slate-800 relative overflow-hidden border border-slate-200">
-                <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-emerald-100 blur-3xl pointer-events-none"></div>
-                <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full bg-teal-100 blur-3xl pointer-events-none"></div>
+            <div class="rounded-3xl glass-panel-light p-8 sm:p-12 lg:p-16 text-slate-800 dark:text-slate-100 relative overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-2xl">
+                <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-emerald-200/50 dark:bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full bg-teal-200/50 dark:bg-teal-500/10 blur-3xl pointer-events-none"></div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                     <div>
-                        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                            <i class="fa-solid fa-headset text-emerald-600"></i> Hỗ trợ 24/7 tận tâm
+                        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/80 dark:border-emerald-800/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                            <i class="fa-solid fa-headset text-emerald-600 dark:text-emerald-400"></i> Hỗ trợ 24/7 tận tâm
                         </span>
-                        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight text-slate-900">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
                             Bạn Cần Tư Vấn Tour Riêng Hoặc Thiết Kế Lịch Trình Cho Nhóm?
                         </h2>
-                        <p class="text-slate-600 text-sm sm:text-base mt-4 font-normal leading-relaxed">
+                        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base mt-4 font-normal leading-relaxed">
                             Đội ngũ travel planner trẻ trung của WanderVibe luôn sẵn sàng lên kế hoạch chi tiết, tiết kiệm và tối ưu trải nghiệm check-in sống ảo nhất cho chuyến đi của bạn.
                         </p>
 
-                        <div class="mt-8 space-y-4">
+                        <div class="mt-8 space-y-5">
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-emerald-500 text-xl shadow-sm">
+                                <div class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-xl shadow-sm shrink-0">
                                     <i class="fa-solid fa-phone-volume"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-slate-500 block">Hotline đặt tour nhanh</span>
-                                    <span class="text-lg font-bold tracking-wide text-slate-900">1900 888 999 (Nhánh 1)</span>
+                                    <span class="text-xs font-semibold text-slate-500 dark:text-emerald-400/90 block uppercase tracking-wider">Hotline đặt tour nhanh</span>
+                                    <span class="text-lg sm:text-xl font-extrabold tracking-wide text-slate-900 dark:text-white">1900 888 999 (Nhánh 1)</span>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-emerald-500 text-xl shadow-sm">
+                                <div class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-xl shadow-sm shrink-0">
                                     <i class="fa-regular fa-envelope"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-slate-500 block">Email tư vấn & báo giá</span>
-                                    <a href="mailto:hello@wandervibe.me" class="text-lg font-bold tracking-wide text-slate-900 hover:text-emerald-600 transition-colors">hello@wandervibe.me</a>
+                                    <span class="text-xs font-semibold text-slate-500 dark:text-emerald-400/90 block uppercase tracking-wider">Email tư vấn & báo giá</span>
+                                    <a href="mailto:hello@wandervibe.me" class="text-lg sm:text-xl font-extrabold tracking-wide text-slate-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">hello@wandervibe.me</a>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-emerald-500 text-xl shadow-sm">
+                                <div class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-xl shadow-sm shrink-0">
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs text-slate-500 block">Văn phòng chính</span>
-                                    <span class="text-sm font-semibold text-slate-800">Tòa nhà Landmark 81, P. 22, Q. Bình Thạnh, TP. Hồ Chí Minh</span>
+                                    <span class="text-xs font-semibold text-slate-500 dark:text-emerald-400/90 block uppercase tracking-wider">Văn phòng chính</span>
+                                    <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug block">Tòa nhà Landmark 81, P. 22, Q. Bình Thạnh, TP. Hồ Chí Minh</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Consultation Form -->
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl">
-                        <h3 class="text-xl font-bold mb-1 text-slate-900">Gửi Yêu Cầu Cho Chúng Tôi</h3>
-                        <p class="text-xs text-slate-500 mb-6">Nhận báo giá và lịch trình mẫu qua Zalo/Email trong vòng 10 phút</p>
+                    <div class="bg-white dark:bg-slate-800/95 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700/80 shadow-xl dark:shadow-2xl backdrop-blur-xl">
+                        <h3 class="text-xl font-extrabold mb-1 text-slate-900 dark:text-white">Gửi Yêu Cầu Cho Chúng Tôi</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 font-medium">Nhận báo giá và lịch trình mẫu qua Zalo/Email trong vòng 10 phút</p>
 
-                        <form id="contactForm" method="POST" action="{{ route('consultation.send') }}" class="space-y-4 text-slate-800">
+                        <form id="contactForm" method="POST" action="{{ route('consultation.send') }}" class="space-y-4">
                             @csrf
                             <div>
-                                <label for="contactName" class="block text-xs font-bold text-slate-700 mb-1">Họ và tên của bạn</label>
+                                <label for="contactName" class="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">Họ và tên của bạn</label>
                                 <input type="text" name="name" id="contactName" value="{{ $user->name ?? '' }}" required placeholder="Ví dụ: Hoàng Minh"
-                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 transition-all">
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-emerald-500/10 transition-all">
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label for="contactPhone" class="block text-xs font-bold text-slate-700 mb-1">Số điện thoại / Zalo</label>
+                                    <label for="contactPhone" class="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">Số điện thoại / Zalo</label>
                                     <input type="tel" name="phone" id="contactPhone" value="{{ $user->phone ?? '' }}" required placeholder="0909 xxx xxx"
-                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 transition-all">
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-emerald-500/10 transition-all">
                                 </div>
                                 <div>
-                                    <label for="contactDestination" class="block text-xs font-bold text-slate-700 mb-1">Điểm đến quan tâm</label>
+                                    <label for="contactDestination" class="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">Điểm đến quan tâm</label>
                                     <input type="text" name="destination" id="contactDestination" placeholder="Hà Giang, Sa Pa..."
-                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 transition-all">
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-emerald-500/10 transition-all">
                                 </div>
                             </div>
 
                             <div>
-                                <label for="contactMessage" class="block text-xs font-bold text-slate-700 mb-1">Yêu cầu đặc biệt</label>
+                                <label for="contactMessage" class="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">Yêu cầu đặc biệt</label>
                                 <textarea name="message" id="contactMessage" rows="3" placeholder="Nhóm mình gồm 4 bạn trẻ muốn đi vào cuối tuần này..."
-                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 transition-all resize-none"></textarea>
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-emerald-500/10 transition-all resize-none"></textarea>
                             </div>
 
                             <div id="homeConsultationFeedback" class="hidden rounded-xl p-3 text-xs font-semibold text-center transition-all"></div>
 
-                            <button type="submit" id="homeConsultationBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all">
+                            <button type="submit" id="homeConsultationBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all">
                                 <i class="fa-solid fa-paper-plane mr-2"></i> Nhận Tư Vấn Miễn Phí
                             </button>
                         </form>

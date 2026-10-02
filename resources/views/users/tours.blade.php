@@ -70,51 +70,60 @@
 
     <main class="max-w-7xl mx-auto px-6 pb-24">
         {{-- Lưới hiển thị tour --}}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse ($tours as $tour)
-                <div class="premium-card group flex flex-col h-full overflow-hidden">
+                <div class="premium-card group flex flex-col h-full overflow-hidden bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
                     {{-- Tour Image Area --}}
-                    <div class="relative h-52 overflow-hidden">
+                    <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="relative h-52 overflow-hidden block">
                         <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" alt="{{ $tour->name }}"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
-                        <div class="absolute top-5 left-5 flex flex-col gap-2">
-                            <span class="glass-badge px-3 py-1.5 rounded-full text-[10px] font-bold text-blue-600">
-                                <i class="far fa-clock mr-1.5"></i> {{ $tour->time }}
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="glass-badge px-3 py-1.5 rounded-full text-[10px] font-bold text-emerald-700 bg-white/90 backdrop-blur-md border border-white/40 shadow-sm">
+                                <i class="far fa-clock mr-1 text-emerald-600"></i> {{ $tour->time }}
                             </span>
                         </div>
 
-                        <div class="absolute bottom-5 left-5 right-5">
-                             <div class="bg-slate-900/40 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/20 inline-flex items-center gap-2">
-                                <i class="fas fa-map-marker-alt text-blue-400 text-sm"></i>
-                                <span class="text-[10px] font-medium text-white truncate">
-                                    {{ $tour->start_location }} <i class="fas fa-arrow-right mx-1 opacity-50"></i> {{ $tour->end_location }}
+                        <div class="absolute bottom-4 left-4 right-4">
+                             <div class="bg-slate-900/60 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/20 inline-flex items-center gap-1.5 text-xs text-white">
+                                <i class="fas fa-map-marker-alt text-amber-400 text-xs"></i>
+                                <span class="font-medium truncate">
+                                    {{ $tour->start_location ?? 'Hà Nội' }} <i class="fas fa-arrow-right mx-1 opacity-70 text-[10px]"></i> {{ $tour->end_location }}
                                 </span>
                              </div>
                         </div>
-                    </div>
+                    </a>
 
                     {{-- Tour Content Area --}}
-                    <div class="p-4 flex flex-col flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                             <h2 class="text-lg font-bold text-slate-900 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                                {{ $tour->name }}
-                            </h2>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="mb-3">
+                             <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="block">
+                                 <h2 class="text-base font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-2 leading-snug">
+                                     {{ $tour->name }}
+                                 </h2>
+                             </a>
                         </div>
 
-                        <div class="mt-auto">
-                            <div class="flex items-end justify-between mb-2 border-t border-slate-50">
+                        <div class="mt-auto pt-3 border-t border-slate-100">
+                            <div class="flex items-baseline justify-between mb-3">
                                 <div>
-                                    <p class="text-sm font-bold text-slate-400">Giá hành trình</p>
-                                    <p class="text-2xl font-bold text-rose-500 er">
-                                        {{ number_format($tour->sale_price) }}<span class="text-base ml-0.5">đ</span>
+                                    <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Giá hành trình</p>
+                                    <p class="text-xl font-extrabold text-rose-600">
+                                        {{ number_format($tour->sale_price ?? $tour->price) }}<span class="text-sm font-semibold ml-0.5">đ</span>
                                     </p>
                                 </div>
+                                @if($tour->price > $tour->sale_price)
+                                    <p class="text-xs text-slate-400 line-through">
+                                        {{ number_format($tour->price) }}đ
+                                    </p>
+                                @endif
                             </div>
 
                             <a href="{{ route('user.tourDetail.index', $tour->id) }}"
-                               class="btn-gradient w-full block text-center py-3 rounded-2xl text-white font-bold text-sm shadow-lg shadow-blue-100">
-                                Chi tiết & đặt Tour
+                               class="w-full block text-center py-3 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold text-sm shadow-md shadow-orange-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                               onclick="event.stopPropagation()">
+                                Xem Chi Tiết & Đặt Tour
                             </a>
                         </div>
                     </div>

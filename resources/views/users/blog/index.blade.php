@@ -80,7 +80,7 @@
                             {{ $featuredBlog->title }}
                         </h2>
                         <div class="flex items-center gap-6 text-slate-300 text-sm font-bold  ">
-                            <span class="flex items-center gap-2"><i class="far fa-user text-blue-400"></i> {{ $featuredBlog->author ?? 'TravelGo Team' }}</span>
+                            <span class="flex items-center gap-2"><i class="far fa-user text-emerald-400"></i> {{ $featuredBlog->author ?? 'WanderVibe Team' }}</span>
                             <span class="flex items-center gap-2"><i class="far fa-calendar text-blue-400"></i> {{ $featuredBlog->created_at->format('d/m/Y') }}</span>
                             <span class="flex items-center gap-2"><i class="far fa-eye text-blue-400"></i> {{ $featuredBlog->views ?? 0 }}</span>
                         </div>

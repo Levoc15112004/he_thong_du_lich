@@ -87,6 +87,16 @@ class HomeController extends Controller
                 // Silently fallback if DB is temporarily locked or slow
             }
         }
+
+        // Tự động thay thế ảnh spa cũ nếu đã lưu trước đó trong cơ sở dữ liệu
+        try {
+            Tour::where('image', 'like', '%photo-1540555700478-4be289fbecef%')
+                ->where('end_location', 'Phú Quốc')
+                ->update(['image' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800']);
+            Tour::where('image', 'like', '%photo-1540555700478-4be289fbecef%')
+                ->update(['image' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800']);
+        } catch (\Throwable $e) {
+        }
     }
 
 
