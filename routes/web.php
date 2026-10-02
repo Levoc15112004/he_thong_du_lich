@@ -77,6 +77,8 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     Route::get('tours/edit/{id}', [TourController::class, 'edit'])->name('admin.tours.edit');
     Route::put('tours/{id}', [TourController::class, 'update'])->name('admin.tours.update');
     Route::delete('tours/{id}', [TourController::class, 'destroy'])->name('admin.tours.destroy');
+    Route::post('tours/seed-sample', [TourController::class, 'seedSample'])->name('admin.tours.seed');
+
 
     Route::get('tour-schedules', [TourScheduleController::class, 'index'])->name('admin.tour_schedules.index');
     Route::get('tour-schedules/create', [TourScheduleController::class, 'create'])->name('admin.tour_schedules.create');

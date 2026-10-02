@@ -24,6 +24,7 @@ php artisan storage:link || true
 # Run database migrations and seeders
 echo "==> Running database migrations and seeders..."
 php artisan migrate --seed --force || echo "==> Migration warning: check DB credentials or connection"
+php artisan db:seed --class=Tour200Seeder --force || echo "==> Tour200Seeder warning"
 
 # Re-ensure permissions after artisan runs as root
 chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache

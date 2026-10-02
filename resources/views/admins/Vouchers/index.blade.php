@@ -14,7 +14,7 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
             <div>
                 <h1 class="text-xl sm:text-3xl font-bold text-slate-900  ">Quản lý Voucher</h1>
-                <p class="mt-1 text-sm text-slate-500 font-medium">Hệ thống khuyến mãi và mã giảm giá Travel Go.</p>
+                <p class="mt-1 text-sm text-slate-500 font-medium">Hệ thống khuyến mãi và mã giảm giá WanderVibe.</p>
             </div>
             <div class="flex items-center gap-3">
                 <a href="{{ route('admin.vouchers.create') }}"

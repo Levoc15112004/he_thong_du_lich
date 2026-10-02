@@ -67,16 +67,23 @@ class Tour200Seeder extends Seeder
 
         $startCities = ['Hà Nội', 'TP. Hồ Chí Minh', 'Đà Nẵng', 'Cần Thơ', 'Hải Phòng'];
 
+        // Lấy danh sách tour đã tồn tại để tránh trùng lặp
+        $existingTours = Tour::pluck('name')->flip()->toArray();
+
+        $toursToInsert = [];
+        $tourMeta = [];
+        $now = Carbon::now();
+
         foreach ($destinations as $dIdx => [$city, $catKey, $lat, $lng, $img, $spots]) {
             foreach ($packages as $pIdx => [$pkgName, $days, $nights, $basePrice, $disc]) {
                 $tourName = "Tour Du Lịch {$city} {$days}N{$nights}Đ - {$pkgName}";
                 $startLoc = $startCities[($dIdx + $pIdx) % count($startCities)];
                 $price = $basePrice + ($dIdx * 60000);
-                $salePrice = round($price * (1 - $disc));
+                $salePrice = (int) round($price * (1 - $disc));
 
-                $tour = Tour::firstOrCreate(
-                    ['name' => $tourName],
-                    [
+                if (!isset($existingTours[$tourName])) {
+                    $toursToInsert[] = [
+                        'name' => $tourName,
                         'time' => "{$days} Ngày {$nights} Đêm",
                         'price' => $price,
                         'sale_price' => $salePrice,
@@ -88,41 +95,103 @@ class Tour200Seeder extends Seeder
                         'quantity' => rand(20, 45),
                         'start_date' => Carbon::now()->addDays(($pIdx + 1) * 3)->toDateString(),
                         'status' => 1,
-                    ]
-                );
-
-                DB::table('tour_attrs')->insertOrIgnore([
-                    ['tour_id' => $tour->id, 'attr_tour_id' => $trans->id],
-                    ['tour_id' => $tour->id, 'attr_tour_id' => $hotel->id],
-                ]);
-
-                for ($d = 1; $d <= $days; $d++) {
-                    $spotName = $spots[($d - 1) % count($spots)];
-                    $spotLat = round($lat + (($d - 1) * 0.015), 6);
-                    $spotLng = round($lng + (($d - 1) * 0.012), 6);
-
-                    $title = $d === 1
-                        ? "Ngày 1: Đón đoàn tại {$startLoc} - Di chuyển đến {$city} - Nhận phòng"
-                        : ($d === $days
-                            ? "Ngày {$d}: Khám phá {$spotName} - Mua sắm đặc sản - Tiễn đoàn"
-                            : "Ngày {$d}: Trải nghiệm danh thắng {$spotName}");
-
-                    $desc = "Buổi Sáng: Khám phá {$spotName} cùng HDV chuyên nghiệp. Buổi Trưa: Thưởng thức bữa trưa đặc sản vùng miền. Buổi Chiều: Hoạt động tự do và chụp ảnh kỷ niệm. Buổi Tối: Thưởng thức ẩm thực và dạo phố đêm.";
-
-                    TourSchedule::firstOrCreate(
-                        ['tour_id' => $tour->id, 'day_number' => $d],
-                        [
-                            'title' => $title,
-                            'description' => $desc,
-                            'location_name' => $spotName,
-                            'latitude' => $spotLat,
-                            'longitude' => $spotLng,
-                            'image' => $img,
-                        ]
-                    );
+                        'created_at' => $now,
+                        'updated_at' => $now,
+                    ];
                 }
+
+                $tourMeta[$tourName] = [
+                    'days' => $days,
+                    'spots' => $spots,
+                    'lat' => $lat,
+                    'lng' => $lng,
+                    'startLoc' => $startLoc,
+                    'city' => $city,
+                    'img' => $img,
+                ];
             }
         }
-        ];
+
+        // Chèn hàng loạt Tour mới nếu có
+        if (!empty($toursToInsert)) {
+            foreach (array_chunk($toursToInsert, 100) as $chunk) {
+                Tour::insert($chunk);
+            }
+        }
+
+        // Lấy ID toàn bộ tour
+        $tourIdMap = Tour::whereIn('name', array_keys($tourMeta))->pluck('id', 'name');
+
+        // Lấy lịch trình đã có
+        $existingSchedules = TourSchedule::whereIn('tour_id', $tourIdMap->values())
+            ->select('tour_id', 'day_number')
+            ->get()
+            ->mapWithKeys(fn ($s) => [$s->tour_id . '_' . $s->day_number => true])
+            ->toArray();
+
+        $schedulesToInsert = [];
+        $attrsToInsert = [];
+
+        foreach ($tourMeta as $tourName => $meta) {
+            $tId = $tourIdMap[$tourName] ?? null;
+            if (!$tId) continue;
+
+            $attrsToInsert[] = ['tour_id' => $tId, 'attr_tour_id' => $trans->id, 'created_at' => $now, 'updated_at' => $now];
+            $attrsToInsert[] = ['tour_id' => $tId, 'attr_tour_id' => $hotel->id, 'created_at' => $now, 'updated_at' => $now];
+
+            $days = $meta['days'];
+            $spots = $meta['spots'];
+            $startLoc = $meta['startLoc'];
+            $city = $meta['city'];
+            $img = $meta['img'];
+            $lat = $meta['lat'];
+            $lng = $meta['lng'];
+
+            for ($d = 1; $d <= $days; $d++) {
+                if (isset($existingSchedules[$tId . '_' . $d])) {
+                    continue;
+                }
+
+                $spotName = $spots[($d - 1) % count($spots)];
+                $spotLat = round($lat + (($d - 1) * 0.015), 6);
+                $spotLng = round($lng + (($d - 1) * 0.012), 6);
+
+                $title = $d === 1
+                    ? "Ngày 1: Đón đoàn tại {$startLoc} - Di chuyển đến {$city} - Nhận phòng"
+                    : ($d === $days
+                        ? "Ngày {$d}: Khám phá {$spotName} - Mua sắm đặc sản - Tiễn đoàn"
+                        : "Ngày {$d}: Trải nghiệm danh thắng {$spotName}");
+
+                $desc = "Buổi Sáng: Khám phá {$spotName} cùng HDV chuyên nghiệp. Buổi Trưa: Thưởng thức bữa trưa đặc sản vùng miền. Buổi Chiều: Hoạt động tự do và chụp ảnh kỷ niệm. Buổi Tối: Thưởng thức ẩm thực và dạo phố đêm.";
+
+                $schedulesToInsert[] = [
+                    'tour_id' => $tId,
+                    'day_number' => $d,
+                    'title' => $title,
+                    'description' => $desc,
+                    'location_name' => $spotName,
+                    'latitude' => $spotLat,
+                    'longitude' => $spotLng,
+                    'map_link' => "https://maps.google.com/?q={$spotLat},{$spotLng}",
+                    'image' => $img,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ];
+            }
+        }
+
+        // Chèn hàng loạt thuộc tính
+        if (!empty($attrsToInsert)) {
+            foreach (array_chunk($attrsToInsert, 200) as $chunk) {
+                DB::table('tour_attr')->insertOrIgnore($chunk);
+            }
+        }
+
+        // Chèn hàng loạt lịch trình
+        if (!empty($schedulesToInsert)) {
+            foreach (array_chunk($schedulesToInsert, 200) as $chunk) {
+                TourSchedule::insert($chunk);
+            }
+        }
     }
 }

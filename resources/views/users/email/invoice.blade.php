@@ -61,7 +61,7 @@
     <hr>
 
     <p style="text-align:center;">
-        Cảm ơn quý khách đã sử dụng dịch vụ của <strong>TRAVEL GO</strong><br>
+        Cảm ơn quý khách đã sử dụng dịch vụ của <strong>WanderVibe</strong><br>
         Hotline: 0123 456 789 | Email: travelgo@gmail.com
     </p>
 

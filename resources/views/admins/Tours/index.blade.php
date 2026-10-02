@@ -38,6 +38,14 @@
                     @if(request('keyword')) <input type="hidden" name="keyword" value="{{ request('keyword') }}"> @endif
                 </form>
 
+                <form action="{{ route('admin.tours.seed') }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn nạp 190+ tour mẫu và lộ trình chi tiết?');" class="w-full sm:w-auto">
+                    @csrf
+                    <button type="submit" class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 bg-amber-50 hover:bg-amber-100 text-amber-700 font-bold border border-amber-200 rounded-xl transition-all shadow-sm">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                        <span>Nạp 190+ Tour Mẫu</span>
+                    </button>
+                </form>
+
                 <a href="{{ route('admin.tours.create') }}" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-lg shadow-teal-200/50 hover:shadow-xl hover:shadow-teal-300/50 hover:-translate-y-0.5 transition-all duration-300 group">
                     <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform"></i>
                     <span>Tạo Tour mới</span>

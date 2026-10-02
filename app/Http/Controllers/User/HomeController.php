@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Artisan;
 
 
 class HomeController extends Controller
@@ -74,6 +75,21 @@ class HomeController extends Controller
         ];
     }
 
+    private function ensureToursSeeded()
+    {
+        if (Tour::where('status', 1)->count() <= 4) {
+            try {
+                Artisan::call('db:seed', [
+                    '--class' => 'Tour200Seeder',
+                    '--force' => true,
+                ]);
+            } catch (\Throwable $e) {
+                // Silently fallback if DB is temporarily locked or slow
+            }
+        }
+    }
+
+
     public function index(Request $request)
     {
         if (! Session::get('viewed')) {
@@ -85,13 +101,15 @@ class HomeController extends Controller
             ]);
         }
 
+        $this->ensureToursSeeded();
+
         $userId = Auth::id();
         $notifications = $userId ? Notification::where('user_id', $userId)->orderByDesc('created_at')->take(10)->get() : collect();
         $unreadCount = $userId ? Notification::where('user_id', $userId)->where('status', 'unread')->count() : 0;
 
-// Lấy trực tiếp banners mới nhất mà không lọc theo status
-$banners = Banner::latest()->take(4)->get();
-        $categories = Category::where('status', 1)->whereNull('parent_id')->with('children')->orderByDesc('id')->take(10)->get();
+        // Lấy trực tiếp banners mới nhất mà không lọc theo status
+        $banners = Banner::latest()->take(4)->get();
+        $categories = Category::where('status', 1)->whereNull('parent_id')->with('children')->orderBy('id', 'asc')->take(10)->get();
         $tours = Tour::where('status', 1)->orderByDesc('id')->paginate(8);
 
         // Top Buy Tours
@@ -219,9 +237,11 @@ $banners = Banner::latest()->take(4)->get();
 
     public function allTours()
     {
+        $this->ensureToursSeeded();
+
         $categories = Category::where('status', 1)
             ->whereNull('parent_id')
-            ->orderByDesc('id')
+            ->orderBy('id', 'asc')
             ->take(10)
             ->get();
 
@@ -229,7 +249,7 @@ $banners = Banner::latest()->take(4)->get();
         $notifications = $userId ? Notification::where('user_id', $userId)->orderByDesc('created_at')->take(10)->get() : collect();
         $unreadCount = $userId ? Notification::where('user_id', $userId)->where('status', 'unread')->count() : 0;
 
-        $tours = Tour::where('status', 1)->orderByDesc('id')->paginate(8);
+        $tours = Tour::where('status', 1)->orderByDesc('id')->paginate(12)->withQueryString();
 
         return view('users.tours', compact('tours', 'categories', 'notifications', 'unreadCount'));
     }
@@ -381,12 +401,16 @@ $banners = Banner::latest()->take(4)->get();
 
     public function TourCate($id)
     {
+        $this->ensureToursSeeded();
+
         $categories = Category::where('status', 1)
             ->whereNull('parent_id')
             ->with('children')
-            ->orderByDesc('id')
+            ->orderBy('id', 'asc')
             ->take(10)
             ->get();
+
+        $currentCategory = Category::find($id);
 
         $notifications = Notification::where('user_id', Auth::id())
             ->orderByDesc('created_at')
@@ -408,10 +432,12 @@ $banners = Banner::latest()->take(4)->get();
         $tourCate = Tour::where('status', 1)
             ->where('category_id', $id)
             ->orderByDesc('id')
-            ->paginate(8);
+            ->paginate(12)
+            ->withQueryString();
 
         return view('users.TourCate', compact(
             'categories',
+            'currentCategory',
             'subCategories',
             'tourCate',
             'id',

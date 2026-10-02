@@ -43,6 +43,19 @@ class TourController extends Controller
 
         return view('admins.Tours.index', compact('tours', 'tourSchedules'));
     }
+    public function seedSample()
+    {
+        try {
+            \Illuminate\Support\Facades\Artisan::call('db:seed', [
+                '--class' => 'Tour200Seeder',
+                '--force' => true,
+            ]);
+            return redirect()->route('admin.tours.index')->with('success', 'Đã nạp thành công 190+ tour mẫu và lịch trình!');
+        } catch (\Throwable $e) {
+            return redirect()->route('admin.tours.index')->with('error', 'Lỗi nạp tour: ' . $e->getMessage());
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.

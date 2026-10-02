@@ -93,7 +93,7 @@ class SampleDataSeeder extends Seeder
             $tour = Tour::firstOrCreate(['name' => $t['name']], $t);
 
             // Gắn thuộc tính Phương tiện và Loại hình lưu trú vào tour
-            DB::table('tour_attrs')->insertOrIgnore([
+            DB::table('tour_attr')->insertOrIgnore([
                 ['tour_id' => $tour->id, 'attr_tour_id' => $attrTransport1->id],
                 ['tour_id' => $tour->id, 'attr_tour_id' => $attrTransport2->id],
                 ['tour_id' => $tour->id, 'attr_tour_id' => $attrTourType1->id],

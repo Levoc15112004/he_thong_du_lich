@@ -102,7 +102,7 @@
     {{-- HEADER --}}
     <div class="header">
         <div>
-            <img class="logo">TRAVEL GO</div>
+            <img class="logo">WanderVibe</div>
             <p>Website du lịch uy tín</p>
         </div>
 
@@ -177,7 +177,7 @@
 
     {{-- FOOTER --}}
     <div class="footer">
-        Cảm ơn quý khách đã sử dụng dịch vụ của <strong>TRAVEL GO</strong> ✈️ <br>
+        Cảm ơn quý khách đã sử dụng dịch vụ của <strong>WanderVibe</strong> ✈️ <br>
         Hotline: 0123 456 789 | Email: travelgo@gmail.com
     </div>
 
