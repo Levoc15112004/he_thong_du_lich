@@ -197,13 +197,13 @@
                 </div>
             </div>
 
-            <div id="weatherContent" class="glass-panel-light rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-500">
-                <div class="absolute -right-20 -top-20 w-80 h-80 bg-teal-100 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-emerald-100 rounded-full blur-3xl pointer-events-none"></div>
+            <div id="weatherContent" class="glass-panel-light rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-500 border border-slate-200 dark:border-slate-800 shadow-xl">
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-teal-200/50 dark:bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-emerald-200/50 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 
                 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                     <!-- OpenWeather Backend Data Fallback to UI Presets -->
-                    <div class="flex items-center gap-6 border-b lg:border-b-0 lg:border-r border-slate-200 pb-6 lg:pb-0 lg:pr-6">
+                    <div class="flex items-center gap-6 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-700 pb-6 lg:pb-0 lg:pr-6">
                         <div id="weatherIconContainer" class="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-400 to-sky-400 border border-indigo-300 shadow-lg flex items-center justify-center text-5xl text-white">
                             @if(!empty($weatherData['icon']))
                                 <img src="https://openweathermap.org/img/wn/{{ $weatherData['icon'] }}@2x.png" alt="icon" class="w-20 h-20 scale-125 drop-shadow-md pb-1">
@@ -213,48 +213,48 @@
                         </div>
                         <div>
                             <div class="flex items-baseline gap-2">
-                                <span id="weatherTemp" class="text-5xl sm:text-6xl font-bold tracking-tight text-slate-900">
+                                <span id="weatherTemp" class="text-5xl sm:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
                                     {{ $weatherData['temp'] ?? 19 }}°C
                                 </span>
-                                <span class="text-emerald-600 text-sm font-semibold capitalize" id="weatherStatusText">
+                                <span class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold capitalize" id="weatherStatusText">
                                     {{ $weatherData['desc'] ?? 'Mát mẻ dễ chịu' }}
                                 </span>
                             </div>
-                            <h3 id="weatherCity" class="text-xl font-bold mt-1 text-slate-800">{{ $weatherData['city'] ?? 'Hà Nội' }}, Việt Nam</h3>
-                            <p id="weatherDesc" class="text-xs text-slate-500 mt-0.5">Dự báo theo thời gian thực trạm khí tượng vệ tinh</p>
+                            <h3 id="weatherCity" class="text-xl font-bold mt-1 text-slate-800 dark:text-white">{{ $weatherData['city'] ?? 'Hà Nội' }}, Việt Nam</h3>
+                            <p id="weatherDesc" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Dự báo theo thời gian thực trạm khí tượng vệ tinh</p>
                         </div>
                     </div>
 
                     <!-- Metrics -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3.5">
-                        <div class="bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm">
-                            <span class="text-xs text-slate-500 flex items-center gap-1.5"><i class="fa-solid fa-droplet text-cyan-500"></i> Độ ẩm</span>
-                            <span id="weatherHumidity" class="text-lg font-bold mt-1 block text-slate-800">78%</span>
+                        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 border border-slate-100 dark:border-slate-700 shadow-sm">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-droplet text-cyan-500"></i> Độ ẩm</span>
+                            <span id="weatherHumidity" class="text-lg font-bold mt-1 block text-slate-800 dark:text-white">78%</span>
                         </div>
-                        <div class="bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm">
-                            <span class="text-xs text-slate-500 flex items-center gap-1.5"><i class="fa-solid fa-wind text-teal-500"></i> Gió nhẹ</span>
-                            <span id="weatherWind" class="text-lg font-bold mt-1 block text-slate-800">12 km/h</span>
+                        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 border border-slate-100 dark:border-slate-700 shadow-sm">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-wind text-teal-500"></i> Gió nhẹ</span>
+                            <span id="weatherWind" class="text-lg font-bold mt-1 block text-slate-800 dark:text-white">12 km/h</span>
                         </div>
-                        <div class="bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm">
-                            <span class="text-xs text-slate-500 flex items-center gap-1.5"><i class="fa-solid fa-sun text-amber-500"></i> Chỉ số UV</span>
-                            <span id="weatherUV" class="text-lg font-bold mt-1 block text-slate-800">3 - Thấp</span>
+                        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 border border-slate-100 dark:border-slate-700 shadow-sm">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-sun text-amber-500"></i> Chỉ số UV</span>
+                            <span id="weatherUV" class="text-lg font-bold mt-1 block text-slate-800 dark:text-white">3 - Thấp</span>
                         </div>
-                        <div class="bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm">
-                            <span class="text-xs text-slate-500 flex items-center gap-1.5"><i class="fa-solid fa-calendar-days text-emerald-500"></i> 5 Ngày Tới</span>
-                            <span id="weatherVisibility" class="text-lg font-bold mt-1 block text-slate-800">{{ count($forecastData) }} mốc dự báo</span>
+                        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 border border-slate-100 dark:border-slate-700 shadow-sm">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-calendar-days text-emerald-500"></i> 5 Ngày Tới</span>
+                            <span id="weatherVisibility" class="text-lg font-bold mt-1 block text-slate-800 dark:text-white">{{ count($forecastData) }} mốc dự báo</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 flex flex-col justify-between">
+                    <div class="bg-slate-50 dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
                         <div class="space-y-2">
-                            <div class="flex items-center gap-2 text-amber-600 text-xs font-bold uppercase tracking-wider">
+                            <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">
                                 <i class="fa-solid fa-shirt"></i> Gợi Ý Mix Đồ & Săn Ảnh
                             </div>
-                            <p id="weatherAdvice" class="text-xs text-slate-600 leading-relaxed">
+                            <p id="weatherAdvice" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                                 {{ $weatherData['advice'] ?? 'Chuẩn bị trang phục thoáng mát hoặc áo khoác nhẹ tùy vào vùng cao hoặc biển. Mang theo kem chống nắng và kính râm khi dạo biển.' }}
                             </p>
                         </div>
-                        <div class="mt-4 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-emerald-700">
+                        <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs text-emerald-700 dark:text-emerald-400">
                             <span class="font-medium">Độ hoàn hảo du lịch:</span>
                             <span id="weatherScore" class="font-bold {{ $weatherData['scoreColor'] ?? 'text-amber-600' }} {{ $weatherData['scoreBg'] ?? 'bg-amber-100' }} border border-white/50 px-3 py-1 rounded-full shadow-sm">
                                 {{ $weatherData['scoreText'] ?? '9.8 / 10 Tuyệt Vời' }}
@@ -264,21 +264,21 @@
                 </div>
 
                 <!-- 5 Day Forecast Layout -->
-                <div class="relative z-10 mt-8 pt-8 border-t border-slate-200/60">
-                    <h4 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2"><i class="fa-solid fa-calendar-week text-emerald-500"></i> Dự báo 5 ngày tiếp theo</h4>
+                <div class="relative z-10 mt-8 pt-8 border-t border-slate-200/60 dark:border-slate-700/60">
+                    <h4 class="text-sm font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-calendar-week text-emerald-500"></i> Dự báo 5 ngày tiếp theo</h4>
                     <div id="forecastContainer" class="grid grid-cols-2 md:grid-cols-5 gap-4">
                         @if(!empty($forecastData))
                             @foreach($forecastData as $day)
-                                <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm text-center hover:-translate-y-1 transition-transform">
-                                    <p class="text-xs font-bold text-slate-500 mb-2">{{ $day['date'] ?? '' }}</p>
+                                <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 border border-slate-100 dark:border-slate-700 shadow-sm text-center hover:-translate-y-1 transition-transform">
+                                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2">{{ $day['date'] ?? '' }}</p>
                                     <div class="w-14 h-14 mx-auto bg-gradient-to-br from-indigo-400 to-sky-400 rounded-full flex items-center justify-center mb-3 shadow-md border border-indigo-300 overflow-hidden">
                                         <img src="https://openweathermap.org/img/wn/{{ $day['icon'] ?? '01d' }}@2x.png" alt="icon" class="w-16 h-16 object-contain scale-110 drop-shadow-md pb-1">
                                     </div>
-                                    <p class="text-lg font-bold text-slate-800">{{ $day['temp'] ?? 0 }}°</p>
+                                    <p class="text-lg font-bold text-slate-800 dark:text-white">{{ $day['temp'] ?? 0 }}°</p>
                                 </div>
                             @endforeach
                         @else
-                            <p class="col-span-5 text-sm text-slate-500 text-center py-4">Chưa có dữ liệu dự báo</p>
+                            <p class="col-span-5 text-sm text-slate-500 dark:text-slate-400 text-center py-4">Chưa có dữ liệu dự báo</p>
                         @endif
                     </div>
                 </div>
@@ -480,7 +480,7 @@
                             <i class="fa-solid fa-headset text-emerald-600 dark:text-emerald-400"></i> Hỗ trợ 24/7 tận tâm
                         </span>
                         <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-                            Bạn Cần Tư Vấn Tour Riêng Hoặc Thiết Kế Lịch Trình Cho Nhóm?
+                            Bạn cần tư vấn về tour, lịch trình hay đặt dịch vụ? Hãy để chúng tôi giúp bạn!
                         </h2>
                         <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base mt-4 font-normal leading-relaxed">
                             Đội ngũ travel planner trẻ trung của WanderVibe luôn sẵn sàng lên kế hoạch chi tiết, tiết kiệm và tối ưu trải nghiệm check-in sống ảo nhất cho chuyến đi của bạn.
@@ -519,7 +519,7 @@
 
                     <!-- Consultation Form -->
                     <div class="bg-white dark:bg-slate-800/95 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700/80 shadow-xl dark:shadow-2xl backdrop-blur-xl">
-                        <h3 class="text-xl font-extrabold mb-1 text-slate-900 dark:text-white">Gửi Yêu Cầu Cho Chúng Tôi</h3>
+                        <h3 class="text-xl font-extrabold mb-1 text-slate-900 dark:text-white">Gửi yêu cầu tư vấn</h3>
                         <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 font-medium">Nhận báo giá và lịch trình mẫu qua Zalo/Email trong vòng 10 phút</p>
 
                         <form id="contactForm" method="POST" action="{{ route('consultation.send') }}" class="space-y-4">
@@ -552,7 +552,7 @@
                             <div id="homeConsultationFeedback" class="hidden rounded-xl p-3 text-xs font-semibold text-center transition-all"></div>
 
                             <button type="submit" id="homeConsultationBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all">
-                                <i class="fa-solid fa-paper-plane mr-2"></i> Nhận Tư Vấn Miễn Phí
+                                <i class="fa-solid fa-paper-plane mr-2"></i> Nhận tư vấn nhanh
                             </button>
                         </form>
                     </div>

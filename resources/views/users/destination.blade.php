@@ -4,62 +4,41 @@
 <style>
     .search-container {
         font-family: 'Roboto', sans-serif;
-        background-color: #f8fafc;
     }
 
     .text-gradient {
-        background: linear-gradient(to right, #3b82f6, #8b5cf6);
+        background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     .premium-card {
-        background: white;
-        border-radius: 2.5rem;
-        border: 1px solid rgba(241, 245, 249, 1);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .premium-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 30px 60px -15px rgba(59, 130, 246, 0.12);
+        transform: translateY(-8px);
     }
 
     .hero-gradient {
-        background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent),
-                    radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.05), transparent);
-    }
-
-    .glass-badge {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .btn-gradient {
-        background: linear-gradient(to right, #3b82f6, #2563eb);
-        transition: all 0.3s ease;
-    }
-
-    .btn-gradient:hover {
-        filter: brightness(1.1);
-        box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
+        background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.12), transparent 50%),
+                    radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.10), transparent 50%);
     }
 </style>
 
-<div class="search-container min-h-screen">
+<div class="search-container min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-800 dark:text-slate-100 transition-colors duration-300">
     {{-- HERO HEADER --}}
     <section class="relative pt-32 pb-16 overflow-hidden hero-gradient">
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-full border border-blue-100 mb-6 font-bold text-sm">
-                <i class="fas fa-map-marked-alt"></i>
-                Điểm đến nổi bật
+            <div class="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full border border-emerald-200/80 dark:border-emerald-800/80 mb-6 font-bold text-xs uppercase tracking-wider shadow-sm">
+                <i class="fa-solid fa-location-dot text-emerald-500"></i>
+                Điểm Đến Hấp Dẫn
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-                Khám phá <span class="text-gradient">{{ $location }}</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+                Khám Phá <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">{{ $location }}</span>
             </h1>
-            <p class="text-slate-500 font-medium max-w-xl mx-auto">
-                Chúng tôi tìm thấy {{ $tours->total() }} hành trình tuyệt vời tại điểm đến này dành cho bạn.
+            <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                Tìm thấy {{ $tours->total() }} hành trình du lịch trọn gói lý tưởng đưa bạn khám phá trọn vẹn vẻ đẹp {{ $location }}.
             </p>
         </div>
     </section>

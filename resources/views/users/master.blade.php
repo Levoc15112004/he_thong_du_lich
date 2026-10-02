@@ -286,6 +286,37 @@
     html.dark .bg-slate-50, html.dark .bg-gray-50, html.dark .bg-\[\#f8fafc\] {
       background-color: #0b1120 !important;
     }
+    html.dark .search-container,
+    html.dark .category-container,
+    html.dark .blog-container,
+    html.dark .contact-container {
+      background-color: #0b1120 !important;
+      color: #f1f5f9 !important;
+    }
+    html.dark .hero-gradient {
+      background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.15), transparent 50%),
+                  radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.12), transparent 50%),
+                  #0b1120 !important;
+    }
+    html.dark .premium-card {
+      background: #1e293b !important;
+      border-color: #334155 !important;
+      color: #f1f5f9 !important;
+    }
+    html.dark .premium-card:hover {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
+      border-color: #10b981 !important;
+    }
+    html.dark .text-gradient {
+      background: linear-gradient(to right, #34d399, #38bdf8) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    html.dark .glass-badge {
+      background: rgba(30, 41, 59, 0.85) !important;
+      border-color: rgba(51, 65, 85, 0.8) !important;
+      color: #34d399 !important;
+    }
     html.dark .bg-slate-100, html.dark .bg-gray-100 {
       background-color: #334155 !important;
       color: #f1f5f9;
@@ -680,39 +711,39 @@
 
     <!-- Quick Tour Booking Modal -->
     <div id="quickBookModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300 border border-slate-200 text-slate-800">
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-700">
                 <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
-                    <h4 class="font-extrabold text-slate-900 text-base">Đặt Tour Thần Tốc</h4>
+                    <h4 class="font-extrabold text-slate-900 dark:text-white text-base">Đặt Tour Thần Tốc</h4>
                 </div>
-                <button onclick="closeBookModal()" class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 flex items-center justify-center transition-colors">
+                <button onclick="closeBookModal()" class="w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 flex items-center justify-center transition-colors">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             <div class="py-4">
-                <p class="text-xs text-slate-500 mb-1 font-medium">Tour đã chọn:</p>
-                <div id="modalTourName" class="font-bold text-emerald-700 text-sm bg-emerald-50 border border-emerald-200 px-3.5 py-2.5 rounded-xl mb-4">
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-1 font-medium">Tour đã chọn:</p>
+                <div id="modalTourName" class="font-bold text-emerald-700 dark:text-emerald-300 text-sm bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 px-3.5 py-2.5 rounded-xl mb-4">
                     Tour Hà Giang 3N2Đ
                 </div>
                 <form id="modalQuickForm" class="space-y-3">
                     <input type="hidden" id="quickTourInput" name="tour_name" value="">
                     <div>
-                        <label for="quickUserName" class="text-xs font-bold text-slate-700 block mb-1">Tên khách hàng</label>
+                        <label for="quickUserName" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Tên khách hàng</label>
                         <input type="text" id="quickUserName" required placeholder="Họ và tên của bạn" value="{{ $user->name ?? '' }}"
-                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:border-emerald-500 focus:bg-white focus:outline-none">
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white placeholder-slate-400 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
                     </div>
                     <div>
-                        <label for="quickUserPhone" class="text-xs font-bold text-slate-700 block mb-1">Số điện thoại / Zalo</label>
+                        <label for="quickUserPhone" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Số điện thoại / Zalo</label>
                         <input type="tel" id="quickUserPhone" required placeholder="09xx xxx xxx" value="{{ $user->phone ?? '' }}"
-                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:border-emerald-500 focus:bg-white focus:outline-none">
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white placeholder-slate-400 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
                     </div>
                     <div>
-                        <label for="quickTravelDate" class="text-xs font-bold text-slate-700 block mb-1">Dự kiến ngày khởi hành</label>
+                        <label for="quickTravelDate" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Dự kiến ngày khởi hành</label>
                         <input type="date" id="quickTravelDate" required
-                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 focus:border-emerald-500 focus:bg-white focus:outline-none">
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
                     </div>
                     <button type="submit" class="w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold text-sm shadow-lg shadow-emerald-500/25 transition-all">
                         Xác Nhận Giữ Chỗ & Nhận Báo Giá
