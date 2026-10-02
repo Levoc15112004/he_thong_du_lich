@@ -134,6 +134,26 @@ class OrderController extends Controller
          }
 
         if ($order) {
+            // Thông báo cho khách hàng
+            Notification::create([
+                'user_id' => auth()->id(),
+                'title' => 'Đặt tour thành công',
+                'message' => "Bạn đã đặt thành công đơn tour #{$order->id}. Vui lòng thanh toán cọc để hoàn tất giữ chỗ.",
+                'type' => 'booking',
+                'status' => 'unread',
+            ]);
+
+            // Thông báo cho quản trị viên
+            $admins = User::where('role', 'admin')->get();
+            foreach ($admins as $admin) {
+                Notification::create([
+                    'user_id' => $admin->id,
+                    'title' => "Đơn đặt tour mới #{$order->id}",
+                    'message' => "Khách hàng {$order->name} ({$order->phone}) vừa đặt đơn tour #{$order->id} với giá trị " . number_format($finalPrice, 0, ',', '.') . "đ.",
+                    'type' => 'booking',
+                    'status' => 'unread',
+                ]);
+            }
 
             // xóa cart sau khi đặt hàng
             $cart->clear();

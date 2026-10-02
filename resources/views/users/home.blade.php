@@ -22,8 +22,8 @@
                 <span>Khám Phá Việt Nam Cùng Thế Hệ Trẻ</span>
             </div>
 
-            <h1 id="heroTitle" class="text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.15] max-w-4xl transition-all duration-500 drop-shadow-2xl">
-                {!! $firstBanner->title ?? 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Hà Giang</span>' !!}
+            <h1 id="heroTitle" class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.15] max-w-4xl transition-all duration-500 drop-shadow-2xl">
+                {!! $firstBanner->name ?? $firstBanner->title ?? 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-amber-200">Hà Giang</span>' !!}
             </h1>
 
             <p id="heroSubtitle" class="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-slate-100 max-w-2xl font-normal leading-relaxed transition-all duration-500 drop-shadow">
@@ -31,13 +31,13 @@
             </p>
 
             <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <a href="#tours" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-600 hover:to-teal-600 text-white font-bold text-sm sm:text-base shadow-2xl shadow-emerald-500/25 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 group">
+                <a href="#tours" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold text-sm sm:text-base shadow-2xl shadow-orange-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 group">
                     <i class="fa-solid fa-compass group-hover:rotate-45 transition-transform duration-300 text-lg"></i>
                     <span>Khám Phá Tour Ngay</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
                 </a>
                 <a href="#destinations" class="px-7 py-4 rounded-2xl bg-white/20 hover:bg-white/30 backdrop-blur-xl border border-white/35 text-white font-bold text-sm sm:text-base transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2">
-                    <i class="fa-solid fa-map-location-dot text-emerald-300"></i>
+                    <i class="fa-solid fa-map-location-dot text-amber-300"></i>
                     <span>Xem Điểm Đến Hot</span>
                 </a>
             </div>
@@ -125,13 +125,58 @@
         </div>
     </section>
 
+    {{-- ================= CEO / CRO / TRUST SIGNALS ================= --}}
+    <section class="mt-8 mb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-shield-halved text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Bảo Hiểm 100 Tr</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Bảo hiểm du lịch toàn diện</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-11 h-11 rounded-xl bg-orange-50 dark:bg-orange-950 text-orange-600 dark:text-orange-400 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-hand-holding-dollar text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Cam Kết Giá Tốt</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Hoàn tiền nếu sai dịch vụ</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-headset text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Hỗ Trợ 24/7</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Đội ngũ bản địa tận tâm</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-11 h-11 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-bolt text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Xác Nhận Tức Thì</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Mã giữ chỗ gửi sau 30s</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     {{-- ================= WEATHER FORECAST SECTION ================= --}}
     <section id="weather" class="pt-24 pb-14 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
-                    <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-600 bg-emerald-100 border border-emerald-200 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                        <i class="fa-solid fa-cloud-sun-rain text-emerald-500"></i> Trạm Thời Tiết Du Lịch Trực Tiếp
+                    <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                        <i class="fa-solid fa-cloud-sun-rain text-emerald-600"></i> Trạm thời tiết trực tiếp
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Dự Báo Thời Tiết Điểm Đến</h2>
                     <p class="text-slate-500 text-sm mt-1">Cập nhật thời tiết OpenWeather và các gợi ý trang phục khám phá</p>
@@ -246,10 +291,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
                 <div>
-                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-rose-600 bg-rose-100 border border-rose-200 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                        <i class="fa-solid fa-fire text-rose-500"></i> Xu Hướng Thịnh Hành
+                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-50 border border-rose-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                        <i class="fa-solid fa-fire text-rose-500"></i> Xu hướng thịnh hành
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">TOP TOUR HOT ĐANG ĐƯỢC QUAN TÂM NHẤT</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Top Tour Nổi Bật Được Quan Tâm Nhất</h2>
                     <p class="text-slate-500 text-sm mt-1">Các tour có số lượt xem và đặt chỗ cao nhất từ hệ thống</p>
                 </div>
                 <a href="{{ route('user.tours') }}" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 group transition-colors">
@@ -319,10 +364,10 @@
     <section id="destinations" class="py-20 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14">
-                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-600 bg-emerald-100 border border-emerald-200 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                    <i class="fa-solid fa-earth-americas text-emerald-500"></i> Điểm Đến Hấp Dẫn
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                    <i class="fa-solid fa-earth-americas text-emerald-600"></i> Điểm đến nổi bật
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 ">8 ĐIỂM ĐẾN KHÔNG THỂ BỎ LỠ</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Điểm Đến Hấp Dẫn Không Thể Bỏ Lỡ</h2>
                 <p class="text-slate-500 text-sm mt-2">Dù bạn thích lên rừng săn mây hay xuống biển đón nắng vàng, mọi cảnh sắc Việt Nam đều sẵn sàng chào đón</p>
             </div>
 
@@ -361,8 +406,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
                 <div>
-                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-600 bg-emerald-100 border border-emerald-200 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                        <i class="fa-solid fa-book-open-reader text-emerald-500"></i> Cẩm Nang Bỏ Túi
+                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                        <i class="fa-solid fa-book-open-reader text-emerald-600"></i> Cẩm nang du lịch
                     </span>
                     <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Kinh Nghiệm & Review Du Lịch</h2>
                     <p class="text-slate-500 text-sm mt-1">Những bài viết chia sẻ thực tế, bí kíp săn ảnh triệu view và mẹo du lịch tiết kiệm</p>
@@ -425,8 +470,8 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                     <div>
-                        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-600 bg-emerald-100 border border-emerald-200 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                            <i class="fa-solid fa-headset text-emerald-500"></i> Hỗ Trợ 24/7 Tận Tâm
+                        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                            <i class="fa-solid fa-headset text-emerald-600"></i> Hỗ trợ 24/7 tận tâm
                         </span>
                         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight text-slate-900">
                             Bạn Cần Tư Vấn Tour Riêng Hoặc Thiết Kế Lịch Trình Cho Nhóm?

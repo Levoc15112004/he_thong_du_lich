@@ -1,5 +1,74 @@
 @extends('users.master')
 
+@section('meta_title', $tour->name . ' - Khám Phá ' . ($tour->end_location ?? 'Việt Nam') . ' | WanderVibe')
+@section('meta_description', Str::limit(strip_tags($tour->description ?? 'Đặt tour ' . $tour->name . ' trọn gói giá tốt. Khởi hành từ ' . $tour->start_location . ' đến ' . $tour->end_location . ', lịch trình ' . $tour->time . ', bảo hiểm đầy đủ, xác nhận tức thì tại WanderVibe.'), 160))
+@section('meta_keywords', $tour->name . ', tour ' . ($tour->end_location ?? 'du lich') . ', du lich ' . ($tour->end_location ?? 'viet nam') . ', gia tour ' . $tour->name)
+@section('canonical', route('user.tourDetail.index', $tour->id))
+@section('og_image', Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image))
+@section('og_type', 'product')
+
+@section('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ addslashes($tour->name) }}",
+  "image": "{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}",
+  "description": "{{ addslashes(Str::limit(strip_tags($tour->description ?? $tour->name), 250)) }}",
+  "sku": "WV-TOUR-{{ $tour->id }}",
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ route('user.tourDetail.index', $tour->id) }}",
+    "priceCurrency": "VND",
+    "price": "{{ $tour->sale_price ?: $tour->price }}",
+    "priceValidUntil": "{{ now()->addMonths(6)->toDateString() }}",
+    "availability": "{{ ($tour->quantity ?? 10) > 0 ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut' }}",
+    "seller": {
+      "@type": "Organization",
+      "name": "WanderVibe Travel"
+    }
+  },
+  @if(($avgRating ?? 0) > 0)
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ number_format($avgRating, 1) }}",
+    "reviewCount": "{{ max(1, $reviews->count()) }}"
+  },
+  @endif
+  "brand": {
+    "@type": "Brand",
+    "name": "WanderVibe"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Trang chủ",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ addslashes($tour->category->name ?? 'Tour Du Lịch') }}",
+      "item": "{{ route('user.category', $tour->category_id ?? 1) }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ addslashes($tour->name) }}",
+      "item": "{{ route('user.tourDetail.index', $tour->id) }}"
+    }
+  ]
+}
+</script>
+@endsection
+
 @section('home')
     @php
         $totalReviews = $reviews->count();
@@ -67,7 +136,7 @@
                     <!-- ===== GALLERY ===== -->
                     <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 p-2">
                         <div class="relative h-[350px] md:h-[500px] rounded-[1.5rem] overflow-hidden">
-                            <img id="mainImage" src="{{ asset($tour->image) }}" alt="{{ $tour->name }}"
+                            <img id="mainImage" src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" alt="{{ $tour->name }}"
                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
                         </div>
 
@@ -101,7 +170,7 @@
                         </style>
                         <div class="tour-gallery-grid">
                             @foreach ($images as $image)
-                                <img src="{{ asset($image->image) }}" class="thumbnail">
+                                <img src="{{ Str::startsWith($image->image, ['http://', 'https://']) ? $image->image : asset($image->image) }}" class="thumbnail">
                             @endforeach
                         </div>
                     </div>
@@ -482,7 +551,7 @@
 
                         <!-- Ảnh -->
                         <a href="{{ route('user.tourDetail.index', $item->id) }}" class="relative h-56 overflow-hidden block">
-                            <img src="{{ asset($item->image) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <img src="{{ Str::startsWith($item->image, ['http://', 'https://']) ? $item->image : asset($item->image) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-teal-600 shadow-sm flex items-center gap-1.5">
                                 <i class="fa-solid fa-map-pin"></i> {{ $item->end_location }}
                             </div>
@@ -522,53 +591,60 @@
             </div>
         </section>
 
-        <div id="itineraryModal1" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60">
-
+        <div id="itineraryModal1" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-3 sm:p-6">
             <!-- MODAL WRAPPER -->
             <div id="modalContent"
-                class="bg-white w-full max-w-6xl mx-4 rounded-3xl shadow-2xl
-                max-h-[80vh] flex flex-col
-                transform scale-95 opacity-0 transition-all duration-300">
+                class="bg-white w-full max-w-6xl rounded-3xl shadow-2xl
+                max-h-[88vh] flex flex-col
+                transform scale-95 opacity-0 transition-all duration-300 overflow-hidden">
 
                 <!-- HEADER -->
-                <div class="flex items-center justify-between p-6 border-b border-slate-100 shrink-0">
-                    <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-3 brand-font">
-                        <i class="fa-solid fa-route text-teal-500"></i>
-                        Lịch Trình Chi Tiết Tour
-                    </h3>
+                <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 shrink-0 bg-slate-50/50">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100 shadow-sm">
+                            <i class="fa-solid fa-map-location-dot text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 brand-font">Lịch trình & Bản đồ chi tiết</h3>
+                            <p class="text-xs text-slate-500" id="modalTourName">{{ $tour->name }}</p>
+                        </div>
+                    </div>
 
                     <button onclick="closeItineraryModal()"
-                        class="w-10 h-10 flex items-center justify-center
-                           rounded-full text-slate-400 hover:text-rose-500
-                           hover:bg-rose-50 transition">
-                        <i class="fa-solid fa-xmark text-xl"></i>
+                        class="w-10 h-10 flex items-center justify-center rounded-2xl text-slate-400 hover:text-rose-500 hover:bg-rose-50 transition">
+                        <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
                 </div>
 
-                <!-- CONTENT -->
-                <div class="flex-1 p-4 md:p-6">
-                    <div class="relative w-full h-[60vh] min-h-[400px] rounded-[2rem] border border-slate-200 bg-slate-50 shadow-inner overflow-hidden z-0">
-                        <!-- Thẻ chứa bản đồ Google Map iframe -->
-                        <iframe id="googleMapFrame" class="w-full h-full border-0" loading="lazy"></iframe>
+                <!-- CONTENT (2 COLUMNS) -->
+                <div class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
+                    <!-- LEFT: ITINERARY STOPS (5 cols) -->
+                    <div class="lg:col-span-5 p-4 sm:p-6 overflow-y-auto max-h-[40vh] lg:max-h-[calc(88vh-140px)] border-b lg:border-b-0 lg:border-r border-slate-100 custom-scrollbar space-y-3" id="modalTimelineList">
+                        <div class="flex items-center justify-center py-12 text-slate-400">
+                            <i class="fa-solid fa-spinner fa-spin text-2xl mr-2"></i> Đang tải dữ liệu lịch trình...
+                        </div>
+                    </div>
 
-                        <!-- Nút mở lộ trình ra bên ngoài Google Maps -->
-                        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-max z-[1000]">
-                            <a id="directionsButton" target="_blank"
-                                class="flex items-center gap-2 px-6 py-3
-                              bg-gradient-to-r from-teal-500 to-emerald-500 hover:scale-[1.03]
-                              text-white font-bold rounded-full shadow-xl transition-transform duration-300 border border-white/20 backdrop-blur-md">
-                                <i class="fa-solid fa-route border-r border-white/20 pr-2 mr-1"></i>
-                                Mở lộ trình trên Google Maps
+                    <!-- RIGHT: INTERACTIVE MAP (7 cols) -->
+                    <div class="lg:col-span-7 relative h-[42vh] lg:h-auto min-h-[320px] bg-slate-100 flex flex-col">
+                        <div id="interactiveMap" class="w-full h-full min-h-[320px] z-0"></div>
+
+                        <!-- NAVIGATION BUTTON -->
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-[1000] w-max">
+                            <a id="directionsButton" target="_blank" href="#"
+                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/90 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm rounded-full shadow-xl backdrop-blur-md border border-white/20 transition-all hover:scale-105 active:scale-95">
+                                <i class="fa-solid fa-route text-emerald-400"></i>
+                                <span>Mở chỉ đường trên Google Maps</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- FOOTER -->
-                <div class="p-6 border-t border-slate-100 text-right shrink-0">
+                <div class="px-6 py-3 border-t border-slate-100 text-right shrink-0 bg-slate-50/50 flex items-center justify-between">
+                    <span class="text-xs text-slate-400 hidden sm:inline">Bấm vào từng chặng để xem chi tiết trên bản đồ</span>
                     <button onclick="closeItineraryModal()"
-                        class="px-8 py-3 rounded-xl font-bold text-sm
-                           bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+                        class="px-6 py-2 rounded-xl font-bold text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 transition-colors">
                         Đóng cửa sổ
                     </button>
                 </div>
@@ -736,61 +812,160 @@
 
 
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <script>
-        let modal, modalContent, directionsBtn, mapFrame;
+        let modal, modalContent, directionsBtn, leafletMap = null, markersGroup = null, polylineRoute = null;
 
         document.addEventListener('DOMContentLoaded', () => {
             modal = document.getElementById('itineraryModal1');
             modalContent = document.getElementById('modalContent');
             directionsBtn = document.getElementById('directionsButton');
-            mapFrame = document.getElementById('googleMapFrame');
         });
 
         function openItineraryModal(tourId) {
+            showModal();
+            const listEl = document.getElementById('modalTimelineList');
+            if (listEl) {
+                listEl.innerHTML = '<div class="flex items-center justify-center py-12 text-slate-400"><i class="fa-solid fa-spinner fa-spin text-xl mr-2 text-emerald-500"></i> Đang tải dữ liệu...</div>';
+            }
+
             fetch(`/tour/schedule/${tourId}/json`)
                 .then(res => res.json())
                 .then(data => {
-                    showModal();
-                    loadFullRouteMap(data.schedules);
+                    renderTimelineStops(data.schedules);
+                    initLeafletMap(data.schedules, data.center);
                 })
-                .catch(err => console.error(err));
+                .catch(err => {
+                    if (listEl) listEl.innerHTML = '<div class="text-center py-8 text-rose-500 font-semibold text-xs">Không thể tải dữ liệu lịch trình. Vui lòng thử lại!</div>';
+                });
         }
 
-        function loadFullRouteMap(schedules) {
+        function renderTimelineStops(schedules) {
+            const listEl = document.getElementById('modalTimelineList');
+            if (!listEl) return;
             if (!schedules || schedules.length === 0) {
-                mapFrame.src = "https://www.google.com/maps?q=16.047079,108.206230&output=embed";
-                directionsBtn.href = "#";
+                listEl.innerHTML = '<div class="text-center py-8 text-slate-400 text-xs">Chưa có danh sách chặng cụ thể.</div>';
                 return;
             }
 
-            const validPoints = schedules.filter(s => s.latitude && s.longitude);
-            if (validPoints.length === 0) {
-                mapFrame.src = "https://www.google.com/maps?q=16.047079,108.206230&output=embed";
-                directionsBtn.href = "#";
-                return;
+            let html = '';
+            schedules.forEach((item, index) => {
+                const isActive = index === 0;
+                html += `
+                    <div onclick="focusScheduleDay(${item.day_number}, ${item.latitude}, ${item.longitude})"
+                        id="timeline-item-${item.day_number}"
+                        class="p-3.5 rounded-2xl border transition-all cursor-pointer ${isActive ? 'bg-emerald-50/70 border-emerald-300 shadow-sm' : 'bg-white border-slate-200 hover:border-emerald-200 hover:bg-slate-50'}">
+                        <div class="flex items-start gap-2.5">
+                            <span class="w-7 h-7 rounded-xl ${isActive ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
+                                N${item.day_number}
+                            </span>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-800 line-clamp-1">${item.title}</h4>
+                                <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">${item.description || 'Tham quan và khám phá điểm đến theo hành trình.'}</p>
+                                ${item.location_name ? `
+                                    <div class="mt-1.5 inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-md">
+                                        <i class="fa-solid fa-location-dot text-emerald-600"></i> ${item.location_name}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            listEl.innerHTML = html;
+        }
+
+        function initLeafletMap(schedules, defaultCenter) {
+            const mapContainer = document.getElementById('interactiveMap');
+            if (!mapContainer) return;
+
+            const center = defaultCenter || [16.0544, 108.2022];
+
+            if (!leafletMap) {
+                leafletMap = L.map('interactiveMap').setView(center, 12);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; OpenStreetMap'
+                }).addTo(leafletMap);
+                markersGroup = L.featureGroup().addTo(leafletMap);
+            } else {
+                markersGroup.clearLayers();
+                if (polylineRoute) {
+                    leafletMap.removeLayer(polylineRoute);
+                    polylineRoute = null;
+                }
             }
 
-            if (validPoints.length === 1) {
-                mapFrame.src = `https://www.google.com/maps?q=${validPoints[0].latitude},${validPoints[0].longitude}&output=embed`;
-                directionsBtn.href = `https://www.google.com/maps/dir/?api=1&destination=${validPoints[0].latitude},${validPoints[0].longitude}`;
-                return;
+            const validPoints = (schedules || []).filter(s => s.latitude && s.longitude);
+            const latlngs = [];
+
+            if (validPoints.length > 0) {
+                validPoints.forEach(pt => {
+                    const latlng = [parseFloat(pt.latitude), parseFloat(pt.longitude)];
+                    latlngs.push(latlng);
+
+                    const customIcon = L.divIcon({
+                        className: 'custom-map-pin',
+                        html: `<div style="background:#059669;color:#fff;font-size:11px;font-weight:800;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.35);border:2px solid #fff;">${pt.day_number}</div>`,
+                        iconSize: [26, 26],
+                        iconAnchor: [13, 13]
+                    });
+
+                    const marker = L.marker(latlng, { icon: customIcon }).addTo(markersGroup);
+                    marker.bindPopup(`
+                        <div style="font-family: inherit; min-width: 170px;">
+                            <div style="font-weight: 800; font-size: 12px; color: #1e293b;">Ngày ${pt.day_number}: ${pt.title}</div>
+                            <div style="font-size: 11px; color: #059669; font-weight: 600; margin-top: 3px;"><i class="fa-solid fa-location-dot"></i> ${pt.location_name || ''}</div>
+                        </div>
+                    `);
+                });
+
+                if (latlngs.length > 1) {
+                    polylineRoute = L.polyline(latlngs, {
+                        color: '#059669',
+                        weight: 4,
+                        opacity: 0.85,
+                        dashArray: '6, 8'
+                    }).addTo(leafletMap);
+                }
+
+                try {
+                    leafletMap.fitBounds(markersGroup.getBounds().pad(0.2));
+                } catch(e) {
+                    leafletMap.setView(latlngs[0], 12);
+                }
+
+                const origin = validPoints[0];
+                const destination = validPoints[validPoints.length - 1];
+                const waypoints = validPoints.slice(1, -1);
+                let dirUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin.latitude},${origin.longitude}&destination=${destination.latitude},${destination.longitude}`;
+                if (waypoints.length > 0) {
+                    dirUrl += `&waypoints=${waypoints.map(w => `${w.latitude},${w.longitude}`).join('%7C')}`;
+                }
+                directionsBtn.href = dirUrl;
+            } else {
+                leafletMap.setView(center, 12);
+                directionsBtn.href = `https://www.google.com/maps/search/?api=1&query=${center[0]},${center[1]}`;
             }
 
-            // Dùng Google Map Direction Embed kết nối nối các trạm
-            const origin = validPoints[0];
-            const destination = validPoints[validPoints.length - 1];
-            const waypoints = validPoints.slice(1, -1);
+            setTimeout(() => { if (leafletMap) leafletMap.invalidateSize(); }, 300);
+        }
 
-            // Sử dụng q= thay vì saddr= để tránh lỗi iframe Google Maps mặc định bị thu nhỏ toàn thế giới
-            // Điều này hiển thị bản đồ chuẩn có ghim vị trí zoom rõ.
-            mapFrame.src = `https://www.google.com/maps?q=${origin.latitude},${origin.longitude}&output=embed&z=12`;
-
-            // Nút mở hướng dẫn chỉ đường app ngoài (Vẽ toàn bộ lộ trình saddr daddr)
-            let dirUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin.latitude},${origin.longitude}&destination=${destination.latitude},${destination.longitude}`;
-            if (waypoints.length > 0) {
-                dirUrl += `&waypoints=${waypoints.map(w => `${w.latitude},${w.longitude}`).join('%7C')}`;
+        function focusScheduleDay(dayNumber, lat, lng) {
+            document.querySelectorAll('#modalTimelineList > div').forEach(el => {
+                el.classList.remove('bg-emerald-50/70', 'border-emerald-300', 'shadow-sm');
+                el.classList.add('bg-white', 'border-slate-200');
+            });
+            const selected = document.getElementById(`timeline-item-${dayNumber}`);
+            if (selected) {
+                selected.classList.remove('bg-white', 'border-slate-200');
+                selected.classList.add('bg-emerald-50/70', 'border-emerald-300', 'shadow-sm');
             }
-            directionsBtn.href = dirUrl;
+            if (leafletMap && lat && lng) {
+                leafletMap.flyTo([lat, lng], 14, { duration: 1 });
+            }
         }
 
         function showModal() {
@@ -799,7 +974,8 @@
             setTimeout(() => {
                 modalContent.classList.remove('scale-95', 'opacity-0');
                 modalContent.classList.add('scale-100', 'opacity-100');
-            }, 10);
+                if (leafletMap) leafletMap.invalidateSize();
+            }, 50);
         }
 
         function closeItineraryModal() {
@@ -807,8 +983,7 @@
             modalContent.classList.replace('opacity-100', 'opacity-0');
             setTimeout(() => {
                 modal.classList.replace('flex', 'hidden');
-                mapFrame.src = ""; // Clear iframe để tối ưu tốc độ và không dính map cũ mở lần sau
-            }, 500);
+            }, 250);
         }
     </script>
 @endsection

@@ -69,76 +69,83 @@
         </div>
 
         {{-- DESKTOP TABLE VIEW --}}
-        <div class="hidden lg:block bg-white/90 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl overflow-hidden">
-            <table class="w-full text-left border-collapse">
-                <thead>
-                    <tr class="bg-slate-50/50 border-b border-slate-100">
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 w-16 text-center">Ảnh</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700">Tên Tour</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center">Ngày</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700">Tiêu đề - Địa điểm</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center w-32">Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-50">
-                    @forelse ($tourSchedules as $schedule)
-                        <tr class="hover:bg-slate-50/80 transition-colors group">
-                            <td class="px-6 py-4">
-                                @if ($schedule->image)
-                                    <div class="w-16 h-12 rounded-lg overflow-hidden shadow-sm border border-slate-100 mx-auto">
-                                        <img src="{{ asset($schedule->image) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                    </div>
-                                @else
-                                    <div class="w-16 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400 mx-auto">
-                                        <i class="fa-solid fa-image text-lg"></i>
-                                    </div>
-                                @endif
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="font-semibold text-slate-800">{{ $schedule->tour->name ?? 'Không có' }}</span>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-lg font-bold text-sm border border-teal-100 shadow-sm">
-                                    Ngày {{ $schedule->day_number }}
-                                </span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="font-bold text-slate-800">{{ $schedule->title }}</div>
-                                <div class="flex items-center gap-2 mt-1 text-sm text-slate-500">
-                                    <i class="fa-solid fa-location-dot text-rose-500"></i>
-                                    {{ $schedule->location_name ?? '---' }}
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <a href="{{ route('admin.tour_schedules.edit', $schedule->id) }}"
-                                        class="w-10 h-10 flex items-center justify-center text-amber-500 bg-amber-50 border border-amber-200 rounded-xl hover:bg-amber-500 hover:text-white transition-all shadow-sm">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
-                                    <form action="{{ route('admin.tour_schedules.destroy', $schedule->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa lịch trình này?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="w-10 h-10 flex items-center justify-center text-rose-500 bg-rose-50 border border-rose-200 rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-sm">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
+        <div class="hidden lg:block bg-white border border-slate-200 shadow-sm rounded-3xl overflow-hidden">
+            <div class="overflow-x-auto w-full">
+                <table class="w-full text-left border-collapse min-w-[850px]">
+                    <thead>
+                        <tr class="bg-slate-50/80 border-b border-slate-100">
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-20 text-center">Ảnh</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider min-w-[220px]">Tên Tour</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center w-28">Ngày</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider min-w-[280px]">Tiêu đề & Địa điểm</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center w-28">Thao tác</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="py-16 text-center">
-                                <div class="flex flex-col items-center justify-center text-slate-400">
-                                    <i class="fa-regular fa-calendar-xmark text-5xl mb-4 text-slate-300"></i>
-                                    <p class="text-lg font-medium">Chưa có lịch trình nào!</p>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        @forelse ($tourSchedules as $schedule)
+                            <tr class="hover:bg-slate-50/80 transition-colors group">
+                                <td class="px-5 py-4 text-center">
+                                    @if ($schedule->image)
+                                        <div class="w-16 h-12 rounded-xl overflow-hidden shadow-sm border border-slate-100 mx-auto">
+                                            <img src="{{ Str::startsWith($schedule->image, ['http://', 'https://']) ? $schedule->image : asset($schedule->image) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                        </div>
+                                    @else
+                                        <div class="w-16 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 mx-auto">
+                                            <i class="fa-solid fa-image text-sm"></i>
+                                        </div>
+                                    @endif
+                                </td>
+                                <td class="px-5 py-4">
+                                    <span class="font-semibold text-slate-800 line-clamp-2">{{ $schedule->tour->name ?? 'Không có' }}</span>
+                                </td>
+                                <td class="px-5 py-4 text-center">
+                                    <span class="inline-flex px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg font-bold text-xs border border-emerald-200 shadow-sm whitespace-nowrap">
+                                        Ngày {{ $schedule->day_number }}
+                                    </span>
+                                </td>
+                                <td class="px-5 py-4">
+                                    <div class="font-bold text-slate-800 line-clamp-1">{{ $schedule->title }}</div>
+                                    <div class="flex items-center gap-2 mt-1 text-xs text-slate-500">
+                                        <i class="fa-solid fa-location-dot text-rose-500"></i>
+                                        <span>{{ $schedule->location_name ?? '---' }}</span>
+                                        @if($schedule->latitude && $schedule->longitude)
+                                            <span class="text-[10px] text-slate-400">({{ round($schedule->latitude, 2) }}, {{ round($schedule->longitude, 2) }})</span>
+                                        @endif
+                                    </div>
+                                </td>
+                                <td class="px-5 py-4 text-center">
+                                    <div class="flex items-center justify-center gap-2">
+                                        <a href="{{ route('admin.tour_schedules.edit', $schedule->id) }}"
+                                            class="inline-flex items-center justify-center w-9 h-9 text-amber-600 bg-amber-50 hover:bg-amber-500 hover:text-white rounded-xl border border-amber-200 transition-all shadow-sm"
+                                            title="Chỉnh sửa">
+                                            <i class="fa-solid fa-pen text-xs"></i>
+                                        </a>
+                                        <form action="{{ route('admin.tour_schedules.destroy', $schedule->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa lịch trình này?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="inline-flex items-center justify-center w-9 h-9 text-rose-600 bg-rose-50 hover:bg-rose-500 hover:text-white rounded-xl border border-rose-200 transition-all shadow-sm"
+                                                title="Xóa">
+                                                <i class="fa-solid fa-trash text-xs"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="py-16 text-center">
+                                    <div class="flex flex-col items-center justify-center text-slate-400">
+                                        <i class="fa-regular fa-calendar-xmark text-4xl mb-3 text-slate-300"></i>
+                                        <p class="text-sm font-medium">Chưa có lịch trình nào được tìm thấy!</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
             @if($tourSchedules->hasPages())
-                <div class="px-6 py-4 border-t border-slate-50 bg-slate-50/50">
+                <div class="px-6 py-4 border-t border-slate-100 bg-slate-50/50">
                     {{ $tourSchedules->links('vendor.pagination.tailwind') }}
                 </div>
             @endif

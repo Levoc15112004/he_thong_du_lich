@@ -85,13 +85,18 @@
                 ],
 
                 [
-                    'title' => 'Quản lý hỗ trợ',
+                    'title' => 'Hỗ trợ & Đánh giá',
                     'icon' => 'headphones',
                     'submenu' => [
                         [
                             'text' => 'Hỗ trợ khách hàng',
                             'icon' => 'message-circle',
                             'route' => route('admin.chat.index'),
+                        ],
+                        [
+                            'text' => 'Đánh giá từ khách',
+                            'icon' => 'star',
+                            'route' => route('admin.reviews.index'),
                         ],
                     ],
                 ],

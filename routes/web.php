@@ -33,6 +33,7 @@ use App\Http\Controllers\User\ReviewController as UserReviewController;
 use App\Http\Controllers\User\TourBookedController;
 use App\Http\Controllers\User\TourDetailController;
 use App\Http\Controllers\User\WeatherController;
+use App\Http\Controllers\User\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -181,6 +182,10 @@ Route::prefix('/')->group(function () {
 
     Route::get('/tour-detail/{id}', [TourDetailController::class, 'index'])->name('user.tourDetail.index');
     Route::get('/tour/schedule/{id}/json', [TourDetailController::class, 'getScheduleByTour']);
+
+    // SEO / GEO / CRAWLER
+    Route::get('/sitemap.xml', [SitemapController::class, 'sitemap'])->name('seo.sitemap');
+    Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('seo.robots');
 });
 
 Route::get('/auth/google', [GoogleController::class, 'redirect'])->name('google.login');

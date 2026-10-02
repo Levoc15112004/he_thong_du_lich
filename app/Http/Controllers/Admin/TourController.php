@@ -79,6 +79,7 @@ class TourController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:tours,name',
             'time' => 'required|string|max:255',
+            'price' => 'nullable|numeric|min:0',
             'sale_price' => 'required|numeric|min:0',
             'file' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'files.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -114,9 +115,14 @@ class TourController extends Controller
         }
 
         // ---- Tạo tour ----
+        $calculatedPrice = !empty($request->price) && $request->price > 0 
+            ? $request->price 
+            : round($request->sale_price * 1.15);
+
         $tour = Tour::create([
             'name' => $validated['name'],
             'time' => $request->time,
+            'price' => $calculatedPrice,
             'sale_price' => $request->sale_price,
             'image' => $mainImage,
             'start_location' => $request->start_location,
@@ -191,6 +197,7 @@ class TourController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:tours,name,'.$tour->id,
             'time' => 'required|string|max:255',
+            'price' => 'nullable|numeric|min:0',
             'sale_price' => 'required|numeric|min:0',
             'file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'files.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -230,9 +237,14 @@ class TourController extends Controller
         }
 
         // 3. Update tour
+        $calculatedPrice = !empty($request->price) && $request->price > 0 
+            ? $request->price 
+            : ($tour->price ?: round($validated['sale_price'] * 1.15));
+
         $tour->update([
             'name' => $validated['name'],
             'time' => $validated['time'],
+            'price' => $calculatedPrice,
             'sale_price' => $validated['sale_price'],
             'start_location' => $validated['start_location'],
             'end_location' => $validated['end_location'],

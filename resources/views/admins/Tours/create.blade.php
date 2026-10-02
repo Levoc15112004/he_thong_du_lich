@@ -58,8 +58,8 @@
                         <h5 class="text-lg font-bold text-slate-800">Thông tin cơ bản</h5>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="md:col-span-2">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-3">
                             <label class="block text-slate-700 font-semibold mb-2">
                                 Tên tour <span class="text-rose-500">*</span>
                             </label>
@@ -67,7 +67,15 @@
                         </div>
 
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Giá tour <span class="text-rose-500">*</span></label>
+                            <label class="block text-slate-700 font-semibold mb-2">Giá niêm yết (Gốc)</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-medium">VNĐ</span>
+                                <input type="number" name="price" value="{{ old('price') }}" placeholder="Tự tính nếu để trống" min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-14 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-700 font-semibold mb-2">Giá bán / Khuyến mãi <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-medium">VNĐ</span>
                                 <input type="number" name="sale_price" value="{{ old('sale_price') }}" placeholder="0" min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-14 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300 @error('sale_price') border-rose-500 @enderror">

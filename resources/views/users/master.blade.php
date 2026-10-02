@@ -4,7 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>WanderVibe - Tour Du Lịch Việt Nam & Trải Nghiệm Thế Hệ Mới</title>
+
+    {{-- ================= SEO META TAGS ================= --}}
+    <title>@yield('meta_title', 'WanderVibe - Tour Du Lịch Việt Nam Uy Tín & Giá Tốt Nhất 2026')</title>
+    <meta name="description" content="@yield('meta_description', 'Khám phá hơn 200+ tour du lịch trọn gói cao cấp khắp Việt Nam: Hạ Long, Sapa, Đà Nẵng, Hội An, Phú Quốc, Đà Lạt cùng WanderVibe. Giữ chỗ tức thì, bảo hiểm 100tr, cam kết giá tốt.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'tour du lich, du lich viet nam, tour ha long, tour sapa, tour da nang, tour phu quoc, tour da lat, dat tour gia re, tour cao cap, wandervibe')">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="WanderVibe Travel Vietnam">
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+    <link rel="alternate" hreflang="vi-VN" href="@yield('canonical', url()->current())">
+
+    {{-- ================= GEO META TAGS (VIETNAM) ================= --}}
+    <meta name="geo.region" content="VN">
+    <meta name="geo.placename" content="Vietnam">
+    <meta name="geo.position" content="16.0544;107.5459">
+    <meta name="ICBM" content="16.0544, 107.5459">
+
+    {{-- ================= OPEN GRAPH / SOCIAL ================= --}}
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:site_name" content="WanderVibe">
+    <meta property="og:url" content="@yield('canonical', url()->current())">
+    <meta property="og:title" content="@yield('meta_title', 'WanderVibe - Đặt Tour Du Lịch Trọn Gói Uy Tín')">
+    <meta property="og:description" content="@yield('meta_description', 'Khám phá 200+ tour du lịch khắp Việt Nam với giá ưu đãi, hành trình hấp dẫn và dịch vụ chuẩn 5 sao.')">
+    <meta property="og:image" content="@yield('og_image', asset('assets/img/logo_title.svg'))">
+
+    {{-- ================= TWITTER CARDS ================= --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('meta_title', 'WanderVibe - Tour Du Lịch Việt Nam')">
+    <meta name="twitter:description" content="@yield('meta_description', 'Khám phá 200+ tour du lịch khắp Việt Nam với giá ưu đãi cùng WanderVibe.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('assets/img/logo_title.svg'))">
+
+    {{-- ================= STRUCTURED DATA SCHEMA (JSON-LD) ================= --}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "{{ url('/') }}#website",
+          "url": "{{ url('/') }}",
+          "name": "WanderVibe",
+          "description": "Nền tảng đặt tour du lịch trực tuyến số 1 Việt Nam",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "{{ route('user.search') }}?keyword={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "TravelAgency",
+          "@id": "{{ url('/') }}#agency",
+          "name": "WanderVibe Travel Vietnam",
+          "url": "{{ url('/') }}",
+          "logo": "{{ asset('assets/img/logo_title.svg') }}",
+          "telephone": "+8419006868",
+          "email": "cskh@wandervibe.vn",
+          "priceRange": "1.000.000 - 25.000.000 VND",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Tràng Tiền, Hoàn Kiếm",
+            "addressLocality": "Hà Nội",
+            "addressRegion": "Hà Nội",
+            "addressCountry": "VN"
+          }
+        }
+      ]
+    }
+    </script>
+    @yield('schema')
+
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/img/logo_title.svg') }}">
     <script>
       if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -27,13 +96,37 @@
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            brand: {
-              50: '#f0fdf4',
-              100: '#dcfce7',
-              400: '#34d399',
+            ocean: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#0f172a',
+            },
+            coral: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+            },
+            jade: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
               500: '#10b981',
               600: '#059669',
               700: '#047857',
+            },
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              400: '#38bdf8',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
             }
           },
           animation: {
@@ -61,14 +154,14 @@
   </script>
 
   <style>
-    /* Luminous Pearlescent Light Background */
+    /* Luminous Clean Slate Travel Background */
     body {
       background-color: #f8fafc;
       background-image: 
-        radial-gradient(at 10% 12%, rgba(16, 185, 129, 0.08) 0px, transparent 40%),
-        radial-gradient(at 90% 20%, rgba(6, 182, 212, 0.07) 0px, transparent 45%),
-        radial-gradient(at 50% 65%, rgba(245, 158, 11, 0.05) 0px, transparent 50%),
-        radial-gradient(at 85% 85%, rgba(16, 185, 129, 0.07) 0px, transparent 45%);
+        radial-gradient(at 10% 12%, rgba(2, 132, 199, 0.05) 0px, transparent 40%),
+        radial-gradient(at 90% 20%, rgba(249, 115, 22, 0.04) 0px, transparent 45%),
+        radial-gradient(at 50% 65%, rgba(16, 185, 129, 0.04) 0px, transparent 50%),
+        radial-gradient(at 85% 85%, rgba(2, 132, 199, 0.05) 0px, transparent 45%);
       background-attachment: fixed;
     }
 
@@ -1051,6 +1144,15 @@
         <i class="fa-solid fa-moon text-lg dark:hidden group-hover:rotate-12 transition-transform"></i>
         <i class="fa-solid fa-sun text-lg hidden dark:inline-block text-amber-400 group-hover:rotate-45 transition-transform"></i>
     </button>
+
+    <!-- Quick Hotline Floating Button -->
+    <a href="tel:19006868" class="fixed bottom-24 right-7 lg:right-9 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-xl shadow-orange-500/30 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group" title="Gọi Hotline Tư Vấn 1900 6868" aria-label="Hotline Tư Vấn">
+        <i class="fa-solid fa-phone-volume text-lg group-hover:rotate-12 transition-transform"></i>
+        <div class="absolute right-[125%] whitespace-nowrap bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            Hotline 24/7: 1900 6868
+            <div class="absolute top-1/2 -translate-y-1/2 -right-1 w-2 h-2 bg-slate-900 rotate-45"></div>
+        </div>
+    </a>
 
     <!-- AI Chatbot Widget -->
     <div id="aiChatbotWidget" class="fixed bottom-6 right-6 lg:right-8 z-50 font-sans">

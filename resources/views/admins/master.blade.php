@@ -108,9 +108,9 @@
         <div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden lg:hidden z-30 transition-opacity duration-300"></div>
 
         <!-- CONTENT -->
-        <div class="flex-1 pt-20 lg:pt-24 p-4 sm:p-6 text-[13px] transition-all duration-300
+        <div class="flex-1 min-w-0 pt-20 lg:pt-24 p-4 sm:p-6 text-[13px] transition-all duration-300
                 lg:pl-64">
-            <div class="max-w-[1600px] mx-auto">
+            <div class="max-w-[1600px] mx-auto w-full">
                 @yield('home')
             </div>
         </div>

@@ -362,16 +362,15 @@
                                     class="sticky top-4 h-[24rem] rounded-2xl overflow-hidden
                                 border border-gray-200 bg-white shadow">
 
-                                    <iframe id="googleMapFrame" class="w-full h-full border-0" loading="lazy"></iframe>
+                                    <div id="interactiveMap" class="w-full h-full min-h-[24rem] z-0"></div>
 
                                     <!-- DIRECTION BUTTON -->
-                                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2">
+                                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-[1000] w-max">
                                         <a id="directionsButton" target="_blank"
                                             class="flex items-center gap-2 px-5 py-2.5
-                                      bg-indigo-600 hover:bg-indigo-700
-                                      text-white font-bold rounded-full shadow-lg transition">
-                                            <i class="fa-solid fa-location-arrow"></i>
-                                            Mở chỉ đường
+                                      bg-slate-900/90 hover:bg-slate-900 text-white font-bold rounded-full shadow-lg transition border border-white/20 text-xs sm:text-sm">
+                                            <i class="fa-solid fa-route text-emerald-400"></i>
+                                            Mở chỉ đường Google Maps
                                         </a>
                                     </div>
                                 </div>
@@ -440,60 +439,145 @@
     </style>
 
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <script>
         const modal = document.getElementById('itineraryModal');
         const modalContent = document.getElementById('modalContent');
         const timeline = document.getElementById('itineraryTimeline');
-        const mapFrame = document.getElementById('googleMapFrame');
         const directionsBtn = document.getElementById('directionsButton');
 
-        let currentLocation = null;
+        let leafletMap = null, markersGroup = null, polylineRoute = null;
 
         function openItineraryModal(orderId) {
+            showModal();
+            timeline.innerHTML = '<div class="text-center py-10 text-slate-400"><i class="fa-solid fa-spinner fa-spin text-xl mr-2 text-indigo-500"></i> Đang tải dữ liệu...</div>';
+
             fetch(`/my-tours/schedule/${orderId}/json`)
                 .then(res => res.json())
                 .then(data => {
                     renderTimeline(data.schedules);
-                    showModal();
+                    initBookedMap(data.schedules, data.center);
+                })
+                .catch(err => {
+                    timeline.innerHTML = '<div class="text-center py-8 text-rose-500 font-semibold text-xs">Không thể tải lịch trình. Vui lòng thử lại!</div>';
                 });
         }
 
         function renderTimeline(schedules) {
             timeline.innerHTML = '';
+            if (!schedules || schedules.length === 0) {
+                timeline.innerHTML = '<div class="text-center py-8 text-slate-400 text-xs">Chưa có lịch trình chi tiết.</div>';
+                return;
+            }
+
             schedules.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className =
-                    `p-6 rounded-3xl border border-slate-100 transition-all duration-300 cursor-pointer hover:bg-blue-50/50 group ${index === 0 ? 'bg-blue-50/30 border-blue-100' : 'bg-white'}`;
+                    `p-4 rounded-2xl border transition-all cursor-pointer ${index === 0 ? 'bg-indigo-50/70 border-indigo-300 shadow-sm' : 'bg-white border-slate-200 hover:border-indigo-200 hover:bg-slate-50'}`;
                 div.innerHTML = `
-                <div class="flex gap-4">
-                    <div class="w-10 h-10 shrink-0 rounded-xl bg-white flex items-center justify-center text-blue-600 font-bold shadow-sm group-hover:scale-110 transition">
+                <div class="flex gap-3">
+                    <div class="w-8 h-8 shrink-0 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
                         ${item.day_number}
                     </div>
-                    <div>
-                        <h4 class="text-lg font-bold text-slate-900 mb-2">${item.title}</h4>
-                        <p class="text-sm text-slate-500 leading-relaxed font-medium mb-3">${item.description}</p>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-sm font-bold text-slate-900 mb-1 line-clamp-1">${item.title}</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-2">${item.description || ''}</p>
                         ${item.location_name ? `
-                                    <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase text-blue-600 bg-white px-3 py-1.5 rounded-lg shadow-sm">
-                                        <i class="fas fa-location-dot"></i> ${item.location_name}
-                                    </span>
-                                ` : ''}
+                            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-indigo-700 bg-indigo-100/60 px-2 py-0.5 rounded-md">
+                                <i class="fas fa-location-dot"></i> ${item.location_name}
+                            </span>
+                        ` : ''}
                     </div>
                 </div>
             `;
                 div.onclick = () => {
-                    document.querySelectorAll('#itineraryTimeline > div').forEach(d => d.classList.replace(
-                        'bg-blue-50/30', 'bg-white'));
-                    div.classList.replace('bg-white', 'bg-blue-50/30');
-                    loadMap(item.latitude, item.longitude);
+                    document.querySelectorAll('#itineraryTimeline > div').forEach(d => {
+                        d.classList.remove('bg-indigo-50/70', 'border-indigo-300', 'shadow-sm');
+                        d.classList.add('bg-white', 'border-slate-200');
+                    });
+                    div.classList.remove('bg-white', 'border-slate-200');
+                    div.classList.add('bg-indigo-50/70', 'border-indigo-300', 'shadow-sm');
+                    if (leafletMap && item.latitude && item.longitude) {
+                        leafletMap.flyTo([item.latitude, item.longitude], 14, { duration: 1 });
+                    }
                 };
                 timeline.appendChild(div);
-                if (index === 0) loadMap(item.latitude, item.longitude);
             });
         }
 
-        function loadMap(lat, lng) {
-            mapFrame.src = `https://www.google.com/maps?q=${lat},${lng}&output=embed`;
-            directionsBtn.href = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+        function initBookedMap(schedules, defaultCenter) {
+            const center = defaultCenter || [16.0544, 108.2022];
+
+            if (!leafletMap) {
+                leafletMap = L.map('interactiveMap').setView(center, 12);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; OpenStreetMap'
+                }).addTo(leafletMap);
+                markersGroup = L.featureGroup().addTo(leafletMap);
+            } else {
+                markersGroup.clearLayers();
+                if (polylineRoute) {
+                    leafletMap.removeLayer(polylineRoute);
+                    polylineRoute = null;
+                }
+            }
+
+            const validPoints = (schedules || []).filter(s => s.latitude && s.longitude);
+            const latlngs = [];
+
+            if (validPoints.length > 0) {
+                validPoints.forEach(pt => {
+                    const latlng = [parseFloat(pt.latitude), parseFloat(pt.longitude)];
+                    latlngs.push(latlng);
+
+                    const customIcon = L.divIcon({
+                        className: 'custom-map-pin',
+                        html: `<div style="background:#4f46e5;color:#fff;font-size:11px;font-weight:800;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.35);border:2px solid #fff;">${pt.day_number}</div>`,
+                        iconSize: [26, 26],
+                        iconAnchor: [13, 13]
+                    });
+
+                    const marker = L.marker(latlng, { icon: customIcon }).addTo(markersGroup);
+                    marker.bindPopup(`
+                        <div style="font-family: inherit; min-width: 170px;">
+                            <div style="font-weight: 800; font-size: 12px; color: #1e293b;">Ngày ${pt.day_number}: ${pt.title}</div>
+                            <div style="font-size: 11px; color: #4f46e5; font-weight: 600; margin-top: 3px;"><i class="fa-solid fa-location-dot"></i> ${pt.location_name || ''}</div>
+                        </div>
+                    `);
+                });
+
+                if (latlngs.length > 1) {
+                    polylineRoute = L.polyline(latlngs, {
+                        color: '#4f46e5',
+                        weight: 4,
+                        opacity: 0.85,
+                        dashArray: '6, 8'
+                    }).addTo(leafletMap);
+                }
+
+                try {
+                    leafletMap.fitBounds(markersGroup.getBounds().pad(0.2));
+                } catch(e) {
+                    leafletMap.setView(latlngs[0], 12);
+                }
+
+                const origin = validPoints[0];
+                const destination = validPoints[validPoints.length - 1];
+                const waypoints = validPoints.slice(1, -1);
+                let dirUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin.latitude},${origin.longitude}&destination=${destination.latitude},${destination.longitude}`;
+                if (waypoints.length > 0) {
+                    dirUrl += `&waypoints=${waypoints.map(w => `${w.latitude},${w.longitude}`).join('%7C')}`;
+                }
+                directionsBtn.href = dirUrl;
+            } else {
+                leafletMap.setView(center, 12);
+                directionsBtn.href = `https://www.google.com/maps/search/?api=1&query=${center[0]},${center[1]}`;
+            }
+
+            setTimeout(() => { if (leafletMap) leafletMap.invalidateSize(); }, 300);
         }
 
         function showModal() {
@@ -502,7 +586,8 @@
             setTimeout(() => {
                 modalContent.classList.remove('scale-95', 'opacity-0');
                 modalContent.classList.add('scale-100', 'opacity-100');
-            }, 10);
+                if (leafletMap) leafletMap.invalidateSize();
+            }, 50);
         }
 
         function closeItineraryModal() {
@@ -510,7 +595,7 @@
             modalContent.classList.replace('opacity-100', 'opacity-0');
             setTimeout(() => {
                 modal.classList.replace('flex', 'hidden');
-            }, 500);
+            }, 250);
         }
     </script>
 @endsection

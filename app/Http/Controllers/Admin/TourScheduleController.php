@@ -13,9 +13,28 @@ class TourScheduleController extends Controller
     /**
      *  Danh sách lịch trình
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tourSchedules = TourSchedule::with('tour')->latest()->paginate(5);
+        $keyword = $request->query('keyword');
+
+        $query = TourSchedule::with('tour');
+
+        if ($keyword) {
+            $query->where(function ($q) use ($keyword) {
+                $q->where('title', 'like', "%{$keyword}%")
+                    ->orWhere('location_name', 'like', "%{$keyword}%")
+                    ->orWhere('day_number', 'like', "%{$keyword}%")
+                    ->orWhereHas('tour', function ($tq) use ($keyword) {
+                        $tq->where('name', 'like', "%{$keyword}%");
+                    });
+            });
+        }
+
+        $tourSchedules = $query->orderBy('tour_id', 'desc')
+            ->orderBy('day_number', 'asc')
+            ->paginate(10)
+            ->withQueryString();
+
         return view('admins.TourSchedules.index', compact('tourSchedules'));
     }
 

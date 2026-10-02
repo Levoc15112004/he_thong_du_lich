@@ -71,7 +71,7 @@
                 <div class="premium-card group flex flex-col h-full overflow-hidden">
                     {{-- Tour Image Area --}}
                     <div class="relative h-52 overflow-hidden">
-                        <img src="{{ asset($tour->image) }}" alt="{{ $tour->name }}"
+                        <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" alt="{{ $tour->name }}"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
 
                         <div class="absolute top-5 left-5 flex flex-col gap-2">

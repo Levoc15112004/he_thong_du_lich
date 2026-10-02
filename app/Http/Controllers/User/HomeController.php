@@ -132,13 +132,13 @@ $banners = Banner::latest()->take(4)->get();
             ->limit(8)
             ->get();
 
-        // 8 Điểm đến
+        // Điểm đến hấp dẫn
         $destinations = Tour::where('status', 1)
             ->whereNotNull('end_location')
             ->select('end_location', DB::raw('MAX(image) as image'), DB::raw('COUNT(*) as total_tours'))
             ->groupBy('end_location')
             ->orderByDesc('total_tours')
-            ->limit(8)
+            ->limit(12)
             ->get();
 
         // Thời tiết OpenWeather (fallback an toàn nếu API lỗi hoặc hết quota)

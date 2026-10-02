@@ -13,12 +13,35 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::with(['tour', 'user'])
-            ->orderBy('id', 'desc')
-            ->paginate(7);
-        return view('admins.Orders.index', compact('orders'));
+        $query = Order::with(['tour', 'user'])->orderBy('id', 'desc');
+
+        if ($request->filled('keyword')) {
+            $kw = trim($request->keyword);
+            $query->where(function ($q) use ($kw) {
+                $q->where('id', $kw)
+                  ->orWhere('name', 'like', "%{$kw}%")
+                  ->orWhere('phone', 'like', "%{$kw}%")
+                  ->orWhere('email', 'like', "%{$kw}%");
+            });
+        }
+
+        if ($request->filled('status') && $request->status !== 'all') {
+            $query->where('status', (int) $request->status);
+        }
+
+        $orders = $query->paginate(10)->withQueryString();
+        $totalCount = Order::count();
+        $statusCounts = [
+            'pending' => Order::where('status', 0)->count(),
+            'deposited' => Order::where('status', 1)->count(),
+            'paid' => Order::where('status', 2)->count(),
+            'completed' => Order::where('status', 3)->count(),
+            'cancelled' => Order::where('status', 4)->count(),
+        ];
+
+        return view('admins.Orders.index', compact('orders', 'totalCount', 'statusCounts'));
     }
 
     /**

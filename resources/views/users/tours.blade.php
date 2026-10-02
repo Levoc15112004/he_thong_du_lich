@@ -1,5 +1,9 @@
 @extends('users.master')
 
+@section('meta_title', 'Tất Cả 200+ Tour Du Lịch Việt Nam Uy Tín & Giá Tốt 2026 | WanderVibe')
+@section('meta_description', 'Khám phá hơn 200+ tour du lịch trọn gói cao cấp và tiết kiệm khắp Việt Nam: Hạ Long, Sapa, Đà Nẵng, Hội An, Phú Quốc, Đà Lạt. Đặt ngay nhận ưu đãi đến 20%.')
+@section('canonical', route('user.tours'))
+
 @section('home')
 <style>
     .search-container {
@@ -71,7 +75,7 @@
                 <div class="premium-card group flex flex-col h-full overflow-hidden">
                     {{-- Tour Image Area --}}
                     <div class="relative h-52 overflow-hidden">
-                        <img src="{{ asset($tour->image) }}" alt="{{ $tour->name }}"
+                        <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" alt="{{ $tour->name }}"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
 
                         <div class="absolute top-5 left-5 flex flex-col gap-2">

@@ -15,7 +15,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::latest()->paginate(10);
+        $reviews = Review::with(['user', 'order.tour'])->latest()->paginate(10);
         return view('admins.Reviews.index', compact('reviews'));
     }
 
