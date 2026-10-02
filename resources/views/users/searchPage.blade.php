@@ -2,10 +2,6 @@
 
 @section('home')
 <style>
-    .search-container {
-        font-family: 'Roboto', sans-serif;
-    }
-
     .text-gradient {
         background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
         -webkit-background-clip: text;

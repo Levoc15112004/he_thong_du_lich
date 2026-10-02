@@ -6,30 +6,30 @@
     <div class="flex flex-col lg:flex-row gap-12">
 
         <!-- Article -->
-        <article class="lg:w-2/3 bg-white rounded-2xl overflow-hidden shadow-sm p-6 md:p-10">
+        <article class="lg:w-2/3 bg-white dark:bg-slate-800/95 rounded-3xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-700/80 p-6 md:p-10">
 
             <!-- Breadcrumb -->
-            <nav class="flex mb-6 text-base text-gray-500">
-                <a href="{{ url('/blog') }}" class="hover:text-blue-600">Blog</a>
+            <nav class="flex mb-6 text-sm text-slate-500 dark:text-slate-400">
+                <a href="{{ url('/blog') }}" class="hover:text-emerald-600 transition-colors">Cẩm Nang Du Lịch</a>
                 <span class="mx-2">/</span>
-                <span class="text-gray-800 font-medium">{{ $blog->title }}</span>
+                <span class="text-slate-800 dark:text-slate-200 font-medium truncate">{{ $blog->title }}</span>
             </nav>
 
             <!-- Title -->
             <header class="mb-8">
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 leading-tight tracking-tight">
                     {{ $blog->title }}
                 </h1>
 
-                <div class="flex items-center gap-4 text-gray-500 text-base">
+                <div class="flex items-center gap-4 text-slate-500 dark:text-slate-400 text-sm">
                     <img src="https://i.pravatar.cc/150?u={{ $blog->id }}"
-                         class="w-8 h-8 rounded-full">
-                    <span class="font-medium text-gray-900">Admin</span>
+                         class="w-8 h-8 rounded-full shadow-xs">
+                    <span class="font-bold text-slate-900 dark:text-white">WanderVibe Editor</span>
 
                     <span>•</span>
 
                     <span>
-                        <i class="far fa-calendar-alt mr-1"></i>
+                        <i class="far fa-calendar-alt mr-1 text-emerald-500"></i>
                         {{ $blog->created_at->format('d/m/Y') }}
                     </span>
                 </div>
@@ -71,30 +71,30 @@
         <aside class="lg:w-1/3 space-y-8">
 
             <!-- Search -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm">
-                <h3 class="text-lg font-bold mb-4">Tìm kiếm bài viết</h3>
+            <div class="bg-white dark:bg-slate-800/90 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700/80">
+                <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-4">Tìm Kiếm Bài Viết</h3>
                 <input type="text"
                        placeholder="Nhập từ khóa..."
-                       class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500">
+                       class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-sm">
             </div>
 
             <!-- Popular -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm">
-                <h3 class="text-2xl font-bold mb-6">Bài viết phổ biến</h3>
+            <div class="bg-white dark:bg-slate-800/90 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700/80">
+                <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mb-6">Bài Viết Phổ Biến</h3>
 
                 <div class="space-y-5">
                     @foreach($popularBlogs as $item)
                         <a href="{{ route('blog.show', $item->id) }}" class="flex gap-4 group">
 
                             <img src="{{ asset($item->image) }}"
-                                 class="w-20 h-20 object-cover rounded-lg">
+                                 class="w-20 h-20 object-cover rounded-xl shadow-xs shrink-0">
 
                             <div>
-                                <h4 class="font-semibold text-xl group-hover:text-blue-600 line-clamp-2">
+                                <h4 class="font-bold text-base text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors line-clamp-2 leading-snug">
                                     {{ $item->title }}
                                 </h4>
 
-                                <span class="text-base text-gray-400">
+                                <span class="text-xs font-medium text-slate-400 dark:text-slate-500 mt-1 block">
                                     {{ $item->created_at->format('d/m/Y') }}
                                 </span>
                             </div>
@@ -110,28 +110,33 @@
 
     <!-- Related -->
     <section class="mt-20">
-        <h2 class="text-2xl font-bold mb-8">Có thể bạn quan tâm</h2>
+        <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">Có Thể Bạn Quan Tâm</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
             @foreach($relatedBlogs as $item)
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                <div class="bg-white dark:bg-slate-800/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700/80 group">
 
-                    <img src="{{ asset($item->image) }}"
-                         class="w-full h-48 object-cover">
+                    <a href="{{ route('blog.show', $item->id) }}" class="block overflow-hidden h-48">
+                        <img src="{{ asset($item->image) }}"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </a>
 
-                    <div class="p-5">
-                        <h3 class="font-bold text-lg line-clamp-2 mb-2">
-                            {{ $item->title }}
-                        </h3>
+                    <div class="p-6">
+                        <a href="{{ route('blog.show', $item->id) }}">
+                            <h3 class="font-extrabold text-lg text-slate-900 dark:text-white line-clamp-2 mb-2 group-hover:text-emerald-500 transition-colors">
+                                {{ $item->title }}
+                            </h3>
+                        </a>
 
-                        <p class="text-gray-500 text-base line-clamp-2 mb-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 mb-4 leading-relaxed">
                             {{ \Illuminate\Support\Str::limit(strip_tags($item->content), 120) }}
                         </p>
 
                         <a href="{{ route('blog.show', $item->id) }}"
-                           class="text-blue-600 font-semibold text-base hover:underline">
-                            Đọc tiếp →
+                           class="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold text-sm hover:underline">
+                            <span>Đọc tiếp</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
                     </div>
 

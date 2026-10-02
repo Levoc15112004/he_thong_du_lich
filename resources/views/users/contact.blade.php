@@ -2,10 +2,6 @@
 
 @section('home')
 <style>
-    .contact-container {
-        font-family: 'Roboto', sans-serif;
-    }
-
     .text-gradient {
         background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
         -webkit-background-clip: text;
@@ -88,36 +84,39 @@
             <!-- LEFT: CONTACT INFO (BENTO STYLE) -->
             <div class="lg:col-span-4 space-y-6">
                 {{-- Address --}}
-                <div class="premium-card p-8 group">
-                    <div class="icon-box bg-blue-50 text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white group-hover:rotate-6">
-                        <i class="fas fa-map-location-dot text-xl"></i>
+                <div class="bg-white dark:bg-slate-800/90 rounded-3xl p-7 border border-slate-100 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-location-dot"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3 ">Văn phòng chính</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed font-medium">
-                        98 phố Dương Quảng Hàm, Nghĩa Đô, Cầu Giấy, Hà Nội
+                    <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-1.5">Trụ Sở Chính</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed font-medium">
+                        Tòa nhà Landmark 81, P. 22, Q. Bình Thạnh, TP. Hồ Chí Minh
+                    </p>
+                    <p class="text-xs text-slate-400 dark:text-slate-400 mt-2 font-normal pt-2 border-t border-slate-100 dark:border-slate-700/60">
+                        Chi nhánh HN: 98 phố Dương Quảng Hàm, Q. Cầu Giấy, Hà Nội
                     </p>
                 </div>
 
                 {{-- Phone --}}
-                <div class="premium-card p-8 group">
-                    <div class="icon-box bg-emerald-50 text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white group-hover:rotate-6">
-                        <i class="fas fa-phone-volume text-xl"></i>
+                <div class="bg-white dark:bg-slate-800/90 rounded-3xl p-7 border border-slate-100 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-phone-volume"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 ">Hotline Tư vấn</h3>
-                    <p class="text-slate-400 text-xs font-bold   mb-2">Miễn phí 24/7</p>
-                    <a href="tel:1900123456" class="text-2xl font-bold text-slate-900 hover:text-blue-600 transition-colors er">
-                        1900 123 456
+                    <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-1">Hotline Đặt Tour 24/7</h3>
+                    <p class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">Tư vấn miễn phí 24/7</p>
+                    <a href="tel:1900888999" class="text-2xl font-black text-slate-900 dark:text-white hover:text-emerald-500 transition-colors block">
+                        1900 888 999
                     </a>
                 </div>
 
                 {{-- Email --}}
-                <div class="premium-card p-8 group">
-                    <div class="icon-box bg-violet-50 text-violet-600 mb-6 group-hover:bg-violet-600 group-hover:text-white group-hover:rotate-6">
-                        <i class="fas fa-envelope-open-text text-xl"></i>
+                <div class="bg-white dark:bg-slate-800/90 rounded-3xl p-7 border border-slate-100 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                        <i class="fa-regular fa-envelope"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 ">Email tư vấn & hỗ trợ</h3>
-                    <p class="text-slate-400 text-xs font-bold   mb-2">Phản hồi nhanh</p>
-                    <a href="mailto:hello@wandervibe.me" class="text-lg font-bold text-slate-900 hover:text-emerald-600 transition-colors">
+                    <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-1">Email Tư Vấn & Báo Giá</h3>
+                    <p class="text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">Phản hồi trong 10 phút</p>
+                    <a href="mailto:hello@wandervibe.me" class="text-base font-extrabold text-slate-900 dark:text-white hover:text-emerald-500 transition-colors block">
                         hello@wandervibe.me
                     </a>
                 </div>
@@ -125,59 +124,76 @@
 
             <!-- RIGHT: CONTACT FORM -->
             <div class="lg:col-span-8">
-                <div class="premium-card p-10 md:p-14 bg-white relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 blur-[80px] rounded-full"></div>
+                <div class="bg-white dark:bg-slate-800/95 rounded-3xl p-8 sm:p-12 shadow-xl dark:shadow-2xl border border-slate-200 dark:border-slate-700/80 relative overflow-hidden backdrop-blur-xl">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 dark:bg-emerald-500/5 blur-[80px] rounded-full pointer-events-none"></div>
 
                     <div class="relative z-10">
-                        <h2 class="text-3xl font-bold text-slate-900 mb-2  ">Gửi yêu cầu <span class="text-blue-600">tư vấn</span></h2>
-                        <p class="text-slate-400 text-sm font-medium mb-12  ">Chúng tôi sẽ liên hệ lại trong vòng 30 phút</p>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2 tracking-tight">
+                            Gửi Yêu Cầu <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">Tư Vấn Tour</span>
+                        </h2>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-8">
+                            Chuyên viên của WanderVibe sẽ liên hệ lại qua SĐT/Zalo trong vòng 10 phút
+                        </p>
 
-                        <form id="contactForm" method="POST" action="{{ route('consultation.send') }}" class="space-y-8">
+                        <form id="contactForm" method="POST" action="{{ route('consultation.send') }}" class="space-y-6">
                             @csrf
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div class="group">
-                                    <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Họ và tên *</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                        Họ và tên <span class="text-rose-500">*</span>
+                                    </label>
                                     <input type="text" name="name" required placeholder="VD: Nguyễn Văn A"
-                                        class="w-full bg-slate-50 input-modern rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 placeholder:text-slate-300 placeholder:font-medium">
+                                        class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-emerald-500/10 transition-all">
                                 </div>
-                                <div class="group">
-                                    <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Số điện thoại *</label>
+                                <div>
+                                    <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                        Số điện thoại / Zalo <span class="text-rose-500">*</span>
+                                    </label>
                                     <input type="tel" name="phone" required placeholder="09xx xxx xxx"
-                                        class="w-full bg-slate-50 input-modern rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 placeholder:text-slate-300 placeholder:font-medium">
+                                        class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-emerald-500/10 transition-all">
                                 </div>
                             </div>
 
-                            <div class="group">
-                                <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Địa chỉ Email</label>
-                                <input type="email" name="email" placeholder="example@email.com"
-                                    class="w-full bg-slate-50 input-modern rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 placeholder:text-slate-300 placeholder:font-medium">
-                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                        Địa chỉ Email
+                                    </label>
+                                    <input type="email" name="email" placeholder="example@email.com"
+                                        class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-emerald-500/10 transition-all">
+                                </div>
 
-                            <div class="group">
-                                <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Loại hình Tour quan tâm</label>
-                                <div class="relative">
-                                    <select name="tour_type" class="w-full bg-slate-50 input-modern rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 appearance-none cursor-pointer">
-                                        <option value="">Chọn loại tour</option>
-                                        <option value="Du lịch Trong nước">Du lịch Trong nước</option>
-                                        <option value="Du lịch Nước ngoài">Du lịch Nước ngoài</option>
-                                        <option value="Tour thiết kế riêng">Tour thiết kế riêng </option>
-                                        <option value="Tour ghép theo đoàn">Tour ghép theo đoàn </option>
-                                    </select>
-                                    <i class="fas fa-chevron-down absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+                                <div>
+                                    <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                        Loại hình Tour quan tâm
+                                    </label>
+                                    <div class="relative">
+                                        <select name="tour_type" class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white appearance-none cursor-pointer focus:outline-none focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-emerald-500/10 transition-all">
+                                            <option value="">-- Chọn loại hình tour --</option>
+                                            <option value="Tour Biển đảo nghỉ dưỡng">Tour Biển đảo nghỉ dưỡng</option>
+                                            <option value="Tour Khám phá vùng núi & săn mây">Tour Khám phá vùng núi & săn mây</option>
+                                            <option value="Tour Di sản văn hóa & danh thắng">Tour Di sản văn hóa & danh thắng</option>
+                                            <option value="Tour Thiết kế riêng cho gia đình / nhóm">Tour Thiết kế riêng cho gia đình / nhóm</option>
+                                        </select>
+                                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="group">
-                                <label class="text-sm font-bold   text-slate-400 mb-3 block ml-2">Lời nhắn của bạn</label>
-                                <textarea name="message" rows="5" placeholder="Hãy cho chúng tôi biết nhu cầu hoặc thắc mắc của bạn..."
-                                    class="w-full bg-slate-50 input-modern rounded-[2rem] py-5 px-6 text-sm font-bold text-slate-900 placeholder:text-slate-300 placeholder:font-medium resize-none"></textarea>
+                            <div>
+                                <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                    Lời nhắn hoặc yêu cầu đặc biệt
+                                </label>
+                                <textarea name="message" rows="4" placeholder="Hãy cho chúng tôi biết điểm đến mong muốn, số lượng người, thời gian khởi hành..."
+                                    class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-emerald-500/10 transition-all resize-none"></textarea>
                             </div>
 
-                            <div id="formStatus" class="hidden p-5 rounded-2xl text-sm font-bold animate-fade-in"></div>
+                            <div id="formStatus" class="hidden p-4 rounded-xl text-xs sm:text-sm font-semibold transition-all"></div>
 
                             <button type="submit" id="contactSubmitBtn"
-                                class="btn-gradient w-full text-white font-bold py-5 rounded-[2rem] text-lg shadow-xl shadow-blue-100 flex items-center justify-center gap-3">
-                                Gửi yêu cầu ngay <i class="fas fa-paper-plane text-sm"></i>
+                                class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-lg shadow-emerald-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2">
+                                <span>Gửi Yêu Cầu Tư Vấn Ngay</span>
+                                <i class="fa-solid fa-paper-plane text-sm"></i>
                             </button>
                         </form>
                     </div>
@@ -186,23 +202,25 @@
         </div>
 
         {{-- Map / Social Support --}}
-        <div class="mt-20 premium-card p-10 flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+        <div class="mt-16 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 border border-slate-800 shadow-2xl text-white">
             <div>
-                <h4 class="text-2xl font-bold text-white mb-2">Theo dõi hành trình của <span class="text-emerald-400">WanderVibe</span></h4>
-                <p class="text-slate-400 text-sm font-medium">Cập nhật những điểm đến mới nhất và ưu đãi độc quyền hàng ngày.</p>
+                <h4 class="text-2xl font-extrabold text-white mb-2">
+                    Theo Dõi Hành Trình Cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">WanderVibe</span>
+                </h4>
+                <p class="text-slate-300 text-sm font-medium">Cập nhật những điểm đến mới nhất và ưu đãi độc quyền hàng ngày.</p>
             </div>
-            <div class="flex gap-4 text-slate-900">
-                <a href="#" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-xl hover:bg-blue-600 transition-all duration-500 border border-white/5 hover:border-blue-500">
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="#" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-emerald-500 text-white border border-white/10 hover:border-emerald-400 flex items-center justify-center text-lg transition-all duration-300 shadow-sm" title="Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-xl hover:bg-pink-600 transition-all duration-500 border border-white/5 hover:border-pink-500">
+                <a href="#" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-pink-600 text-white border border-white/10 hover:border-pink-500 flex items-center justify-center text-lg transition-all duration-300 shadow-sm" title="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-xl hover:bg-slate-700 transition-all duration-500 border border-white/5 hover:border-white/20">
+                <a href="#" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-slate-700 text-white border border-white/10 hover:border-white/20 flex items-center justify-center text-lg transition-all duration-300 shadow-sm" title="TikTok">
                     <i class="fab fa-tiktok"></i>
                 </a>
-                <a href="#" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-xl hover:bg-emerald-600 transition-all duration-500 border border-white/5 hover:border-emerald-500">
-                    <i class="fab fa-whatsapp"></i>
+                <a href="https://zalo.me" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-emerald-600 text-white border border-white/10 hover:border-emerald-400 flex items-center justify-center text-lg transition-all duration-300 shadow-sm" title="Zalo">
+                    <i class="fa-solid fa-comment-dots"></i>
                 </a>
             </div>
         </div>
@@ -221,11 +239,11 @@
 
                 const origHtml = submitBtn.innerHTML;
                 submitBtn.disabled = true;
-                submitBtn.innerHTML = 'Đang gửi yêu cầu... <i class="fas fa-spinner fa-spin text-sm"></i>';
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Đang gửi yêu cầu...';
 
                 if (formStatus) {
                     formStatus.classList.add('hidden');
-                    formStatus.className = 'hidden p-5 rounded-2xl text-sm font-bold animate-fade-in';
+                    formStatus.className = 'hidden p-4 rounded-xl text-xs sm:text-sm font-semibold transition-all';
                 }
 
                 try {
@@ -242,17 +260,21 @@
                     const data = await res.json();
                     if (res.ok && data.success) {
                         if (formStatus) {
-                            formStatus.textContent = data.message || 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công. Chuyên viên WanderVibe sẽ liên hệ lại trong vòng 30 phút!';
-                            formStatus.className = 'block p-5 rounded-2xl text-sm font-bold animate-fade-in bg-emerald-50 text-emerald-700 border border-emerald-200';
+                            formStatus.innerHTML = '<i class="fa-solid fa-circle-check text-base mr-1.5"></i> ' + (data.message || 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công. Chuyên viên WanderVibe sẽ liên hệ lại qua SĐT/Zalo trong ít phút!');
+                            formStatus.className = 'block p-4 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 animate-fade-in';
                         }
                         form.reset();
                     } else {
-                        throw new Error(data.message || 'Không thể gửi yêu cầu lúc này.');
+                        let errMsg = data.message || 'Không thể gửi yêu cầu lúc này.';
+                        if (data.errors) {
+                            errMsg = Object.values(data.errors).flat().join('<br>');
+                        }
+                        throw new Error(errMsg);
                     }
                 } catch (err) {
                     if (formStatus) {
-                        formStatus.textContent = err.message || 'Có lỗi xảy ra khi gửi. Vui lòng liên hệ hotline 1900 123 456!';
-                        formStatus.className = 'block p-5 rounded-2xl text-sm font-bold animate-fade-in bg-rose-50 text-rose-700 border border-rose-200';
+                        formStatus.innerHTML = '<i class="fa-solid fa-triangle-exclamation text-base mr-1.5"></i> ' + (err.message || 'Có lỗi xảy ra khi gửi. Vui lòng liên hệ hotline 1900 888 999!');
+                        formStatus.className = 'block p-4 rounded-xl text-xs sm:text-sm font-semibold bg-rose-50 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800 animate-fade-in';
                     }
                 } finally {
                     submitBtn.disabled = false;

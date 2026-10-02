@@ -58,8 +58,8 @@
           "name": "WanderVibe Travel Vietnam",
           "url": "{{ url('/') }}",
           "logo": "{{ asset('assets/img/logo_title.svg') }}",
-          "telephone": "+8419006868",
-          "email": "cskh@wandervibe.vn",
+          "telephone": "+841900888999",
+          "email": "hello@wandervibe.me",
           "priceRange": "1.000.000 - 25.000.000 VND",
           "address": {
             "@type": "PostalAddress",
@@ -83,7 +83,7 @@
       }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
@@ -332,6 +332,23 @@
     }
     html.dark .border-slate-100, html.dark .border-slate-200, html.dark .border-gray-200, html.dark .border-gray-100 {
       border-color: #334155 !important;
+    }
+    html.dark .blog-content,
+    html.dark .prose {
+      color: #cbd5e1 !important;
+    }
+    html.dark .blog-content h1,
+    html.dark .blog-content h2,
+    html.dark .blog-content h3,
+    html.dark .blog-content h4,
+    html.dark .blog-content strong {
+      color: #f8fafc !important;
+    }
+    html.dark article,
+    html.dark aside > div {
+      background-color: #1e293b !important;
+      border-color: #334155 !important;
+      color: #f1f5f9 !important;
     }
     html.dark #mainHeader:not(.bg-transparent) {
       background-color: rgba(15, 23, 42, 0.95) !important;
