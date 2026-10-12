@@ -15,9 +15,9 @@
     }
     
     .payment-option input:checked + .payment-card {
-        border-color: #10b981; /* emerald-500 */
+        border-color: #f97316; /* orange-500 */
         background-color: #ffffff;
-        box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.2);
+        box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.2);
         transform: translateY(-5px);
     }
 
@@ -62,11 +62,11 @@
             
             <div class="flex items-center gap-3">
                 <div class="flex flex-col items-center">
-                    <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
+                    <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
                 </div>
-                <div class="w-12 h-1 bg-emerald-200 rounded-full"></div>
+                <div class="w-12 h-1 bg-orange-200 rounded-full"></div>
                 <div class="flex flex-col items-center relative">
-                    <div class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-xs shadow-lg shadow-emerald-500/40 ring-4 ring-emerald-50"><i class="fa-solid fa-2"></i></div>
+                    <div class="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-xs shadow-lg shadow-orange-500/40 ring-4 ring-orange-50"><i class="fa-solid fa-2"></i></div>
                 </div>
                 <div class="w-12 h-1 bg-slate-200 rounded-full"></div>
                 <div class="flex flex-col items-center">
@@ -80,7 +80,7 @@
             <!-- LEFT: PAYMENT OPTIONS (GRID LAYOUT) -->
             <div class="lg:col-span-7">
                 <h2 class="text-xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                    <i class="fa-solid fa-wallet text-emerald-500"></i> Chọn phương thức giao dịch
+                    <i class="fa-solid fa-wallet text-orange-500"></i> Chọn phương thức giao dịch
                 </h2>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
@@ -90,7 +90,7 @@
                         <input type="radio" id="payment_momo" name="payment_method" value="momo" class="hidden" checked>
                         <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-6 flex flex-col items-center justify-center text-center gap-4 overflow-hidden">
                             <!-- Selected Ring -->
-                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md">
+                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             
@@ -110,11 +110,11 @@
                         <input type="radio" id="payment_cash" name="payment_method" value="cash" class="hidden">
                         <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-6 flex flex-col items-center justify-center text-center gap-4 overflow-hidden">
                             <!-- Selected Ring -->
-                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md">
+                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             
-                            <div class="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center p-3 mb-2 text-emerald-500">
+                            <div class="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center p-3 mb-2 text-orange-500">
                                 <i class="fa-solid fa-store text-4xl"></i>
                             </div>
                             
@@ -128,7 +128,7 @@
 
                 <!-- DYNAMIC ACTION BUTTON AREA -->
                 <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-bl-full pointer-events-none"></div>
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-bl-full pointer-events-none"></div>
                     <p class="text-sm font-bold text-slate-800 mb-4 relative z-10">Tiến hành thanh toán</p>
                     
                     <!-- MoMo Button -->
@@ -142,7 +142,7 @@
                     <!-- Direct/Cash Button -->
                     <div id="wrapper-cash" class="hidden relative z-10 w-full">
                         <a href="{{ route('tour.thankyou', $order->id) }}?method=cash" 
-                           class="block w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-emerald-500/20">
+                           class="block w-full bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-orange-500/20">
                             <i class="fa-solid fa-check-to-slot mr-2"></i> Xác nhận & Thanh toán tại văn phòng
                         </a>
                         <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">
@@ -172,12 +172,12 @@
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                                <i class="fa-regular fa-calendar-check text-emerald-500 mb-1 block"></i>
+                                <i class="fa-regular fa-calendar-check text-orange-500 mb-1 block"></i>
                                 <p class="text-[10px] text-slate-400 font-semibold mb-0.5 uppercase">Khởi hành</p>
                                 <p class="text-xs font-bold text-slate-800">{{ \Carbon\Carbon::parse($customer['time'])->format('d/m/Y') }}</p>
                             </div>
                             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                                <i class="fa-solid fa-user-group text-emerald-500 mb-1 block"></i>
+                                <i class="fa-solid fa-user-group text-orange-500 mb-1 block"></i>
                                 <p class="text-[10px] text-slate-400 font-semibold mb-0.5 uppercase">Số lượng</p>
                                 <p class="text-xs font-bold text-slate-800">{{ $customer['quantity'] }} Ghế</p>
                             </div>
@@ -192,7 +192,7 @@
                         </div>
 
                         @if (!empty($voucher))
-                            <div class="flex justify-between items-center text-[13px] font-bold text-emerald-600 mb-3">
+                            <div class="flex justify-between items-center text-[13px] font-bold text-orange-600 mb-3">
                                 <span>Mã giảm giá ({{ $voucher['code'] }})</span>
                                 <span>-{{ number_format($discount) }}₫</span>
                             </div>
@@ -206,9 +206,9 @@
                         <div class="border-t border-slate-200 border-dashed pt-4 mt-1">
                             <div class="flex justify-between items-end">
                                 <div>
-                                    <span class="text-[10px] font-bold bg-emerald-100 text-emerald-700 px-2 py-1 rounded uppercase tracking-wider">Thanh toán cọc 30%</span>
+                                    <span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-1 rounded uppercase tracking-wider">Thanh toán cọc 30%</span>
                                 </div>
-                                <span class="text-2xl font-bold text-emerald-600">{{ number_format($deposit_amount) }}₫</span>
+                                <span class="text-2xl font-bold text-orange-600">{{ number_format($deposit_amount) }}₫</span>
                             </div>
                         </div>
                     </div>

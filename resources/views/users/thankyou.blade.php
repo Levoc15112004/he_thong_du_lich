@@ -318,7 +318,7 @@
                                 <p class="text-xs uppercase tracking-widest font-bold text-slate-400 mb-1">Mã xác nhận</p>
                                 <div class="flex items-center gap-3">
                                     <h3 class="text-3xl font-bold text-slate-900">#{{ $booking['code'] ?? 'VT-'.rand(1000, 9999) }}</h3>
-                                    <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-md border border-emerald-200">Đã cọc 30%</span>
+                                    <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-md border border-orange-200">Đã cọc 30%</span>
                                 </div>
                             </div>
                             <div class="text-left md:text-right bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
@@ -351,7 +351,7 @@
                                         {{ isset($tour->start_date) ? date('d/m/Y', strtotime($tour->start_date)) : 'Chưa xác định' }}
                                     </span>
                                     <span class="text-sm font-bold text-slate-600 flex items-center bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                        <div class="w-6 h-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mr-2">
                                             <i class="fas fa-user-friends text-xs"></i>
                                         </div>
                                         {{ $order['quantity'] ?? 1 }} Khách
@@ -371,9 +371,9 @@
                                 <span>Tổng giá trị tour</span>
                                 <span class="text-slate-900 text-base">{{ number_format($total, 0, ',', '.') }} đ</span>
                             </div>
-                            <div class="flex justify-between items-center text-sm font-bold text-emerald-600 pb-3 border-b border-slate-200">
+                            <div class="flex justify-between items-center text-sm font-bold text-orange-600 pb-3 border-b border-slate-200">
                                 <span class="flex items-center gap-2">
-                                    <span class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center"><i class="fas fa-check text-xs"></i></span>
+                                    <span class="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center"><i class="fas fa-check text-xs"></i></span>
                                     Đã thanh toán (Cọc 30%)
                                 </span>
                                 <span class="text-base">-{{ number_format($deposit, 0, ',', '.') }} đ</span>
@@ -401,7 +401,7 @@
                     <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white relative overflow-hidden shadow-2xl shadow-slate-900/20 box-border">
                         <!-- Decorative bg -->
                         <div class="absolute top-0 right-0 w-48 h-48 bg-blue-500/20 blur-[60px] rounded-full mix-blend-screen pointer-events-none"></div>
-                        <div class="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/20 blur-[40px] rounded-full mix-blend-screen pointer-events-none"></div>
+                        <div class="absolute bottom-0 left-0 w-32 h-32 bg-orange-500/20 blur-[40px] rounded-full mix-blend-screen pointer-events-none"></div>
                         
                         <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
                             <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shadow-inner"><i class="fas fa-lightbulb text-amber-400 text-sm"></i></span>
@@ -419,8 +419,8 @@
                                 </div>
                             </li>
                             <li class="flex gap-4 items-start group">
-                                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/20 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/40 transition-colors shadow-inner">
-                                    <i class="fas fa-headset text-emerald-300"></i>
+                                <div class="w-10 h-10 rounded-xl bg-orange-500/20 border border-orange-400/20 flex items-center justify-center shrink-0 group-hover:bg-orange-500/40 transition-colors shadow-inner">
+                                    <i class="fas fa-headset text-orange-300"></i>
                                 </div>
                                 <div>
                                     <p class="text-sm font-bold text-white mb-1">Chờ liên hệ</p>
@@ -445,8 +445,8 @@
                             Xem lại Tour
                         </a>
                         
-                        <a href="{{ route('user.home') }}" class="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-50 transition-all group font-bold text-slate-700 text-sm">
-                            <div class="w-10 h-10 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 transition-colors">
+                        <a href="{{ route('user.home') }}" class="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-50 transition-all group font-bold text-slate-700 text-sm">
+                            <div class="w-10 h-10 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-orange-50 group-hover:text-orange-600 transition-colors">
                                 <i class="fas fa-home"></i>
                             </div>
                             Về trang chủ
@@ -460,8 +460,8 @@
             <div class="mt-12 pt-8 border-t border-slate-200 text-center animate-fadeInUp delay-300 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-full border border-slate-200 shadow-sm">
                     <span class="relative flex h-3 w-3">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
                     </span>
                     <span class="text-sm font-bold text-slate-600">Đội ngũ hỗ trợ Online 24/7</span>
                 </div>

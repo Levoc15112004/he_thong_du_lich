@@ -195,7 +195,7 @@
                                         <a href="{{ route('user.payment.final', $order->id) }}"
                                             class="flex items-center justify-center px-5 py-2
                                         text-white text-sm font-bold rounded-xl
-                                        transition bg-gradient-to-r from-teal-400 to-blue-500 text-white">
+                                        transition bg-gradient-to-r from-orange-500 to-rose-500 text-white">
                                             Thanh toán phần còn lại
                                         </a>
                                     @endif
@@ -254,12 +254,12 @@
                             </div>
 
                             <!-- PAID -->
-                            <div class="flex justify-between items-center bg-emerald-50 p-3 rounded-xl">
-                                <span class="flex items-center gap-2 text-emerald-700 font-medium">
+                            <div class="flex justify-between items-center bg-orange-50 p-3 rounded-xl">
+                                <span class="flex items-center gap-2 text-orange-700 font-medium">
                                     <i class="fa-solid fa-circle-check"></i>
                                     Đã thanh toán
                                 </span>
-                                <span class="font-bold text-emerald-700">
+                                <span class="font-bold text-orange-700">
                                     {{ number_format($total_paid_all) }}₫
                                 </span>
                             </div>
@@ -369,7 +369,7 @@
                                         <a id="directionsButton" target="_blank"
                                             class="flex items-center gap-2 px-5 py-2.5
                                       bg-slate-900/90 hover:bg-slate-900 text-white font-bold rounded-full shadow-lg transition border border-white/20 text-xs sm:text-sm">
-                                            <i class="fa-solid fa-route text-emerald-400"></i>
+                                            <i class="fa-solid fa-route text-orange-400"></i>
                                             Mở chỉ đường Google Maps
                                         </a>
                                     </div>

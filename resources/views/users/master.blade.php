@@ -96,37 +96,32 @@
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            ocean: {
-              50: '#f0f9ff',
-              100: '#e0f2fe',
-              200: '#bae6fd',
-              500: '#0284c7',
-              600: '#0369a1',
-              700: '#075985',
-              800: '#0c4a6e',
-              900: '#0f172a',
-            },
-            coral: {
+            brand: {
               50: '#fff7ed',
               100: '#ffedd5',
+              200: '#fed7aa',
+              300: '#fdba74',
+              400: '#fb923c',
               500: '#f97316',
               600: '#ea580c',
               700: '#c2410c',
+              800: '#9a3412',
+              900: '#7c2d12',
             },
-            jade: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
+            coral: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
             },
-            brand: {
-              50: '#f0f9ff',
-              100: '#e0f2fe',
-              400: '#38bdf8',
-              500: '#0284c7',
-              600: '#0369a1',
-              700: '#075985',
+            amber: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
             }
           },
           animation: {
@@ -154,20 +149,20 @@
   </script>
 
   <style>
-    /* Luminous Clean Slate Travel Background */
+    /* Luminous Warm Travel Background */
     body {
-      background-color: #f8fafc;
+      background-color: #fafaf9;
       background-image: 
-        radial-gradient(at 10% 12%, rgba(2, 132, 199, 0.05) 0px, transparent 40%),
-        radial-gradient(at 90% 20%, rgba(249, 115, 22, 0.04) 0px, transparent 45%),
-        radial-gradient(at 50% 65%, rgba(16, 185, 129, 0.04) 0px, transparent 50%),
-        radial-gradient(at 85% 85%, rgba(2, 132, 199, 0.05) 0px, transparent 45%);
+        radial-gradient(at 10% 12%, rgba(249, 115, 22, 0.06) 0px, transparent 40%),
+        radial-gradient(at 90% 20%, rgba(244, 63, 94, 0.05) 0px, transparent 45%),
+        radial-gradient(at 50% 65%, rgba(245, 158, 11, 0.04) 0px, transparent 50%),
+        radial-gradient(at 85% 85%, rgba(249, 115, 22, 0.05) 0px, transparent 45%);
       background-attachment: fixed;
     }
 
     /* Modern Light Glass Panel */
     .glass-panel-light {
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.90);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border: 1px solid rgba(226, 232, 240, 0.9);
@@ -176,7 +171,7 @@
 
     /* Interactive Light Card */
     .glass-card-interactive {
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(226, 232, 240, 0.85);
@@ -185,9 +180,9 @@
     }
     .glass-card-interactive:hover {
       transform: translateY(-7px);
-      border-color: rgba(16, 185, 129, 0.45);
+      border-color: rgba(249, 115, 22, 0.45);
       background: rgba(255, 255, 255, 0.98);
-      box-shadow: 0 22px 45px -10px rgba(16, 185, 129, 0.15), 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 22px 45px -10px rgba(249, 115, 22, 0.18), 0 4px 6px -1px rgba(0, 0, 0, 0.04);
     }
 
     /* Cinematic Banner Vignette for crisp text contrast */
@@ -197,7 +192,7 @@
         rgba(15, 23, 42, 0.48) 0%, 
         rgba(15, 23, 42, 0.22) 35%, 
         rgba(15, 23, 42, 0.55) 70%, 
-        rgba(248, 250, 252, 1) 100%
+        rgba(250, 250, 249, 1) 100%
       );
     }
 
@@ -226,7 +221,7 @@
       position: absolute;
       inset: -2px;
       border-radius: 1.85rem;
-      background: linear-gradient(90deg, #10b981, #06b6d4, #f59e0b, #10b981);
+      background: linear-gradient(90deg, #f97316, #f43f5e, #fbbf24, #f97316);
       background-size: 300% 300%;
       animation: gradientX 7s linear infinite;
       z-index: -1;
@@ -257,10 +252,10 @@
     html.dark body {
       background-color: #0b1120 !important;
       background-image: 
-        radial-gradient(at 10% 12%, rgba(16, 185, 129, 0.12) 0px, transparent 40%),
-        radial-gradient(at 90% 20%, rgba(6, 182, 212, 0.10) 0px, transparent 45%),
+        radial-gradient(at 10% 12%, rgba(249, 115, 22, 0.12) 0px, transparent 40%),
+        radial-gradient(at 90% 20%, rgba(244, 63, 94, 0.10) 0px, transparent 45%),
         radial-gradient(at 50% 65%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
-        radial-gradient(at 85% 85%, rgba(16, 185, 129, 0.10) 0px, transparent 45%) !important;
+        radial-gradient(at 85% 85%, rgba(249, 115, 22, 0.10) 0px, transparent 45%) !important;
       color: #f1f5f9 !important;
     }
     html.dark .glass-panel-light {
@@ -276,8 +271,8 @@
     }
     html.dark .glass-card-interactive:hover {
       background: rgba(30, 41, 59, 0.98) !important;
-      border-color: rgba(16, 185, 129, 0.6) !important;
-      box-shadow: 0 22px 45px -10px rgba(16, 185, 129, 0.25) !important;
+      border-color: rgba(249, 115, 22, 0.6) !important;
+      box-shadow: 0 22px 45px -10px rgba(249, 115, 22, 0.25) !important;
     }
     html.dark .bg-white {
       background-color: #1e293b !important;
@@ -294,8 +289,8 @@
       color: #f1f5f9 !important;
     }
     html.dark .hero-gradient {
-      background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.15), transparent 50%),
-                  radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.12), transparent 50%),
+      background: radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.15), transparent 50%),
+                  radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.12), transparent 50%),
                   #0b1120 !important;
     }
     html.dark .premium-card {
@@ -305,17 +300,17 @@
     }
     html.dark .premium-card:hover {
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
-      border-color: #10b981 !important;
+      border-color: #f97316 !important;
     }
     html.dark .text-gradient {
-      background: linear-gradient(to right, #34d399, #38bdf8) !important;
+      background: linear-gradient(to right, #fb923c, #f43f5e) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
     }
     html.dark .glass-badge {
       background: rgba(30, 41, 59, 0.85) !important;
       border-color: rgba(51, 65, 85, 0.8) !important;
-      color: #34d399 !important;
+      color: #fb923c !important;
     }
     html.dark .bg-slate-100, html.dark .bg-gray-100 {
       background-color: #334155 !important;
@@ -384,15 +379,15 @@
       opacity: 1 !important;
     }
     html.dark #contact .text-slate-500 {
-      color: #34d399 !important;
+      color: #fb923c !important;
     }
   </style>
 </head>
-<body class="bg-[#f8fafc] text-slate-800 font-sans antialiased overflow-x-hidden relative selection:bg-emerald-500 selection:text-white">
+<body class="bg-[#fafaf9] text-slate-800 font-sans antialiased overflow-x-hidden relative selection:bg-orange-500 selection:text-white">
 
   <!-- Ambient Light Globs -->
-  <div class="fixed top-1/4 -left-36 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-soft"></div>
-  <div class="fixed top-2/3 -right-36 w-[480px] h-[480px] bg-cyan-400/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="fixed top-1/4 -left-36 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-soft"></div>
+  <div class="fixed top-2/3 -right-36 w-[480px] h-[480px] bg-rose-400/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
   <div class="fixed bottom-10 left-1/3 w-[400px] h-[400px] bg-amber-400/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
     <!-- Header -->
@@ -404,12 +399,12 @@
             
             <!-- LOGO AREA -->
             <a href="{{ url('/') }}" class="flex items-center gap-3 shrink-0 group">
-                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 group-hover:rotate-12 transition-all duration-300">
+                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/30 group-hover:rotate-12 transition-all duration-300">
                     <i class="fa-solid fa-compass text-xl md:text-2xl"></i>
                 </div>
                 <div class="flex flex-col hidden sm:flex">
                     <span id="logoText" class="text-xl md:text-2xl font-bold tracking-tight {{ $isHomePage ? 'text-white' : 'text-slate-900' }} transition-colors duration-300">
-                        Wander<span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Vibe</span>
+                        Wander<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500">Vibe</span>
                     </span>
                     <span id="logoSubtext" class="text-[9px] md:text-[10px] tracking-widest uppercase {{ $isHomePage ? 'text-slate-300' : 'text-slate-500' }} font-bold -mt-0.5 transition-colors duration-300">Vietnam Travel</span>
                 </div>
@@ -417,7 +412,7 @@
 
             <!-- NAVIGATION MAIN (More spaced out, no heavy pill background) -->
             <nav id="mainNav" class="hidden xl:flex flex-1 items-center justify-center gap-1 2xl:gap-2 flex-nowrap shrink-0">
-                <a href="{{ url('/') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all">Trang chủ</a>
+                <a href="{{ url('/') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-white hover:bg-white/15' : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50' }} transition-all">Trang chủ</a>
                 
                 @php
                     $navCategories = \App\Models\Category::where('status', 1)
@@ -429,7 +424,7 @@
                 @foreach ($navCategories as $cat)
                     @if($cat->children->count() > 0)
                         <div class="relative group shrink-0">
-                            <button class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all flex items-center gap-1.5 focus:outline-none">
+                            <button class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50' }} transition-all flex items-center gap-1.5 focus:outline-none">
                                 <span>{{ $cat->name }}</span>
                                 <i class="fa-solid fa-angle-down text-[10px] opacity-70 group-hover:-rotate-180 transition-transform duration-300"></i>
                             </button>
@@ -437,8 +432,8 @@
                             <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                                 <div class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 p-2 transform scale-95 group-hover:scale-100 transition-all origin-top">
                                     @foreach($cat->children as $child)
-                                        <a href="{{ route('user.category', $child->id) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors whitespace-nowrap">
-                                            <i class="fa-solid fa-hashtag text-emerald-400/50 text-xs"></i> {{ $child->name }}
+                                        <a href="{{ route('user.category', $child->id) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors whitespace-nowrap">
+                                            <i class="fa-solid fa-hashtag text-orange-400/50 text-xs"></i> {{ $child->name }}
                                         </a>
                                     @endforeach
                                 </div>
@@ -447,22 +442,22 @@
                     @else
                         <!-- Filter out exact duplicates if data is messy, otherwise render normally -->
                         @if(strtolower($cat->name) !== 'trang chủ' && strtolower($cat->name) !== 'liên hệ')
-                            <a href="{{ route('user.category', $cat->id) }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all shrink-0">
+                            <a href="{{ route('user.category', $cat->id) }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50' }} transition-all shrink-0">
                                 {{ $cat->name }}
                             </a>
                         @endif
                     @endif
                 @endforeach
-                <a href="{{ route('contact') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50' }} transition-all shrink-0">Liên hệ</a>
+                <a href="{{ route('contact') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50' }} transition-all shrink-0">Liên hệ</a>
             </nav>
 
             <!-- RIGHT ACTIONS -->
             <div class="flex items-center gap-3 md:gap-5 shrink-0 justify-end">
                 
                 <!-- Hotline (Hidden on very small screens) -->
-                <a href="tel:1900888999" id="hotlineBadge" class="hidden lg:flex items-center gap-2 group {{ $isHomePage ? 'text-white' : 'text-slate-700' }} hover:text-emerald-500 transition-colors">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center {{ $isHomePage ? 'bg-white/15' : 'bg-slate-100 group-hover:bg-emerald-50' }} transition-colors pointer-events-none">
-                        <i class="fa-solid fa-phone-volume text-[13px] {{ $isHomePage ? '' : 'text-emerald-500' }}"></i>
+                <a href="tel:1900888999" id="hotlineBadge" class="hidden lg:flex items-center gap-2 group {{ $isHomePage ? 'text-white' : 'text-slate-700' }} hover:text-orange-500 transition-colors">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center {{ $isHomePage ? 'bg-white/15' : 'bg-slate-100 group-hover:bg-orange-50' }} transition-colors pointer-events-none">
+                        <i class="fa-solid fa-phone-volume text-[13px] {{ $isHomePage ? '' : 'text-orange-500' }}"></i>
                     </div>
                     <div class="flex flex-col hidden xl:flex">
                         <span class="text-[10px] font-bold uppercase tracking-wider opacity-70">Tổng đài CSKH</span>
@@ -478,10 +473,10 @@
                         $cartBadgeCount += (int)($cItem['quantity'] ?? 1);
                     }
                 @endphp
-                <a href="{{ route('user.cart') }}" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-emerald-200 hover:text-emerald-600' }} flex items-center justify-center transition-all cursor-pointer" title="Giỏ hàng">
+                <a href="{{ route('user.cart') }}" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-orange-600' }} flex items-center justify-center transition-all cursor-pointer" title="Giỏ hàng">
                     <i class="fa-solid fa-cart-shopping text-[15px] md:text-base pointer-events-none"></i>
                     @if($cartBadgeCount > 0)
-                        <span class="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 rounded-full bg-emerald-500 text-[10px] md:text-xs font-bold flex items-center justify-center text-white pointer-events-none border-2 border-transparent">
+                        <span class="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 rounded-full bg-orange-500 text-[10px] md:text-xs font-bold flex items-center justify-center text-white pointer-events-none border-2 border-transparent">
                             {{ $cartBadgeCount }}
                         </span>
                     @endif
@@ -496,7 +491,7 @@
                 <!-- Notifications Bell -->
                 @if(isset($notifications))
                     <div class="relative inline-block z-20" id="notificationDropdownTrigger">
-                        <button id="notificationBtn" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-emerald-200 hover:text-emerald-600' }} flex items-center justify-center transition-all cursor-pointer">
+                        <button id="notificationBtn" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-orange-600' }} flex items-center justify-center transition-all cursor-pointer">
                             <i class="fa-regular fa-bell text-[15px] md:text-base pointer-events-none"></i>
                             @if(isset($unreadCount) && $unreadCount > 0)
                                 <span class="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 rounded-full bg-rose-500 text-[10px] md:text-xs font-bold flex items-center justify-center text-white pointer-events-none border-2 border-transparent">
@@ -515,9 +510,9 @@
                             </div>
                             <div class="max-h-[320px] overflow-y-auto no-scrollbar pb-2">
                                 @forelse($notifications as $notification)
-                                    <a href="{{ route('user.notifications.read', $notification->id) }}" class="block p-4 border-b border-slate-50/50 hover:bg-emerald-50/50 transition-colors {{ $notification->status === 'unread' ? 'bg-emerald-50/30' : '' }}">
+                                    <a href="{{ route('user.notifications.read', $notification->id) }}" class="block p-4 border-b border-slate-50/50 hover:bg-orange-50/50 transition-colors {{ $notification->status === 'unread' ? 'bg-orange-50/30' : '' }}">
                                         <div class="flex gap-3.5">
-                                            <div class="w-10 h-10 rounded-full {{ $notification->status === 'unread' ? 'bg-emerald-500 shadow-md shadow-emerald-500/20 text-white' : 'bg-slate-100 text-slate-400' }} flex items-center justify-center shrink-0">
+                                            <div class="w-10 h-10 rounded-full {{ $notification->status === 'unread' ? 'bg-orange-500 shadow-md shadow-orange-500/20 text-white' : 'bg-slate-100 text-slate-400' }} flex items-center justify-center shrink-0">
                                                 <i class="fa-solid fa-bell text-sm"></i>
                                             </div>
                                             <div class="flex-1">
@@ -549,7 +544,7 @@
                 <!-- Authentication UI -->
                 @guest('web')
                     <div class="pl-1 border-l border-white/20 ml-1 flex items-center">
-                        <a href="{{ route('account') }}" class="px-5 py-2.5 md:px-6 md:py-2.5 rounded-full bg-white text-emerald-600 hover:bg-emerald-50 hover:text-emerald-700 font-extrabold text-[13px] md:text-sm shadow-xl shadow-emerald-900/10 hover:shadow-emerald-900/20 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 border border-slate-100 uppercase tracking-wide">
+                        <a href="{{ route('account') }}" class="px-5 py-2.5 md:px-6 md:py-2.5 rounded-full bg-white text-orange-600 hover:bg-orange-50 hover:text-orange-700 font-extrabold text-[13px] md:text-sm shadow-xl shadow-orange-900/10 hover:shadow-orange-900/20 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 border border-slate-100 uppercase tracking-wide">
                             <i class="fa-solid fa-user-circle text-lg hidden sm:inline"></i> 
                             <span class="inline">Đăng Nhập</span>
                         </a>
@@ -558,9 +553,9 @@
 
                 @auth('web')
                     <div class="relative group cursor-pointer inline-block z-10" id="userDropdownTrigger">
-                        <div class="w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden border-2 border-emerald-400 hover:border-white transition-colors shadow-lg">
+                        <div class="w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden border-2 border-orange-400 hover:border-white transition-colors shadow-lg">
                             <img src="{{ Auth::user()->avatar_url }}" 
-                                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=10b981&color=fff';" 
+                                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=f97316&color=fff';" 
                                  alt="User Avatar" class="w-full h-full object-cover">
                         </div>
                         
@@ -571,16 +566,16 @@
                                 <p class="text-xs font-medium text-slate-500 truncate mt-0.5">{{ Auth::user()->email }}</p>
                             </div>
                             <div class="p-3 flex flex-col gap-1">
-                                <a href="{{ route('user.profile', Auth::id()) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
+                                <a href="{{ route('user.profile', Auth::id()) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-user"></i></div> Thông tin cá nhân
                                 </a>
-                                <a href="{{ route('user.cart') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
+                                <a href="{{ route('user.cart') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-cart-shopping"></i></div> Giỏ hàng của tôi
                                 </a>
-                                <a href="{{ route('user.tours.booked') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
+                                <a href="{{ route('user.tours.booked') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-clock-rotate-left"></i></div> Lịch sử đặt tour
                                 </a>
-                                <a href="{{ route('password.request') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-colors">
+                                <a href="{{ route('password.request') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-shield-halved"></i></div> Đổi mật khẩu
                                 </a>
                             </div>
@@ -596,7 +591,7 @@
                     </div>
                 @endauth
                 
-                <button id="mobileMenuBtn" class="xl:hidden w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:text-emerald-600' }} flex items-center justify-center transition-all shadow-sm">
+                <button id="mobileMenuBtn" class="xl:hidden w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:text-orange-600' }} flex items-center justify-center transition-all shadow-sm">
                     <i class="fa-solid fa-bars text-[15px] md:text-base" id="mobileMenuIcon"></i>
                 </button>
             </div>
@@ -606,28 +601,28 @@
             @auth('web')
                 <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-2xl border border-slate-100 mb-2">
                     <img src="{{ Auth::user()->avatar_url }}" 
-                         onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=10b981&color=fff';" 
-                         class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500/20 shadow-sm" alt="Avatar">
+                         onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=f97316&color=fff';" 
+                         class="w-12 h-12 rounded-full object-cover border-2 border-orange-500/20 shadow-sm" alt="Avatar">
                     <div class="flex-1 min-w-0">
                         <p class="font-bold text-slate-800 truncate text-sm">{{ Auth::user()->name }}</p>
                         <p class="text-xs text-slate-500 truncate">{{ Auth::user()->email }}</p>
                     </div>
                 </div>
             @endauth
-            <a href="{{ url('/') }}" class="mobile-nav-link block text-base font-extrabold text-emerald-600 hover:text-emerald-700 bg-emerald-50 px-4 py-3 rounded-xl border border-emerald-100">
+            <a href="{{ url('/') }}" class="mobile-nav-link block text-base font-extrabold text-orange-600 hover:text-orange-700 bg-orange-50 px-4 py-3 rounded-xl border border-orange-100">
                 <i class="fa-solid fa-house w-6 text-center mr-2"></i> Trang chủ
             </a>
             
             @foreach ($navCategories as $cat)
                 @if($cat->children->count() > 0)
                     <div class="flex flex-col gap-1 border border-slate-100 bg-white rounded-xl overflow-hidden shadow-sm">
-                        <div class="block text-base font-bold text-slate-700 hover:text-emerald-600 flex justify-between items-center px-4 py-3 bg-slate-50">
+                        <div class="block text-base font-bold text-slate-700 hover:text-orange-600 flex justify-between items-center px-4 py-3 bg-slate-50">
                             <span><i class="fa-solid fa-layer-group w-6 text-center text-slate-400 mr-2"></i> {{ $cat->name }}</span>
                             <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
                         </div>
                         <div class="pl-12 pr-4 py-2 flex flex-col gap-3">
                             @foreach($cat->children as $child)
-                                <a href="{{ route('user.category', $child->id) }}" class="mobile-nav-link block text-sm font-semibold text-slate-600 hover:text-emerald-600">
+                                <a href="{{ route('user.category', $child->id) }}" class="mobile-nav-link block text-sm font-semibold text-slate-600 hover:text-orange-600">
                                     {{ $child->name }}
                                 </a>
                             @endforeach
@@ -635,20 +630,20 @@
                     </div>
                 @else
                     @if(strtolower($cat->name) !== 'trang chủ' && strtolower($cat->name) !== 'liên hệ')
-                        <a href="{{ route('user.category', $cat->id) }}" class="mobile-nav-link block text-base font-bold text-slate-700 hover:text-emerald-600 px-4 py-3 bg-white rounded-xl border border-slate-100 shadow-sm">
+                        <a href="{{ route('user.category', $cat->id) }}" class="mobile-nav-link block text-base font-bold text-slate-700 hover:text-orange-600 px-4 py-3 bg-white rounded-xl border border-slate-100 shadow-sm">
                             <i class="fa-solid fa-cube w-6 text-center text-slate-400 mr-2"></i> {{ $cat->name }}
                         </a>
                     @endif
                 @endif
             @endforeach
             
-            <a href="{{ route('contact') }}" class="mobile-nav-link block text-base font-bold text-slate-700 hover:text-emerald-600 px-4 py-3 bg-white rounded-xl border border-slate-100 shadow-sm">
+            <a href="{{ route('contact') }}" class="mobile-nav-link block text-base font-bold text-slate-700 hover:text-orange-600 px-4 py-3 bg-white rounded-xl border border-slate-100 shadow-sm">
                 <i class="fa-solid fa-headset w-6 text-center text-slate-400 mr-2"></i> Tư Vấn & Liên Hệ
             </a>
 
             <!-- Mobile Theme Switcher -->
-            <button type="button" class="theme-toggle-btn w-full text-left text-base font-bold text-slate-700 dark:text-slate-200 hover:text-emerald-600 px-4 py-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm flex items-center justify-between transition-colors">
-                <span class="flex items-center"><i class="fa-solid fa-circle-half-stroke w-6 text-center text-emerald-500 mr-2"></i> Giao diện Sáng / Tối</span>
+            <button type="button" class="theme-toggle-btn w-full text-left text-base font-bold text-slate-700 dark:text-slate-200 hover:text-orange-600 px-4 py-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm flex items-center justify-between transition-colors">
+                <span class="flex items-center"><i class="fa-solid fa-circle-half-stroke w-6 text-center text-orange-500 mr-2"></i> Giao diện Sáng / Tối</span>
                 <span class="text-xs px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-semibold">Chuyển đổi</span>
             </button>
         </div>
@@ -663,7 +658,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-100">
                 <div class="lg:col-span-2 space-y-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/25">
+                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/25">
                             <i class="fa-solid fa-compass text-xl"></i>
                         </div>
                         <span class="text-2xl font-bold tracking-tight text-slate-900">WanderVibe</span>
@@ -672,10 +667,10 @@
                         Hệ sinh thái du lịch và trải nghiệm phong cách mới dành cho thế hệ trẻ. Khám phá cảnh sắc Việt Nam qua những góc nhìn chân thực, giàu cảm xúc và gắn kết cộng đồng.
                     </p>
                     <div class="flex items-center gap-3 pt-2">
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-instagram text-sm"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-tiktok text-sm"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-youtube text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-tiktok text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-youtube text-sm"></i></a>
                     </div>
                 </div>
 
@@ -684,11 +679,11 @@
                     <ul class="space-y-2.5 text-sm">
                         @if(isset($hotTours) && $hotTours->count())
                             @foreach($hotTours->take(4) as $item)
-                                <li><a href="#tours" class="hover:text-emerald-600 transition-colors">{{ Str::limit($item->name, 28) }}</a></li>
+                                <li><a href="#tours" class="hover:text-orange-600 transition-colors">{{ Str::limit($item->name, 28) }}</a></li>
                             @endforeach
                         @else
-                            <li><a href="#tours" class="hover:text-emerald-600 transition-colors">Tour Hà Giang Xe Máy</a></li>
-                            <li><a href="#tours" class="hover:text-emerald-600 transition-colors">Du Thuyền Vịnh Hạ Long</a></li>
+                            <li><a href="#tours" class="hover:text-orange-600 transition-colors">Tour Hà Giang Xe Máy</a></li>
+                            <li><a href="#tours" class="hover:text-orange-600 transition-colors">Du Thuyền Vịnh Hạ Long</a></li>
                         @endif
                     </ul>
                 </div>
@@ -698,11 +693,11 @@
                     <ul class="space-y-2.5 text-sm">
                         @if(isset($destinations) && $destinations->count())
                             @foreach($destinations->take(4) as $dest)
-                                <li><a href="#destinations" class="hover:text-emerald-600 transition-colors">{{ $dest->end_location }}</a></li>
+                                <li><a href="#destinations" class="hover:text-orange-600 transition-colors">{{ $dest->end_location }}</a></li>
                             @endforeach
                         @else
-                            <li><a href="#destinations" class="hover:text-emerald-600 transition-colors">Đà Lạt Mộng Mơ</a></li>
-                            <li><a href="#destinations" class="hover:text-emerald-600 transition-colors">Phố Cổ Hội An</a></li>
+                            <li><a href="#destinations" class="hover:text-orange-600 transition-colors">Đà Lạt Mộng Mơ</a></li>
+                            <li><a href="#destinations" class="hover:text-orange-600 transition-colors">Phố Cổ Hội An</a></li>
                         @endif
                     </ul>
                 </div>
@@ -711,8 +706,8 @@
                     <h4 class="text-slate-900 text-sm font-bold uppercase tracking-wider mb-4">Nhận Voucher 200k</h4>
                     <p class="text-xs text-slate-500 mb-3">Đăng ký email để nhận ưu đãi tour hè và cẩm nang phượt độc quyền hàng tuần.</p>
                     <form id="newsletterForm" class="space-y-2">
-                        <input type="email" required placeholder="Nhập email của bạn..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all">
-                        <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs transition-all shadow-md shadow-emerald-500/20">
+                        <input type="email" required placeholder="Nhập email của bạn..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 focus:bg-white transition-all">
+                        <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-bold text-xs transition-all shadow-md shadow-orange-500/20">
                             Đăng Ký Ngay
                         </button>
                     </form>
@@ -735,7 +730,7 @@
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-700">
                 <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                    <div class="w-9 h-9 rounded-xl bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 flex items-center justify-center font-bold">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
                     <h4 class="font-extrabold text-slate-900 dark:text-white text-base">Đặt Tour Thần Tốc</h4>
@@ -746,7 +741,7 @@
             </div>
             <div class="py-4">
                 <p class="text-xs text-slate-500 dark:text-slate-400 mb-1 font-medium">Tour đã chọn:</p>
-                <div id="modalTourName" class="font-bold text-emerald-700 dark:text-emerald-300 text-sm bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 px-3.5 py-2.5 rounded-xl mb-4">
+                <div id="modalTourName" class="font-bold text-orange-700 dark:text-orange-300 text-sm bg-orange-50 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 px-3.5 py-2.5 rounded-xl mb-4">
                     Tour Hà Giang 3N2Đ
                 </div>
                 <form id="modalQuickForm" class="space-y-3">
@@ -754,19 +749,19 @@
                     <div>
                         <label for="quickUserName" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Tên khách hàng</label>
                         <input type="text" id="quickUserName" required placeholder="Họ và tên của bạn" value="{{ $user->name ?? '' }}"
-                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white placeholder-slate-400 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white placeholder-slate-400 focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
                     </div>
                     <div>
                         <label for="quickUserPhone" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Số điện thoại / Zalo</label>
                         <input type="tel" id="quickUserPhone" required placeholder="09xx xxx xxx" value="{{ $user->phone ?? '' }}"
-                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white placeholder-slate-400 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white placeholder-slate-400 focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
                     </div>
                     <div>
                         <label for="quickTravelDate" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">Dự kiến ngày khởi hành</label>
                         <input type="date" id="quickTravelDate" required
-                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
                     </div>
-                    <button type="submit" class="w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold text-sm shadow-lg shadow-emerald-500/25 transition-all">
+                    <button type="submit" class="w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm shadow-lg shadow-orange-500/25 transition-all">
                         Xác Nhận Giữ Chỗ & Nhận Báo Giá
                     </button>
                 </form>
@@ -780,25 +775,25 @@
     <script>
         const heroVideos = {
             hagiang: {
-                title: 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Hà Giang</span>',
+                title: 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-rose-400 to-amber-300">Hà Giang</span>',
                 subtitle: 'Lướt trên cung đèo Mã Pí Lèng huyền thoại, dong thuyền ngắm dòng Nho Quế màu ngọc bích và đắm chìm trong vẻ đẹp bất tận của non nước.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80'
             },
             phuquoc: {
-                title: 'Đắm Mình Trong Biển Xanh <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">Phú Quốc</span>',
+                title: 'Đắm Mình Trong Biển Xanh <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-orange-400 to-amber-300">Phú Quốc</span>',
                 subtitle: 'Tận hưởng làn nước pha lê tại An Thới, lặn ngắm rạn san hô tự nhiên và ngắm quả cầu lửa hoàng hôn chìm vào lòng đại dương.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80'
             },
             dalat: {
-                title: 'Săn Mây Lãng Mạn <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-emerald-400 to-amber-300">Đà Lạt</span>',
+                title: 'Săn Mây Lãng Mạn <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">Đà Lạt</span>',
                 subtitle: 'Đón ánh bình minh xuyên qua ngàn thông Cầu Đất, nhâm nhi ly cà phê ấm và trải nghiệm đêm tiệc glamping acoustic cực chill.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'
             },
             halong: {
-                title: 'Kỳ Quan Du Thuyền 5 Sao <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-teal-300">Hạ Long</span>',
+                title: 'Kỳ Quan Du Thuyền 5 Sao <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-rose-400">Hạ Long</span>',
                 subtitle: 'Ngắm hàng nghìn đảo đá vôi kỳ vĩ soi bóng mặt vịnh xanh thẳm, trải nghiệm chèo kayak qua hang luồn và ngắm hoàng hôn vịnh biển.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1920&q=80'
@@ -814,13 +809,13 @@
             const videoEl = document.getElementById('heroVideo');
 
             document.querySelectorAll('.hero-switcher-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-emerald-500', 'text-white', 'shadow-lg', 'shadow-emerald-500/30');
+                btn.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-lg', 'shadow-orange-500/30');
                 btn.classList.add('bg-white/5', 'text-slate-300');
             });
 
             if (window.event && window.event.currentTarget) {
                 const activeBtn = window.event.currentTarget;
-                activeBtn.classList.add('active', 'bg-emerald-500', 'text-white', 'shadow-lg', 'shadow-emerald-500/30');
+                activeBtn.classList.add('active', 'bg-orange-500', 'text-white', 'shadow-lg', 'shadow-orange-500/30');
                 activeBtn.classList.remove('bg-white/5', 'text-slate-300');
             }
 
@@ -911,7 +906,7 @@
               if (mainNav) {
                 mainNav.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('text-slate-200', 'text-white', 'hover:text-white', 'hover:bg-white/15');
-                    link.classList.add('text-slate-700', 'hover:text-emerald-600', 'hover:bg-emerald-50');
+                    link.classList.add('text-slate-700', 'hover:text-orange-600', 'hover:bg-orange-50');
                 });
               }
               if (hotlineBadge) {
@@ -920,18 +915,18 @@
                 const iconBox = hotlineBadge.firstElementChild;
                 if(iconBox) {
                     iconBox.classList.remove('bg-white/15');
-                    iconBox.classList.add('bg-slate-100', 'group-hover:bg-emerald-50');
+                    iconBox.classList.add('bg-slate-100', 'group-hover:bg-orange-50');
                     const icon = iconBox.firstElementChild;
-                    if(icon) icon.classList.add('text-emerald-500');
+                    if(icon) icon.classList.add('text-orange-500');
                 }
               }
               if (mobileMenuBtn) {
                 mobileMenuBtn.classList.remove('text-white', 'bg-white/10', 'border-white/20', 'hover:bg-white/25');
-                mobileMenuBtn.classList.add('text-slate-800', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:text-emerald-600');
+                mobileMenuBtn.classList.add('text-slate-800', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:text-orange-600');
               }
               if (notificationBtn) {
                 notificationBtn.classList.remove('text-white', 'bg-white/10', 'border-white/20', 'hover:bg-white/25');
-                notificationBtn.classList.add('text-slate-700', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:border-emerald-200', 'hover:text-emerald-600');
+                notificationBtn.classList.add('text-slate-700', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:border-orange-200', 'hover:text-orange-600');
               }
             } else {
               header.classList.add('bg-transparent', 'border-white/10');
@@ -948,7 +943,7 @@
               if (mainNav) {
                 mainNav.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.add('text-slate-200', 'hover:text-white', 'hover:bg-white/15');
-                    link.classList.remove('text-slate-700', 'hover:text-emerald-600', 'hover:bg-emerald-50');
+                    link.classList.remove('text-slate-700', 'hover:text-orange-600', 'hover:bg-orange-50');
                 });
               }
               if (hotlineBadge) {
@@ -957,18 +952,18 @@
                 const iconBox = hotlineBadge.firstElementChild;
                 if(iconBox) {
                     iconBox.classList.add('bg-white/15');
-                    iconBox.classList.remove('bg-slate-100', 'group-hover:bg-emerald-50');
+                    iconBox.classList.remove('bg-slate-100', 'group-hover:bg-orange-50');
                     const icon = iconBox.firstElementChild;
-                    if(icon) icon.classList.remove('text-emerald-500');
+                    if(icon) icon.classList.remove('text-orange-500');
                 }
               }
               if (mobileMenuBtn) {
                 mobileMenuBtn.classList.add('text-white', 'bg-white/10', 'border-white/20', 'hover:bg-white/25');
-                mobileMenuBtn.classList.remove('text-slate-800', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:text-emerald-600');
+                mobileMenuBtn.classList.remove('text-slate-800', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:text-orange-600');
               }
               if (notificationBtn) {
                 notificationBtn.classList.add('text-white', 'bg-white/10', 'border-white/20', 'hover:bg-white/25');
-                notificationBtn.classList.remove('text-slate-700', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:border-emerald-200', 'hover:text-emerald-600');
+                notificationBtn.classList.remove('text-slate-700', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:border-orange-200', 'hover:text-orange-600');
               }
             }
         });
@@ -1008,14 +1003,14 @@
                 // Update active tab buttons if present
                 if (activeButton) {
                     document.querySelectorAll('.weather-tab-btn').forEach(b => {
-                        b.classList.remove('active', 'bg-emerald-500', 'text-white', 'shadow-md', 'shadow-emerald-500/30');
+                        b.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/30');
                         b.classList.add('bg-transparent', 'text-slate-600');
                     });
-                    activeButton.classList.add('active', 'bg-emerald-500', 'text-white', 'shadow-md', 'shadow-emerald-500/30');
+                    activeButton.classList.add('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/30');
                     activeButton.classList.remove('bg-transparent', 'text-slate-600');
                 } else {
                     document.querySelectorAll('.weather-tab-btn').forEach(b => {
-                        b.classList.remove('active', 'bg-emerald-500', 'text-white', 'shadow-md', 'shadow-emerald-500/30');
+                        b.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/30');
                         b.classList.add('bg-transparent', 'text-slate-600');
                     });
                 }
@@ -1167,7 +1162,7 @@
             const toast = document.createElement('div');
             toast.className = 'pointer-events-auto px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 text-slate-800 text-xs font-semibold shadow-xl flex items-center gap-3 transform translate-y-3 opacity-0 transition-all duration-300';
             const icon = type === 'success' 
-                ? '<i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>' 
+                ? '<i class="fa-solid fa-circle-check text-orange-600 text-sm"></i>' 
                 : (type === 'warning' ? '<i class="fa-solid fa-triangle-exclamation text-amber-500 text-sm"></i>' : '<i class="fa-solid fa-circle-info text-cyan-600 text-sm"></i>');
             toast.innerHTML = `${icon}<span>${message}</span>`;
             container.appendChild(toast);
@@ -1224,7 +1219,7 @@
     <div id="aiChatbotWidget" class="fixed bottom-6 right-6 lg:right-8 z-50 font-sans">
         <!-- Chatbot Avatar/Button -->
         <button id="chatbotToggleBtn" class="relative group outline-none focus:outline-none transition-transform hover:scale-105" aria-label="Open AI Assistant">
-            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full shadow-2xl overflow-hidden bg-gradient-to-tr from-emerald-100 to-teal-50 border-2 border-white shadow-emerald-500/40 flex items-center justify-center animate-float-slow cursor-pointer">
+            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full shadow-2xl overflow-hidden bg-gradient-to-tr from-orange-100 to-rose-50 border-2 border-white shadow-orange-500/40 flex items-center justify-center animate-float-slow cursor-pointer">
                 <!-- Hình AI 3D -->
                 <img src="https://cdn-icons-png.flaticon.com/512/8943/8943377.png" alt="AI Agent" class="w-[75%] h-[75%] object-contain pointer-events-none">
             </div>
@@ -1242,16 +1237,16 @@
         <!-- Chat Window -->
         <div id="chatbotWindow" class="absolute bottom-[85px] md:bottom-[95px] right-0 w-[340px] md:w-[380px] h-[520px] max-h-[75vh] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-10 scale-95 pointer-events-none transition-all duration-300 origin-bottom-right z-50">
             <!-- Header -->
-            <div class="bg-gradient-to-r from-emerald-500 to-teal-500 p-4 text-white flex items-center justify-between shrink-0 shadow-sm relative z-10">
+            <div class="bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 p-4 text-white flex items-center justify-between shrink-0 shadow-sm relative z-10">
                 <div class="flex items-center gap-3">
                     <div class="w-11 h-11 bg-white/20 rounded-full flex items-center justify-center p-1.5 shadow-inner">
                         <img src="https://cdn-icons-png.flaticon.com/512/8943/8943377.png" alt="Bot Face" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <h4 class="font-extrabold text-[15px] leading-tight">WanderBot AI</h4>
-                        <p class="text-[11px] font-medium text-emerald-100 flex items-center gap-1 mt-0.5">
-                            <span class="w-2 h-2 rounded-full bg-green-300 relative block">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-200 opacity-75"></span>
+                        <p class="text-[11px] font-medium text-amber-100 flex items-center gap-1 mt-0.5">
+                            <span class="w-2 h-2 rounded-full bg-amber-300 relative block">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-200 opacity-75"></span>
                             </span> <span class="opacity-90">Đang trực tuyến</span>
                         </p>
                     </div>
@@ -1265,11 +1260,11 @@
             <div id="chatbotMessages" class="flex-1 overflow-y-auto p-4 bg-[#f8fafc] dark:bg-slate-900 space-y-4 text-[13px] md:text-sm no-scrollbar scroll-smooth">
                 <!-- Bot Greeting Message -->
                 <div class="flex gap-2.5 max-w-[92%]">
-                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800 shadow-sm mt-0.5">
-                        <i class="fa-solid fa-robot text-xs text-emerald-600 dark:text-emerald-400"></i>
+                    <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center shrink-0 border border-orange-200 dark:border-orange-800 shadow-sm mt-0.5">
+                        <i class="fa-solid fa-robot text-xs text-orange-600 dark:text-orange-400"></i>
                     </div>
                     <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-100 leading-relaxed">
-                        Chào bạn! 👋 Mình là <span class="font-bold text-emerald-600 dark:text-emerald-400">WanderBot</span> - Trợ lý siêu AI của <b>WanderVibe</b>. Mình có thể tư vấn lịch trình, gợi ý tour du lịch hoặc giải đáp thông tin cho bạn hôm nay nhé!
+                        Chào bạn! 👋 Mình là <span class="font-bold text-orange-600 dark:text-orange-400">WanderBot</span> - Trợ lý siêu AI của <b>WanderVibe</b>. Mình có thể tư vấn lịch trình, gợi ý tour du lịch hoặc giải đáp thông tin cho bạn hôm nay nhé!
                     </div>
                 </div>
             </div>
@@ -1278,8 +1273,8 @@
             <div class="bg-white dark:bg-slate-800 p-3 border-t border-slate-100 dark:border-slate-700 shrink-0 relative z-10 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)]">
                 <form id="chatbotForm" class="flex items-center gap-2 relative">
                     <input type="text" id="chatbotInput" placeholder="Nhập câu hỏi tại đây..." autocomplete="off"
-                        class="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-[13px] md:text-sm text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-colors pr-12">
-                    <button type="submit" class="absolute right-1 top-1 bottom-1 w-9 h-9 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white flex items-center justify-center transition-all shadow-md shadow-emerald-500/20 active:scale-95">
+                        class="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-[13px] md:text-sm text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-colors pr-12">
+                    <button type="submit" class="absolute right-1 top-1 bottom-1 w-9 h-9 rounded-full bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white flex items-center justify-center transition-all shadow-md shadow-orange-500/20 active:scale-95">
                         <i class="fa-solid fa-paper-plane text-xs pr-0.5 pt-0.5"></i>
                     </button>
                 </form>
@@ -1329,7 +1324,7 @@
                 if (sender === 'user') {
                     msgDiv.className = 'flex gap-2.5 max-w-[92%] ml-auto justify-end';
                     msgDiv.innerHTML = `
-                        <div class="bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-2.5 rounded-2xl rounded-tr-none shadow-md shadow-emerald-500/20 text-white leading-relaxed break-words">
+                        <div class="bg-gradient-to-r from-orange-500 to-rose-500 px-4 py-2.5 rounded-2xl rounded-tr-none shadow-md shadow-orange-500/20 text-white leading-relaxed break-words font-medium">
                             ${text}
                         </div>
                     `;
@@ -1338,8 +1333,8 @@
                     // Format text from bot (bold, line breaks)
                     const formattedText = text.replace(/\\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                     msgDiv.innerHTML = `
-                        <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800 shadow-sm mt-0.5">
-                            <i class="fa-solid fa-robot text-xs text-emerald-600 dark:text-emerald-400"></i>
+                        <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center shrink-0 border border-orange-200 dark:border-orange-800 shadow-sm mt-0.5">
+                            <i class="fa-solid fa-robot text-xs text-orange-600 dark:text-orange-400"></i>
                         </div>
                         <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-100 leading-relaxed break-words">
                             ${formattedText}
@@ -1348,13 +1343,13 @@
                 } else if (sender === 'loading') {
                     msgDiv.className = 'flex gap-2.5 max-w-[92%] bot-typing';
                     msgDiv.innerHTML = `
-                        <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800 shadow-sm mt-0.5">
-                            <i class="fa-solid fa-robot text-xs text-emerald-600 dark:text-emerald-400"></i>
+                        <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center shrink-0 border border-orange-200 dark:border-orange-800 shadow-sm mt-0.5">
+                            <i class="fa-solid fa-robot text-xs text-orange-600 dark:text-orange-400"></i>
                         </div>
                         <div class="bg-white dark:bg-slate-800 px-4 py-3.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm flex items-center gap-1.5">
-                            <div class="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                            <div class="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                            <div class="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-400 rounded-full animate-bounce"></div>
+                            <div class="w-1.5 h-1.5 bg-orange-400 dark:bg-orange-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                            <div class="w-1.5 h-1.5 bg-rose-400 dark:bg-rose-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                            <div class="w-1.5 h-1.5 bg-amber-400 dark:bg-amber-400 rounded-full animate-bounce"></div>
                         </div>
                     `;
                 }

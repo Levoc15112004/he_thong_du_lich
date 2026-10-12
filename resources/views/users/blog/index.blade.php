@@ -3,7 +3,7 @@
 @section('home')
 <style>
     .text-gradient {
-        background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+        background: linear-gradient(135deg, #f97316 0%, #f43f5e 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -17,8 +17,8 @@
     }
 
     .hero-gradient {
-        background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.12), transparent 50%),
-                    radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.10), transparent 50%);
+        background: radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.12), transparent 50%),
+                    radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.10), transparent 50%);
     }
 
     .glass-badge {
@@ -39,12 +39,12 @@
     {{-- HERO SECTION --}}
     <section class="relative pt-32 pb-16 overflow-hidden hero-gradient">
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full border border-emerald-200/80 dark:border-emerald-800/80 mb-6 font-bold text-xs uppercase tracking-wider shadow-sm">
-                <i class="fa-solid fa-book-open-reader text-emerald-500"></i>
+            <div class="inline-flex items-center gap-2 bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 px-4 py-2 rounded-full border border-orange-200/80 dark:border-orange-800/80 mb-6 font-bold text-xs uppercase tracking-wider shadow-sm">
+                <i class="fa-solid fa-book-open-reader text-orange-500"></i>
                 Cẩm Nang Du Lịch 2026
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-                Nhật Ký <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">Hành Trình Du Lịch</span>
+                Nhật Ký <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500">Hành Trình Du Lịch</span>
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                 Khám phá những câu chuyện, kinh nghiệm thực tế và nguồn cảm hứng bất tận cho chuyến đi tiếp theo của bạn cùng WanderVibe.
@@ -71,7 +71,7 @@
                             {{ $featuredBlog->title }}
                         </h2>
                         <div class="flex items-center gap-6 text-slate-300 text-sm font-bold  ">
-                            <span class="flex items-center gap-2"><i class="far fa-user text-emerald-400"></i> {{ $featuredBlog->author ?? 'WanderVibe Team' }}</span>
+                            <span class="flex items-center gap-2"><i class="far fa-user text-orange-400"></i> {{ $featuredBlog->author ?? 'WanderVibe Team' }}</span>
                             <span class="flex items-center gap-2"><i class="far fa-calendar text-blue-400"></i> {{ $featuredBlog->created_at->format('d/m/Y') }}</span>
                             <span class="flex items-center gap-2"><i class="far fa-eye text-blue-400"></i> {{ $featuredBlog->views ?? 0 }}</span>
                         </div>

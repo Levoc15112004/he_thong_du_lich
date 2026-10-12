@@ -90,13 +90,13 @@
         <nav class="text-sm mb-6">
             <ul class="flex flex-wrap items-center gap-x-2 gap-y-2 text-slate-500">
                 <li>
-                    <a href="/" class="flex items-center text-teal-600 hover:text-teal-700 transition-colors whitespace-nowrap">
+                    <a href="/" class="flex items-center text-orange-600 hover:text-orange-700 transition-colors whitespace-nowrap">
                         <i class="fa-solid text-[10px] fa-house mr-1.5 mb-0.5"></i>Trang chủ
                         <i class="fa-solid fa-angle-right ml-2 text-slate-300 text-xs"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex text-sm items-center hover:text-teal-600 transition-colors whitespace-nowrap">
+                    <a href="#" class="flex text-sm items-center hover:text-orange-600 transition-colors whitespace-nowrap">
                         {{ $tour->category->name ?? 'Danh mục' }}
                         <i class="fa-solid fa-angle-right ml-2 text-slate-300 text-xs"></i>
                     </a>
@@ -121,7 +121,7 @@
                     </span>
 
                     <span class="text-slate-500 bg-slate-50 px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-slate-100">
-                        <i class="fa-solid fa-location-dot text-teal-500"></i>
+                        <i class="fa-solid fa-location-dot text-orange-500"></i>
                         {{ $tour->start_location }} → {{ $tour->end_location }}
                     </span>
                 </div>
@@ -181,30 +181,30 @@
 
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
                             <div class="bg-slate-50 rounded-2xl p-4 text-center border border-slate-100">
-                                <i class="fa-regular fa-calendar-check text-2xl text-teal-500 mb-2 block"></i>
+                                <i class="fa-regular fa-calendar-check text-2xl text-orange-500 mb-2 block"></i>
                                 <p class="text-slate-500 font-medium mb-1">Khởi hành</p>
                                 <p class="font-bold text-slate-800 text-base">
-                                    {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}
+                                     {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}
                                 </p>
                             </div>
 
                             <div class="bg-slate-50 rounded-2xl p-4 text-center border border-slate-100">
-                                <i class="fa-regular fa-clock text-2xl text-teal-500 mb-2 block"></i>
+                                <i class="fa-regular fa-clock text-2xl text-orange-500 mb-2 block"></i>
                                 <p class="text-slate-500 font-medium mb-1">Thời gian</p>
                                 <p class="font-bold text-slate-800 text-base">{{ $tour->time }}</p>
                             </div>
 
                             <div class="bg-slate-50 rounded-2xl p-4 text-center border border-slate-100">
-                                <i class="fa-solid fa-users text-2xl text-teal-500 mb-2 block"></i>
+                                <i class="fa-solid fa-users text-2xl text-orange-500 mb-2 block"></i>
                                 <p class="text-slate-500 font-medium mb-1">Số khách tối đa</p>
                                 <p class="font-bold text-slate-800 text-base">{{ $quantity }}</p>
                             </div>
 
                             <div class="bg-slate-50 rounded-2xl p-4 text-center border border-slate-100">
-                                <i class="fa-solid fa-person-walking-luggage text-2xl text-teal-500 mb-2 block"></i>
+                                <i class="fa-solid fa-person-walking-luggage text-2xl text-orange-500 mb-2 block"></i>
                                 <p class="text-slate-500 font-medium mb-1">Còn trống</p>
                                 <p
-                                    class="font-bold text-base {{ $slots == 0 ? 'text-rose-500' : 'text-emerald-600' }}">
+                                    class="font-bold text-base {{ $slots == 0 ? 'text-rose-500' : 'text-orange-600' }}">
                                     {{ $slots }} chỗ
                                 </p>
                             </div>
@@ -224,12 +224,12 @@
                         <!-- TAB HEADER -->
                         <div class="flex gap-8 border-b border-slate-100 mb-8 overflow-x-auto custom-scrollbar">
                             <button onclick="switchTab('schedule')" id="tab-schedule"
-                                class="pb-4 font-semibold text-lg border-b-2 border-teal-500 text-teal-600 whitespace-nowrap brand-font">
+                                class="pb-4 font-semibold text-lg border-b-2 border-orange-500 text-orange-600 whitespace-nowrap brand-font">
                                 Lịch trình chi tiết
                             </button>
 
                             <button onclick="switchTab('review')" id="tab-review"
-                                class="pb-4 font-semibold text-lg text-slate-400 hover:text-teal-600 transition-colors whitespace-nowrap brand-font">
+                                class="pb-4 font-semibold text-lg text-slate-400 hover:text-orange-600 transition-colors whitespace-nowrap brand-font">
                                 Đánh giá khách hàng ({{ $totalReviews }})
                             </button>
                         </div>
@@ -242,11 +242,11 @@
                                 @foreach ($tourSchedules as $index => $day)
                                     <div class="schedule-item">
 
-                                        <div class="relative pl-8 border-l-2 border-teal-200">
+                                        <div class="relative pl-8 border-l-2 border-orange-200">
 
                                             <!-- DOT -->
                                             <span
-                                                class="absolute -left-[9px] top-5 bg-teal-500 w-4 h-4 rounded-full border-2 border-white shadow-sm"></span>
+                                                class="absolute -left-[9px] top-5 bg-orange-500 w-4 h-4 rounded-full border-2 border-white shadow-sm"></span>
 
                                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
@@ -367,7 +367,7 @@
                             @if ($reviews->count() > 3)
                                 <div class="mt-4 flex justify-center">
                                     <button onclick="toggleReview()" id="btn-review"
-                                        class="flex items-center gap-2 text-teal-600 font-semibold hover:underline">
+                                        class="flex items-center gap-2 text-orange-600 font-semibold hover:underline">
 
                                         <span id="review-text">Xem thêm đánh giá</span>
                                         <i id="review-icon" class="fa-solid fa-chevron-down"></i>
@@ -401,13 +401,13 @@
 
                         <!-- ===== QUICK INFO ===== -->
                         <div class="grid grid-cols-2 gap-4 text-xs mt-6 mb-4">
-                            <div class="bg-teal-50/50 rounded-2xl p-4">
+                            <div class="bg-orange-50/50 rounded-2xl p-4">
                                 <p class="text-slate-400 mb-1 font-medium">Khởi hành</p>
                                 <p class="font-bold text-sm text-slate-700">
                                     {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}
                                 </p>
                             </div>
-                            <div class="bg-teal-50/50 rounded-2xl p-4">
+                            <div class="bg-orange-50/50 rounded-2xl p-4">
                                 <p class="text-slate-400 mb-1 font-medium">Lịch trình</p>
                                 <p class="font-bold text-sm text-slate-700">
                                     {{ $tour->time }}
@@ -416,7 +416,7 @@
                         </div>
 
                         <button onclick="openItineraryModal({{ $tour->id }})"
-                            class="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-teal-100/60 rounded-2xl mb-6 hover:bg-teal-50 hover:border-teal-200 transition-all text-teal-600 font-semibold group shadow-sm bg-white">
+                            class="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-orange-100/60 rounded-2xl mb-6 hover:bg-orange-50 hover:border-orange-200 transition-all text-orange-600 font-semibold group shadow-sm bg-white">
                             <i data-lucide="map" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                             <span>Xem bản đồ lịch trình</span>
                         </button>
@@ -435,10 +435,10 @@
                                     @foreach ($transportValues as $value)
                                         <label
                                             class="flex items-center justify-between px-4 py-3 rounded-xl bg-slate-50 border border-slate-200
-                                             hover:border-emerald-500 hover:bg-white cursor-pointer transition-all shadow-sm group">
-                                            <span class="font-semibold text-slate-700 group-hover:text-emerald-600 z-10">{{ $value }}</span>
+                                             hover:border-orange-500 hover:bg-white cursor-pointer transition-all shadow-sm group">
+                                            <span class="font-semibold text-slate-700 group-hover:text-orange-600 z-10">{{ $value }}</span>
                                             <input type="radio" name="transport" value="{{ $value }}"
-                                                {{ $loop->first ? 'checked' : '' }} class="text-emerald-500 focus:ring-emerald-500 z-10 focus:ring-2">
+                                                {{ $loop->first ? 'checked' : '' }} class="text-orange-500 focus:ring-orange-500 z-10 focus:ring-2">
                                         </label>
                                     @endforeach
                                 </div>
@@ -454,10 +454,10 @@
                                     @foreach ($tourTypeValues as $value)
                                         <label
                                             class="flex items-center justify-between px-4 py-3 rounded-xl bg-slate-50 border border-slate-200
-                                            hover:border-emerald-500 hover:bg-white cursor-pointer transition-all shadow-sm group">
-                                            <span class="font-semibold text-slate-700 group-hover:text-emerald-600 z-10">{{ $value }}</span>
+                                            hover:border-orange-500 hover:bg-white cursor-pointer transition-all shadow-sm group">
+                                            <span class="font-semibold text-slate-700 group-hover:text-orange-600 z-10">{{ $value }}</span>
                                             <input type="radio" name="tour_type" value="{{ $value }}"
-                                                {{ $loop->first ? 'checked' : '' }} class="text-emerald-500 focus:ring-emerald-500 z-10 focus:ring-2">
+                                                {{ $loop->first ? 'checked' : '' }} class="text-orange-500 focus:ring-orange-500 z-10 focus:ring-2">
                                         </label>
                                     @endforeach
                                 </div>
@@ -474,7 +474,7 @@
 
                                 <input type="number" id="tour-quantity-input" name="quantity" value="1" min="1"
                                     max="{{ $slots }}" placeholder="Nhập số lượng"
-                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 transition-all">
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-orange-500 focus:bg-white focus:ring-4 focus:ring-orange-500/10 transition-all">
 
                                 @if ($slots == 0)
                                     <p class="text-rose-500 text-xs mt-2 font-bold flex items-center gap-1.5 bg-rose-50 border border-rose-100 px-3 py-2 rounded-xl">
@@ -488,7 +488,7 @@
 
                             <!-- CTA -->
                             <button type="submit" id="book-tour-btn" {{ $slots == 0 ? 'disabled' : '' }}
-                                class="w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                class="w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-orange-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 disabled:cursor-not-allowed">
                                 <i class="fa-solid fa-bookmark mr-2"></i> Giữ Chỗ Ngay
                             </button>
 
@@ -552,7 +552,7 @@
                         <!-- Ảnh -->
                         <a href="{{ route('user.tourDetail.index', $item->id) }}" class="relative h-56 overflow-hidden block">
                             <img src="{{ Str::startsWith($item->image, ['http://', 'https://']) ? $item->image : asset($item->image) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-teal-600 shadow-sm flex items-center gap-1.5">
+                            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-orange-600 shadow-sm flex items-center gap-1.5">
                                 <i class="fa-solid fa-map-pin"></i> {{ $item->end_location }}
                             </div>
                         </a>
@@ -560,7 +560,7 @@
                         <!-- Nội dung -->
                         <div class="p-6 flex flex-col flex-grow justify-between">
                             <div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-3 line-clamp-2 min-h-[56px] brand-font group-hover:text-teal-600 transition-colors">
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 line-clamp-2 min-h-[56px] brand-font group-hover:text-orange-600 transition-colors">
                                     {{ $item->name }}
                                 </h3>
 
@@ -579,7 +579,7 @@
                             <form action="{{ route('user.cart.add', $item->id) }}" method="POST" class="mt-6">
                                 @csrf
                                 <button type="submit"
-                                    class="w-full py-3.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-500 hover:text-white font-bold text-sm transition-all flex items-center justify-center gap-2 border border-emerald-100 group shadow-sm">
+                                    class="w-full py-3.5 rounded-xl bg-orange-50 text-orange-700 hover:bg-orange-500 hover:text-white font-bold text-sm transition-all flex items-center justify-center gap-2 border border-orange-100 group shadow-sm">
                                     <span>Xem chi tiết chuyến đi</span>
                                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
                                 </button>
@@ -601,7 +601,7 @@
                 <!-- HEADER -->
                 <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 shrink-0 bg-slate-50/50">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100 shadow-sm">
+                        <div class="w-10 h-10 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center border border-orange-100 shadow-sm">
                             <i class="fa-solid fa-map-location-dot text-lg"></i>
                         </div>
                         <div>
@@ -633,7 +633,7 @@
                         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-[1000] w-max">
                             <a id="directionsButton" target="_blank" href="#"
                                 class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/90 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm rounded-full shadow-xl backdrop-blur-md border border-white/20 transition-all hover:scale-105 active:scale-95">
-                                <i class="fa-solid fa-route text-emerald-400"></i>
+                                <i class="fa-solid fa-route text-orange-400"></i>
                                 <span>Mở chỉ đường trên Google Maps</span>
                             </a>
                         </div>
@@ -741,15 +741,15 @@
                 scheduleContent.classList.remove('hidden');
                 reviewContent.classList.add('hidden');
 
-                scheduleTab.classList.add('border-teal-500', 'text-teal-600');
-                reviewTab.classList.remove('border-teal-500', 'text-teal-600');
+                scheduleTab.classList.add('border-orange-500', 'text-orange-600');
+                reviewTab.classList.remove('border-orange-500', 'text-orange-600');
                 reviewTab.classList.add('text-slate-400');
             } else {
                 reviewContent.classList.remove('hidden');
                 scheduleContent.classList.add('hidden');
 
-                reviewTab.classList.add('border-teal-500', 'text-teal-600');
-                scheduleTab.classList.remove('border-teal-500', 'text-teal-600');
+                reviewTab.classList.add('border-orange-500', 'text-orange-600');
+                scheduleTab.classList.remove('border-orange-500', 'text-orange-600');
                 scheduleTab.classList.add('text-slate-400');
             }
         }
@@ -828,7 +828,7 @@
             showModal();
             const listEl = document.getElementById('modalTimelineList');
             if (listEl) {
-                listEl.innerHTML = '<div class="flex items-center justify-center py-12 text-slate-400"><i class="fa-solid fa-spinner fa-spin text-xl mr-2 text-emerald-500"></i> Đang tải dữ liệu...</div>';
+                listEl.innerHTML = '<div class="flex items-center justify-center py-12 text-slate-400"><i class="fa-solid fa-spinner fa-spin text-xl mr-2 text-orange-500"></i> Đang tải dữ liệu...</div>';
             }
 
             fetch(`/tour/schedule/${tourId}/json`)
@@ -856,17 +856,17 @@
                 html += `
                     <div onclick="focusScheduleDay(${item.day_number}, ${item.latitude}, ${item.longitude})"
                         id="timeline-item-${item.day_number}"
-                        class="p-3.5 rounded-2xl border transition-all cursor-pointer ${isActive ? 'bg-emerald-50/70 border-emerald-300 shadow-sm' : 'bg-white border-slate-200 hover:border-emerald-200 hover:bg-slate-50'}">
+                        class="p-3.5 rounded-2xl border transition-all cursor-pointer ${isActive ? 'bg-orange-50/70 border-orange-300 shadow-sm' : 'bg-white border-slate-200 hover:border-orange-200 hover:bg-slate-50'}">
                         <div class="flex items-start gap-2.5">
-                            <span class="w-7 h-7 rounded-xl ${isActive ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
+                            <span class="w-7 h-7 rounded-xl ${isActive ? 'bg-orange-600 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                                 N${item.day_number}
                             </span>
                             <div class="flex-1 min-w-0">
                                 <h4 class="text-xs sm:text-sm font-bold text-slate-800 line-clamp-1">${item.title}</h4>
                                 <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">${item.description || 'Tham quan và khám phá điểm đến theo hành trình.'}</p>
                                 ${item.location_name ? `
-                                    <div class="mt-1.5 inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-md">
-                                        <i class="fa-solid fa-location-dot text-emerald-600"></i> ${item.location_name}
+                                    <div class="mt-1.5 inline-flex items-center gap-1 text-[10px] font-semibold text-orange-700 bg-orange-100/60 px-2 py-0.5 rounded-md">
+                                        <i class="fa-solid fa-location-dot text-orange-600"></i> ${item.location_name}
                                     </div>
                                 ` : ''}
                             </div>
@@ -955,13 +955,13 @@
 
         function focusScheduleDay(dayNumber, lat, lng) {
             document.querySelectorAll('#modalTimelineList > div').forEach(el => {
-                el.classList.remove('bg-emerald-50/70', 'border-emerald-300', 'shadow-sm');
+                el.classList.remove('bg-orange-50/70', 'border-orange-300', 'shadow-sm');
                 el.classList.add('bg-white', 'border-slate-200');
             });
             const selected = document.getElementById(`timeline-item-${dayNumber}`);
             if (selected) {
                 selected.classList.remove('bg-white', 'border-slate-200');
-                selected.classList.add('bg-emerald-50/70', 'border-emerald-300', 'shadow-sm');
+                selected.classList.add('bg-orange-50/70', 'border-orange-300', 'shadow-sm');
             }
             if (leafletMap && lat && lng) {
                 leafletMap.flyTo([lat, lng], 14, { duration: 1 });

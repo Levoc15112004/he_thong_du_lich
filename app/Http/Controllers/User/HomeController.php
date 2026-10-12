@@ -25,8 +25,8 @@ class HomeController extends Controller
     {
         $advice = 'Thời tiết khá lý tưởng. Chuẩn bị trang phục năng động và thoải mái.';
         $score = '9.0 / 10 Tốt';
-        $bg = 'bg-emerald-100';
-        $text = 'text-emerald-700';
+        $bg = 'bg-orange-100';
+        $text = 'text-orange-700';
 
         if ($weatherId >= 200 && $weatherId < 300) {
             $advice = 'Có dông sét nguy hiểm. Tránh các hoạt động ngoài trời, cáp treo hay tắm biển. Hãy chọn áo khoác chống nước và ưu tiên điểm du lịch trong nhà.';
@@ -57,8 +57,8 @@ class HomeController extends Controller
             } else {
                 $advice = 'Trời quang mây tạnh, mát mẻ! Thời điểm vàng cho mọi bức ảnh check-in và hoạt động cắm trại, trekking ngoài trời.';
                 $score = '10 / 10 Hoàn Hảo';
-                $bg = 'bg-emerald-100';
-                $text = 'text-emerald-700';
+                $bg = 'bg-orange-100';
+                $text = 'text-orange-700';
             }
         } elseif ($weatherId > 800) {
             $advice = 'Trời nhiều mây, ánh sáng dịu. Mặc trang phục sáng màu (trắng, vàng, pastel) để nổi bật khung hình. Thuận tiện dạo chơi không sợ nắng hắt.';

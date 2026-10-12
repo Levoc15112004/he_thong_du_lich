@@ -45,9 +45,9 @@
 
 <div class="relative pt-32 pb-24 min-h-screen overflow-hidden">
     <!-- Ambient glowing backgrounds -->
-    <div class="absolute top-20 left-10 w-[400px] h-[400px] bg-emerald-400/20 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-soft"></div>
-    <div class="absolute bottom-20 right-10 w-[500px] h-[500px] bg-cyan-400/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-teal-300/10 rounded-full blur-2xl pointer-events-none -z-10"></div>
+    <div class="absolute top-20 left-10 w-[400px] h-[400px] bg-orange-400/20 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-soft"></div>
+    <div class="absolute bottom-20 right-10 w-[500px] h-[500px] bg-amber-400/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-rose-300/10 rounded-full blur-2xl pointer-events-none -z-10"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -56,19 +56,19 @@
             <div class="relative flex justify-between items-center">
                 <!-- Lines ->
                 <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] bg-slate-200 rounded-full z-0"></div>
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 h-[3px] bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full z-0 transition-all duration-700 w-[50%] sm:w-[35%]"></div>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 h-[3px] bg-gradient-to-r from-orange-400 to-rose-500 rounded-full z-0 transition-all duration-700 w-[50%] sm:w-[35%]"></div>
 
                 <!-- Step 1 -->
                 <div class="flex flex-col items-center relative z-10 group">
-                    <div class="step-active-ring relative w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 text-white flex items-center justify-center font-bold shadow-lg shadow-emerald-500/30">
+                    <div class="step-active-ring relative w-12 h-12 rounded-full bg-gradient-to-tr from-orange-500 to-rose-400 text-white flex items-center justify-center font-bold shadow-lg shadow-orange-500/30">
                         <i class="fa-solid fa-1"></i>
                     </div>
-                    <span class="text-[11px] font-extrabold uppercase mt-3 text-emerald-600 tracking-wide drop-shadow-sm">Thông tin</span>
+                    <span class="text-[11px] font-extrabold uppercase mt-3 text-orange-600 tracking-wide drop-shadow-sm">Thông tin</span>
                 </div>
 
                 <!-- Step 2 -->
                 <div class="flex flex-col items-center relative z-10">
-                    <div class="w-12 h-12 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center font-bold shadow-sm transition-colors group-hover:border-teal-200">
+                    <div class="w-12 h-12 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center font-bold shadow-sm transition-colors group-hover:border-orange-200">
                         <i class="fa-solid fa-2"></i>
                     </div>
                     <span class="text-[11px] font-bold uppercase mt-3 text-slate-400 tracking-wide">Thanh toán</span>
@@ -91,31 +91,31 @@
                 <div class="bg-white/70 backdrop-blur-xl p-6 sm:p-10 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/80 relative overflow-hidden">
                     
                     <!-- Decorative element -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-emerald-200/40 to-transparent rounded-bl-full pointer-events-none"></div>
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-orange-200/40 to-transparent rounded-bl-full pointer-events-none"></div>
 
                     <div class="flex items-center gap-4 mb-8 relative z-10">
-                        <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-400 rounded-2xl flex items-center justify-center text-white shadow-md shadow-emerald-500/20">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-rose-400 rounded-2xl flex items-center justify-center text-white shadow-md shadow-orange-500/20">
                             <i class="fa-solid fa-user-astronaut text-xl"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Người đặt <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">hành trình</span></h2>
+                        <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Người đặt <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">hành trình</span></h2>
                     </div>
 
                     @if (auth()->check())
                         <div class="mb-10 group/profile">
-                            <div id="profileCard" class="cursor-pointer bg-white border border-slate-100/80 hover:border-emerald-300 rounded-[1.5rem] p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 active:scale-[0.98]">
+                            <div id="profileCard" class="cursor-pointer bg-white border border-slate-100/80 hover:border-orange-300 rounded-[1.5rem] p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hover:shadow-xl hover:shadow-orange-500/10 active:scale-[0.98]">
                                 <div class="flex items-center gap-4">
                                     <div class="relative">
                                         <img src="{{ auth()->user()->avatar_url }}"
-                                             onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=10b981&color=fff';"
-                                             class="w-16 h-16 rounded-full object-cover border-4 border-emerald-50 shadow-md">
-                                        <div class="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></div>
+                                             onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=f97316&color=fff';"
+                                             class="w-16 h-16 rounded-full object-cover border-4 border-orange-50 shadow-md">
+                                        <div class="absolute bottom-0 right-0 w-4 h-4 bg-orange-500 border-2 border-white rounded-full"></div>
                                     </div>
                                     <div>
                                         <p class="text-lg font-bold text-slate-800 tracking-tight">{{ auth()->user()->name }}</p>
                                         <p class="text-sm text-slate-500 font-medium">{{ auth()->user()->email }}</p>
                                     </div>
                                 </div>
-                                <button type="button" id="profileStatus" class="shrink-0 px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white border border-emerald-100 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/25">
+                                <button type="button" id="profileStatus" class="shrink-0 px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-orange-50 hover:bg-orange-500 text-orange-600 hover:text-white border border-orange-100 hover:border-orange-500 hover:shadow-lg hover:shadow-orange-500/25">
                                     <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Tự động điền
                                 </button>
                             </div>
@@ -130,7 +130,7 @@
                             <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Họ và tên khách hàng <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                    <i class="fa-regular fa-user text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                    <i class="fa-regular fa-user text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                 </div>
                                 <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="VD: Nguyễn Văn A"
                                        class="w-full glass-input rounded-2xl py-3.5 pl-11 pr-4 text-sm font-semibold text-slate-800 placeholder-slate-400" required>
@@ -143,7 +143,7 @@
                                 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Email <span class="text-rose-500">*</span></label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                        <i class="fa-regular fa-envelope text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                        <i class="fa-regular fa-envelope text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                     </div>
                                     <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="example@gmail.com"
                                            class="w-full glass-input rounded-2xl py-3.5 pl-11 pr-4 text-sm font-semibold text-slate-800 placeholder-slate-400" required>
@@ -155,7 +155,7 @@
                                 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Số điện thoại <span class="text-rose-500">*</span></label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                        <i class="fa-solid fa-phone text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                        <i class="fa-solid fa-phone text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                     </div>
                                     <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="09xx xxx xxx"
                                            class="w-full glass-input rounded-2xl py-3.5 pl-11 pr-4 text-sm font-semibold text-slate-800 placeholder-slate-400" required>
@@ -168,7 +168,7 @@
                             <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Địa chỉ thường trú <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                    <i class="fa-solid fa-map-location-dot text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                    <i class="fa-solid fa-map-location-dot text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                 </div>
                                 <input type="text" id="address" name="address" value="{{ old('address') }}" placeholder="Số nhà, tên đường, phường/xã, quận/huyện..."
                                        class="w-full glass-input rounded-2xl py-3.5 pl-11 pr-4 text-sm font-semibold text-slate-800 placeholder-slate-400" required>
@@ -180,7 +180,7 @@
                             <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Ghi chú thêm</label>
                             <div class="relative">
                                 <div class="absolute top-3.5 left-0 pl-4 flex items-start pointer-events-none">
-                                    <i class="fa-regular fa-comment-dots text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                    <i class="fa-regular fa-comment-dots text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                 </div>
                                 <textarea name="note" rows="3" placeholder="Yêu cầu về ăn uống, chỗ ngồi, thời gian đón..."
                                           class="w-full glass-input rounded-2xl py-3.5 pl-11 pr-4 text-sm font-semibold text-slate-800 placeholder-slate-400 resize-none">{{ old('note') }}</textarea>
@@ -200,7 +200,7 @@
                         @endforeach
 
                         <div class="pt-6">
-                            <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white py-4 rounded-2xl font-extrabold text-base transition-all duration-300 shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-3 hover:-translate-y-1">
+                            <button type="submit" class="w-full bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white py-4 rounded-2xl font-extrabold text-base transition-all duration-300 shadow-lg shadow-orange-500/30 flex items-center justify-center gap-3 hover:-translate-y-1">
                                 Tiếp tục thanh toán <i class="fa-solid fa-arrow-right-long text-sm"></i>
                             </button>
                         </div>
@@ -212,8 +212,8 @@
             <div class="xl:col-span-5">
                 <div class="order-summary-glass p-6 sm:p-8 rounded-[2rem]">
                     <div class="flex items-center justify-between mb-8">
-                        <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Tóm tắt <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">đơn hàng</span></h3>
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500 shadow-sm">
+                        <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Tóm tắt <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500">đơn hàng</span></h3>
+                        <div class="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-500 shadow-sm">
                             <i class="fa-solid fa-basket-shopping text-xl"></i>
                         </div>
                     </div>
@@ -225,20 +225,20 @@
                             @foreach ($items as $item)
                                 @php $tour = \App\Models\Tour::find($item['tour_id']); @endphp
                                 @if ($tour)
-                                    <div class="group relative flex gap-4 p-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-emerald-200 transition-all duration-300">
+                                    <div class="group relative flex gap-4 p-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-orange-200 transition-all duration-300">
                                         <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" class="w-20 h-20 rounded-xl object-cover shrink-0" alt="{{ $tour->name }}">
                                         <div class="flex flex-col justify-center flex-1">
-                                            <h4 class="text-sm font-bold text-slate-800 line-clamp-2 leading-tight group-hover:text-emerald-600 transition-colors">{{ $tour->name }}</h4>
+                                            <h4 class="text-sm font-bold text-slate-800 line-clamp-2 leading-tight group-hover:text-orange-600 transition-colors">{{ $tour->name }}</h4>
                                             <div class="flex flex-wrap items-center gap-2.5 mt-2">
                                                 <p class="text-[10px] text-slate-500 font-semibold flex items-center gap-1">
-                                                    <i class="fa-regular fa-calendar text-emerald-500"></i> {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}
+                                                    <i class="fa-regular fa-calendar text-orange-500"></i> {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}
                                                 </p>
                                                 <p class="text-[10px] text-slate-500 font-semibold flex items-center gap-1">
-                                                    <i class="fa-solid fa-user-group text-emerald-500"></i> {{ $item['quantity'] }} KH
+                                                    <i class="fa-solid fa-user-group text-orange-500"></i> {{ $item['quantity'] }} KH
                                                 </p>
                                                 @if(!empty($item['transport']))
-                                                    <p class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-semibold flex items-center gap-1 border border-emerald-100">
-                                                        <i class="fa-solid fa-plane-departure text-emerald-500"></i> {{ $item['transport'] }}
+                                                    <p class="text-[10px] text-orange-700 bg-orange-50 px-2 py-0.5 rounded-md font-semibold flex items-center gap-1 border border-orange-100">
+                                                        <i class="fa-solid fa-plane-departure text-orange-500"></i> {{ $item['transport'] }}
                                                     </p>
                                                 @endif
                                                 @if(!empty($item['tour_type']))
@@ -260,21 +260,21 @@
                             </div>
 
                             @if (!empty($voucher))
-                                <div class="flex justify-between items-center bg-gradient-to-r from-emerald-50 to-teal-50 p-4 rounded-xl border border-emerald-100">
+                                <div class="flex justify-between items-center bg-gradient-to-r from-orange-50 to-rose-50 p-4 rounded-xl border border-orange-100">
                                     <div class="flex items-center gap-2">
-                                        <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                                        <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center">
                                             <i class="fa-solid fa-ticket text-xs"></i>
                                         </div>
-                                        <span class="text-xs font-bold uppercase text-emerald-700 tracking-wider">{{ $voucher['code'] }}</span>
+                                        <span class="text-xs font-bold uppercase text-orange-700 tracking-wider">{{ $voucher['code'] }}</span>
                                     </div>
-                                    <span class="text-sm font-bold text-emerald-600">-{{ number_format($discount) }}₫</span>
+                                    <span class="text-sm font-bold text-orange-600">-{{ number_format($discount) }}₫</span>
                                 </div>
                             @endif
 
                             <div class="pt-5 mt-2 border-t border-slate-200 flex flex-col gap-1">
                                 <p class="text-[11px] font-bold uppercase text-slate-500 tracking-wider">Tổng thanh toán</p>
                                 <div class="flex justify-between items-end mt-1">
-                                    <span class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 drop-shadow-sm">{{ number_format($finalTotal) }}₫</span>
+                                    <span class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600 drop-shadow-sm">{{ number_format($finalTotal) }}₫</span>
                                     <span class="text-[10px] text-slate-400 font-semibold mb-1 relative top-[-6px]">Đã bao gồm VAT</span>
                                 </div>
                             </div>
@@ -289,12 +289,12 @@
                     @endif
 
                     <!-- Trust Badge -->
-                    <div class="mt-8 p-4 rounded-2xl bg-white/80 border border-emerald-100 flex items-start gap-4 shadow-sm hover:shadow-md transition-all duration-300 group">
-                        <div class="shrink-0 w-10 h-10 rounded-[10px] bg-gradient-to-br from-emerald-100 to-teal-50 flex items-center justify-center text-emerald-600 shadow-inner group-hover:scale-105 transition-transform duration-300">
+                    <div class="mt-8 p-4 rounded-2xl bg-white/80 border border-orange-100 flex items-start gap-4 shadow-sm hover:shadow-md transition-all duration-300 group">
+                        <div class="shrink-0 w-10 h-10 rounded-[10px] bg-gradient-to-br from-orange-100 to-rose-50 flex items-center justify-center text-orange-600 shadow-inner group-hover:scale-105 transition-transform duration-300">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <p class="text-[11px] text-slate-600 font-medium leading-relaxed pt-0.5">
-                            <strong class="text-emerald-700">TravelGo</strong> cam kết bảo mật thông tin khách hàng tuyệt đối theo tiêu chuẩn quốc tế.
+                            <strong class="text-orange-700">TravelGo</strong> cam kết bảo mật thông tin khách hàng tuyệt đối theo tiêu chuẩn quốc tế.
                         </p>
                     </div>
                 </div>
@@ -320,9 +320,9 @@
                 document.getElementById('address').value = user.address ?? '';
 
                 profileStatus.innerHTML = `<i class="fa-solid fa-check mr-1"></i> Đã điền`;
-                profileStatus.classList.remove('bg-emerald-50', 'text-emerald-600');
-                profileStatus.classList.add('bg-emerald-500', 'text-white', 'shadow-lg', 'shadow-emerald-500/25');
-                profileCard.classList.add('border-emerald-400', 'shadow-xl', 'shadow-emerald-500/10');
+                profileStatus.classList.remove('bg-orange-50', 'text-orange-600');
+                profileStatus.classList.add('bg-orange-500', 'text-white', 'shadow-lg', 'shadow-orange-500/25');
+                profileCard.classList.add('border-orange-400', 'shadow-xl', 'shadow-orange-500/10');
             } else {
                 document.getElementById('name').value = '';
                 document.getElementById('email').value = '';
@@ -330,9 +330,9 @@
                 document.getElementById('address').value = '';
 
                 profileStatus.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Tự động điền`;
-                profileStatus.classList.remove('bg-emerald-500', 'text-white', 'shadow-lg', 'shadow-emerald-500/25');
-                profileStatus.classList.add('bg-emerald-50', 'text-emerald-600');
-                profileCard.classList.remove('border-emerald-400', 'shadow-xl', 'shadow-emerald-500/10');
+                profileStatus.classList.remove('bg-orange-500', 'text-white', 'shadow-lg', 'shadow-orange-500/25');
+                profileStatus.classList.add('bg-orange-50', 'text-orange-600');
+                profileCard.classList.remove('border-orange-400', 'shadow-xl', 'shadow-orange-500/10');
             }
         });
     </script>

@@ -15,9 +15,9 @@
     }
     
     .payment-option input:checked + .payment-card {
-        border-color: #10b981; /* emerald-500 */
+        border-color: #f97316; /* orange-500 */
         background-color: #ffffff;
-        box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.2);
+        box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.2);
         transform: translateY(-5px);
     }
 
@@ -73,11 +73,11 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- HEADER BANNER -->
-        <div class="bg-gradient-to-r from-emerald-600 to-teal-500 rounded-[2.5rem] p-8 sm:p-12 mb-12 text-center text-white shadow-xl shadow-emerald-500/20 relative overflow-hidden">
+        <div class="bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 rounded-[2.5rem] p-8 sm:p-12 mb-12 text-center text-white shadow-xl shadow-orange-500/20 relative overflow-hidden">
             <!-- Decorative Blobs -->
             <div class="absolute inset-0 opacity-20">
                 <div class="absolute -top-10 -left-10 w-40 h-40 bg-white rounded-full blur-2xl"></div>
-                <div class="absolute -bottom-10 -right-10 w-56 h-56 bg-teal-300 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-10 -right-10 w-56 h-56 bg-rose-300 rounded-full blur-2xl"></div>
             </div>
 
             <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white border border-white/30 px-5 py-2 rounded-full mb-6 font-bold text-xs uppercase tracking-wider shadow-sm">
@@ -88,7 +88,7 @@
             <h1 class="text-3xl sm:text-5xl font-bold tracking-tight mb-4 drop-shadow-md relative z-10">
                 Thanh toán <span class="text-yellow-300">70% còn lại</span>
             </h1>
-            <p class="text-emerald-50 text-sm sm:text-base font-medium max-w-lg mx-auto relative z-10 leading-relaxed">
+            <p class="text-orange-50 text-sm sm:text-base font-medium max-w-lg mx-auto relative z-10 leading-relaxed">
                 Vui lòng hoàn tất giao dịch để chúng tôi xuất vé điện tử chính thức và chốt hành trình của bạn.
             </p>
         </div>
@@ -115,7 +115,7 @@
                             <img src="{{ asset($tour->image) }}" class="w-16 h-16 rounded-xl object-cover shrink-0 border border-slate-100 shadow-sm">
                             <div>
                                 <h4 class="text-sm font-bold text-slate-800 leading-snug mb-2 line-clamp-2">{{ $tour->name }}</h4>
-                                <p class="text-[11px] font-bold text-slate-500"><i class="fa-regular fa-calendar text-emerald-500 mr-1"></i> Khởi hành: {{ $tour->start_date->format('d/m/Y') }}</p>
+                                <p class="text-[11px] font-bold text-slate-500"><i class="fa-regular fa-calendar text-orange-500 mr-1"></i> Khởi hành: {{ $tour->start_date->format('d/m/Y') }}</p>
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                         </div>
 
                         @if ($order->discount_amount > 0)
-                            <div class="flex justify-between items-center text-[13px] font-bold text-emerald-600 bg-emerald-50/50 p-2.5 rounded-xl border border-emerald-100 mb-3">
+                            <div class="flex justify-between items-center text-[13px] font-bold text-orange-600 bg-orange-50/50 p-2.5 rounded-xl border border-orange-100 mb-3">
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-tag"></i>
                                     <span>Mã giảm giá áp dụng</span>
@@ -156,7 +156,7 @@
                         <div class="border-t border-slate-200 border-dashed pt-4 mt-2">
                             <div class="flex flex-col text-right">
                                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Thanh toán nốt (70%)</span>
-                                <span class="text-3xl font-bold text-emerald-600 drop-shadow-sm">{{ number_format($remain_amount, 0, ',', '.') }}đ</span>
+                                <span class="text-3xl font-bold text-orange-600 drop-shadow-sm">{{ number_format($remain_amount, 0, ',', '.') }}đ</span>
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
             <!-- RIGHT: MAIN OPTIONS -->
             <div class="lg:col-span-7 order-1 lg:order-2">
                 <h2 class="text-xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                    <i class="fa-solid fa-wallet text-emerald-500"></i> Phương thức thanh toán 
+                    <i class="fa-solid fa-wallet text-orange-500"></i> Phương thức thanh toán 
                 </h2>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
@@ -183,7 +183,7 @@
                         <input type="radio" id="payment_momo" name="payment_method" value="momo" class="hidden" checked>
                         <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-6 flex flex-col items-center justify-center text-center gap-4 overflow-hidden">
                             <!-- Selected Ring -->
-                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md">
+                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             
@@ -203,11 +203,11 @@
                         <input type="radio" id="payment_cash" name="payment_method" value="cash" class="hidden">
                         <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-6 flex flex-col items-center justify-center text-center gap-4 overflow-hidden">
                             <!-- Selected Ring -->
-                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md">
+                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             
-                            <div class="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center p-3 mb-2 text-emerald-500">
+                            <div class="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center p-3 mb-2 text-orange-500">
                                 <i class="fa-solid fa-building-columns text-4xl"></i>
                             </div>
                             
@@ -221,7 +221,7 @@
 
                 <!-- DYNAMIC ACTION BUTTON AREA -->
                 <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-bl-full pointer-events-none"></div>
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-bl-full pointer-events-none"></div>
                     <p class="text-sm font-bold text-slate-800 mb-4 relative z-10">Bấm xác nhận để hoàn tất</p>
                     
                     <!-- MoMo Button -->
@@ -235,11 +235,11 @@
                     <!-- Direct/Cash Button -->
                     <div id="wrapper-cash" class="hidden relative z-10 w-full">
                         <a href="{{ route('tour.thankyou.final', $order->id) }}?method=cash" 
-                           class="block w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-emerald-500/20">
+                           class="block w-full bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-orange-500/20">
                             <i class="fa-solid fa-check-double mr-2"></i> Xác nhận thanh toán trực tiếp
                         </a>
                         <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">
-                            <i class="fa-solid fa-circle-info text-emerald-500"></i> Mã Code vé sẽ được xác nhận khi thu đủ tiền.
+                            <i class="fa-solid fa-circle-info text-orange-500"></i> Mã Code vé sẽ được xác nhận khi thu đủ tiền.
                         </p>
                     </div>
                 </div>

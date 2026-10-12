@@ -10,7 +10,7 @@
 
             <!-- Breadcrumb -->
             <nav class="flex mb-6 text-sm text-slate-500 dark:text-slate-400">
-                <a href="{{ url('/blog') }}" class="hover:text-emerald-600 transition-colors">Cẩm Nang Du Lịch</a>
+                <a href="{{ url('/blog') }}" class="hover:text-orange-600 transition-colors">Cẩm Nang Du Lịch</a>
                 <span class="mx-2">/</span>
                 <span class="text-slate-800 dark:text-slate-200 font-medium truncate">{{ $blog->title }}</span>
             </nav>
@@ -29,7 +29,7 @@
                     <span>•</span>
 
                     <span>
-                        <i class="far fa-calendar-alt mr-1 text-emerald-500"></i>
+                        <i class="far fa-calendar-alt mr-1 text-orange-500"></i>
                         {{ $blog->created_at->format('d/m/Y') }}
                     </span>
                 </div>
@@ -75,7 +75,7 @@
                 <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-4">Tìm Kiếm Bài Viết</h3>
                 <input type="text"
                        placeholder="Nhập từ khóa..."
-                       class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-sm">
+                       class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-sm">
             </div>
 
             <!-- Popular -->
@@ -90,7 +90,7 @@
                                  class="w-20 h-20 object-cover rounded-xl shadow-xs shrink-0">
 
                             <div>
-                                <h4 class="font-bold text-base text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors line-clamp-2 leading-snug">
+                                <h4 class="font-bold text-base text-slate-900 dark:text-white group-hover:text-orange-500 transition-colors line-clamp-2 leading-snug">
                                     {{ $item->title }}
                                 </h4>
 
@@ -124,7 +124,7 @@
 
                     <div class="p-6">
                         <a href="{{ route('blog.show', $item->id) }}">
-                            <h3 class="font-extrabold text-lg text-slate-900 dark:text-white line-clamp-2 mb-2 group-hover:text-emerald-500 transition-colors">
+                            <h3 class="font-extrabold text-lg text-slate-900 dark:text-white line-clamp-2 mb-2 group-hover:text-orange-500 transition-colors">
                                 {{ $item->title }}
                             </h3>
                         </a>
@@ -134,7 +134,7 @@
                         </p>
 
                         <a href="{{ route('blog.show', $item->id) }}"
-                           class="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold text-sm hover:underline">
+                           class="inline-flex items-center gap-1.5 text-orange-600 dark:text-orange-400 font-bold text-sm hover:underline">
                             <span>Đọc tiếp</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>

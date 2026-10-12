@@ -13,7 +13,7 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(135deg, rgba(6, 78, 59, 0.9) 0%, rgba(15, 23, 42, 0.85) 100%);
+        background: linear-gradient(135deg, rgba(124, 45, 18, 0.85) 0%, rgba(15, 23, 42, 0.9) 100%);
         backdrop-filter: blur(10px);
         z-index: 1;
     }
@@ -28,7 +28,7 @@
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.6);
         border-radius: 2rem;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 50px rgba(16, 185, 129, 0.15);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 50px rgba(249, 115, 22, 0.15);
         overflow: hidden;
     }
 
@@ -39,7 +39,7 @@
     }
 
     .text-gradient {
-        background: linear-gradient(to right, #059669, #10b981, #0ea5e9);
+        background: linear-gradient(to right, #ea580c, #f43f5e, #fbbf24);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-size: 200% auto;
@@ -48,7 +48,7 @@
 
     .btn-glow {
         position: relative;
-        background: linear-gradient(135deg, #059669, #10b981);
+        background: linear-gradient(135deg, #ea580c, #f43f5e);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         overflow: hidden;
     }
@@ -65,7 +65,7 @@
     
     .btn-glow:hover {
         transform: translateY(-3px);
-        box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.5);
+        box-shadow: 0 15px 30px -5px rgba(249, 115, 22, 0.5);
     }
 
     .btn-glow:hover::after {
@@ -148,7 +148,7 @@
                 <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 tracking-tight">
                     Hoàn Tất <span class="text-gradient">Tuyệt Vời!</span>
                 </h1>
-                <p class="text-emerald-700 font-bold text-lg bg-emerald-50 inline-block px-4 py-2 rounded-full mb-3 border border-emerald-100 shadow-sm">
+                <p class="text-orange-700 font-bold text-lg bg-orange-50 inline-block px-4 py-2 rounded-full mb-3 border border-orange-100 shadow-sm">
                     <i class="fas fa-shield-check mr-2"></i>Thanh toán 100% thành công
                 </p>
                 <p class="text-slate-500 font-medium text-base max-w-2xl mx-auto mt-2">
@@ -171,7 +171,7 @@
                             <div class="text-left md:text-right bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
                                 <p class="text-xs uppercase tracking-widest font-bold text-slate-400 mb-1">Ngày hoàn tất</p>
                                 <p class="text-sm font-bold text-slate-700 flex items-center gap-2">
-                                    <i class="far fa-calendar-check text-emerald-500"></i>
+                                    <i class="far fa-calendar-check text-orange-500"></i>
                                     {{ $order->updated_at->format('d/m/Y - H:i') }}
                                 </p>
                             </div>
@@ -183,11 +183,11 @@
                                 <img src="{{ asset($tour->image ?? 'images/default-tour.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                                 <div class="absolute bottom-2 left-2 text-white text-xs font-bold flex items-center gap-1">
-                                    <i class="fas fa-plane-departure text-emerald-400"></i> Khởi hành
+                                    <i class="fas fa-plane-departure text-orange-400"></i> Khởi hành
                                 </div>
                             </div>
                             <div class="flex flex-col justify-center flex-grow">
-                                <h4 class="text-lg font-bold text-slate-900 line-clamp-2 leading-tight mb-3 group-hover:text-emerald-600 transition-colors">
+                                <h4 class="text-lg font-bold text-slate-900 line-clamp-2 leading-tight mb-3 group-hover:text-orange-600 transition-colors">
                                     {{ $tour->name }}
                                 </h4>
                                 <div class="flex flex-wrap gap-x-6 gap-y-2">
@@ -198,7 +198,7 @@
                                         {{ $order->tour->start_date?->format('d/m/Y') ?? '---' }}
                                     </span>
                                     <span class="text-sm font-bold text-slate-600 flex items-center bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-2">
+                                        <div class="w-6 h-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mr-2">
                                             <i class="fas fa-users text-xs"></i>
                                         </div>
                                         {{ $order->quantity }} Hành khách
@@ -214,14 +214,14 @@
                                 <span class="text-xl font-bold text-slate-900">{{ number_format($order->total_price, 0, ',', '.') }} đ</span>
                             </div>
                             
-                            <div class="bg-gradient-to-r from-emerald-50 to-emerald-100/50 p-5 rounded-2xl border border-emerald-200 flex items-center justify-between shadow-sm">
+                            <div class="bg-gradient-to-r from-orange-50 to-orange-100/50 p-5 rounded-2xl border border-orange-200 flex items-center justify-between shadow-sm">
                                 <div>
-                                    <p class="text-xs uppercase tracking-widest font-bold text-emerald-600 mb-1">Trạng thái tài chính</p>
-                                    <p class="text-lg font-bold text-emerald-800 flex items-center gap-2">
-                                        <i class="fas fa-check-circle text-emerald-500"></i> Đã thanh toán TOÀN BỘ
+                                    <p class="text-xs uppercase tracking-widest font-bold text-orange-600 mb-1">Trạng thái tài chính</p>
+                                    <p class="text-lg font-bold text-orange-800 flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-orange-500"></i> Đã thanh toán TOÀN BỘ
                                     </p>
                                 </div>
-                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow text-emerald-500 text-xl border border-emerald-100">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow text-orange-500 text-xl border border-orange-100">
                                     <i class="fas fa-file-invoice-dollar"></i>
                                 </div>
                             </div>
@@ -233,13 +233,13 @@
                 <div class="lg:col-span-5 space-y-6 animate-fadeInUp delay-200">
                     
                     <!-- What's next widget -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-100 relative overflow-hidden shadow-xl shadow-emerald-50 box-border">
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 relative overflow-hidden shadow-xl shadow-orange-50 box-border">
                         <!-- Decorative bg -->
-                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-emerald-100/50 rounded-full mix-blend-multiply pointer-events-none"></div>
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-orange-100/50 rounded-full mix-blend-multiply pointer-events-none"></div>
                         <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-100/50 rounded-full mix-blend-multiply pointer-events-none"></div>
                         
                         <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-slate-900 relative z-10">
-                            <span class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center"><i class="fas fa-clipboard-list text-emerald-600 text-sm"></i></span>
+                            <span class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center"><i class="fas fa-clipboard-list text-orange-600 text-sm"></i></span>
                             Lưu ý quan trọng
                         </h3>
 
@@ -267,7 +267,7 @@
 
                     <!-- Action Buttons -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <a href="{{ route('user.bill.export', $order->id) }}" class="col-span-1 sm:col-span-2 btn-glow p-4 rounded-2xl text-center text-white font-bold group flex justify-center items-center gap-3 shadow-lg shadow-emerald-500/30">
+                        <a href="{{ route('user.bill.export', $order->id) }}" class="col-span-1 sm:col-span-2 btn-glow p-4 rounded-2xl text-center text-white font-bold group flex justify-center items-center gap-3 shadow-lg shadow-orange-500/30">
                             <i class="fas fa-download"></i> Tải Xuất Hóa Đơn PDF
                         </a>
                         

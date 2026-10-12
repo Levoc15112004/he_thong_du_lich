@@ -103,19 +103,19 @@
             <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=2070" 
                  class="absolute inset-0 w-full h-full object-cover" alt="Travel Vibes">
                  
-            <div class="image-overlay absolute inset-0 bg-gradient-to-tr from-slate-900/90 to-emerald-900/60 transition-colors duration-700"></div>
+            <div class="image-overlay absolute inset-0 bg-gradient-to-tr from-slate-900/90 to-orange-950/70 transition-colors duration-700"></div>
 
             <div class="relative z-10 w-full p-16 flex flex-col justify-between text-white">
                 <div>
                     <div class="flex items-center gap-3 mb-10 animate-float">
                         <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-lg flex items-center justify-center border border-white/20 shadow-xl">
-                            <i class="fa-solid fa-compass text-2xl text-emerald-400"></i>
+                            <i class="fa-solid fa-compass text-2xl text-orange-400"></i>
                         </div>
                         <span class="text-3xl font-bold tracking-tight">WanderVibe</span>
                     </div>
                     
                     <div id="image-content" class="transition-all duration-500">
-                        <h2 class="text-5xl font-bold leading-tight mb-6">Mở khóa <br><span class="text-emerald-400">cửa sổ</span> thế giới.</h2>
+                        <h2 class="text-5xl font-bold leading-tight mb-6">Mở khóa <br><span class="text-orange-400">cửa sổ</span> thế giới.</h2>
                         <p class="text-slate-200 text-lg max-w-md leading-relaxed font-medium">
                             Hệ sinh thái du lịch dành cho thế hệ trẻ. Trải nghiệm những chuyến đi cảm xúc, gắn kết và mang đậm dấu ấn cá nhân.
                         </p>
@@ -131,7 +131,7 @@
                         </div>
                         <div>
                             <p class="text-sm font-bold text-white mb-0.5">Tham gia cùng cộng đồng</p>
-                            <p class="text-xs font-semibold text-emerald-300">+2,000 khách hàng hài lòng</p>
+                            <p class="text-xs font-semibold text-orange-300">+2,000 khách hàng hài lòng</p>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                 
                 <!-- Logo Mobile -->
                 <div class="lg:hidden flex items-center justify-center gap-2.5 mb-10">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center text-white shadow-lg">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 flex items-center justify-center text-white shadow-lg">
                         <i class="fa-solid fa-compass text-lg"></i>
                     </div>
                     <span class="text-2xl font-bold tracking-tight text-slate-900">WanderVibe</span>
@@ -183,7 +183,7 @@
                         <div class="space-y-1.5">
                             <label class="text-sm font-bold text-slate-700 block">Địa chỉ Email</label>
                             <div class="relative group">
-                                <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                 <input type="email" name="email" placeholder="Nhập email của bạn" required
                                     class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl outline-none input-focus text-slate-900 font-semibold focus:bg-white transition-colors">
                             </div>
@@ -192,11 +192,11 @@
                         <div class="space-y-1.5">
                             <label class="text-sm font-bold text-slate-700 block">Mật khẩu</label>
                             <div class="relative group">
-                                <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                 <input id="login-pass" type="password" name="password" placeholder="••••••••" required
                                     class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl outline-none input-focus text-slate-900 font-semibold focus:bg-white transition-colors">
                                 <button type="button" onclick="togglePassword('login-pass', this)"
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-600 transition-colors cursor-pointer">
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-600 transition-colors cursor-pointer">
                                     <i class="fa-regular fa-eye"></i>
                                 </button>
                             </div>
@@ -204,13 +204,13 @@
 
                         <div class="flex items-center justify-between pt-1 pb-2">
                             <label class="flex items-center gap-2 cursor-pointer group">
-                                <input type="checkbox" name="remember" class="w-4 h-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-500/20 cursor-pointer">
+                                <input type="checkbox" name="remember" class="w-4 h-4 rounded border-slate-300 text-orange-500 focus:ring-orange-500/20 cursor-pointer">
                                 <span class="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors">Ghi nhớ đăng nhập</span>
                             </label>
-                            <a href="{{ route('password.request') }}" class="text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-all">Quên mật khẩu?</a>
+                            <a href="{{ route('password.request') }}" class="text-sm font-bold text-orange-600 hover:text-orange-700 transition-all">Quên mật khẩu?</a>
                         </div>
                         
-                        <button type="submit" class="w-full bg-emerald-500 text-white py-4 rounded-2xl font-bold shadow-[0_8px_20px_-6px_rgba(16,185,129,0.4)] hover:bg-emerald-600 hover:-translate-y-0.5 hover:shadow-[0_12px_25px_-6px_rgba(16,185,129,0.5)] transition-all flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-rose-500 text-white py-4 rounded-2xl font-bold shadow-lg shadow-orange-500/30 hover:from-orange-600 hover:to-rose-600 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
                             <span>Đăng Nhập</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </button>
@@ -218,7 +218,7 @@
 
                     <p class="text-center mt-10 text-sm font-semibold text-slate-500">
                         Bạn chưa có tài khoản?
-                        <button onclick="switchState('register')" class="text-emerald-600 font-extrabold hover:text-emerald-700 ml-1 transition-colors underline decoration-2 underline-offset-4">Đăng ký ngay</button>
+                        <button onclick="switchState('register')" class="text-orange-600 font-extrabold hover:text-orange-700 ml-1 transition-colors underline decoration-2 underline-offset-4">Đăng ký ngay</button>
                     </p>
                 </div>
 
@@ -234,7 +234,7 @@
                         <div class="space-y-1.5">
                             <label class="text-sm font-bold text-slate-700 block">Họ và tên</label>
                             <div class="relative group">
-                                <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                 <input type="text" name="name" placeholder="Ví dụ: Nguyễn Văn A" required
                                     class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none input-focus text-slate-900 font-semibold focus:bg-white transition-colors">
                             </div>
@@ -243,7 +243,7 @@
                         <div class="space-y-1.5">
                             <label class="text-sm font-bold text-slate-700 block">Địa chỉ Email</label>
                             <div class="relative group">
-                                <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                 <input type="email" name="email" placeholder="example@gmail.com" required
                                     class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none input-focus text-slate-900 font-semibold focus:bg-white transition-colors">
                             </div>
@@ -252,20 +252,20 @@
                         <div class="space-y-1.5">
                             <label class="text-sm font-bold text-slate-700 block">Mật khẩu</label>
                             <div class="relative group">
-                                <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                                <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                                 <input id="reg-pass" type="password" name="password" placeholder="Tối thiểu 8 ký tự" required
                                     class="w-full pl-11 pr-11 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none input-focus text-slate-900 font-semibold focus:bg-white transition-colors">
                                 <button type="button" onclick="togglePassword('reg-pass', this)"
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-500 transition-colors">
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-500 transition-colors">
                                     <i class="fa-regular fa-eye"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-3 p-3.5 bg-emerald-50 rounded-xl border border-emerald-100">
-                            <input type="checkbox" id="terms" required class="mt-0.5 w-4 h-4 rounded border-emerald-300 text-emerald-600 cursor-pointer focus:ring-emerald-500">
-                            <label for="terms" class="text-xs font-semibold text-emerald-900 leading-relaxed cursor-pointer">
-                                Tôi đồng ý với <a href="#" class="text-emerald-600 hover:underline">Điều khoản Dịch vụ</a> & <a href="#" class="text-emerald-600 hover:underline">Chính sách bảo mật</a>.
+                        <div class="flex items-start gap-3 p-3.5 bg-orange-50 rounded-xl border border-orange-100">
+                            <input type="checkbox" id="terms" required class="mt-0.5 w-4 h-4 rounded border-orange-300 text-orange-600 cursor-pointer focus:ring-orange-500">
+                            <label for="terms" class="text-xs font-semibold text-orange-900 leading-relaxed cursor-pointer">
+                                Tôi đồng ý với <a href="#" class="text-orange-600 hover:underline">Điều khoản Dịch vụ</a> & <a href="#" class="text-orange-600 hover:underline">Chính sách bảo mật</a>.
                             </label>
                         </div>
                         
@@ -277,7 +277,7 @@
 
                     <p class="text-center mt-8 text-sm font-semibold text-slate-500">
                         Đã có tài khoản?
-                        <button onclick="switchState('login')" class="text-emerald-600 font-extrabold hover:text-emerald-700 ml-1 transition-colors underline decoration-2 underline-offset-4">Đăng nhập ngay</button>
+                        <button onclick="switchState('login')" class="text-orange-600 font-extrabold hover:text-orange-700 ml-1 transition-colors underline decoration-2 underline-offset-4">Đăng nhập ngay</button>
                     </p>
                 </div>
 
@@ -302,7 +302,7 @@
                 imgContent.style.opacity = '0';
                 setTimeout(() => {
                     imgContent.innerHTML = `
-                        <h2 class="text-5xl font-bold leading-tight mb-6">Trải nghiệm <br><span class="text-emerald-400">mới</span> chờ bạn.</h2>
+                        <h2 class="text-5xl font-bold leading-tight mb-6">Trải nghiệm <br><span class="text-orange-400">mới</span> chờ bạn.</h2>
                         <p class="text-slate-100 text-lg max-w-md leading-relaxed font-medium">
                             Chỉ mất 30 giây để bắt đầu. Hãy để chúng tôi đồng hành cùng bạn trên mọi nẻo đường xinh đẹp nhất!
                         </p>
@@ -318,7 +318,7 @@
                 imgContent.style.opacity = '0';
                 setTimeout(() => {
                     imgContent.innerHTML = `
-                        <h2 class="text-5xl font-bold leading-tight mb-6">Mở khóa <br><span class="text-emerald-400">cửa sổ</span> thế giới.</h2>
+                        <h2 class="text-5xl font-bold leading-tight mb-6">Mở khóa <br><span class="text-orange-400">cửa sổ</span> thế giới.</h2>
                         <p class="text-slate-200 text-lg max-w-md leading-relaxed font-medium">
                             Hệ sinh thái du lịch dành cho thế hệ trẻ. Trải nghiệm những chuyến đi cảm xúc, gắn kết và mang đậm dấu ấn cá nhân.
                         </p>

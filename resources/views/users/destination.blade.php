@@ -3,7 +3,7 @@
 @section('home')
 <style>
     .text-gradient {
-        background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+        background: linear-gradient(135deg, #f97316 0%, #f43f5e 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -17,8 +17,8 @@
     }
 
     .hero-gradient {
-        background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.12), transparent 50%),
-                    radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.10), transparent 50%);
+        background: radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.12), transparent 50%),
+                    radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.10), transparent 50%);
     }
 </style>
 
@@ -26,12 +26,12 @@
     {{-- HERO HEADER --}}
     <section class="relative pt-32 pb-16 overflow-hidden hero-gradient">
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full border border-emerald-200/80 dark:border-emerald-800/80 mb-6 font-bold text-xs uppercase tracking-wider shadow-sm">
-                <i class="fa-solid fa-location-dot text-emerald-500"></i>
+            <div class="inline-flex items-center gap-2 bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 px-4 py-2 rounded-full border border-orange-200/80 dark:border-orange-800/80 mb-6 font-bold text-xs uppercase tracking-wider shadow-sm">
+                <i class="fa-solid fa-location-dot text-orange-500"></i>
                 Điểm Đến Hấp Dẫn
             </div>
             <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-                Khám Phá <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">{{ $location }}</span>
+                Khám Phá <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500">{{ $location }}</span>
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                 Tìm thấy {{ $tours->total() }} hành trình du lịch trọn gói lý tưởng đưa bạn khám phá trọn vẹn vẻ đẹp {{ $location }}.
@@ -51,8 +51,8 @@
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
                         <div class="absolute top-4 left-4 flex flex-col gap-2">
-                            <span class="glass-badge px-3 py-1.5 rounded-full text-[10px] font-bold text-emerald-700 bg-white/90 backdrop-blur-md border border-white/40 shadow-sm">
-                                <i class="far fa-clock mr-1 text-emerald-600"></i> {{ $tour->time }}
+                            <span class="glass-badge px-3 py-1.5 rounded-full text-[10px] font-bold text-orange-700 bg-white/90 backdrop-blur-md border border-white/40 shadow-sm">
+                                <i class="far fa-clock mr-1 text-orange-600"></i> {{ $tour->time }}
                             </span>
                         </div>
 
@@ -70,7 +70,7 @@
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="mb-3">
                              <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="block">
-                                 <h2 class="text-base font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-2 leading-snug">
+                                 <h2 class="text-base font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors line-clamp-2 leading-snug">
                                      {{ $tour->name }}
                                  </h2>
                              </a>
