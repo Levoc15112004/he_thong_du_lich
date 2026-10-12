@@ -134,7 +134,7 @@
         {{-- CUSTOM PAGINATION --}}
         <div class="mt-20 flex justify-center">
             @if($tourCate instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                <div class="bg-white p-3 rounded-[2.5rem] shadow-sm border border-slate-100">
+                <div class="bg-white dark:bg-slate-800 p-2 sm:p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
                     {{ $tourCate->links('vendor.pagination.tailwind') }}
                 </div>
             @endif
@@ -143,16 +143,20 @@
 
     {{-- Banner Decoration --}}
     <section class="max-w-7xl mx-auto px-6 mb-24">
-        <div class="premium-card bg-slate-950 p-16 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10">
-            <div class="absolute top-0 right-0 w-80 h-80 bg-blue-600/10 blur-[120px] rounded-full"></div>
-            <div class="absolute bottom-0 left-0 w-40 h-40 bg-violet-600/5 blur-[80px] rounded-full"></div>
+        <div class="rounded-3xl p-10 sm:p-14 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 border border-slate-800 shadow-2xl text-white">
+            <div class="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-40 h-40 bg-teal-500/10 blur-[80px] rounded-full pointer-events-none"></div>
 
             <div class="relative z-10 max-w-xl">
-                <h3 class="text-2xl font-bold text-black mb-4 ">Bạn muốn một hành trình <span class="text-blue-500">riêng biệt?</span></h3>
-                <p class="text-slate-400 text-lg font-medium leading-relaxed">Hãy để các chuyên gia của chúng tôi thiết kế tour cá nhân hóa dựa trên sở thích và ngân sách của bạn.</p>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3 tracking-tight">
+                    Bạn Muốn Một Hành Trình <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Riêng Biệt?</span>
+                </h3>
+                <p class="text-slate-300 text-sm sm:text-base font-normal leading-relaxed">
+                    Hãy để đội ngũ travel planner của WanderVibe thiết kế tour cá nhân hóa dựa trên sở thích, số lượng người và ngân sách riêng của bạn.
+                </p>
             </div>
-            <a href="#" class="relative z-10 bg-white text-slate-900 px-12 py-5 rounded-[2rem] font-bold text-sm   hover:bg-blue-600 hover:text-white transition-all shadow-2xl">
-                Tư vấn ngay
+            <a href="{{ route('contact') }}" class="relative z-10 whitespace-nowrap bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-600 hover:to-teal-600 text-white px-8 py-4 rounded-2xl font-extrabold text-sm sm:text-base shadow-xl shadow-emerald-500/25 hover:scale-105 active:scale-95 transition-all">
+                Nhận Tư Vấn Ngay <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
             </a>
         </div>
     </section>

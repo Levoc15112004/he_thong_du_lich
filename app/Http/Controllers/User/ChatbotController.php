@@ -129,7 +129,7 @@ class ChatbotController extends Controller
     }
 
     /**
-     * Tích hợp Google Gemini 1.5 Flash (Free Tier: 15 RPM, 1500 req/ngày từ aistudio.google.com)
+     * Tích hợp Google Gemini (Hoàn toàn MIỄN PHÍ qua Google AI Studio: 15 req/phút, 1.500 req/ngày, 0đ không cần thẻ visa)
      */
     private function callGeminiAPI($userMessage, $sessionId, $apiKey)
     {
@@ -148,27 +148,33 @@ class ChatbotController extends Controller
                 . "LỊCH SỬ TRAO ĐỔI:\n" . $recentHistory . "\n\n"
                 . "KHÁCH HỎI: " . $userMessage;
 
-            $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . urlencode($apiKey);
+            $freeModels = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-1.5-flash-latest"];
 
-            $res = Http::timeout(10)->post($endpoint, [
-                "contents" => [
-                    [
-                        "parts" => [
-                            ["text" => $systemPrompt]
+            foreach ($freeModels as $model) {
+                $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key=" . urlencode($apiKey);
+
+                $res = Http::timeout(8)->post($endpoint, [
+                    "contents" => [
+                        [
+                            "parts" => [
+                                ["text" => $systemPrompt]
+                            ]
                         ]
+                    ],
+                    "generationConfig" => [
+                        "temperature" => 0.7,
+                        "maxOutputTokens" => 600,
                     ]
-                ],
-                "generationConfig" => [
-                    "temperature" => 0.7,
-                    "maxOutputTokens" => 500,
-                ]
-            ]);
+                ]);
 
-            if ($res->successful()) {
-                $data = $res->json();
-                $text = $data["candidates"][0]["content"]["parts"][0]["text"] ?? null;
-                if (!empty($text)) {
-                    return trim($text);
+                if ($res->successful()) {
+                    $data = $res->json();
+                    $text = $data["candidates"][0]["content"]["parts"][0]["text"] ?? null;
+                    if (!empty($text)) {
+                        return trim($text);
+                    }
+                } else {
+                    Log::warning("Gemini model {$model} returned status {$res->status()}: {$res->body()}");
                 }
             }
         } catch (\Throwable $e) {

@@ -114,7 +114,7 @@
         {{-- Phân trang --}}
         <div class="mt-20 flex justify-center">
             @if($tours instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                <div class="bg-white p-3 rounded-[2.5rem] shadow-sm border border-slate-100">
+                <div class="bg-white dark:bg-slate-800 p-2 sm:p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
                     {{ $tours->links('vendor.pagination.tailwind') }}
                 </div>
             @endif

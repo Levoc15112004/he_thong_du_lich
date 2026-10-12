@@ -321,17 +321,21 @@
       background-color: #334155 !important;
       color: #f1f5f9;
     }
-    html.dark .text-slate-900, html.dark .text-slate-800, html.dark .text-gray-900, html.dark .text-gray-800 {
+    html.dark .text-slate-900, html.dark .text-slate-800, html.dark .text-gray-900, html.dark .text-gray-800, html.dark .text-black {
       color: #f8fafc !important;
     }
-    html.dark .text-slate-700, html.dark .text-gray-700, html.dark .text-slate-600 {
+    html.dark .text-slate-700, html.dark .text-gray-700, html.dark .text-slate-600, html.dark .text-gray-600 {
       color: #cbd5e1 !important;
     }
-    html.dark .text-slate-500, html.dark .text-gray-500 {
+    html.dark .text-slate-500, html.dark .text-gray-500, html.dark .text-slate-400, html.dark .text-gray-400 {
       color: #94a3b8 !important;
     }
     html.dark .border-slate-100, html.dark .border-slate-200, html.dark .border-gray-200, html.dark .border-gray-100 {
       border-color: #334155 !important;
+    }
+    html.dark select option {
+      background-color: #1e293b !important;
+      color: #f8fafc !important;
     }
     html.dark .blog-content,
     html.dark .prose {
@@ -1236,7 +1240,7 @@
         </button>
 
         <!-- Chat Window -->
-        <div id="chatbotWindow" class="absolute bottom-[85px] md:bottom-[95px] right-0 w-[340px] md:w-[380px] h-[520px] max-h-[75vh] bg-white border border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-10 scale-95 pointer-events-none transition-all duration-300 origin-bottom-right z-50">
+        <div id="chatbotWindow" class="absolute bottom-[85px] md:bottom-[95px] right-0 w-[340px] md:w-[380px] h-[520px] max-h-[75vh] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-10 scale-95 pointer-events-none transition-all duration-300 origin-bottom-right z-50">
             <!-- Header -->
             <div class="bg-gradient-to-r from-emerald-500 to-teal-500 p-4 text-white flex items-center justify-between shrink-0 shadow-sm relative z-10">
                 <div class="flex items-center gap-3">
@@ -1258,29 +1262,29 @@
             </div>
 
             <!-- Chat Messages Area -->
-            <div id="chatbotMessages" class="flex-1 overflow-y-auto p-4 bg-[#f8fafc] space-y-4 text-[13px] md:text-sm no-scrollbar scroll-smooth">
+            <div id="chatbotMessages" class="flex-1 overflow-y-auto p-4 bg-[#f8fafc] dark:bg-slate-900 space-y-4 text-[13px] md:text-sm no-scrollbar scroll-smooth">
                 <!-- Bot Greeting Message -->
                 <div class="flex gap-2.5 max-w-[92%]">
-                    <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 border border-emerald-200 shadow-sm mt-0.5">
-                        <i class="fa-solid fa-robot text-xs text-emerald-600"></i>
+                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800 shadow-sm mt-0.5">
+                        <i class="fa-solid fa-robot text-xs text-emerald-600 dark:text-emerald-400"></i>
                     </div>
-                    <div class="bg-white px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm text-slate-700 leading-relaxed">
-                        Chào bạn! 👋 Mình là <span class="font-bold text-emerald-600">WanderBot</span> - Trợ lý siêu AI của <b>WanderVibe</b>. Mình có thể tư vấn lịch trình, gợi ý tour du lịch hoặc giải đáp thông tin cho bạn hôm nay nhé!
+                    <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-100 leading-relaxed">
+                        Chào bạn! 👋 Mình là <span class="font-bold text-emerald-600 dark:text-emerald-400">WanderBot</span> - Trợ lý siêu AI của <b>WanderVibe</b>. Mình có thể tư vấn lịch trình, gợi ý tour du lịch hoặc giải đáp thông tin cho bạn hôm nay nhé!
                     </div>
                 </div>
             </div>
 
             <!-- Input Area -->
-            <div class="bg-white p-3 border-t border-slate-100 shrink-0 relative z-10 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)]">
+            <div class="bg-white dark:bg-slate-800 p-3 border-t border-slate-100 dark:border-slate-700 shrink-0 relative z-10 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)]">
                 <form id="chatbotForm" class="flex items-center gap-2 relative">
                     <input type="text" id="chatbotInput" placeholder="Nhập câu hỏi tại đây..." autocomplete="off"
-                        class="flex-1 bg-slate-50 border border-slate-200 px-4 py-2.5 rounded-full text-[13px] md:text-sm text-slate-800 placeholder-slate-400 focus:border-emerald-500 focus:bg-white focus:outline-none transition-colors pr-12">
+                        class="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-[13px] md:text-sm text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-colors pr-12">
                     <button type="submit" class="absolute right-1 top-1 bottom-1 w-9 h-9 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white flex items-center justify-center transition-all shadow-md shadow-emerald-500/20 active:scale-95">
                         <i class="fa-solid fa-paper-plane text-xs pr-0.5 pt-0.5"></i>
                     </button>
                 </form>
-                <div class="text-[9px] text-center text-slate-400 mt-2.5 font-semibold flex flex-col items-center justify-center gap-0.5">
-                    <span>Cung cấp bởi WanderVibe AI & Gemini</span>
+                <div class="text-[9px] text-center text-slate-400 dark:text-slate-500 mt-2.5 font-semibold flex flex-col items-center justify-center gap-0.5">
+                    <span>Cung cấp bởi WanderVibe AI & Gemini (Miễn phí)</span>
                 </div>
             </div>
         </div>
@@ -1334,23 +1338,23 @@
                     // Format text from bot (bold, line breaks)
                     const formattedText = text.replace(/\\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                     msgDiv.innerHTML = `
-                        <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 border border-emerald-200 shadow-sm mt-0.5">
-                            <i class="fa-solid fa-robot text-xs text-emerald-600"></i>
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800 shadow-sm mt-0.5">
+                            <i class="fa-solid fa-robot text-xs text-emerald-600 dark:text-emerald-400"></i>
                         </div>
-                        <div class="bg-white px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm text-slate-700 leading-relaxed break-words">
+                        <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-100 leading-relaxed break-words">
                             ${formattedText}
                         </div>
                     `;
                 } else if (sender === 'loading') {
                     msgDiv.className = 'flex gap-2.5 max-w-[92%] bot-typing';
                     msgDiv.innerHTML = `
-                        <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 border border-emerald-200 shadow-sm mt-0.5">
-                            <i class="fa-solid fa-robot text-xs text-emerald-600"></i>
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800 shadow-sm mt-0.5">
+                            <i class="fa-solid fa-robot text-xs text-emerald-600 dark:text-emerald-400"></i>
                         </div>
-                        <div class="bg-white px-4 py-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm flex items-center gap-1.5">
-                            <div class="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                            <div class="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                            <div class="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce"></div>
+                        <div class="bg-white dark:bg-slate-800 px-4 py-3.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm flex items-center gap-1.5">
+                            <div class="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                            <div class="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                            <div class="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-400 rounded-full animate-bounce"></div>
                         </div>
                     `;
                 }
