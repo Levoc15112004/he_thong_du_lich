@@ -355,8 +355,6 @@
                             </div>
                         </div>
                     </div>
-                        </div>
-                    </div>
                 @empty
                     <div class="col-span-full py-12 text-center text-slate-500">
                         Chưa có dữ liệu tour hot. Vui lòng thêm dữ liệu trong cơ sở dữ liệu.

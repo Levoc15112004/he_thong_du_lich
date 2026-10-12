@@ -547,7 +547,8 @@
                 @foreach ($tourRelate as $item)
                     <div
                         class="bg-white rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl overflow-hidden
-                hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group">
+                hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group cursor-pointer"
+                        onclick="window.location.href='{{ route('user.tourDetail.index', $item->id) }}'">
 
                         <!-- Ảnh -->
                         <a href="{{ route('user.tourDetail.index', $item->id) }}" class="relative h-56 overflow-hidden block">
@@ -560,9 +561,11 @@
                         <!-- Nội dung -->
                         <div class="p-6 flex flex-col flex-grow justify-between">
                             <div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-3 line-clamp-2 min-h-[56px] brand-font group-hover:text-orange-600 transition-colors">
-                                    {{ $item->name }}
-                                </h3>
+                                <a href="{{ route('user.tourDetail.index', $item->id) }}" class="block">
+                                    <h3 class="text-xl font-bold text-slate-800 mb-3 line-clamp-2 min-h-[56px] brand-font group-hover:text-orange-600 transition-colors">
+                                        {{ $item->name }}
+                                    </h3>
+                                </a>
 
                                 <div class="w-10 h-0.5 bg-slate-100 mb-4 rounded-full"></div>
 
@@ -576,14 +579,14 @@
                                 </div>
                             </div>
 
-                            <form action="{{ route('user.cart.add', $item->id) }}" method="POST" class="mt-6">
-                                @csrf
-                                <button type="submit"
-                                    class="w-full py-3.5 rounded-xl bg-orange-50 text-orange-700 hover:bg-orange-500 hover:text-white font-bold text-sm transition-all flex items-center justify-center gap-2 border border-orange-100 group shadow-sm">
+                            <div class="mt-6">
+                                <a href="{{ route('user.tourDetail.index', $item->id) }}"
+                                    class="w-full py-3.5 rounded-xl bg-orange-50 text-orange-700 hover:bg-orange-500 hover:text-white font-bold text-sm transition-all flex items-center justify-center gap-2 border border-orange-100 group shadow-sm"
+                                    onclick="event.stopPropagation()">
                                     <span>Xem chi tiết chuyến đi</span>
                                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
-                                </button>
-                            </form>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @endforeach

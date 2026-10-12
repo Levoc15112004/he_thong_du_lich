@@ -679,11 +679,11 @@
                     <ul class="space-y-2.5 text-sm">
                         @if(isset($hotTours) && $hotTours->count())
                             @foreach($hotTours->take(4) as $item)
-                                <li><a href="#tours" class="hover:text-orange-600 transition-colors">{{ Str::limit($item->name, 28) }}</a></li>
+                                <li><a href="{{ route('user.tourDetail.index', $item->id) }}" class="hover:text-orange-600 transition-colors">{{ Str::limit($item->name, 28) }}</a></li>
                             @endforeach
                         @else
-                            <li><a href="#tours" class="hover:text-orange-600 transition-colors">Tour Hà Giang Xe Máy</a></li>
-                            <li><a href="#tours" class="hover:text-orange-600 transition-colors">Du Thuyền Vịnh Hạ Long</a></li>
+                            <li><a href="{{ route('user.tours') }}" class="hover:text-orange-600 transition-colors">Tour Hà Giang Xe Máy</a></li>
+                            <li><a href="{{ route('user.tours') }}" class="hover:text-orange-600 transition-colors">Du Thuyền Vịnh Hạ Long</a></li>
                         @endif
                     </ul>
                 </div>
@@ -693,11 +693,11 @@
                     <ul class="space-y-2.5 text-sm">
                         @if(isset($destinations) && $destinations->count())
                             @foreach($destinations->take(4) as $dest)
-                                <li><a href="#destinations" class="hover:text-orange-600 transition-colors">{{ $dest->end_location }}</a></li>
+                                <li><a href="{{ route('user.destination', ['location' => $dest->end_location]) }}" class="hover:text-orange-600 transition-colors">{{ $dest->end_location }}</a></li>
                             @endforeach
                         @else
-                            <li><a href="#destinations" class="hover:text-orange-600 transition-colors">Đà Lạt Mộng Mơ</a></li>
-                            <li><a href="#destinations" class="hover:text-orange-600 transition-colors">Phố Cổ Hội An</a></li>
+                            <li><a href="{{ route('user.destination', ['location' => 'Đà Lạt']) }}" class="hover:text-orange-600 transition-colors">Đà Lạt Mộng Mơ</a></li>
+                            <li><a href="{{ route('user.destination', ['location' => 'Hội An']) }}" class="hover:text-orange-600 transition-colors">Phố Cổ Hội An</a></li>
                         @endif
                     </ul>
                 </div>

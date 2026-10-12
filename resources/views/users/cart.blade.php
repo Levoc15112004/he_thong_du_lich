@@ -44,22 +44,24 @@
                             <div
                                 class="bg-white rounded-3xl p-4 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-6 hover:shadow-md transition duration-300">
                                 {{-- Tour Image --}}
-                                <div class="relative shrink-0">
+                                <a href="{{ route('user.tourDetail.index', $item['tour_id']) }}" class="relative shrink-0 block group">
                                     <img src="{{ asset($item['image'] ?? 'images/default-tour.jpg') }}"
-                                        class="w-full md:w-48 h-40 rounded-2xl object-cover shadow-sm">
+                                        class="w-full md:w-48 h-40 rounded-2xl object-cover shadow-sm group-hover:scale-[1.02] transition-transform">
                                     <span
                                         class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-[10px] font-bold text-blue-600 uppercase">
                                         {{ $item['tour_type'] }}
                                     </span>
-                                </div>
+                                </a>
 
                                 {{-- Tour Info --}}
                                 <div class="flex-1 flex flex-col justify-between">
                                     <div>
                                         <div class="flex justify-between items-start">
-                                            <h3 class="text-lg font-bold text-slate-800 leading-tight">
-                                                {{ $item['tour_name'] }}
-                                            </h3>
+                                            <a href="{{ route('user.tourDetail.index', $item['tour_id']) }}" class="group">
+                                                <h3 class="text-lg font-bold text-slate-800 leading-tight group-hover:text-orange-600 transition-colors">
+                                                    {{ $item['tour_name'] }}
+                                                </h3>
+                                            </a>
                                             <form action="{{ route('user.cart.remove', $key) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')

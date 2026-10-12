@@ -331,7 +331,8 @@
                         </div>
 
                         <!-- Tour Block -->
-                        <div class="flex sm:flex-row flex-col gap-5 mb-8 p-4 bg-white rounded-2xl shadow-sm border border-slate-100 group hover:shadow-md transition-all">
+                        <div class="flex sm:flex-row flex-col gap-5 mb-8 p-4 bg-white rounded-2xl shadow-sm border border-slate-100 group hover:shadow-md transition-all cursor-pointer"
+                            onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
                             <div class="relative shrink-0 overflow-hidden rounded-xl h-24 sm:h-auto sm:w-32">
                                 <img src="{{ asset($tour->image ?? 'images/default-tour.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-slate-900/60 to-transparent"></div>
@@ -340,9 +341,11 @@
                                 </div>
                             </div>
                             <div class="flex flex-col justify-center flex-grow">
-                                <h4 class="text-lg font-bold text-slate-900 line-clamp-2 leading-tight mb-3 group-hover:text-blue-600 transition-colors">
-                                    {{ $tour->name }}
-                                </h4>
+                                <a href="{{ route('user.tourDetail.index', $tour->id) }}">
+                                    <h4 class="text-lg font-bold text-slate-900 line-clamp-2 leading-tight mb-3 group-hover:text-orange-600 transition-colors">
+                                        {{ $tour->name }}
+                                    </h4>
+                                </a>
                                 <div class="flex flex-wrap gap-x-6 gap-y-2">
                                     <span class="text-sm font-bold text-slate-600 flex items-center bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
                                         <div class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-2">

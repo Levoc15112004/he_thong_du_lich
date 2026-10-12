@@ -225,8 +225,9 @@
                             @foreach ($items as $item)
                                 @php $tour = \App\Models\Tour::find($item['tour_id']); @endphp
                                 @if ($tour)
-                                    <div class="group relative flex gap-4 p-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-orange-200 transition-all duration-300">
-                                        <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" class="w-20 h-20 rounded-xl object-cover shrink-0" alt="{{ $tour->name }}">
+                                    <div class="group relative flex gap-4 p-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-orange-200 transition-all duration-300 cursor-pointer"
+                                        onclick="window.open('{{ route('user.tourDetail.index', $tour->id) }}', '_blank')">
+                                        <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" class="w-20 h-20 rounded-xl object-cover shrink-0 group-hover:scale-105 transition-transform" alt="{{ $tour->name }}">
                                         <div class="flex flex-col justify-center flex-1">
                                             <h4 class="text-sm font-bold text-slate-800 line-clamp-2 leading-tight group-hover:text-orange-600 transition-colors">{{ $tour->name }}</h4>
                                             <div class="flex flex-wrap items-center gap-2.5 mt-2">

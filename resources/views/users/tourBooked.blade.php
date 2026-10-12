@@ -51,18 +51,22 @@
 
                                 <!-- ẢNH TOUR -->
                                 <div class="flex-shrink-0">
-                                    <img src="{{ $tour->image ?? 'https://placehold.co/150x150' }}"
-                                        alt="{{ $tour->title }}"
-                                        class="w-full h-40 md:w-40 md:h-40 object-cover rounded-2xl border-2 border-indigo-100">
+                                    <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="block group">
+                                        <img src="{{ $tour->image ?? 'https://placehold.co/150x150' }}"
+                                            alt="{{ $tour->name }}"
+                                            class="w-full h-40 md:w-40 md:h-40 object-cover rounded-2xl border-2 border-indigo-100 group-hover:scale-105 transition-transform">
+                                    </a>
                                 </div>
 
                                 <!-- THÔNG TIN TOUR -->
                                 <div class="flex-grow">
 
                                     <div class="flex justify-between items-start">
-                                        <h2 class="text-lg font-bold text-gray-800">
-                                            {{ $tour->name }}
-                                        </h2>
+                                        <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="group">
+                                            <h2 class="text-lg font-bold text-gray-800 group-hover:text-orange-600 transition-colors">
+                                                {{ $tour->name }}
+                                            </h2>
+                                        </a>
 
                                         <!-- TRẠNG THÁI THANH TOÁN -->
                                         @if ($order->status == 2 || $order->status == 3 || $order->status == 4)

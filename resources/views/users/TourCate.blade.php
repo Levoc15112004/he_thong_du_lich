@@ -65,9 +65,10 @@
         {{-- LƯỚI HIỂN THỊ TOUR --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse ($tourCate as $tour)
-                <div class="premium-card group flex flex-col h-full overflow-hidden bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
+                <div class="premium-card group flex flex-col h-full overflow-hidden bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
                     {{-- Tour Image Area --}}
-                    <div class="relative h-52 overflow-hidden">
+                    <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="relative h-52 overflow-hidden block">
                         <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" alt="{{ $tour->name }}"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
@@ -85,14 +86,16 @@
                                 </span>
                              </div>
                         </div>
-                    </div>
+                    </a>
 
                     {{-- Tour Content Area --}}
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="mb-3">
-                             <h2 class="text-base font-extrabold text-slate-900 leading-snug group-hover:text-orange-600 transition-colors line-clamp-2">
-                                {{ $tour->name }}
-                            </h2>
+                            <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="block">
+                                <h2 class="text-base font-extrabold text-slate-900 leading-snug group-hover:text-orange-600 transition-colors line-clamp-2">
+                                    {{ $tour->name }}
+                                </h2>
+                            </a>
                         </div>
 
                         <div class="mt-auto pt-3 border-t border-slate-100">
@@ -111,7 +114,8 @@
                             </div>
 
                             <a href="{{ route('user.tourDetail.index', $tour->id) }}"
-                               class="w-full block text-center py-3 rounded-xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm shadow-md shadow-orange-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                               class="w-full block text-center py-3 rounded-xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm shadow-md shadow-orange-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                               onclick="event.stopPropagation()">
                                 Chi tiết & đặt Tour
                             </a>
                         </div>
