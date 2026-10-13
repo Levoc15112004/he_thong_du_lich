@@ -29,6 +29,7 @@ class User extends Authenticatable
         'birthday',
         'role',
         'status',
+        'email_verified_at',
     ];
 
     /**
