@@ -9,11 +9,11 @@
         {{-- HEADER --}}
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-4">
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-teal-200 shrink-0">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 shrink-0">
                     <i class="fa-solid fa-headset text-2xl"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Quản lý Hỗ trợ Khách hàng
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Theo dõi, kiểm tra và quản lý các phiên chat hỗ trợ trực tuyến</p>
@@ -22,7 +22,7 @@
 
             <div class="flex items-center gap-3">
                 <div class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+                    <div class="w-8 h-8 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center shrink-0">
                         <i class="fa-solid fa-comments"></i>
                     </div>
                     <div>
@@ -35,8 +35,8 @@
 
         {{-- ALERTS --}}
         @if(session('success'))
-            <div class="bg-emerald-50/80 backdrop-blur-sm border border-emerald-200 text-emerald-800 px-6 py-4 rounded-2xl flex items-center gap-3 shadow-sm">
-                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+            <div class="bg-orange-50/80 backdrop-blur-sm border border-orange-200 text-orange-800 px-6 py-4 rounded-2xl flex items-center gap-3 shadow-sm">
+                <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
                     <i class="fa-solid fa-check"></i>
                 </div>
                 <p class="font-medium">{{ session('success') }}</p>
@@ -47,14 +47,14 @@
         <div class="bg-white/80 backdrop-blur-xl border border-white p-4 sm:p-6 rounded-3xl shadow-xl shadow-slate-100/50">
             <form method="GET" class="flex flex-col sm:flex-row gap-4 items-center">
                 <div class="relative flex-1 w-full group">
-                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-500 transition-colors"></i>
+                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                     <input type="text"
                            name="search"
                            value="{{ request('search') }}"
                            placeholder="Tìm kiếm Email hoặc tên khách hàng..."
-                           class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all outline-none placeholder:text-slate-400">
+                           class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none placeholder:text-slate-400">
                 </div>
-                <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-500 to-emerald-600 text-white rounded-xl font-bold shadow-lg shadow-teal-200 hover:shadow-xl hover:shadow-teal-300 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
+                <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 text-white rounded-xl font-bold shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-search"></i> Tìm kiếm
                 </button>
             </form>
@@ -62,7 +62,7 @@
 
         {{-- DESKTOP TABLE VIEW --}}
         <div class="hidden lg:block bg-white/90 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl overflow-hidden relative">
-            <div class="absolute top-0 right-0 p-32 bg-teal-50/50 rounded-full blur-3xl opacity-50 -z-10 -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute top-0 right-0 p-32 bg-orange-50/50 rounded-full blur-3xl opacity-50 -z-10 -translate-y-1/2 translate-x-1/2"></div>
             
             <table class="w-full text-left border-collapse relative z-10">
                 <thead>
@@ -79,7 +79,7 @@
                         <tr class="hover:bg-slate-50/80 transition-colors group">
                             
                             <td class="px-6 py-4">
-                                <span class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 text-slate-500 font-bold text-xs flex items-center justify-center group-hover:bg-teal-50 group-hover:text-teal-600 group-hover:border-teal-200 transition-colors">
+                                <span class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 text-slate-500 font-bold text-xs flex items-center justify-center group-hover:bg-orange-50 group-hover:text-orange-600 group-hover:border-orange-200 transition-colors">
                                     {{ $sessions->firstItem() + $index }}
                                 </span>
                             </td>
@@ -90,7 +90,7 @@
                                         <i class="fa-solid fa-user text-slate-400 text-lg"></i>
                                     </div>
                                     <div>
-                                        <h5 class="font-bold text-slate-800 text-base leading-tight group-hover:text-teal-600 transition-colors">{{ $session->user->name ?? 'Không xác định' }}</h5>
+                                        <h5 class="font-bold text-slate-800 text-base leading-tight group-hover:text-orange-600 transition-colors">{{ $session->user->name ?? 'Không xác định' }}</h5>
                                         <div class="flex items-center gap-1.5 mt-0.5">
                                             <i class="fa-solid fa-envelope text-slate-400 text-xs shrink-0"></i>
                                             <span class="text-xs text-slate-500 font-medium">{{ $session->user->email ?? '---' }}</span>
@@ -126,7 +126,7 @@
                             <td class="px-6 py-4">
                                 <div class="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <a href="{{ route('admin.chat.show', $session->id) }}"
-                                        class="w-10 h-10 flex items-center justify-center text-teal-600 bg-teal-50 border border-teal-200 rounded-xl hover:bg-teal-500 hover:text-white transition-all shadow-sm tooltip" title="Xem chi tiết chat">
+                                        class="w-10 h-10 flex items-center justify-center text-orange-600 bg-orange-50 border border-orange-200 rounded-xl hover:bg-orange-500 hover:text-white transition-all shadow-sm tooltip" title="Xem chi tiết chat">
                                         <i class="fa-regular fa-comment-dots"></i>
                                     </a>
                                     <form action="{{ route('admin.chat.destroy', $session->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa vĩnh viễn đoạn hội thoại này không?')">
@@ -163,7 +163,7 @@
         <div class="lg:hidden space-y-4">
             @forelse($sessions as $session)
                 <div class="bg-white/90 backdrop-blur-xl border border-white rounded-3xl shadow-lg shadow-slate-200/50 p-5 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-8 bg-teal-50/50 rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="absolute top-0 right-0 p-8 bg-orange-50/50 rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
                     
                     <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-50">
                         <div class="flex items-center gap-3">
@@ -171,12 +171,12 @@
                                 <i class="fa-solid fa-user text-slate-400 text-sm"></i>
                             </div>
                             <div>
-                                <h5 class="font-bold text-slate-800 text-sm leading-tight group-hover:text-teal-600 transition-colors">{{ $session->user->name ?? 'Không xác định' }}</h5>
+                                <h5 class="font-bold text-slate-800 text-sm leading-tight group-hover:text-orange-600 transition-colors">{{ $session->user->name ?? 'Không xác định' }}</h5>
                                 <span class="text-xs text-slate-500 truncate">{{ $session->user->email ?? '---' }}</span>
                             </div>
                         </div>
                         @if($session->status == 1)
-                            <div class="w-2.5 h-2.5 bg-emerald-500 rounded-full shadow-sm shadow-emerald-200 animate-pulse"></div>
+                            <div class="w-2.5 h-2.5 bg-orange-500 rounded-full shadow-sm shadow-orange-200 animate-pulse"></div>
                         @else
                             <div class="w-2.5 h-2.5 bg-slate-300 rounded-full"></div>
                         @endif
@@ -184,7 +184,7 @@
                     
                     <div class="bg-slate-50/80 p-3 rounded-xl border border-slate-100 space-y-2 mb-4">
                         <div class="flex items-center justify-between text-xs font-semibold text-slate-600">
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-play text-emerald-500"></i> Bắt đầu:</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-play text-orange-500"></i> Bắt đầu:</span>
                             <span>{{ optional($session->started_at)->format('H:i d/m') }}</span>
                         </div>
                         <div class="flex items-center justify-between text-xs font-semibold text-slate-600">
@@ -194,7 +194,7 @@
                     </div>
                     
                     <div class="grid grid-cols-2 gap-3 pt-2">
-                        <a href="{{ route('admin.chat.show', $session->id) }}" class="flex items-center justify-center gap-2 bg-teal-50 hover:bg-teal-500 text-teal-600 hover:text-white py-2.5 rounded-xl font-bold transition-colors text-sm border border-teal-100">
+                        <a href="{{ route('admin.chat.show', $session->id) }}" class="flex items-center justify-center gap-2 bg-orange-50 hover:bg-orange-500 text-orange-600 hover:text-white py-2.5 rounded-xl font-bold transition-colors text-sm border border-orange-100">
                             <i class="fa-regular fa-comment-dots"></i> Chi tiết
                         </a>
                         <form action="{{ route('admin.chat.destroy', $session->id) }}" method="POST" onsubmit="return confirm('Xác nhận xóa hội thoại?')">

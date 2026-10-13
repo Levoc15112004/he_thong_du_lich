@@ -96,6 +96,15 @@ class AdminController extends Controller
             ->orderBy('month')
             ->get();
 
+        $unreadConsultationsCount = \App\Models\Notification::where('title', 'like', '%tư vấn%')
+            ->where('status', 'unread')
+            ->count();
+
+        $recentConsultations = \App\Models\Notification::where('title', 'like', '%tư vấn%')
+            ->latest()
+            ->limit(5)
+            ->get();
+
         return view('admins.home', compact(
             'orders',
             'views',
@@ -112,8 +121,40 @@ class AdminController extends Controller
             'orderChange',
             'revenueChange',
             'viewChange',
-            'monthlyRevenue'
+            'monthlyRevenue',
+            'unreadConsultationsCount',
+            'recentConsultations'
         ));
+    }
+
+    public function consultations(Request $request)
+    {
+        $search = $request->input('search');
+        $query = \App\Models\Notification::where('title', 'like', '%tư vấn%');
+
+        if ($search) {
+            $query->where('message', 'like', '%' . $search . '%');
+        }
+
+        $consultations = $query->orderByDesc('created_at')->paginate(10)->withQueryString();
+
+        return view('admins.Consultations.index', compact('consultations', 'search'));
+    }
+
+    public function toggleConsultation($id)
+    {
+        $item = \App\Models\Notification::findOrFail($id);
+        $item->status = ($item->status === 'read') ? 'unread' : 'read';
+        $item->save();
+
+        return back()->with('success', 'Đã cập nhật trạng thái xử lý yêu cầu tư vấn.');
+    }
+
+    public function destroyConsultation($id)
+    {
+        \App\Models\Notification::where('id', $id)->delete();
+
+        return back()->with('success', 'Đã xóa yêu cầu tư vấn.');
     }
 
     public function login()

@@ -244,15 +244,75 @@ class AccountController extends Controller
         session([
             'reset_email' => $request->email,
             'reset_otp' => $otp,
-            'otp_expired' => now()->addMinutes(5),
+            'otp_expired' => now()->addMinutes(10),
         ]);
 
-        Mail::raw("Mã xác nhận đặt lại mật khẩu của bạn là: $otp", function ($message) use ($request) {
-            $message->to($request->email)
-                ->subject('Xác nhận đổi mật khẩu');
-        });
+        $subject = 'Xác nhận đổi mật khẩu - WanderVibe';
+        $content = "Xin chào {$user->name},\n\nMã xác nhận đặt lại mật khẩu WanderVibe của bạn là: {$otp}\nMã này có hiệu lực trong 10 phút. Vui lòng không chia sẻ mã này cho bất kỳ ai.\n\nTrân trọng,\nĐội ngũ WanderVibe Travel";
+        $htmlContent = "
+            <div style='font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 500px; margin: 0 auto; border: 1px solid #fed7aa; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);'>
+                <div style='background: linear-gradient(135deg, #f97316, #f43f5e); padding: 24px; text-align: center; color: white;'>
+                    <h2 style='margin: 0; font-size: 22px; font-weight: bold;'>WanderVibe Travel</h2>
+                    <p style='margin: 6px 0 0; opacity: 0.9; font-size: 13px;'>Yêu cầu đặt lại mật khẩu</p>
+                </div>
+                <div style='padding: 28px 24px; text-align: center;'>
+                    <p style='margin: 0 0 16px; color: #475569; font-size: 14px;'>Xin chào <strong>" . htmlspecialchars($user->name) . "</strong>,</p>
+                    <p style='margin: 0 0 20px; color: #64748b; font-size: 13px;'>Bạn vừa yêu cầu mã xác nhận để đổi lại mật khẩu tài khoản. Dưới đây là mã OTP của bạn:</p>
+                    <div style='display: inline-block; background: #fff7ed; border: 2px dashed #f97316; border-radius: 12px; padding: 14px 28px; margin: 10px 0 20px;'>
+                        <span style='font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #ea580c; font-family: monospace;'>" . $otp . "</span>
+                    </div>
+                    <p style='margin: 0; color: #94a3b8; font-size: 12px;'>Mã có hiệu lực trong vòng <strong>10 phút</strong>. Nếu không phải bạn yêu cầu, vui lòng bỏ qua email này.</p>
+                </div>
+            </div>
+        ";
 
-        return redirect()->route('password.reset')->with('success', 'Đã gửi mã xác nhận');
+        $mailSent = false;
+        $resendApiKey = env('RESEND_API_KEY');
+
+        // 1. Thử gửi qua Resend API (HTTPS port 443 - không bị chặn cổng SMTP trên Render/Cloud)
+        if (!empty($resendApiKey)) {
+            try {
+                $fromEmail = env('RESEND_FROM_EMAIL', 'WanderVibe <onboarding@resend.dev>');
+                $response = \Illuminate\Support\Facades\Http::withToken($resendApiKey)
+                    ->timeout(10)
+                    ->post('https://api.resend.com/emails', [
+                        'from' => $fromEmail,
+                        'to' => [$request->email],
+                        'subject' => $subject,
+                        'html' => $htmlContent,
+                        'text' => $content,
+                    ]);
+
+                if ($response->successful()) {
+                    $mailSent = true;
+                } else {
+                    \Illuminate\Support\Facades\Log::warning('Resend OTP mail failed: ' . $response->body());
+                }
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::warning('Resend OTP exception: ' . $e->getMessage());
+            }
+        }
+
+        // 2. Fallback sang SMTP nếu chưa gửi được qua Resend
+        if (!$mailSent) {
+            try {
+                Mail::raw($content, function ($message) use ($request, $subject) {
+                    $message->to($request->email)->subject($subject);
+                });
+                $mailSent = true;
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::error('SMTP OTP mail error: ' . $e->getMessage());
+            }
+        }
+
+        // Nếu cả 2 đều bị chặn mạng/timeout trên cloud server
+        if (!$mailSent) {
+            \Illuminate\Support\Facades\Log::info("OTP generated for {$request->email}: {$otp}");
+            return redirect()->route('password.reset')
+                ->with('warning', 'Hệ thống gửi thư qua mạng đang bận. Mã OTP của bạn là: ' . $otp);
+        }
+
+        return redirect()->route('password.reset')->with('success', 'Đã gửi mã xác nhận OTP vào email của bạn!');
     }
 
     // Form nhập OTP + mật khẩu mới

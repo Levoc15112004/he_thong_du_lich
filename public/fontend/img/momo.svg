@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+    <defs>
+        <linearGradient id="momoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#C8107A" />
+            <stop offset="100%" stop-color="#A50064" />
+        </linearGradient>
+    </defs>
+    <rect width="120" height="120" rx="26" fill="url(#momoGrad)" />
+    <!-- Letter M 1 -->
+    <path fill="#FFFFFF" d="M22 72V48h6.5l6.5 13.5L41.5 48H48v24h-5.5V56.5L37.2 67.5h-4.4L27.5 56.5V72H22z" />
+    <!-- Letter o 1 -->
+    <path fill="#FFFFFF" d="M68 60c0-6.8-4.8-12.2-11.5-12.2S45 53.2 45 60s4.8 12.2 11.5 12.2S68 66.8 68 60zm-17 0c0-3.8 2.4-6.8 5.5-6.8s5.5 3 5.5 6.8-2.4 6.8-5.5 6.8-5.5-3-5.5-6.8z" />
+    <!-- Letter M 2 -->
+    <path fill="#FFFFFF" d="M72 72V48h6.5l6.5 13.5L91.5 48H98v24h-5.5V56.5L87.2 67.5h-4.4L77.5 56.5V72H72z" />
+</svg>

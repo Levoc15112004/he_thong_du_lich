@@ -511,7 +511,7 @@
                                 </div>
                                 <div>
                                     <span class="text-xs font-semibold text-slate-500 dark:text-orange-400/90 block uppercase tracking-wider">Văn phòng chính</span>
-                                    <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug block">Tòa nhà Landmark 81, P. 22, Q. Bình Thạnh, TP. Hồ Chí Minh</span>
+                                    <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug block">Tòa nhà Keangnam Landmark 72, Đường Phạm Hùng, Nam Từ Liêm, Hà Nội</span>
                                 </div>
                             </div>
                         </div>

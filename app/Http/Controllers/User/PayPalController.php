@@ -71,12 +71,35 @@ class PayPalController extends Controller
             ],
         ];
 
-        $response = $paypal->createOrder($data);
+        try {
+            $response = $paypal->createOrder($data);
 
-        return response()->json([
-            'orderID' => $response['id'],
-            'status' => 'success',
-        ]);
+            if (isset($response['links'])) {
+                foreach ($response['links'] as $link) {
+                    if ($link['rel'] === 'approve') {
+                        if (!$request->wantsJson() && !$request->ajax()) {
+                            return redirect()->away($link['href']);
+                        }
+                        return response()->json([
+                            'orderID' => $response['id'] ?? null,
+                            'approve_url' => $link['href'],
+                            'status' => 'success',
+                        ]);
+                    }
+                }
+            }
+
+            return response()->json([
+                'orderID' => $response['id'] ?? null,
+                'status' => 'success',
+            ]);
+        } catch (\Throwable $e) {
+            Log::error('PayPal createPayment error: ' . $e->getMessage());
+            if (!$request->wantsJson() && !$request->ajax()) {
+                return back()->with('error', 'Cổng thanh toán PayPal đang được kết nối: ' . $e->getMessage());
+            }
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+        }
     }
 
     //  Capture thanh toán
@@ -210,12 +233,35 @@ class PayPalController extends Controller
             ],
         ];
 
-        $response = $paypal->createOrder($data);
+        try {
+            $response = $paypal->createOrder($data);
 
-        return response()->json([
-            'orderID' => $response['id'],
-            'status' => 'success',
-        ]);
+            if (isset($response['links'])) {
+                foreach ($response['links'] as $link) {
+                    if ($link['rel'] === 'approve') {
+                        if (!$request->wantsJson() && !$request->ajax()) {
+                            return redirect()->away($link['href']);
+                        }
+                        return response()->json([
+                            'orderID' => $response['id'] ?? null,
+                            'approve_url' => $link['href'],
+                            'status' => 'success',
+                        ]);
+                    }
+                }
+            }
+
+            return response()->json([
+                'orderID' => $response['id'] ?? null,
+                'status' => 'success',
+            ]);
+        } catch (\Throwable $e) {
+            Log::error('PayPal createFinalPayment error: ' . $e->getMessage());
+            if (!$request->wantsJson() && !$request->ajax()) {
+                return back()->with('error', 'Cổng thanh toán PayPal đang được kết nối: ' . $e->getMessage());
+            }
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function captureFinal(Request $request)

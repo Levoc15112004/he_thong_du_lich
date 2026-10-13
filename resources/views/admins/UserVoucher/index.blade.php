@@ -78,13 +78,13 @@
 
                     <div class="flex flex-col sm:flex-row gap-3">
                         <button type="button" onclick="openRandomAssignModal()"
-                            class="inline-flex items-center justify-center px-5 py-3 bg-emerald-600 text-white rounded-2xl text-sm font-bold shadow-xl shadow-emerald-100 hover:bg-emerald-700 transition-all active:scale-95">
+                            class="inline-flex items-center justify-center px-5 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl text-sm font-bold shadow-xl shadow-amber-500/20 transition-all active:scale-95">
                             <i class="fa-solid fa-bolt mr-2 text-lg"></i>
                             Phát ngẫu nhiên
                         </button>
 
                         <button type="button" onclick="openAssignModal()"
-                            class="inline-flex items-center justify-center px-5 py-3 bg-emerald-600 text-white rounded-2xl text-sm font-bold shadow-xl shadow-emerald-100 hover:bg-emerald-700 transition-all active:scale-95">
+                            class="inline-flex items-center justify-center px-5 py-3 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white rounded-2xl text-sm font-bold shadow-xl shadow-orange-500/20 transition-all active:scale-95">
                             <i class="fa-solid fa-plus-circle mr-2 text-lg"></i>
                             Gán Voucher Mới
                         </button>
@@ -95,10 +95,10 @@
                 <div class="mb-8 max-w-2xl">
                     <form method="GET" action="{{ route('admin.user_vouchers.index') }}" class="relative group">
                         <i
-                            class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors"></i>
+                            class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                         <input type="text" name="search" value="{{ request('search') }}"
                             placeholder="Tìm kiếm người dùng hoặc mã voucher..."
-                            class="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 transition-all outline-none text-sm font-medium shadow-sm">
+                            class="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none text-sm font-medium shadow-sm">
                     </form>
                 </div>
 
@@ -118,7 +118,7 @@
 
                     <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex items-center gap-5">
                         <div
-                            class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-xl shadow-inner">
+                            class="w-14 h-14 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center text-xl shadow-inner">
                             <i class="fa-solid fa-ticket-simple"></i>
                         </div>
                         <div>
@@ -436,7 +436,7 @@
                         class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-all active:scale-95">Hủy
                         bỏ</button>
                     <button type="submit" id="btnSubmit" disabled
-                        class="flex-1 px-6 py-4 bg-emerald-600 text-white font-bold text-xs rounded-2xl shadow-xl shadow-emerald-100 hover:bg-emerald-700 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">Xác
+                        class="flex-1 px-6 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-xs rounded-2xl shadow-xl shadow-orange-500/20 hover:from-orange-600 hover:to-amber-600 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">Xác
                         nhận gán (0)</button>
                 </div>
             </form>
@@ -466,13 +466,13 @@
                     <label class="block text-sm font-bold text-slate-400 px-1">1. Chọn loại Voucher</label>
                     <div class="relative group">
                         <i
-                            class="fa-solid fa-ticket absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-emerald-500 transition-colors"></i>
+                            class="fa-solid fa-ticket absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-orange-500 transition-colors"></i>
                         <select name="voucher_id" id="random_voucher_id" required
-                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-800 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-all outline-none appearance-none shadow-inner">
+                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-800 focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-all outline-none appearance-none shadow-inner">
                             <option value="">-- Chọn voucher từ kho --</option>
                             @foreach ($summerVouchers as $voucher)
                                 <option value="{{ $voucher->id }}">{{ $voucher->name }} (Còn:
-                                    {{ $voucher->quantity - $voucher->used_count }})</option>
+                                     {{ $voucher->quantity - $voucher->used_count }})</option>
                             @endforeach
                         </select>
                         <i
@@ -484,10 +484,10 @@
                     <label class="block text-sm font-bold text-slate-400 px-1">2. Số lượng người dùng nhận</label>
                     <div class="relative group">
                         <i
-                            class="fa-solid fa-users-viewfinder absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-emerald-500 transition-colors"></i>
+                            class="fa-solid fa-users-viewfinder absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-orange-500 transition-colors"></i>
                         <input type="number" id="random_total_users" name="total_users" min="1" step="1"
                             required
-                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-all outline-none shadow-inner placeholder:text-gray-300"
+                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-all outline-none shadow-inner placeholder:text-gray-300"
                             placeholder="Nhập số lượng user (Ví dụ: 50)">
                     </div>
                 </div>
@@ -497,7 +497,7 @@
                         class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-all active:scale-95">Hủy
                         bỏ</button>
                     <button type="submit"
-                        class="flex-1 px-6 py-4 bg-emerald-600 text-white font-bold text-xs rounded-2xl shadow-xl shadow-emerald-100 hover:bg-emerald-700 transition-all active:scale-95">Xác
+                        class="flex-1 px-6 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-xs rounded-2xl shadow-xl shadow-orange-500/20 hover:from-orange-600 hover:to-amber-600 transition-all active:scale-95">Xác
                         nhận phát</button>
                 </div>
             </form>

@@ -249,7 +249,7 @@ class ChatbotController extends Controller
             return "Đội ngũ CSKH **WanderVibe** luôn sẵn sàng hỗ trợ bạn:\n\n"
                 . "📞 **Hotline tư vấn 24/7:** 1900 888 999 (Nhánh 1)\n"
                 . "📧 **Email tư vấn & báo giá:** hello@wandervibe.me\n"
-                . "📍 **Văn phòng:** Tòa nhà Landmark 81, P. 22, Q. Bình Thạnh, TP. Hồ Chí Minh\n\n"
+                . "📍 **Văn phòng:** Tòa nhà Keangnam Landmark 72, Đường Phạm Hùng, Nam Từ Liêm, Hà Nội\n\n"
                 . "Bạn cũng có thể gửi yêu cầu ở mục **Nhận tư vấn** ngay trên trang chủ để chuyên viên liên hệ lại qua SĐT/Zalo trong ít phút nhé!";
         }
 

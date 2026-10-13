@@ -90,7 +90,7 @@
                     </div>
                     <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-1.5">Trụ Sở Chính</h3>
                     <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed font-medium">
-                        Tòa nhà Landmark 81, P. 22, Q. Bình Thạnh, TP. Hồ Chí Minh
+                        Tòa nhà Keangnam Landmark 72, Đường Phạm Hùng, Nam Từ Liêm, Hà Nội
                     </p>
                     <p class="text-xs text-slate-400 dark:text-slate-400 mt-2 font-normal pt-2 border-t border-slate-100 dark:border-slate-700/60">
                         Chi nhánh HN: 98 phố Dương Quảng Hàm, Q. Cầu Giấy, Hà Nội

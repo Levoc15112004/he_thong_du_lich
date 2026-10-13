@@ -4,19 +4,19 @@
     <div @click="open = !open"
         class="flex flex-col sm:flex-row sm:items-center sm:justify-between
                bg-white border border-slate-100 p-3 sm:p-4 rounded-2xl
-               shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] hover:shadow-[0_8px_20px_-6px_rgba(20,184,166,0.15)] hover:border-teal-100 transition-all duration-300 cursor-pointer gap-4 group mt-2">
+               shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] hover:shadow-[0_8px_20px_-6px_rgba(249,115,22,0.15)] hover:border-orange-200 transition-all duration-300 cursor-pointer gap-4 group mt-2">
 
         <!-- Left: Toggle + Name -->
         <div class="flex items-center gap-4 min-w-0 flex-1">
 
             <!-- Drag Handle (Thêm biểu tượng drag) -->
-            <div class="dd-handle text-slate-300 hover:text-teal-500 cursor-move transition-colors px-1 h-full flex items-center" @click.stop title="Kéo thả để sắp xếp">
+            <div class="dd-handle text-slate-300 hover:text-orange-500 cursor-move transition-colors px-1 h-full flex items-center" @click.stop title="Kéo thả để sắp xếp">
                 <i class="fa-solid fa-grip-vertical"></i>
             </div>
 
             <!-- Icon Mở Nút / Cấp độ -->
             @if ($node->children->count())
-                <button type="button" class="w-8 h-8 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center shrink-0 hover:bg-teal-100 transition-colors"
+                <button type="button" class="w-8 h-8 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 hover:bg-orange-100 transition-colors"
                       :class="open ? 'rotate-180' : ''">
                       <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
                 </button>
@@ -27,7 +27,7 @@
             @endif
 
             <!-- Tên danh mục -->
-            <span class="text-slate-700 text-base font-semibold truncate group-hover:text-teal-700 transition-colors">
+            <span class="text-slate-700 text-base font-semibold truncate group-hover:text-orange-600 transition-colors">
                 {{ $node->name }}
             </span>
             
@@ -44,8 +44,8 @@
              @click.stop>
 
             <a href="{{ route('categories.edit', $node->id) }}"
-                class="w-9 h-9 flex items-center justify-center text-teal-600 hover:text-white
-                       rounded-xl bg-teal-50 hover:bg-teal-500 hover:shadow-lg hover:shadow-teal-200/50
+                class="w-9 h-9 flex items-center justify-center text-orange-600 hover:text-white
+                       rounded-xl bg-orange-50 hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-500/20
                        transition-all duration-300" title="Chỉnh sửa">
                 <i class="fa-solid fa-pen-to-square text-sm"></i>
             </a>

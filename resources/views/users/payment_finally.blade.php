@@ -176,24 +176,44 @@
                     <i class="fa-solid fa-wallet text-orange-500"></i> Phương thức thanh toán 
                 </h2>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
                     
                     <!-- MOMO BLOCK -->
                     <label class="payment-option cursor-pointer block h-full">
                         <input type="radio" id="payment_momo" name="payment_method" value="momo" class="hidden" checked>
-                        <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-6 flex flex-col items-center justify-center text-center gap-4 overflow-hidden">
+                        <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-5 flex flex-col items-center justify-center text-center gap-3 overflow-hidden">
                             <!-- Selected Ring -->
                             <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             
-                            <div class="w-20 h-20 bg-[#A50064]/5 rounded-2xl flex items-center justify-center p-3 mb-2">
-                                <img src="{{ asset('fontend/img/momo.png') }}" class="w-full h-full object-contain">
+                            <div class="w-16 h-16 bg-[#A50064]/10 rounded-2xl flex items-center justify-center p-2 mb-1 shadow-sm">
+                                <img src="{{ asset('fontend/img/momo.svg') }}" class="w-full h-full object-contain" alt="Ví MoMo">
                             </div>
                             
                             <div>
-                                <h3 class="text-base font-bold text-slate-800">Ví điện tử MoMo</h3>
-                                <p class="text-[11px] text-slate-500 font-medium mt-1">Quét mã QR tiện lợi & siêu tốc</p>
+                                <h3 class="text-sm sm:text-base font-bold text-slate-800">Ví MoMo</h3>
+                                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Quét mã QR siêu tốc</p>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- PAYPAL BLOCK -->
+                    <label class="payment-option cursor-pointer block h-full">
+                        <input type="radio" id="payment_paypal" name="payment_method" value="paypal" class="hidden">
+                        <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-5 flex flex-col items-center justify-center text-center gap-3 overflow-hidden">
+                            <!-- Selected Ring -->
+                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            
+                            <div class="w-16 h-16 bg-[#003087]/10 rounded-2xl flex items-center justify-center p-2 mb-1 shadow-sm text-[#003087]">
+                                <i class="fa-brands fa-paypal text-3xl"></i>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-sm sm:text-base font-bold text-slate-800">Cổng PayPal</h3>
+                                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Thẻ Visa/Mastercard</p>
                             </div>
                         </div>
                     </label>
@@ -201,19 +221,19 @@
                     <!-- DIRECT/CASH BLOCK -->
                     <label class="payment-option cursor-pointer block h-full">
                         <input type="radio" id="payment_cash" name="payment_method" value="cash" class="hidden">
-                        <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-6 flex flex-col items-center justify-center text-center gap-4 overflow-hidden">
+                        <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-5 flex flex-col items-center justify-center text-center gap-3 overflow-hidden">
                             <!-- Selected Ring -->
                             <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             
-                            <div class="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center p-3 mb-2 text-orange-500">
-                                <i class="fa-solid fa-building-columns text-4xl"></i>
+                            <div class="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center p-2 mb-1 text-orange-500 shadow-sm">
+                                <i class="fa-solid fa-building-columns text-3xl"></i>
                             </div>
                             
                             <div>
-                                <h3 class="text-base font-bold text-slate-800">Thanh toán tại quầy</h3>
-                                <p class="text-[11px] text-slate-500 font-medium mt-1">Giao dịch trực tiếp với nhân viên</p>
+                                <h3 class="text-sm sm:text-base font-bold text-slate-800">Tại quầy</h3>
+                                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Trực tiếp với HDV</p>
                             </div>
                         </div>
                     </label>
@@ -228,8 +248,19 @@
                     <form method="POST" action="{{ route('momo.final', $order->id) }}" id="form-momo" class="relative z-10 w-full">
                         @csrf
                         <button type="submit" class="w-full bg-gradient-to-r from-[#A50064] to-[#C8107A] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-pink-500/20 flex items-center justify-center gap-3">
-                            <i class="fa-solid fa-qrcode text-lg"></i> Thanh toán dư nợ ({{ number_format($remain_amount) }}đ)
+                            <i class="fa-solid fa-qrcode text-lg"></i> Thanh toán dư nợ bằng MoMo ({{ number_format($remain_amount) }}đ)
                         </button>
+                    </form>
+
+                    <!-- PayPal Button -->
+                    <form action="{{ route('paypal.createFinal', $order->id) }}" method="POST" id="form-paypal" class="hidden relative z-10 w-full">
+                        @csrf
+                        <button type="submit" class="w-full bg-gradient-to-r from-[#0070BA] to-[#003087] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-blue-500/20 flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-paypal text-xl"></i> Thanh toán dư nợ qua PayPal (~${{ number_format(round($remain_amount / 24000, 2), 2) }} USD)
+                        </button>
+                        <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">
+                            <i class="fa-solid fa-shield-halved text-blue-500"></i> Hỗ trợ số dư PayPal và thẻ tín dụng Visa/Mastercard quốc tế.
+                        </p>
                     </form>
 
                     <!-- Direct/Cash Button -->
@@ -258,23 +289,32 @@
     });
 
     const momoRadio = document.getElementById('payment_momo');
+    const paypalRadio = document.getElementById('payment_paypal');
     const cashRadio = document.getElementById('payment_cash');
 
     const momoForm = document.getElementById('form-momo');
+    const paypalForm = document.getElementById('form-paypal');
     const cashWrapper = document.getElementById('wrapper-cash');
 
     function togglePaymentButtons() {
-        if (momoRadio.checked) {
+        if (momoRadio && momoRadio.checked) {
             momoForm.classList.remove('hidden');
+            if (paypalForm) paypalForm.classList.add('hidden');
+            cashWrapper.classList.add('hidden');
+        } else if (paypalRadio && paypalRadio.checked) {
+            momoForm.classList.add('hidden');
+            if (paypalForm) paypalForm.classList.remove('hidden');
             cashWrapper.classList.add('hidden');
         } else {
             momoForm.classList.add('hidden');
+            if (paypalForm) paypalForm.classList.add('hidden');
             cashWrapper.classList.remove('hidden');
         }
     }
 
-    momoRadio.addEventListener('change', togglePaymentButtons);
-    cashRadio.addEventListener('change', togglePaymentButtons);
+    if (momoRadio) momoRadio.addEventListener('change', togglePaymentButtons);
+    if (paypalRadio) paypalRadio.addEventListener('change', togglePaymentButtons);
+    if (cashRadio) cashRadio.addEventListener('change', togglePaymentButtons);
 
     // Initial check
     togglePaymentButtons();

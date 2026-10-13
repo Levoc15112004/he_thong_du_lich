@@ -9,11 +9,11 @@
         {{-- HEADER --}}
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-4">
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-teal-200">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                     <i class="fa-solid fa-calendar-days text-2xl"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Danh sách Lịch trình
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Quản lý chi tiết lịch trình của các chuyến đi</p>
@@ -21,7 +21,7 @@
             </div>
 
             <a href="{{ route('admin.tour_schedules.create') }}"
-                class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg shadow-teal-200 hover:shadow-xl hover:shadow-teal-300 hover:-translate-y-0.5 transition-all duration-300 group">
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 group">
                 <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform duration-300"></i>
                 <span>Thêm lịch trình mới</span>
             </a>
@@ -29,8 +29,8 @@
 
         {{-- ALERTS --}}
         @if (session('success'))
-            <div class="bg-emerald-50/80 backdrop-blur-sm border border-emerald-200 text-emerald-800 px-6 py-4 rounded-2xl flex items-center gap-3 shadow-sm">
-                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+            <div class="bg-orange-50/80 backdrop-blur-sm border border-orange-200 text-orange-800 px-6 py-4 rounded-2xl flex items-center gap-3 shadow-sm">
+                <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
                     <i class="fa-solid fa-check"></i>
                 </div>
                 <p class="font-medium">{{ session('success') }}</p>
@@ -48,10 +48,10 @@
         <div class="bg-white/80 backdrop-blur-xl border border-white p-6 rounded-3xl shadow-xl shadow-slate-100/50">
             <form method="GET" action="{{ route('admin.tour_schedules.index') }}" class="flex flex-col sm:flex-row gap-4 items-center">
                 <div class="relative flex-1 w-full group">
-                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-500 transition-colors"></i>
+                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                     <input type="text" name="keyword" value="{{ request('keyword') }}"
                         placeholder="Tìm kiếm theo tên tour, địa điểm, tiêu đề..."
-                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all outline-none placeholder:text-slate-400">
+                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none placeholder:text-slate-400">
                 </div>
                 <div class="flex gap-3 w-full sm:w-auto">
                     @if (request('keyword'))
@@ -99,7 +99,7 @@
                                     <span class="font-semibold text-slate-800 line-clamp-2">{{ $schedule->tour->name ?? 'Không có' }}</span>
                                 </td>
                                 <td class="px-5 py-4 text-center">
-                                    <span class="inline-flex px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg font-bold text-xs border border-emerald-200 shadow-sm whitespace-nowrap">
+                                    <span class="inline-flex px-3 py-1 bg-orange-50 text-orange-700 rounded-lg font-bold text-xs border border-orange-200 shadow-sm whitespace-nowrap">
                                         Ngày {{ $schedule->day_number }}
                                     </span>
                                 </td>
@@ -169,7 +169,7 @@
                         </div>
                         <div class="flex-1 min-w-0">
                             <div class="flex items-start justify-between gap-2 mb-1">
-                                <span class="px-2.5 py-1 bg-teal-50 text-teal-700 rounded-lg font-bold text-xs border border-teal-100 shrink-0">
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-lg font-bold text-xs border border-orange-100 shrink-0">
                                     Ngày {{ $schedule->day_number }}
                                 </span>
                                 <span class="text-xs font-semibold text-slate-500 truncate bg-slate-100 px-2 py-1 rounded-md">

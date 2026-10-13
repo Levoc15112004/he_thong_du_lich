@@ -9,11 +9,11 @@
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-teal-200">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                     <i class="fa-solid fa-list-ul text-lg"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Danh sách danh mục
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Quản lý và sắp xếp cấu trúc danh mục hệ thống</p>
@@ -22,7 +22,7 @@
 
             <div class="flex items-center gap-3 mt-4 sm:mt-0">
                 <a href="{{ route('categories.create') }}"
-                   class="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg shadow-teal-200/50 hover:shadow-xl hover:shadow-teal-300/50 hover:-translate-y-0.5 transition-all duration-300 group">
+                   class="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300 group">
                     <i class="fa-solid fa-plus group-hover:rotate-90 transition-transform duration-300"></i>
                     <span>Thêm danh mục mới</span>
                 </a>
@@ -33,7 +33,7 @@
         <div class="bg-white/80 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl p-6 sm:p-8 overflow-hidden">
             @if($tree->isEmpty())
                 <div class="flex flex-col items-center justify-center py-12 text-center">
-                    <div class="w-24 h-24 mb-4 rounded-full bg-teal-50 flex items-center justify-center text-teal-400">
+                    <div class="w-24 h-24 mb-4 rounded-full bg-orange-50 flex items-center justify-center text-orange-400">
                         <i class="fa-regular fa-folder-open text-4xl"></i>
                     </div>
                     <h5 class="text-lg font-semibold text-slate-700">Chưa có danh mục nào</h5>

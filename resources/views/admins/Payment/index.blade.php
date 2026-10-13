@@ -14,7 +14,7 @@
             </div>
             <div class="bg-white px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
                 <p class="text-sm font-medium text-slate-400 ">Tổng giao dịch</p>
-                <p class="text-xl font-bold text-emerald-600">{{ $payments->total() }} <span class="text-xs text-slate-400 font-bold ">giao dịch</span></p>
+                <p class="text-xl font-bold text-orange-600">{{ $payments->total() }} <span class="text-xs text-slate-400 font-bold ">giao dịch</span></p>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
                                     <div class="text-sm font-bold text-slate-800 line-clamp-1 max-w-[200px]">{{ $payment->order->user->name ?? 'N/A' }}</div>
                                     <div class="text-sm text-slate-400 font-medium  line-clamp-1 max-w-[200px]">{{ $payment->order->tour->name ?? 'N/A' }}</div>
                                 </td>
-                                <td class="px-6 py-5 whitespace-nowrap text-center text-sm font-bold text-emerald-600">
+                                <td class="px-6 py-5 whitespace-nowrap text-center text-sm font-bold text-orange-600">
                                     {{ number_format($payment->amount) }}₫
                                 </td>
                                 <td class="px-6 py-5 whitespace-nowrap text-center">
@@ -59,7 +59,7 @@
                                             Đặt cọc
                                         </span>
                                     @elseif($payment->payment_type === 'final')
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg bg-emerald-50 text-emerald-700 text-sm font-bold  border border-emerald-100">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg bg-orange-50 text-orange-700 text-sm font-bold  border border-orange-100">
                                             Hoàn tất
                                         </span>
                                     @else
@@ -102,7 +102,7 @@
                     <div class="p-5 space-y-4">
                         <div class="flex items-start justify-between">
                             <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm shadow-inner ">
+                                <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center font-bold text-sm shadow-inner ">
                                     {{ substr($payment->payment_method ?? 'P', 0, 1) }}
                                 </div>
                                 <div>
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="text-right">
                                     <span class="text-[9px] font-bold text-slate-400  block mb-0.5">Số tiền</span>
-                                    <span class="text-sm font-bold text-emerald-600">{{ number_format($payment->amount) }}₫</span>
+                                    <span class="text-sm font-bold text-orange-600">{{ number_format($payment->amount) }}₫</span>
                                 </div>
                             </div>
                             <div class="pt-2 border-t border-slate-100">
@@ -139,12 +139,12 @@
                                     Đặt cọc
                                 </div>
                             @elseif($payment->payment_type === 'final')
-                                <div class="flex-1 px-4 py-3 bg-emerald-50 text-emerald-700 rounded-2xl text-sm font-bold  border border-emerald-100 text-center">
+                                <div class="flex-1 px-4 py-3 bg-orange-50 text-orange-700 rounded-2xl text-sm font-bold  border border-orange-100 text-center">
                                     Hoàn tất
                                 </div>
                             @endif
 
-                            <a href="{{ route('admin.payments.show', $payment->id) }}" class="flex-[1.5] flex items-center justify-center gap-2 py-3 bg-emerald-600 text-white rounded-2xl text-sm font-bold  shadow-lg shadow-emerald-100 active:scale-95 transition-all">
+                            <a href="{{ route('admin.payments.show', $payment->id) }}" class="flex-[1.5] flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-orange-500 to-rose-500 text-white rounded-2xl text-sm font-bold  shadow-lg shadow-orange-500/20 active:scale-95 transition-all">
                                 <i class="fa-solid fa-eye"></i>
                                 Chi tiết giao dịch
                             </a>

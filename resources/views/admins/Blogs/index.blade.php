@@ -13,11 +13,11 @@
         {{-- HEADER --}}
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-4">
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-teal-200">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                     <i class="fa-solid fa-newspaper text-2xl"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Quản lý Bài viết
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Tạo mới và quản lý nội dung bài viết trên blog hệ thống</p>
@@ -26,7 +26,7 @@
 
             <div class="flex items-center gap-3">
                 <a href="{{ route('admin.blogs.create') }}"
-                    class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg shadow-teal-200 hover:shadow-xl hover:shadow-teal-300 hover:-translate-y-0.5 transition-all duration-300 group">
+                    class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 group">
                     <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform duration-300"></i>
                     <span>Tạo bài viết mới</span>
                 </a>
@@ -36,13 +36,13 @@
         {{-- SEARCH & FILTER --}}
         <div class="bg-white/80 backdrop-blur-xl border border-white p-6 rounded-3xl shadow-xl shadow-slate-100/50 flex flex-col sm:flex-row gap-4">
             <div class="relative flex-1 group">
-                <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-500 transition-colors"></i>
+                <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                 <input type="text" placeholder="Tìm kiếm tiêu đề bài viết..."
-                    class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all outline-none placeholder:text-slate-400">
+                    class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none placeholder:text-slate-400">
             </div>
             <div class="w-full sm:w-auto relative group">
-                <i class="fa-solid fa-filter absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-500 transition-colors pointer-events-none z-10"></i>
-                <select class="w-full sm:w-48 pl-12 pr-10 py-3.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-xl font-medium outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 appearance-none relative">
+                <i class="fa-solid fa-filter absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors pointer-events-none z-10"></i>
+                <select class="w-full sm:w-48 pl-12 pr-10 py-3.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-xl font-medium outline-none focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 appearance-none relative">
                     <option value="">Tất cả trạng thái</option>
                     <option value="1">Đang hiển thị</option>
                     <option value="0">Đang ẩn</option>
@@ -72,7 +72,7 @@
                                         <img src="{{ $blog->image ? asset($blog->image) : asset('default.png') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                     </div>
                                     <div class="min-w-0 pr-4">
-                                        <h5 class="font-bold text-slate-800 text-base leading-tight mb-1 line-clamp-1 group-hover:text-teal-600 transition-colors" title="{{ $blog->title }}">{{ $blog->title }}</h5>
+                                        <h5 class="font-bold text-slate-800 text-base leading-tight mb-1 line-clamp-1 group-hover:text-orange-600 transition-colors" title="{{ $blog->title }}">{{ $blog->title }}</h5>
                                         <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">{{ strip_tags($blog->content) }}</p>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
 
                             <td class="px-6 py-4 text-center">
                                 @if($blog->status)
-                                    <span class="inline-flex px-3 py-1.5 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-lg text-xs font-bold shadow-sm justify-center w-28">
+                                    <span class="inline-flex px-3 py-1.5 bg-orange-50 text-orange-700 border border-orange-100 rounded-lg text-xs font-bold shadow-sm justify-center w-28">
                                         Hiển thị
                                     </span>
                                 @else
@@ -134,7 +134,7 @@
         <div class="lg:hidden space-y-4">
             @forelse($blogs as $blog)
                 <div class="bg-white/90 backdrop-blur-xl border border-white rounded-3xl shadow-lg shadow-slate-200/50 p-5 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-8 bg-teal-50/50 rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="absolute top-0 right-0 p-8 bg-orange-50/50 rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
                     
                     <div class="flex gap-4">
                         <div class="w-24 h-24 rounded-2xl overflow-hidden shadow-sm shrink-0 border border-slate-100">
@@ -144,7 +144,7 @@
                             <h5 class="font-bold text-slate-800 text-base leading-tight mb-2 line-clamp-2">{{ $blog->title }}</h5>
                             <div class="flex items-center flex-wrap gap-2">
                                 @if($blog->status)
-                                    <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-[10px] font-bold border border-emerald-100 uppercase tracking-wider">Public</span>
+                                    <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-lg text-[10px] font-bold border border-orange-100 uppercase tracking-wider">Public</span>
                                 @else
                                     <span class="px-2.5 py-1 bg-slate-100 text-slate-500 rounded-lg text-[10px] font-bold border border-slate-200 uppercase tracking-wider">Draft</span>
                                 @endif

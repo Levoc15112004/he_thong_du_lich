@@ -9,11 +9,11 @@
         {{-- HEADER --}}
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-4">
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-teal-200 shrink-0">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 shrink-0">
                     <i class="fa-solid fa-chart-pie text-2xl"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Báo cáo Tổng hợp
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Phân tích chuyên sâu về doanh thu và thống kê kinh doanh</p>
@@ -22,7 +22,7 @@
             
             <div class="flex items-center gap-3">
                 <div class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm text-[10px] text-slate-500 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <i class="fa-solid fa-calendar-day text-teal-500 text-sm"></i>
+                    <i class="fa-solid fa-calendar-day text-orange-500 text-sm"></i>
                     Hôm nay: {{ \Carbon\Carbon::now()->format('d/m/Y') }}
                 </div>
             </div>
@@ -30,12 +30,12 @@
 
         {{-- TINH NĂNG LỌC --}}
         <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 relative overflow-hidden z-10">
-            <div class="absolute top-0 right-0 p-32 bg-teal-50/50 rounded-full blur-3xl opacity-50 -z-10 -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute top-0 right-0 p-32 bg-orange-50/50 rounded-full blur-3xl opacity-50 -z-10 -translate-y-1/2 translate-x-1/2"></div>
             
             <form method="GET" action="{{ route('admin.reports') }}">
                 <div class="flex flex-col md:flex-row md:items-end gap-6 justify-between border-b border-slate-100 pb-3 mb-2">
                     <h5 class="text-base font-bold text-slate-800 flex items-center gap-2">
-                        <i class="fa-solid fa-filter text-teal-500"></i> Bộ Lọc Báo Cáo
+                        <i class="fa-solid fa-filter text-orange-500"></i> Bộ Lọc Báo Cáo
                     </h5>
                 </div>
                 
@@ -44,8 +44,8 @@
                     <div>
                         <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Chọn Tháng</label>
                         <div class="relative">
-                            <i class="fa-solid fa-calendar-days absolute left-4 top-1/2 -translate-y-1/2 text-teal-500 z-10"></i>
-                            <select name="month" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 appearance-none relative z-0">
+                            <i class="fa-solid fa-calendar-days absolute left-4 top-1/2 -translate-y-1/2 text-orange-500 z-10"></i>
+                            <select name="month" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 appearance-none relative z-0">
                                 <option value="">Tất cả các tháng</option>
                                 @for($i=1;$i<=12;$i++)
                                     <option value="{{ $i }}" {{ request('month') == $i ? 'selected' : '' }}>
@@ -75,7 +75,7 @@
 
                     {{-- Button --}}
                     <div class="lg:col-span-2 flex items-end">
-                        <button class="w-full lg:w-48 bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white py-3 px-6 rounded-xl font-bold shadow-lg shadow-teal-200/50 hover:shadow-xl hover:shadow-teal-300 transition-all active:scale-95 flex items-center justify-center gap-2">
+                        <button class="w-full lg:w-48 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white py-3 px-6 rounded-xl font-bold shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 transition-all active:scale-95 flex items-center justify-center gap-2">
                             <i class="fa-solid fa-magnifying-glass-chart"></i> Áp Dụng Lọc
                         </button>
                     </div>
@@ -88,14 +88,14 @@
 
             {{-- Revenue --}}
             <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col justify-between group overflow-hidden relative">
-                <div class="absolute -right-6 -bottom-6 text-9xl text-emerald-50 opacity-50 group-hover:scale-110 transition-transform duration-500"><i class="fa-solid fa-sack-dollar"></i></div>
+                <div class="absolute -right-6 -bottom-6 text-9xl text-orange-50 opacity-50 group-hover:scale-110 transition-transform duration-500"><i class="fa-solid fa-sack-dollar"></i></div>
                 <div class="flex items-center gap-4 mb-6 relative z-10">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl shadow-inner shrink-0 group-hover:scale-110 transition-transform">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-2xl shadow-inner shrink-0 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-wallet"></i>
                     </div>
                     <div>
                         <h6 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Tổng Doanh Thu</h6>
-                        <p class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-teal-600">{{ number_format($totalRevenue) }} ₫</p>
+                        <p class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-rose-500">{{ number_format($totalRevenue) }} ₫</p>
                     </div>
                 </div>
             </div>
@@ -156,7 +156,7 @@
 
                 <div class="space-y-4 max-h-[380px] overflow-y-auto pr-2 custom-scrollbar">
                     @forelse($topTours as $index => $tour)
-                        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 flex items-center gap-4 hover:border-teal-200 transition-colors">
+                        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 flex items-center gap-4 hover:border-orange-200 transition-colors">
                             <div class="w-10 h-10 rounded-full font-bold text-lg flex items-center justify-center shrink-0 shadow-inner
                                 {{ $index == 0 ? 'bg-gradient-to-r from-amber-300 to-yellow-500 text-yellow-900 shadow-yellow-200/50' : 
                                   ($index == 1 ? 'bg-gradient-to-r from-slate-300 to-gray-400 text-slate-800 shadow-slate-300/50' : 
@@ -168,7 +168,7 @@
                                 <h6 class="font-bold text-slate-800 text-sm leading-tight mb-1 truncate" title="{{ $tour->name }}">{{ $tour->name }}</h6>
                                 <div class="flex items-center gap-3 text-[11px] font-bold">
                                     <span class="text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200"><i class="fa-solid fa-receipt mr-1"></i>{{ $tour->total_orders }} Đơn</span>
-                                    <span class="text-emerald-600"><i class="fa-solid fa-coins mr-1"></i>{{ number_format($tour->revenue) }} ₫</span>
+                                    <span class="text-orange-600"><i class="fa-solid fa-coins mr-1"></i>{{ number_format($tour->revenue) }} ₫</span>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function() {
             datasets: [{
                 label: 'Doanh thu (VNĐ)',
                 data: dataVals,
-                borderColor: '#10b981', // emerald-500
+                borderColor: '#f97316', // orange-500
                 backgroundColor: gradient,
                 borderWidth: 3,
                 fill: true,

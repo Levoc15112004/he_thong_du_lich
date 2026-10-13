@@ -169,7 +169,7 @@
                     <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
                         <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
                             <span
-                                class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm">03</span>
+                                class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm">03</span>
                             Thời gian áp dụng
                         </h2>
 
@@ -315,7 +315,7 @@
                 if (diffInDays > 0) {
                     previewExpiry.innerText = `Còn ${diffInDays} ngày`;
                     previewExpiry.className = "text-[11px] font-medium " + (diffInDays <= 3 ? "text-red-500" :
-                        "text-emerald-600");
+                        "text-orange-600");
                 } else if (diffInDays === 0) {
                     previewExpiry.innerText = "Hết hạn hôm nay";
                     previewExpiry.className = "text-[11px] font-medium text-orange-500";

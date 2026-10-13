@@ -9,12 +9,12 @@
         <!-- HEADER -->
         <div class="relative overflow-hidden bg-white rounded-[2.5rem] p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
             <!-- Decorative Background Element -->
-            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-emerald-50 rounded-full opacity-50 blur-3xl"></div>
+            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-orange-50 rounded-full opacity-50 blur-3xl"></div>
 
             <div class="relative flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <div>
                     <div class="flex items-center gap-2 mb-2">
-                        <span class="px-3 py-1 bg-emerald-50 text-emerald-600 text-sm font-bold   rounded-lg border border-emerald-100 shadow-sm">Giao dịch #{{ $payment->id }}</span>
+                        <span class="px-3 py-1 bg-orange-50 text-orange-600 text-sm font-bold   rounded-lg border border-orange-100 shadow-sm">Giao dịch #{{ $payment->id }}</span>
                     </div>
                     <h1 class="text-2xl sm:text-4xl font-bold text-slate-900   leading-none">Chi tiết thanh toán</h1>
                     <p class="mt-2 text-sm text-slate-400 font-medium ">Mã tham chiếu: <span class="font-mono text-slate-600">{{ $payment->charge_id ?? 'N/A' }}</span></p>
@@ -45,14 +45,14 @@
             <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
                 <div class="p-6 border-b border-slate-50 bg-slate-50/30">
                     <h3 class="text-sm font-bold text-slate-400   flex items-center gap-2">
-                        <i class="fa-solid fa-credit-card text-emerald-500"></i>
+                        <i class="fa-solid fa-credit-card text-orange-500"></i>
                         Thông tin tài chính
                     </h3>
                 </div>
                 <div class="p-8 space-y-6">
                     <div class="flex justify-between items-end border-b border-slate-50 pb-4">
                         <span class="text-sm font-bold text-slate-400   ">Số tiền giao dịch</span>
-                        <span class="text-2xl font-bold text-emerald-600  ">{{ number_format($payment->amount) }}₫</span>
+                        <span class="text-2xl font-bold text-orange-600  ">{{ number_format($payment->amount) }}₫</span>
                     </div>
                     <div class="grid grid-cols-2 gap-6">
                         <div>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="text-right">
                             <span class="text-sm font-bold text-slate-400   block mb-1">Loại</span>
-                            <span class="text-sm font-bold text-emerald-600   ">{{ $payment->payment_type == 'deposit' ? 'Đặt cọc' : 'Hoàn tất' }}</span>
+                            <span class="text-sm font-bold text-orange-600   ">{{ $payment->payment_type == 'deposit' ? 'Đặt cọc' : 'Hoàn tất' }}</span>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
             <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
                 <div class="p-6 border-b border-slate-50 bg-slate-50/30">
                     <h3 class="text-sm font-bold text-slate-400   flex items-center gap-2">
-                        <i class="fa-solid fa-file-invoice text-emerald-500"></i>
+                        <i class="fa-solid fa-file-invoice text-orange-500"></i>
                         Thông tin đơn hàng
                     </h3>
                 </div>
@@ -103,7 +103,7 @@
         <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
             <div class="p-6 border-b border-slate-50 bg-slate-50/30">
                 <h3 class="text-sm font-bold text-slate-400   flex items-center gap-2">
-                    <i class="fa-solid fa-timeline text-emerald-500"></i>
+                    <i class="fa-solid fa-timeline text-orange-500"></i>
                     Lịch sử dòng tiền
                 </h3>
             </div>
@@ -113,7 +113,7 @@
                     @forelse($payment->transactions as $tran)
                         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                             <!-- Icon/Dot -->
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-50 group-[.is-active]:bg-emerald-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-all duration-300">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-50 group-[.is-active]:bg-orange-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-all duration-300">
                                 <i class="fa-solid {{ $tran->status == 'success' ? 'fa-check' : ($tran->status == 'pending' ? 'fa-clock' : 'fa-xmark') }} text-sm"></i>
                             </div>
                             <!-- Content -->
@@ -122,11 +122,11 @@
                                     <div class="text-sm font-bold text-slate-400  ">
                                         @if ($tran->transaction_type === 'init') Khởi tạo @elseif($tran->transaction_type === 'confirm') Xác nhận @else Giao dịch @endif
                                     </div>
-                                    <time class="text-sm font-bold text-emerald-600  ">{{ $tran->created_at->format('H:i d/m/Y') }}</time>
+                                    <time class="text-sm font-bold text-orange-600  ">{{ $tran->created_at->format('H:i d/m/Y') }}</time>
                                 </div>
                                 <div class="flex justify-between items-center mt-2">
                                     <div class="text-xs font-bold text-slate-800   ">{{ $tran->transaction_code ?? 'NO_CODE' }}</div>
-                                    <div class="text-sm font-bold text-emerald-600">{{ number_format($tran->amount) }}₫</div>
+                                    <div class="text-sm font-bold text-orange-600">{{ number_format($tran->amount) }}₫</div>
                                 </div>
                             </div>
                         </div>

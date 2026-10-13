@@ -9,11 +9,11 @@
         {{-- Header --}}
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-teal-200">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                     <i class="fa-solid fa-folder-plus text-lg"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Thêm danh mục mới
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Khởi tạo một danh mục mới cho hệ thống</p>
@@ -44,7 +44,7 @@
 
         {{-- Card --}}
         <div class="bg-white/80 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl overflow-hidden relative">
-            <div class="absolute top-0 right-0 p-32 bg-teal-50 rounded-full blur-3xl opacity-50 -z-10 -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute top-0 right-0 p-32 bg-orange-50 rounded-full blur-3xl opacity-50 -z-10 -translate-y-1/2 translate-x-1/2"></div>
             
             <div class="p-6 sm:p-10">
                 <form action="{{ route('categories.store') }}" method="POST" class="space-y-8 relative z-10">
@@ -66,7 +66,7 @@
                                        value="{{ old('name') }}"
                                        class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3
                                        text-slate-700 placeholder-slate-400 font-medium
-                                       focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 focus:bg-white
+                                       focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 focus:bg-white
                                        transition-all duration-300
                                        @error('name') border-rose-500 ring-rose-500/20 focus:ring-rose-500/20 focus:border-rose-500 @enderror">
                             </div>
@@ -87,7 +87,7 @@
                                 <select name="parent_id"
                                         class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3
                                         text-slate-700 font-medium appearance-none
-                                        focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 focus:bg-white
+                                        focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 focus:bg-white
                                         transition-all duration-300
                                         @error('parent_id') border-rose-500 focus:border-rose-500 @enderror">
                                     <option value="">-- Thuộc danh mục gốc --</option>
@@ -126,7 +126,7 @@
                                        value="{{ old('link') }}"
                                        class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3
                                        text-slate-700 placeholder-slate-400 font-medium
-                                       focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 focus:bg-white
+                                       focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 focus:bg-white
                                        transition-all duration-300
                                        @error('link') border-rose-500 focus:border-rose-500 @enderror">
                             </div>
@@ -147,7 +147,7 @@
                         </a>
 
                         <button type="submit"
-                                class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-lg shadow-teal-200/50 hover:shadow-xl hover:shadow-teal-300/50 hover:-translate-y-0.5 transition-all duration-300">
+                                class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300">
                             <i class="fa-solid fa-check"></i>
                             <span>Lưu danh mục</span>
                         </button>

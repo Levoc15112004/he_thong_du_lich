@@ -9,11 +9,11 @@
         {{-- HEADER --}}
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-4">
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-teal-200">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                     <i class="fa-solid fa-rectangle-ad text-2xl"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Quản lý Banner
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Quản lý các bảng quảng cáo và hình ảnh nổi bật</p>
@@ -22,7 +22,7 @@
 
             <div class="flex items-center gap-3">
                 <a href="{{ route('admin.banners.create') }}"
-                    class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg shadow-teal-200 hover:shadow-xl hover:shadow-teal-300 hover:-translate-y-0.5 transition-all duration-300 group">
+                    class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 group">
                     <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform duration-300"></i>
                     <span>Thêm banner mới</span>
                 </a>
@@ -31,8 +31,8 @@
 
         {{-- ALERTS --}}
         @if (session('success'))
-            <div class="bg-emerald-50/80 backdrop-blur-sm border border-emerald-200 text-emerald-800 px-6 py-4 rounded-2xl flex items-center gap-3 shadow-sm">
-                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+            <div class="bg-orange-50/80 backdrop-blur-sm border border-orange-200 text-orange-800 px-6 py-4 rounded-2xl flex items-center gap-3 shadow-sm">
+                <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
                     <i class="fa-solid fa-check"></i>
                 </div>
                 <p class="font-medium">{{ session('success') }}</p>
@@ -75,7 +75,7 @@
 
                             <td class="px-6 py-4">
                                 @if (!empty($banner->link))
-                                    <a href="{{ $banner->link }}" target="_blank" class="inline-flex items-center gap-2 text-sm text-teal-600 hover:text-teal-700 font-medium hover:underline bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-100 transition-colors">
+                                    <a href="{{ $banner->link }}" target="_blank" class="inline-flex items-center gap-2 text-sm text-orange-600 hover:text-orange-700 font-medium hover:underline bg-orange-50 px-3 py-1.5 rounded-lg border border-orange-100 transition-colors">
                                         <i class="fa-solid fa-link text-xs"></i> 
                                         <span class="max-w-[200px] truncate">{{ $banner->link }}</span>
                                     </a>
@@ -125,7 +125,7 @@
         <div class="lg:hidden space-y-4">
             @forelse($banners as $banner)
                 <div class="bg-white/90 backdrop-blur-xl border border-white rounded-3xl shadow-lg shadow-slate-200/50 p-5 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-8 bg-teal-50/50 rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="absolute top-0 right-0 p-8 bg-orange-50/50 rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
                     
                     {{-- Banner Image --}}
                     <div class="w-full h-32 md:h-48 rounded-2xl overflow-hidden border border-slate-100 shadow-sm mb-4">
@@ -138,8 +138,8 @@
                     </div>
 
                     @if (!empty($banner->link))
-                        <a href="{{ $banner->link }}" target="_blank" class="flex items-center gap-2 text-sm text-teal-700 bg-teal-50 px-4 py-2.5 rounded-xl border border-teal-100 font-medium mb-4 active:scale-95 transition-transform overflow-hidden">
-                            <i class="fa-solid fa-link shrink-0 text-teal-500"></i>
+                        <a href="{{ $banner->link }}" target="_blank" class="flex items-center gap-2 text-sm text-orange-700 bg-orange-50 px-4 py-2.5 rounded-xl border border-orange-100 font-medium mb-4 active:scale-95 transition-transform overflow-hidden">
+                            <i class="fa-solid fa-link shrink-0 text-orange-500"></i>
                             <span class="truncate">{{ $banner->link }}</span>
                         </a>
                     @else

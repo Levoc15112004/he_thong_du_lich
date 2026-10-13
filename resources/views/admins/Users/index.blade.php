@@ -9,11 +9,11 @@
         {{-- HEADER --}}
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-4">
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-teal-200">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                     <i class="fa-solid fa-users text-2xl"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Quản lý Người dùng
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Xem danh sách và quản lý thông tin thành viên trong hệ thống.</p>
@@ -22,11 +22,11 @@
 
             <div class="flex items-center gap-3">
                 <div class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center">
+                    <div class="w-8 h-8 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center">
                         <i class="fa-solid fa-users-viewfinder"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-500 font-medium">Tổng số viên</p>
+                        <p class="text-xs text-slate-500 font-medium">Tổng thành viên</p>
                         <p class="text-sm font-bold text-slate-800">{{ $users->total() }} người</p>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
 
         {{-- ALERTS --}}
         @if (session('success'))
-            <div class="bg-emerald-50/80 backdrop-blur-sm border border-emerald-200 text-emerald-800 px-6 py-4 rounded-2xl flex items-center gap-3 shadow-sm">
-                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+            <div class="bg-orange-50/80 backdrop-blur-sm border border-orange-200 text-orange-800 px-6 py-4 rounded-2xl flex items-center gap-3 shadow-sm">
+                <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
                     <i class="fa-solid fa-check"></i>
                 </div>
                 <p class="font-medium">{{ session('success') }}</p>
@@ -54,9 +54,9 @@
         <div class="bg-white/80 backdrop-blur-xl border border-white p-6 rounded-3xl shadow-xl shadow-slate-100/50">
             <div class="flex flex-col sm:flex-row gap-4 items-center">
                 <div class="relative flex-1 w-full group">
-                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-500 transition-colors"></i>
+                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                     <input type="text" placeholder="Tìm kiếm tên, email, số điện thoại..."
-                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all outline-none placeholder:text-slate-400">
+                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none placeholder:text-slate-400">
                 </div>
                 <button class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-900 transition-all shadow-lg shadow-slate-200 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-filter"></i> Lọc dữ liệu
@@ -114,7 +114,7 @@
                                         <i class="fa-solid fa-shield-halved"></i> Admin
                                     </span>
                                 @else
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-teal-50 text-teal-700 border border-teal-100 rounded-lg text-xs font-bold shadow-sm">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-orange-50 text-orange-700 border border-orange-100 rounded-lg text-xs font-bold shadow-sm">
                                         <i class="fa-regular fa-user"></i> User
                                     </span>
                                 @endif
@@ -172,13 +172,13 @@
         <div class="lg:hidden space-y-4">
             @forelse($users as $user)
                 <div class="bg-white/90 backdrop-blur-xl border border-white rounded-3xl shadow-lg shadow-slate-200/50 p-5 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-8 {{ $user->role == 'admin' ? 'bg-purple-50/50' : 'bg-teal-50/50' }} rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="absolute top-0 right-0 p-8 {{ $user->role == 'admin' ? 'bg-purple-50/50' : 'bg-orange-50/50' }} rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
                     
                     <div class="flex items-center gap-4 mb-4">
                         <div class="relative">
                             <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-md bg-slate-100 flex items-center justify-center shrink-0">
                                 <img src="{{ $user->avatar_url }}" 
-                                     onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=10b981&color=fff';" 
+                                     onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=f97316&color=fff';" 
                                      class="w-full h-full object-cover">
                             </div>
                             <div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white {{ $user->status == 'dang_hoat_dong' ? 'bg-emerald-500' : 'bg-slate-300' }}"></div>
@@ -189,7 +189,7 @@
                                 @if($user->role == 'admin')
                                     <span class="text-[10px] font-bold text-purple-700 bg-purple-100 px-2 array-1 rounded-md">ADMIN</span>
                                 @else
-                                    <span class="text-[10px] font-bold text-teal-700 bg-teal-100 px-2 py-0.5 rounded-md">USER</span>
+                                    <span class="text-[10px] font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded-md">USER</span>
                                 @endif
                                 <span class="text-xs font-medium text-slate-400">#{{ $user->id }}</span>
                             </div>

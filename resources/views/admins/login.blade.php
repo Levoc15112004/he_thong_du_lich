@@ -25,12 +25,12 @@
           },
           colors: {
             brand: {
-              50: '#f0fdf4',
-              100: '#dcfce7',
-              200: '#bbf7d0',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
+              50: '#fff7ed',
+              100: '#ffedd5',
+              200: '#fed7aa',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
             }
           },
           animation: {
@@ -63,7 +63,7 @@
       backdrop-filter: blur(32px);
       -webkit-backdrop-filter: blur(32px);
       border: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.65), 0 0 50px -10px rgba(16, 185, 129, 0.22);
+      box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.65), 0 0 50px -10px rgba(249, 115, 22, 0.22);
     }
 
     /* Input focus glow animation */
@@ -72,19 +72,19 @@
     }
     .input-field:focus {
       background-color: rgba(255, 255, 255, 0.14);
-      border-color: #10b981;
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+      border-color: #f97316;
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.3);
     }
 
     /* Viền gradient tinh tế */
     .gradient-border-box {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.08));
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(244, 63, 94, 0.08));
+      border: 1px solid rgba(249, 115, 22, 0.3);
     }
   </style>
 </head>
 
-<body class="h-full text-white antialiased font-sans flex items-center justify-center p-4 sm:p-6 relative overflow-x-hidden selection:bg-emerald-500 selection:text-white">
+<body class="h-full text-white antialiased font-sans flex items-center justify-center p-4 sm:p-6 relative overflow-x-hidden selection:bg-orange-500 selection:text-white">
 
   <!-- Hình nền phong cảnh tràn toàn bộ màn hình chất lượng cao -->
   <div class="fixed inset-0 z-0">
@@ -95,27 +95,27 @@
     >
     <!-- Lớp phủ Gradient đa tầng điện ảnh bảo đảm độ tương phản chữ -->
     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/65 to-slate-950/75"></div>
-    <div class="absolute inset-0 bg-radial-gradient from-emerald-500/12 via-transparent to-transparent pointer-events-none"></div>
+    <div class="absolute inset-0 bg-radial-gradient from-orange-500/12 via-transparent to-transparent pointer-events-none"></div>
   </div>
 
   <!-- Ambient Light Orbs phát sáng nhẹ nhàng phía sau form -->
-  <div class="fixed -top-24 -left-24 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="fixed -bottom-24 -right-24 w-[450px] h-[450px] bg-teal-500/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed -top-24 -left-24 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed -bottom-24 -right-24 w-[450px] h-[450px] bg-rose-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
   <!-- Form đăng nhập trung tâm dành riêng cho Quản Trị Viên -->
   <div class="w-full max-w-[440px] glass-card rounded-3xl p-7 sm:p-9 relative z-10 my-auto">
     
     <!-- Top Brand Logo & Header -->
     <div class="text-center mb-6">
-      <div class="inline-flex w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 items-center justify-center text-white shadow-xl shadow-emerald-500/30 mb-3 hover:scale-105 transition-transform duration-300">
+      <div class="inline-flex w-14 h-14 rounded-2xl bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-500 items-center justify-center text-white shadow-xl shadow-orange-500/30 mb-3 hover:scale-105 transition-transform duration-300">
         <i class="fa-solid fa-compass text-2xl"></i>
       </div>
       
       <div class="flex items-center justify-center gap-2 mb-1">
         <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-          Wander<span class="text-emerald-400">Vibe</span>
+          Wander<span class="text-orange-400">Vibe</span>
         </h1>
-        <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-[10px] font-extrabold text-emerald-300 uppercase tracking-widest">
+        <span class="px-2 py-0.5 rounded-full bg-orange-500/20 border border-orange-400/30 text-[10px] font-extrabold text-orange-300 uppercase tracking-widest">
           Admin Portal
         </span>
       </div>
@@ -169,7 +169,7 @@
           <label for="adminPassword" class="block text-xs font-bold text-slate-200 uppercase tracking-wider">
             Mật Khẩu Quản Trị
           </label>
-          <button type="button" onclick="openForgotPasswordModal()" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 hover:underline">
+          <button type="button" onclick="openForgotPasswordModal()" class="text-xs font-bold text-orange-400 hover:text-orange-300 hover:underline">
             Quên mật khẩu?
           </button>
         </div>
@@ -205,7 +205,7 @@
       <!-- Duy trì đăng nhập & Bảo mật phiên làm việc -->
       <div class="flex items-center justify-between pt-1">
         <label class="flex items-center gap-2 cursor-pointer select-none">
-          <input type="checkbox" id="rememberSession" name="remember" checked class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-400 bg-white/10 border-white/20">
+          <input type="checkbox" id="rememberSession" name="remember" checked class="w-4 h-4 rounded text-orange-500 focus:ring-orange-400 bg-white/10 border-white/20">
           <span class="text-xs font-medium text-slate-300">Ghi nhớ phiên làm việc</span>
         </label>
       </div>
@@ -214,7 +214,7 @@
       <button 
         type="submit" 
         id="loginSubmitBtn"
-        class="w-full mt-3 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold text-sm shadow-xl shadow-emerald-500/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group"
+        class="w-full mt-3 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm shadow-xl shadow-orange-500/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group"
       >
         <span id="loginBtnText">Đăng Nhập Quản Trị Viên</span>
         <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" id="loginBtnIcon"></i>

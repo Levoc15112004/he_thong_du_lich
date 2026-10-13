@@ -14,9 +14,9 @@
 
             <div class="flex items-center gap-3">
                 <a href="{{ route('admin.attr.create') }}"
-                   class="flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 text-white font-medium rounded-2xl shadow-xl shadow-emerald-100 hover:bg-emerald-700 transition-all active:scale-95 group">
+                   class="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium rounded-2xl shadow-xl shadow-orange-500/20 hover:from-orange-600 hover:to-amber-600 transition-all active:scale-95 group">
                     <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform duration-300"></i>
-                    <span class="text-sm font-medium   ">Thêm thuộc tính mới</span>
+                    <span class="text-sm font-medium">Thêm thuộc tính mới</span>
                 </a>
             </div>
         </div>

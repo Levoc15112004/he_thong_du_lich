@@ -9,11 +9,11 @@
         {{-- Header & Actions --}}
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-teal-200">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                     <i class="fa-solid fa-map-location-dot text-lg"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Danh sách Tour
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Quản lý các chuyến đi và lộ trình du lịch</p>
@@ -23,13 +23,13 @@
             <div class="flex flex-col sm:flex-row items-center gap-3">
                 <form action="" method="GET" class="relative w-full sm:w-auto">
                     <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="Tìm tên, địa điểm..."
-                           class="w-full sm:w-64 pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all shadow-sm">
+                           class="w-full sm:w-64 pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all shadow-sm">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                     @if(request('status') !== null) <input type="hidden" name="status" value="{{ request('status') }}"> @endif
                 </form>
 
                 <form action="" method="GET" class="w-full sm:w-auto min-w-[150px] relative">
-                    <select name="status" onchange="this.form.submit()" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all shadow-sm cursor-pointer appearance-none">
+                    <select name="status" onchange="this.form.submit()" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all shadow-sm cursor-pointer appearance-none">
                         <option value="">Tất cả trạng thái</option>
                         <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Đang hoạt động</option>
                         <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Đã ẩn</option>
@@ -46,7 +46,7 @@
                     </button>
                 </form>
 
-                <a href="{{ route('admin.tours.create') }}" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-lg shadow-teal-200/50 hover:shadow-xl hover:shadow-teal-300/50 hover:-translate-y-0.5 transition-all duration-300 group">
+                <a href="{{ route('admin.tours.create') }}" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300 group">
                     <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform"></i>
                     <span>Tạo Tour mới</span>
                 </a>
@@ -75,7 +75,7 @@
                                         <img src="{{ asset($tour->image) }}" onerror="this.src='/default.png'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                     </div>
                                     <div class="flex flex-col min-w-0 max-w-md">
-                                        <a href="{{ route('admin.tours.edit', $tour->id) }}" class="text-base font-bold text-slate-800 hover:text-teal-600 transition-colors line-clamp-2 mb-2 leading-snug">
+                                        <a href="{{ route('admin.tours.edit', $tour->id) }}" class="text-base font-bold text-slate-800 hover:text-orange-600 transition-colors line-clamp-2 mb-2 leading-snug">
                                             {{ $tour->name }}
                                         </a>
                                         <div class="flex items-center gap-2 text-[11px] font-semibold text-slate-500 bg-slate-100 w-fit px-3 py-1.5 rounded-lg border border-slate-200">
@@ -87,7 +87,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-5 text-center">
-                                <span class="inline-block text-sm font-bold text-teal-600 bg-teal-50 px-3 py-1.5 rounded-xl border border-teal-100/50 shadow-sm">{{ number_format($tour->sale_price) }}đ</span>
+                                <span class="inline-block text-sm font-bold text-orange-600 bg-orange-50 px-3 py-1.5 rounded-xl border border-orange-100 shadow-sm">{{ number_format($tour->sale_price) }}đ</span>
                             </td>
                             <td class="px-6 py-5 text-center">
                                 <span class="text-sm font-medium text-slate-600">{{ $tour->time ?? '---' }}</span>
@@ -113,7 +113,7 @@
                             <td class="px-6 py-5 text-right">
                                 <div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <a href="{{ route('admin.tours.edit', $tour->id) }}" 
-                                       class="w-10 h-10 flex items-center justify-center text-teal-600 bg-teal-50 hover:bg-teal-500 hover:text-white rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-teal-200/50" title="Chỉnh sửa">
+                                       class="w-10 h-10 flex items-center justify-center text-orange-600 bg-orange-50 hover:bg-orange-500 hover:text-white rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20" title="Chỉnh sửa">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <form action="{{ route('admin.tours.destroy', $tour->id) }}" method="POST" onsubmit="return confirm('Xác nhận xóa Tour này? Mọi dữ liệu liên quan sẽ bị ảnh hưởng.');">
@@ -177,7 +177,7 @@
                                     <span class="truncate">{{ $tour->start_location }} - {{ $tour->end_location }}</span>
                                 </div>
                             </div>
-                            <span class="text-sm font-bold text-teal-600 bg-teal-50 w-fit px-2 py-1 rounded-lg border border-teal-100">{{ number_format($tour->sale_price) }}đ</span>
+                            <span class="text-sm font-bold text-orange-600 bg-orange-50 w-fit px-2 py-1 rounded-lg border border-orange-100">{{ number_format($tour->sale_price) }}đ</span>
                         </div>
                     </div>
 
@@ -193,7 +193,7 @@
                     </div>
 
                     <div class="flex gap-3 mt-4 pt-4 border-t border-slate-100">
-                        <a href="{{ route('admin.tours.edit', $tour->id) }}" class="flex-1 py-3 flex items-center justify-center gap-2 bg-slate-50 hover:bg-teal-50 text-teal-600 rounded-xl text-xs font-bold transition-colors border border-slate-100">
+                        <a href="{{ route('admin.tours.edit', $tour->id) }}" class="flex-1 py-3 flex items-center justify-center gap-2 bg-slate-50 hover:bg-orange-50 text-orange-600 rounded-xl text-xs font-bold transition-colors border border-slate-100">
                             <i class="fa-solid fa-pen-to-square"></i> Cập nhật
                         </a>
                         <form action="{{ route('admin.tours.destroy', $tour->id) }}" method="POST" class="flex-1">

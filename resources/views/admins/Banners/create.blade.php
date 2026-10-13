@@ -9,11 +9,11 @@
         {{-- HEADER --}}
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-teal-200">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                     <i class="fa-solid fa-square-plus text-lg"></i>
                 </div>
                 <div>
-                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                    <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Thêm Banner mới
                     </h4>
                     <p class="text-sm text-slate-500 mt-1">Tạo quảng cáo hình ảnh mới cho hệ thống</p>
@@ -44,7 +44,7 @@
 
         {{-- FORM CARD --}}
         <div class="bg-white/90 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl overflow-hidden relative">
-            <div class="absolute top-0 right-0 p-32 bg-teal-50 rounded-full blur-3xl opacity-60 -z-10 -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute top-0 right-0 p-32 bg-orange-50 rounded-full blur-3xl opacity-60 -z-10 -translate-y-1/2 translate-x-1/2"></div>
             
             <form action="{{ route('admin.banners.store') }}" method="POST" enctype="multipart/form-data" class="relative z-10 p-6 sm:p-10 space-y-8" novalidate>
                 @csrf
@@ -54,7 +54,7 @@
                     {{-- Left Column: Form Fields --}}
                     <div class="space-y-6">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center">
+                            <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
                                 <i class="fa-solid fa-rectangle-list text-sm"></i>
                             </div>
                             <h5 class="text-lg font-bold text-slate-800">Thông tin Banner</h5>
@@ -69,7 +69,7 @@
                                 oninvalid="this.setCustomValidity('Vui lòng nhập tên banner')"
                                 oninput="this.setCustomValidity('')"
                                 placeholder="Nhập tên banner..."
-                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300 {{ $errors->has('name') ? 'border-rose-300' : '' }}">
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 {{ $errors->has('name') ? 'border-rose-300' : '' }}">
                         </div>
 
                         {{-- Image Upload --}}
@@ -77,9 +77,9 @@
                             <label class="block text-slate-700 font-semibold mb-2">
                                 Tải ảnh lên <span class="text-rose-500">*</span>
                             </label>
-                            <label class="flex flex-col items-center justify-center w-full bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl px-4 py-8 cursor-pointer hover:bg-slate-100 hover:border-teal-400 transition-colors group {{ $errors->has('image') ? 'border-rose-300 bg-rose-50' : '' }}">
+                            <label class="flex flex-col items-center justify-center w-full bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl px-4 py-8 cursor-pointer hover:bg-slate-100 hover:border-orange-400 transition-colors group {{ $errors->has('image') ? 'border-rose-300 bg-rose-50' : '' }}">
                                 <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center mb-3">
-                                    <i class="fa-solid fa-cloud-arrow-up text-xl text-teal-500 group-hover:scale-110 transition-transform"></i>
+                                    <i class="fa-solid fa-cloud-arrow-up text-xl text-orange-500 group-hover:scale-110 transition-transform"></i>
                                 </div>
                                 <span class="text-sm font-bold text-slate-700 mb-1" id="file-name">Nhấn để chọn hoặc kéo thả ảnh</span>
                                 <span class="text-xs text-slate-500">Định dạng JPG, PNG. Tối đa 5MB.</span>
@@ -99,7 +99,7 @@
                                     oninvalid="this.setCustomValidity('Vui lòng nhập đúng định dạng URL liên kết (https://...)')"
                                     oninput="this.setCustomValidity('')"
                                     placeholder="VD: https://hethongdulich.com/tour-khuyen-mai"
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300">
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                 {{-- SUBMIT --}}
                 <div class="flex justify-end pt-2">
                     <button type="submit"
-                        class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-teal-200/50 hover:shadow-xl hover:shadow-teal-300/50 hover:-translate-y-0.5 transition-all duration-300 text-sm">
+                        class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300 text-sm">
                         <i class="fa-solid fa-plus text-lg"></i> Thêm Banner
                     </button>
                 </div>

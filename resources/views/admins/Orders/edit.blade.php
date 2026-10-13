@@ -69,7 +69,7 @@
                             </li>
                             <li class="flex items-start justify-between pt-1">
                                 <span class="text-sm font-bold text-slate-500">Tổng thanh toán</span>
-                                <span class="text-lg font-bold text-emerald-600">{{ number_format($order->total_price) }} ₫</span>
+                                <span class="text-lg font-bold text-orange-600">{{ number_format($order->total_price) }} ₫</span>
                             </li>
                             @if($order->note)
                                 <li class="flex flex-col border-t border-slate-100 pt-3 mt-2">
@@ -85,7 +85,7 @@
                     {{-- BẢNG THÔNG TIN TOUR --}}
                     <div class="bg-slate-50/50 border border-slate-100 rounded-2xl p-6 shadow-sm">
                         <div class="flex items-center gap-3 mb-6">
-                            <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center shrink-0">
+                            <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
                                 <i class="fa-solid fa-route text-lg"></i>
                             </div>
                             <h5 class="text-base font-bold text-slate-800">Thông tin Quy trình Tour</h5>
@@ -94,7 +94,7 @@
                         <ul class="space-y-4">
                             <li class="flex flex-col border-b border-slate-100 pb-3">
                                 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5 opacity-80">Chương trình Tour</span>
-                                <span class="text-sm font-bold text-teal-700 leading-tight">{{ $order->tour->name }}</span>
+                                <span class="text-sm font-bold text-orange-700 leading-tight">{{ $order->tour->name }}</span>
                             </li>
                             <li class="flex items-start gap-4 border-b border-slate-100 pb-3">
                                 <div class="flex-1">

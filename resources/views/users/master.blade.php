@@ -1207,10 +1207,10 @@
     </button>
 
     <!-- Quick Hotline Floating Button -->
-    <a href="tel:19006868" class="fixed bottom-24 right-7 lg:right-9 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-xl shadow-orange-500/30 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group" title="Gọi Hotline Tư Vấn 1900 6868" aria-label="Hotline Tư Vấn">
+    <a href="tel:1900888999" class="fixed bottom-28 md:bottom-32 right-7 lg:right-9 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-xl shadow-orange-500/30 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group" title="Gọi Hotline Tư Vấn 1900 888 999" aria-label="Hotline Tư Vấn">
         <i class="fa-solid fa-phone-volume text-lg group-hover:rotate-12 transition-transform"></i>
         <div class="absolute right-[125%] whitespace-nowrap bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            Hotline 24/7: 1900 6868
+            Hotline 24/7: 1900 888 999
             <div class="absolute top-1/2 -translate-y-1/2 -right-1 w-2 h-2 bg-slate-900 rotate-45"></div>
         </div>
     </a>

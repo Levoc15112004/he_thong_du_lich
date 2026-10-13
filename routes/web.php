@@ -145,8 +145,24 @@ Route::middleware('checkAdmin')->prefix('admin')->group(function () {
     Route::delete('/chat/{id}', [ChatmessageController::class, 'destroy'])->name('admin.chat.destroy');
 
     Route::get('/reports', [StatisticController::class, 'index'])->name('admin.reports');
+
+    Route::get('consultations', [AdminController::class, 'consultations'])->name('admin.consultations.index');
+    Route::patch('consultations/{id}/toggle', [AdminController::class, 'toggleConsultation'])->name('admin.consultations.toggle');
+    Route::delete('consultations/{id}', [AdminController::class, 'destroyConsultation'])->name('admin.consultations.destroy');
 });
 
+
+// Keep-alive health check for Render.com (ping every 5-10 mins to prevent idle shutdown)
+Route::get('/ping', function () {
+    return response()->json([
+        'status' => 'alive',
+        'service' => 'WanderVibe Travel Platform',
+        'timestamp' => now()->toIso8601String(),
+    ]);
+});
+Route::get('/health', function () {
+    return response()->json(['status' => 'healthy', 'time' => now()->toIso8601String()]);
+});
 
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('user.home');

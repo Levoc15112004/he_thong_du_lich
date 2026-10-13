@@ -14,11 +14,11 @@
             {{-- HEADER --}}
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-teal-200">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                         <i class="fa-solid fa-calendar-plus text-lg"></i>
                     </div>
                     <div>
-                        <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-emerald-600">
+                        <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                             Thêm lịch trình mới
                         </h4>
                         <p class="text-sm text-slate-500 mt-1">Xây dựng kế hoạch điểm đến cho Tour du lịch</p>
@@ -49,7 +49,7 @@
 
             {{-- FORM CARD --}}
             <div class="bg-white/90 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl overflow-hidden relative">
-                <div class="absolute top-0 left-0 p-32 bg-emerald-50 rounded-full blur-3xl opacity-60 -z-10 -translate-y-1/2 -translate-x-1/3"></div>
+                <div class="absolute top-0 left-0 p-32 bg-orange-50 rounded-full blur-3xl opacity-60 -z-10 -translate-y-1/2 -translate-x-1/3"></div>
                 
                 <form action="{{ route('admin.tour_schedules.store') }}" method="POST" enctype="multipart/form-data" class="relative z-10 p-6 sm:p-10 space-y-8">
                     @csrf
@@ -57,7 +57,7 @@
                     {{-- ===== THÔNG TIN CHÍNH ===== --}}
                     <section>
                         <div class="flex items-center gap-3 mb-6">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center">
+                            <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
                                 <i class="fa-solid fa-circle-info text-sm"></i>
                             </div>
                             <h5 class="text-lg font-bold text-slate-800">Thông tin chi tiết</h5>
@@ -69,7 +69,7 @@
                                 <label class="block text-slate-700 font-semibold mb-2">
                                     Giải đoạn / Tour <span class="text-rose-500">*</span>
                                 </label>
-                                <select name="tour_id" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300 cursor-pointer">
+                                <select name="tour_id" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 cursor-pointer">
                                     <option value="">-- Chọn Tour cần lên lịch --</option>
                                     @foreach ($tours as $tour)
                                         <option value="{{ $tour->id }}" {{ old('tour_id') == $tour->id ? 'selected' : '' }}>
@@ -86,7 +86,7 @@
                                 </label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-medium"><i class="fa-regular fa-sun"></i></span>
-                                    <input type="number" min="1" name="day_number" value="{{ old('day_number') }}" placeholder="VD: 1, 2, 3..." class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-12 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300">
+                                    <input type="number" min="1" name="day_number" value="{{ old('day_number') }}" placeholder="VD: 1, 2, 3..." class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-12 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
                                 </div>
                             </div>
 
@@ -95,13 +95,13 @@
                                 <label class="block text-slate-700 font-semibold mb-2">
                                     Tiêu đề (Hoạt động) <span class="text-rose-500">*</span>
                                 </label>
-                                <input type="text" name="title" value="{{ old('title') }}" placeholder="VD: Thăm quan Vịnh Hạ Long, Ăn tối hải sản..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300">
+                                <input type="text" name="title" value="{{ old('title') }}" placeholder="VD: Thăm quan Vịnh Hạ Long, Ăn tối hải sản..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
                             </div>
 
                             {{-- Mô tả --}}
                             <div class="md:col-span-2">
                                 <label class="block text-slate-700 font-semibold mb-2">Mô tả chi tiết</label>
-                                <textarea name="description" rows="4" placeholder="Nhập mô tả cụ thể về các hoạt động, thời gian chi tiết..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300">{{ old('description') }}</textarea>
+                                <textarea name="description" rows="4" placeholder="Nhập mô tả cụ thể về các hoạt động, thời gian chi tiết..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">{{ old('description') }}</textarea>
                             </div>
                         </div>
                     </section>
@@ -122,15 +122,15 @@
                                 <label class="block text-slate-700 font-semibold mb-2">Tên địa điểm / Khu vực</label>
                                 <div class="relative">
                                     <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                    <input type="text" name="location_name" value="{{ old('location_name') }}" placeholder="VD: Bến Cảng, Đèo Mã Pí Lèng..." class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300">
+                                    <input type="text" name="location_name" value="{{ old('location_name') }}" placeholder="VD: Bến Cảng, Đèo Mã Pí Lèng..." class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
                                 </div>
                             </div>
                             <div>
                                 <label class="block text-slate-700 font-semibold mb-2">Ảnh minh họa (Tại địa điểm)</label>
                                 <label class="flex items-center justify-center w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 cursor-pointer hover:bg-slate-100 transition-colors group">
                                     <div class="flex items-center gap-2">
-                                        <i class="fa-solid fa-upload text-slate-400 group-hover:text-teal-500 transition-colors"></i>
-                                        <span class="text-sm font-medium text-slate-600 group-hover:text-teal-600 transition-colors" id="file-name">Tải ảnh lên</span>
+                                        <i class="fa-solid fa-upload text-slate-400 group-hover:text-orange-500 transition-colors"></i>
+                                        <span class="text-sm font-medium text-slate-600 group-hover:text-orange-600 transition-colors" id="file-name">Tải ảnh lên</span>
                                     </div>
                                     <input type="file" name="image" class="hidden" accept="image/*" onchange="previewImage(event)">
                                 </label>
@@ -143,7 +143,7 @@
                         <div class="space-y-3">
                             <div class="flex items-center justify-between">
                                 <label class="font-semibold text-slate-700 flex items-center gap-2">
-                                    <i class="fa-solid fa-earth-asia text-teal-500"></i> Ghim vị trí tọa độ
+                                    <i class="fa-solid fa-earth-asia text-orange-500"></i> Ghim vị trí tọa độ
                                 </label>
                                 <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">Click trực tiếp hoặc tìm kiếm</span>
                             </div>
@@ -162,7 +162,7 @@
                     {{-- SUBMIT --}}
                     <div class="flex flex-col sm:flex-row justify-end gap-4 pt-2">
                         <button type="submit"
-                            class="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-teal-200/50 hover:shadow-xl hover:shadow-teal-300/50 hover:-translate-y-0.5 transition-all duration-300 text-sm">
+                            class="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 text-sm">
                             <i class="fa-solid fa-save text-lg"></i> Lưu lịch trình
                         </button>
                     </div>

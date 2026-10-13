@@ -4,11 +4,11 @@
     <!-- USER INFO -->
     <div class="px-6 py-6 border-b border-slate-100 dark:border-slate-800 flex items-center gap-4">
         <div class="relative shrink-0">
-            <img src="{{ Auth::user()->avatar_url ?? 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->name ?? 'Admin').'&background=10b981&color=fff&bold=true' }}"
-                onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'Admin') }}&background=10b981&color=fff&bold=true';"
-                class="w-12 h-12 rounded-full border-2 border-emerald-500/20 shadow-sm object-cover"
+            <img src="{{ Auth::user()->avatar_url ?? 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->name ?? 'Admin').'&background=f97316&color=fff&bold=true' }}"
+                onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'Admin') }}&background=f97316&color=fff&bold=true';"
+                class="w-12 h-12 rounded-full border-2 border-orange-500/20 shadow-sm object-cover"
                 alt="Admin Avatar">
-            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white dark:border-slate-800 rounded-full"></div>
+            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-orange-500 border-2 border-white dark:border-slate-800 rounded-full"></div>
         </div>
         <div class="flex-1 overflow-hidden">
             <p class="font-bold text-slate-800 dark:text-white truncate text-sm">
@@ -94,6 +94,11 @@
                             'route' => route('admin.chat.index'),
                         ],
                         [
+                            'text' => 'Yêu cầu tư vấn khách',
+                            'icon' => 'phone-call',
+                            'route' => route('admin.consultations.index'),
+                        ],
+                        [
                             'text' => 'Đánh giá từ khách',
                             'icon' => 'star',
                             'route' => route('admin.reviews.index'),
@@ -144,16 +149,16 @@
                 <!-- MAIN MENU -->
                 <button
                     class="menu-toggle w-full flex items-center justify-between px-3 py-3 rounded-xl transition-all duration-200 ease-in-out border border-transparent
-                    {{ $isActiveGroup ? 'bg-emerald-50 text-emerald-700 shadow-sm border-emerald-100' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
+                    {{ $isActiveGroup ? 'bg-orange-50 text-orange-700 shadow-sm border-orange-100' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
 
                     <div class="flex items-center space-x-3.5">
-                        <i data-feather="{{ $item['icon'] }}" class="w-5 h-5 {{ $isActiveGroup ? 'text-emerald-600' : 'text-slate-500 group-hover:text-slate-700' }}"></i>
+                        <i data-feather="{{ $item['icon'] }}" class="w-5 h-5 {{ $isActiveGroup ? 'text-orange-600' : 'text-slate-500 group-hover:text-slate-700' }}"></i>
                         <span class="font-semibold text-[14px]">
                             {{ $item['title'] }}
                         </span>
                     </div>
 
-                    <i data-feather="chevron-right" class="menu-arrow w-4 h-4 transition-transform duration-300 {{ $isActiveGroup ? 'rotate-90 text-emerald-600' : 'text-slate-400' }}"></i>
+                    <i data-feather="chevron-right" class="menu-arrow w-4 h-4 transition-transform duration-300 {{ $isActiveGroup ? 'rotate-90 text-orange-600' : 'text-slate-400' }}"></i>
 
                 </button>
 
@@ -167,11 +172,11 @@
                             @endphp
                             <li class="relative">
                                 <!-- Line indicator -->
-                                <div class="absolute left-[-11px] top-1/2 -translate-y-1/2 w-3 h-[1.5px] {{ $isActiveItem ? 'bg-emerald-500' : 'bg-transparent' }} transition-colors"></div>
+                                <div class="absolute left-[-11px] top-1/2 -translate-y-1/2 w-3 h-[1.5px] {{ $isActiveItem ? 'bg-orange-500' : 'bg-transparent' }} transition-colors"></div>
                                 
                                 <a href="{{ $sub['route'] }}"
                                     class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-[13.5px] font-medium transition-all duration-200
-                                   {{ $isActiveItem ? 'bg-emerald-600 text-white shadow-md shadow-emerald-200' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
+                                   {{ $isActiveItem ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md shadow-orange-500/20' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
 
                                     <i data-feather="{{ $sub['icon'] }}"
                                         class="w-4 h-4 {{ $isActiveItem ? 'text-white' : 'text-slate-400' }}">

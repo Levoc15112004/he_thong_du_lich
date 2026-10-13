@@ -27,7 +27,7 @@
           <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-all duration-300">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Tổng Doanh Thu</span>
-              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-base">
+              <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-coins"></i>
               </div>
             </div>
@@ -46,7 +46,7 @@
           <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-all duration-300">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Đơn Tháng Này</span>
-              <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center text-base">
+              <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-ticket"></i>
               </div>
             </div>
@@ -112,7 +112,7 @@
               
               <!-- Metric Switcher Tabs -->
               <div class="flex flex-wrap items-center gap-2" id="metricTabs">
-                <button onclick="switchAnalyticsMetric('revenue')" id="tabBtnRevenue" class="metric-tab active px-4 py-2.5 rounded-2xl text-xs font-extrabold transition-all duration-200 bg-emerald-500 text-white shadow-md shadow-emerald-500/25 flex items-center gap-2">
+                <button onclick="switchAnalyticsMetric('revenue')" id="tabBtnRevenue" class="metric-tab active px-4 py-2.5 rounded-2xl text-xs font-extrabold transition-all duration-200 bg-orange-500 text-white shadow-md shadow-orange-500/25 flex items-center gap-2">
                   <i class="fa-solid fa-coins"></i>
                   <span>Doanh Thu & Lợi Nhuận</span>
                 </button>
@@ -130,7 +130,7 @@
               <div class="flex items-center gap-3 self-start xl:self-auto">
                 <div class="inline-flex p-1 bg-slate-100/90 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600">
                   <button onclick="setTimeRange('7d', this)" class="timerange-btn px-3 py-1.5 rounded-lg hover:text-slate-900 transition-colors">7 Ngày</button>
-                  <button onclick="setTimeRange('30d', this)" class="timerange-btn active px-3 py-1.5 rounded-lg bg-white text-emerald-700 font-bold shadow-xs transition-colors">30 Ngày</button>
+                  <button onclick="setTimeRange('30d', this)" class="timerange-btn active px-3 py-1.5 rounded-lg bg-white text-orange-700 font-bold shadow-xs transition-colors">30 Ngày</button>
                   <button onclick="setTimeRange('9m', this)" class="timerange-btn px-3 py-1.5 rounded-lg hover:text-slate-900 transition-colors">Cả năm</button>
                 </div>
 
@@ -185,7 +185,7 @@
                     <h3 class="text-sm sm:text-base font-bold text-slate-900">Nguồn Khách Hàng</h3>
                     <p class="text-xs text-slate-500">Tỷ lệ chuyển đổi người dùng thành viên</p>
                   </div>
-                  <span class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">
+                  <span class="w-8 h-8 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center text-xs font-bold">
                     <i class="fa-solid fa-users-viewfinder"></i>
                   </span>
                 </div>
@@ -196,7 +196,7 @@
                   <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                     <span class="text-xs text-slate-400 font-bold uppercase tracking-wider">Tổng User</span>
                     <span class="text-2xl font-bold text-slate-900 tracking-tight">{{ number_format($totalUsers ?? 0) }}</span>
-                    <span class="text-[10px] text-emerald-600 font-extrabold">+{{ abs($userChange ?? 0) }}% tháng này</span>
+                    <span class="text-[10px] text-orange-600 font-extrabold">+{{ abs($userChange ?? 0) }}% tháng này</span>
                   </div>
                 </div>
               </div>
@@ -205,25 +205,25 @@
               <div class="grid grid-cols-2 gap-2 text-xs pt-3 border-t border-slate-100">
                 <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50">
                   <span class="flex items-center gap-2 text-slate-600">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Trực tiếp Web
+                    <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> Trực tiếp Web
                   </span>
                   <strong class="text-slate-900">48%</strong>
                 </div>
                 <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50">
                   <span class="flex items-center gap-2 text-slate-600">
-                    <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span> Mobile Web
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Mobile Web
                   </span>
                   <strong class="text-slate-900">28%</strong>
                 </div>
                 <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50">
                   <span class="flex items-center gap-2 text-slate-600">
-                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span> Mạng xã hội
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Mạng xã hội
                   </span>
                   <strong class="text-slate-900">16%</strong>
                 </div>
                 <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50">
                   <span class="flex items-center gap-2 text-slate-600">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Giới thiệu
+                    <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span> Giới thiệu
                   </span>
                   <strong class="text-slate-900">8%</strong>
                 </div>
@@ -240,10 +240,10 @@
                   </div>
                   <div class="flex items-center gap-3">
                     <span class="flex items-center gap-1.5 text-xs text-slate-600 font-semibold">
-                      <span class="w-3 h-3 rounded-md bg-emerald-500"></span> Đăng ký tài khoản
+                      <span class="w-3 h-3 rounded-md bg-orange-500"></span> Đăng ký tài khoản
                     </span>
                     <span class="flex items-center gap-1.5 text-xs text-slate-600 font-semibold">
-                      <span class="w-3 h-3 rounded-md bg-cyan-400"></span> Đặt tour đầu tiên
+                      <span class="w-3 h-3 rounded-md bg-rose-400"></span> Đặt tour đầu tiên
                     </span>
                   </div>
                 </div>
@@ -259,7 +259,7 @@
                   <i class="fa-solid fa-lightbulb text-amber-500"></i>
                   Tỷ lệ chuyển đổi từ đăng ký sang đặt tour đạt mức <strong>64.2%</strong>
                 </span>
-                <button onclick="showToast('Xuất danh sách phân tích nhóm người dùng mới...', 'info')" class="text-emerald-600 font-bold hover:underline flex items-center gap-1">
+                <button onclick="showToast('Xuất danh sách phân tích nhóm người dùng mới...', 'info')" class="text-orange-600 font-bold hover:underline flex items-center gap-1">
                   Xem chi tiết phễu <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </button>
               </div>
@@ -288,20 +288,20 @@
                       <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" alt="{{ $tour->name }}" class="w-14 h-14 rounded-xl object-cover">
                       <div>
                         <h4 class="font-bold text-slate-900 text-sm max-w-[200px] sm:max-w-[300px] truncate" title="{{ $tour->name }}">{{ $tour->name }}</h4>
-                        <p class="text-xs text-slate-500">Giá: <span class="font-bold text-emerald-600">{{ number_format($tour->sale_price ?? $tour->price ?? 0, 0, ',', '.') }}đ</span></p>
+                        <p class="text-xs text-slate-500">Giá: <span class="font-bold text-orange-600">{{ number_format($tour->sale_price ?? $tour->price ?? 0, 0, ',', '.') }}đ</span></p>
                       </div>
                     </div>
                     <div class="w-full sm:w-48 text-right sm:text-left">
                       <div class="flex items-center justify-between text-xs mb-1">
                         <span class="font-semibold text-slate-600">Lượt xem</span>
-                        <span class="font-bold text-emerald-600"><i class="fa-solid fa-eye text-[10px] mr-1"></i>{{ number_format($tour->view_count ?? 0) }}</span>
+                        <span class="font-bold text-orange-600"><i class="fa-solid fa-eye text-[10px] mr-1"></i>{{ number_format($tour->view_count ?? 0) }}</span>
                       </div>
                       <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
-                        <div class="h-full bg-emerald-500 rounded-full" style="width: {{ min(100, (($tour->view_count ?? 0) / 100)) }}%"></div>
+                        <div class="h-full bg-orange-500 rounded-full" style="width: {{ min(100, (($tour->view_count ?? 0) / 100)) }}%"></div>
                       </div>
                     </div>
                     <div class="flex items-center gap-2">
-                      <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-700">HOT</span>
+                      <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-orange-100 text-orange-700">HOT</span>
                       <a href="{{ route('admin.tours.edit', $tour->id) }}" class="w-8 h-8 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-500 flex items-center justify-center">
                         <i class="fa-solid fa-pen-to-square text-xs"></i>
                       </a>
@@ -335,7 +335,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-2 border-t border-slate-100 pt-2">
                           <span class="text-[10px] text-slate-400"><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse($blog->created_at)->format('d/m/Y') }}</span>
-                          <span class="px-2 py-0.5 rounded-lg text-[10px] font-semibold {{ $blog->status == 1 ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-600' }}">
+                          <span class="px-2 py-0.5 rounded-lg text-[10px] font-semibold {{ $blog->status == 1 ? 'bg-orange-100 text-orange-700' : 'bg-slate-200 text-slate-600' }}">
                                 {{ $blog->status == 1 ? 'Hiển thị' : 'Ẩn' }}
                           </span>
                         </div>
@@ -352,6 +352,51 @@
             </a>
           </div>
 
+        </section>
+
+        <!-- Consultation Inquiries Row -->
+        <section class="dashboard-card rounded-2xl p-6 shadow-sm border border-slate-200/80">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 mb-4 gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-base">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-slate-900">Yêu Cầu Nhận Tư Vấn Mới Nhất</h3>
+                <p class="text-xs text-slate-500">Khách hàng để lại số điện thoại & Zalo từ form nhận tư vấn</p>
+              </div>
+            </div>
+            <a href="{{ route('admin.consultations.index') }}" class="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1.5 self-start sm:self-auto">
+              <span>Xem tất cả ({{ $unreadConsultationsCount ?? 0 }} chưa liên hệ)</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            @if(isset($recentConsultations) && count($recentConsultations) > 0)
+              @foreach($recentConsultations->take(3) as $c)
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="font-bold text-slate-800 text-xs">{{ Str::after($c->title, 'mới: ') ?: $c->title }}</span>
+                      <span class="text-[10px] px-2 py-0.5 rounded-full font-bold {{ $c->status === 'unread' ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700' }}">
+                        {{ $c->status === 'unread' ? 'Cần gọi' : 'Đã gọi' }}
+                      </span>
+                    </div>
+                    <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">{{ $c->message }}</p>
+                  </div>
+                  <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-200/60 text-[10px] text-slate-400">
+                    <span><i class="fa-regular fa-clock mr-1"></i>{{ $c->created_at ? $c->created_at->diffForHumans() : 'Vừa xong' }}</span>
+                    <a href="{{ route('admin.consultations.index') }}" class="font-bold text-orange-600 hover:underline">Xử lý ngay</a>
+                  </div>
+                </div>
+              @endforeach
+            @else
+              <div class="col-span-full py-6 text-center text-xs text-slate-400 font-medium">
+                Chưa có yêu cầu tư vấn mới nào từ khách hàng.
+              </div>
+            @endif
+          </div>
         </section>
 
       </main>
@@ -601,13 +646,13 @@
       const tabMap = { revenue: 'tabBtnRevenue', bookings: 'tabBtnBookings', users: 'tabBtnUsers' };
 
       document.querySelectorAll('.metric-tab').forEach(btn => {
-        btn.classList.remove('active', 'bg-emerald-500', 'text-white', 'shadow-md', 'shadow-emerald-500/25');
+        btn.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/25');
         btn.classList.add('bg-slate-100', 'text-slate-600');
       });
 
       const activeBtn = document.getElementById(tabMap[metricKey]);
       if (activeBtn) {
-        activeBtn.classList.add('active', 'bg-emerald-500', 'text-white', 'shadow-md', 'shadow-emerald-500/25');
+        activeBtn.classList.add('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/25');
         activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
       }
 
@@ -627,8 +672,8 @@
 
     function setTimeRange(range, btn) {
       currentPeriod = range;
-      document.querySelectorAll('.timerange-btn').forEach(b => b.classList.remove('active', 'bg-white', 'text-emerald-700', 'font-bold', 'shadow-xs'));
-      if (btn) btn.classList.add('active', 'bg-white', 'text-emerald-700', 'font-bold', 'shadow-xs');
+      document.querySelectorAll('.timerange-btn').forEach(b => b.classList.remove('active', 'bg-white', 'text-orange-700', 'font-bold', 'shadow-xs'));
+      if (btn) btn.classList.add('active', 'bg-white', 'text-orange-700', 'font-bold', 'shadow-xs');
       renderMainAnalyticsChart(activeAnalyticsMetric);
     }
 

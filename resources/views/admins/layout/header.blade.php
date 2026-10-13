@@ -15,12 +15,12 @@
 
         <!-- Logo -->
         <a href="{{ route('admin.home') }}" class="flex items-center gap-2.5 group">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 group-hover:rotate-6 transition-transform">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-500 flex items-center justify-center text-white shadow-md shadow-orange-500/20 group-hover:rotate-6 transition-transform">
                 <i class="fa-solid fa-compass text-lg sm:text-xl"></i>
             </div>
             <div class="flex flex-col">
                 <span class="text-lg sm:text-xl font-black tracking-tight text-slate-800 dark:text-white leading-tight">
-                    Wander<span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">Admin</span>
+                    Wander<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-400">Admin</span>
                 </span>
                 <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold -mt-0.5">Control Panel</span>
             </div>
@@ -41,8 +41,8 @@
             <!-- User Button -->
             <button id="userMenuBtn" class="flex items-center gap-2 sm:gap-3 p-1 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors focus:outline-none">
 
-                <img src="{{ Auth::user()->avatar_url ?? 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->name ?? 'Admin').'&background=10b981&color=fff&bold=true' }}" 
-                     onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'Admin') }}&background=10b981&color=fff&bold=true';"
+                <img src="{{ Auth::user()->avatar_url ?? 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->name ?? 'Admin').'&background=f97316&color=fff&bold=true' }}" 
+                     onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'Admin') }}&background=f97316&color=fff&bold=true';"
                      class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200 dark:border-slate-700 shadow-sm object-cover"
                      alt="Admin Avatar">
 
@@ -65,7 +65,7 @@
                     <p class="text-sm font-bold text-slate-800 dark:text-white truncate">{{ Auth::user()->email ?? 'admin@wandervibe.com' }}</p>
                 </li>
                 <li>
-                    <a href="{{ route('user.home') }}" target="_blank" class="flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-600 transition-colors">
+                    <a href="{{ route('user.home') }}" target="_blank" class="flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-slate-700 hover:text-orange-600 transition-colors">
                         <i class="fa-solid fa-globe text-xs text-slate-400"></i> Xem trang chủ
                     </a>
                 </li>

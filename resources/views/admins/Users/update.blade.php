@@ -114,7 +114,7 @@
                             <div class="flex gap-4">
                                 <label class="flex-1 cursor-pointer">
                                     <input type="radio" name="status" value="dang_hoat_dong" class="peer sr-only" {{ old('status', $user->status) === 'dang_hoat_dong' ? 'checked' : '' }}>
-                                    <div class="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 peer-checked:text-emerald-600 transition-all">
+                                    <div class="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-600 transition-all">
                                         <i class="fa-solid fa-circle-check mr-2"></i> Cho phép hoạt động
                                     </div>
                                 </label>

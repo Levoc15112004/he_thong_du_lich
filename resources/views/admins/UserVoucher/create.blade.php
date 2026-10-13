@@ -53,7 +53,7 @@
     <!-- Sidebar -->
     <aside class="w-64 bg-white border-r border-slate-200 hidden md:flex flex-col shrink-0">
         <div class="p-6">
-            <div class="flex items-center gap-3 text-emerald-600 font-bold text-2xl">
+            <div class="flex items-center gap-3 text-orange-600 font-bold text-2xl">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
                 </svg>
@@ -67,7 +67,7 @@
                 </svg>
                 <span class="font-medium">Tổng quan</span>
             </a>
-            <a href="#" class="sidebar-item active flex items-center gap-3 px-4 py-3 rounded-xl transition-all shadow-lg shadow-emerald-100">
+            <a href="#" class="sidebar-item active flex items-center gap-3 px-4 py-3 rounded-xl transition-all shadow-lg shadow-orange-100">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
@@ -125,7 +125,7 @@
                     <p class="text-slate-500 text-sm">Gán cùng lúc nhiều mã giảm giá cho khách hàng.</p>
                 </div>
                 <div class="flex gap-3">
-                    <button onclick="openAssignModal()" class="flex items-center gap-2 bg-emerald-600 text-white px-5 py-2.5 rounded-xl hover:bg-emerald-700 transition shadow-lg shadow-emerald-200 font-semibold text-sm">
+                    <button onclick="openAssignModal()" class="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2.5 rounded-xl hover:from-orange-600 hover:to-amber-600 transition shadow-lg shadow-orange-500/20 font-semibold text-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>

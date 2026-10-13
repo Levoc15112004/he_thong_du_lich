@@ -76,8 +76,8 @@
                     {{-- GIAO DIỆN TIN NHẮN KHÁCH HÀNG (TRÁI) --}}
                     @if ($message->sender_type === 'user')
                         <div class="flex items-start gap-3 justify-start max-w-3xl group/msg">
-                            <div class="w-10 h-10 rounded-full bg-emerald-100/50 border-2 border-white shadow-sm flex items-center justify-center shrink-0 mt-auto mb-5">
-                                <i class="fa-solid fa-user text-emerald-500 text-sm"></i>
+                            <div class="w-10 h-10 rounded-full bg-orange-100/50 border-2 border-white shadow-sm flex items-center justify-center shrink-0 mt-auto mb-5">
+                                <i class="fa-solid fa-user text-orange-500 text-sm"></i>
                             </div>
                             <div>
                                 <div class="bg-white border border-slate-100 text-slate-700 px-5 py-3 rounded-2xl rounded-bl-sm shadow-sm text-[15px] leading-relaxed max-w-lg mb-1 float-left break-words">
