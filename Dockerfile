@@ -26,7 +26,9 @@ WORKDIR /var/www/html
 COPY . .
 
 # Install dependencies (production)
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV COMPOSER_MEMORY_LIMIT=-1
+RUN composer update --no-dev --optimize-autoloader --no-interaction
 
 # Permissions and entrypoint setup
 RUN chmod +x /var/www/html/entrypoint.sh \
