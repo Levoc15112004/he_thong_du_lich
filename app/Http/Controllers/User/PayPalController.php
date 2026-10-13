@@ -69,6 +69,10 @@ class PayPalController extends Controller
                     ],
                 ],
             ],
+            'application_context' => [
+                'cancel_url' => route('user.tour.deposit', $order->id),
+                'return_url' => route('paypal.capture'),
+            ],
         ];
 
         try {
@@ -102,23 +106,62 @@ class PayPalController extends Controller
         }
     }
 
-    //  Capture thanh toán
+    // Capture thanh toán
     public function capture(Request $request)
     {
-        $request->validate(['orderID' => 'required']);
+        $orderID = $request->input('orderID') ?? $request->input('token');
+
+        if (! $orderID) {
+            if (! $request->wantsJson() && ! $request->ajax()) {
+                return redirect()->route('home')->with('error', 'Không tìm thấy mã thanh toán PayPal.');
+            }
+            return response()->json(['status' => 'error', 'message' => 'Missing order ID or token'], 400);
+        }
 
         $paypal = new PayPalClient;
         $paypal->setApiCredentials(config('paypal'));
         $paypal->setAccessToken($paypal->getAccessToken());
 
-        $response = $paypal->capturePaymentOrder($request->orderID);
+        $response = $paypal->capturePaymentOrder($orderID);
 
-        //  Lấy order ID từ invoice_id
-        $invoiceId = $response['purchase_units'][0]['payments']['captures'][0]['invoice_id'];
-        $orderId = (int) str_replace('ORDER-', '', $invoiceId);
+        if (! isset($response['status']) || $response['status'] !== 'COMPLETED') {
+            Log::error('PayPal capture failed', ['response' => $response]);
 
-        $order = Order::find($orderId);
+            $invoiceId = $response['purchase_units'][0]['payments']['captures'][0]['invoice_id'] ?? null;
+            $orderId = $invoiceId ? (int) str_replace('ORDER-', '', $invoiceId) : null;
+            $payment = $orderId ? Payment::where('order_id', $orderId)->where('payment_method', 'PayPal')->latest()->first() : null;
+
+            if ($payment) {
+                $this->logTransaction(
+                    paymentId: $payment->id,
+                    type: 'error',
+                    amount: 0,
+                    code: $orderID,
+                    response: $response,
+                    status: 'failed'
+                );
+            }
+
+            if (! $request->wantsJson() && ! $request->ajax()) {
+                return redirect()->route('home')->with('error', 'Thanh toán PayPal không thành công hoặc đã bị từ chối.');
+            }
+
+            return response()->json([
+                'status' => 'error',
+                'message' => 'PayPal capture failed',
+                'paypal_response' => $response,
+            ], 400);
+        }
+
+        // Lấy order ID từ invoice_id
+        $invoiceId = $response['purchase_units'][0]['payments']['captures'][0]['invoice_id'] ?? null;
+        $orderId = $invoiceId ? (int) str_replace('ORDER-', '', $invoiceId) : null;
+
+        $order = $orderId ? Order::find($orderId) : null;
         if (! $order) {
+            if (! $request->wantsJson() && ! $request->ajax()) {
+                return redirect()->route('home')->with('error', 'Không tìm thấy đơn hàng tương ứng.');
+            }
             return response()->json([
                 'status' => 'error',
                 'message' => 'Order not found',
@@ -130,32 +173,17 @@ class PayPalController extends Controller
             ->latest()
             ->first();
 
-        if (! isset($response['status']) || $response['status'] !== 'COMPLETED') {
-
-            $this->logTransaction(
-                paymentId: $payment->id,
-                type: 'error',
-                amount: 0,
-                code: $request->orderID,
-                response: $response,
-                status: 'failed'
-            );
-
-            return response()->json([
-                'status' => 'error',
-                'message' => 'PayPal capture failed',
-                'paypal_response' => $response,
-            ], 400);
-        }
-
         if (! $payment) {
+            if (! $request->wantsJson() && ! $request->ajax()) {
+                return redirect()->route('tour.thankyou', $order->id);
+            }
             return response()->json([
                 'status' => 'error',
                 'message' => 'Payment not found',
             ], 404);
         }
 
-        $captureId = $response['purchase_units'][0]['payments']['captures'][0]['id'];
+        $captureId = $response['purchase_units'][0]['payments']['captures'][0]['id'] ?? $response['id'];
 
         $payment->update([
             'charge_id' => $captureId,
@@ -180,6 +208,10 @@ class PayPalController extends Controller
             response: $response,
             status: 'success'
         );
+
+        if (! $request->wantsJson() && ! $request->ajax()) {
+            return redirect()->route('tour.thankyou', $order->id)->with('success', 'Thanh toán tiền cọc qua PayPal thành công!');
+        }
 
         return response()->json([
             'status' => 'success',
@@ -231,6 +263,10 @@ class PayPalController extends Controller
                     ],
                 ],
             ],
+            'application_context' => [
+                'cancel_url' => route('user.payment.final', $order->id),
+                'return_url' => route('paypal.captureFinal'),
+            ],
         ];
 
         try {
@@ -266,32 +302,44 @@ class PayPalController extends Controller
 
     public function captureFinal(Request $request)
     {
-        $request->validate(['orderID' => 'required']);
+        $orderID = $request->input('orderID') ?? $request->input('token');
+
+        if (! $orderID) {
+            if (! $request->wantsJson() && ! $request->ajax()) {
+                return redirect()->route('home')->with('error', 'Không tìm thấy mã thanh toán PayPal.');
+            }
+            return response()->json(['status' => 'error', 'message' => 'Missing order ID or token'], 400);
+        }
 
         $paypal = new PayPalClient;
         $paypal->setApiCredentials(config('paypal'));
         $paypal->setAccessToken($paypal->getAccessToken());
 
         // Capture từ PayPal
-        $response = $paypal->capturePaymentOrder($request->orderID);
+        $response = $paypal->capturePaymentOrder($orderID);
 
-        //  XỬ LÝ NẾU FAILED
+        // XỬ LÝ NẾU FAILED
         if (! isset($response['status']) || $response['status'] !== 'COMPLETED') {
+            Log::error('PayPal final capture failed', ['response' => $response]);
 
-            // Tìm payment final gần nhất liên quan đến order này (nếu tồn tại)
-            $payment = Payment::where('payment_method', 'PayPal')
-                ->where('payment_type', 'final')
-                ->latest()
-                ->first();
+            $invoiceId = $response['purchase_units'][0]['payments']['captures'][0]['invoice_id'] ?? null;
+            $orderId = $invoiceId ? (int) last(explode('-', $invoiceId)) : null;
+            $payment = $orderId ? Payment::where('order_id', $orderId)->where('payment_method', 'PayPal')->where('payment_type', 'final')->latest()->first() : null;
 
-            $this->logTransaction(
-                paymentId: $payment?->id,
-                type: 'error',
-                amount: 0,
-                code: $request->orderID,
-                response: $response,
-                status: 'failed'
-            );
+            if ($payment) {
+                $this->logTransaction(
+                    paymentId: $payment->id,
+                    type: 'error',
+                    amount: 0,
+                    code: $orderID,
+                    response: $response,
+                    status: 'failed'
+                );
+            }
+
+            if (! $request->wantsJson() && ! $request->ajax()) {
+                return redirect()->route('home')->with('error', 'Thanh toán 70% qua PayPal không thành công.');
+            }
 
             return response()->json([
                 'status' => 'error',
@@ -300,19 +348,22 @@ class PayPalController extends Controller
             ], 400);
         }
 
-        //  LẤY ORDER ID TỪ invoice_id
-        $invoiceId = $response['purchase_units'][0]['payments']['captures'][0]['invoice_id'];
-        $orderId = (int) explode('-', $invoiceId)[2];
+        // LẤY ORDER ID TỪ invoice_id
+        $invoiceId = $response['purchase_units'][0]['payments']['captures'][0]['invoice_id'] ?? null;
+        $orderId = $invoiceId ? (int) last(explode('-', $invoiceId)) : null;
 
-        $order = Order::find($orderId);
+        $order = $orderId ? Order::find($orderId) : null;
         if (! $order) {
+            if (! $request->wantsJson() && ! $request->ajax()) {
+                return redirect()->route('home')->with('error', 'Không tìm thấy đơn hàng.');
+            }
             return response()->json([
                 'status' => 'error',
                 'message' => 'Order not found',
             ], 404);
         }
 
-        //  LẤY PAYMENT FINAL
+        // LẤY PAYMENT FINAL
         $payment = Payment::where('order_id', $order->id)
             ->where('payment_method', 'PayPal')
             ->where('payment_type', 'final')
@@ -320,20 +371,24 @@ class PayPalController extends Controller
             ->first();
 
         if (! $payment) {
+            if (! $request->wantsJson() && ! $request->ajax()) {
+                return redirect()->route('tour.thankyou.final', $order->id);
+            }
             return response()->json([
                 'status' => 'error',
                 'message' => 'Final payment not found',
             ], 404);
         }
 
-        //  UPDATE PAYMENT
+        // UPDATE PAYMENT
+        $captureId = $response['purchase_units'][0]['payments']['captures'][0]['id'] ?? $response['id'];
         $payment->update([
-            'charge_id' => $response['id'],
+            'charge_id' => $captureId,
             'status' => 1,
             'payment_date' => now(),
         ]);
 
-        //  UPDATE ORDER → PAID FULLY
+        // UPDATE ORDER → PAID FULLY
         $order->update([
             'status' => 2, // Đã thanh toán hết
         ]);
@@ -343,7 +398,7 @@ class PayPalController extends Controller
             70
         );
 
-        //  LOG 
+        // LOG 
         $this->logTransaction(
             paymentId: $payment->id,
             type: 'confirm',
@@ -352,6 +407,10 @@ class PayPalController extends Controller
             response: $response,
             status: 'success'
         );
+
+        if (! $request->wantsJson() && ! $request->ajax()) {
+            return redirect()->route('tour.thankyou.final', $order->id)->with('success', 'Thanh toán 70% còn lại qua PayPal thành công!');
+        }
 
         return response()->json([
             'status' => 'success',

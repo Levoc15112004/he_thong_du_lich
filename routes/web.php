@@ -224,11 +224,11 @@ Route::middleware('checkUser')->group(function () {
 
     Route::post('/paypal/create-order/{order_id}', [PayPalController::class, 'createPayment'])->name('paypal.create');
     // Capture thanh toán 30%
-    Route::post('/paypal/capture', [PayPalController::class, 'capture'])->name('paypal.capture');
+    Route::match(['get', 'post'], '/paypal/capture', [PayPalController::class, 'capture'])->name('paypal.capture');
     // Tạo PayPal Order cho 70%
     Route::post('/paypal/create-final-order/{order_id}', [PayPalController::class, 'createFinalPayment'])->name('paypal.createFinal');
     // Capture thanh toán 70%
-    Route::post('/paypal/capture-final', [PayPalController::class, 'captureFinal'])->name('paypal.captureFinal');
+    Route::match(['get', 'post'], '/paypal/capture-final', [PayPalController::class, 'captureFinal'])->name('paypal.captureFinal');
 
     Route::get('/my-tours', [TourBookedController::class, 'myBookedTours'])->name('user.tours.booked');
     Route::get('/booked-tours', [TourBookedController::class, 'myBookedTours'])->name('tourBooked');

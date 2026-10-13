@@ -15,5 +15,6 @@ class VerifyCsrfToken extends Middleware
         'tu-van',
         'contact/send',
         'api/*',
+        'paypal/*',
     ];
 }
