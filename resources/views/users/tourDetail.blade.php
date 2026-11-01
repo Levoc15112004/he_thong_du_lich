@@ -512,45 +512,55 @@
         </label>
         <div class="space-y-2 text-xs">
             @foreach ($tourTypeValues as $value)
-                @php
-                    $isLuxury = Str::contains(mb_strtolower($value), ['4', '5', 'cao cấp', 'luxury']);
-                    $hotelSurcharge = $isLuxury ? 800000 : 0;
-                @endphp
-                <label class="flex items-start justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#b85e3a] cursor-pointer transition-colors group">
-                    <div class="flex items-start gap-2.5">
-                        <input type="radio" name="tour_type" value="{{ $value }}" data-surcharge="{{ $hotelSurcharge }}" {{ $loop->first ? 'checked' : '' }} class="mt-0.5 text-[#863c20] hotel-radio">
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="font-bold text-slate-800 dark:text-white group-hover:text-[#b85e3a]">{{ $value }}</span>
-                                <span class="text-[10px] px-2 py-0.5 rounded font-semibold {{ $isLuxury ? 'bg-amber-100 text-amber-800' : 'bg-slate-200 text-slate-700' }}">
-                                    {{ $isLuxury ? '+800.000đ/khách (Deluxe 5 sao)' : 'Tiêu chuẩn trọn gói' }}
-                                </span>
-                            </div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-normal">
-                                {{ $isLuxury ? 'Phòng Deluxe ban công ngắm cảnh, hồ bơi vô cực, kèm buffet sáng 5 sao.' : 'Phòng tiện nghi sạch sẽ, điều hòa, vị trí trung tâm thuận tiện.' }}
-                            </p>
-                        </div>
-                    </div>
-                </label>
-            @endforeach
+    @php
+        $isLuxury = Str::contains(mb_strtolower($value), ['4', '5', 'cao cấp', 'luxury']);
+        $hotelSurcharge = $isLuxury ? 800000 : 0;
+    @endphp
+    <label class="flex items-start justify-between p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#b85e3a] cursor-pointer transition-colors group">
+        <div class="flex items-start gap-2.5">
+            <input type="radio" name="tour_type" value="{{ $value }}" data-surcharge="{{ $hotelSurcharge }}" {{ $loop->first ? 'checked' : '' }} class="mt-0.5 text-[#863c20] hotel-radio">
+            <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="font-bold text-slate-800 dark:text-white group-hover:text-[#b85e3a]">{{ $value }}</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded font-bold {{ $isLuxury ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' : 'bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300' }}">
+                        {{ $isLuxury ? '+800.000đ (Nâng hạng phòng 5 sao)' : 'Tiêu chuẩn trọn gói' }}
+                    </span>
+                </div>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-normal">
+                    {{ $isLuxury ? 'Phòng Deluxe ban công ngắm cảnh, hồ bơi vô cực, kèm buffet sáng quốc tế 5 sao.' : 'Phòng tiêu chuẩn sạch sẽ, điều hòa, phòng tắm riêng, gần trung tâm.' }}
+                </p>
+                <p class="text-xs font-bold text-[#863c20] dark:text-[#cf8a6e] mt-1.5">
+                    {{ $isLuxury ? 'Phụ thu: +800.000đ / khách' : 'Đã bao gồm trong giá gốc' }}
+                </p>
+            </div>
         </div>
+    </label>
+@endforeach
+</div>
+</div>
+<!-- LIVE PRICE SUMMARY -->
+<div class="p-4 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#38424d] space-y-2 text-xs">
+    <div class="flex justify-between text-slate-500">
+        <span>Gói cơ bản (Xe ô tô + KS 3*):</span>
+        <span class="font-semibold">{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>
     </div>
-    <!-- LIVE PRICE SUMMARY -->
-    <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#38424d] space-y-1.5 text-xs">
-        <div class="flex justify-between text-slate-500">
-            <span>Đơn giá cơ bản:</span>
-            <span>{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>
-        </div>
-        <div class="flex justify-between text-slate-500">
-            <span>Phụ thu tùy chọn:</span>
-            <span id="displaySurchargeText" class="font-medium text-[#b85e3a]">+0đ</span>
-        </div>
-        <div class="pt-2 border-t border-slate-200 dark:border-slate-700 flex justify-between items-baseline">
-            <span class="font-bold text-slate-800 dark:text-white">Tổng cộng (<span id="displayQtyCount">1</span> khách):</span>
-            <span id="displayDynamicPrice" class="text-2xl font-bold text-[#b85e3a]">{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>
-        </div>
+    <div class="flex justify-between text-slate-500">
+        <span>Phụ thu phương tiện:</span>
+        <span id="displayTransSurcharge" class="font-bold text-[#863c20]">+0đ</span>
     </div>
-    <input type="hidden" name="unit_price" id="unitPriceInput" value="{{ $tour->sale_price ?: $tour->price }}">
+    <div class="flex justify-between text-slate-500">
+        <span>Phụ thu lưu trú:</span>
+        <span id="displayHotelSurcharge" class="font-bold text-[#863c20]">+0đ</span>
+    </div>
+    <div class="pt-2.5 border-t border-slate-200 dark:border-slate-700 flex justify-between items-baseline">
+        <div>
+            <span class="font-bold text-slate-800 dark:text-white block">Tổng thanh toán:</span>
+            <span class="text-[10px] text-slate-400">(<span id="displayQtyCount">1</span> khách x <span id="displayPerPersonPrice">{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>)</span>
+        </div>
+        <span id="displayDynamicPrice" class="text-2xl font-bold text-[#b85e3a]">{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>
+    </div>
+</div>
+<input type="hidden" name="unit_price" id="unitPriceInput" value="{{ $tour->sale_price ?: $tour->price }}">
     <!-- QUANTITY -->
                             <div>
                                 <label class="flex justify-between items-center text-xs font-bold text-slate-700 mb-1 mt-2">
@@ -1092,10 +1102,30 @@
         const unitPrice = baseTourPrice + transSurcharge + hotelSurcharge;
         const totalPrice = unitPrice * qty;
         
-        const surchargeText = document.getElementById('displaySurchargeText');
-        if (surchargeText) {
-            surchargeText.textContent = (transSurcharge + hotelSurcharge > 0) ? '+' + (transSurcharge + hotelSurcharge).toLocaleString('vi-VN') + 'đ' : '+0đ (Đã bao gồm)';
+        // Cập nhật giá lớn ở đầu cột đặt chỗ
+        const topPriceEl = document.getElementById('topDisplayTourPrice');
+        if (topPriceEl) {
+            topPriceEl.innerHTML = unitPrice.toLocaleString('vi-VN') + '<span class="text-xl ml-1 text-slate-500 font-medium">đ</span>';
         }
+        const topNoteEl = document.getElementById('topPricePackageNote');
+        if (topNoteEl) {
+            topNoteEl.textContent = transSurcharge > 0 ? 'Gói vé máy bay khứ hồi' : 'Gói xe du lịch tiêu chuẩn';
+        }
+
+        // Cập nhật phụ thu từng mục trong bảng tính
+        const transSurEl = document.getElementById('displayTransSurcharge');
+        if (transSurEl) {
+            transSurEl.textContent = transSurcharge > 0 ? '+' + transSurcharge.toLocaleString('vi-VN') + 'đ' : 'Đã bao gồm (+0đ)';
+        }
+        const hotelSurEl = document.getElementById('displayHotelSurcharge');
+        if (hotelSurEl) {
+            hotelSurEl.textContent = hotelSurcharge > 0 ? '+' + hotelSurcharge.toLocaleString('vi-VN') + 'đ' : 'Đã bao gồm (+0đ)';
+        }
+        
+        // Cập nhật giá từng khách & tổng thanh toán
+        const perPersonEl = document.getElementById('displayPerPersonPrice');
+        if (perPersonEl) perPersonEl.textContent = unitPrice.toLocaleString('vi-VN') + 'đ';
+
         const displayPrice = document.getElementById('displayDynamicPrice');
         if (displayPrice) {
             displayPrice.textContent = totalPrice.toLocaleString('vi-VN') + 'đ';

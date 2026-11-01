@@ -68,6 +68,7 @@
                                     <p class="text-xl font-extrabold text-[#b85e3a] font-serif">
                                         {{ number_format($tour->sale_price ?? $tour->price) }}<span class="text-sm font-semibold ml-0.5">đ</span>
                                     </p>
+<span class="text-[10px] text-slate-400 block -mt-0.5">Giá từ • Gói xe du lịch</span>
                                 </div>
                                 @if($tour->price > $tour->sale_price)
                                     <p class="text-xs text-slate-400 line-through">
