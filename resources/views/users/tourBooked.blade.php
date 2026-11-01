@@ -199,7 +199,7 @@
                                         <a href="{{ route('user.payment.final', $order->id) }}"
                                             class="flex items-center justify-center px-5 py-2
                                         text-white text-sm font-bold rounded-xl
-                                        transition bg-gradient-to-r from-orange-500 to-rose-500 text-white">
+                                        transition bg-[#863c20] text-white">
                                             Thanh toán phần còn lại
                                         </a>
                                     @endif
@@ -407,11 +407,7 @@
             background-color: #f8fafc;
         }
 
-        .text-gradient {
-            background: linear-gradient(to right, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .text-gradient { color: #863c20; font-family: "Playfair Display", Georgia, serif; }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.8);

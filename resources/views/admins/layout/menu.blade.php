@@ -176,7 +176,7 @@
                                 
                                 <a href="{{ $sub['route'] }}"
                                     class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-[13.5px] font-medium transition-all duration-200
-                                   {{ $isActiveItem ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md shadow-orange-500/20' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
+                                   {{ $isActiveItem ? 'bg-[#863c20] text-white shadow-md shadow-xs' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
 
                                     <i data-feather="{{ $sub['icon'] }}"
                                         class="w-4 h-4 {{ $isActiveItem ? 'text-white' : 'text-slate-400' }}">

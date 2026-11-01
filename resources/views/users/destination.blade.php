@@ -1,37 +1,18 @@
 @extends('users.master')
 
 @section('home')
-<style>
-    .text-gradient {
-        background: linear-gradient(135deg, #f97316 0%, #f43f5e 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
 
-    .premium-card {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .premium-card:hover {
-        transform: translateY(-8px);
-    }
-
-    .hero-gradient {
-        background: radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.12), transparent 50%),
-                    radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.10), transparent 50%);
-    }
-</style>
 
 <div class="search-container min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-800 dark:text-slate-100 transition-colors duration-300">
     {{-- HERO HEADER --}}
-    <section class="relative pt-32 pb-16 overflow-hidden hero-gradient">
+    <section class="relative pt-28 sm:pt-32 pb-12 border-b border-[#e8e3d8] dark:border-[#2b3239] bg-[#faf8f5] dark:bg-[#151719]">
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 px-4 py-2 rounded-full border border-orange-200/80 dark:border-orange-800/80 mb-6 font-bold text-xs uppercase tracking-wider shadow-sm">
+            <div class="stamp-badge mb-4">
                 <i class="fa-solid fa-location-dot text-orange-500"></i>
                 Điểm Đến Hấp Dẫn
             </div>
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-                Khám Phá <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500">{{ $location }}</span>
+            <h1 class="font-serif text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
+                Khám Phá <span class="text-[#b85e3a] font-serif italic">{{ $location }}</span>
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                 Tìm thấy {{ $tours->total() }} hành trình du lịch trọn gói lý tưởng đưa bạn khám phá trọn vẹn vẻ đẹp {{ $location }}.
@@ -43,7 +24,7 @@
         {{-- Lưới hiển thị tour --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse ($tours as $tour)
-                <div class="premium-card group flex flex-col h-full overflow-hidden bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                <div class="travel-card group flex flex-col h-full overflow-hidden bg-white travel-card rounded-2xl transition-all duration-300 cursor-pointer"
                      onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
                     {{-- Tour Image Area --}}
                     <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="relative h-52 overflow-hidden block">
@@ -70,7 +51,7 @@
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="mb-3">
                              <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="block">
-                                 <h2 class="text-base font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors line-clamp-2 leading-snug">
+                                 <h2 class="font-serif text-base font-bold text-slate-900 dark:text-white group-hover:text-[#b85e3a] transition-colors line-clamp-2 leading-snug">
                                      {{ $tour->name }}
                                  </h2>
                              </a>
@@ -80,7 +61,7 @@
                             <div class="flex items-baseline justify-between mb-3">
                                 <div>
                                     <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Giá hành trình</p>
-                                    <p class="text-xl font-extrabold text-rose-600">
+                                    <p class="text-xl font-extrabold text-[#b85e3a] font-serif">
                                         {{ number_format($tour->sale_price ?? $tour->price) }}<span class="text-sm font-semibold ml-0.5">đ</span>
                                     </p>
                                 </div>
@@ -92,7 +73,7 @@
                             </div>
 
                             <a href="{{ route('user.tourDetail.index', $tour->id) }}"
-                               class="w-full block text-center py-3 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold text-sm shadow-md shadow-orange-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                               class="w-full block text-center py-2.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-xs uppercase tracking-wider shadow-xs transition-all"
                                onclick="event.stopPropagation()">
                                 Xem Chi Tiết & Đặt Tour
                             </a>

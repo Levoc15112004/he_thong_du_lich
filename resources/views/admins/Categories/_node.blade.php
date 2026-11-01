@@ -45,7 +45,7 @@
 
             <a href="{{ route('categories.edit', $node->id) }}"
                 class="w-9 h-9 flex items-center justify-center text-orange-600 hover:text-white
-                       rounded-xl bg-orange-50 hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-500/20
+                       rounded-xl bg-orange-50 hover:bg-orange-500 hover:shadow-lg hover:shadow-xs
                        transition-all duration-300" title="Chỉnh sửa">
                 <i class="fa-solid fa-pen-to-square text-sm"></i>
             </a>

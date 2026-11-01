@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WanderVibe - Đăng Nhập / Đăng Ký</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
@@ -15,7 +17,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['"Be Vietnam Pro"', sans-serif],
                     },
                     colors: {
                         brand: {
@@ -37,7 +39,7 @@
     </script>
     
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        body { font-family: 'Be Vietnam Pro', sans-serif; overflow-x: hidden; }
 
         .auth-wrapper {
             transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -96,7 +98,7 @@
     </a>
 
     <!-- Container Chính -->
-    <div id="main-container" class="relative z-10 w-full max-w-[1200px] min-h-[680px] lg:h-[720px] rounded-[2.5rem] shadow-2xl overflow-hidden glass-morphism flex flex-col lg:flex-row transition-all duration-700">
+    <div id="main-container" class="relative z-10 w-full max-w-[1200px] min-h-[680px] lg:h-[720px] rounded-2xl shadow-2xl overflow-hidden glass-morphism flex flex-col lg:flex-row transition-all duration-700">
 
         <!-- SIDE 1: HÌNH ẢNH (Mặc định bên trái) -->
         <div class="image-side hidden lg:flex lg:w-[55%] relative overflow-hidden z-20 transition-all duration-700 ease-in-out order-1">
@@ -109,13 +111,13 @@
                 <div>
                     <div class="flex items-center gap-3 mb-10 animate-float">
                         <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-lg flex items-center justify-center border border-white/20 shadow-xl">
-                            <i class="fa-solid fa-compass text-2xl text-orange-400"></i>
+                            <i class="fa-solid fa-compass text-2xl text-[#cf8a6e]"></i>
                         </div>
                         <span class="text-3xl font-bold tracking-tight">WanderVibe</span>
                     </div>
                     
                     <div id="image-content" class="transition-all duration-500">
-                        <h2 class="text-5xl font-bold leading-tight mb-6">Mở khóa <br><span class="text-orange-400">cửa sổ</span> thế giới.</h2>
+                        <h2 class="font-serif text-5xl font-bold leading-tight mb-6">Mở khóa <br><span class="text-[#cf8a6e]">cửa sổ</span> thế giới.</h2>
                         <p class="text-slate-200 text-lg max-w-md leading-relaxed font-medium">
                             Hệ sinh thái du lịch dành cho thế hệ trẻ. Trải nghiệm những chuyến đi cảm xúc, gắn kết và mang đậm dấu ấn cá nhân.
                         </p>
@@ -145,7 +147,7 @@
                 
                 <!-- Logo Mobile -->
                 <div class="lg:hidden flex items-center justify-center gap-2.5 mb-10">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 flex items-center justify-center text-white shadow-lg">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-[#b85e3a] to-[#863c20] flex items-center justify-center text-white shadow-lg">
                         <i class="fa-solid fa-compass text-lg"></i>
                     </div>
                     <span class="text-2xl font-bold tracking-tight text-slate-900">WanderVibe</span>
@@ -154,7 +156,7 @@
                 <!-- ======== LOGIN SECTION ======== -->
                 <div id="login-section" class="fade-in">
                     <div class="mb-8 text-left">
-                        <h3 class="text-3xl font-bold text-slate-900 mb-2">Đăng nhập</h3>
+                        <h3 class="font-serif text-3xl font-bold text-slate-900 mb-2">Đăng nhập</h3>
                         <p class="text-slate-500 font-medium">Chào mừng bạn trở lại! Bắt đầu chuyến đi mới.</p>
                     </div>
 
@@ -228,7 +230,7 @@
                             <a href="{{ route('password.request') }}" class="text-sm font-bold text-orange-600 hover:text-orange-700 transition-all">Quên mật khẩu?</a>
                         </div>
                         
-                        <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-rose-500 text-white py-4 rounded-2xl font-bold shadow-lg shadow-orange-500/30 hover:from-orange-600 hover:to-rose-600 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full bg-gradient-to-r from-[#b85e3a] to-[#863c20] text-white py-4 rounded-2xl font-bold shadow-lg shadow-orange-500/30 hover:bg-[#a34c2a] hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
                             <span>Đăng Nhập</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </button>
@@ -243,7 +245,7 @@
                 <!-- ======== REGISTER SECTION ======== -->
                 <div id="register-section" class="hidden fade-in">
                     <div class="mb-6 text-left">
-                        <h3 class="text-3xl font-bold text-slate-900 mb-2">Tạo tài khoản</h3>
+                        <h3 class="font-serif text-3xl font-bold text-slate-900 mb-2">Tạo tài khoản</h3>
                         <p class="text-slate-500 font-medium">Gia nhập cộng đồng WanderVibe ngay hôm nay.</p>
                     </div>
 
@@ -348,7 +350,7 @@
                 imgContent.style.opacity = '0';
                 setTimeout(() => {
                     imgContent.innerHTML = `
-                        <h2 class="text-5xl font-bold leading-tight mb-6">Trải nghiệm <br><span class="text-orange-400">mới</span> chờ bạn.</h2>
+                        <h2 class="font-serif text-5xl font-bold leading-tight mb-6">Trải nghiệm <br><span class="text-[#cf8a6e]">mới</span> chờ bạn.</h2>
                         <p class="text-slate-100 text-lg max-w-md leading-relaxed font-medium">
                             Chỉ mất 30 giây để bắt đầu. Hãy để chúng tôi đồng hành cùng bạn trên mọi nẻo đường xinh đẹp nhất!
                         </p>
@@ -364,7 +366,7 @@
                 imgContent.style.opacity = '0';
                 setTimeout(() => {
                     imgContent.innerHTML = `
-                        <h2 class="text-5xl font-bold leading-tight mb-6">Mở khóa <br><span class="text-orange-400">cửa sổ</span> thế giới.</h2>
+                        <h2 class="font-serif text-5xl font-bold leading-tight mb-6">Mở khóa <br><span class="text-[#cf8a6e]">cửa sổ</span> thế giới.</h2>
                         <p class="text-slate-200 text-lg max-w-md leading-relaxed font-medium">
                             Hệ sinh thái du lịch dành cho thế hệ trẻ. Trải nghiệm những chuyến đi cảm xúc, gắn kết và mang đậm dấu ấn cá nhân.
                         </p>

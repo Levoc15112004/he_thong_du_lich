@@ -73,7 +73,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- HEADER BANNER -->
-        <div class="bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 rounded-[2.5rem] p-8 sm:p-12 mb-12 text-center text-white shadow-xl shadow-orange-500/20 relative overflow-hidden">
+        <div class="bg-[#863c20] rounded-[2.5rem] p-8 sm:p-12 mb-12 text-center text-white shadow-xl shadow-xs relative overflow-hidden">
             <!-- Decorative Blobs -->
             <div class="absolute inset-0 opacity-20">
                 <div class="absolute -top-10 -left-10 w-40 h-40 bg-white rounded-full blur-2xl"></div>
@@ -266,7 +266,7 @@
                     <!-- Direct/Cash Button -->
                     <div id="wrapper-cash" class="hidden relative z-10 w-full">
                         <a href="{{ route('tour.thankyou.final', $order->id) }}?method=cash" 
-                           class="block w-full bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-orange-500/20">
+                           class="block w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-xs">
                             <i class="fa-solid fa-check-double mr-2"></i> Xác nhận thanh toán trực tiếp
                         </a>
                         <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">

@@ -173,7 +173,7 @@
                     <!-- Direct/Cash Button -->
                     <div id="wrapper-cash" class="hidden relative z-10 w-full">
                         <a href="{{ route('tour.thankyou', $order->id) }}?method=cash" 
-                           class="block w-full bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-orange-500/20">
+                           class="block w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-xs">
                             <i class="fa-solid fa-check-to-slot mr-2"></i> Xác nhận & Thanh toán tại văn phòng
                         </a>
                         <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">

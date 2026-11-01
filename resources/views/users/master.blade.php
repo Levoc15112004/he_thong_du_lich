@@ -83,7 +83,9 @@
       }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
@@ -148,96 +150,71 @@
     }
   </script>
 
+  
+  
   <style>
-    /* Luminous Warm Travel Background */
+    /* Editorial Paper Canvas */
     body {
-      background-color: #fafaf9;
-      background-image: 
-        radial-gradient(at 10% 12%, rgba(249, 115, 22, 0.06) 0px, transparent 40%),
-        radial-gradient(at 90% 20%, rgba(244, 63, 94, 0.05) 0px, transparent 45%),
-        radial-gradient(at 50% 65%, rgba(245, 158, 11, 0.04) 0px, transparent 50%),
-        radial-gradient(at 85% 85%, rgba(249, 115, 22, 0.05) 0px, transparent 45%);
-      background-attachment: fixed;
+      background-color: #fbf9f6;
+      color: #1e2226;
+      font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Modern Light Glass Panel */
+    h1, h2, h3, .font-serif, .font-editorial {
+      font-family: 'Playfair Display', Georgia, serif;
+      letter-spacing: -0.015em;
+    }
+
+    /* Refined tactile travel card (solid, crisp border, elegant lift) */
+    .travel-card, .premium-card, .glass-card-interactive {
+      background: #ffffff;
+      border: 1px solid #e8e3d8;
+      box-shadow: 0 1px 3px rgba(21, 23, 25, 0.04), 0 6px 20px -4px rgba(21, 23, 25, 0.05);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .travel-card:hover, .premium-card:hover, .glass-card-interactive:hover {
+      border-color: #cf8a6e;
+      transform: translateY(-4px);
+      box-shadow: 0 4px 6px -1px rgba(21, 23, 25, 0.05), 0 16px 32px -8px rgba(184, 94, 58, 0.12);
+    }
+
     .glass-panel-light {
-      background: rgba(255, 255, 255, 0.90);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+      background: #ffffff;
+      border: 1px solid #e8e3d8;
+      box-shadow: 0 4px 20px -4px rgba(21, 23, 25, 0.06);
     }
 
-    /* Interactive Light Card */
-    .glass-card-interactive {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(226, 232, 240, 0.85);
-      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .glass-card-interactive:hover {
-      transform: translateY(-7px);
-      border-color: rgba(249, 115, 22, 0.45);
-      background: rgba(255, 255, 255, 0.98);
-      box-shadow: 0 22px 45px -10px rgba(249, 115, 22, 0.18), 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+    /* Heritage stamp badge */
+    .stamp-badge, .glass-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      border: 1px solid #e8dfd1;
+      background: #faf6f0;
+      color: #863c20;
     }
 
-    /* Cinematic Banner Vignette for crisp text contrast */
+    /* Cinematic Banner Vignette */
     .hero-cinematic-overlay {
       background: linear-gradient(
         180deg, 
-        rgba(15, 23, 42, 0.48) 0%, 
-        rgba(15, 23, 42, 0.22) 35%, 
-        rgba(15, 23, 42, 0.55) 70%, 
-        rgba(250, 250, 249, 1) 100%
+        rgba(18, 22, 26, 0.55) 0%, 
+        rgba(18, 22, 26, 0.30) 40%, 
+        rgba(18, 22, 26, 0.70) 80%, 
+        #fbf9f6 100%
       );
     }
 
-    /* Sound Wave Bar Animation */
-    .sound-wave-bar {
-      animation: soundWave 1.1s ease-in-out infinite alternate;
-    }
-    .sound-wave-bar:nth-child(2) { animation-delay: 0.15s; }
-    .sound-wave-bar:nth-child(3) { animation-delay: 0.35s; }
-    .sound-wave-bar:nth-child(4) { animation-delay: 0.2s; }
-    @keyframes soundWave {
-      0% { height: 4px; }
-      100% { height: 18px; }
-    }
-
-    /* Hide scrollbars */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-    /* Luminous Search Aura Effect for Light Theme */
-    .search-aura-light {
-      position: relative;
-    }
-    .search-aura-light::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: 1.85rem;
-      background: linear-gradient(90deg, #f97316, #f43f5e, #fbbf24, #f97316);
-      background-size: 300% 300%;
-      animation: gradientX 7s linear infinite;
-      z-index: -1;
-      opacity: 0.55;
-      filter: blur(14px);
-      transition: opacity 0.3s ease;
-    }
-    .search-aura-light:focus-within::before {
-      opacity: 0.9;
-      filter: blur(18px);
-    }
-    @keyframes gradientX {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
 
     .nav-link {
       white-space: nowrap !important;
@@ -245,123 +222,74 @@
       flex-shrink: 0 !important;
     }
 
-    /* Dark Theme Core Styles */
+    /* Dark Theme - Obsidian Slate */
     html.dark {
       color-scheme: dark;
     }
     html.dark body {
-      background-color: #0b1120 !important;
-      background-image: 
-        radial-gradient(at 10% 12%, rgba(249, 115, 22, 0.12) 0px, transparent 40%),
-        radial-gradient(at 90% 20%, rgba(244, 63, 94, 0.10) 0px, transparent 45%),
-        radial-gradient(at 50% 65%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
-        radial-gradient(at 85% 85%, rgba(249, 115, 22, 0.10) 0px, transparent 45%) !important;
-      color: #f1f5f9 !important;
+      background-color: #121518 !important;
+      color: #f1f4f7 !important;
     }
-    html.dark .glass-panel-light {
-      background: rgba(15, 23, 42, 0.88) !important;
-      border-color: rgba(51, 65, 85, 0.8) !important;
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4) !important;
-    }
-    html.dark .glass-card-interactive {
-      background: rgba(30, 41, 59, 0.85) !important;
-      border-color: rgba(51, 65, 85, 0.85) !important;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
-      color: #f1f5f9 !important;
-    }
-    html.dark .glass-card-interactive:hover {
-      background: rgba(30, 41, 59, 0.98) !important;
-      border-color: rgba(249, 115, 22, 0.6) !important;
-      box-shadow: 0 22px 45px -10px rgba(249, 115, 22, 0.25) !important;
-    }
+    html.dark .travel-card,
+    html.dark .premium-card,
+    html.dark .glass-card-interactive,
+    html.dark .glass-panel-light,
     html.dark .bg-white {
-      background-color: #1e293b !important;
-      color: #f1f5f9;
+      background-color: #1a1e22 !important;
+      border-color: #2b3239 !important;
+      color: #f1f4f7 !important;
     }
-    html.dark .bg-slate-50, html.dark .bg-gray-50, html.dark .bg-\[\#f8fafc\] {
-      background-color: #0b1120 !important;
+    html.dark .travel-card:hover,
+    html.dark .premium-card:hover,
+    html.dark .glass-card-interactive:hover {
+      border-color: #b85e3a !important;
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.6) !important;
+    }
+    html.dark .hero-cinematic-overlay {
+      background: linear-gradient(
+        180deg, 
+        rgba(18, 22, 26, 0.65) 0%, 
+        rgba(18, 22, 26, 0.40) 40%, 
+        rgba(18, 22, 26, 0.80) 80%, 
+        #121518 100%
+      ) !important;
+    }
+    html.dark .stamp-badge,
+    html.dark .glass-badge {
+      background-color: #231b17 !important;
+      border-color: #4a2818 !important;
+      color: #e0b09c !important;
+    }
+    html.dark .bg-slate-50, html.dark .bg-gray-50, html.dark .bg-\[\#fafaf9\], html.dark .bg-\[\#f8fafc\] {
+      background-color: #121518 !important;
     }
     html.dark .search-container,
     html.dark .category-container,
     html.dark .blog-container,
     html.dark .contact-container {
-      background-color: #0b1120 !important;
-      color: #f1f5f9 !important;
-    }
-    html.dark .hero-gradient {
-      background: radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.15), transparent 50%),
-                  radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.12), transparent 50%),
-                  #0b1120 !important;
-    }
-    html.dark .premium-card {
-      background: #1e293b !important;
-      border-color: #334155 !important;
-      color: #f1f5f9 !important;
-    }
-    html.dark .premium-card:hover {
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
-      border-color: #f97316 !important;
-    }
-    html.dark .text-gradient {
-      background: linear-gradient(to right, #fb923c, #f43f5e) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-    html.dark .glass-badge {
-      background: rgba(30, 41, 59, 0.85) !important;
-      border-color: rgba(51, 65, 85, 0.8) !important;
-      color: #fb923c !important;
-    }
-    html.dark .bg-slate-100, html.dark .bg-gray-100 {
-      background-color: #334155 !important;
-      color: #f1f5f9;
+      background-color: #121518 !important;
+      color: #f1f4f7 !important;
     }
     html.dark .text-slate-900, html.dark .text-slate-800, html.dark .text-gray-900, html.dark .text-gray-800, html.dark .text-black {
-      color: #f8fafc !important;
+      color: #f6f8fa !important;
     }
     html.dark .text-slate-700, html.dark .text-gray-700, html.dark .text-slate-600, html.dark .text-gray-600 {
-      color: #cbd5e1 !important;
+      color: #cbd3dc !important;
     }
     html.dark .text-slate-500, html.dark .text-gray-500, html.dark .text-slate-400, html.dark .text-gray-400 {
-      color: #94a3b8 !important;
+      color: #929da9 !important;
     }
     html.dark .border-slate-100, html.dark .border-slate-200, html.dark .border-gray-200, html.dark .border-gray-100 {
-      border-color: #334155 !important;
+      border-color: #2b3239 !important;
     }
     html.dark select option {
-      background-color: #1e293b !important;
-      color: #f8fafc !important;
-    }
-    html.dark .blog-content,
-    html.dark .prose {
-      color: #cbd5e1 !important;
-    }
-    html.dark .blog-content h1,
-    html.dark .blog-content h2,
-    html.dark .blog-content h3,
-    html.dark .blog-content h4,
-    html.dark .blog-content strong {
-      color: #f8fafc !important;
-    }
-    html.dark article,
-    html.dark aside > div {
-      background-color: #1e293b !important;
-      border-color: #334155 !important;
-      color: #f1f5f9 !important;
-    }
-    html.dark #mainHeader:not(.bg-transparent) {
-      background-color: rgba(15, 23, 42, 0.95) !important;
-      border-color: #1e293b !important;
-    }
-    html.dark #mobileDrawer {
-      background-color: rgba(15, 23, 42, 0.98) !important;
-      border-color: #334155 !important;
-      color: #f1f5f9 !important;
+      background-color: #1a1e22 !important;
+      color: #f6f8fa !important;
     }
     html.dark footer {
-      background-color: #0b1120 !important;
-      border-color: #1e293b !important;
-      color: #94a3b8 !important;
+      background-color: #101214 !important;
+      border-color: #22272c !important;
+      color: #929da9 !important;
     }
     html.dark footer .text-slate-900 {
       color: #f8fafc !important;
@@ -369,25 +297,15 @@
     html.dark input:not([type="checkbox"]):not([type="radio"]), 
     html.dark select, 
     html.dark textarea {
-      background-color: #1e293b !important;
-      color: #f8fafc !important;
-      border-color: #475569 !important;
-    }
-    html.dark input::placeholder,
-    html.dark textarea::placeholder {
-      color: #94a3b8 !important;
-      opacity: 1 !important;
-    }
-    html.dark #contact .text-slate-500 {
-      color: #fb923c !important;
+      background-color: #1a1e22 !important;
+      color: #f6f8fa !important;
+      border-color: #38424d !important;
     }
   </style>
 </head>
 <body class="bg-[#fafaf9] text-slate-800 font-sans antialiased overflow-x-hidden relative selection:bg-orange-500 selection:text-white">
 
-  <!-- Ambient Light Globs -->
-  <div class="fixed top-1/4 -left-36 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-soft"></div>
-  <div class="fixed top-2/3 -right-36 w-[480px] h-[480px] bg-rose-400/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  
   <div class="fixed bottom-10 left-1/3 w-[400px] h-[400px] bg-amber-400/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
     <!-- Header -->
@@ -399,12 +317,12 @@
             
             <!-- LOGO AREA -->
             <a href="{{ url('/') }}" class="flex items-center gap-3 shrink-0 group">
-                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/30 group-hover:rotate-12 transition-all duration-300">
+                <div class="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-[#863c20] text-white flex items-center justify-center shadow-xs group-hover:bg-[#a34c2a] transition-all duration-200">
                     <i class="fa-solid fa-compass text-xl md:text-2xl"></i>
                 </div>
                 <div class="flex flex-col hidden sm:flex">
                     <span id="logoText" class="text-xl md:text-2xl font-bold tracking-tight {{ $isHomePage ? 'text-white' : 'text-slate-900' }} transition-colors duration-300">
-                        Wander<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500">Vibe</span>
+                        Wander<span class="text-[#b85e3a]">Vibe</span>
                     </span>
                     <span id="logoSubtext" class="text-[9px] md:text-[10px] tracking-widest uppercase {{ $isHomePage ? 'text-slate-300' : 'text-slate-500' }} font-bold -mt-0.5 transition-colors duration-300">Vietnam Travel</span>
                 </div>
@@ -412,7 +330,7 @@
 
             <!-- NAVIGATION MAIN (More spaced out, no heavy pill background) -->
             <nav id="mainNav" class="hidden xl:flex flex-1 items-center justify-center gap-1 2xl:gap-2 flex-nowrap shrink-0">
-                <a href="{{ url('/') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-white hover:bg-white/15' : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50' }} transition-all">Trang chủ</a>
+                <a href="{{ url('/') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-all">Trang chủ</a>
                 
                 @php
                     $navCategories = \App\Models\Category::where('status', 1)
@@ -424,7 +342,7 @@
                 @foreach ($navCategories as $cat)
                     @if($cat->children->count() > 0)
                         <div class="relative group shrink-0">
-                            <button class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50' }} transition-all flex items-center gap-1.5 focus:outline-none">
+                            <button class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-all flex items-center gap-1.5 focus:outline-none">
                                 <span>{{ $cat->name }}</span>
                                 <i class="fa-solid fa-angle-down text-[10px] opacity-70 group-hover:-rotate-180 transition-transform duration-300"></i>
                             </button>
@@ -432,7 +350,7 @@
                             <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                                 <div class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 p-2 transform scale-95 group-hover:scale-100 transition-all origin-top">
                                     @foreach($cat->children as $child)
-                                        <a href="{{ route('user.category', $child->id) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors whitespace-nowrap">
+                                        <a href="{{ route('user.category', $child->id) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0] rounded-xl transition-colors whitespace-nowrap">
                                             <i class="fa-solid fa-hashtag text-orange-400/50 text-xs"></i> {{ $child->name }}
                                         </a>
                                     @endforeach
@@ -442,22 +360,22 @@
                     @else
                         <!-- Filter out exact duplicates if data is messy, otherwise render normally -->
                         @if(strtolower($cat->name) !== 'trang chủ' && strtolower($cat->name) !== 'liên hệ')
-                            <a href="{{ route('user.category', $cat->id) }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50' }} transition-all shrink-0">
+                            <a href="{{ route('user.category', $cat->id) }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-all shrink-0">
                                 {{ $cat->name }}
                             </a>
                         @endif
                     @endif
                 @endforeach
-                <a href="{{ route('contact') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50' }} transition-all shrink-0">Liên hệ</a>
+                <a href="{{ route('contact') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-all shrink-0">Liên hệ</a>
             </nav>
 
             <!-- RIGHT ACTIONS -->
             <div class="flex items-center gap-3 md:gap-5 shrink-0 justify-end">
                 
                 <!-- Hotline (Hidden on very small screens) -->
-                <a href="tel:1900888999" id="hotlineBadge" class="hidden lg:flex items-center gap-2 group {{ $isHomePage ? 'text-white' : 'text-slate-700' }} hover:text-orange-500 transition-colors">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center {{ $isHomePage ? 'bg-white/15' : 'bg-slate-100 group-hover:bg-orange-50' }} transition-colors pointer-events-none">
-                        <i class="fa-solid fa-phone-volume text-[13px] {{ $isHomePage ? '' : 'text-orange-500' }}"></i>
+                <a href="tel:1900888999" id="hotlineBadge" class="hidden lg:flex items-center gap-2 group {{ $isHomePage ? 'text-white' : 'text-slate-700' }} hover:text-[#b85e3a] transition-colors">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center {{ $isHomePage ? 'bg-white/15' : 'bg-slate-100 group-hover:bg-[#faf6f0]' }} transition-colors pointer-events-none">
+                        <i class="fa-solid fa-phone-volume text-[13px] {{ $isHomePage ? '' : 'text-[#b85e3a]' }}"></i>
                     </div>
                     <div class="flex flex-col hidden xl:flex">
                         <span class="text-[10px] font-bold uppercase tracking-wider opacity-70">Tổng đài CSKH</span>
@@ -473,10 +391,10 @@
                         $cartBadgeCount += (int)($cItem['quantity'] ?? 1);
                     }
                 @endphp
-                <a href="{{ route('user.cart') }}" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-orange-600' }} flex items-center justify-center transition-all cursor-pointer" title="Giỏ hàng">
+                <a href="{{ route('user.cart') }}" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-[#b85e3a]' }} flex items-center justify-center transition-all cursor-pointer" title="Giỏ hàng">
                     <i class="fa-solid fa-cart-shopping text-[15px] md:text-base pointer-events-none"></i>
                     @if($cartBadgeCount > 0)
-                        <span class="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 rounded-full bg-orange-500 text-[10px] md:text-xs font-bold flex items-center justify-center text-white pointer-events-none border-2 border-transparent">
+                        <span class="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 rounded-full bg-[#b85e3a] text-[10px] md:text-xs font-bold flex items-center justify-center text-white pointer-events-none border-2 border-transparent">
                             {{ $cartBadgeCount }}
                         </span>
                     @endif
@@ -491,7 +409,7 @@
                 <!-- Notifications Bell -->
                 @if(isset($notifications))
                     <div class="relative inline-block z-20" id="notificationDropdownTrigger">
-                        <button id="notificationBtn" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-orange-600' }} flex items-center justify-center transition-all cursor-pointer">
+                        <button id="notificationBtn" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-[#b85e3a]' }} flex items-center justify-center transition-all cursor-pointer">
                             <i class="fa-regular fa-bell text-[15px] md:text-base pointer-events-none"></i>
                             @if(isset($unreadCount) && $unreadCount > 0)
                                 <span class="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 rounded-full bg-rose-500 text-[10px] md:text-xs font-bold flex items-center justify-center text-white pointer-events-none border-2 border-transparent">
@@ -510,9 +428,9 @@
                             </div>
                             <div class="max-h-[320px] overflow-y-auto no-scrollbar pb-2">
                                 @forelse($notifications as $notification)
-                                    <a href="{{ route('user.notifications.read', $notification->id) }}" class="block p-4 border-b border-slate-50/50 hover:bg-orange-50/50 transition-colors {{ $notification->status === 'unread' ? 'bg-orange-50/30' : '' }}">
+                                    <a href="{{ route('user.notifications.read', $notification->id) }}" class="block p-4 border-b border-slate-50/50 hover:bg-[#faf6f0]/50 transition-colors {{ $notification->status === 'unread' ? 'bg-[#faf6f0]/30' : '' }}">
                                         <div class="flex gap-3.5">
-                                            <div class="w-10 h-10 rounded-full {{ $notification->status === 'unread' ? 'bg-orange-500 shadow-md shadow-orange-500/20 text-white' : 'bg-slate-100 text-slate-400' }} flex items-center justify-center shrink-0">
+                                            <div class="w-10 h-10 rounded-full {{ $notification->status === 'unread' ? 'bg-orange-500 shadow-md shadow-xs text-white' : 'bg-slate-100 text-slate-400' }} flex items-center justify-center shrink-0">
                                                 <i class="fa-solid fa-bell text-sm"></i>
                                             </div>
                                             <div class="flex-1">
@@ -544,7 +462,7 @@
                 <!-- Authentication UI -->
                 @guest('web')
                     <div class="pl-1 border-l border-white/20 ml-1 flex items-center">
-                        <a href="{{ route('account') }}" class="px-5 py-2.5 md:px-6 md:py-2.5 rounded-full bg-white text-orange-600 hover:bg-orange-50 hover:text-orange-700 font-extrabold text-[13px] md:text-sm shadow-xl shadow-orange-900/10 hover:shadow-orange-900/20 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 border border-slate-100 uppercase tracking-wide">
+                        <a href="{{ route('account') }}" class="px-5 py-2.5 md:px-6 md:py-2.5 rounded-full bg-white text-[#b85e3a] hover:bg-[#faf6f0] hover:text-orange-700 font-extrabold text-[13px] md:text-sm shadow-xl shadow-orange-900/10 hover:shadow-orange-900/20 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 border border-slate-100 uppercase tracking-wide">
                             <i class="fa-solid fa-user-circle text-lg hidden sm:inline"></i> 
                             <span class="inline">Đăng Nhập</span>
                         </a>
@@ -566,16 +484,16 @@
                                 <p class="text-xs font-medium text-slate-500 truncate mt-0.5">{{ Auth::user()->email }}</p>
                             </div>
                             <div class="p-3 flex flex-col gap-1">
-                                <a href="{{ route('user.profile', Auth::id()) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors">
+                                <a href="{{ route('user.profile', Auth::id()) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-[#b85e3a] hover:bg-[#faf6f0] rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-user"></i></div> Thông tin cá nhân
                                 </a>
-                                <a href="{{ route('user.cart') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors">
+                                <a href="{{ route('user.cart') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-[#b85e3a] hover:bg-[#faf6f0] rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-cart-shopping"></i></div> Giỏ hàng của tôi
                                 </a>
-                                <a href="{{ route('user.tours.booked') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors">
+                                <a href="{{ route('user.tours.booked') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-[#b85e3a] hover:bg-[#faf6f0] rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-clock-rotate-left"></i></div> Lịch sử đặt tour
                                 </a>
-                                <a href="{{ route('password.request') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl transition-colors">
+                                <a href="{{ route('password.request') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-slate-600 hover:text-[#b85e3a] hover:bg-[#faf6f0] rounded-xl transition-colors">
                                     <div class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm border border-slate-100 text-slate-400"><i class="fa-solid fa-shield-halved"></i></div> Đổi mật khẩu
                                 </a>
                             </div>
@@ -591,7 +509,7 @@
                     </div>
                 @endauth
                 
-                <button id="mobileMenuBtn" class="xl:hidden w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:text-orange-600' }} flex items-center justify-center transition-all shadow-sm">
+                <button id="mobileMenuBtn" class="xl:hidden w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:text-[#b85e3a]' }} flex items-center justify-center transition-all shadow-sm">
                     <i class="fa-solid fa-bars text-[15px] md:text-base" id="mobileMenuIcon"></i>
                 </button>
             </div>
@@ -609,20 +527,20 @@
                     </div>
                 </div>
             @endauth
-            <a href="{{ url('/') }}" class="mobile-nav-link block text-base font-extrabold text-orange-600 hover:text-orange-700 bg-orange-50 px-4 py-3 rounded-xl border border-orange-100">
+            <a href="{{ url('/') }}" class="mobile-nav-link block text-base font-extrabold text-[#b85e3a] hover:text-orange-700 bg-[#faf6f0] px-4 py-3 rounded-xl border border-orange-100">
                 <i class="fa-solid fa-house w-6 text-center mr-2"></i> Trang chủ
             </a>
             
             @foreach ($navCategories as $cat)
                 @if($cat->children->count() > 0)
                     <div class="flex flex-col gap-1 border border-slate-100 bg-white rounded-xl overflow-hidden shadow-sm">
-                        <div class="block text-base font-bold text-slate-700 hover:text-orange-600 flex justify-between items-center px-4 py-3 bg-slate-50">
+                        <div class="block text-base font-bold text-slate-700 hover:text-[#b85e3a] flex justify-between items-center px-4 py-3 bg-slate-50">
                             <span><i class="fa-solid fa-layer-group w-6 text-center text-slate-400 mr-2"></i> {{ $cat->name }}</span>
                             <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
                         </div>
                         <div class="pl-12 pr-4 py-2 flex flex-col gap-3">
                             @foreach($cat->children as $child)
-                                <a href="{{ route('user.category', $child->id) }}" class="mobile-nav-link block text-sm font-semibold text-slate-600 hover:text-orange-600">
+                                <a href="{{ route('user.category', $child->id) }}" class="mobile-nav-link block text-sm font-semibold text-slate-600 hover:text-[#b85e3a]">
                                     {{ $child->name }}
                                 </a>
                             @endforeach
@@ -630,20 +548,20 @@
                     </div>
                 @else
                     @if(strtolower($cat->name) !== 'trang chủ' && strtolower($cat->name) !== 'liên hệ')
-                        <a href="{{ route('user.category', $cat->id) }}" class="mobile-nav-link block text-base font-bold text-slate-700 hover:text-orange-600 px-4 py-3 bg-white rounded-xl border border-slate-100 shadow-sm">
+                        <a href="{{ route('user.category', $cat->id) }}" class="mobile-nav-link block text-base font-bold text-slate-700 hover:text-[#b85e3a] px-4 py-3 bg-white rounded-xl border border-slate-100 shadow-sm">
                             <i class="fa-solid fa-cube w-6 text-center text-slate-400 mr-2"></i> {{ $cat->name }}
                         </a>
                     @endif
                 @endif
             @endforeach
             
-            <a href="{{ route('contact') }}" class="mobile-nav-link block text-base font-bold text-slate-700 hover:text-orange-600 px-4 py-3 bg-white rounded-xl border border-slate-100 shadow-sm">
+            <a href="{{ route('contact') }}" class="mobile-nav-link block text-base font-bold text-slate-700 hover:text-[#b85e3a] px-4 py-3 bg-white rounded-xl border border-slate-100 shadow-sm">
                 <i class="fa-solid fa-headset w-6 text-center text-slate-400 mr-2"></i> Tư Vấn & Liên Hệ
             </a>
 
             <!-- Mobile Theme Switcher -->
-            <button type="button" class="theme-toggle-btn w-full text-left text-base font-bold text-slate-700 dark:text-slate-200 hover:text-orange-600 px-4 py-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm flex items-center justify-between transition-colors">
-                <span class="flex items-center"><i class="fa-solid fa-circle-half-stroke w-6 text-center text-orange-500 mr-2"></i> Giao diện Sáng / Tối</span>
+            <button type="button" class="theme-toggle-btn w-full text-left text-base font-bold text-slate-700 dark:text-slate-200 hover:text-[#b85e3a] px-4 py-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm flex items-center justify-between transition-colors">
+                <span class="flex items-center"><i class="fa-solid fa-circle-half-stroke w-6 text-center text-[#b85e3a] mr-2"></i> Giao diện Sáng / Tối</span>
                 <span class="text-xs px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-semibold">Chuyển đổi</span>
             </button>
         </div>
@@ -658,7 +576,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-100">
                 <div class="lg:col-span-2 space-y-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/25">
+                        <div class="w-9 h-9 rounded-xl bg-[#863c20] flex items-center justify-center text-white shadow-xs">
                             <i class="fa-solid fa-compass text-xl"></i>
                         </div>
                         <span class="text-2xl font-bold tracking-tight text-slate-900">WanderVibe</span>
@@ -667,10 +585,10 @@
                         Hệ sinh thái du lịch và trải nghiệm phong cách mới dành cho thế hệ trẻ. Khám phá cảnh sắc Việt Nam qua những góc nhìn chân thực, giàu cảm xúc và gắn kết cộng đồng.
                     </p>
                     <div class="flex items-center gap-3 pt-2">
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-instagram text-sm"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-tiktok text-sm"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-youtube text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-tiktok text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-youtube text-sm"></i></a>
                     </div>
                 </div>
 
@@ -679,11 +597,11 @@
                     <ul class="space-y-2.5 text-sm">
                         @if(isset($hotTours) && $hotTours->count())
                             @foreach($hotTours->take(4) as $item)
-                                <li><a href="{{ route('user.tourDetail.index', $item->id) }}" class="hover:text-orange-600 transition-colors">{{ Str::limit($item->name, 28) }}</a></li>
+                                <li><a href="{{ route('user.tourDetail.index', $item->id) }}" class="hover:text-[#b85e3a] transition-colors">{{ Str::limit($item->name, 28) }}</a></li>
                             @endforeach
                         @else
-                            <li><a href="{{ route('user.tours') }}" class="hover:text-orange-600 transition-colors">Tour Hà Giang Xe Máy</a></li>
-                            <li><a href="{{ route('user.tours') }}" class="hover:text-orange-600 transition-colors">Du Thuyền Vịnh Hạ Long</a></li>
+                            <li><a href="{{ route('user.tours') }}" class="hover:text-[#b85e3a] transition-colors">Tour Hà Giang Xe Máy</a></li>
+                            <li><a href="{{ route('user.tours') }}" class="hover:text-[#b85e3a] transition-colors">Du Thuyền Vịnh Hạ Long</a></li>
                         @endif
                     </ul>
                 </div>
@@ -693,11 +611,11 @@
                     <ul class="space-y-2.5 text-sm">
                         @if(isset($destinations) && $destinations->count())
                             @foreach($destinations->take(4) as $dest)
-                                <li><a href="{{ route('user.destination', ['location' => $dest->end_location]) }}" class="hover:text-orange-600 transition-colors">{{ $dest->end_location }}</a></li>
+                                <li><a href="{{ route('user.destination', ['location' => $dest->end_location]) }}" class="hover:text-[#b85e3a] transition-colors">{{ $dest->end_location }}</a></li>
                             @endforeach
                         @else
-                            <li><a href="{{ route('user.destination', ['location' => 'Đà Lạt']) }}" class="hover:text-orange-600 transition-colors">Đà Lạt Mộng Mơ</a></li>
-                            <li><a href="{{ route('user.destination', ['location' => 'Hội An']) }}" class="hover:text-orange-600 transition-colors">Phố Cổ Hội An</a></li>
+                            <li><a href="{{ route('user.destination', ['location' => 'Đà Lạt']) }}" class="hover:text-[#b85e3a] transition-colors">Đà Lạt Mộng Mơ</a></li>
+                            <li><a href="{{ route('user.destination', ['location' => 'Hội An']) }}" class="hover:text-[#b85e3a] transition-colors">Phố Cổ Hội An</a></li>
                         @endif
                     </ul>
                 </div>
@@ -707,7 +625,7 @@
                     <p class="text-xs text-slate-500 mb-3">Đăng ký email để nhận ưu đãi tour hè và cẩm nang phượt độc quyền hàng tuần.</p>
                     <form id="newsletterForm" class="space-y-2">
                         <input type="email" required placeholder="Nhập email của bạn..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 focus:bg-white transition-all">
-                        <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-bold text-xs transition-all shadow-md shadow-orange-500/20">
+                        <button type="submit" class="w-full py-2.5 rounded-xl bg-[#863c20] hover:bg-[#a34c2a] text-white font-bold text-xs transition-all shadow-md shadow-xs">
                             Đăng Ký Ngay
                         </button>
                     </form>
@@ -730,7 +648,7 @@
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100">
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-700">
                 <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 flex items-center justify-center font-bold">
+                    <div class="w-9 h-9 rounded-xl bg-orange-100 dark:bg-orange-950 text-[#b85e3a] dark:text-orange-400 flex items-center justify-center font-bold">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
                     <h4 class="font-extrabold text-slate-900 dark:text-white text-base">Đặt Tour Thần Tốc</h4>
@@ -741,7 +659,7 @@
             </div>
             <div class="py-4">
                 <p class="text-xs text-slate-500 dark:text-slate-400 mb-1 font-medium">Tour đã chọn:</p>
-                <div id="modalTourName" class="font-bold text-orange-700 dark:text-orange-300 text-sm bg-orange-50 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 px-3.5 py-2.5 rounded-xl mb-4">
+                <div id="modalTourName" class="font-bold text-orange-700 dark:text-orange-300 text-sm bg-[#faf6f0] dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 px-3.5 py-2.5 rounded-xl mb-4">
                     Tour Hà Giang 3N2Đ
                 </div>
                 <form id="modalQuickForm" class="space-y-3">
@@ -761,7 +679,7 @@
                         <input type="date" id="quickTravelDate" required
                             class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
                     </div>
-                    <button type="submit" class="w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm shadow-lg shadow-orange-500/25 transition-all">
+                    <button type="submit" class="w-full py-3.5 mt-2 rounded-xl bg-[#863c20] hover:bg-[#a34c2a] text-white font-extrabold text-sm shadow-lg shadow-xs transition-all">
                         Xác Nhận Giữ Chỗ & Nhận Báo Giá
                     </button>
                 </form>
@@ -906,7 +824,7 @@
               if (mainNav) {
                 mainNav.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('text-slate-200', 'text-white', 'hover:text-white', 'hover:bg-white/15');
-                    link.classList.add('text-slate-700', 'hover:text-orange-600', 'hover:bg-orange-50');
+                    link.classList.add('text-slate-700', 'hover:text-[#b85e3a]', 'hover:bg-[#faf6f0]');
                 });
               }
               if (hotlineBadge) {
@@ -915,18 +833,18 @@
                 const iconBox = hotlineBadge.firstElementChild;
                 if(iconBox) {
                     iconBox.classList.remove('bg-white/15');
-                    iconBox.classList.add('bg-slate-100', 'group-hover:bg-orange-50');
+                    iconBox.classList.add('bg-slate-100', 'group-hover:bg-[#faf6f0]');
                     const icon = iconBox.firstElementChild;
-                    if(icon) icon.classList.add('text-orange-500');
+                    if(icon) icon.classList.add('text-[#b85e3a]');
                 }
               }
               if (mobileMenuBtn) {
                 mobileMenuBtn.classList.remove('text-white', 'bg-white/10', 'border-white/20', 'hover:bg-white/25');
-                mobileMenuBtn.classList.add('text-slate-800', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:text-orange-600');
+                mobileMenuBtn.classList.add('text-slate-800', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:text-[#b85e3a]');
               }
               if (notificationBtn) {
                 notificationBtn.classList.remove('text-white', 'bg-white/10', 'border-white/20', 'hover:bg-white/25');
-                notificationBtn.classList.add('text-slate-700', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:border-orange-200', 'hover:text-orange-600');
+                notificationBtn.classList.add('text-slate-700', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:border-orange-200', 'hover:text-[#b85e3a]');
               }
             } else {
               header.classList.add('bg-transparent', 'border-white/10');
@@ -943,7 +861,7 @@
               if (mainNav) {
                 mainNav.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.add('text-slate-200', 'hover:text-white', 'hover:bg-white/15');
-                    link.classList.remove('text-slate-700', 'hover:text-orange-600', 'hover:bg-orange-50');
+                    link.classList.remove('text-slate-700', 'hover:text-[#b85e3a]', 'hover:bg-[#faf6f0]');
                 });
               }
               if (hotlineBadge) {
@@ -952,18 +870,18 @@
                 const iconBox = hotlineBadge.firstElementChild;
                 if(iconBox) {
                     iconBox.classList.add('bg-white/15');
-                    iconBox.classList.remove('bg-slate-100', 'group-hover:bg-orange-50');
+                    iconBox.classList.remove('bg-slate-100', 'group-hover:bg-[#faf6f0]');
                     const icon = iconBox.firstElementChild;
-                    if(icon) icon.classList.remove('text-orange-500');
+                    if(icon) icon.classList.remove('text-[#b85e3a]');
                 }
               }
               if (mobileMenuBtn) {
                 mobileMenuBtn.classList.add('text-white', 'bg-white/10', 'border-white/20', 'hover:bg-white/25');
-                mobileMenuBtn.classList.remove('text-slate-800', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:text-orange-600');
+                mobileMenuBtn.classList.remove('text-slate-800', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:text-[#b85e3a]');
               }
               if (notificationBtn) {
                 notificationBtn.classList.add('text-white', 'bg-white/10', 'border-white/20', 'hover:bg-white/25');
-                notificationBtn.classList.remove('text-slate-700', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:border-orange-200', 'hover:text-orange-600');
+                notificationBtn.classList.remove('text-slate-700', 'bg-white', 'border-slate-200', 'hover:bg-slate-50', 'hover:border-orange-200', 'hover:text-[#b85e3a]');
               }
             }
         });
@@ -1162,7 +1080,7 @@
             const toast = document.createElement('div');
             toast.className = 'pointer-events-auto px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 text-slate-800 text-xs font-semibold shadow-xl flex items-center gap-3 transform translate-y-3 opacity-0 transition-all duration-300';
             const icon = type === 'success' 
-                ? '<i class="fa-solid fa-circle-check text-orange-600 text-sm"></i>' 
+                ? '<i class="fa-solid fa-circle-check text-[#b85e3a] text-sm"></i>' 
                 : (type === 'warning' ? '<i class="fa-solid fa-triangle-exclamation text-amber-500 text-sm"></i>' : '<i class="fa-solid fa-circle-info text-cyan-600 text-sm"></i>');
             toast.innerHTML = `${icon}<span>${message}</span>`;
             container.appendChild(toast);
@@ -1207,7 +1125,7 @@
     </button>
 
     <!-- Quick Hotline Floating Button -->
-    <a href="tel:1900888999" class="fixed bottom-28 md:bottom-32 right-7 lg:right-9 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-xl shadow-orange-500/30 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group" title="Gọi Hotline Tư Vấn 1900 888 999" aria-label="Hotline Tư Vấn">
+    <a href="tel:1900888999" class="fixed bottom-28 md:bottom-32 right-7 lg:right-9 z-40 w-12 h-12 rounded-full bg-[#863c20] text-white shadow-xl shadow-orange-500/30 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group" title="Gọi Hotline Tư Vấn 1900 888 999" aria-label="Hotline Tư Vấn">
         <i class="fa-solid fa-phone-volume text-lg group-hover:rotate-12 transition-transform"></i>
         <div class="absolute right-[125%] whitespace-nowrap bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
             Hotline 24/7: 1900 888 999
@@ -1219,7 +1137,7 @@
     <div id="aiChatbotWidget" class="fixed bottom-6 right-6 lg:right-8 z-50 font-sans">
         <!-- Chatbot Avatar/Button -->
         <button id="chatbotToggleBtn" class="relative group outline-none focus:outline-none transition-transform hover:scale-105" aria-label="Open AI Assistant">
-            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full shadow-2xl overflow-hidden bg-gradient-to-tr from-orange-100 to-rose-50 border-2 border-white shadow-orange-500/40 flex items-center justify-center animate-float-slow cursor-pointer">
+            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full shadow-2xl overflow-hidden bg-[#133e34] border-2 border-white shadow-xl flex items-center justify-center animate-float-slow cursor-pointer">
                 <!-- Hình AI 3D -->
                 <img src="https://cdn-icons-png.flaticon.com/512/8943/8943377.png" alt="AI Agent" class="w-[75%] h-[75%] object-contain pointer-events-none">
             </div>
@@ -1237,7 +1155,7 @@
         <!-- Chat Window -->
         <div id="chatbotWindow" class="absolute bottom-[85px] md:bottom-[95px] right-0 w-[340px] md:w-[380px] h-[520px] max-h-[75vh] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-10 scale-95 pointer-events-none transition-all duration-300 origin-bottom-right z-50">
             <!-- Header -->
-            <div class="bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 p-4 text-white flex items-center justify-between shrink-0 shadow-sm relative z-10">
+            <div class="bg-[#133e34] p-4 text-white flex items-center justify-between shrink-0 shadow-sm relative z-10">
                 <div class="flex items-center gap-3">
                     <div class="w-11 h-11 bg-white/20 rounded-full flex items-center justify-center p-1.5 shadow-inner">
                         <img src="https://cdn-icons-png.flaticon.com/512/8943/8943377.png" alt="Bot Face" class="w-full h-full object-contain">
@@ -1261,10 +1179,10 @@
                 <!-- Bot Greeting Message -->
                 <div class="flex gap-2.5 max-w-[92%]">
                     <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center shrink-0 border border-orange-200 dark:border-orange-800 shadow-sm mt-0.5">
-                        <i class="fa-solid fa-robot text-xs text-orange-600 dark:text-orange-400"></i>
+                        <i class="fa-solid fa-robot text-xs text-[#b85e3a] dark:text-orange-400"></i>
                     </div>
                     <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-100 leading-relaxed">
-                        Chào bạn! 👋 Mình là <span class="font-bold text-orange-600 dark:text-orange-400">WanderBot</span> - Trợ lý siêu AI của <b>WanderVibe</b>. Mình có thể tư vấn lịch trình, gợi ý tour du lịch hoặc giải đáp thông tin cho bạn hôm nay nhé!
+                        Chào bạn! 👋 Mình là <span class="font-bold text-[#b85e3a] dark:text-orange-400">WanderBot</span> - Trợ lý siêu AI của <b>WanderVibe</b>. Mình có thể tư vấn lịch trình, gợi ý tour du lịch hoặc giải đáp thông tin cho bạn hôm nay nhé!
                     </div>
                 </div>
             </div>
@@ -1274,7 +1192,7 @@
                 <form id="chatbotForm" class="flex items-center gap-2 relative">
                     <input type="text" id="chatbotInput" placeholder="Nhập câu hỏi tại đây..." autocomplete="off"
                         class="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-[13px] md:text-sm text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-colors pr-12">
-                    <button type="submit" class="absolute right-1 top-1 bottom-1 w-9 h-9 rounded-full bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white flex items-center justify-center transition-all shadow-md shadow-orange-500/20 active:scale-95">
+                    <button type="submit" class="absolute right-1 top-1 bottom-1 w-9 h-9 rounded-full bg-[#863c20] hover:bg-[#a34c2a] text-white flex items-center justify-center transition-all shadow-md shadow-xs active:scale-95">
                         <i class="fa-solid fa-paper-plane text-xs pr-0.5 pt-0.5"></i>
                     </button>
                 </form>
@@ -1324,7 +1242,7 @@
                 if (sender === 'user') {
                     msgDiv.className = 'flex gap-2.5 max-w-[92%] ml-auto justify-end';
                     msgDiv.innerHTML = `
-                        <div class="bg-gradient-to-r from-orange-500 to-rose-500 px-4 py-2.5 rounded-2xl rounded-tr-none shadow-md shadow-orange-500/20 text-white leading-relaxed break-words font-medium">
+                        <div class="bg-[#863c20] px-4 py-2.5 rounded-2xl rounded-tr-none shadow-md shadow-xs text-white leading-relaxed break-words font-medium">
                             ${text}
                         </div>
                     `;
@@ -1334,7 +1252,7 @@
                     const formattedText = text.replace(/\\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                     msgDiv.innerHTML = `
                         <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center shrink-0 border border-orange-200 dark:border-orange-800 shadow-sm mt-0.5">
-                            <i class="fa-solid fa-robot text-xs text-orange-600 dark:text-orange-400"></i>
+                            <i class="fa-solid fa-robot text-xs text-[#b85e3a] dark:text-orange-400"></i>
                         </div>
                         <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-100 leading-relaxed break-words">
                             ${formattedText}
@@ -1344,7 +1262,7 @@
                     msgDiv.className = 'flex gap-2.5 max-w-[92%] bot-typing';
                     msgDiv.innerHTML = `
                         <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center shrink-0 border border-orange-200 dark:border-orange-800 shadow-sm mt-0.5">
-                            <i class="fa-solid fa-robot text-xs text-orange-600 dark:text-orange-400"></i>
+                            <i class="fa-solid fa-robot text-xs text-[#b85e3a] dark:text-orange-400"></i>
                         </div>
                         <div class="bg-white dark:bg-slate-800 px-4 py-3.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm flex items-center gap-1.5">
                             <div class="w-1.5 h-1.5 bg-orange-400 dark:bg-orange-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>

@@ -1,50 +1,18 @@
 @extends('users.master')
 
 @section('home')
-<style>
-    .text-gradient {
-        background: linear-gradient(135deg, #f97316 0%, #f43f5e 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
 
-    .premium-card {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .premium-card:hover {
-        transform: translateY(-8px);
-    }
-
-    .hero-gradient {
-        background: radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.12), transparent 50%),
-                    radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.10), transparent 50%);
-    }
-
-    .glass-badge {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .line-clamp-custom {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-</style>
 
 <div class="blog-container min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-800 dark:text-slate-100 transition-colors duration-300">
     {{-- HERO SECTION --}}
-    <section class="relative pt-32 pb-16 overflow-hidden hero-gradient">
+    <section class="relative pt-28 sm:pt-36 pb-14 bg-[#faf8f5] dark:bg-[#151719] border-b border-[#e8e3d8] dark:border-[#2b3239]">
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 px-4 py-2 rounded-full border border-orange-200/80 dark:border-orange-800/80 mb-6 font-bold text-xs uppercase tracking-wider shadow-sm">
+            <div class="stamp-badge mb-4">
                 <i class="fa-solid fa-book-open-reader text-orange-500"></i>
                 Cẩm Nang Du Lịch 2026
             </div>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-                Nhật Ký <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500">Hành Trình Du Lịch</span>
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">
+                Nhật Ký <span class="text-[#b85e3a] font-serif italic">Hành Trình Du Lịch</span>
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                 Khám phá những câu chuyện, kinh nghiệm thực tế và nguồn cảm hứng bất tận cho chuyến đi tiếp theo của bạn cùng WanderVibe.
@@ -59,21 +27,21 @@
             {{-- FEATURED POST (LEFT) --}}
             @if($featuredBlog)
             <div class="lg:col-span-8">
-                <a href="{{ route('blog.show', $featuredBlog->id) }}" class="relative block group h-[350px] md:h-[550px] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-700">
+                <a href="{{ route('blog.show', $featuredBlog->id) }}" class="relative block group h-[350px] md:h-[550px] rounded-2xl overflow-hidden shadow-2xl transition-all duration-700">
                     <img src="{{ asset($featuredBlog->image) }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent"></div>
 
                     <div class="absolute bottom-0 p-6 md:p-14 w-full">
-                        <span class="glass-badge px-4 py-2 rounded-full text-sm font-bold text-blue-600   mb-6 inline-block">
+                        <span class="glass-badge px-4 py-2 rounded-full text-sm font-bold text-[#b85e3a]   mb-6 inline-block">
                             <i class="fas fa-star mr-2"></i> Bài viết tiêu điểm
                         </span>
-                        <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-6 group-hover:text-blue-400 transition-colors ">
+                        <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-6 group-hover:text-[#cf8a6e] transition-colors ">
                             {{ $featuredBlog->title }}
                         </h2>
                         <div class="flex items-center gap-6 text-slate-300 text-sm font-bold  ">
                             <span class="flex items-center gap-2"><i class="far fa-user text-orange-400"></i> {{ $featuredBlog->author ?? 'WanderVibe Team' }}</span>
-                            <span class="flex items-center gap-2"><i class="far fa-calendar text-blue-400"></i> {{ $featuredBlog->created_at->format('d/m/Y') }}</span>
-                            <span class="flex items-center gap-2"><i class="far fa-eye text-blue-400"></i> {{ $featuredBlog->views ?? 0 }}</span>
+                            <span class="flex items-center gap-2"><i class="far fa-calendar text-[#cf8a6e]"></i> {{ $featuredBlog->created_at->format('d/m/Y') }}</span>
+                            <span class="flex items-center gap-2"><i class="far fa-eye text-[#cf8a6e]"></i> {{ $featuredBlog->views ?? 0 }}</span>
                         </div>
                     </div>
                 </a>
@@ -83,7 +51,7 @@
             {{-- LATEST BLOGS (RIGHT) --}}
             <div class="lg:col-span-4 space-y-8">
                 <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-xl font-bold text-slate-900  ">Mới <span class="text-blue-600">cập nhật</span></h3>
+                    <h3 class="text-xl font-bold text-slate-900  ">Mới <span class="text-[#b85e3a]">cập nhật</span></h3>
                     <div class="h-px flex-1 bg-slate-100 ml-4"></div>
                 </div>
 
@@ -93,10 +61,10 @@
                         <img src="{{ asset($blog->image) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="flex flex-col justify-center">
-                        <span class="text-[9px] font-bold text-blue-600   mb-1">
+                        <span class="text-[9px] font-bold text-[#b85e3a]   mb-1">
                             {{ $blog->category->name ?? 'Tin tức' }}
                         </span>
-                        <h4 class="font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors line-clamp-2">
+                        <h4 class="font-bold text-slate-900 leading-snug group-hover:text-[#b85e3a] transition-colors line-clamp-2">
                             {{ $blog->title }}
                         </h4>
                         <p class="text-sm text-slate-400 font-bold mt-2  ">
@@ -109,7 +77,7 @@
                 {{-- Decorative Card --}}
                 <div class="premium-card p-8 bg-slate-900 text-white mt-10 relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 blur-[40px] rounded-full"></div>
-                    <p class="text-xs font-bold text-blue-400   mb-2">Đăng ký bản tin</p>
+                    <p class="text-xs font-bold text-[#cf8a6e]   mb-2">Đăng ký bản tin</p>
                     <h5 class="text-lg font-bold mb-4  leading-tight">Nhận ưu đãi du lịch <br> mới nhất qua Email</h5>
                     <div class="flex gap-2">
                         <input type="text" placeholder="Email của bạn..." class="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs w-full outline-none focus:border-blue-500 transition-all">
@@ -121,7 +89,7 @@
 
         {{-- MAIN LISTING GRID --}}
         <div class="flex items-center gap-4 mb-12">
-            <h3 class="text-2xl font-bold text-slate-900  ">Tất cả <span class="text-blue-600">bài viết</span></h3>
+            <h3 class="text-2xl font-bold text-slate-900  ">Tất cả <span class="text-[#b85e3a]">bài viết</span></h3>
             <div class="h-px flex-1 bg-slate-100"></div>
         </div>
 
@@ -146,7 +114,7 @@
                         <span class="flex items-center gap-1"><i class="far fa-eye"></i> {{ $blog->views ?? 0 }} lượt xem</span>
                     </div>
 
-                    <h3 class="text-xl font-bold text-slate-900 leading-tight mb-4 group-hover:text-blue-600 transition-colors ">
+                    <h3 class="text-xl font-bold text-slate-900 leading-tight mb-4 group-hover:text-[#b85e3a] transition-colors ">
                         <a href="{{ route('blog.show', $blog->id) }}">{{ $blog->title }}</a>
                     </h3>
 
@@ -155,7 +123,7 @@
                     </p>
 
                     <div class="mt-auto border-t border-slate-50 flex items-center justify-between">
-                        <a href="{{ route('blog.show', $blog->id) }}" class="text-[11px] font-bold text-blue-600   flex items-center gap-2 group/btn">
+                        <a href="{{ route('blog.show', $blog->id) }}" class="text-[11px] font-bold text-[#b85e3a]   flex items-center gap-2 group/btn">
                             Đọc bài viết <i class="fas fa-arrow-right group-hover/btn:translate-x-2 transition-transform"></i>
                         </a>
                         <button class="text-slate-300 hover:text-rose-500 transition-colors">

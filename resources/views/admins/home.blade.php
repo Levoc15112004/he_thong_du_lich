@@ -105,14 +105,14 @@
         <section class="space-y-6">
           
           <!-- Main Chart: Doanh Thu, Đơn Hàng & Người Dùng Mới với Bộ Lọc Chuyển Tab -->
-          <div class="dashboard-card rounded-3xl p-6 lg:p-7 shadow-sm border border-slate-200/80">
+          <div class="dashboard-card rounded-2xl p-6 lg:p-7 shadow-sm border border-slate-200/80">
             
             <!-- Top Controls: Tab Chỉ số & Bộ Lọc Thời Gian -->
             <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-5 pb-6 border-b border-slate-100">
               
               <!-- Metric Switcher Tabs -->
               <div class="flex flex-wrap items-center gap-2" id="metricTabs">
-                <button onclick="switchAnalyticsMetric('revenue')" id="tabBtnRevenue" class="metric-tab active px-4 py-2.5 rounded-2xl text-xs font-extrabold transition-all duration-200 bg-orange-500 text-white shadow-md shadow-orange-500/25 flex items-center gap-2">
+                <button onclick="switchAnalyticsMetric('revenue')" id="tabBtnRevenue" class="metric-tab active px-4 py-2.5 rounded-2xl text-xs font-extrabold transition-all duration-200 bg-[#b85e3a] text-white shadow-xs flex items-center gap-2">
                   <i class="fa-solid fa-coins"></i>
                   <span>Doanh Thu & Lợi Nhuận</span>
                 </button>
@@ -130,7 +130,7 @@
               <div class="flex items-center gap-3 self-start xl:self-auto">
                 <div class="inline-flex p-1 bg-slate-100/90 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600">
                   <button onclick="setTimeRange('7d', this)" class="timerange-btn px-3 py-1.5 rounded-lg hover:text-slate-900 transition-colors">7 Ngày</button>
-                  <button onclick="setTimeRange('30d', this)" class="timerange-btn active px-3 py-1.5 rounded-lg bg-white text-orange-700 font-bold shadow-xs transition-colors">30 Ngày</button>
+                  <button onclick="setTimeRange('30d', this)" class="timerange-btn active px-3 py-1.5 rounded-lg bg-white text-[#863c20] font-bold shadow-xs transition-colors">30 Ngày</button>
                   <button onclick="setTimeRange('9m', this)" class="timerange-btn px-3 py-1.5 rounded-lg hover:text-slate-900 transition-colors">Cả năm</button>
                 </div>
 
@@ -178,7 +178,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
             <!-- Secondary Chart 1: Phân bổ nguồn người dùng & Thiết bị truy cập -->
-            <div class="dashboard-card rounded-3xl p-6 flex flex-col justify-between border border-slate-200/80 shadow-sm">
+            <div class="dashboard-card rounded-2xl p-6 flex flex-col justify-between border border-slate-200/80 shadow-sm">
               <div>
                 <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                   <div>
@@ -231,7 +231,7 @@
             </div>
 
             <!-- Secondary Chart 2: Tăng Trưởng Tài Khoản & Người Dùng Kích Hoạt Đặt Tour -->
-            <div class="dashboard-card rounded-3xl p-6 lg:col-span-2 flex flex-col justify-between border border-slate-200/80 shadow-sm">
+            <div class="dashboard-card rounded-2xl p-6 lg:col-span-2 flex flex-col justify-between border border-slate-200/80 shadow-sm">
               <div>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
                   <div>
@@ -301,7 +301,7 @@
                       </div>
                     </div>
                     <div class="flex items-center gap-2">
-                      <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-orange-100 text-orange-700">HOT</span>
+                      <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-orange-100 text-[#863c20]">HOT</span>
                       <a href="{{ route('admin.tours.edit', $tour->id) }}" class="w-8 h-8 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-500 flex items-center justify-center">
                         <i class="fa-solid fa-pen-to-square text-xs"></i>
                       </a>
@@ -335,7 +335,7 @@
                         </div>
                         <div class="flex justify-between items-center mt-2 border-t border-slate-100 pt-2">
                           <span class="text-[10px] text-slate-400"><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse($blog->created_at)->format('d/m/Y') }}</span>
-                          <span class="px-2 py-0.5 rounded-lg text-[10px] font-semibold {{ $blog->status == 1 ? 'bg-orange-100 text-orange-700' : 'bg-slate-200 text-slate-600' }}">
+                          <span class="px-2 py-0.5 rounded-lg text-[10px] font-semibold {{ $blog->status == 1 ? 'bg-orange-100 text-[#863c20]' : 'bg-slate-200 text-slate-600' }}">
                                 {{ $blog->status == 1 ? 'Hiển thị' : 'Ẩn' }}
                           </span>
                         </div>
@@ -366,7 +366,7 @@
                 <p class="text-xs text-slate-500">Khách hàng để lại số điện thoại & Zalo từ form nhận tư vấn</p>
               </div>
             </div>
-            <a href="{{ route('admin.consultations.index') }}" class="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1.5 self-start sm:self-auto">
+            <a href="{{ route('admin.consultations.index') }}" class="text-xs font-bold text-orange-600 hover:text-[#863c20] flex items-center gap-1.5 self-start sm:self-auto">
               <span>Xem tất cả ({{ $unreadConsultationsCount ?? 0 }} chưa liên hệ)</span>
               <i class="fa-solid fa-arrow-right text-[10px]"></i>
             </a>
@@ -646,13 +646,13 @@
       const tabMap = { revenue: 'tabBtnRevenue', bookings: 'tabBtnBookings', users: 'tabBtnUsers' };
 
       document.querySelectorAll('.metric-tab').forEach(btn => {
-        btn.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/25');
+        btn.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-xs');
         btn.classList.add('bg-slate-100', 'text-slate-600');
       });
 
       const activeBtn = document.getElementById(tabMap[metricKey]);
       if (activeBtn) {
-        activeBtn.classList.add('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/25');
+        activeBtn.classList.add('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-xs');
         activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
       }
 
@@ -672,8 +672,8 @@
 
     function setTimeRange(range, btn) {
       currentPeriod = range;
-      document.querySelectorAll('.timerange-btn').forEach(b => b.classList.remove('active', 'bg-white', 'text-orange-700', 'font-bold', 'shadow-xs'));
-      if (btn) btn.classList.add('active', 'bg-white', 'text-orange-700', 'font-bold', 'shadow-xs');
+      document.querySelectorAll('.timerange-btn').forEach(b => b.classList.remove('active', 'bg-white', 'text-[#863c20]', 'font-bold', 'shadow-xs'));
+      if (btn) btn.classList.add('active', 'bg-white', 'text-[#863c20]', 'font-bold', 'shadow-xs');
       renderMainAnalyticsChart(activeAnalyticsMetric);
     }
 

@@ -125,7 +125,7 @@
                     <p class="text-slate-500 text-sm">Gán cùng lúc nhiều mã giảm giá cho khách hàng.</p>
                 </div>
                 <div class="flex gap-3">
-                    <button onclick="openAssignModal()" class="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2.5 rounded-xl hover:from-orange-600 hover:to-amber-600 transition shadow-lg shadow-orange-500/20 font-semibold text-sm">
+                    <button onclick="openAssignModal()" class="flex items-center gap-2 bg-[#863c20] text-white px-5 py-2.5 rounded-xl hover:bg-[#a34c2a] transition shadow-lg shadow-xs font-semibold text-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>

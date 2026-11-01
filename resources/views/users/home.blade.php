@@ -16,14 +16,13 @@
         <div class="absolute inset-0 hero-cinematic-overlay pointer-events-none"></div>
 
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-16 sm:pt-20 text-center flex flex-col items-center">
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 text-slate-100 text-xs sm:text-sm font-bold shadow-2xl mb-5 animate-pulse-soft">
-                <span class="w-2.5 h-2.5 rounded-full bg-orange-400 animate-ping"></span>
-                <i class="fa-solid fa-crown text-amber-300"></i>
-                <span>Khám Phá Việt Nam Cùng Thế Hệ Trẻ</span>
-            </div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-stone-200 text-xs font-semibold uppercase tracking-wider mb-5">
+      <i class="fa-solid fa-compass text-[#cf8a6e]"></i>
+      <span>Tuyển Tập Lữ Hành Việt Nam 2026</span>
+  </div>
 
-            <h1 id="heroTitle" class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.15] max-w-4xl transition-all duration-500 drop-shadow-2xl">
-                {!! $firstBanner->name ?? $firstBanner->title ?? 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-amber-200">Hà Giang</span>' !!}
+            <h1 id="heroTitle" class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.12] max-w-4xl transition-all duration-300 drop-shadow-md">
+                {!! $firstBanner->name ?? $firstBanner->title ?? 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-transparent bg-clip-text text-[#cf8a6e] font-serif italic">Hà Giang</span>' !!}
             </h1>
 
             <p id="heroSubtitle" class="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-slate-100 max-w-2xl font-normal leading-relaxed transition-all duration-500 drop-shadow">
@@ -31,12 +30,12 @@
             </p>
 
             <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <a href="#tours" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm sm:text-base shadow-2xl shadow-orange-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 group">
+                <a href="#tours" class="px-7 py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm sm:text-base shadow-sm hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center gap-2.5 group">
                     <i class="fa-solid fa-compass group-hover:rotate-45 transition-transform duration-300 text-lg"></i>
                     <span>Khám Phá Tour Ngay</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
                 </a>
-                <a href="#destinations" class="px-7 py-4 rounded-2xl bg-white/20 hover:bg-white/30 backdrop-blur-xl border border-white/35 text-white font-bold text-sm sm:text-base transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2">
+                <a href="#destinations" class="px-6 py-3.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2">
                     <i class="fa-solid fa-map-location-dot text-amber-300"></i>
                     <span>Xem Điểm Đến Hot</span>
                 </a>
@@ -63,11 +62,6 @@
                     <i class="fa-solid fa-pause" id="playIcon"></i>
                     <span id="playText">Dừng video</span>
                 </button>
-                <div class="flex items-center gap-1 px-3 py-2 rounded-xl bg-white/20 backdrop-blur-xl border border-white/30 text-white text-xs">
-                    <div class="w-1 bg-white rounded-full sound-wave-bar"></div>
-                    <div class="w-1 bg-white rounded-full sound-wave-bar"></div>
-                    <div class="w-1 bg-white rounded-full sound-wave-bar"></div>
-                    <div class="w-1 bg-white rounded-full sound-wave-bar"></div>
                 </div>
             </div>
         </div>
@@ -75,11 +69,10 @@
 
     {{-- ================= SEARCH SECTION ================= --}}
     <section id="searchSection" class="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 sm:-mt-16">
-        <div class="search-aura-light rounded-3xl p-1 text-left">
-            <div class="glass-panel-light rounded-[22px] p-5 sm:p-7 shadow-xl relative">
+        <div class="w-full text-left">
+            <div class="travel-card rounded-2xl p-5 sm:p-6 shadow-lg relative bg-white dark:bg-[#1a1e22] border border-[#e8e3d8] dark:border-[#2b3239]">
                 <!-- Background effects -->
-                <div class="absolute inset-0 overflow-hidden pointer-events-none rounded-[22px]">
-                    <div class="absolute -right-16 -bottom-16 w-52 h-52 bg-orange-100 rounded-full blur-2xl"></div>
+                
                 </div>
                 <form id="tourSearchForm" action="{{ route('user.home.search') }}" method="POST" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 relative z-20">
                     @csrf
@@ -99,7 +92,7 @@
                             <!-- JS will populate suggestions here -->
                         </div>
                     </div>
-                    <button type="submit" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-orange-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5 group/btn whitespace-nowrap z-10">
+                    <button type="submit" class="px-7 py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm sm:text-base shadow-sm hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap z-10">
                         <i class="fa-solid fa-magnifying-glass text-base group-hover/btn:rotate-12 transition-transform"></i>
                         <span>Tìm Điểm Đến</span>
                         <i class="fa-solid fa-arrow-right text-xs group-hover/btn:translate-x-1 transition-transform"></i>
@@ -109,10 +102,10 @@
                 <!-- Trending Tags from Database Destinations -->
                 <div class="mt-4 pt-3.5 border-t border-slate-100 flex flex-wrap items-center gap-2 text-xs relative z-10">
                     <span class="inline-flex items-center gap-1.5 text-rose-500 font-extrabold text-[11px] tracking-wide uppercase mr-1">
-                        <i class="fa-solid fa-fire text-rose-500"></i> Xu Hướng:
+                        <i class="fa-solid fa-compass text-[#b85e3a]"></i> Điểm đến:
                     </span>
                     @forelse($destinations->take(6) as $dest)
-                        <button type="button" class="quick-tag px-3.5 py-1.5 rounded-full bg-slate-50 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-200 text-slate-600 font-semibold border border-slate-200 transition-all flex items-center gap-1.5 hover:scale-105 active:scale-95"
+                        <button type="button" class="quick-tag px-3 py-1 rounded-lg bg-[#faf6f0] dark:bg-[#231b17] hover:border-[#b85e3a] text-slate-700 dark:text-slate-300 font-medium text-xs border border-[#e8dfd1] dark:border-[#4a2818] transition-all flex items-center gap-1 hover:-translate-y-0.5"
                             data-query="{{ $dest->end_location }}">
                             <span>📍 {{ $dest->end_location }}</span>
                         </button>
@@ -175,15 +168,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
-                    <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-orange-700 bg-orange-50 border border-orange-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                    <div class="stamp-badge mb-3">
                         <i class="fa-solid fa-cloud-sun-rain text-orange-600"></i> Trạm thời tiết trực tiếp
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Dự Báo Thời Tiết Điểm Đến</h2>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Dự Báo Thời Tiết Điểm Đến</h2>
                     <p class="text-slate-500 text-sm mt-1">Cập nhật thời tiết OpenWeather và các gợi ý trang phục khám phá</p>
                 </div>
                 <div class="flex flex-col xl:flex-row items-center gap-3">
                     <div class="flex items-center gap-2 overflow-x-auto no-scrollbar p-1.5 bg-white/60 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-sm" id="weatherTabs">
-                        <button data-loc="Đà Lạt" class="weather-tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-orange-500 text-white shadow-md shadow-orange-500/20">Đà Lạt</button>
+                        <button data-loc="Đà Lạt" class="weather-tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-orange-500 text-white shadow-md shadow-xs">Đà Lạt</button>
                         <button data-loc="Sa Pa" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Sa Pa</button>
                         <button data-loc="Phú Quốc" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Phú Quốc</button>
                         <button data-loc="Đà Nẵng" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Đà Nẵng</button>
@@ -294,7 +287,7 @@
                     <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-50 border border-rose-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
                         <i class="fa-solid fa-fire text-rose-500"></i> Xu hướng thịnh hành
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Top Tour Nổi Bật Được Quan Tâm Nhất</h2>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Top Tour Nổi Bật Được Quan Tâm Nhất</h2>
                     <p class="text-slate-500 text-sm mt-1">Các tour có số lượt xem và đặt chỗ cao nhất từ hệ thống</p>
                 </div>
                 <a href="{{ route('user.tours') }}" class="inline-flex items-center gap-2 text-sm font-bold text-orange-600 hover:text-orange-700 group transition-colors">
@@ -342,12 +335,12 @@
                             </div>
                             <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
                                 <div>
-                                    <div class="text-orange-600 font-extrabold text-lg">
+                                    <div class="text-[#b85e3a] font-serif font-bold text-lg">
                                         {{ number_format($tour->sale_price, 0, ',', '.') }}<span class="text-xs font-medium">đ</span>
                                     </div>
                                 </div>
                                 <a href="{{ route('user.tourDetail.index', $tour->id) }}"
-                                    class="px-4 py-2 rounded-xl bg-orange-50 text-orange-700 group-hover:bg-orange-500 group-hover:text-white font-bold text-xs transition-all flex items-center gap-1.5 border border-orange-100 shadow-sm"
+                                    class="px-4 py-2 rounded-xl bg-orange-50 text-orange-700 group-hover:bg-[#b85e3a] group-hover:text-white font-bold text-xs transition-all flex items-center gap-1.5 border border-orange-100 shadow-sm"
                                     onclick="event.stopPropagation()">
                                     <span>Xem Chi Tiết</span>
                                     <i class="fa-solid fa-chevron-right text-[10px]"></i>
@@ -368,10 +361,10 @@
     <section id="destinations" class="py-20 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14">
-                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-orange-700 bg-orange-50 border border-orange-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                <span class="stamp-badge mb-3">
                     <i class="fa-solid fa-earth-americas text-orange-600"></i> Điểm đến nổi bật
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Điểm Đến Hấp Dẫn Không Thể Bỏ Lỡ</h2>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Điểm Đến Hấp Dẫn Không Thể Bỏ Lỡ</h2>
                 <p class="text-slate-500 text-sm mt-2">Dù bạn thích lên rừng săn mây hay xuống biển đón nắng vàng, mọi cảnh sắc Việt Nam đều sẵn sàng chào đón</p>
             </div>
 
@@ -410,10 +403,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
                 <div>
-                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-orange-700 bg-orange-50 border border-orange-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                    <span class="stamp-badge mb-3">
                         <i class="fa-solid fa-book-open-reader text-orange-600"></i> Cẩm nang du lịch
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Kinh Nghiệm & Review Du Lịch</h2>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Kinh Nghiệm & Review Du Lịch</h2>
                     <p class="text-slate-500 text-sm mt-1">Những bài viết chia sẻ thực tế, bí kíp săn ảnh triệu view và mẹo du lịch tiết kiệm</p>
                 </div>
                 <a href="{{ route('blog.index') }}" class="text-sm font-bold text-orange-600 hover:text-orange-700 flex items-center gap-2 transition-colors">
@@ -551,7 +544,7 @@
 
                             <div id="homeConsultationFeedback" class="hidden rounded-xl p-3 text-xs font-semibold text-center transition-all"></div>
 
-                            <button type="submit" id="homeConsultationBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-orange-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all">
+                            <button type="submit" id="homeConsultationBtn" class="w-full py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-xs hover:scale-[1.01] active:scale-[0.99] transition-all">
                                 <i class="fa-solid fa-paper-plane mr-2"></i> Nhận tư vấn nhanh
                             </button>
                         </form>

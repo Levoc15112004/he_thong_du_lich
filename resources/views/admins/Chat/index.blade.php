@@ -9,7 +9,7 @@
         {{-- HEADER --}}
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-4">
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 shrink-0">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-xs shrink-0">
                     <i class="fa-solid fa-headset text-2xl"></i>
                 </div>
                 <div>
@@ -54,7 +54,7 @@
                            placeholder="Tìm kiếm Email hoặc tên khách hàng..."
                            class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none placeholder:text-slate-400">
                 </div>
-                <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 text-white rounded-xl font-bold shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
+                <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-[#863c20] text-white rounded-xl font-bold shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-search"></i> Tìm kiếm
                 </button>
             </form>

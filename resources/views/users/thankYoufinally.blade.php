@@ -38,13 +38,7 @@
         border-radius: 1.5rem;
     }
 
-    .text-gradient {
-        background: linear-gradient(to right, #ea580c, #f43f5e, #fbbf24);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 200% auto;
-        animation: gradientShift 3s ease infinite;
-    }
+    .text-gradient { color: #1a443c; font-family: "Playfair Display", Georgia, serif; font-style: italic; }
 
     .btn-glow {
         position: relative;

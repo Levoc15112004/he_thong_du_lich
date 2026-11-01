@@ -1,72 +1,15 @@
 @extends('users.master')
 
 @section('home')
-<style>
-    .text-gradient {
-        background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
 
-    .premium-card {
-        background: white;
-        border-radius: 2.5rem;
-        border: 1px solid rgba(241, 245, 249, 1);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .premium-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.1);
-    }
-
-    .hero-gradient {
-        background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.15), transparent 50%),
-                    radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.10), transparent 50%);
-    }
-
-    .input-modern {
-        transition: all 0.3s ease;
-        border: 1px solid #e2e8f0;
-    }
-
-    .input-modern:focus {
-        border-color: #10b981;
-        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
-        outline: none;
-    }
-
-    .btn-gradient {
-        background: linear-gradient(to right, #10b981, #0d9488);
-        transition: all 0.3s ease;
-    }
-
-    .btn-gradient:hover {
-        filter: brightness(1.1);
-        box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
-    }
-
-    .icon-box {
-        width: 3.5rem;
-        height: 3.5rem;
-        border-radius: 1.25rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-    }
-</style>
 
 <div class="contact-container min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-800 dark:text-slate-100 transition-colors duration-300">
     {{-- HERO SECTION --}}
-    <section class="relative pt-40 pb-24 overflow-hidden hero-gradient">
+    <section class="relative pt-28 sm:pt-36 pb-16 bg-[#faf8f5] dark:bg-[#151719] border-b border-[#e8e3d8] dark:border-[#2b3239]">
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 px-4 py-2 rounded-full border border-orange-200/80 dark:border-orange-800/80 mb-8 font-bold text-xs uppercase tracking-wider shadow-sm">
-                <i class="fa-solid fa-headset text-orange-500"></i>
-                Hỗ Trợ Tận Tâm 24/7
-            </div>
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
-                Kết Nối Với <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500">WanderVibe</span>
+            <div class="stamp-badge mb-6"><i class="fa-solid fa-headset mr-1"></i> Tư Vấn Lữ Hành 24/7</div>
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">
+                Kết Nối Với <span class="text-[#b85e3a] font-serif italic">WanderVibe</span>
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                 Chúng tôi luôn sẵn sàng lắng nghe và đồng hành cùng bạn trong mọi chuyến hành trình khám phá thế giới.
@@ -74,7 +17,7 @@
         </div>
 
         {{-- Decorative Elements --}}
-        <div class="absolute top-1/4 -left-20 w-64 h-64 bg-orange-400/10 blur-[100px] rounded-full"></div>
+        
         <div class="absolute bottom-0 -right-20 w-80 h-80 bg-rose-400/10 blur-[120px] rounded-full"></div>
     </section>
 
@@ -84,7 +27,7 @@
             <!-- LEFT: CONTACT INFO (BENTO STYLE) -->
             <div class="lg:col-span-4 space-y-6">
                 {{-- Address --}}
-                <div class="bg-white dark:bg-slate-800/90 rounded-3xl p-7 border border-slate-100 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="bg-white dark:bg-slate-800/90 travel-card rounded-2xl p-6 transition-all duration-300 group">
                     <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
@@ -98,7 +41,7 @@
                 </div>
 
                 {{-- Phone --}}
-                <div class="bg-white dark:bg-slate-800/90 rounded-3xl p-7 border border-slate-100 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="bg-white dark:bg-slate-800/90 travel-card rounded-2xl p-6 transition-all duration-300 group">
                     <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all">
                         <i class="fa-solid fa-phone-volume"></i>
                     </div>
@@ -110,7 +53,7 @@
                 </div>
 
                 {{-- Email --}}
-                <div class="bg-white dark:bg-slate-800/90 rounded-3xl p-7 border border-slate-100 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="bg-white dark:bg-slate-800/90 travel-card rounded-2xl p-6 transition-all duration-300 group">
                     <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all">
                         <i class="fa-regular fa-envelope"></i>
                     </div>
@@ -124,12 +67,12 @@
 
             <!-- RIGHT: CONTACT FORM -->
             <div class="lg:col-span-8">
-                <div class="bg-white dark:bg-slate-800/95 rounded-3xl p-8 sm:p-12 shadow-xl dark:shadow-2xl border border-slate-200 dark:border-slate-700/80 relative overflow-hidden backdrop-blur-xl">
-                    <div class="absolute top-0 right-0 w-48 h-48 bg-orange-500/10 dark:bg-orange-500/5 blur-[80px] rounded-full pointer-events-none"></div>
+                <div class="bg-white dark:bg-slate-800/95 travel-card rounded-2xl p-6 sm:p-10 shadow-md relative overflow-hidden bg-white dark:bg-[#1a1e22]">
+                    
 
                     <div class="relative z-10">
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2 tracking-tight">
-                            Gửi Yêu Cầu <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500">Tư Vấn Tour</span>
+                            Gửi Yêu Cầu <span class="text-transparent bg-clip-text bg-[#b85e3a]">Tư Vấn Tour</span>
                         </h2>
                         <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-8">
                             Chuyên viên của WanderVibe sẽ liên hệ lại qua SĐT/Zalo trong vòng 10 phút
@@ -191,7 +134,7 @@
                             <div id="formStatus" class="hidden p-4 rounded-xl text-xs sm:text-sm font-semibold transition-all"></div>
 
                             <button type="submit" id="contactSubmitBtn"
-                                class="w-full py-4 rounded-xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-lg shadow-orange-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2">
+                                class="w-full py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-2">
                                 <span>Gửi Yêu Cầu Tư Vấn Ngay</span>
                                 <i class="fa-solid fa-paper-plane text-sm"></i>
                             </button>

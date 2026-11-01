@@ -144,7 +144,7 @@
                                 </div>
                             @endif
 
-                            <a href="{{ route('admin.payments.show', $payment->id) }}" class="flex-[1.5] flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-orange-500 to-rose-500 text-white rounded-2xl text-sm font-bold  shadow-lg shadow-orange-500/20 active:scale-95 transition-all">
+                            <a href="{{ route('admin.payments.show', $payment->id) }}" class="flex-[1.5] flex items-center justify-center gap-2 py-3 bg-[#863c20] text-white rounded-2xl text-sm font-bold  shadow-lg shadow-xs active:scale-95 transition-all">
                                 <i class="fa-solid fa-eye"></i>
                                 Chi tiết giao dịch
                             </a>

@@ -15,12 +15,12 @@
 
         <!-- Logo -->
         <a href="{{ route('admin.home') }}" class="flex items-center gap-2.5 group">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-500 flex items-center justify-center text-white shadow-md shadow-orange-500/20 group-hover:rotate-6 transition-transform">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#863c20] flex items-center justify-center text-white shadow-xs group-hover:rotate-6 transition-transform">
                 <i class="fa-solid fa-compass text-lg sm:text-xl"></i>
             </div>
             <div class="flex flex-col">
                 <span class="text-lg sm:text-xl font-black tracking-tight text-slate-800 dark:text-white leading-tight">
-                    Wander<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-400">Admin</span>
+                    Wander<span class="text-[#b85e3a]">Admin</span>
                 </span>
                 <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold -mt-0.5">Control Panel</span>
             </div>

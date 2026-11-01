@@ -84,7 +84,7 @@
                         </button>
 
                         <button type="button" onclick="openAssignModal()"
-                            class="inline-flex items-center justify-center px-5 py-3 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white rounded-2xl text-sm font-bold shadow-xl shadow-orange-500/20 transition-all active:scale-95">
+                            class="inline-flex items-center justify-center px-5 py-3 bg-[#863c20] hover:bg-[#a34c2a] text-white rounded-2xl text-sm font-bold shadow-xl shadow-xs transition-all active:scale-95">
                             <i class="fa-solid fa-plus-circle mr-2 text-lg"></i>
                             Gán Voucher Mới
                         </button>
@@ -436,7 +436,7 @@
                         class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-all active:scale-95">Hủy
                         bỏ</button>
                     <button type="submit" id="btnSubmit" disabled
-                        class="flex-1 px-6 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-xs rounded-2xl shadow-xl shadow-orange-500/20 hover:from-orange-600 hover:to-amber-600 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">Xác
+                        class="flex-1 px-6 py-4 bg-[#863c20] text-white font-bold text-xs rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">Xác
                         nhận gán (0)</button>
                 </div>
             </form>
@@ -497,7 +497,7 @@
                         class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-all active:scale-95">Hủy
                         bỏ</button>
                     <button type="submit"
-                        class="flex-1 px-6 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-xs rounded-2xl shadow-xl shadow-orange-500/20 hover:from-orange-600 hover:to-amber-600 transition-all active:scale-95">Xác
+                        class="flex-1 px-6 py-4 bg-[#863c20] text-white font-bold text-xs rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-all active:scale-95">Xác
                         nhận phát</button>
                 </div>
             </form>

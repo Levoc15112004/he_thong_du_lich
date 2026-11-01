@@ -96,7 +96,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex text-sm items-center hover:text-orange-600 transition-colors whitespace-nowrap">
+                    <a href="#" class="flex text-sm items-center hover:text-[#b85e3a] transition-colors whitespace-nowrap">
                         {{ $tour->category->name ?? 'Danh mục' }}
                         <i class="fa-solid fa-angle-right ml-2 text-slate-300 text-xs"></i>
                     </a>
@@ -110,7 +110,7 @@
 
             <!-- ===== HEADER TOUR ===== -->
             <div class="mt-6 mb-8">
-                <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4 leading-tight brand-font">
+                <h1 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
                     {{ $tour->name }}
                 </h1>
 
@@ -134,7 +134,7 @@
                 <div class="lg:col-span-2 space-y-8">
 
                     <!-- ===== GALLERY ===== -->
-                    <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 p-2">
+                    <div class="bg-white rounded-2xl travel-card overflow-hidden shadow-sm border border-slate-100 p-2">
                         <div class="relative h-[350px] md:h-[500px] rounded-[1.5rem] overflow-hidden">
                             <img id="mainImage" src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" alt="{{ $tour->name }}"
                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
@@ -177,7 +177,7 @@
 
 
                     <!-- ===== THÔNG TIN TOUR ===== -->
-                    <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 p-8 space-y-8">
+                    <div class="bg-white rounded-2xl travel-card shadow-sm border border-slate-100 p-8 space-y-8">
 
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
                             <div class="bg-slate-50 rounded-2xl p-4 text-center border border-slate-100">
@@ -219,17 +219,17 @@
                     </div>
 
                     <!-- ===== LỊCH TRÌNH + ĐÁNH GIÁ ===== -->
-                    <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 p-8">
+                    <div class="bg-white rounded-2xl travel-card shadow-sm border border-slate-100 p-8">
 
                         <!-- TAB HEADER -->
                         <div class="flex gap-8 border-b border-slate-100 mb-8 overflow-x-auto custom-scrollbar">
                             <button onclick="switchTab('schedule')" id="tab-schedule"
-                                class="pb-4 font-semibold text-lg border-b-2 border-orange-500 text-orange-600 whitespace-nowrap brand-font">
+                                class="pb-4 font-semibold text-lg border-b-2 border-[#b85e3a] text-[#b85e3a] whitespace-nowrap brand-font">
                                 Lịch trình chi tiết
                             </button>
 
                             <button onclick="switchTab('review')" id="tab-review"
-                                class="pb-4 font-semibold text-lg text-slate-400 hover:text-orange-600 transition-colors whitespace-nowrap brand-font">
+                                class="pb-4 font-semibold text-lg text-slate-400 hover:text-[#b85e3a] transition-colors whitespace-nowrap brand-font">
                                 Đánh giá khách hàng ({{ $totalReviews }})
                             </button>
                         </div>
@@ -285,7 +285,7 @@
                         <div id="content-review" class="hidden space-y-6">
 
                             {{-- ================= TỔNG QUAN ================= --}}
-                            <div class="flex flex-col md:flex-row items-center gap-6 bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
+                            <div class="flex flex-col md:flex-row items-center gap-6 bg-slate-50 p-6 rounded-2xl travel-card border border-slate-100">
                                 <div class="text-center min-w-[140px]">
                                     <p class="text-4xl font-bold text-amber-500 mb-1">
                                         {{ number_format($avgRating ?? 0, 1) }}
@@ -383,7 +383,7 @@
                 <!-- ================= RIGHT BOOKING ================= -->
                 <div class="lg:col-span-1">
                     <div
-                        class="bg-white rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-slate-100
+                        class="bg-white rounded-2xl travel-card shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-slate-100
                         p-6 lg:p-8 sticky top-28 space-y-6">
 
                         <!-- ===== TITLE ===== -->
@@ -436,7 +436,7 @@
                                         <label
                                             class="flex items-center justify-between px-4 py-3 rounded-xl bg-slate-50 border border-slate-200
                                              hover:border-orange-500 hover:bg-white cursor-pointer transition-all shadow-sm group">
-                                            <span class="font-semibold text-slate-700 group-hover:text-orange-600 z-10">{{ $value }}</span>
+                                            <span class="font-semibold text-slate-700 group-hover:text-[#b85e3a] z-10">{{ $value }}</span>
                                             <input type="radio" name="transport" value="{{ $value }}"
                                                 {{ $loop->first ? 'checked' : '' }} class="text-orange-500 focus:ring-orange-500 z-10 focus:ring-2">
                                         </label>
@@ -455,7 +455,7 @@
                                         <label
                                             class="flex items-center justify-between px-4 py-3 rounded-xl bg-slate-50 border border-slate-200
                                             hover:border-orange-500 hover:bg-white cursor-pointer transition-all shadow-sm group">
-                                            <span class="font-semibold text-slate-700 group-hover:text-orange-600 z-10">{{ $value }}</span>
+                                            <span class="font-semibold text-slate-700 group-hover:text-[#b85e3a] z-10">{{ $value }}</span>
                                             <input type="radio" name="tour_type" value="{{ $value }}"
                                                 {{ $loop->first ? 'checked' : '' }} class="text-orange-500 focus:ring-orange-500 z-10 focus:ring-2">
                                         </label>
@@ -488,7 +488,7 @@
 
                             <!-- CTA -->
                             <button type="submit" id="book-tour-btn" {{ $slots == 0 ? 'disabled' : '' }}
-                                class="w-full py-3.5 mt-2 rounded-xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-orange-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                class="w-full py-3.5 mt-2 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm uppercase tracking-wider shadow-xs transition-all disabled:opacity-50 disabled:cursor-not-allowed">
                                 <i class="fa-solid fa-bookmark mr-2"></i> Giữ Chỗ Ngay
                             </button>
 
@@ -546,7 +546,7 @@
 
                 @foreach ($tourRelate as $item)
                     <div
-                        class="bg-white rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl overflow-hidden
+                        class="bg-white rounded-2xl travel-card shadow-sm border border-slate-100 hover:shadow-xl overflow-hidden
                 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group cursor-pointer"
                         onclick="window.location.href='{{ route('user.tourDetail.index', $item->id) }}'">
 
@@ -562,7 +562,7 @@
                         <div class="p-6 flex flex-col flex-grow justify-between">
                             <div>
                                 <a href="{{ route('user.tourDetail.index', $item->id) }}" class="block">
-                                    <h3 class="text-xl font-bold text-slate-800 mb-3 line-clamp-2 min-h-[56px] brand-font group-hover:text-orange-600 transition-colors">
+                                    <h3 class="text-xl font-bold text-slate-800 mb-3 line-clamp-2 min-h-[56px] brand-font group-hover:text-[#b85e3a] transition-colors">
                                         {{ $item->name }}
                                     </h3>
                                 </a>

@@ -214,7 +214,7 @@
       <button 
         type="submit" 
         id="loginSubmitBtn"
-        class="w-full mt-3 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white font-extrabold text-sm shadow-xl shadow-orange-500/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group"
+        class="w-full mt-3 py-3.5 px-6 rounded-2xl bg-[#863c20] hover:bg-[#a34c2a] text-white font-extrabold text-sm shadow-xl shadow-orange-500/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group"
       >
         <span id="loginBtnText">Đăng Nhập Quản Trị Viên</span>
         <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" id="loginBtnIcon"></i>

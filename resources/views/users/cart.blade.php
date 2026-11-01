@@ -16,14 +16,14 @@
             @endif
             {{-- Header --}}
             <div class="flex items-center justify-between mb-10">
-                <h1 class="text-xl font-bold text-slate-900 flex items-center gap-4">
-                    <span class="p-3 bg-blue-600 text-white rounded-2xl shadow-lg shadow-blue-200">
+                <h1 class="font-serif text-2xl font-bold text-slate-900 flex items-center gap-4">
+                    <span class="p-3 bg-[#b85e3a] text-white rounded-2xl shadow-lg shadow-xs">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </span>
                     Giỏ hàng của bạn
                 </h1>
                 <a href="{{ route('user.home') }}"
-                    class="text-blue-600 font-semibold hover:text-blue-700 flex items-center gap-2 transition">
+                    class="text-[#b85e3a] font-semibold hover:text-[#a34c2a] flex items-center gap-2 transition">
                     <i class="fa-solid fa-arrow-left"></i> Tiếp tục chọn Tour
                 </a>
             </div>
@@ -42,13 +42,13 @@
                     <div class="lg:col-span-2 space-y-2">
                         @foreach ($items as $key => $item)
                             <div
-                                class="bg-white rounded-3xl p-4 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-6 hover:shadow-md transition duration-300">
+                                class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-6 hover:shadow-md transition duration-300">
                                 {{-- Tour Image --}}
                                 <a href="{{ route('user.tourDetail.index', $item['tour_id']) }}" class="relative shrink-0 block group">
                                     <img src="{{ asset($item['image'] ?? 'images/default-tour.jpg') }}"
                                         class="w-full md:w-48 h-40 rounded-2xl object-cover shadow-sm group-hover:scale-[1.02] transition-transform">
                                     <span
-                                        class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-[10px] font-bold text-blue-600 uppercase">
+                                        class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-[10px] font-bold text-[#b85e3a] uppercase">
                                         {{ $item['tour_type'] }}
                                     </span>
                                 </a>
@@ -92,7 +92,7 @@
                                                 min="1"
                                                 class="w-12 bg-transparent text-sm text-center font-bold text-slate-800 focus:outline-none">
                                             <button
-                                                class="bg-white text-blue-600 px-3 py-1 rounded-lg shadow-sm hover:bg-blue-600 hover:text-white transition font-bold text-xs uppercase">
+                                                class="bg-white text-[#b85e3a] px-3 py-1 rounded-lg shadow-sm hover:bg-[#b85e3a] hover:text-white transition font-bold text-xs uppercase">
                                                 Cập nhật
                                             </button>
                                         </form>
@@ -100,7 +100,7 @@
                                         <div class="text-right">
                                             <p class="text-sm text-slate-400 font-medium">Đơn giá:
                                                 {{ number_format($item['price'], 0, '.', '.') }}đ</p>
-                                            <p class="text-2xl font-bold text-blue-600">
+                                            <p class="text-2xl font-bold text-[#b85e3a]">
                                                 {{ number_format($item['price'] * $item['quantity'], 0, '.', '.') }}đ
                                             </p>
                                         </div>
@@ -114,7 +114,7 @@
                     <div class="space-y-6 lg:sticky lg:top-10">
 
                         {{-- Voucher --}}
-                        <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100">
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
 
                             <h2 class="text-base font-bold text-slate-800 mb-4 flex items-center gap-2">
                                 <i class="fa-solid fa-ticket text-orange-500"></i>
@@ -150,7 +150,7 @@
                                         ">
 
 
-                                        <p class="text-xs font-bold text-blue-600">
+                                        <p class="text-xs font-bold text-[#b85e3a]">
                                             {{ $v->code }}
                                         </p>
 
@@ -211,7 +211,7 @@
 
 
                         {{-- Summary --}}
-                        <div class="bg-white rounded-3xl p-8 shadow border">
+                        <div class="bg-white rounded-2xl p-8 shadow border">
 
                             <h2 class="text-xl font-bold mb-4">
                                 Chi tiết thanh toán
@@ -261,7 +261,7 @@
 
 
                             <a href="{{ route('user.order.index') }}"
-                                class="block mt-6 bg-blue-600 font-bold text-white text-center py-2 rounded-xl">
+                                class="block mt-6 bg-[#b85e3a] font-bold text-white text-center py-2 rounded-xl">
 
                                 Thanh toán
 
@@ -282,7 +282,7 @@
                         Có vẻ như bạn chưa chọn được tour nào ưng ý. Hãy khám phá các tour du lịch hấp dẫn của chúng tôi!
                     </p>
                     <a href="{{ route('user.home') }}"
-                        class="inline-block bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-100">
+                        class="inline-block bg-[#b85e3a] text-white px-10 py-4 rounded-2xl font-bold hover:bg-[#a34c2a] transition shadow-lg shadow-blue-100">
                         Khám phá Tour ngay
                     </a>
                 </div>

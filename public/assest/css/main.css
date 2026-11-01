@@ -1,0 +1,96 @@
+/**
+ * WanderVibe Travel - Editorial Design System (Anti-AI Aesthetic)
+ * Typography: Playfair Display (Headings) + Be Vietnam Pro (Body)
+ * Palette: Terracotta / Heritage Ochre & Deep Forest Pine
+ */
+
+:root {
+  --color-canvas: #fbf9f6;
+  --color-paper: #ffffff;
+  --color-ink: #1a1e22;
+  --color-ink-muted: #5d6672;
+  --color-border: #e8e3d8;
+  --color-terracotta: #b85e3a;
+  --color-terracotta-dark: #863c20;
+  --color-pine: #1a443c;
+  --color-pine-dark: #12332c;
+  --color-sand: #faf6f0;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Editorial Serif Headings */
+h1, h2, h3, .font-serif, .font-editorial {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  letter-spacing: -0.015em;
+}
+
+/* Tactile travel card */
+.travel-card, .premium-card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 3px rgba(21, 23, 25, 0.04), 0 6px 20px -4px rgba(21, 23, 25, 0.05);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.travel-card:hover, .premium-card:hover {
+  border-color: #cf8a6e;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px -1px rgba(21, 23, 25, 0.05), 0 16px 28px -6px rgba(184, 94, 58, 0.10);
+}
+
+/* Stamp badge */
+.stamp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: 1px solid #e8dfd1;
+  background: var(--color-sand);
+  color: var(--color-terracotta-dark);
+}
+
+/* Primary boutique button */
+.btn-terracotta {
+  background-color: var(--color-terracotta);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.btn-terracotta:hover {
+  background-color: var(--color-terracotta-dark);
+  transform: translateY(-1px);
+}
+
+/* Dark mode */
+html.dark :root {
+  --color-canvas: #121518;
+  --color-paper: #1a1e22;
+  --color-ink: #f1f4f7;
+  --color-ink-muted: #929da9;
+  --color-border: #2b3239;
+  --color-sand: #231b17;
+}
+
+html.dark body {
+  background-color: #121518 !important;
+  color: #f1f4f7 !important;
+}
+
+html.dark .travel-card, 
+html.dark .premium-card {
+  background-color: #1a1e22 !important;
+  border-color: #2b3239 !important;
+  color: #f1f4f7 !important;
+}
+

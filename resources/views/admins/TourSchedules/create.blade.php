@@ -14,7 +14,7 @@
             {{-- HEADER --}}
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-xs">
                         <i class="fa-solid fa-calendar-plus text-lg"></i>
                     </div>
                     <div>
@@ -162,7 +162,7 @@
                     {{-- SUBMIT --}}
                     <div class="flex flex-col sm:flex-row justify-end gap-4 pt-2">
                         <button type="submit"
-                            class="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 text-sm">
+                            class="inline-flex justify-center items-center gap-2 bg-[#863c20] hover:bg-[#a34c2a] text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 text-sm">
                             <i class="fa-solid fa-save text-lg"></i> Lưu lịch trình
                         </button>
                     </div>

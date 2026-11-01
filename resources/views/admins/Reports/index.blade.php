@@ -9,7 +9,7 @@
         {{-- HEADER --}}
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4 gap-4">
             <div class="flex items-center gap-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 shrink-0">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-xs shrink-0">
                     <i class="fa-solid fa-chart-pie text-2xl"></i>
                 </div>
                 <div>
@@ -75,7 +75,7 @@
 
                     {{-- Button --}}
                     <div class="lg:col-span-2 flex items-end">
-                        <button class="w-full lg:w-48 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 hover:from-orange-600 hover:to-rose-600 text-white py-3 px-6 rounded-xl font-bold shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 transition-all active:scale-95 flex items-center justify-center gap-2">
+                        <button class="w-full lg:w-48 bg-[#863c20] hover:bg-[#a34c2a] text-white py-3 px-6 rounded-xl font-bold shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 transition-all active:scale-95 flex items-center justify-center gap-2">
                             <i class="fa-solid fa-magnifying-glass-chart"></i> Áp Dụng Lọc
                         </button>
                     </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div>
                         <h6 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Tổng Doanh Thu</h6>
-                        <p class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-rose-500">{{ number_format($totalRevenue) }} ₫</p>
+                        <p class="text-3xl font-bold bg-clip-text text-transparent bg-[#863c20]">{{ number_format($totalRevenue) }} ₫</p>
                     </div>
                 </div>
             </div>
