@@ -80,9 +80,6 @@
     <section id="searchSection" class="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 sm:-mt-16">
         <div class="w-full text-left">
             <div class="travel-card rounded-2xl p-5 sm:p-6 shadow-lg relative bg-white dark:bg-[#1a1e22] border border-[#e8e3d8] dark:border-[#2b3239]">
-                <!-- Background effects -->
-                
-                </div>
                 <form id="tourSearchForm" action="{{ route('user.home.search') }}" method="POST" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 relative z-20">
                     @csrf
                     <div class="relative flex-1 group">
@@ -91,13 +88,13 @@
                         </div>
                         <input type="text" name="keyword" id="searchDestination" value="{{ request('keyword') }}"
                             placeholder="Bạn muốn xách balo đến đâu? (VD: Hà Giang, Sa Pa...)" autocomplete="off"
-                            class="w-full pl-12 sm:pl-14 pr-11 py-4 rounded-2xl bg-white border border-slate-200 text-slate-800 placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-colors duration-200 shadow-sm relative z-20">
+                            class="w-full pl-12 sm:pl-14 pr-11 py-4 rounded-2xl bg-white dark:bg-[#121518] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-colors duration-200 shadow-sm relative z-20">
                         <button type="button" id="clearSearchBtn" class="hidden absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 transition-colors z-20" title="Xóa tìm kiếm">
                             <i class="fa-solid fa-circle-xmark text-lg"></i>
                         </button>
 
                         <!-- Auto-suggest Dropdown -->
-                        <div id="searchSuggestions" class="hidden absolute top-[calc(100%+8px)] left-0 right-0 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 overflow-hidden z-50 max-h-72 overflow-y-auto w-full transition-colors duration-200">
+                        <div id="searchSuggestions" class="hidden absolute top-[calc(100%+8px)] left-0 right-0 bg-white/95 dark:bg-[#1a1e22] backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 overflow-hidden z-50 max-h-72 overflow-y-auto w-full transition-colors duration-200">
                             <!-- JS will populate suggestions here -->
                         </div>
                     </div>
@@ -109,7 +106,7 @@
                 </form>
 
                 <!-- Trending Tags from Database Destinations -->
-                <div class="mt-4 pt-3.5 border-t border-slate-100 flex flex-wrap items-center gap-2 text-xs relative z-10">
+                <div class="mt-4 pt-3.5 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-2 text-xs relative z-10">
                     <span class="inline-flex items-center gap-1.5 text-rose-500 font-extrabold text-[11px] tracking-wide uppercase mr-1">
                         <i class="fa-solid fa-compass text-[#b85e3a]"></i> Điểm đến:
                     </span>
@@ -199,18 +196,20 @@
             <div id="weatherContent" class="travel-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#1a1e22] border border-[#e8e3d8] dark:border-[#2b3239] shadow-sm">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#e8e3d8] dark:border-[#2b3239] pb-6 lg:pb-0 lg:pr-6">
-            <div class="flex items-baseline gap-3">
-                <span id="weatherTemp" class="font-serif text-5xl sm:text-6xl font-bold text-slate-900 dark:text-white">
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-3.5">
+                <span id="weatherTemp" class="font-bold text-5xl sm:text-6xl text-slate-900 dark:text-white whitespace-nowrap shrink-0">
                     {{ !empty($weatherData['temp']) ? $weatherData['temp'] . '°C' : '19°C' }}
                 </span>
-                <span id="weatherStatusText" class="text-xs font-medium text-[#863c20] dark:text-[#cf8a6e]">
-                    {{ $weatherData['desc'] ?? 'Se lạnh, sương mù nhẹ' }}
-                </span>
+                <div class="min-w-0 flex-1">
+                    <span id="weatherStatusText" class="text-xs font-bold text-[#863c20] dark:text-[#cf8a6e] block leading-snug">
+                        {{ $weatherData['desc'] ?? 'Se lạnh, sương mù nhẹ' }}
+                    </span>
+                    <span class="text-[11px] text-slate-400 block mt-0.5">Khí tượng thời gian thực</span>
+                </div>
             </div>
-            <h3 id="weatherCity" class="font-serif text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">
+            <h3 id="weatherCity" class="font-bold text-lg sm:text-xl text-slate-800 dark:text-slate-100 mt-3">
                 {{ $weatherData['city'] ?? 'Đà Lạt' }}, Việt Nam
             </h3>
-            <p class="text-xs text-slate-400 mt-1">Dữ liệu khí tượng cập nhật theo thời gian thực</p>
         </div>
 
         <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#e8e3d8] dark:border-[#2b3239] pb-6 lg:pb-0 lg:pr-6">

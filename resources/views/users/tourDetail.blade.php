@@ -1147,19 +1147,33 @@
 
 <script>
     const tourVideosByDest = {
-        'Phú Quốc': 'https://www.youtube.com/embed/5K1uK2s2L8Y?autoplay=1',
-        'Hà Giang': 'https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1',
-        'Đà Lạt': 'https://www.youtube.com/embed/bL7x4k8qVGs?autoplay=1',
-        'Hạ Long': 'https://www.youtube.com/embed/8w1b2_M7c4k?autoplay=1',
-        'Sa Pa': 'https://www.youtube.com/embed/n4B6s7c4m0g?autoplay=1'
+        'Phú Quốc': 'https://www.youtube.com/embed/w2Xn838R2g0?autoplay=1',
+        'Hà Giang': 'https://www.youtube.com/embed/4T7HwL3B3kQ?autoplay=1',
+        'Đà Lạt': 'https://www.youtube.com/embed/wHkPBq_cM_U?autoplay=1',
+        'Hạ Long': 'https://www.youtube.com/embed/oR91oOgnl2U?autoplay=1',
+        'Sa Pa': 'https://www.youtube.com/embed/U2S9a3y8X9A?autoplay=1',
+        'Sapa': 'https://www.youtube.com/embed/U2S9a3y8X9A?autoplay=1',
+        'Đà Nẵng': 'https://www.youtube.com/embed/V6W_W1lS1lU?autoplay=1',
+        'Hội An': 'https://www.youtube.com/embed/V6W_W1lS1lU?autoplay=1',
+        'Ninh Bình': 'https://www.youtube.com/embed/1La4QzGeaaQ?autoplay=1'
     };
 
     function openTourVideoModal() {
         const modal = document.getElementById('tourVideoModal');
         const iframe = document.getElementById('tourVideoIframe');
         const dest = "{{ $tour->end_location ?? '' }}";
-        const src = tourVideosByDest[dest] || "https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1";
-        if (iframe) iframe.src = src;
+        const tourName = "{{ addslashes($tour->name ?? '') }}";
+        
+        let videoSrc = "https://www.youtube.com/embed/w2Xn838R2g0?autoplay=1";
+        
+        for (const [key, url] of Object.entries(tourVideosByDest)) {
+            if (dest.includes(key) || tourName.includes(key)) {
+                videoSrc = url;
+                break;
+            }
+        }
+        
+        if (iframe) iframe.src = videoSrc;
         if (modal) {
             modal.classList.remove('hidden');
             modal.classList.add('flex');

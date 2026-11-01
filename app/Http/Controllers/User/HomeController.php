@@ -44,27 +44,27 @@ class HomeController extends Controller
             $bg = 'bg-sky-100';
             $text = 'text-sky-700';
         } elseif ($weatherId >= 700 && $weatherId < 800) {
-            $advice = 'Sương mù hoặc tầm nhìn kém. Thời tiết lãng mạn dạo phố nhẹ nhàng hoặc săn mây trên đồi. Lái xe cẩn thận nhé!';
-            $score = '7.0 / 10 Khá Tốt';
+            $advice = 'Sương mù nhẹ hoặc mây mù giăng lối đặc trưng vùng cao. Quý khách nên chuẩn bị áo khoác mỏng, khăn choàng và chú ý tầm nhìn khi di chuyển qua các cung đèo.';
+            $score = 'Khí hậu se lạnh';
             $bg = 'bg-amber-100';
             $text = 'text-amber-700';
         } elseif ($weatherId === 800) {
             if ($temp > 30) {
-                $advice = 'Nắng gắt, lên hình rực rỡ! Cực hợp váy maxi, bikini đi biển. Tuyệt đối không quên kem chống nắng, mũ rộng vành và kính râm.';
-                $score = '9.5 / 10 Tuyệt Vời';
+                $advice = 'Trời nắng ráo, trong xanh và tầm nhìn thoáng đãng. Rất thuận tiện cho các hoạt động tham quan danh thắng, tắm biển và di chuyển an toàn giữa các điểm đến.';
+                $score = 'Thời tiết thuận lợi';
                 $bg = 'bg-amber-100';
                 $text = 'text-amber-700';
             } else {
-                $advice = 'Trời quang mây tạnh, mát mẻ! Thời điểm vàng cho mọi bức ảnh check-in và hoạt động cắm trại, trekking ngoài trời.';
-                $score = '10 / 10 Hoàn Hảo';
-                $bg = 'bg-orange-100';
-                $text = 'text-orange-700';
+                $advice = 'Trời quang đãng, khí hậu trong lành và thoáng mát. Thời điểm lý tưởng cho toàn bộ hành trình tham quan và trải nghiệm văn hóa bản địa.';
+                $score = 'Thời tiết lý tưởng';
+                $bg = 'bg-emerald-100';
+                $text = 'text-emerald-700';
             }
         } elseif ($weatherId > 800) {
-            $advice = 'Trời nhiều mây, ánh sáng dịu. Mặc trang phục sáng màu (trắng, vàng, pastel) để nổi bật khung hình. Thuận tiện dạo chơi không sợ nắng hắt.';
-            $score = '8.5 / 10 Tốt';
-            $bg = 'bg-sky-100';
-            $text = 'text-sky-700';
+            $advice = 'Trời nhiều mây, tiết trời mát mẻ dễ chịu. Rất thích hợp cho các hoạt động tham quan ngoài trời, dạo bộ ngắm cảnh và trải nghiệm ẩm thực địa phương.';
+            $score = 'Khí hậu mát mẻ';
+            $bg = 'bg-emerald-100';
+            $text = 'text-emerald-700';
         }
 
         return [
