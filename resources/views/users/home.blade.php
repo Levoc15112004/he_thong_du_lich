@@ -7,7 +7,7 @@
     @endphp
     <section id="hero" class="relative w-full h-[100dvh] min-h-[640px] flex items-center justify-center overflow-hidden">
         <video id="heroVideo" autoplay muted loop playsinline
-            poster="{{ $firstBanner && $firstBanner->image ? (Str::startsWith($firstBanner->image, ['http://', 'https://']) ? $firstBanner->image : asset($firstBanner->image)) : 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80' }}"
+            poster="{{ $firstBanner && $firstBanner->image ? (Str::startsWith($firstBanner->image, ['http://', 'https://']) ? $firstBanner->image : asset($firstBanner->image)) : 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80' }}"
             class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-colors duration-1000 filter brightness-95">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4" type="video/mp4">
             Trình duyệt của bạn không hỗ trợ video HTML5.

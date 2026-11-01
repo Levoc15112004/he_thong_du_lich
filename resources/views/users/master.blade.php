@@ -694,29 +694,29 @@
                 locationName: 'Hà Giang',
                 title: 'Chạm Vào Cực Bắc Kỳ Vĩ Hà Giang',
                 subtitle: 'Lướt trên cung đèo Mã Pí Lèng huyền thoại, dong thuyền ngắm dòng Nho Quế màu ngọc bích và cảm nhận vẻ đẹp hùng vĩ của non sông.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
-                poster: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80'
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-mountain-landscape-with-thick-white-clouds-40285-large.mp4',
+                poster: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80'
             },
             phuquoc: {
                 locationName: 'Phú Quốc',
                 title: 'Thiên Đường Biển Đảo Phú Quốc',
                 subtitle: 'Thưởng ngoạn làn nước lam ngọc quần đảo An Thới, trải nghiệm lặn ngắm san hô tự nhiên và hoàng hôn buông xuống đại dương.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
-                poster: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80'
+                poster: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'
             },
             dalat: {
                 locationName: 'Đà Lạt',
                 title: 'Sương Mờ & Rừng Thông Đà Lạt',
                 subtitle: 'Đón ánh bình minh xuyên qua ngàn thông Cầu Đất, tận hưởng tiết trời se lạnh trong lành và không gian nghỉ dưỡng thanh bình.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
-                poster: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
+                poster: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1920&q=80'
             },
             halong: {
-                locationName: 'Hạ Long',
+                locationName: 'Hà Long',
                 title: 'Kỳ Quan Thiên Nhiên Thế Giới Vịnh Hạ Long',
                 subtitle: 'Hành trình du thuyền 5 sao lướt qua hàng nghìn đảo đá vôi kỳ vĩ soi bóng mặt vịnh xanh thẳm, chèo kayak qua hang luồn nguyên sơ.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
-                poster: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1920&q=80'
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-boat-traveling-on-a-calm-sea-at-sunset-41457-large.mp4',
+                poster: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80'
             }
         };
 

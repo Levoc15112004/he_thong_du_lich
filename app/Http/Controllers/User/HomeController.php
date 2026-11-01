@@ -88,13 +88,26 @@ class HomeController extends Controller
             }
         }
 
-        // Tự động thay thế ảnh spa cũ nếu đã lưu trước đó trong cơ sở dữ liệu
+        // Tự động chuẩn hóa ảnh chính xác theo từng danh lam thắng cảnh trong cơ sở dữ liệu
         try {
-            Tour::where('image', 'like', '%photo-1540555700478-4be289fbecef%')
-                ->where('end_location', 'Phú Quốc')
+            // Phú Quốc: bãi biển cát trắng làn nước lam ngọc
+            Tour::where('image', 'like', '%photo-1540555700478%')
                 ->update(['image' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800']);
-            Tour::where('image', 'like', '%photo-1540555700478-4be289fbecef%')
-                ->update(['image' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800']);
+
+            // Hạ Long: đảo đá vôi kỳ vĩ vịnh biển
+            Tour::where('end_location', 'like', '%Hạ Long%')
+                ->where('image', 'like', '%photo-1559592413%')
+                ->update(['image' => 'https://images.unsplash.com/photo-1528127269322-539801943592?w=800']);
+
+            // Đà Lạt: rừng thông sương mờ cao nguyên
+            Tour::where('end_location', 'like', '%Đà Lạt%')
+                ->where('image', 'like', '%photo-1507525428034%')
+                ->update(['image' => 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800']);
+
+            // Hà Giang: núi non đèo dốc sông Nho Quế
+            Tour::where('end_location', 'like', '%Hà Giang%')
+                ->where('image', 'like', '%photo-1528127269322%')
+                ->update(['image' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800']);
         } catch (\Throwable $e) {
         }
     }

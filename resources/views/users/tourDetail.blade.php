@@ -180,14 +180,24 @@
 
 <div id="tourVideoModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
-        <div class="flex items-center justify-between p-3 bg-slate-900 border-b border-slate-800 text-white">
-            <span class="text-xs font-bold flex items-center gap-2"><i class="fa-solid fa-film text-[#cf8a6e]"></i> Video Trải Nghiệm Tour: {{ $tour->name }}</span>
+        <div class="flex items-center justify-between p-3.5 bg-slate-900 border-b border-slate-800 text-white">
+            <span class="text-xs sm:text-sm font-bold flex items-center gap-2">
+                <i class="fa-solid fa-film text-[#cf8a6e]"></i>
+                <span>Thước Phim Trải Nghiệm Thực Tế: {{ $tour->name }}</span>
+            </span>
             <button type="button" onclick="closeTourVideoModal()" class="w-8 h-8 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
-        <div class="relative aspect-video w-full bg-black">
-            <iframe id="tourVideoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="relative aspect-video w-full bg-black flex items-center justify-center overflow-hidden">
+            <video id="tourNativeVideoPlayer" controls playsinline class="w-full h-full object-cover">
+                <source id="tourNativeVideoSource" src="" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video HTML5.
+            </video>
+        </div>
+        <div class="px-4 py-3 bg-slate-900 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Video trải nghiệm thực tế 4K Ultra HD</span>
+            <span class="text-[#cf8a6e] font-semibold">Wanderlust Travel Vietnam</span>
         </div>
     </div>
 </div>
@@ -1147,24 +1157,25 @@
 
 <script>
     const tourVideosByDest = {
-        'Phú Quốc': 'https://www.youtube.com/embed/w2Xn838R2g0?autoplay=1',
-        'Hà Giang': 'https://www.youtube.com/embed/4T7HwL3B3kQ?autoplay=1',
-        'Đà Lạt': 'https://www.youtube.com/embed/wHkPBq_cM_U?autoplay=1',
-        'Hạ Long': 'https://www.youtube.com/embed/oR91oOgnl2U?autoplay=1',
-        'Sa Pa': 'https://www.youtube.com/embed/U2S9a3y8X9A?autoplay=1',
-        'Sapa': 'https://www.youtube.com/embed/U2S9a3y8X9A?autoplay=1',
-        'Đà Nẵng': 'https://www.youtube.com/embed/V6W_W1lS1lU?autoplay=1',
-        'Hội An': 'https://www.youtube.com/embed/V6W_W1lS1lU?autoplay=1',
-        'Ninh Bình': 'https://www.youtube.com/embed/1La4QzGeaaQ?autoplay=1'
+        'Phú Quốc': 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
+        'Hà Giang': 'https://assets.mixkit.co/videos/preview/mixkit-mountain-landscape-with-thick-white-clouds-40285-large.mp4',
+        'Đà Lạt': 'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
+        'Hạ Long': 'https://assets.mixkit.co/videos/preview/mixkit-boat-traveling-on-a-calm-sea-at-sunset-41457-large.mp4',
+        'Sa Pa': 'https://assets.mixkit.co/videos/preview/mixkit-mountain-landscape-with-thick-white-clouds-40285-large.mp4',
+        'Sapa': 'https://assets.mixkit.co/videos/preview/mixkit-mountain-landscape-with-thick-white-clouds-40285-large.mp4',
+        'Đà Nẵng': 'https://assets.mixkit.co/videos/preview/mixkit-boat-traveling-on-a-calm-sea-at-sunset-41457-large.mp4',
+        'Hội An': 'https://assets.mixkit.co/videos/preview/mixkit-boat-traveling-on-a-calm-sea-at-sunset-41457-large.mp4',
+        'Ninh Bình': 'https://assets.mixkit.co/videos/preview/mixkit-boat-traveling-on-a-calm-sea-at-sunset-41457-large.mp4'
     };
 
     function openTourVideoModal() {
         const modal = document.getElementById('tourVideoModal');
-        const iframe = document.getElementById('tourVideoIframe');
+        const video = document.getElementById('tourNativeVideoPlayer');
+        const source = document.getElementById('tourNativeVideoSource');
         const dest = "{{ $tour->end_location ?? '' }}";
         const tourName = "{{ addslashes($tour->name ?? '') }}";
         
-        let videoSrc = "https://www.youtube.com/embed/w2Xn838R2g0?autoplay=1";
+        let videoSrc = 'https://assets.mixkit.co/videos/preview/mixkit-boat-traveling-on-a-calm-sea-at-sunset-41457-large.mp4';
         
         for (const [key, url] of Object.entries(tourVideosByDest)) {
             if (dest.includes(key) || tourName.includes(key)) {
@@ -1173,21 +1184,29 @@
             }
         }
         
-        if (iframe) iframe.src = videoSrc;
+        if (source && video) {
+            source.src = videoSrc;
+            video.load();
+            video.play().catch(() => {});
+        }
         if (modal) {
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
+        if (typeof stopCarousel === 'function') stopCarousel();
     }
 
     function closeTourVideoModal() {
         const modal = document.getElementById('tourVideoModal');
-        const iframe = document.getElementById('tourVideoIframe');
-        if (iframe) iframe.src = "";
+        const video = document.getElementById('tourNativeVideoPlayer');
+        if (video) {
+            video.pause();
+        }
         if (modal) {
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
+        if (typeof startCarousel === 'function') startCarousel();
     }
 </script>
 
