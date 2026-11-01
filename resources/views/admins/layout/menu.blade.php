@@ -149,10 +149,10 @@
                 <!-- MAIN MENU -->
                 <button
                     class="menu-toggle w-full flex items-center justify-between px-3 py-3 rounded-xl transition-colors duration-150 ease-in-out border border-transparent
-                    {{ $isActiveGroup ? 'bg-orange-50 text-orange-700 shadow-sm border-orange-100' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
+                    {{ $isActiveGroup ? 'bg-orange-50 text-orange-700 shadow-sm border-orange-100' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-white' }}">
 
                     <div class="flex items-center space-x-3.5">
-                        <i data-feather="{{ $item['icon'] }}" class="w-5 h-5 {{ $isActiveGroup ? 'text-orange-600' : 'text-slate-500 group-hover:text-slate-700' }}"></i>
+                        <i data-feather="{{ $item['icon'] }}" class="w-5 h-5 {{ $isActiveGroup ? 'text-orange-600' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:text-slate-200' }}"></i>
                         <span class="font-semibold text-[14px]">
                             {{ $item['title'] }}
                         </span>
@@ -176,7 +176,7 @@
                                 
                                 <a href="{{ $sub['route'] }}"
                                     class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-[13.5px] font-medium transition-colors duration-150
-                                   {{ $isActiveItem ? 'bg-[#863c20] text-white shadow-md shadow-xs' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
+                                   {{ $isActiveItem ? 'bg-[#863c20] text-white shadow-md shadow-xs' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-white' }}">
 
                                     <i data-feather="{{ $sub['icon'] }}"
                                         class="w-4 h-4 {{ $isActiveItem ? 'text-white' : 'text-slate-400' }}">
@@ -197,7 +197,7 @@
 
 
         <!-- LOGOUT -->
-        <li class="pt-6 mt-4 border-t border-slate-100">
+        <li class="pt-6 mt-4 border-t border-slate-100 dark:border-slate-800">
             <a href="{{ route('logout.admin') }}"
                 class="flex items-center space-x-3.5 px-3 py-3 rounded-xl font-semibold text-[14px] text-red-600 hover:bg-red-50 transition-colors">
                 <i data-feather="log-out" class="w-5 h-5 text-red-500"></i>

@@ -7,27 +7,30 @@
     <title>Wanderlust - Quản trị</title>
 
     <script>
-        tailwind = {
-            config: {
-                darkMode: 'class',
-                theme: { extend: { fontFamily: { sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'] } } },
-            }
-        };
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap&subset=vietnamese" rel="stylesheet">
-    <!-- Tailwind -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap&subset=vietnamese" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+            }
+          }
+        }
+      };
+    </script>
     <script src="https://unpkg.com/feather-icons"></script>
-
-    <!-- Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <!-- Custom CSS -->
@@ -57,16 +60,16 @@
             background-color: #334155 !important;
             color: #f1f5f9;
         }
-        html.dark .text-slate-900, html.dark .text-slate-800, html.dark .text-gray-900, html.dark .text-gray-800 {
+        html.dark .text-slate-900 dark:text-white, html.dark .text-slate-800 dark:text-white, html.dark .text-gray-900, html.dark .text-gray-800 {
             color: #f8fafc !important;
         }
-        html.dark .text-slate-700, html.dark .text-gray-700, html.dark .text-slate-600 {
+        html.dark .text-slate-700 dark:text-slate-200, html.dark .text-gray-700, html.dark .text-slate-600 {
             color: #cbd5e1 !important;
         }
-        html.dark .text-slate-500, html.dark .text-gray-500 {
+        html.dark .text-slate-500 dark:text-slate-400, html.dark .text-gray-500 {
             color: #94a3b8 !important;
         }
-        html.dark .border-slate-100, html.dark .border-slate-200, html.dark .border-gray-200, html.dark .border-gray-100 {
+        html.dark .border-slate-100 dark:border-slate-800, html.dark .border-slate-200 dark:border-slate-800, html.dark .border-gray-200, html.dark .border-gray-100 {
             border-color: #334155 !important;
         }
         html.dark #sidebar {

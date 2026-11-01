@@ -3,7 +3,7 @@
 @section('title', 'Cập nhật Tour du lịch')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-5xl mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,12 +16,12 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-500">
                         Cập nhật Tour du lịch
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Chỉnh sửa thông tin chuyến đi <strong>{{ $tour->name }}</strong></p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Chỉnh sửa thông tin chuyến đi <strong>{{ $tour->name }}</strong></p>
                 </div>
             </div>
 
             <a href="{{ route('admin.tours.index') }}"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
+               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 <span>Quay lại</span>
             </a>
@@ -56,38 +56,38 @@
                         <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center">
                             <i class="fa-solid fa-circle-info text-sm"></i>
                         </div>
-                        <h5 class="text-lg font-bold text-slate-800">Thông tin cơ bản</h5>
+                        <h5 class="text-lg font-bold text-slate-800 dark:text-white">Thông tin cơ bản</h5>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="md:col-span-3">
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Tên tour <span class="text-rose-500">*</span>
                             </label>
-                            <input type="text" name="name" value="{{ old('name', $tour->name) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 @error('name') border-rose-500 @enderror">
+                            <input type="text" name="name" value="{{ old('name', $tour->name) }}" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 @error('name') border-rose-500 @enderror">
                         </div>
 
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Giá niêm yết (Gốc)</label>
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Giá niêm yết (Gốc)</label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-medium">VNĐ</span>
-                                <input type="number" name="price" value="{{ old('price', $tour->price) }}" placeholder="Tự tính nếu để trống" min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-14 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                                <input type="number" name="price" value="{{ old('price', $tour->price) }}" placeholder="Tự tính nếu để trống" min="0" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-14 pr-4 py-3 text-slate-700 dark:text-slate-200 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Giá bán / Khuyến mãi <span class="text-rose-500">*</span></label>
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Giá bán / Khuyến mãi <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-medium">VNĐ</span>
-                                <input type="number" name="sale_price" value="{{ old('sale_price', $tour->sale_price) }}" min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-14 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 @error('sale_price') border-rose-500 @enderror">
+                                <input type="number" name="sale_price" value="{{ old('sale_price', $tour->sale_price) }}" min="0" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-14 pr-4 py-3 text-slate-700 dark:text-slate-200 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 @error('sale_price') border-rose-500 @enderror">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Danh mục <span class="text-rose-500">*</span>
                             </label>
-                            <select name="category_id" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer">
+                            <select name="category_id" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer">
                                 <option value="">-- Chọn danh mục --</option>
                                 @foreach ($categoryOptions as $opt)
                                     <option value="{{ $opt['id'] }}" {{ old('category_id', $tour->category_id) == $opt['id'] ? 'selected' : '' }}>
@@ -99,7 +99,7 @@
                     </div>
                 </section>
 
-                <hr class="border-slate-100">
+                <hr class="border-slate-100 dark:border-slate-800">
 
                 {{-- ===== ĐỊA ĐIỂM & THỜI GIAN ===== --}}
                 <section>
@@ -107,46 +107,46 @@
                         <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center">
                             <i class="fa-solid fa-route text-sm"></i>
                         </div>
-                        <h5 class="text-lg font-bold text-slate-800">Lộ trình & Tổ chức</h5>
+                        <h5 class="text-lg font-bold text-slate-800 dark:text-white">Lộ trình & Tổ chức</h5>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Điểm bắt đầu <span class="text-rose-500">*</span></label>
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Điểm bắt đầu <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                <input type="text" name="start_location" value="{{ old('start_location', $tour->start_location) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                                <input type="text" name="start_location" value="{{ old('start_location', $tour->start_location) }}" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Điểm kết thúc <span class="text-rose-500">*</span></label>
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Điểm kết thúc <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <i class="fa-solid fa-flag-checkered absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                <input type="text" name="end_location" value="{{ old('end_location', $tour->end_location) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                                <input type="text" name="end_location" value="{{ old('end_location', $tour->end_location) }}" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Thời lượng <span class="text-rose-500">*</span></label>
-                            <input type="text" name="time" value="{{ old('time', $tour->time) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Thời lượng <span class="text-rose-500">*</span></label>
+                            <input type="text" name="time" value="{{ old('time', $tour->time) }}" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                         </div>
 
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Khởi hành lúc <span class="text-rose-500">*</span></label>
-                            <input type="date" name="start_date" value="{{ old('start_date', optional($tour->start_date)->format('Y-m-d')) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Khởi hành lúc <span class="text-rose-500">*</span></label>
+                            <input type="date" name="start_date" value="{{ old('start_date', optional($tour->start_date)->format('Y-m-d')) }}" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer">
                         </div>
                         
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Số khách (Tối đa) <span class="text-rose-500">*</span></label>
-                            <input type="number" name="quantity" min="1" value="{{ old('quantity', $tour->quantity) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Số khách (Tối đa) <span class="text-rose-500">*</span></label>
+                            <input type="number" name="quantity" min="1" value="{{ old('quantity', $tour->quantity) }}" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                         </div>
                     </div>
                 </section>
 
-                <hr class="border-slate-100">
+                <hr class="border-slate-100 dark:border-slate-800">
 
                 {{-- ===== HÌNH ẢNH ===== --}}
                 <section>
@@ -154,13 +154,13 @@
                         <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center">
                             <i class="fa-solid fa-images text-sm"></i>
                         </div>
-                        <h5 class="text-lg font-bold text-slate-800">Hình ảnh</h5>
+                        <h5 class="text-lg font-bold text-slate-800 dark:text-white">Hình ảnh</h5>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Ảnh đại diện chính</label>
-                            <div class="relative group rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 inline-block w-full">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Ảnh đại diện chính</label>
+                            <div class="relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 inline-block w-full">
                                 <img id="preview-main" src="{{ asset($tour->image) }}" class="w-full object-cover h-48">
                                 <label class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white cursor-pointer">
                                     <i class="fa-solid fa-cloud-arrow-up text-3xl mb-2"></i>
@@ -171,21 +171,21 @@
                         </div>
 
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Cập nhật (Thêm/Sửa) ảnh mô tả phụ</label>
-                            <label class="flex flex-col items-center justify-center w-full h-48 border-2 border-slate-200 border-dashed rounded-2xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Cập nhật (Thêm/Sửa) ảnh mô tả phụ</label>
+                            <label class="flex flex-col items-center justify-center w-full h-48 border-2 border-slate-200 dark:border-slate-800 border-dashed rounded-2xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
                                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                     <i class="fa-regular fa-images text-3xl text-slate-400 mb-2"></i>
-                                    <p class="text-sm text-slate-500 font-medium"><span class="text-orange-500">Tải nhiều ảnh mới lên</span> (sẽ ghi đè)</p>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 font-medium"><span class="text-orange-500">Tải nhiều ảnh mới lên</span> (sẽ ghi đè)</p>
                                 </div>
                                 <input type="file" name="files[]" multiple class="hidden" accept="image/*" onchange="previewGallery(event)">
                             </label>
                             
                             @if(count($tour->images))
                                 <div id="gallery-wrapper" class="mt-4">
-                                    <p class="text-xs font-semibold text-slate-500 mb-2">Các ảnh hiện tại:</p>
+                                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">Các ảnh hiện tại:</p>
                                     <div class="grid grid-cols-4 sm:grid-cols-5 gap-2">
                                         @foreach ($tour->images as $img)
-                                            <div class="aspect-square rounded-lg overflow-hidden shadow-sm border border-slate-200">
+                                            <div class="aspect-square rounded-lg overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800">
                                                 <img src="{{ asset($img->image) }}" class="w-full h-full object-cover">
                                             </div>
                                         @endforeach
@@ -197,7 +197,7 @@
                     </div>
                 </section>
 
-                <hr class="border-slate-100">
+                <hr class="border-slate-100 dark:border-slate-800">
 
                 {{-- ===== THUỘC TÍNH & TRẠNG THÁI ===== --}}
                 <section>
@@ -205,16 +205,16 @@
                         <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center">
                             <i class="fa-solid fa-list-check text-sm"></i>
                         </div>
-                        <h5 class="text-lg font-bold text-slate-800">Tùy chọn & Trạng thái</h5>
+                        <h5 class="text-lg font-bold text-slate-800 dark:text-white">Tùy chọn & Trạng thái</h5>
                     </div>
 
                     <div class="mb-8">
-                        <label class="block text-slate-700 font-semibold mb-3">Loại hình Tour</label>
+                        <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-3">Loại hình Tour</label>
                         <div class="flex flex-wrap gap-3">
                             @foreach ($tourType as $attr)
                                 <label class="relative inline-flex items-center outline-none cursor-pointer group">
                                     <input type="checkbox" name="attr[]" value="{{ $attr->id }}" class="peer sr-only" {{ in_array($attr->id, old('attr', $tour->attrTours->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                    <div class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-600 font-medium text-sm transition-colors duration-200 peer-checked:bg-orange-500 peer-checked:text-white peer-checked:border-orange-500 hover:bg-slate-100 peer-checked:hover:bg-orange-600 shadow-sm">
+                                    <div class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 dark:border-slate-800 text-slate-600 font-medium text-sm transition-colors duration-200 peer-checked:bg-orange-500 peer-checked:text-white peer-checked:border-orange-500 hover:bg-slate-100 peer-checked:hover:bg-orange-600 shadow-sm">
                                         {{ $attr->value }}
                                     </div>
                                     <i class="fa-solid fa-check absolute top-0 right-0 -mt-2 -mr-2 bg-rose-500 text-white p-1 rounded-full text-[8px] opacity-0 peer-checked:opacity-100 transition-opacity z-10 shadow-sm border-2 border-white"></i>
@@ -225,13 +225,13 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Mô tả Tour</label>
-                            <textarea name="description" rows="5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">{{ old('description', $tour->description) }}</textarea>
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Mô tả Tour</label>
+                            <textarea name="description" rows="5" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">{{ old('description', $tour->description) }}</textarea>
                         </div>
                         
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Trạng thái phát hành</label>
-                            <select name="status" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer mb-4">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Trạng thái phát hành</label>
+                            <select name="status" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer mb-4">
                                 <option value="1" {{ old('status', $tour->status) == 1 ? 'selected' : '' }}>Hoạt động (Hiển thị ngay)</option>
                                 <option value="0" {{ old('status', $tour->status) == 0 ? 'selected' : '' }}>Ẩn (Bản nháp)</option>
                             </select>
@@ -239,12 +239,12 @@
                     </div>
                 </section>
 
-                <hr class="border-slate-100">
+                <hr class="border-slate-100 dark:border-slate-800">
 
                 {{-- ACTION BUTTONS --}}
                 <div class="flex flex-col sm:flex-row justify-end gap-4 pt-2">
                     <a href="{{ route('admin.tours.index') }}"
-                        class="inline-flex justify-center items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-8 py-3.5 rounded-xl font-bold transition-colors duration-200 text-sm">
+                        class="inline-flex justify-center items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 dark:text-slate-200 px-8 py-3.5 rounded-xl font-bold transition-colors duration-200 text-sm">
                         <i class="fa-solid fa-xmark text-lg"></i> Hủy
                     </a>
                     
@@ -279,7 +279,7 @@
             for (let i = 0; i < files.length; i++) {
                 const img = document.createElement('img');
                 img.src = URL.createObjectURL(files[i]);
-                img.className = 'w-full aspect-square object-cover rounded-lg shadow-sm border border-slate-100';
+                img.className = 'w-full aspect-square object-cover rounded-lg shadow-sm border border-slate-100 dark:border-slate-800';
                 container.appendChild(img);
             }
         } else {

@@ -1,10 +1,4 @@
 /* Hallmark: Wanderlust Travel · editorial · floor 0 fail */
-/**
- * Wanderlust Travel - Clean Editorial Design System
- * Universal Font: Be Vietnam Pro (100% Native Vietnamese Typography)
- * Palette: Terracotta / Heritage Ochre & Deep Forest Pine
- */
-
 :root {
   --color-canvas: #fbf9f6;
   --color-paper: #ffffff;
@@ -14,7 +8,6 @@
   --color-terracotta: #b85e3a;
   --color-terracotta-dark: #863c20;
   --color-pine: #1a443c;
-  --color-pine-dark: #12332c;
   --color-sand: #faf6f0;
 }
 
@@ -32,7 +25,6 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Confident Bold Headings with Flawless Vietnamese Diacritics */
 h1, h2, h3, .font-serif, .font-editorial {
   font-weight: 800;
   letter-spacing: -0.015em;
@@ -40,7 +32,6 @@ h1, h2, h3, .font-serif, .font-editorial {
   min-width: 0;
 }
 
-/* Tactile travel card */
 .travel-card, .premium-card {
   background: var(--color-paper);
   border: 1px solid var(--color-border);
@@ -53,7 +44,6 @@ h1, h2, h3, .font-serif, .font-editorial {
   box-shadow: 0 4px 8px -1px rgba(21, 23, 25, 0.05), 0 16px 28px -6px rgba(184, 94, 58, 0.10);
 }
 
-/* Stamp badge */
 .stamp-badge {
   display: inline-flex;
   align-items: center;
@@ -67,7 +57,6 @@ h1, h2, h3, .font-serif, .font-editorial {
   color: var(--color-terracotta-dark);
 }
 
-/* Primary boutique button */
 .btn-terracotta {
   background-color: var(--color-terracotta);
   color: #ffffff;
@@ -80,32 +69,119 @@ h1, h2, h3, .font-serif, .font-editorial {
   transform: translateY(-1px);
 }
 
-/* Focus-visible */
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 2px solid var(--color-terracotta);
   outline-offset: 2px;
 }
 
-/* Dark mode */
+/* UNIVERSAL DARK MODE SYSTEM (Frontend & Admin) */
 html.dark :root {
-  --color-canvas: #121518;
-  --color-paper: #1a1e22;
+  --color-canvas: #0b1120;
+  --color-paper: #1e293b;
   --color-ink: #f1f4f7;
-  --color-ink-muted: #929da9;
-  --color-border: #2b3239;
-  --color-sand: #231b17;
+  --color-ink-muted: #94a3b8;
+  --color-border: #334155;
+  --color-sand: #1e293b;
 }
 
-html.dark body {
-  background-color: #121518 !important;
-  color: #f1f4f7 !important;
+html.dark, html.dark body {
+  background-color: #0b1120 !important;
+  color: #f1f5f9 !important;
 }
 
 html.dark .travel-card, 
-html.dark .premium-card {
-  background-color: #1a1e22 !important;
-  border-color: #2b3239 !important;
-  color: #f1f4f7 !important;
+html.dark .premium-card,
+html.dark .dashboard-card,
+html.dark .glass-card-interactive,
+html.dark .bg-white,
+html.dark [class*="bg-white/"] {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-gray-50,
+html.dark .content-wrapper,
+html.dark .search-container,
+html.dark .category-container,
+html.dark .blog-container,
+html.dark .contact-container,
+html.dark [class*="bg-slate-50"] {
+  background-color: #0b1120 !important;
+  color: #f1f5f9 !important;
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-gray-100,
+html.dark [class*="bg-slate-100"] {
+  background-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-gray-900,
+html.dark .text-gray-800,
+html.dark .text-black,
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-700,
+html.dark .text-gray-700,
+html.dark .text-slate-600,
+html.dark .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-500,
+html.dark .text-gray-500,
+html.dark .text-slate-400,
+html.dark .text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+html.dark .border,
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-300,
+html.dark [class*="border-slate-"],
+html.dark [class*="border-gray-"] {
+  border-color: #334155 !important;
+}
+
+html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #334155 !important;
+}
+
+html.dark table thead tr {
+  background-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+html.dark table tbody tr {
+  border-color: #334155 !important;
+}
+html.dark table tbody tr:hover {
+  background-color: rgba(51, 65, 85, 0.4) !important;
+}
+
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+html.dark select option {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+html.dark #sidebar {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

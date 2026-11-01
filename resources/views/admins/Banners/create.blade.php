@@ -3,7 +3,7 @@
 @section('title', 'Thêm Banner mới')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-5xl mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,12 +16,12 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Thêm Banner mới
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Tạo quảng cáo hình ảnh mới cho hệ thống</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Tạo quảng cáo hình ảnh mới cho hệ thống</p>
                 </div>
             </div>
 
             <a href="{{ route('admin.banners.index') }}"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
+               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 <span>Quay lại danh sách</span>
             </a>
@@ -57,32 +57,32 @@
                             <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
                                 <i class="fa-solid fa-rectangle-list text-sm"></i>
                             </div>
-                            <h5 class="text-lg font-bold text-slate-800">Thông tin Banner</h5>
+                            <h5 class="text-lg font-bold text-slate-800 dark:text-white">Thông tin Banner</h5>
                         </div>
 
                         {{-- Name --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Tên Banner / Tiêu đề <span class="text-rose-500">*</span>
                             </label>
                             <input type="text" name="name" value="{{ old('name') }}" required
                                 oninvalid="this.setCustomValidity('Vui lòng nhập tên banner')"
                                 oninput="this.setCustomValidity('')"
                                 placeholder="Nhập tên banner..."
-                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 {{ $errors->has('name') ? 'border-rose-300' : '' }}">
+                                class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 {{ $errors->has('name') ? 'border-rose-300' : '' }}">
                         </div>
 
                         {{-- Image Upload --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Tải ảnh lên <span class="text-rose-500">*</span>
                             </label>
                             <label class="flex flex-col items-center justify-center w-full bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl px-4 py-8 cursor-pointer hover:bg-slate-100 hover:border-orange-400 transition-colors group {{ $errors->has('image') ? 'border-rose-300 bg-rose-50' : '' }}">
                                 <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center mb-3">
                                     <i class="fa-solid fa-cloud-arrow-up text-xl text-orange-500 group-hover:scale-110 transition-transform"></i>
                                 </div>
-                                <span class="text-sm font-bold text-slate-700 mb-1" id="file-name">Nhấn để chọn hoặc kéo thả ảnh</span>
-                                <span class="text-xs text-slate-500">Định dạng JPG, PNG. Tối đa 5MB.</span>
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-200 mb-1" id="file-name">Nhấn để chọn hoặc kéo thả ảnh</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400">Định dạng JPG, PNG. Tối đa 5MB.</span>
                                 <input type="file" name="image" class="hidden" accept="image/*" required onchange="previewImage(event)" 
                                     oninvalid="this.setCustomValidity('Vui lòng chọn ảnh banner')" oninput="this.setCustomValidity('')">
                             </label>
@@ -90,7 +90,7 @@
 
                         {{-- Link URL --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Liên kết quảng cáo <span class="text-slate-400 text-xs font-normal ml-1">(Tuỳ chọn)</span>
                             </label>
                             <div class="relative">
@@ -99,7 +99,7 @@
                                     oninvalid="this.setCustomValidity('Vui lòng nhập đúng định dạng URL liên kết (https://...)')"
                                     oninput="this.setCustomValidity('')"
                                     placeholder="VD: https://hethongdulich.com/tour-khuyen-mai"
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                                    class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
                         </div>
                     </div>
@@ -110,10 +110,10 @@
                             <div class="w-8 h-8 rounded-lg bg-pink-50 text-pink-500 flex items-center justify-center">
                                 <i class="fa-solid fa-eye text-sm"></i>
                             </div>
-                            <h5 class="text-lg font-bold text-slate-800">Xem trước hiển thị</h5>
+                            <h5 class="text-lg font-bold text-slate-800 dark:text-white">Xem trước hiển thị</h5>
                         </div>
 
-                        <div class="w-full aspect-[21/9] bg-slate-100 rounded-2xl border border-slate-200 shadow-inner flex flex-col items-center justify-center overflow-hidden relative">
+                        <div class="w-full aspect-[21/9] bg-slate-100 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-inner flex flex-col items-center justify-center overflow-hidden relative">
                             <img id="preview" src="#" class="hidden w-full h-full object-cover">
                             
                             <div id="previewPlaceholder" class="flex flex-col items-center justify-center text-slate-400 p-6 text-center">
@@ -126,7 +126,7 @@
 
                 </div>
                 
-                <hr class="border-slate-100">
+                <hr class="border-slate-100 dark:border-slate-800">
 
                 {{-- SUBMIT --}}
                 <div class="flex justify-end pt-2">

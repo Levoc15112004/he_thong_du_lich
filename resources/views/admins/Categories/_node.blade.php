@@ -3,7 +3,7 @@
     <!-- Hộp danh mục -->
     <div @click="open = !open"
         class="flex flex-col sm:flex-row sm:items-center sm:justify-between
-               bg-white border border-slate-100 p-3 sm:p-4 rounded-2xl
+               bg-white border border-slate-100 dark:border-slate-800 p-3 sm:p-4 rounded-2xl
                shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] hover:shadow-[0_8px_20px_-6px_rgba(249,115,22,0.15)] hover:border-orange-200 transition-colors duration-200 cursor-pointer gap-4 group mt-2">
 
         <!-- Left: Toggle + Name -->
@@ -21,13 +21,13 @@
                       <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
                 </button>
             @else
-                <div class="w-8 h-8 rounded-full bg-slate-50 text-slate-300 flex items-center justify-center shrink-0 border border-slate-100">
+                <div class="w-8 h-8 rounded-full bg-slate-50 text-slate-300 flex items-center justify-center shrink-0 border border-slate-100 dark:border-slate-800">
                     <i class="fa-solid fa-minus text-xs"></i>
                 </div>
             @endif
 
             <!-- Tên danh mục -->
-            <span class="text-slate-700 text-base font-semibold truncate group-hover:text-orange-600 transition-colors">
+            <span class="text-slate-700 dark:text-slate-200 text-base font-semibold truncate group-hover:text-orange-600 transition-colors">
                 {{ $node->name }}
             </span>
             

@@ -3,7 +3,7 @@
 @section('title', 'Danh sách Tiếp nhận Đơn đặt Tour')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 dark:bg-slate-950 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-200">
+<div class="min-h-screen bg-transparent dark:bg-transparent dark:bg-slate-950 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-200">
     <div class="max-w-[120rem] mx-auto space-y-6">
 
         {{-- HEADER --}}
@@ -217,7 +217,7 @@
                             {{ $order->tour->name ?? 'Tour không còn tồn tại' }}
                         </p>
                         <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
-                            <span class="text-slate-500 font-mono"><i class="fa-solid fa-phone mr-1"></i>{{ $order->phone ?? '---' }}</span>
+                            <span class="text-slate-500 dark:text-slate-400 font-mono"><i class="fa-solid fa-phone mr-1"></i>{{ $order->phone ?? '---' }}</span>
                             <span class="font-extrabold text-blue-600 dark:text-blue-400">{{ number_format($order->total_price) }} ₫</span>
                         </div>
                     </div>

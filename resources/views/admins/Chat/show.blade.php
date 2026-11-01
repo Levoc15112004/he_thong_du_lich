@@ -3,7 +3,7 @@
 @section('title', 'Chi tiết Phiên Chat & Hỗ trợ Khách hàng')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-5xl mx-auto space-y-6">
 
         {{-- HEADER --}}
@@ -16,7 +16,7 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-blue-600">
                         Chat: {{ $session->user->name ?? 'Khách' }}
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1 flex items-center gap-2">
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
                         <i class="fa-solid fa-envelope text-slate-400"></i>
                         {{ $session->user->email ?? 'Không rõ email' }}
                     </p>
@@ -24,7 +24,7 @@
             </div>
 
             <a href="{{ route('admin.chat.index') }}"
-                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group shrink-0">
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group shrink-0">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 <span>Trở lại danh sách</span>
             </a>
@@ -35,14 +35,14 @@
             <div class="absolute top-0 right-0 p-40 bg-indigo-50/50 rounded-full blur-3xl opacity-60 -z-10 -translate-y-1/2 translate-x-1/2"></div>
             
             {{-- CHAT HEADER --}}
-            <div class="border-b border-slate-100 bg-white/50 px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 relative z-10 backdrop-blur-md">
+            <div class="border-b border-slate-100 dark:border-slate-800 bg-white/50 px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 relative z-10 backdrop-blur-md">
                 <div class="flex items-center gap-3">
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-center shrink-0">
+                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0">
                         <i class="fa-regular fa-clock text-slate-400 text-sm"></i>
                     </div>
                     <div>
                         <p class="text-[10px] font-bold text-slate-400 font-medium mb-0.5">Bắt đầu lúc</p>
-                        <p class="text-sm font-bold text-slate-700">{{ optional($session->started_at)->format('H:i - d/m/Y') }}</p>
+                        <p class="text-sm font-bold text-slate-700 dark:text-slate-200">{{ optional($session->started_at)->format('H:i - d/m/Y') }}</p>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                             <span class="text-emerald-700 text-xs font-bold leading-none">Đang trực tuyến</span>
                         </div>
                     @else
-                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl shadow-sm">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm">
                             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-slate-300"></span>
                             <span class="text-slate-600 text-xs font-bold leading-none">Đã đóng phiên</span>
                         </div>
@@ -68,7 +68,7 @@
             <div id="chatBody" class="flex-1 overflow-y-auto px-4 sm:px-6 py-8 space-y-6 bg-slate-50/50 relative z-10 smooth-scroll">
                 
                 <div class="text-center mb-8">
-                    <span class="inline-block px-4 py-1.5 bg-white border border-slate-200 rounded-full text-[10px] font-bold text-slate-400 shadow-sm">Phiên chat bắt đầu</span>
+                    <span class="inline-block px-4 py-1.5 bg-white border border-slate-200 dark:border-slate-800 rounded-full text-[10px] font-bold text-slate-400 shadow-sm">Phiên chat bắt đầu</span>
                 </div>
 
                 @forelse($messages as $message)
@@ -80,7 +80,7 @@
                                 <i class="fa-solid fa-user text-orange-500 text-sm"></i>
                             </div>
                             <div>
-                                <div class="bg-white border border-slate-100 text-slate-700 px-5 py-3 rounded-2xl rounded-bl-sm shadow-sm text-[15px] leading-relaxed max-w-lg mb-1 float-left break-words">
+                                <div class="bg-white border border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-200 px-5 py-3 rounded-2xl rounded-bl-sm shadow-sm text-[15px] leading-relaxed max-w-lg mb-1 float-left break-words">
                                     {{ $message->message }}
                                 </div>
                                 <div class="clear-both"></div>
@@ -141,9 +141,9 @@
             </div>
 
             {{-- CHAT FOOTER ACTIONS --}}
-            <div class="border-t border-slate-100 bg-white px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 relative z-10">
+            <div class="border-t border-slate-100 dark:border-slate-800 bg-white px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 relative z-10">
                 <div class="text-sm font-medium">
-                    <span class="text-slate-500 mr-2">Tình trạng:</span>
+                    <span class="text-slate-500 dark:text-slate-400 mr-2">Tình trạng:</span>
                     @if ($session->status == 1)
                         <span class="text-emerald-500 font-bold"><i class="fa-solid fa-lock-open mr-1"></i> Có thể tiếp nhận</span>
                     @else

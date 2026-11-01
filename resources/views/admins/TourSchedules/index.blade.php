@@ -3,7 +3,7 @@
 @section('title', 'Danh sách Lịch trình Tour')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-7xl mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,7 +16,7 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Danh sách Lịch trình
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Quản lý chi tiết lịch trình của các chuyến đi</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Quản lý chi tiết lịch trình của các chuyến đi</p>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                     <input type="text" name="keyword" value="{{ request('keyword') }}"
                         placeholder="Tìm kiếm theo tên tour, địa điểm, tiêu đề..."
-                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none placeholder:text-slate-400">
+                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-700 dark:text-slate-200 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none placeholder:text-slate-400">
                 </div>
                 <div class="flex gap-3 w-full sm:w-auto">
                     @if (request('keyword'))
@@ -69,24 +69,24 @@
         </div>
 
         {{-- DESKTOP TABLE VIEW --}}
-        <div class="hidden lg:block bg-white border border-slate-200 shadow-sm rounded-3xl overflow-hidden">
+        <div class="hidden lg:block bg-white border border-slate-200 dark:border-slate-800 shadow-sm rounded-3xl overflow-hidden">
             <div class="overflow-x-auto w-full">
                 <table class="w-full text-left border-collapse min-w-[850px]">
                     <thead>
-                        <tr class="bg-slate-50/80 border-b border-slate-100">
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium w-20 text-center">Ảnh</th>
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium min-w-[220px]">Tên Tour</th>
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium text-center w-28">Ngày</th>
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium min-w-[280px]">Tiêu đề & Địa điểm</th>
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium text-center w-28">Thao tác</th>
+                        <tr class="bg-slate-50/80 border-b border-slate-100 dark:border-slate-800">
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium w-20 text-center">Ảnh</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium min-w-[220px]">Tên Tour</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium text-center w-28">Ngày</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium min-w-[280px]">Tiêu đề & Địa điểm</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium text-center w-28">Thao tác</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100">
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
                         @forelse ($tourSchedules as $schedule)
                             <tr class="hover:bg-slate-50/80 transition-colors group">
                                 <td class="px-5 py-4 text-center">
                                     @if ($schedule->image)
-                                        <div class="w-16 h-12 rounded-xl overflow-hidden shadow-sm border border-slate-100 mx-auto">
+                                        <div class="w-16 h-12 rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800 mx-auto">
                                             <img src="{{ Str::startsWith($schedule->image, ['http://', 'https://']) ? $schedule->image : asset($schedule->image) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                         </div>
                                     @else
@@ -96,7 +96,7 @@
                                     @endif
                                 </td>
                                 <td class="px-5 py-4">
-                                    <span class="font-semibold text-slate-800 line-clamp-2">{{ $schedule->tour->name ?? 'Không có' }}</span>
+                                    <span class="font-semibold text-slate-800 dark:text-white line-clamp-2">{{ $schedule->tour->name ?? 'Không có' }}</span>
                                 </td>
                                 <td class="px-5 py-4 text-center">
                                     <span class="inline-flex px-3 py-1 bg-orange-50 text-orange-700 rounded-lg font-bold text-xs border border-orange-200 shadow-sm whitespace-nowrap">
@@ -104,8 +104,8 @@
                                     </span>
                                 </td>
                                 <td class="px-5 py-4">
-                                    <div class="font-bold text-slate-800 line-clamp-1">{{ $schedule->title }}</div>
-                                    <div class="flex items-center gap-2 mt-1 text-xs text-slate-500">
+                                    <div class="font-bold text-slate-800 dark:text-white line-clamp-1">{{ $schedule->title }}</div>
+                                    <div class="flex items-center gap-2 mt-1 text-xs text-slate-500 dark:text-slate-400">
                                         <i class="fa-solid fa-location-dot text-rose-500"></i>
                                         <span>{{ $schedule->location_name ?? '---' }}</span>
                                         @if($schedule->latitude && $schedule->longitude)
@@ -145,7 +145,7 @@
                 </table>
             </div>
             @if($tourSchedules->hasPages())
-                <div class="px-6 py-4 border-t border-slate-100 bg-slate-50/50">
+                <div class="px-6 py-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50">
                     {{ $tourSchedules->links('vendor.pagination.tailwind') }}
                 </div>
             @endif
@@ -158,7 +158,7 @@
                     <div class="absolute top-0 right-0 p-8 bg-teal-50/50 rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
                     
                     <div class="flex gap-4">
-                        <div class="w-20 h-20 shrink-0 rounded-2xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
+                        <div class="w-20 h-20 shrink-0 rounded-2xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800 bg-slate-50">
                             @if ($schedule->image)
                                 <img src="{{ asset($schedule->image) }}" class="w-full h-full object-cover">
                             @else
@@ -172,19 +172,19 @@
                                 <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-lg font-bold text-xs border border-orange-100 shrink-0">
                                     Ngày {{ $schedule->day_number }}
                                 </span>
-                                <span class="text-xs font-semibold text-slate-500 truncate bg-slate-100 px-2 py-1 rounded-md">
+                                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 truncate bg-slate-100 px-2 py-1 rounded-md">
                                     {{ $schedule->tour->name ?? 'Không có' }}
                                 </span>
                             </div>
-                            <h5 class="font-bold text-slate-800 text-base leading-tight mb-1 truncate">{{ $schedule->title }}</h5>
-                            <div class="flex items-center gap-1.5 text-xs text-slate-500">
+                            <h5 class="font-bold text-slate-800 dark:text-white text-base leading-tight mb-1 truncate">{{ $schedule->title }}</h5>
+                            <div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
                                 <i class="fa-solid fa-location-dot text-rose-500 shrink-0"></i>
                                 <span class="truncate">{{ $schedule->location_name ?? '---' }}</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-3 mt-5 pt-4 border-t border-slate-100">
+                    <div class="grid grid-cols-2 gap-3 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
                         <a href="{{ route('admin.tour_schedules.edit', $schedule->id) }}" class="flex items-center justify-center gap-2 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white py-2.5 rounded-xl font-bold transition-colors text-sm border border-amber-100">
                             <i class="fa-solid fa-pen"></i> Sửa
                         </a>
@@ -200,7 +200,7 @@
             @empty
                 <div class="bg-white/80 p-10 rounded-3xl border border-dashed border-slate-300 text-center">
                     <i class="fa-regular fa-calendar-xmark text-4xl mb-3 text-slate-300"></i>
-                    <p class="text-slate-500 font-medium">Chưa có lịch trình nào!</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-medium">Chưa có lịch trình nào!</p>
                 </div>
             @endforelse
             

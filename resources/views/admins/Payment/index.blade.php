@@ -3,16 +3,16 @@
 @section('title', 'Danh sách thanh toán')
 
 @section('home')
-<div class="min-h-screen bg-slate-50/50 py-4 sm:py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent py-4 sm:py-8">
     <div class="max-w-[120rem] mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Page Header -->
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
             <div>
-                <h1 class="text-xl sm:text-3xl font-bold text-slate-900 ">Quản lý thanh toán</h1>
-                <p class="mt-1 text-sm text-slate-500 font-medium ">Theo dõi các giao dịch tài chính và trạng thái thanh toán.</p>
+                <h1 class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white ">Quản lý thanh toán</h1>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400 font-medium ">Theo dõi các giao dịch tài chính và trạng thái thanh toán.</p>
             </div>
-            <div class="bg-white px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
+            <div class="bg-white px-6 py-3 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                 <p class="text-sm font-medium text-slate-400 ">Tổng giao dịch</p>
                 <p class="text-xl font-bold text-orange-600">{{ $payments->total() }} <span class="text-xs text-slate-400 font-bold ">giao dịch</span></p>
             </div>
@@ -21,15 +21,15 @@
         <div class="bg-white shadow-xl shadow-slate-200/50 ring-1 ring-slate-100 rounded-3xl overflow-hidden">
             <!-- Desktop Table View (Hidden on Mobile) -->
             <div class="hidden lg:block overflow-x-auto">
-                <table class="min-w-full divide-y divide-slate-100">
+                <table class="min-w-full divide-y divide-slate-100 dark:divide-slate-800">
                     <thead class="bg-slate-50/50">
                         <tr>
-                            <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-slate-700 ">Giao dịch</th>
-                            <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-slate-700 ">Khách hàng & Tour</th>
-                            <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 ">Số tiền</th>
-                            <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 ">Loại thanh toán</th>
-                            <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 ">Trạng thái</th>
-                            <th scope="col" class="px-6 py-4 text-right text-sm font-bold text-slate-700 ">Thao tác</th>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-slate-700 dark:text-slate-200 ">Giao dịch</th>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-slate-700 dark:text-slate-200 ">Khách hàng & Tour</th>
+                            <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 dark:text-slate-200 ">Số tiền</th>
+                            <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 dark:text-slate-200 ">Loại thanh toán</th>
+                            <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 dark:text-slate-200 ">Trạng thái</th>
+                            <th scope="col" class="px-6 py-4 text-right text-sm font-bold text-slate-700 dark:text-slate-200 ">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-slate-50">
@@ -41,13 +41,13 @@
                                             {{ substr($payment->payment_method ?? 'P', 0, 1) }}
                                         </div>
                                         <div>
-                                            <div class="text-sm font-medium text-slate-900">#{{ $payment->id }}</div>
+                                            <div class="text-sm font-medium text-slate-900 dark:text-white">#{{ $payment->id }}</div>
                                             <div class="text-sm text-slate-400 font-medium  ">{{ $payment->payment_method }}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-5">
-                                    <div class="text-sm font-bold text-slate-800 line-clamp-1 max-w-[200px]">{{ $payment->order->user->name ?? 'N/A' }}</div>
+                                    <div class="text-sm font-bold text-slate-800 dark:text-white line-clamp-1 max-w-[200px]">{{ $payment->order->user->name ?? 'N/A' }}</div>
                                     <div class="text-sm text-slate-400 font-medium  line-clamp-1 max-w-[200px]">{{ $payment->order->tour->name ?? 'N/A' }}</div>
                                 </td>
                                 <td class="px-6 py-5 whitespace-nowrap text-center text-sm font-bold text-orange-600">
@@ -63,7 +63,7 @@
                                             Hoàn tất
                                         </span>
                                     @else
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg bg-slate-50 text-slate-600 text-sm font-bold  border border-slate-200">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg bg-slate-50 text-slate-600 text-sm font-bold  border border-slate-200 dark:border-slate-800">
                                             {{ $payment->payment_type }}
                                         </span>
                                     @endif
@@ -94,7 +94,7 @@
             </div>
 
             <!-- Mobile Card View (Shown on Mobile) -->
-            <div class="lg:hidden divide-y divide-slate-100 bg-white">
+            <div class="lg:hidden divide-y divide-slate-100 dark:divide-slate-800 bg-white">
                 @foreach ($payments as $payment)
                     @php
                         $config = $statusConfig[$payment->status] ?? $statusConfig[0];
@@ -106,7 +106,7 @@
                                     {{ substr($payment->payment_method ?? 'P', 0, 1) }}
                                 </div>
                                 <div>
-                                    <h3 class="text-base font-bold text-slate-900 leading-tight">#{{ $payment->id }}</h3>
+                                    <h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight">#{{ $payment->id }}</h3>
                                     <p class="text-sm text-slate-400 font-bold ">{{ $payment->payment_method }}</p>
                                 </div>
                             </div>
@@ -116,18 +116,18 @@
                             </span>
                         </div>
 
-                        <div class="bg-slate-50/80 p-4 rounded-2xl border border-slate-100 space-y-3">
+                        <div class="bg-slate-50/80 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-3">
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-[9px] font-bold text-slate-400  block mb-0.5">Khách hàng</span>
-                                    <span class="text-xs font-bold text-slate-800 line-clamp-1 ">{{ $payment->order->user->name ?? 'N/A' }}</span>
+                                    <span class="text-xs font-bold text-slate-800 dark:text-white line-clamp-1 ">{{ $payment->order->user->name ?? 'N/A' }}</span>
                                 </div>
                                 <div class="text-right">
                                     <span class="text-[9px] font-bold text-slate-400  block mb-0.5">Số tiền</span>
                                     <span class="text-sm font-bold text-orange-600">{{ number_format($payment->amount) }}₫</span>
                                 </div>
                             </div>
-                            <div class="pt-2 border-t border-slate-100">
+                            <div class="pt-2 border-t border-slate-100 dark:border-slate-800">
                                 <span class="text-[9px] font-bold text-slate-400  block mb-1">Tour đăng ký</span>
                                 <span class="text-xs font-bold text-slate-600 line-clamp-1   er">{{ $payment->order->tour->name ?? 'N/A' }}</span>
                             </div>
@@ -155,7 +155,7 @@
 
             <!-- Pagination -->
             @if ($payments->hasPages())
-                <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 dark:border-slate-800">
                     {{ $payments->links('pagination::tailwind') }}
                 </div>
             @endif

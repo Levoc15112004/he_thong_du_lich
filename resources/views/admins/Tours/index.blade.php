@@ -3,7 +3,7 @@
 @section('title', 'Quản lý Tour du lịch')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-[120rem] mx-auto space-y-8">
 
         {{-- Header & Actions --}}
@@ -16,20 +16,20 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Danh sách Tour
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Quản lý các chuyến đi và lộ trình du lịch</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Quản lý các chuyến đi và lộ trình du lịch</p>
                 </div>
             </div>
 
             <div class="flex flex-col sm:flex-row items-center gap-3">
                 <form action="" method="GET" class="relative w-full sm:w-auto">
                     <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="Tìm tên, địa điểm..."
-                           class="w-full sm:w-64 pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors shadow-sm">
+                           class="w-full sm:w-64 pl-10 pr-4 py-3 bg-white border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors shadow-sm">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                     @if(request('status') !== null) <input type="hidden" name="status" value="{{ request('status') }}"> @endif
                 </form>
 
                 <form action="" method="GET" class="w-full sm:w-auto min-w-[150px] relative">
-                    <select name="status" onchange="this.form.submit()" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors shadow-sm cursor-pointer appearance-none">
+                    <select name="status" onchange="this.form.submit()" class="w-full px-4 py-3 bg-white border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors shadow-sm cursor-pointer appearance-none">
                         <option value="">Tất cả trạng thái</option>
                         <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Đang hoạt động</option>
                         <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Đã ẩn</option>
@@ -57,28 +57,28 @@
         <div class="hidden lg:block bg-white/80 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl overflow-hidden">
             <table class="w-full text-left border-collapse">
                 <thead>
-                    <tr class="bg-slate-50/80 border-b border-slate-100">
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium">Thông tin Tour</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-center">Giá bán</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-center">Thời gian</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-center">Số chỗ</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-center">Trạng thái</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-right">Thao tác</th>
+                    <tr class="bg-slate-50/80 border-b border-slate-100 dark:border-slate-800">
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium">Thông tin Tour</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium text-center">Giá bán</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium text-center">Thời gian</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium text-center">Số chỗ</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium text-center">Trạng thái</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 font-medium text-right">Thao tác</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100">
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
                     @forelse($tours as $tour)
                         <tr class="hover:bg-slate-50/50 transition-colors group">
                             <td class="px-6 py-5">
                                 <div class="flex items-center gap-5">
-                                    <div class="w-24 h-24 rounded-2xl overflow-hidden shadow-md shadow-slate-200 shrink-0 border border-slate-100 relative group-hover:shadow-lg transition-colors">
+                                    <div class="w-24 h-24 rounded-2xl overflow-hidden shadow-md shadow-slate-200 shrink-0 border border-slate-100 dark:border-slate-800 relative group-hover:shadow-lg transition-colors">
                                         <img src="{{ asset($tour->image) }}" onerror="this.src='/default.png'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                     </div>
                                     <div class="flex flex-col min-w-0 max-w-md">
-                                        <a href="{{ route('admin.tours.edit', $tour->id) }}" class="text-base font-bold text-slate-800 hover:text-orange-600 transition-colors line-clamp-2 mb-2 leading-snug">
+                                        <a href="{{ route('admin.tours.edit', $tour->id) }}" class="text-base font-bold text-slate-800 dark:text-white hover:text-orange-600 transition-colors line-clamp-2 mb-2 leading-snug">
                                             {{ $tour->name }}
                                         </a>
-                                        <div class="flex items-center gap-2 text-[11px] font-semibold text-slate-500 bg-slate-100 w-fit px-3 py-1.5 rounded-lg border border-slate-200">
+                                        <div class="flex items-center gap-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 w-fit px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800">
                                             <span>{{ $tour->start_location }}</span>
                                             <i class="fa-solid fa-arrow-right-long text-slate-400"></i>
                                             <span>{{ $tour->end_location }}</span>
@@ -94,7 +94,7 @@
                             </td>
                             <td class="px-6 py-5 text-center">
                                 <div class="inline-flex flex-col items-center">
-                                    <span class="text-lg font-bold text-slate-700 leading-none">{{ $tour->quantity ?? '0' }}</span>
+                                    <span class="text-lg font-bold text-slate-700 dark:text-slate-200 leading-none">{{ $tour->quantity ?? '0' }}</span>
                                     <span class="text-[10px] font-medium font-semibold text-slate-400 mt-1">Khách</span>
                                 </div>
                             </td>
@@ -102,7 +102,7 @@
                                 @php
                                     $statusConfig = [
                                         1 => ['class' => 'bg-emerald-50 text-emerald-600 border-emerald-200', 'icon' => 'fa-circle-check', 'text' => 'Hoạt động'],
-                                        0 => ['class' => 'bg-slate-50 text-slate-500 border-slate-200', 'icon' => 'fa-eye-slash', 'text' => 'Đã ẩn']
+                                        0 => ['class' => 'bg-slate-50 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-800', 'icon' => 'fa-eye-slash', 'text' => 'Đã ẩn']
                                     ];
                                     $cfg = $statusConfig[$tour->status] ?? ['class' => 'bg-amber-50 text-amber-600 border-amber-200', 'icon' => 'fa-clock', 'text' => 'Chờ duyệt'];
                                 @endphp
@@ -142,7 +142,7 @@
             </table>
             
             @if($tours->hasPages())
-                <div class="px-6 py-4 border-t border-slate-100 bg-slate-50/30">
+                <div class="px-6 py-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50/30">
                     {{ $tours->appends(request()->query())->links('pagination::tailwind') }}
                 </div>
             @endif
@@ -166,13 +166,13 @@
                     </div>
 
                     <div class="flex gap-4">
-                        <div class="w-28 h-28 rounded-2xl overflow-hidden shrink-0 shadow-md border border-slate-100">
+                        <div class="w-28 h-28 rounded-2xl overflow-hidden shrink-0 shadow-md border border-slate-100 dark:border-slate-800">
                             <img src="{{ asset($tour->image) }}" onerror="this.src='/default.png'" class="w-full h-full object-cover">
                         </div>
                         <div class="flex-1 min-w-0 pt-1 flex flex-col justify-between py-1">
                             <div>
-                                <h3 class="font-bold text-slate-800 leading-tight mb-2 line-clamp-2 text-sm">{{ $tour->name }}</h3>
-                                <div class="flex items-center gap-1 text-[11px] font-medium text-slate-500 mb-2">
+                                <h3 class="font-bold text-slate-800 dark:text-white leading-tight mb-2 line-clamp-2 text-sm">{{ $tour->name }}</h3>
+                                <div class="flex items-center gap-1 text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-2">
                                     <i class="fa-solid fa-location-dot text-slate-300"></i>
                                     <span class="truncate">{{ $tour->start_location }} - {{ $tour->end_location }}</span>
                                 </div>
@@ -182,31 +182,31 @@
                     </div>
 
                     <div class="grid grid-cols-2 gap-3 mt-4">
-                        <div class="bg-slate-50 rounded-2xl p-3 flex flex-col items-center justify-center border border-slate-100">
+                        <div class="bg-slate-50 rounded-2xl p-3 flex flex-col items-center justify-center border border-slate-100 dark:border-slate-800">
                             <span class="text-[10px] font-semibold text-slate-400 font-medium mb-1">Thời gian</span>
-                            <span class="text-xs font-bold text-slate-700">{{ $tour->time ?? '---' }}</span>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">{{ $tour->time ?? '---' }}</span>
                         </div>
-                        <div class="bg-slate-50 rounded-2xl p-3 flex flex-col items-center justify-center border border-slate-100">
+                        <div class="bg-slate-50 rounded-2xl p-3 flex flex-col items-center justify-center border border-slate-100 dark:border-slate-800">
                             <span class="text-[10px] font-semibold text-slate-400 font-medium mb-1">Số chỗ</span>
-                            <span class="text-xs font-bold text-slate-700">{{ $tour->quantity ?? '0' }} Khách</span>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">{{ $tour->quantity ?? '0' }} Khách</span>
                         </div>
                     </div>
 
-                    <div class="flex gap-3 mt-4 pt-4 border-t border-slate-100">
-                        <a href="{{ route('admin.tours.edit', $tour->id) }}" class="flex-1 py-3 flex items-center justify-center gap-2 bg-slate-50 hover:bg-orange-50 text-orange-600 rounded-xl text-xs font-bold transition-colors border border-slate-100">
+                    <div class="flex gap-3 mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <a href="{{ route('admin.tours.edit', $tour->id) }}" class="flex-1 py-3 flex items-center justify-center gap-2 bg-slate-50 hover:bg-orange-50 text-orange-600 rounded-xl text-xs font-bold transition-colors border border-slate-100 dark:border-slate-800">
                             <i class="fa-solid fa-pen-to-square"></i> Cập nhật
                         </a>
                         <form action="{{ route('admin.tours.destroy', $tour->id) }}" method="POST" class="flex-1">
                             @csrf @method('DELETE')
-                            <button class="w-full py-3 flex items-center justify-center gap-2 bg-slate-50 hover:bg-rose-50 text-rose-500 rounded-xl text-xs font-bold transition-colors border border-slate-100" onclick="return confirm('Xác nhận xóa?')">
+                            <button class="w-full py-3 flex items-center justify-center gap-2 bg-slate-50 hover:bg-rose-50 text-rose-500 rounded-xl text-xs font-bold transition-colors border border-slate-100 dark:border-slate-800" onclick="return confirm('Xác nhận xóa?')">
                                 <i class="fa-solid fa-trash-can"></i> Xóa
                             </button>
                         </form>
                     </div>
                 </div>
             @empty
-                <div class="text-center p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
-                    <p class="text-sm font-medium text-slate-500">Chưa có dữ liệu tour phù hợp.</p>
+                <div class="text-center p-8 bg-white rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Chưa có dữ liệu tour phù hợp.</p>
                 </div>
             @endforelse
 

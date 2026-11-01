@@ -3,7 +3,7 @@
 @section('title', 'Báo cáo Tổng hợp Hệ thống')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-[120rem] mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,12 +16,12 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Báo cáo Tổng hợp
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Phân tích chuyên sâu về doanh thu và thống kê kinh doanh</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Phân tích chuyên sâu về doanh thu và thống kê kinh doanh</p>
                 </div>
             </div>
             
             <div class="flex items-center gap-3">
-                <div class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm text-[10px] text-slate-500 font-bold font-medium flex items-center gap-2">
+                <div class="px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm text-[10px] text-slate-500 dark:text-slate-400 font-bold font-medium flex items-center gap-2">
                     <i class="fa-solid fa-calendar-day text-orange-500 text-sm"></i>
                     Hôm nay: {{ \Carbon\Carbon::now()->format('d/m/Y') }}
                 </div>
@@ -29,12 +29,12 @@
         </div>
 
         {{-- TINH NĂNG LỌC --}}
-        <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 relative overflow-hidden z-10">
+        <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 relative overflow-hidden z-10">
             <div class="absolute top-0 right-0 p-32 bg-orange-50/50 rounded-full blur-3xl opacity-50 -z-10 -translate-y-1/2 translate-x-1/2"></div>
             
             <form method="GET" action="{{ route('admin.reports') }}">
-                <div class="flex flex-col md:flex-row md:items-end gap-6 justify-between border-b border-slate-100 pb-3 mb-2">
-                    <h5 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                <div class="flex flex-col md:flex-row md:items-end gap-6 justify-between border-b border-slate-100 dark:border-slate-800 pb-3 mb-2">
+                    <h5 class="text-base font-bold text-slate-800 dark:text-white flex items-center gap-2">
                         <i class="fa-solid fa-filter text-orange-500"></i> Bộ Lọc Báo Cáo
                     </h5>
                 </div>
@@ -42,10 +42,10 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
                     {{-- Month --}}
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 font-medium mb-2">Chọn Tháng</label>
+                        <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 font-medium mb-2">Chọn Tháng</label>
                         <div class="relative">
                             <i class="fa-solid fa-calendar-days absolute left-4 top-1/2 -translate-y-1/2 text-orange-500 z-10"></i>
-                            <select name="month" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 appearance-none relative z-0">
+                            <select name="month" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-11 pr-4 py-3 text-slate-700 dark:text-slate-200 font-bold focus:outline-none focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 appearance-none relative z-0">
                                 <option value="">Tất cả các tháng</option>
                                 @for($i=1;$i<=12;$i++)
                                     <option value="{{ $i }}" {{ request('month') == $i ? 'selected' : '' }}>
@@ -59,10 +59,10 @@
 
                     {{-- Year --}}
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 font-medium mb-2">Chọn Năm</label>
+                        <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 font-medium mb-2">Chọn Năm</label>
                         <div class="relative">
                             <i class="fa-solid fa-calendar absolute left-4 top-1/2 -translate-y-1/2 text-blue-500 z-10"></i>
-                            <select name="year" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 appearance-none relative z-0">
+                            <select name="year" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-11 pr-4 py-3 text-slate-700 dark:text-slate-200 font-bold focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 appearance-none relative z-0">
                                 @for($i=2023;$i<=2035;$i++)
                                     <option value="{{ $i }}" {{ request('year', date('Y')) == $i ? 'selected' : '' }}>
                                         Năm {{ $i }}
@@ -87,7 +87,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
             {{-- Revenue --}}
-            <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col justify-between group overflow-hidden relative">
+            <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 flex flex-col justify-between group overflow-hidden relative">
                 <div class="absolute -right-6 -bottom-6 text-9xl text-orange-50 opacity-50 group-hover:scale-110 transition-transform duration-500"><i class="fa-solid fa-sack-dollar"></i></div>
                 <div class="flex items-center gap-4 mb-6 relative z-10">
                     <div class="w-14 h-14 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-2xl shadow-inner shrink-0 group-hover:scale-110 transition-transform">
@@ -101,7 +101,7 @@
             </div>
 
             {{-- Orders --}}
-            <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col justify-between group overflow-hidden relative">
+            <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 flex flex-col justify-between group overflow-hidden relative">
                 <div class="absolute -right-6 -bottom-6 text-9xl text-blue-50 opacity-50 group-hover:scale-110 transition-transform duration-500"><i class="fa-solid fa-file-invoice-dollar"></i></div>
                 <div class="flex items-center gap-4 mb-6 relative z-10">
                     <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl shadow-inner shrink-0 group-hover:scale-110 transition-transform">
@@ -109,13 +109,13 @@
                     </div>
                     <div>
                         <h6 class="text-xs font-bold text-slate-400 font-medium mb-1">Đơn Hàng Giao Dịch</h6>
-                        <p class="text-3xl font-bold text-slate-800">{{ number_format($totalOrders) }} <span class="text-base text-slate-400 font-bold">Đơn</span></p>
+                        <p class="text-3xl font-bold text-slate-800 dark:text-white">{{ number_format($totalOrders) }} <span class="text-base text-slate-400 font-bold">Đơn</span></p>
                     </div>
                 </div>
             </div>
 
             {{-- Users --}}
-            <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col justify-between group overflow-hidden relative">
+            <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 flex flex-col justify-between group overflow-hidden relative">
                 <div class="absolute -right-6 -bottom-6 text-9xl text-amber-50 opacity-50 group-hover:scale-110 transition-transform duration-500"><i class="fa-solid fa-users-viewfinder"></i></div>
                 <div class="flex items-center gap-4 mb-6 relative z-10">
                     <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl shadow-inner shrink-0 group-hover:scale-110 transition-transform">
@@ -123,7 +123,7 @@
                     </div>
                     <div>
                         <h6 class="text-xs font-bold text-slate-400 font-medium mb-1">Người Dùng Mới</h6>
-                        <p class="text-3xl font-bold text-slate-800">{{ number_format($totalUsers) }} <span class="text-base text-slate-400 font-bold">Người</span></p>
+                        <p class="text-3xl font-bold text-slate-800 dark:text-white">{{ number_format($totalUsers) }} <span class="text-base text-slate-400 font-bold">Người</span></p>
                     </div>
                 </div>
             </div>
@@ -134,9 +134,9 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             {{-- CHART SECTION (Takes 2/3) --}}
-            <div class="lg:col-span-2 bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                <div class="flex items-center justify-between mb-8 border-b border-slate-100 pb-4">
-                    <h5 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+            <div class="lg:col-span-2 bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50">
+                <div class="flex items-center justify-between mb-8 border-b border-slate-100 dark:border-slate-800 pb-4">
+                    <h5 class="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
                         <i class="fa-solid fa-chart-area text-blue-500"></i> Xu hướng Doanh thu (Theo khoảng thời gian)
                     </h5>
                 </div>
@@ -147,27 +147,27 @@
             </div>
 
             {{-- TOP TOURS (Takes 1/3) --}}
-            <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                <div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
-                    <h5 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+            <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50">
+                <div class="flex items-center justify-between mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">
+                    <h5 class="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
                         <i class="fa-solid fa-ranking-star text-amber-500"></i> Bảng Vàng Tours
                     </h5>
                 </div>
 
                 <div class="space-y-4 max-h-[380px] overflow-y-auto pr-2 custom-scrollbar">
                     @forelse($topTours as $index => $tour)
-                        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 flex items-center gap-4 hover:border-orange-200 transition-colors">
+                        <div class="bg-slate-50 border border-slate-100 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4 hover:border-orange-200 transition-colors">
                             <div class="w-10 h-10 rounded-full font-bold text-lg flex items-center justify-center shrink-0 shadow-inner
                                 {{ $index == 0 ? 'bg-gradient-to-r from-amber-300 to-yellow-500 text-yellow-900 shadow-yellow-200/50' : 
-                                  ($index == 1 ? 'bg-gradient-to-r from-slate-300 to-gray-400 text-slate-800 shadow-slate-300/50' : 
+                                  ($index == 1 ? 'bg-gradient-to-r from-slate-300 to-gray-400 text-slate-800 dark:text-white shadow-slate-300/50' : 
                                   ($index == 2 ? 'bg-gradient-to-r from-orange-300 to-amber-600 text-orange-950 shadow-orange-200/50' : 
-                                  'bg-white text-slate-400 border border-slate-200')) }}">
+                                  'bg-white text-slate-400 border border-slate-200 dark:border-slate-800')) }}">
                                 {{ $index + 1 }}
                             </div>
                             <div class="min-w-0">
-                                <h6 class="font-bold text-slate-800 text-sm leading-tight mb-1 truncate" title="{{ $tour->name }}">{{ $tour->name }}</h6>
+                                <h6 class="font-bold text-slate-800 dark:text-white text-sm leading-tight mb-1 truncate" title="{{ $tour->name }}">{{ $tour->name }}</h6>
                                 <div class="flex items-center gap-3 text-[11px] font-bold">
-                                    <span class="text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200"><i class="fa-solid fa-receipt mr-1"></i>{{ $tour->total_orders }} Đơn</span>
+                                    <span class="text-slate-500 dark:text-slate-400 bg-white px-2 py-0.5 rounded border border-slate-200 dark:border-slate-800"><i class="fa-solid fa-receipt mr-1"></i>{{ $tour->total_orders }} Đơn</span>
                                     <span class="text-orange-600"><i class="fa-solid fa-coins mr-1"></i>{{ number_format($tour->revenue) }} ₫</span>
                                 </div>
                             </div>

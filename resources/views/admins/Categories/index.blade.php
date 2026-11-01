@@ -3,7 +3,7 @@
 @section('title', 'Quản lý danh mục')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-[120rem] mx-auto">
 
         <!-- Header -->
@@ -16,7 +16,7 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Danh sách danh mục
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Quản lý và sắp xếp cấu trúc danh mục hệ thống</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Quản lý và sắp xếp cấu trúc danh mục hệ thống</p>
                 </div>
             </div>
 
@@ -36,8 +36,8 @@
                     <div class="w-24 h-24 mb-4 rounded-full bg-orange-50 flex items-center justify-center text-orange-400">
                         <i class="fa-regular fa-folder-open text-4xl"></i>
                     </div>
-                    <h5 class="text-lg font-semibold text-slate-700">Chưa có danh mục nào</h5>
-                    <p class="text-slate-500 mt-2">Vui lòng thêm danh mục mới để bắt đầu sử dụng.</p>
+                    <h5 class="text-lg font-semibold text-slate-700 dark:text-slate-200">Chưa có danh mục nào</h5>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2">Vui lòng thêm danh mục mới để bắt đầu sử dụng.</p>
                 </div>
             @else
                 <div class="dd font-sans" id="nestable">
@@ -48,7 +48,7 @@
                     </ol>
                 </div>
                 
-                <div class="mt-8 pt-4 border-t border-slate-100 flex justify-end">
+                <div class="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end">
                     <button id="save-order" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-xl shadow-md transition-colors flex items-center gap-2">
                         <i class="fa-solid fa-sort"></i> Lưu thứ tự
                     </button>

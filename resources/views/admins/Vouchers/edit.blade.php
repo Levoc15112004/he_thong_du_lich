@@ -30,13 +30,13 @@
 
             <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                 <div>
-                    <h1 class="text-xl sm:text-3xl font-bold text-slate-900 ">Chỉnh sửa Voucher</h1>
-                    <p class="text-slate-500 mt-1">Cập nhật mã: <span
+                    <h1 class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white ">Chỉnh sửa Voucher</h1>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1">Cập nhật mã: <span
                             class="font-bold text-blue-600">{{ $voucher->code }}</span></p>
                 </div>
                 <div class="flex items-center gap-3">
                     <a href="{{ route('admin.vouchers.index') }}"
-                        class="px-5 py-2.5 border border-slate-200 text-slate-600 font-medium rounded-xl hover:bg-white transition-colors">
+                        class="px-5 py-2.5 border border-slate-200 dark:border-slate-800 text-slate-600 font-medium rounded-xl hover:bg-white transition-colors">
                         Hủy bỏ
                     </a>
                     <button type="submit"
@@ -49,8 +49,8 @@
             <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
                 <div class="xl:col-span-2 space-y-6">
 
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                        <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
+                        <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
                             <span
                                 class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm">01</span>
                             Thông tin cơ bản
@@ -58,20 +58,20 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Tên chương trình</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Tên chương trình</label>
                                 <input type="text" name="name" value="{{ old('name', $voucher->name) }}"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-colors @error('name') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none transition-colors @error('name') border-red-500 @enderror">
                                 @error('name')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Mã Voucher</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Mã Voucher</label>
                                 <div class="relative">
                                     <input type="text" id="voucherCode" name="code"
                                         value="{{ old('code', $voucher->code) }}"
-                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none  font-mono font-bold transition-colors @error('code') border-red-500 @enderror">
+                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none  font-mono font-bold transition-colors @error('code') border-red-500 @enderror">
                                     <button type="button" onclick="generateCode()"
                                         class="absolute right-2 top-1.5 px-3 py-1.5 text-xs font-bold text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
                                         <i class="fas fa-random mr-1"></i>
@@ -83,12 +83,12 @@
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Mô tả (Description)</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Mô tả (Description)</label>
                                 <textarea name="description" rows="3"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-colors">{{ old('description', $voucher->description) }}</textarea>
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none transition-colors">{{ old('description', $voucher->description) }}</textarea>
                             </div>
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">
                                     Loại sự kiện
                                 </label>
                                 @php
@@ -96,7 +96,7 @@
                                 @endphp
 
                                 <select name="event_type" id="event_type"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800">
 
                                     <option value="none" {{ $event == 'none' ? 'selected' : '' }}>
                                         Không
@@ -124,8 +124,8 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                        <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
+                        <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
                             <span
                                 class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm">02</span>
                             Cấu hình & Điều kiện
@@ -133,9 +133,9 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Loại giảm giá</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Loại giảm giá</label>
                                 <select id="discountType" name="discount_type"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
                                     <option value="percent"
                                         {{ old('discount_type', $voucher->discount_type) == 'percent' ? 'selected' : '' }}>
                                         Phần trăm (%)</option>
@@ -146,39 +146,39 @@
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Giá trị giảm</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Giá trị giảm</label>
                                 <div class="relative">
                                     <input type="number" id="discountValue" name="discount_value"
                                         value="{{ old('discount_value', $voucher->discount_value) }}"
-                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none @error('discount_value') border-red-500 @enderror">
+                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none @error('discount_value') border-red-500 @enderror">
                                     <span id="valueUnit" class="absolute right-4 top-3.5 text-slate-400 font-bold">%</span>
                                 </div>
                             </div>
 
                             <div class="space-y-2" id="maxDiscountWrapper">
-                                <label class="text-sm font-semibold text-slate-700">Giảm tối đa (₫)</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Giảm tối đa (₫)</label>
                                 <input type="number" name="max_discount"
                                     value="{{ old('max_discount', $voucher->max_discount) }}"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none">
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Đơn hàng tối thiểu (₫)</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Đơn hàng tối thiểu (₫)</label>
                                 <input type="number" id="minOrder" name="min_order_value"
                                     value="{{ old('min_order_value', $voucher->min_order_value) }}"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none">
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Số lượng mã</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Số lượng mã</label>
                                 <input type="number" name="quantity" value="{{ old('quantity', $voucher->quantity) }}"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none @error('quantity') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none @error('quantity') border-red-500 @enderror">
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Trạng thái</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Trạng thái</label>
                                 <select name="status"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
                                     <option value="1" {{ old('status', $voucher->status) == '1' ? 'selected' : '' }}>
                                         Kích hoạt</option>
                                     <option value="0" {{ old('status', $voucher->status) == '0' ? 'selected' : '' }}>
@@ -188,8 +188,8 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                        <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
+                        <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
                             <span
                                 class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm">03</span>
                             Thời gian áp dụng
@@ -197,17 +197,17 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Ngày bắt đầu</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Ngày bắt đầu</label>
                                 <input type="date" name="start_date" id="start_date"
                                     value="{{ old('start_date', $voucher->start_date ? $voucher->start_date->format('Y-m-d') : '') }}"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none @error('start_date') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none @error('start_date') border-red-500 @enderror">
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Ngày kết thúc</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Ngày kết thúc</label>
                                 <input type="date" name="end_date" id="end_date"
                                     value="{{ old('end_date', $voucher->end_date ? $voucher->end_date->format('Y-m-d') : '') }}"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none @error('end_date') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none @error('end_date') border-red-500 @enderror">
                             </div>
                         </div>
                     </div>
@@ -225,10 +225,10 @@
                             <i class="fas fa-eye opacity-50 text-xl"></i>
                         </div>
 
-                        <div class="voucher-preview rounded-2xl p-6 text-slate-800 relative shadow-lg">
+                        <div class="voucher-preview rounded-2xl p-6 text-slate-800 dark:text-white relative shadow-lg">
                             <div
-                                class="flex flex-col items-center justify-center border-b border-dashed border-slate-200 pb-4 mb-4">
-                                <p class="text-slate-500 text-xs font-bold  ">Mã Giảm Giá</p>
+                                class="flex flex-col items-center justify-center border-b border-dashed border-slate-200 dark:border-slate-800 pb-4 mb-4">
+                                <p class="text-slate-500 dark:text-slate-400 text-xs font-bold  ">Mã Giảm Giá</p>
                                 <p id="previewCode" class="text-3xl font-bold text-blue-600 ">VIVUXXXX</p>
                             </div>
 
@@ -253,7 +253,7 @@
                                     </div>
                                     <div>
                                         <p class="text-xs font-semibold">Thời hạn</p>
-                                        <p id="previewExpiry" class="text-[11px] font-medium text-slate-500">Không thời
+                                        <p id="previewExpiry" class="text-[11px] font-medium text-slate-500 dark:text-slate-400">Không thời
                                             hạn</p>
                                     </div>
                                 </div>
@@ -328,7 +328,7 @@
                 }
             } else {
                 previewExpiry.innerText = "Không giới hạn thời gian";
-                previewExpiry.className = "text-[11px] font-medium text-slate-500";
+                previewExpiry.className = "text-[11px] font-medium text-slate-500 dark:text-slate-400";
             }
         }
 

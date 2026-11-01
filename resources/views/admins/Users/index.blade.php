@@ -3,7 +3,7 @@
 @section('title', 'Danh sách người dùng')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-7xl mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,18 +16,18 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Quản lý Người dùng
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Xem danh sách và quản lý thông tin thành viên trong hệ thống.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Xem danh sách và quản lý thông tin thành viên trong hệ thống.</p>
                 </div>
             </div>
 
             <div class="flex items-center gap-3">
-                <div class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-3">
+                <div class="px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center">
                         <i class="fa-solid fa-users-viewfinder"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-500 font-medium">Tổng thành viên</p>
-                        <p class="text-sm font-bold text-slate-800">{{ $users->total() }} người</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Tổng thành viên</p>
+                        <p class="text-sm font-bold text-slate-800 dark:text-white">{{ $users->total() }} người</p>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="relative flex-1 w-full group">
                     <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                     <input type="text" placeholder="Tìm kiếm tên, email, số điện thoại..."
-                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none placeholder:text-slate-400">
+                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-700 dark:text-slate-200 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none placeholder:text-slate-400">
                 </div>
                 <button class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-900 transition-colors shadow-lg shadow-slate-200 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-filter"></i> Lọc dữ liệu
@@ -68,12 +68,12 @@
         <div class="hidden lg:block bg-white/90 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl overflow-hidden">
             <table class="w-full text-left border-collapse">
                 <thead>
-                    <tr class="bg-slate-50/50 border-b border-slate-100">
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 w-16">Thành viên</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700">Liên hệ</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center w-28">Vai trò</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center w-36">Trạng thái</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center w-32">Thao tác</th>
+                    <tr class="bg-slate-50/50 border-b border-slate-100 dark:border-slate-800">
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 w-16">Thành viên</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200">Liên hệ</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 text-center w-28">Vai trò</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 text-center w-36">Trạng thái</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 text-center w-32">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
@@ -91,8 +91,8 @@
                                         <div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white {{ $user->status == 'dang_hoat_dong' ? 'bg-emerald-500' : 'bg-slate-300' }}"></div>
                                     </div>
                                     <div>
-                                        <h5 class="font-bold text-slate-800 text-base leading-tight">{{ $user->name }}</h5>
-                                        <span class="text-xs text-slate-500 font-medium">ID: #{{ $user->id }}</span>
+                                        <h5 class="font-bold text-slate-800 dark:text-white text-base leading-tight">{{ $user->name }}</h5>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">ID: #{{ $user->id }}</span>
                                     </div>
                                 </div>
                             </td>
@@ -100,7 +100,7 @@
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-2 mb-1">
                                     <i class="fa-solid fa-envelope text-slate-400 text-xs w-4"></i>
-                                    <span class="text-sm font-medium text-slate-700">{{ $user->email }}</span>
+                                    <span class="text-sm font-medium text-slate-700 dark:text-slate-200">{{ $user->email }}</span>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-phone text-slate-400 text-xs w-4"></i>
@@ -126,7 +126,7 @@
                                         Đang hoạt động
                                     </span>
                                 @else
-                                    <span class="inline-flex px-3 py-1 bg-slate-100 text-slate-600 border border-slate-200 rounded-lg text-xs font-bold shadow-sm justify-center w-full">
+                                    <span class="inline-flex px-3 py-1 bg-slate-100 text-slate-600 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold shadow-sm justify-center w-full">
                                         Dừng hoạt động
                                     </span>
                                 @endif
@@ -184,7 +184,7 @@
                             <div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white {{ $user->status == 'dang_hoat_dong' ? 'bg-emerald-500' : 'bg-slate-300' }}"></div>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <h5 class="font-bold text-slate-800 text-lg leading-tight truncate">{{ $user->name }}</h5>
+                            <h5 class="font-bold text-slate-800 dark:text-white text-lg leading-tight truncate">{{ $user->name }}</h5>
                             <div class="flex items-center gap-2 mt-1">
                                 @if($user->role == 'admin')
                                     <span class="text-[10px] font-bold text-purple-700 bg-purple-100 px-2 array-1 rounded-md">ADMIN</span>
@@ -196,10 +196,10 @@
                         </div>
                     </div>
 
-                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-3 space-y-2 mb-4">
+                    <div class="bg-slate-50 border border-slate-100 dark:border-slate-800 rounded-2xl p-3 space-y-2 mb-4">
                         <div class="flex items-center gap-3 text-sm">
                             <i class="fa-solid fa-envelope text-slate-400 shrink-0"></i>
-                            <span class="font-medium text-slate-700 truncate">{{ $user->email }}</span>
+                            <span class="font-medium text-slate-700 dark:text-slate-200 truncate">{{ $user->email }}</span>
                         </div>
                         <div class="flex items-center gap-3 text-sm">
                             <i class="fa-solid fa-phone text-slate-400 shrink-0"></i>
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100">
+                    <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                         <a href="{{ route('admin.users.edit', $user->id) }}" class="flex items-center justify-center gap-2 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white py-2.5 rounded-xl font-bold transition-colors text-sm border border-amber-100">
                             <i class="fa-solid fa-pen"></i> Sửa
                         </a>
@@ -223,7 +223,7 @@
             @empty
                 <div class="bg-white/80 p-10 rounded-3xl border border-dashed border-slate-300 text-center">
                     <i class="fa-solid fa-users-slash text-4xl mb-3 text-slate-300"></i>
-                    <p class="text-slate-500 font-medium">Không có người dùng nào!</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-medium">Không có người dùng nào!</p>
                 </div>
             @endforelse
             

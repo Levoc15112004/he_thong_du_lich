@@ -3,12 +3,12 @@
 @section('title', 'Quản lý thuộc tính Tour')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-6">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-6">
     <div class="max-w-[90rem] mx-auto">
 
         <!-- Tiêu đề + nút thêm (Responsive) -->
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
-            <h2 class="text-xl sm:text-3xl font-bold text-slate-900">
+            <h2 class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white">
                 Danh sách thuộc tính Tour
             </h2>
 
@@ -24,27 +24,27 @@
 
 
         <!-- Card 2: Loại tour -->
-        <div class="bg-white shadow rounded-xl overflow-hidden">
-            <div class="bg-slate-50/50 text-black px-4 py-3 font-bold text-base sm:text-lg">
+        <div class="bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+            <div class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-700 px-4 py-3 font-bold text-base sm:text-lg">
                 Loại tour
             </div>
 
             <div class="p-4">
                 @if($tourType->isEmpty())
-                    <div class="text-center py-6 text-slate-500">
+                    <div class="text-center py-6 text-slate-500 dark:text-slate-400">
                         Chưa có loại tour nào. Vui lòng thêm mới.
                     </div>
                 @else
-                    <ul class="divide-y divide-slate-200">
+                    <ul class="divide-y divide-slate-200 dark:divide-slate-800">
                         @foreach($tourType as $key => $item)
                             <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 py-3">
 
                                 <!-- Thông tin -->
                                 <div class="flex items-center gap-4">
-                                    <span class="text-slate-500 w-8 text-sm">
+                                    <span class="text-slate-500 dark:text-slate-400 w-8 text-sm">
                                         {{ $key + 1 }}
                                     </span>
-                                    <span class="font-medium text-slate-700 text-base sm:text-lg break-words">
+                                    <span class="font-medium text-slate-700 dark:text-slate-200 text-base sm:text-lg break-words">
                                         {{ $item->value }}
                                     </span>
                                 </div>

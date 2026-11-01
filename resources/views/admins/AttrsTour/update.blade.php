@@ -3,25 +3,25 @@
 @section('title', 'Cập nhật thuộc tính Tour')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-6">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-6">
     <div class="max-w-3xl mx-auto">
 
         <!-- Header Responsive -->
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
-            <h4 class="text-xl sm:text-3xl font-bold text-slate-900">
+            <h4 class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white">
                 Cập nhật thuộc tính Tour
             </h4>
 
             <a href="{{ route('admin.attr.index') }}"
                class="inline-flex items-center gap-2
                       bg-gray-300 hover:bg-gray-400
-                      text-slate-800 text-sm font-medium px-4 py-2 rounded-lg">
+                      text-slate-800 dark:text-white text-sm font-medium px-4 py-2 rounded-lg">
                 <i class="fa fa-arrow-left"></i> Quay lại
             </a>
         </div>
 
         <!-- Card -->
-        <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+        <div class="bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden">
             <div class="p-4 sm:p-6">
 
                 {{-- Thông báo lỗi backend --}}
@@ -47,7 +47,7 @@
 
                     <!-- Loại thuộc tính -->
                     <div>
-                        <label class="block text-slate-700 font-medium mb-2">
+                        <label class="block text-slate-700 dark:text-slate-200 font-medium mb-2">
                             Loại thuộc tính <span class="text-red-500">*</span>
                         </label>
 
@@ -75,7 +75,7 @@
 
                     <!-- Giá trị thuộc tính -->
                     <div>
-                        <label class="block text-slate-700 font-medium mb-2">
+                        <label class="block text-slate-700 dark:text-slate-200 font-medium mb-2">
                             Giá trị thuộc tính <span class="text-red-500">*</span>
                         </label>
 

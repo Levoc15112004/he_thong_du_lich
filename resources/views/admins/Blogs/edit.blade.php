@@ -3,7 +3,7 @@
 @section('title', 'Cập nhật bài viết Blog')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-5xl mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,12 +16,12 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-500">
                         Cập nhật bài viết
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Sửa đổi thông tin và nội dung bài viết</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Sửa đổi thông tin và nội dung bài viết</p>
                 </div>
             </div>
 
             <a href="{{ route('admin.blogs.index') }}"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
+               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 <span>Quay lại danh sách</span>
             </a>
@@ -56,27 +56,27 @@
                         <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center">
                             <i class="fa-solid fa-circle-info text-sm"></i>
                         </div>
-                        <h5 class="text-lg font-bold text-slate-800">Thông tin cơ bản</h5>
+                        <h5 class="text-lg font-bold text-slate-800 dark:text-white">Thông tin cơ bản</h5>
                     </div>
 
                     <div class="grid grid-cols-1 gap-6">
                         
                         {{-- Title --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Tiêu đề bài viết <span class="text-rose-500">*</span>
                             </label>
                             <input type="text" name="title" value="{{ old('title', $blog->title) }}" placeholder="Nhập tiêu đề hấp dẫn..." 
-                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-bold text-lg focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors duration-200 {{ $errors->has('title') ? 'border-rose-300' : '' }}">
+                                class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-bold text-lg focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors duration-200 {{ $errors->has('title') ? 'border-rose-300' : '' }}">
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {{-- Image Upload --}}
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-2">
+                                <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                     Thay đổi ảnh đại diện <span class="text-slate-400 text-xs font-normal ml-1">(Bỏ qua nếu giữ nguyên)</span>
                                 </label>
-                                <label class="flex items-center justify-center w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 cursor-pointer hover:bg-slate-100 hover:border-amber-400 transition-colors group {{ $errors->has('image') ? 'border-rose-300 bg-rose-50' : '' }}">
+                                <label class="flex items-center justify-center w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 cursor-pointer hover:bg-slate-100 hover:border-amber-400 transition-colors group {{ $errors->has('image') ? 'border-rose-300 bg-rose-50' : '' }}">
                                     <div class="flex items-center gap-2">
                                         <i class="fa-solid fa-cloud-arrow-up text-slate-400 group-hover:text-amber-500 transition-colors"></i>
                                         <span class="text-sm font-medium text-slate-600 group-hover:text-amber-600 transition-colors" id="file-name">Tải ảnh mới lên (JPG, PNG)</span>
@@ -87,10 +87,10 @@
 
                             {{-- Status --}}
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-2">Trạng thái hiển thị <span class="text-rose-500">*</span></label>
+                                <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Trạng thái hiển thị <span class="text-rose-500">*</span></label>
                                 <div class="relative">
                                     <i class="fa-solid fa-eye absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                    <select name="status" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 appearance-none transition-colors duration-200 cursor-pointer">
+                                    <select name="status" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 appearance-none transition-colors duration-200 cursor-pointer">
                                         <option value="">-- Chọn trạng thái --</option>
                                         <option value="1" {{ old('status', $blog->status) == 1 ? 'selected' : '' }}>Hiển thị (Public)</option>
                                         <option value="0" {{ old('status', $blog->status) == 0 ? 'selected' : '' }}>Ẩn (Draft)</option>
@@ -101,7 +101,7 @@
 
                         {{-- Image Preview Display --}}
                         <div class="flex justify-center mt-2 group relative rounded-2xl overflow-hidden shadow-sm inline-block mx-auto">
-                            <img id="preview-main" src="{{ $blog->image ? asset($blog->image) : '' }}" class="{{ $blog->image ? '' : 'hidden' }} w-full md:w-[600px] h-48 md:h-64 object-cover border border-slate-200">
+                            <img id="preview-main" src="{{ $blog->image ? asset($blog->image) : '' }}" class="{{ $blog->image ? '' : 'hidden' }} w-full md:w-[600px] h-48 md:h-64 object-cover border border-slate-200 dark:border-slate-800">
                             <div class="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                                 <span class="bg-black/60 text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-white/20 backdrop-blur-md">Ảnh hiện tại</span>
                             </div>
@@ -110,7 +110,7 @@
                     </div>
                 </section>
                 
-                <hr class="border-slate-100">
+                <hr class="border-slate-100 dark:border-slate-800">
 
                 {{-- ===== NỘI DUNG CKEDITOR ===== --}}
                 <section>
@@ -118,12 +118,12 @@
                         <div class="w-8 h-8 rounded-lg bg-pink-50 text-pink-500 flex items-center justify-center">
                             <i class="fa-solid fa-paragraph text-sm"></i>
                         </div>
-                        <h5 class="text-lg font-bold text-slate-800">Nội dung chi tiết</h5>
+                        <h5 class="text-lg font-bold text-slate-800 dark:text-white">Nội dung chi tiết</h5>
                     </div>
 
                     <div>
                         <textarea name="content" id="editor" rows="10" placeholder="Viết nội dung bài blog..."
-                            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors duration-200 {{ $errors->has('content') ? 'border-rose-300' : '' }}">{{ old('content', $blog->content) }}</textarea>
+                            class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors duration-200 {{ $errors->has('content') ? 'border-rose-300' : '' }}">{{ old('content', $blog->content) }}</textarea>
                         {{-- Chèn CSS tùy chỉnh CKEditor để ôm style Tailwind --}}
                         <style>
                             .ck-editor__editable_inline {
@@ -140,7 +140,7 @@
                     </div>
                 </section>
 
-                <hr class="border-slate-100">
+                <hr class="border-slate-100 dark:border-slate-800">
 
                 {{-- SUBMIT --}}
                 <div class="flex flex-col sm:flex-row justify-end gap-4 pt-2">

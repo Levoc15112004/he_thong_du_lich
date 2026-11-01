@@ -33,12 +33,12 @@
 
             <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                 <div>
-                    <h1 class="text-xl sm:text-3xl font-bold text-slate-900 ">Tạo Voucher Mới</h1>
-                    <p class="text-slate-500 mt-1">Thiết lập các chương trình ưu đãi hấp dẫn cho khách du lịch.</p>
+                    <h1 class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white ">Tạo Voucher Mới</h1>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1">Thiết lập các chương trình ưu đãi hấp dẫn cho khách du lịch.</p>
                 </div>
                 <div class="flex items-center gap-3">
                     <a href="{{ route('admin.vouchers.index') }}"
-                        class="px-5 py-2.5 border border-slate-200 text-slate-600 font-medium rounded-xl hover:bg-white transition-colors">
+                        class="px-5 py-2.5 border border-slate-200 dark:border-slate-800 text-slate-600 font-medium rounded-xl hover:bg-white transition-colors">
                         Hủy bỏ
                     </a>
                     <button type="submit"
@@ -51,8 +51,8 @@
             <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
                 <div class="xl:col-span-2 space-y-6">
 
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                        <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
+                        <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
                             <span
                                 class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm">01</span>
                             Thông tin cơ bản
@@ -60,21 +60,21 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Tên chương trình ưu đãi</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Tên chương trình ưu đãi</label>
                                 <input type="text" name="name" value="{{ old('name') }}"
                                     placeholder="Ví dụ: Ưu đãi Hè Rực Rỡ 2024"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-colors @error('name') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none transition-colors @error('name') border-red-500 @enderror">
                                 @error('name')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Mã Voucher</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Mã Voucher</label>
                                 <div class="relative">
                                     <input type="text" id="voucherCode" name="code" value="{{ old('code') }}"
                                         placeholder="HELLO2024"
-                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none  font-mono font-bold transition-colors @error('code') border-red-500 @enderror">
+                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none  font-mono font-bold transition-colors @error('code') border-red-500 @enderror">
                                     <button type="button" onclick="generateCode()"
                                         class="absolute right-2 top-1.5 px-3 py-1.5 text-xs font-bold text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
                                         <i class="fas fa-random mr-1"></i> Tự động
@@ -87,8 +87,8 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                        <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
+                        <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
                             <span
                                 class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm">02</span>
                             Cấu hình giảm giá
@@ -96,9 +96,9 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Loại giảm giá</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Loại giảm giá</label>
                                 <select id="discountType" name="discount_type"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none bg-white @error('discount_type') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none bg-white @error('discount_type') border-red-500 @enderror">
                                     <option value="percent" {{ old('discount_type') == 'percent' ? 'selected' : '' }}>Phần
                                         trăm (%)</option>
                                     <option value="fixed" {{ old('discount_type') == 'fixed' ? 'selected' : '' }}>Số tiền
@@ -110,11 +110,11 @@
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Giá trị giảm</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Giá trị giảm</label>
                                 <div class="relative">
                                     <input type="number" id="discountValue" name="discount_value"
                                         value="{{ old('discount_value', 10) }}"
-                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none @error('discount_value') border-red-500 @enderror">
+                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none @error('discount_value') border-red-500 @enderror">
                                     <span id="valueUnit" class="absolute right-4 top-3.5 text-slate-400 font-bold">%</span>
                                 </div>
                                 @error('discount_value')
@@ -123,9 +123,9 @@
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Tổng số lượng phát hành</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Tổng số lượng phát hành</label>
                                 <input type="number" name="quantity" value="{{ old('quantity', 100) }}"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none @error('quantity') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none @error('quantity') border-red-500 @enderror">
                                 @error('quantity')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
@@ -133,12 +133,12 @@
 
                             <div class="space-y-2">
 
-                                <label class="text-sm font-semibold text-slate-700">
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">
                                     Loại sự kiện
                                 </label>
 
                                 <select name="event_type" id="event_type"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800">
 
                                     <option value="none">Không</option>
 
@@ -166,8 +166,8 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                        <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
+                        <h2 class="text-lg font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
                             <span
                                 class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm">03</span>
                             Thời gian áp dụng
@@ -175,18 +175,18 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Ngày bắt đầu</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Ngày bắt đầu</label>
                                 <input type="date" name="start_date" id="start_date" value="{{ old('start_date') }}"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none @error('start_date') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none @error('start_date') border-red-500 @enderror">
                                 @error('start_date')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700">Ngày kết thúc</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">Ngày kết thúc</label>
                                 <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none @error('end_date') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none @error('end_date') border-red-500 @enderror">
                                 @error('end_date')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
@@ -206,10 +206,10 @@
                             <i class="fas fa-eye opacity-50 text-xl"></i>
                         </div>
 
-                        <div class="voucher-preview rounded-2xl p-6 text-slate-800 relative shadow-lg">
+                        <div class="voucher-preview rounded-2xl p-6 text-slate-800 dark:text-white relative shadow-lg">
                             <div
-                                class="flex flex-col items-center justify-center border-b border-dashed border-slate-200 pb-4 mb-4">
-                                <p class="text-slate-500 text-xs font-bold  ">Mã Giảm Giá</p>
+                                class="flex flex-col items-center justify-center border-b border-dashed border-slate-200 dark:border-slate-800 pb-4 mb-4">
+                                <p class="text-slate-500 dark:text-slate-400 text-xs font-bold  ">Mã Giảm Giá</p>
                                 <p id="previewCode" class="text-3xl font-bold text-blue-600 ">#2026SUMMER</p>
 
                             </div>
@@ -223,7 +223,7 @@
                                     <div>
                                         <p id="previewValue" class="text-lg font-bold leading-tight">Giảm 10%</p>
                                         <p
-                                            class="text-[10px] text-slate-500  font-bold  text-blue-600">
+                                            class="text-[10px] text-slate-500 dark:text-slate-400  font-bold  text-blue-600">
                                             Áp dụng cho tour của bạn</p>
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@
                                     </div>
                                     <div>
                                         <p class="text-xs font-semibold">Hạn sử dụng</p>
-                                        <p id="previewExpiry" class="text-[11px] font-medium text-slate-500">
+                                        <p id="previewExpiry" class="text-[11px] font-medium text-slate-500 dark:text-slate-400">
                                             Chưa xác định ngày
                                         </p>
                                     </div>
@@ -325,7 +325,7 @@
                 }
             } else {
                 previewExpiry.innerText = "Chưa xác định ngày";
-                previewExpiry.className = "text-[11px] font-medium text-slate-500";
+                previewExpiry.className = "text-[11px] font-medium text-slate-500 dark:text-slate-400";
             }
         }
 

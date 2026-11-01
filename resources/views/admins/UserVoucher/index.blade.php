@@ -39,7 +39,7 @@
 
     <main class="flex-1 flex flex-col h-screen overflow-hidden">
 
-        <div class="min-h-screen bg-slate-50/50 py-4 sm:py-8">
+        <div class="min-h-screen bg-transparent dark:bg-transparent py-4 sm:py-8">
             <div class="max-w-[120rem] mx-auto px-4 sm:px-6 lg:px-8">
 
                 <!-- Messages -->
@@ -71,8 +71,8 @@
                 <!-- Page Header -->
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                     <div>
-                        <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 ">Cấp phát Voucher</h1>
-                        <p class="mt-1 text-sm text-slate-500 font-medium">Gán mã giảm giá cho khách hàng và theo dõi lịch sử
+                        <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white ">Cấp phát Voucher</h1>
+                        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400 font-medium">Gán mã giảm giá cho khách hàng và theo dõi lịch sử
                             sử dụng.</p>
                     </div>
 
@@ -98,44 +98,44 @@
                             class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                         <input type="text" name="search" value="{{ request('search') }}"
                             placeholder="Tìm kiếm người dùng hoặc mã voucher..."
-                            class="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none text-sm font-medium shadow-sm">
+                            class="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none text-sm font-medium shadow-sm">
                     </form>
                 </div>
 
                 <!-- Stats Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex items-center gap-5">
+                    <div class="bg-white p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-5">
                         <div
                             class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-xl shadow-inner">
                             <i class="fa-solid fa-users"></i>
                         </div>
                         <div>
                             <p class="text-slate-400 text-sm font-bold">Người dùng có Voucher</p>
-                            <p class="text-2xl font-bold text-slate-900 mt-1">
+                            <p class="text-2xl font-bold text-slate-900 dark:text-white mt-1">
                                 {{ number_format($stats['users_have_voucher']) }}</p>
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex items-center gap-5">
+                    <div class="bg-white p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-5">
                         <div
                             class="w-14 h-14 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center text-xl shadow-inner">
                             <i class="fa-solid fa-ticket-simple"></i>
                         </div>
                         <div>
                             <p class="text-slate-400 text-sm font-bold">Voucher đã phát</p>
-                            <p class="text-2xl font-bold text-slate-900 mt-1">{{ number_format($stats['total_assigned']) }}
+                            <p class="text-2xl font-bold text-slate-900 dark:text-white mt-1">{{ number_format($stats['total_assigned']) }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex items-center gap-5">
+                    <div class="bg-white p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-5">
                         <div
                             class="w-14 h-14 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-xl shadow-inner">
                             <i class="fa-solid fa-calendar-check"></i>
                         </div>
                         <div>
                             <p class="text-slate-400 text-sm font-bold">Lượt gán trong ngày</p>
-                            <p class="text-2xl font-bold text-slate-900 mt-1">{{ number_format($stats['assigned_today']) }}
+                            <p class="text-2xl font-bold text-slate-900 dark:text-white mt-1">{{ number_format($stats['assigned_today']) }}
                             </p>
                         </div>
                     </div>
@@ -143,25 +143,25 @@
 
                 <div class="bg-white shadow-sm ring-1 ring-slate-200 rounded-3xl overflow-hidden">
                     <div class="px-6 py-4 border-b border-slate-50">
-                        <h2 class="text-sm font-bold text-slate-900">Lịch sử cấp phát</h2>
+                        <h2 class="text-sm font-bold text-slate-900 dark:text-white">Lịch sử cấp phát</h2>
                     </div>
 
                     <!-- Desktop Table View (Hidden on Mobile) -->
                     <div class="hidden lg:block overflow-x-auto">
-                        <table class="min-w-full divide-y divide-slate-100">
+                        <table class="min-w-full divide-y divide-slate-100 dark:divide-slate-800">
                             <thead class="bg-slate-50/50">
                                 <tr>
-                                    <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-slate-700">Người
+                                    <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-slate-700 dark:text-slate-200">Người
                                         dùng</th>
-                                    <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700">Mã
+                                    <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 dark:text-slate-200">Mã
                                         Voucher</th>
-                                    <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700">Giá trị
+                                    <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 dark:text-slate-200">Giá trị
                                     </th>
-                                    <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700">Hết hạn
+                                    <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 dark:text-slate-200">Hết hạn
                                     </th>
-                                    <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700">Trạng
+                                    <th scope="col" class="px-6 py-4 text-center text-sm font-bold text-slate-700 dark:text-slate-200">Trạng
                                         thái</th>
-                                    <th scope="col" class="px-6 py-4 text-right text-sm font-bold text-slate-700">Thao tác
+                                    <th scope="col" class="px-6 py-4 text-right text-sm font-bold text-slate-700 dark:text-slate-200">Thao tác
                                     </th>
                                 </tr>
                             </thead>
@@ -176,7 +176,7 @@
                                                 ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
                                                 : ($isExpired
                                                     ? 'bg-rose-50 text-rose-700 border-rose-100'
-                                                    : 'bg-slate-50 text-slate-500 border-slate-200');
+                                                    : 'bg-slate-50 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-800');
                                         $statusText =
                                             $item->status == 1 ? 'Đã sử dụng' : ($isExpired ? 'Hết hạn' : 'Chưa dùng');
                                     @endphp
@@ -186,7 +186,7 @@
                                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($item->user->name ?? 'User') }}&background=EEF2FF&color=4F46E5&bold=true"
                                                     class="w-10 h-10 rounded-full shadow-sm ring-2 ring-white">
                                                 <div>
-                                                    <div class="text-sm font-bold text-slate-900">
+                                                    <div class="text-sm font-bold text-slate-900 dark:text-white">
                                                         {{ $item->user->name ?? '---' }}</div>
                                                     <div class="text-sm text-slate-400 font-medium">
                                                         {{ $item->user->email ?? '---' }}</div>
@@ -197,7 +197,7 @@
                                             class="px-6 py-4 whitespace-nowrap text-center font-mono text-xs font-bold text-emerald-600 bg-emerald-50/30">
                                             {{ $voucher->code ?? '---' }}
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-slate-700">
+                                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-slate-700 dark:text-slate-200">
                                             @if ($voucher)
                                                 {{ $voucher->discount_type === 'percent' ? $voucher->discount_value . '%' : number_format($voucher->discount_value) . '₫' }}
                                             @else
@@ -205,14 +205,14 @@
                                             @endif
                                         </td>
                                         <td
-                                            class="px-6 py-4 whitespace-nowrap text-center text-xs font-medium text-slate-500">
+                                            class="px-6 py-4 whitespace-nowrap text-center text-xs font-medium text-slate-500 dark:text-slate-400">
                                             {{ $voucher && $voucher->end_date ? $voucher->end_date->format('d/m/Y') : 'Vô thời hạn' }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
                                             @php
                                                 if ($item->status == 0) {
                                                     $statusText = 'Chưa sử dụng';
-                                                    $statusClass = 'bg-slate-50 text-slate-800 border-slate-300';
+                                                    $statusClass = 'bg-slate-50 text-slate-800 dark:text-white border-slate-300';
                                                 } elseif ($item->status == 2) {
                                                     $statusText = 'Đã sử dụng';
                                                     $statusClass = 'bg-green-100 text-green-800 border-green-300';
@@ -249,7 +249,7 @@
                     </div>
 
                     <!-- Mobile Card View (Shown on Mobile) -->
-                    <div class="lg:hidden divide-y divide-slate-100 bg-white">
+                    <div class="lg:hidden divide-y divide-slate-100 dark:divide-slate-800 bg-white">
                         @forelse ($userVouchers as $item)
                             @php
                                 $voucher = $item->voucher;
@@ -259,7 +259,7 @@
                                         ? 'bg-emerald-50 text-emerald-600 border-emerald-100'
                                         : ($isExpired
                                             ? 'bg-rose-50 text-rose-600 border-rose-100'
-                                            : 'bg-slate-50 text-slate-400 border-slate-100');
+                                            : 'bg-slate-50 text-slate-400 border-slate-100 dark:border-slate-800');
                                 $statusText = $item->status == 1 ? 'Used' : ($isExpired ? 'Expired' : 'Unused');
                             @endphp
                             <div class="p-5 space-y-4">
@@ -268,7 +268,7 @@
                                         <img src="https://ui-avatars.com/api/?name={{ urlencode($item->user->name ?? 'User') }}&background=EEF2FF&color=4F46E5&bold=true"
                                             class="w-11 h-11 rounded-full shadow-md ring-2 ring-white">
                                         <div>
-                                            <h3 class="text-sm font-bold text-slate-900 leading-tight">
+                                            <h3 class="text-sm font-bold text-slate-900 dark:text-white leading-tight">
                                                 {{ $item->user->name ?? '---' }}</h3>
                                             <p class="text-sm text-slate-400 font-medium truncate max-w-[150px]">
                                                 {{ $item->user->email ?? '---' }}</p>
@@ -285,7 +285,7 @@
                                 </div>
 
                                 <div
-                                    class="flex items-center justify-between bg-slate-50/80 p-3 rounded-2xl border border-slate-100">
+                                    class="flex items-center justify-between bg-slate-50/80 p-3 rounded-2xl border border-slate-100 dark:border-slate-800">
                                     <div>
                                         <span class="text-[9px] font-bold text-slate-400 block mb-0.5">Voucher Code</span>
                                         <span
@@ -301,7 +301,7 @@
                                 </div>
 
                                 <div class="flex items-center justify-between px-1">
-                                    <div class="text-sm font-bold text-slate-700">
+                                    <div class="text-sm font-bold text-slate-700 dark:text-slate-200">
                                         <i class="fa-solid fa-tag mr-1 text-gray-300"></i>
                                         @if ($voucher)
                                             {{ $voucher->discount_type === 'percent' ? $voucher->discount_value . '%' : number_format($voucher->discount_value) . '₫' }}
@@ -322,7 +322,7 @@
 
                     <!-- Pagination -->
                     @if ($userVouchers->hasPages())
-                        <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 dark:border-slate-800">
                             {{ $userVouchers->links('pagination::tailwind') }}
                         </div>
                     @endif
@@ -349,11 +349,11 @@
             class="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden transform transition-colors scale-95 opacity-0 duration-300 border border-white/20">
             <div class="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/30">
                 <div>
-                    <h3 class="text-xl sm:text-3xl font-bold text-slate-900  ">Gán Voucher cho khách hàng</h3>
+                    <h3 class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white  ">Gán Voucher cho khách hàng</h3>
                     <p class="text-xs text-slate-400 font-medium mt-1">Chọn đối tượng và mã giảm giá áp dụng</p>
                 </div>
                 <button type="button" onclick="closeAssignModal()"
-                    class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-90">
+                    class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 dark:text-white hover:bg-slate-50 rounded-2xl transition-colors active:scale-90">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
@@ -367,7 +367,7 @@
                         <i
                             class="fa-solid fa-user-tag absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-emerald-500 transition-colors"></i>
                         <select name="user_id" id="userSelect" required
-                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-colors outline-none appearance-none shadow-inner">
+                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 dark:text-white focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-colors outline-none appearance-none shadow-inner">
                             <option value="" disabled selected>Chọn người dùng từ danh sách...</option>
                             @foreach ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }} ({{ $user->email }})</option>
@@ -390,7 +390,7 @@
                         <i
                             class="fa-solid fa-filter absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-emerald-500 transition-colors"></i>
                         <input type="text" id="voucherSearch" placeholder="Lọc nhanh theo mã hoặc giá trị..."
-                            class="w-full pl-10 pr-4 py-3 bg-slate-50/50 border-none rounded-xl text-xs font-medium text-slate-900 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-colors outline-none shadow-inner placeholder:text-gray-300">
+                            class="w-full pl-10 pr-4 py-3 bg-slate-50/50 border-none rounded-xl text-xs font-medium text-slate-900 dark:text-white focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-colors outline-none shadow-inner placeholder:text-gray-300">
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-64 overflow-y-auto pr-2 custom-scrollbar"
@@ -406,17 +406,17 @@
                                 <input type="checkbox" name="voucher_ids[]" value="{{ $voucher->id }}"
                                     class="voucher-checkbox peer sr-only">
                                 <div
-                                    class="p-4 bg-slate-50 border border-slate-100 rounded-2xl peer-checked:bg-emerald-50 peer-checked:border-emerald-200 peer-checked:shadow-lg peer-checked:shadow-emerald-50 transition-colors hover:bg-slate-50/80 active:scale-[0.98]">
+                                    class="p-4 bg-slate-50 border border-slate-100 dark:border-slate-800 rounded-2xl peer-checked:bg-emerald-50 peer-checked:border-emerald-200 peer-checked:shadow-lg peer-checked:shadow-emerald-50 transition-colors hover:bg-slate-50/80 active:scale-[0.98]">
                                     <div class="flex justify-between items-start mb-3">
                                         <span
                                             class="text-sm font-bold text-emerald-600 bg-white px-2 py-1 rounded-lg shadow-sm border border-emerald-100">{{ $voucher->code }}</span>
                                         <div
-                                            class="w-5 h-5 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center peer-checked:border-emerald-500 peer-checked:bg-emerald-500 transition-colors">
+                                            class="w-5 h-5 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-white flex items-center justify-center peer-checked:border-emerald-500 peer-checked:bg-emerald-500 transition-colors">
                                             <i
                                                 class="fa-solid fa-check text-sm text-white opacity-0 peer-checked:opacity-100"></i>
                                         </div>
                                     </div>
-                                    <p class="text-sm font-bold text-slate-900">{{ $discountText }}</p>
+                                    <p class="text-sm font-bold text-slate-900 dark:text-white">{{ $discountText }}</p>
                                     <p class="text-sm text-slate-400 font-bold  mt-1">
                                         {{ $voucher->min_order_value ? 'Min: ' . number_format($voucher->min_order_value) . '₫' : 'No Minimum' }}
                                     </p>
@@ -424,7 +424,7 @@
                             </label>
                         @empty
                             <div
-                                class="col-span-full py-8 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+                                class="col-span-full py-8 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800">
                                 <p class="text-xs font-bold text-slate-400">Không còn voucher khả dụng</p>
                             </div>
                         @endforelse
@@ -433,7 +433,7 @@
 
                 <div class="flex gap-4 pt-4 border-t border-slate-50">
                     <button type="button" onclick="closeAssignModal()"
-                        class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-colors active:scale-95">Hủy
+                        class="flex-1 px-6 py-4 bg-white border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-colors active:scale-95">Hủy
                         bỏ</button>
                     <button type="submit" id="btnSubmit" disabled
                         class="flex-1 px-6 py-4 bg-[#863c20] text-white font-bold text-xs rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-colors active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">Xác
@@ -450,11 +450,11 @@
             class="bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden transform transition-colors scale-95 opacity-0 duration-300 border border-white/20">
             <div class="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/30">
                 <div>
-                    <h3 class="text-xl sm:text-3xl font-bold text-slate-900  ">Phát Voucher Ngẫu Nhiên</h3>
+                    <h3 class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white  ">Phát Voucher Ngẫu Nhiên</h3>
                     <p class="text-xs text-slate-400 font-medium mt-1">Hệ thống tự động chọn người dùng chưa có mã</p>
                 </div>
                 <button type="button" onclick="closeRandomAssignModal()"
-                    class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-90">
+                    class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 dark:text-white hover:bg-slate-50 rounded-2xl transition-colors active:scale-90">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
@@ -468,7 +468,7 @@
                         <i
                             class="fa-solid fa-ticket absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-orange-500 transition-colors"></i>
                         <select name="voucher_id" id="random_voucher_id" required
-                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-800 focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-colors outline-none appearance-none shadow-inner">
+                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-800 dark:text-white focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-colors outline-none appearance-none shadow-inner">
                             <option value="">-- Chọn voucher từ kho --</option>
                             @foreach ($summerVouchers as $voucher)
                                 <option value="{{ $voucher->id }}">{{ $voucher->name }} (Còn:
@@ -487,14 +487,14 @@
                             class="fa-solid fa-users-viewfinder absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-orange-500 transition-colors"></i>
                         <input type="number" id="random_total_users" name="total_users" min="1" step="1"
                             required
-                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-colors outline-none shadow-inner placeholder:text-gray-300"
+                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 dark:text-white focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-colors outline-none shadow-inner placeholder:text-gray-300"
                             placeholder="Nhập số lượng user (Ví dụ: 50)">
                     </div>
                 </div>
 
                 <div class="flex gap-4 pt-4 border-t border-slate-50">
                     <button type="button" onclick="closeRandomAssignModal()"
-                        class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-colors active:scale-95">Hủy
+                        class="flex-1 px-6 py-4 bg-white border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-colors active:scale-95">Hủy
                         bỏ</button>
                     <button type="submit"
                         class="flex-1 px-6 py-4 bg-[#863c20] text-white font-bold text-xs rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-colors active:scale-95">Xác

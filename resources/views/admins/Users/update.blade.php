@@ -3,7 +3,7 @@
 @section('title', 'Cập nhật thông tin người dùng')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-5xl mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,12 +16,12 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-500">
                         Cập nhật hồ sơ
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Chỉnh sửa thông tin thành viên hệ thống</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Chỉnh sửa thông tin thành viên hệ thống</p>
                 </div>
             </div>
 
             <a href="{{ route('admin.users.index') }}"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
+               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 <span>Quay lại danh sách</span>
             </a>
@@ -56,50 +56,50 @@
                         <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center">
                             <i class="fa-solid fa-address-card text-sm"></i>
                         </div>
-                        <h5 class="text-lg font-bold text-slate-800">Thông tin cơ bản</h5>
+                        <h5 class="text-lg font-bold text-slate-800 dark:text-white">Thông tin cơ bản</h5>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         
                         {{-- Name --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Tên hiển thị <span class="text-rose-500">*</span>
                             </label>
                             <input type="text" name="name" value="{{ old('name', $user->name) }}" required
-                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 {{ $errors->has('name') ? 'border-rose-300 focus:border-rose-500 focus:ring-rose-500/20' : '' }}">
+                                class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 {{ $errors->has('name') ? 'border-rose-300 focus:border-rose-500 focus:ring-rose-500/20' : '' }}">
                         </div>
 
                         {{-- Email --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Địa chỉ Email <span class="text-slate-400 text-xs font-normal ml-1">(Không thể sửa)</span>
                             </label>
                             <div class="relative">
                                 <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                                 <input type="email" value="{{ $user->email }}" readonly
-                                    class="w-full bg-slate-100 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-500 font-medium cursor-not-allowed select-none">
+                                    class="w-full bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-500 dark:text-slate-400 font-medium cursor-not-allowed select-none">
                             </div>
                         </div>
                         
                         {{-- Phone --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Số điện thoại
                             </label>
                             <div class="relative">
                                 <i class="fa-solid fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                                 <input type="text" name="phone" value="{{ old('phone', $user->phone) }}" 
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 {{ $errors->has('phone') ? 'border-rose-300' : '' }}">
+                                    class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 {{ $errors->has('phone') ? 'border-rose-300' : '' }}">
                                 </div>
                         </div>
 
                         {{-- Vai trò --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Vai trò <span class="text-slate-400 text-xs font-normal ml-1">(Không thể sửa)</span></label>
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Vai trò <span class="text-slate-400 text-xs font-normal ml-1">(Không thể sửa)</span></label>
                             <div class="relative">
                                 <i class="fa-solid fa-shield-halved absolute left-4 top-1/2 -translate-y-1/2 text-purple-400"></i>
-                                <select disabled class="w-full bg-slate-100 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-500 font-medium appearance-none cursor-not-allowed select-none">
+                                <select disabled class="w-full bg-slate-100 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-500 dark:text-slate-400 font-medium appearance-none cursor-not-allowed select-none">
                                     <option {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
                                     <option {{ $user->role === 'user' ? 'selected' : '' }}>User</option>
                                 </select>
@@ -108,19 +108,19 @@
                         
                         {{-- Status --}}
                         <div class="md:col-span-2">
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Trạng thái hoạt động <span class="text-rose-500">*</span>
                             </label>
                             <div class="flex gap-4">
                                 <label class="flex-1 cursor-pointer">
                                     <input type="radio" name="status" value="dang_hoat_dong" class="peer sr-only" {{ old('status', $user->status) === 'dang_hoat_dong' ? 'checked' : '' }}>
-                                    <div class="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-600 transition-colors">
+                                    <div class="w-full border-2 border-slate-100 dark:border-slate-800 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-600 transition-colors">
                                         <i class="fa-solid fa-circle-check mr-2"></i> Cho phép hoạt động
                                     </div>
                                 </label>
                                 <label class="flex-1 cursor-pointer">
                                     <input type="radio" name="status" value="dung_hoat_dong" class="peer sr-only" {{ old('status', $user->status) === 'dung_hoat_dong' ? 'checked' : '' }}>
-                                    <div class="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-slate-400 peer-checked:bg-slate-100 peer-checked:text-slate-600 transition-colors">
+                                    <div class="w-full border-2 border-slate-100 dark:border-slate-800 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-slate-400 peer-checked:bg-slate-100 peer-checked:text-slate-600 transition-colors">
                                         <i class="fa-solid fa-lock mr-2"></i> Khóa tài khoản
                                     </div>
                                 </label>
@@ -130,7 +130,7 @@
                     </div>
                 </section>
                 
-                <hr class="border-slate-100">
+                <hr class="border-slate-100 dark:border-slate-800">
 
                 {{-- ===== CÁ NHÂN HÓA ===== --}}
                 <section>
@@ -138,15 +138,15 @@
                         <div class="w-8 h-8 rounded-lg bg-pink-50 text-pink-500 flex items-center justify-center">
                             <i class="fa-solid fa-image-portrait text-sm"></i>
                         </div>
-                        <h5 class="text-lg font-bold text-slate-800">Thông tin cá nhân & Ảnh đại diện</h5>
+                        <h5 class="text-lg font-bold text-slate-800 dark:text-white">Thông tin cá nhân & Ảnh đại diện</h5>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
                         {{-- Gender --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Giới tính</label>
-                            <select name="gender" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Giới tính</label>
+                            <select name="gender" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                                 <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>Nam</option>
                                 <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>Nữ</option>
                                 <option value="other" {{ old('gender', $user->gender) == 'other' ? 'selected' : '' }}>Khác</option>
@@ -155,15 +155,15 @@
                         
                         {{-- Birthday --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Ngày sinh</label>
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Ngày sinh</label>
                             <input type="date" name="birthday" value="{{ old('birthday', $user->birthday) }}" 
-                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                                class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                         </div>
                         
                         {{-- Avatar Upload --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">Đổi Avatar</label>
-                            <label class="flex items-center justify-center w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 cursor-pointer hover:bg-slate-100 transition-colors group">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Đổi Avatar</label>
+                            <label class="flex items-center justify-center w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 cursor-pointer hover:bg-slate-100 transition-colors group">
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-cloud-arrow-up text-slate-400 group-hover:text-orange-500 transition-colors"></i>
                                     <span class="text-sm font-medium text-slate-600 group-hover:text-orange-600 transition-colors" id="file-name">Tải ảnh mới</span>
@@ -174,11 +174,11 @@
                         
                         {{-- Address --}}
                         <div class="md:col-span-3">
-                            <label class="block text-slate-700 font-semibold mb-2">Địa chỉ hiện tại</label>
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Địa chỉ hiện tại</label>
                             <div class="relative">
                                 <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                                 <input type="text" name="address" value="{{ old('address', $user->address) }}" placeholder="Số nhà, đường, xã/phường, quận/huyện, tỉnh/thành phố..."
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                                    class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
                         </div>
 
@@ -195,13 +195,13 @@
                             </div>
                         </div>
                         <div>
-                            <p class="text-sm font-bold text-slate-700 mb-1">Ảnh đại diện hiện tại</p>
-                            <p class="text-xs text-slate-500">Khuyến nghị tỉ lệ 1:1, dung lượng tối đa 2MB.</p>
+                            <p class="text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">Ảnh đại diện hiện tại</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Khuyến nghị tỉ lệ 1:1, dung lượng tối đa 2MB.</p>
                         </div>
                     </div>
                 </section>
 
-                <hr class="border-slate-100">
+                <hr class="border-slate-100 dark:border-slate-800">
 
                 {{-- SUBMIT --}}
                 <div class="flex flex-col sm:flex-row justify-end gap-4 pt-2">

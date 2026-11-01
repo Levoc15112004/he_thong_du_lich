@@ -3,7 +3,7 @@
 @section('title', 'Sửa danh mục')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-4xl mx-auto">
 
         {{-- Header --}}
@@ -16,12 +16,12 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-600">
                         Chỉnh sửa danh mục
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Cập nhật thông tin danh mục "{{ $category->name }}"</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Cập nhật thông tin danh mục "{{ $category->name }}"</p>
                 </div>
             </div>
 
             <a href="{{ route('categories.index') }}"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
+               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                <span>Quay lại</span>
             </a>
@@ -56,7 +56,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {{-- Tên danh mục --}}
                         <div class="col-span-1 md:col-span-2">
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Tên danh mục <span class="text-rose-500">*</span>
                             </label>
                             <div class="relative">
@@ -67,8 +67,8 @@
                                        name="name"
                                        value="{{ old('name', $category->name) }}"
                                        placeholder="Ví dụ: Du lịch Châu Á..."
-                                       class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3
-                                       text-slate-700 placeholder-slate-400 font-medium
+                                       class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-11 pr-4 py-3
+                                       text-slate-700 dark:text-slate-200 placeholder-slate-400 font-medium
                                        focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 focus:bg-white
                                        transition-colors duration-200
                                        @error('name') border-rose-500 ring-rose-500/20 focus:ring-rose-500/20 focus:border-rose-500 @enderror">
@@ -80,7 +80,7 @@
 
                         {{-- Danh mục cha --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Danh mục cha
                             </label>
                             <div class="relative">
@@ -88,8 +88,8 @@
                                     <i class="fa-solid fa-sitemap text-slate-400"></i>
                                 </div>
                                 <select name="parent_id"
-                                        class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3
-                                        text-slate-700 font-medium appearance-none
+                                        class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-11 pr-4 py-3
+                                        text-slate-700 dark:text-slate-200 font-medium appearance-none
                                         focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 focus:bg-white
                                         transition-colors duration-200
                                         @error('parent_id') border-rose-500 focus:border-rose-500 @enderror">
@@ -120,7 +120,7 @@
 
                         {{-- Link --}}
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-2">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                 Link liên kết <span class="text-slate-400 font-normal text-sm ml-1">(Tùy chọn)</span>
                             </label>
                             <div class="relative">
@@ -131,8 +131,8 @@
                                        name="link"
                                        value="{{ old('link', $category->link) }}"
                                        placeholder="https://..."
-                                       class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3
-                                       text-slate-700 placeholder-slate-400 font-medium
+                                       class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-11 pr-4 py-3
+                                       text-slate-700 dark:text-slate-200 placeholder-slate-400 font-medium
                                        focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 focus:bg-white
                                        transition-colors duration-200
                                        @error('link') border-rose-500 focus:border-rose-500 @enderror">
@@ -143,12 +143,12 @@
                         </div>
                     </div>
 
-                    <hr class="border-slate-100 my-8">
+                    <hr class="border-slate-100 dark:border-slate-800 my-8">
 
                     {{-- Buttons --}}
                     <div class="flex flex-col sm:flex-row sm:justify-end gap-4">
                         <a href="{{ route('categories.index') }}"
-                           class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl transition-colors duration-300">
+                           class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-semibold rounded-xl transition-colors duration-300">
                            <i class="fa-solid fa-xmark text-lg"></i>
                            <span>Hủy bỏ</span>
                         </a>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 
-    <div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+    <div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
         <div class="max-w-5xl mx-auto space-y-8">
 
             {{-- HEADER --}}
@@ -21,12 +21,12 @@
                         <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                             Thêm lịch trình mới
                         </h4>
-                        <p class="text-sm text-slate-500 mt-1">Xây dựng kế hoạch điểm đến cho Tour du lịch</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Xây dựng kế hoạch điểm đến cho Tour du lịch</p>
                     </div>
                 </div>
 
                 <a href="{{ route('admin.tour_schedules.index') }}"
-                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                     <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                     <span>Quay lại danh sách</span>
                 </a>
@@ -60,16 +60,16 @@
                             <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
                                 <i class="fa-solid fa-circle-info text-sm"></i>
                             </div>
-                            <h5 class="text-lg font-bold text-slate-800">Thông tin chi tiết</h5>
+                            <h5 class="text-lg font-bold text-slate-800 dark:text-white">Thông tin chi tiết</h5>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {{-- Chọn tour --}}
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-2">
+                                <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                     Giải đoạn / Tour <span class="text-rose-500">*</span>
                                 </label>
-                                <select name="tour_id" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer">
+                                <select name="tour_id" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer">
                                     <option value="">-- Chọn Tour cần lên lịch --</option>
                                     @foreach ($tours as $tour)
                                         <option value="{{ $tour->id }}" {{ old('tour_id') == $tour->id ? 'selected' : '' }}>
@@ -81,32 +81,32 @@
 
                             {{-- Ngày --}}
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-2">
+                                <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                     Lịch trình Ngày thứ <span class="text-rose-500">*</span>
                                 </label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-medium"><i class="fa-regular fa-sun"></i></span>
-                                    <input type="number" min="1" name="day_number" value="{{ old('day_number') }}" placeholder="VD: 1, 2, 3..." class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-12 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                                    <input type="number" min="1" name="day_number" value="{{ old('day_number') }}" placeholder="VD: 1, 2, 3..." class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-12 pr-4 py-3 text-slate-700 dark:text-slate-200 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                                 </div>
                             </div>
 
                             {{-- Tiêu đề --}}
                             <div class="md:col-span-2">
-                                <label class="block text-slate-700 font-semibold mb-2">
+                                <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">
                                     Tiêu đề (Hoạt động) <span class="text-rose-500">*</span>
                                 </label>
-                                <input type="text" name="title" value="{{ old('title') }}" placeholder="VD: Thăm quan Vịnh Hạ Long, Ăn tối hải sản..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                                <input type="text" name="title" value="{{ old('title') }}" placeholder="VD: Thăm quan Vịnh Hạ Long, Ăn tối hải sản..." class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
 
                             {{-- Mô tả --}}
                             <div class="md:col-span-2">
-                                <label class="block text-slate-700 font-semibold mb-2">Mô tả chi tiết</label>
-                                <textarea name="description" rows="4" placeholder="Nhập mô tả cụ thể về các hoạt động, thời gian chi tiết..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">{{ old('description') }}</textarea>
+                                <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Mô tả chi tiết</label>
+                                <textarea name="description" rows="4" placeholder="Nhập mô tả cụ thể về các hoạt động, thời gian chi tiết..." class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">{{ old('description') }}</textarea>
                             </div>
                         </div>
                     </section>
                     
-                    <hr class="border-slate-100">
+                    <hr class="border-slate-100 dark:border-slate-800">
 
                     {{-- ===== ĐỊA ĐIỂM BẢN ĐỒ ===== --}}
                     <section>
@@ -114,20 +114,20 @@
                             <div class="w-8 h-8 rounded-lg bg-pink-50 text-pink-500 flex items-center justify-center">
                                 <i class="fa-solid fa-map-location-dot text-sm"></i>
                             </div>
-                            <h5 class="text-lg font-bold text-slate-800">Định vị & Bản đồ</h5>
+                            <h5 class="text-lg font-bold text-slate-800 dark:text-white">Định vị & Bản đồ</h5>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-2">Tên địa điểm / Khu vực</label>
+                                <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Tên địa điểm / Khu vực</label>
                                 <div class="relative">
                                     <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                    <input type="text" name="location_name" value="{{ old('location_name') }}" placeholder="VD: Bến Cảng, Đèo Mã Pí Lèng..." class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
+                                    <input type="text" name="location_name" value="{{ old('location_name') }}" placeholder="VD: Bến Cảng, Đèo Mã Pí Lèng..." class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-700 dark:text-slate-200 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-slate-700 font-semibold mb-2">Ảnh minh họa (Tại địa điểm)</label>
-                                <label class="flex items-center justify-center w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 cursor-pointer hover:bg-slate-100 transition-colors group">
+                                <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Ảnh minh họa (Tại địa điểm)</label>
+                                <label class="flex items-center justify-center w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2 cursor-pointer hover:bg-slate-100 transition-colors group">
                                     <div class="flex items-center gap-2">
                                         <i class="fa-solid fa-upload text-slate-400 group-hover:text-orange-500 transition-colors"></i>
                                         <span class="text-sm font-medium text-slate-600 group-hover:text-orange-600 transition-colors" id="file-name">Tải ảnh lên</span>
@@ -137,27 +137,27 @@
                             </div>
                         </div>
                         
-                        <img id="image-preview" class="hidden w-full h-48 md:h-64 object-cover rounded-2xl border border-slate-200 shadow-sm mb-6">
+                        <img id="image-preview" class="hidden w-full h-48 md:h-64 object-cover rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm mb-6">
 
                         {{-- Leaflet Map Box --}}
                         <div class="space-y-3">
                             <div class="flex items-center justify-between">
-                                <label class="font-semibold text-slate-700 flex items-center gap-2">
+                                <label class="font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-2">
                                     <i class="fa-solid fa-earth-asia text-orange-500"></i> Ghim vị trí tọa độ
                                 </label>
-                                <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">Click trực tiếp hoặc tìm kiếm</span>
+                                <span class="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md">Click trực tiếp hoặc tìm kiếm</span>
                             </div>
                             
                             <input type="hidden" name="latitude" id="latitude" value="{{ old('latitude') }}">
                             <input type="hidden" name="longitude" id="longitude" value="{{ old('longitude') }}">
 
-                            <div class="p-2 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                            <div class="p-2 bg-white rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
                                 <div id="map" class="w-full h-[300px] sm:h-[400px] rounded-xl z-0"></div>
                             </div>
                         </div>
                     </section>
 
-                    <hr class="border-slate-100">
+                    <hr class="border-slate-100 dark:border-slate-800">
 
                     {{-- SUBMIT --}}
                     <div class="flex flex-col sm:flex-row justify-end gap-4 pt-2">

@@ -3,7 +3,7 @@
 @section('title', 'Danh sách Banner')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-7xl mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,7 +16,7 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Quản lý Banner
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Quản lý các bảng quảng cáo và hình ảnh nổi bật</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Quản lý các bảng quảng cáo và hình ảnh nổi bật</p>
                 </div>
             </div>
 
@@ -50,12 +50,12 @@
         <div class="hidden lg:block bg-white/90 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl overflow-hidden">
             <table class="w-full text-left border-collapse">
                 <thead>
-                    <tr class="bg-slate-50/50 border-b border-slate-100">
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 w-16 text-center">Hình ảnh</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700">Tên Banner</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700">Liên kết (Link)</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center w-40">Ngày tạo</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center w-32">Thao tác</th>
+                    <tr class="bg-slate-50/50 border-b border-slate-100 dark:border-slate-800">
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 w-16 text-center">Hình ảnh</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200">Tên Banner</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200">Liên kết (Link)</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 text-center w-40">Ngày tạo</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 text-center w-32">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
@@ -63,13 +63,13 @@
                         <tr class="hover:bg-slate-50/80 transition-colors group">
                             
                             <td class="px-6 py-4">
-                                <div class="w-32 h-14 rounded-lg overflow-hidden border border-slate-200 shadow-sm mx-auto bg-slate-100 flex items-center justify-center">
+                                <div class="w-32 h-14 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm mx-auto bg-slate-100 flex items-center justify-center">
                                     <img src="{{ asset($banner->image) }}" alt="Banner" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                 </div>
                             </td>
 
                             <td class="px-6 py-4">
-                                <h5 class="font-bold text-slate-800 text-base">{{ $banner->name }}</h5>
+                                <h5 class="font-bold text-slate-800 dark:text-white text-base">{{ $banner->name }}</h5>
                                 <span class="text-xs text-slate-400 font-medium font-mono">ID: #{{ $banner->id }}</span>
                             </td>
 
@@ -80,14 +80,14 @@
                                         <span class="max-w-[200px] truncate">{{ $banner->link }}</span>
                                     </a>
                                 @else
-                                    <span class="text-slate-400 text-sm italic py-1.5 px-3 bg-slate-50 rounded-lg inline-block border border-slate-100">Không có liên kết</span>
+                                    <span class="text-slate-400 text-sm italic py-1.5 px-3 bg-slate-50 rounded-lg inline-block border border-slate-100 dark:border-slate-800">Không có liên kết</span>
                                 @endif
                             </td>
 
                             <td class="px-6 py-4 text-center">
                                 <div class="inline-flex flex-col items-center">
-                                    <span class="text-sm font-bold text-slate-700">{{ $banner->created_at->format('d/m/Y') }}</span>
-                                    <span class="text-xs text-slate-500">{{ $banner->created_at->format('H:i') }}</span>
+                                    <span class="text-sm font-bold text-slate-700 dark:text-slate-200">{{ $banner->created_at->format('d/m/Y') }}</span>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400">{{ $banner->created_at->format('H:i') }}</span>
                                 </div>
                             </td>
 
@@ -128,13 +128,13 @@
                     <div class="absolute top-0 right-0 p-8 bg-orange-50/50 rounded-full blur-2xl -z-10 -translate-y-1/2 translate-x-1/2"></div>
                     
                     {{-- Banner Image --}}
-                    <div class="w-full h-32 md:h-48 rounded-2xl overflow-hidden border border-slate-100 shadow-sm mb-4">
+                    <div class="w-full h-32 md:h-48 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm mb-4">
                         <img src="{{ asset($banner->image) }}" class="w-full h-full object-cover">
                     </div>
 
                     <div class="mb-4">
-                        <h5 class="font-bold text-slate-800 text-lg leading-tight mb-1">{{ $banner->name }}</h5>
-                        <p class="text-xs text-slate-500 font-medium">Ngày tạo: {{ $banner->created_at->format('d/m/Y') }}</p>
+                        <h5 class="font-bold text-slate-800 dark:text-white text-lg leading-tight mb-1">{{ $banner->name }}</h5>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Ngày tạo: {{ $banner->created_at->format('d/m/Y') }}</p>
                     </div>
 
                     @if (!empty($banner->link))
@@ -143,12 +143,12 @@
                             <span class="truncate">{{ $banner->link }}</span>
                         </a>
                     @else
-                        <div class="flex items-center gap-2 text-sm text-slate-500 bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-100 italic mb-4">
+                        <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-100 dark:border-slate-800 italic mb-4">
                             <i class="fa-solid fa-link-slash shrink-0 text-slate-400"></i> Không có liên kết
                         </div>
                     @endif
                     
-                    <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100">
+                    <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                         <a href="{{ route('admin.banners.edit', $banner->id) }}" class="flex items-center justify-center gap-2 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white py-2.5 rounded-xl font-bold transition-colors text-sm border border-amber-100">
                             <i class="fa-solid fa-pen"></i> Sửa
                         </a>
@@ -164,7 +164,7 @@
             @empty
                 <div class="bg-white/80 p-10 rounded-3xl border border-dashed border-slate-300 text-center">
                     <i class="fa-regular fa-image text-4xl mb-3 text-slate-300"></i>
-                    <p class="text-slate-500 font-medium">Chưa có banner nào!</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-medium">Chưa có banner nào!</p>
                 </div>
             @endforelse
         </div>

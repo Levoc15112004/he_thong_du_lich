@@ -51,7 +51,7 @@
 <body class="flex min-h-screen overflow-hidden">
 
     <!-- Sidebar -->
-    <aside class="w-64 bg-white border-r border-slate-200 hidden md:flex flex-col shrink-0">
+    <aside class="w-64 bg-white border-r border-slate-200 dark:border-slate-800 hidden md:flex flex-col shrink-0">
         <div class="p-6">
             <div class="flex items-center gap-3 text-orange-600 font-bold text-2xl">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,7 +96,7 @@
     <main class="flex-1 flex flex-col h-screen overflow-hidden">
 
         <!-- Header -->
-        <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 shrink-0">
+        <header class="h-20 bg-white border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 shrink-0">
             <div class="flex items-center bg-slate-100 rounded-full px-4 py-2 w-96">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -105,10 +105,10 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <div class="flex items-center gap-3 pl-4 border-l border-slate-200">
+                <div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-800">
                     <div class="text-right hidden sm:block">
-                        <p class="text-sm font-semibold text-slate-800">Admin </p>
-                        <p class="text-[11px] text-slate-500 ">Quản trị viên</p>
+                        <p class="text-sm font-semibold text-slate-800 dark:text-white">Admin </p>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 ">Quản trị viên</p>
                     </div>
                     <img src="https://ui-avatars.com/api/?name=Admin+Nguyen&background=4f46e5&color=fff" alt="Avatar" class="w-10 h-10 rounded-xl shadow-sm">
                 </div>
@@ -121,8 +121,8 @@
             <!-- Breadcrumbs & Actions -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h1 class="text-2xl font-bold text-slate-800">Quản lý User & Voucher</h1>
-                    <p class="text-slate-500 text-sm">Gán cùng lúc nhiều mã giảm giá cho khách hàng.</p>
+                    <h1 class="text-2xl font-bold text-slate-800 dark:text-white">Quản lý User & Voucher</h1>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Gán cùng lúc nhiều mã giảm giá cho khách hàng.</p>
                 </div>
                 <div class="flex gap-3">
                     <button onclick="openAssignModal()" class="flex items-center gap-2 bg-[#863c20] text-white px-5 py-2.5 rounded-xl hover:bg-[#a34c2a] transition shadow-lg shadow-xs font-semibold text-sm">
@@ -136,51 +136,51 @@
 
             <!-- Stats Overview -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-5">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-5">
                     <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
                     <div>
-                        <p class="text-slate-500 text-sm font-medium">Người dùng có Voucher</p>
-                        <h3 class="text-2xl font-bold text-slate-800">4,210</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Người dùng có Voucher</p>
+                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white">4,210</h3>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-5">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-5">
                     <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
                         </svg>
                     </div>
                     <div>
-                        <p class="text-slate-500 text-sm font-medium">Voucher đã phát</p>
-                        <h3 class="text-2xl font-bold text-slate-800">8,590</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Voucher đã phát</p>
+                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white">8,590</h3>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-5">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-5">
                     <div class="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-600 shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <div>
-                        <p class="text-slate-500 text-sm font-medium">Lượt gán trong ngày</p>
-                        <h3 class="text-2xl font-bold text-slate-800">124</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Lượt gán trong ngày</p>
+                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white">124</h3>
                     </div>
                 </div>
             </div>
 
             <!-- Table Section -->
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="p-6 border-b border-slate-100 flex items-center justify-between">
-                    <h2 class="text-lg font-bold text-slate-800">Lịch sử gán Voucher</h2>
+            <div class="bg-white rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <h2 class="text-lg font-bold text-slate-800 dark:text-white">Lịch sử gán Voucher</h2>
                 </div>
 
                 <div class="overflow-x-auto">
                     <table class="w-full text-left">
                         <thead>
-                            <tr class="bg-slate-50/50 text-slate-500 text-xs uppercase font-semibold ">
+                            <tr class="bg-slate-50/50 text-slate-500 dark:text-slate-400 text-xs uppercase font-semibold ">
                                 <th class="px-6 py-4">Người dùng</th>
                                 <th class="px-6 py-4">Mã Voucher</th>
                                 <th class="px-6 py-4">Giá trị</th>
@@ -189,22 +189,22 @@
                                 <th class="px-6 py-4 text-right">Thao tác</th>
                             </tr>
                         </thead>
-                        <tbody id="userTableBody" class="divide-y divide-slate-100">
+                        <tbody id="userTableBody" class="divide-y divide-slate-100 dark:divide-slate-800">
                             <!-- Rows populated by Script -->
                             <tr class="hover:bg-slate-50/80 transition-colors">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
                                         <img src="https://i.pravatar.cc/150?u=1" class="w-10 h-10 rounded-full shadow-sm" alt="User">
                                         <div>
-                                            <p class="text-sm font-semibold text-slate-800">Lê Minh Tuấn</p>
-                                            <p class="text-xs text-slate-500">tuan.le@example.com</p>
+                                            <p class="text-sm font-semibold text-slate-800 dark:text-white">Lê Minh Tuấn</p>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400">tuan.le@example.com</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <span class="font-mono text-sm font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded uppercase">SUMMER24</span>
                                 </td>
-                                <td class="px-6 py-4"><span class="text-sm font-medium text-slate-700">Giảm 50%</span></td>
+                                <td class="px-6 py-4"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">Giảm 50%</span></td>
                                 <td class="px-6 py-4"><span class="text-sm text-slate-600">24/12/2024</span></td>
                                 <td class="px-6 py-4 text-center">
                                     <span class="px-3 py-1 text-[11px] font-bold rounded-full bg-emerald-100 text-emerald-700">ACTIVE</span>
@@ -224,10 +224,10 @@
     <div id="assignModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
         <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden transform transition-colors scale-95 opacity-0 duration-300" id="modalContainer">
             <!-- Modal Header -->
-            <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/50">
                 <div>
-                    <h3 class="text-xl font-bold text-slate-800">Gán Voucher cho User</h3>
-                    <p class="text-xs text-slate-500 mt-0.5">Bạn có thể chọn một hoặc nhiều mã cùng lúc.</p>
+                    <h3 class="text-xl font-bold text-slate-800 dark:text-white">Gán Voucher cho User</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Bạn có thể chọn một hoặc nhiều mã cùng lúc.</p>
                 </div>
                 <button onclick="closeAssignModal()" class="text-slate-400 hover:text-slate-600 p-2 hover:bg-white rounded-full transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -240,9 +240,9 @@
             <form id="assignVoucherForm" class="p-8 space-y-6">
                 <!-- Chọn User -->
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">1. Chọn người dùng mục tiêu</label>
+                    <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">1. Chọn người dùng mục tiêu</label>
                     <div class="relative">
-                        <select id="userSelect" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition outline-none appearance-none">
+                        <select id="userSelect" required class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition outline-none appearance-none">
                             <option value="" disabled selected>Tìm người dùng...</option>
                             <option value="1">Nguyễn Văn A (a@example.com)</option>
                             <option value="2">Trần Thị B (b@example.com)</option>
@@ -260,7 +260,7 @@
                 <!-- Chọn Nhiều Voucher -->
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <label class="text-sm font-semibold text-slate-700">2. Chọn các mã Voucher áp dụng</label>
+                        <label class="text-sm font-semibold text-slate-700 dark:text-slate-200">2. Chọn các mã Voucher áp dụng</label>
                         <span id="selectedCount" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Đã chọn: 0</span>
                     </div>
 
@@ -273,51 +273,51 @@
                         <!-- Voucher Item -->
                         <label class="relative block cursor-pointer group">
                             <input type="checkbox" name="voucher_type" value="SUMMER" data-label="SUMMER24" data-val="Giảm 50%" class="voucher-checkbox peer sr-only">
-                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
+                            <div class="p-4 border border-slate-200 dark:border-slate-800 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-2">
                                     <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded uppercase">SUMMER24</span>
                                     <div class="w-4 h-4 rounded-full border border-slate-300 peer-checked:bg-emerald-600 peer-checked:border-emerald-600 flex items-center justify-center transition-colors">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5 text-white opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                                     </div>
                                 </div>
-                                <p class="text-sm font-bold text-slate-800">Giảm giá 50%</p>
-                                <p class="text-[10px] text-slate-500 mt-1 ">Dành cho đơn từ 200k</p>
+                                <p class="text-sm font-bold text-slate-800 dark:text-white">Giảm giá 50%</p>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 ">Dành cho đơn từ 200k</p>
                             </div>
                         </label>
 
                         <label class="relative block cursor-pointer group">
                             <input type="checkbox" name="voucher_type" value="FREESHIP" data-label="SHIP0" data-val="Freeship" class="voucher-checkbox peer sr-only">
-                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
+                            <div class="p-4 border border-slate-200 dark:border-slate-800 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-2">
                                     <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded uppercase">SHIP0</span>
                                     <div class="w-4 h-4 rounded-full border border-slate-300 peer-checked:bg-emerald-600 peer-checked:border-emerald-600 flex items-center justify-center transition-colors"></div>
                                 </div>
-                                <p class="text-sm font-bold text-slate-800">Miễn phí giao hàng</p>
-                                <p class="text-[10px] text-slate-500 mt-1 ">Tối đa 30k</p>
+                                <p class="text-sm font-bold text-slate-800 dark:text-white">Miễn phí giao hàng</p>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 ">Tối đa 30k</p>
                             </div>
                         </label>
 
                         <label class="relative block cursor-pointer group">
                             <input type="checkbox" name="voucher_type" value="NEWBIE" data-label="WELCOME" data-val="Giảm 20k" class="voucher-checkbox peer sr-only">
-                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
+                            <div class="p-4 border border-slate-200 dark:border-slate-800 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-2">
                                     <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded uppercase">WELCOME</span>
                                     <div class="w-4 h-4 rounded-full border border-slate-300 peer-checked:bg-emerald-600 peer-checked:border-emerald-600 flex items-center justify-center transition-colors"></div>
                                 </div>
-                                <p class="text-sm font-bold text-slate-800">Quà người mới</p>
-                                <p class="text-[10px] text-slate-500 mt-1 ">Giảm trực tiếp 20k</p>
+                                <p class="text-sm font-bold text-slate-800 dark:text-white">Quà người mới</p>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 ">Giảm trực tiếp 20k</p>
                             </div>
                         </label>
 
                         <label class="relative block cursor-pointer group">
                             <input type="checkbox" name="voucher_type" value="VIP10" data-label="VIPPRO" data-val="Giảm 10%" class="voucher-checkbox peer sr-only">
-                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
+                            <div class="p-4 border border-slate-200 dark:border-slate-800 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-2">
                                     <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded uppercase">VIPPRO</span>
                                     <div class="w-4 h-4 rounded-full border border-slate-300 peer-checked:bg-emerald-600 peer-checked:border-emerald-600 flex items-center justify-center transition-colors"></div>
                                 </div>
-                                <p class="text-sm font-bold text-slate-800">Ưu đãi Hội Viên</p>
-                                <p class="text-[10px] text-slate-500 mt-1 ">Không giới hạn đơn</p>
+                                <p class="text-sm font-bold text-slate-800 dark:text-white">Ưu đãi Hội Viên</p>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 ">Không giới hạn đơn</p>
                             </div>
                         </label>
                     </div>
@@ -326,18 +326,18 @@
                 <!-- Thiết lập hạn dùng chung -->
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Ngày bắt đầu</label>
-                        <input type="date" required value="2024-03-20" id="startDate" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Ngày bắt đầu</label>
+                        <input type="date" required value="2024-03-20" id="startDate" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition">
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Ngày hết hạn chung</label>
-                        <input type="date" required value="2024-06-30" id="endDate" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition">
+                        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Ngày hết hạn chung</label>
+                        <input type="date" required value="2024-06-30" id="endDate" class="w-full bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition">
                     </div>
                 </div>
 
                 <!-- Modal Actions -->
                 <div class="flex gap-4 pt-4">
-                    <button type="button" onclick="closeAssignModal()" class="flex-1 px-6 py-3 border border-slate-200 text-slate-600 font-bold rounded-2xl hover:bg-slate-50 transition">Hủy bỏ</button>
+                    <button type="button" onclick="closeAssignModal()" class="flex-1 px-6 py-3 border border-slate-200 dark:border-slate-800 text-slate-600 font-bold rounded-2xl hover:bg-slate-50 transition">Hủy bỏ</button>
                     <button type="submit" id="btnSubmit" disabled class="flex-1 px-6 py-3 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 shadow-lg shadow-emerald-100 transition disabled:opacity-50 disabled:cursor-not-allowed">Xác nhận gán (0)</button>
                 </div>
             </form>
@@ -425,13 +425,13 @@
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-600">${userName.charAt(0)}</div>
                                 <div>
-                                    <p class="text-sm font-semibold text-slate-800">${userName}</p>
-                                    <p class="text-xs text-slate-500">vừa được gán</p>
+                                    <p class="text-sm font-semibold text-slate-800 dark:text-white">${userName}</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">vừa được gán</p>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4"><span class="font-mono text-sm font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded uppercase">${label}</span></td>
-                        <td class="px-6 py-4"><span class="text-sm font-medium text-slate-700">${value}</span></td>
+                        <td class="px-6 py-4"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">${value}</span></td>
                         <td class="px-6 py-4"><span class="text-sm text-slate-600">${endDate}</span></td>
                         <td class="px-6 py-4 text-center">
                             <span class="px-3 py-1 text-[11px] font-bold rounded-full bg-emerald-100 text-emerald-700">ACTIVE</span>

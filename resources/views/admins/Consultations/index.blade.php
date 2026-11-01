@@ -3,7 +3,7 @@
 @section("title", "Quản lý Yêu cầu Tư vấn")
 
 @section("home")
-<div class="min-h-screen bg-slate-50 dark:bg-slate-900 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-200">
+<div class="min-h-screen bg-transparent dark:bg-transparent dark:bg-slate-900 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-200">
     <div class="max-w-[120rem] mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -66,7 +66,7 @@
                     <tbody class="divide-y divide-slate-100 dark:divide-slate-700/50">
                         @forelse($consultations as $item)
                             <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-700/30 transition-colors {{ $item->status === 'unread' ? 'bg-orange-50/20 dark:bg-orange-950/10' : '' }}">
-                                <td class="py-4 px-6 font-mono text-xs text-slate-500">#{{ $item->id }}</td>
+                                <td class="py-4 px-6 font-mono text-xs text-slate-500 dark:text-slate-400">#{{ $item->id }}</td>
                                 <td class="py-4 px-6">
                                     <div class="flex items-center gap-2.5">
                                         <div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs shrink-0">
@@ -82,7 +82,7 @@
                                         {{ $item->message }}
                                     </div>
                                 </td>
-                                <td class="py-4 px-6 whitespace-nowrap text-xs text-slate-500">
+                                <td class="py-4 px-6 whitespace-nowrap text-xs text-slate-500 dark:text-slate-400">
                                     {{ $item->created_at ? $item->created_at->format('d/m/Y H:i') : 'Vừa xong' }}
                                 </td>
                                 <td class="py-4 px-6 whitespace-nowrap">

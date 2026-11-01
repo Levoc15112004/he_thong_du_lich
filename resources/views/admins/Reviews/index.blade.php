@@ -3,7 +3,7 @@
 @section("title", "Quản lý Đánh giá Tour")
 
 @section("home")
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-[120rem] mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,18 +16,18 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-700 to-orange-600">
                         Quản lý Đánh giá Tour
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Xem phản hồi và đánh giá từ khách hàng</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Xem phản hồi và đánh giá từ khách hàng</p>
                 </div>
             </div>
 
             <div class="flex items-center gap-3">
-                <div class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-3">
+                <div class="px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
                         <i class="fa-solid fa-comment-dots"></i>
                     </div>
                     <div>
-                        <p class="text-[10px] text-slate-500 font-bold font-medium">Tổng Đánh Giá</p>
-                        <p class="text-sm font-bold text-slate-800">{{ $reviews->total() }} Lượt</p>
+                        <p class="text-[10px] text-slate-500 dark:text-slate-400 font-bold font-medium">Tổng Đánh Giá</p>
+                        <p class="text-sm font-bold text-slate-800 dark:text-white">{{ $reviews->total() }} Lượt</p>
                     </div>
                 </div>
             </div>
@@ -44,11 +44,11 @@
         @endif
 
         {{-- TABLE CARD --}}
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="bg-white rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse text-sm">
                     <thead>
-                        <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 font-medium">
+                        <tr class="bg-slate-50 border-b border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-500 dark:text-slate-400 font-medium">
                             <th class="py-4 px-6">ID</th>
                             <th class="py-4 px-6">Khách hàng</th>
                             <th class="py-4 px-6">Đơn hàng / Tour</th>
@@ -58,18 +58,18 @@
                             <th class="py-4 px-6 text-right">Thao tác</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100">
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
                         @forelse($reviews as $rev)
                             <tr class="hover:bg-slate-50/80 transition-colors">
-                                <td class="py-4 px-6 font-semibold text-slate-800">#{{ $rev->id }}</td>
+                                <td class="py-4 px-6 font-semibold text-slate-800 dark:text-white">#{{ $rev->id }}</td>
                                 <td class="py-4 px-6">
-                                    <div class="font-bold text-slate-900">{{ $rev->user->name ?? "Khách vãng lai" }}</div>
-                                    <div class="text-xs text-slate-500">{{ $rev->user->email ?? "" }}</div>
+                                    <div class="font-bold text-slate-900 dark:text-white">{{ $rev->user->name ?? "Khách vãng lai" }}</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400">{{ $rev->user->email ?? "" }}</div>
                                 </td>
                                 <td class="py-4 px-6">
                                     @if($rev->order && $rev->order->tour)
-                                        <span class="font-medium text-slate-800 line-clamp-1">{{ $rev->order->tour->name }}</span>
-                                        <span class="text-xs text-slate-500">Đơn #{{ $rev->order_id }}</span>
+                                        <span class="font-medium text-slate-800 dark:text-white line-clamp-1">{{ $rev->order->tour->name }}</span>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400">Đơn #{{ $rev->order_id }}</span>
                                     @else
                                         <span class="text-xs text-slate-400">Đơn hàng #{{ $rev->order_id }}</span>
                                     @endif
@@ -83,13 +83,13 @@
                                                 <i class="fa-regular fa-star text-xs text-slate-300"></i>
                                             @endif
                                         @endfor
-                                        <span class="ml-1 text-xs font-bold text-slate-700">({{ $rev->rating }}/5)</span>
+                                        <span class="ml-1 text-xs font-bold text-slate-700 dark:text-slate-200">({{ $rev->rating }}/5)</span>
                                     </div>
                                 </td>
                                 <td class="py-4 px-6 max-w-xs text-slate-600">
                                     <p class="line-clamp-2">{{ $rev->comment }}</p>
                                 </td>
-                                <td class="py-4 px-6 text-slate-500 text-xs">
+                                <td class="py-4 px-6 text-slate-500 dark:text-slate-400 text-xs">
                                     {{ $rev->created_at ? $rev->created_at->format("d/m/Y H:i") : "N/A" }}
                                 </td>
                                 <td class="py-4 px-6 text-right">
@@ -115,7 +115,7 @@
             </div>
 
             @if($reviews->hasPages())
-                <div class="p-6 border-t border-slate-100">
+                <div class="p-6 border-t border-slate-100 dark:border-slate-800">
                     {{ $reviews->links() }}
                 </div>
             @endif

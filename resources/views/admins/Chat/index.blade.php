@@ -3,7 +3,7 @@
 @section('title', 'Quản lý Hỗ trợ Khách hàng')
 
 @section('home')
-<div class="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent px-4 sm:px-6 lg:px-8 py-8">
     <div class="max-w-7xl mx-auto space-y-8">
 
         {{-- HEADER --}}
@@ -16,18 +16,18 @@
                     <h4 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600">
                         Quản lý Hỗ trợ Khách hàng
                     </h4>
-                    <p class="text-sm text-slate-500 mt-1">Theo dõi, kiểm tra và quản lý các phiên chat hỗ trợ trực tuyến</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Theo dõi, kiểm tra và quản lý các phiên chat hỗ trợ trực tuyến</p>
                 </div>
             </div>
 
             <div class="flex items-center gap-3">
-                <div class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-3">
+                <div class="px-5 py-2.5 bg-white border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center shrink-0">
                         <i class="fa-solid fa-comments"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-500 font-medium">Tổng số phiên</p>
-                        <p class="text-sm font-bold text-slate-800">{{ $sessions->total() }} phiên</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Tổng số phiên</p>
+                        <p class="text-sm font-bold text-slate-800 dark:text-white">{{ $sessions->total() }} phiên</p>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                            name="search"
                            value="{{ request('search') }}"
                            placeholder="Tìm kiếm Email hoặc tên khách hàng..."
-                           class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none placeholder:text-slate-400">
+                           class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-700 dark:text-slate-200 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none placeholder:text-slate-400">
                 </div>
                 <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-[#863c20] text-white rounded-xl font-bold shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-colors duration-200 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-search"></i> Tìm kiếm
@@ -66,12 +66,12 @@
             
             <table class="w-full text-left border-collapse relative z-10">
                 <thead>
-                    <tr class="bg-slate-50/50 border-b border-slate-100">
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 w-16">#</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700">Khách hàng</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center">Trạng thái</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center w-40">Bắt đầu / Kết thúc</th>
-                        <th class="px-6 py-5 text-sm font-bold text-slate-700 text-center w-36">Thao tác</th>
+                    <tr class="bg-slate-50/50 border-b border-slate-100 dark:border-slate-800">
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 w-16">#</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200">Khách hàng</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 text-center">Trạng thái</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 text-center w-40">Bắt đầu / Kết thúc</th>
+                        <th class="px-6 py-5 text-sm font-bold text-slate-700 dark:text-slate-200 text-center w-36">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
@@ -79,7 +79,7 @@
                         <tr class="hover:bg-slate-50/80 transition-colors group">
                             
                             <td class="px-6 py-4">
-                                <span class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 text-slate-500 font-bold text-xs flex items-center justify-center group-hover:bg-orange-50 group-hover:text-orange-600 group-hover:border-orange-200 transition-colors">
+                                <span class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-bold text-xs flex items-center justify-center group-hover:bg-orange-50 group-hover:text-orange-600 group-hover:border-orange-200 transition-colors">
                                     {{ $sessions->firstItem() + $index }}
                                 </span>
                             </td>
@@ -90,10 +90,10 @@
                                         <i class="fa-solid fa-user text-slate-400 text-lg"></i>
                                     </div>
                                     <div>
-                                        <h5 class="font-bold text-slate-800 text-base leading-tight group-hover:text-orange-600 transition-colors">{{ $session->user->name ?? 'Không xác định' }}</h5>
+                                        <h5 class="font-bold text-slate-800 dark:text-white text-base leading-tight group-hover:text-orange-600 transition-colors">{{ $session->user->name ?? 'Không xác định' }}</h5>
                                         <div class="flex items-center gap-1.5 mt-0.5">
                                             <i class="fa-solid fa-envelope text-slate-400 text-xs shrink-0"></i>
-                                            <span class="text-xs text-slate-500 font-medium">{{ $session->user->email ?? '---' }}</span>
+                                            <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">{{ $session->user->email ?? '---' }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                                         <span class="text-emerald-700 text-xs font-bold whitespace-nowrap">Đang chat</span>
                                     </div>
                                 @else
-                                    <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl shadow-sm">
+                                    <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm">
                                         <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-slate-300"></span>
                                         <span class="text-slate-600 text-xs font-bold whitespace-nowrap">Đã kết thúc</span>
                                     </div>
@@ -118,8 +118,8 @@
 
                             <td class="px-6 py-4 text-center">
                                 <div class="flex flex-col items-center gap-1">
-                                    <span class="text-xs font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100 tooltip" title="Thời gian bắt đầu"><i class="fa-solid fa-hourglass-start text-emerald-500 mr-1"></i>{{ optional($session->started_at)->format('H:i d/m/y') }}</span>
-                                    <span class="text-xs font-bold text-slate-500 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100 tooltip" title="Thời gian kết thúc"><i class="fa-solid fa-flag-checkered text-rose-400 mr-1"></i>{{ $session->ended_at ? $session->ended_at->format('H:i d/m/y') : 'Đang tiếp diễn' }}</span>
+                                    <span class="text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100 dark:border-slate-800 tooltip" title="Thời gian bắt đầu"><i class="fa-solid fa-hourglass-start text-emerald-500 mr-1"></i>{{ optional($session->started_at)->format('H:i d/m/y') }}</span>
+                                    <span class="text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100 dark:border-slate-800 tooltip" title="Thời gian kết thúc"><i class="fa-solid fa-flag-checkered text-rose-400 mr-1"></i>{{ $session->ended_at ? $session->ended_at->format('H:i d/m/y') : 'Đang tiếp diễn' }}</span>
                                 </div>
                             </td>
 
@@ -171,8 +171,8 @@
                                 <i class="fa-solid fa-user text-slate-400 text-sm"></i>
                             </div>
                             <div>
-                                <h5 class="font-bold text-slate-800 text-sm leading-tight group-hover:text-orange-600 transition-colors">{{ $session->user->name ?? 'Không xác định' }}</h5>
-                                <span class="text-xs text-slate-500 truncate">{{ $session->user->email ?? '---' }}</span>
+                                <h5 class="font-bold text-slate-800 dark:text-white text-sm leading-tight group-hover:text-orange-600 transition-colors">{{ $session->user->name ?? 'Không xác định' }}</h5>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 truncate">{{ $session->user->email ?? '---' }}</span>
                             </div>
                         </div>
                         @if($session->status == 1)
@@ -182,7 +182,7 @@
                         @endif
                     </div>
                     
-                    <div class="bg-slate-50/80 p-3 rounded-xl border border-slate-100 space-y-2 mb-4">
+                    <div class="bg-slate-50/80 p-3 rounded-xl border border-slate-100 dark:border-slate-800 space-y-2 mb-4">
                         <div class="flex items-center justify-between text-xs font-semibold text-slate-600">
                             <span class="flex items-center gap-1.5"><i class="fa-solid fa-play text-orange-500"></i> Bắt đầu:</span>
                             <span>{{ optional($session->started_at)->format('H:i d/m') }}</span>
@@ -209,7 +209,7 @@
             @empty
                 <div class="bg-white/80 p-10 rounded-3xl border border-dashed border-slate-300 text-center">
                     <i class="fa-solid fa-comment-slash text-4xl mb-3 text-slate-300"></i>
-                    <p class="text-slate-500 font-medium">Không có dữ liệu hỗ trợ!</p>
+                    <p class="text-slate-500 dark:text-slate-400 font-medium">Không có dữ liệu hỗ trợ!</p>
                 </div>
             @endforelse
             

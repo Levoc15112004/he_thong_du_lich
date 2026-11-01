@@ -3,11 +3,11 @@
 @section('title', 'Chi tiết thanh toán')
 
 @section('home')
-<div class="min-h-screen bg-slate-50/50 py-4 sm:py-8">
+<div class="min-h-screen bg-transparent dark:bg-transparent py-4 sm:py-8">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
         <!-- HEADER -->
-        <div class="relative overflow-hidden bg-white rounded-[2.5rem] p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
+        <div class="relative overflow-hidden bg-white rounded-[2.5rem] p-8 shadow-xl shadow-slate-200/50 border border-slate-100 dark:border-slate-800">
             <!-- Decorative Background Element -->
             <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-orange-50 rounded-full opacity-50 blur-3xl"></div>
 
@@ -16,7 +16,7 @@
                     <div class="flex items-center gap-2 mb-2">
                         <span class="px-3 py-1 bg-orange-50 text-orange-600 text-sm font-bold   rounded-lg border border-orange-100 shadow-sm">Giao dịch #{{ $payment->id }}</span>
                     </div>
-                    <h1 class="text-2xl sm:text-4xl font-bold text-slate-900   leading-none">Chi tiết thanh toán</h1>
+                    <h1 class="text-2xl sm:text-4xl font-bold text-slate-900 dark:text-white   leading-none">Chi tiết thanh toán</h1>
                     <p class="mt-2 text-sm text-slate-400 font-medium ">Mã tham chiếu: <span class="font-mono text-slate-600">{{ $payment->charge_id ?? 'N/A' }}</span></p>
                 </div>
 
@@ -42,7 +42,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
             <!-- PAYMENT INFO -->
-            <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+            <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 dark:border-slate-800 overflow-hidden">
                 <div class="p-6 border-b border-slate-50 bg-slate-50/30">
                     <h3 class="text-sm font-bold text-slate-400   flex items-center gap-2">
                         <i class="fa-solid fa-credit-card text-orange-500"></i>
@@ -57,7 +57,7 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <span class="text-sm font-bold text-slate-400   block mb-1">Phương thức</span>
-                            <span class="text-sm font-bold text-slate-800  ">{{ $payment->payment_method }}</span>
+                            <span class="text-sm font-bold text-slate-800 dark:text-white  ">{{ $payment->payment_method }}</span>
                         </div>
                         <div class="text-right">
                             <span class="text-sm font-bold text-slate-400   block mb-1">Loại</span>
@@ -68,7 +68,7 @@
             </div>
 
             <!-- ORDER INFO -->
-            <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+            <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 dark:border-slate-800 overflow-hidden">
                 <div class="p-6 border-b border-slate-50 bg-slate-50/30">
                     <h3 class="text-sm font-bold text-slate-400   flex items-center gap-2">
                         <i class="fa-solid fa-file-invoice text-orange-500"></i>
@@ -83,12 +83,12 @@
                             </div>
                             <div>
                                 <span class="text-sm font-bold text-slate-400   block">Khách hàng</span>
-                                <span class="text-sm font-bold text-slate-900  ">{{ $payment->order->user->name ?? 'N/A' }}</span>
+                                <span class="text-sm font-bold text-slate-900 dark:text-white  ">{{ $payment->order->user->name ?? 'N/A' }}</span>
                             </div>
                         </div>
                         <div class="text-right">
                             <span class="text-sm font-bold text-slate-400   block">Mã đơn</span>
-                            <span class="text-sm font-bold text-slate-800 ">#{{ $payment->order->id }}</span>
+                            <span class="text-sm font-bold text-slate-800 dark:text-white ">#{{ $payment->order->id }}</span>
                         </div>
                     </div>
                     <div>
@@ -100,7 +100,7 @@
         </div>
 
         <!-- TRANSACTION TIMELINE -->
-        <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+        <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 dark:border-slate-800 overflow-hidden">
             <div class="p-6 border-b border-slate-50 bg-slate-50/30">
                 <h3 class="text-sm font-bold text-slate-400   flex items-center gap-2">
                     <i class="fa-solid fa-timeline text-orange-500"></i>
@@ -117,7 +117,7 @@
                                 <i class="fa-solid {{ $tran->status == 'success' ? 'fa-check' : ($tran->status == 'pending' ? 'fa-clock' : 'fa-xmark') }} text-sm"></i>
                             </div>
                             <!-- Content -->
-                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl bg-slate-50/50 border border-slate-100 shadow-sm group-hover:bg-white transition-colors duration-200">
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl bg-slate-50/50 border border-slate-100 dark:border-slate-800 shadow-sm group-hover:bg-white transition-colors duration-200">
                                 <div class="flex items-center justify-between space-x-2 mb-1">
                                     <div class="text-sm font-bold text-slate-400  ">
                                         @if ($tran->transaction_type === 'init') Khởi tạo @elseif($tran->transaction_type === 'confirm') Xác nhận @else Giao dịch @endif
@@ -125,7 +125,7 @@
                                     <time class="text-sm font-bold text-orange-600  ">{{ $tran->created_at->format('H:i d/m/Y') }}</time>
                                 </div>
                                 <div class="flex justify-between items-center mt-2">
-                                    <div class="text-xs font-bold text-slate-800   ">{{ $tran->transaction_code ?? 'NO_CODE' }}</div>
+                                    <div class="text-xs font-bold text-slate-800 dark:text-white   ">{{ $tran->transaction_code ?? 'NO_CODE' }}</div>
                                     <div class="text-sm font-bold text-orange-600">{{ number_format($tran->amount) }}₫</div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
 
         <!-- ACTIONS -->
         <div class="flex flex-col sm:flex-row gap-4 pt-4">
-            <a href="{{ route('admin.payments.index') }}" class="flex-1 flex items-center justify-center gap-2 py-4 bg-white border border-slate-200 text-slate-500 text-sm font-bold   rounded-2xl hover:bg-slate-50 transition-colors active:scale-95 shadow-sm">
+            <a href="{{ route('admin.payments.index') }}" class="flex-1 flex items-center justify-center gap-2 py-4 bg-white border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 text-sm font-bold   rounded-2xl hover:bg-slate-50 transition-colors active:scale-95 shadow-sm">
                 <i class="fa-solid fa-arrow-left"></i>
                 Quay lại danh sách
             </a>
