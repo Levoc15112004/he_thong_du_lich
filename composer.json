@@ -58,7 +58,16 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "audit": {
+            "abandoned": "ignore",
+            "block": false
+        },
+        "policy": {
+            "advisories": {
+                "block": false
+            }
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

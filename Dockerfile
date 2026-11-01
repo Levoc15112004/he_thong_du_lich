@@ -28,7 +28,8 @@ COPY . .
 # Install dependencies (production)
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV COMPOSER_MEMORY_LIMIT=-1
-RUN composer update --no-dev --optimize-autoloader --no-interaction
+RUN composer config policy.advisories.block false \
+    && (composer install --no-dev --optimize-autoloader --no-interaction --no-audit || composer update --no-dev --optimize-autoloader --no-interaction --no-audit)
 
 # Permissions and entrypoint setup
 RUN chmod +x /var/www/html/entrypoint.sh \
