@@ -324,7 +324,7 @@
                     <span id="logoText" class="text-xl md:text-2xl font-bold tracking-tight {{ $isHomePage ? 'text-white' : 'text-slate-900' }} transition-colors duration-300">
                         Wander<span class="text-[#b85e3a]">Vibe</span>
                     </span>
-                    <span id="logoSubtext" class="text-[9px] md:text-[10px] tracking-widest uppercase {{ $isHomePage ? 'text-slate-300' : 'text-slate-500' }} font-bold -mt-0.5 transition-colors duration-300">Vietnam Travel</span>
+                    <span id="logoSubtext" class="text-[9px] md:text-[10px] tracking-widest uppercase {{ $isHomePage ? 'text-slate-300' : 'text-slate-500' }} font-bold -mt-0.5 transition-colors duration-300">Hành Trình Bản Sắc</span>
                 </div>
             </a>
 
@@ -633,7 +633,7 @@
             </div>
 
             <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-                <p>© {{ date('Y') }} WanderVibe Vietnam Travel Co., Ltd. Giấy phép Lữ hành Quốc tế số 79-0128/TCDL-GP LHQT.</p>
+                <p>© {{ date('Y') }} WanderVibe Hành Trình Bản Sắc Co., Ltd. Giấy phép Lữ hành Quốc tế số 79-0128/TCDL-GP LHQT.</p>
                 <div class="flex items-center gap-4">
                     <span class="hover:text-slate-600 cursor-pointer">Chính sách bảo mật</span>
                     <span>•</span>
@@ -651,7 +651,7 @@
                     <div class="w-9 h-9 rounded-xl bg-orange-100 dark:bg-orange-950 text-[#b85e3a] dark:text-orange-400 flex items-center justify-center font-bold">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
-                    <h4 class="font-extrabold text-slate-900 dark:text-white text-base">Đặt Tour Thần Tốc</h4>
+                    <h4 class="font-extrabold text-slate-900 dark:text-white text-base">Giữ Chỗ & Nhận Báo Giá</h4>
                 </div>
                 <button onclick="closeBookModal()" class="w-8 h-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 flex items-center justify-center transition-colors">
                     <i class="fa-solid fa-xmark"></i>
@@ -693,26 +693,26 @@
     <script>
         const heroVideos = {
             hagiang: {
-                title: 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-rose-400 to-amber-300">Hà Giang</span>',
-                subtitle: 'Lướt trên cung đèo Mã Pí Lèng huyền thoại, dong thuyền ngắm dòng Nho Quế màu ngọc bích và đắm chìm trong vẻ đẹp bất tận của non nước.',
+                title: 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-[#cf8a6e] font-serif italic">Hà Giang</span>',
+                subtitle: 'Lướt trên cung đèo Mã Pí Lèng huyền thoại, dong thuyền ngắm dòng Nho Quế màu ngọc bích và cảm nhận vẻ đẹp hùng vĩ của non sông.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80'
             },
             phuquoc: {
-                title: 'Đắm Mình Trong Biển Xanh <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-orange-400 to-amber-300">Phú Quốc</span>',
-                subtitle: 'Tận hưởng làn nước pha lê tại An Thới, lặn ngắm rạn san hô tự nhiên và ngắm quả cầu lửa hoàng hôn chìm vào lòng đại dương.',
+                title: 'Thiên Đường Biển Đảo <span class="text-[#cf8a6e] font-serif italic">Phú Quốc</span>',
+                subtitle: 'Thưởng ngoạn làn nước lam ngọc quần đảo An Thới, trải nghiệm lặn ngắm san hô tự nhiên và hoàng hôn buông xuống đại dương.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80'
             },
             dalat: {
-                title: 'Săn Mây Lãng Mạn <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">Đà Lạt</span>',
-                subtitle: 'Đón ánh bình minh xuyên qua ngàn thông Cầu Đất, nhâm nhi ly cà phê ấm và trải nghiệm đêm tiệc glamping acoustic cực chill.',
+                title: 'Sương Mờ & Rừng Thông <span class="text-[#cf8a6e] font-serif italic">Đà Lạt</span>',
+                subtitle: 'Đón ánh bình minh xuyên qua ngàn thông Cầu Đất, tận hưởng tiết trời se lạnh trong lành và không gian nghỉ dưỡng thanh bình.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'
             },
             halong: {
-                title: 'Kỳ Quan Du Thuyền 5 Sao <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-rose-400">Hạ Long</span>',
-                subtitle: 'Ngắm hàng nghìn đảo đá vôi kỳ vĩ soi bóng mặt vịnh xanh thẳm, trải nghiệm chèo kayak qua hang luồn và ngắm hoàng hôn vịnh biển.',
+                title: 'Kỳ Quan Thiên Nhiên Thế Giới <span class="text-[#cf8a6e] font-serif italic">Vịnh Hạ Long</span>',
+                subtitle: 'Hành trình du thuyền 5 sao lướt qua hàng nghìn đảo đá vôi kỳ vĩ soi bóng mặt vịnh xanh thẳm, chèo kayak qua hang luồn nguyên sơ.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1920&q=80'
             }
@@ -1133,39 +1133,35 @@
         </div>
     </a>
 
-    <!-- AI Chatbot Widget -->
+    <!-- Travel Concierge Widget (Human Consultant) -->
     <div id="aiChatbotWidget" class="fixed bottom-6 right-6 lg:right-8 z-50 font-sans">
-        <!-- Chatbot Avatar/Button -->
-        <button id="chatbotToggleBtn" class="relative group outline-none focus:outline-none transition-transform hover:scale-105" aria-label="Open AI Assistant">
-            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full shadow-2xl overflow-hidden bg-[#133e34] border-2 border-white shadow-xl flex items-center justify-center animate-float-slow cursor-pointer">
-                <!-- Hình AI 3D -->
-                <img src="https://cdn-icons-png.flaticon.com/512/8943/8943377.png" alt="AI Agent" class="w-[75%] h-[75%] object-contain pointer-events-none">
+        <!-- Concierge Toggle Button -->
+        <button id="chatbotToggleBtn" class="relative group outline-none focus:outline-none transition-transform hover:scale-105" aria-label="Tư Vấn Trực Tuyến">
+            <div class="relative w-14 h-14 md:w-16 md:h-16 rounded-full shadow-xl overflow-hidden bg-[#863c20] text-white border-2 border-white flex items-center justify-center cursor-pointer">
+                <i class="fa-solid fa-headset text-xl md:text-2xl"></i>
             </div>
-            <!-- Notification dot -->
-            <span class="absolute top-1 right-1 w-4 h-4 bg-rose-500 border-2 border-white rounded-full flex items-center justify-center pointer-events-none">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-            </span>
+            <!-- Online status green dot -->
+            <span class="absolute top-0 right-0 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full flex items-center justify-center pointer-events-none"></span>
             <!-- Tooltip -->
-            <div class="absolute right-[120%] bottom-1/2 translate-y-1/2 whitespace-nowrap bg-white text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg shadow-slate-200 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                WanderBot AI
-                <div class="absolute top-1/2 -translate-y-1/2 -right-1 w-2 h-2 bg-white rotate-45"></div>
+            <div class="absolute right-[120%] bottom-1/2 translate-y-1/2 whitespace-nowrap bg-[#121518] text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                Tư Vấn Lữ Hành 24/7
+                <div class="absolute top-1/2 -translate-y-1/2 -right-1 w-2 h-2 bg-[#121518] rotate-45"></div>
             </div>
         </button>
 
         <!-- Chat Window -->
         <div id="chatbotWindow" class="absolute bottom-[85px] md:bottom-[95px] right-0 w-[340px] md:w-[380px] h-[520px] max-h-[75vh] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-10 scale-95 pointer-events-none transition-all duration-300 origin-bottom-right z-50">
             <!-- Header -->
-            <div class="bg-[#133e34] p-4 text-white flex items-center justify-between shrink-0 shadow-sm relative z-10">
+            <div class="bg-[#863c20] p-4 text-white flex items-center justify-between shrink-0 shadow-sm relative z-10">
                 <div class="flex items-center gap-3">
-                    <div class="w-11 h-11 bg-white/20 rounded-full flex items-center justify-center p-1.5 shadow-inner">
-                        <img src="https://cdn-icons-png.flaticon.com/512/8943/8943377.png" alt="Bot Face" class="w-full h-full object-contain">
+                    <div class="w-10 h-10 bg-white/15 rounded-full flex items-center justify-center text-white">
+                        <i class="fa-solid fa-headset text-lg"></i>
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-[15px] leading-tight">WanderBot AI</h4>
-                        <p class="text-[11px] font-medium text-amber-100 flex items-center gap-1 mt-0.5">
-                            <span class="w-2 h-2 rounded-full bg-amber-300 relative block">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-200 opacity-75"></span>
-                            </span> <span class="opacity-90">Đang trực tuyến</span>
+                        <h4 class="font-serif font-bold text-sm leading-tight">Chuyên Viên Tư Vấn Lữ Hành</h4>
+                        <p class="text-[11px] text-amber-100 flex items-center gap-1.5 mt-0.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
+                            <span>Trực tuyến • Phản hồi ngay</span>
                         </p>
                     </div>
                 </div>
@@ -1178,13 +1174,14 @@
             <div id="chatbotMessages" class="flex-1 overflow-y-auto p-4 bg-[#f8fafc] dark:bg-slate-900 space-y-4 text-[13px] md:text-sm no-scrollbar scroll-smooth">
                 <!-- Bot Greeting Message -->
                 <div class="flex gap-2.5 max-w-[92%]">
-                    <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center shrink-0 border border-orange-200 dark:border-orange-800 shadow-sm mt-0.5">
-                        <i class="fa-solid fa-robot text-xs text-[#b85e3a] dark:text-orange-400"></i>
+                    <div class="w-8 h-8 rounded-full bg-[#faf6f0] dark:bg-[#231b17] flex items-center justify-center shrink-0 border border-[#e8dfd1] dark:border-[#4a2818] shadow-xs mt-0.5">
+                        <i class="fa-solid fa-user-tie text-xs text-[#863c20] dark:text-[#cf8a6e]"></i>
                     </div>
-                    <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-100 leading-relaxed">
-                        Chào bạn! 👋 Mình là <span class="font-bold text-[#b85e3a] dark:text-orange-400">WanderBot</span> - Trợ lý siêu AI của <b>WanderVibe</b>. Mình có thể tư vấn lịch trình, gợi ý tour du lịch hoặc giải đáp thông tin cho bạn hôm nay nhé!
+                    <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-xs text-slate-800 dark:text-slate-100 text-xs sm:text-sm leading-relaxed">
+                        Kính chào Quý khách! 👋 Em là chuyên viên hỗ trợ lữ hành của <b>WanderVibe</b>. Quý khách đang lên kế hoạch khám phá điểm đến nào hay cần hỗ trợ giữ chỗ tour, em sẵn sàng tư vấn chi tiết ngay ạ!
                     </div>
                 </div>
+
             </div>
 
             <!-- Input Area -->
@@ -1197,7 +1194,7 @@
                     </button>
                 </form>
                 <div class="text-[9px] text-center text-slate-400 dark:text-slate-500 mt-2.5 font-semibold flex flex-col items-center justify-center gap-0.5">
-                    <span>Cung cấp bởi WanderVibe AI & Gemini (Miễn phí)</span>
+                    <span>WanderVibe Travel Vietnam • Hỗ trợ tư vấn lịch trình chuyên nghiệp</span>
                 </div>
             </div>
         </div>
@@ -1252,7 +1249,7 @@
                     const formattedText = text.replace(/\\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                     msgDiv.innerHTML = `
                         <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center shrink-0 border border-orange-200 dark:border-orange-800 shadow-sm mt-0.5">
-                            <i class="fa-solid fa-robot text-xs text-[#b85e3a] dark:text-orange-400"></i>
+                            <i class="fa-solid fa-user-tie text-xs text-[#863c20] dark:text-[#cf8a6e]"></i>
                         </div>
                         <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm text-slate-800 dark:text-slate-100 leading-relaxed break-words">
                             ${formattedText}
@@ -1262,7 +1259,7 @@
                     msgDiv.className = 'flex gap-2.5 max-w-[92%] bot-typing';
                     msgDiv.innerHTML = `
                         <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center shrink-0 border border-orange-200 dark:border-orange-800 shadow-sm mt-0.5">
-                            <i class="fa-solid fa-robot text-xs text-[#b85e3a] dark:text-orange-400"></i>
+                            <i class="fa-solid fa-user-tie text-xs text-[#863c20] dark:text-[#cf8a6e]"></i>
                         </div>
                         <div class="bg-white dark:bg-slate-800 px-4 py-3.5 rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-sm flex items-center gap-1.5">
                             <div class="w-1.5 h-1.5 bg-orange-400 dark:bg-orange-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>

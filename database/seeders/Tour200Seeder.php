@@ -149,13 +149,13 @@ class Tour200Seeder extends Seeder
             ['Khám Phá Trọn Gói', 3, 2, 3500000, 0.15],
             ['Nghỉ Dưỡng 5 Sao Cao Cấp', 4, 3, 6500000, 0.20],
             ['Trải Nghiệm Sinh Thái & Văn Hóa', 3, 2, 3200000, 0.12],
-            ['Check-in Sống Ảo & Ẩm Thực', 3, 2, 3800000, 0.18],
-            ['Trekking & Săn Mây Ngoạn Mục', 2, 1, 2400000, 0.10],
+            ['Khám Phá Cảnh Sắc & Ẩm Thực', 3, 2, 3800000, 0.18],
+            ['Trekking & Chinh Phục Đỉnh Đèo', 2, 1, 2400000, 0.10],
             ['Gia Đình Thư Giãn Trọn Vẹn', 4, 3, 5800000, 0.15],
             ['Kỳ Nghỉ Lãng Mạn Cặp Đôi', 3, 2, 4200000, 0.22],
             ['Tour Tiết Kiệm Cuối Tuần', 2, 1, 1990000, 0.10],
             ['Hành Trình Di Sản Chuyên Sâu', 4, 3, 5200000, 0.16],
-            ['VIP Luxury Thượng Lưu', 5, 4, 9800000, 0.25],
+            ['Hành Trình Thượng Uyển Nghỉ Dưỡng', 5, 4, 9800000, 0.25],
         ];
 
         $startCities = ['Hà Nội', 'TP. Hồ Chí Minh', 'Đà Nẵng', 'Cần Thơ', 'Hải Phòng'];

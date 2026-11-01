@@ -22,11 +22,11 @@
   </div>
 
             <h1 id="heroTitle" class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.12] max-w-4xl transition-all duration-300 drop-shadow-md">
-                {!! $firstBanner->name ?? $firstBanner->title ?? 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-transparent bg-clip-text text-[#cf8a6e] font-serif italic">Hà Giang</span>' !!}
+                {!! $firstBanner->name ?? $firstBanner->title ?? 'Hành Trình Khám Phá <span class="text-[#cf8a6e] font-serif italic">Bản Sắc Việt Nam</span>' !!}
             </h1>
 
             <p id="heroSubtitle" class="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-slate-100 max-w-2xl font-normal leading-relaxed transition-all duration-500 drop-shadow">
-                {{ $firstBanner->description ?? 'Lướt trên cung đèo Mã Pí Lèng huyền thoại, dong thuyền ngắm dòng Nho Quế màu ngọc bích và đắm chìm trong vẻ đẹp bất tận của non nước.' }}
+                {{ $firstBanner->description ?? 'Tuyển chọn hơn 200+ hành trình du lịch trọn gói cao cấp khắp ba miền. Dịch vụ chuẩn mực 5 sao, hướng dẫn viên bản địa am hiểu sâu sắc và bảo hiểm toàn diện.' }}
             </p>
 
             <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -118,46 +118,46 @@
         </div>
     </section>
 
-    {{-- ================= CEO / CRO / TRUST SIGNALS ================= --}}
+    {{-- ================= CREDENTIALS & TRUST SIGNALS ================= --}}
     <section class="mt-8 mb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
-                    <i class="fa-solid fa-shield-halved text-xl"></i>
+            <div class="travel-card rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 bg-white dark:bg-[#1a1e22] border border-[#e8e3d8] dark:border-[#2b3239]">
+                <div class="w-11 h-11 rounded-xl bg-[#faf6f0] dark:bg-[#231b17] text-[#863c20] dark:text-[#cf8a6e] flex items-center justify-center shrink-0 border border-[#e8dfd1] dark:border-[#4a2818]">
+                    <i class="fa-solid fa-certificate text-lg"></i>
                 </div>
                 <div>
-                    <h4 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Bảo Hiểm 100 Tr</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Bảo hiểm du lịch toàn diện</p>
+                    <h4 class="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm">Bảo Hiểm Lữ Hành</h4>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Bảo vệ quyền lợi 100 Triệu</p>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-11 h-11 rounded-xl bg-orange-50 dark:bg-orange-950 text-orange-600 dark:text-orange-400 flex items-center justify-center shrink-0">
-                    <i class="fa-solid fa-hand-holding-dollar text-xl"></i>
+            <div class="travel-card rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 bg-white dark:bg-[#1a1e22] border border-[#e8e3d8] dark:border-[#2b3239]">
+                <div class="w-11 h-11 rounded-xl bg-[#faf6f0] dark:bg-[#231b17] text-[#863c20] dark:text-[#cf8a6e] flex items-center justify-center shrink-0 border border-[#e8dfd1] dark:border-[#4a2818]">
+                    <i class="fa-solid fa-award text-lg"></i>
                 </div>
                 <div>
-                    <h4 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Cam Kết Giá Tốt</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Hoàn tiền nếu sai dịch vụ</p>
+                    <h4 class="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm">Chuẩn Mực 5 Sao</h4>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Đối tác lưu trú & xe cao cấp</p>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-11 h-11 rounded-xl bg-orange-50 dark:bg-orange-950 text-orange-600 dark:text-orange-400 flex items-center justify-center shrink-0">
-                    <i class="fa-solid fa-headset text-xl"></i>
+            <div class="travel-card rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 bg-white dark:bg-[#1a1e22] border border-[#e8e3d8] dark:border-[#2b3239]">
+                <div class="w-11 h-11 rounded-xl bg-[#faf6f0] dark:bg-[#231b17] text-[#863c20] dark:text-[#cf8a6e] flex items-center justify-center shrink-0 border border-[#e8dfd1] dark:border-[#4a2818]">
+                    <i class="fa-solid fa-user-shield text-lg"></i>
                 </div>
                 <div>
-                    <h4 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Hỗ Trợ 24/7</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Đội ngũ bản địa tận tâm</p>
+                    <h4 class="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm">Hướng Dẫn Bản Địa</h4>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Am hiểu sâu sắc văn hóa</p>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-11 h-11 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
-                    <i class="fa-solid fa-bolt text-xl"></i>
+            <div class="travel-card rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 bg-white dark:bg-[#1a1e22] border border-[#e8e3d8] dark:border-[#2b3239]">
+                <div class="w-11 h-11 rounded-xl bg-[#faf6f0] dark:bg-[#231b17] text-[#863c20] dark:text-[#cf8a6e] flex items-center justify-center shrink-0 border border-[#e8dfd1] dark:border-[#4a2818]">
+                    <i class="fa-solid fa-handshake-simple text-lg"></i>
                 </div>
                 <div>
-                    <h4 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Xác Nhận Tức Thì</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Mã giữ chỗ gửi sau 30s</p>
+                    <h4 class="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm">Minh Bạch Chi Phí</h4>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Giá trọn gói, không phí ẩn</p>
                 </div>
             </div>
         </div>
@@ -169,10 +169,10 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
                     <div class="stamp-badge mb-3">
-                        <i class="fa-solid fa-cloud-sun-rain text-orange-600"></i> Trạm thời tiết trực tiếp
+                        <i class="fa-solid fa-compass text-[#863c20]"></i> Cẩm Nang Khí Hậu Điểm Đến
                     </div>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Dự Báo Thời Tiết Điểm Đến</h2>
-                    <p class="text-slate-500 text-sm mt-1">Cập nhật thời tiết OpenWeather và các gợi ý trang phục khám phá</p>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Khí Hậu & Thời Điểm Lý Tưởng Du Lịch</h2>
+                    <p class="text-slate-500 text-sm mt-1">Thông tin khí tượng thực tế hỗ trợ Quý khách lên kế hoạch hành trình thuận lợi nhất</p>
                 </div>
                 <div class="flex flex-col xl:flex-row items-center gap-3">
                     <div class="flex items-center gap-2 overflow-x-auto no-scrollbar p-1.5 bg-white/60 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-sm" id="weatherTabs">
@@ -191,8 +191,8 @@
             </div>
 
             <div id="weatherContent" class="glass-panel-light rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-500 border border-slate-200 dark:border-slate-800 shadow-xl">
-                <div class="absolute -right-20 -top-20 w-80 h-80 bg-rose-200/50 dark:bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-orange-200/50 dark:bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                
                 
                 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                     <!-- OpenWeather Backend Data Fallback to UI Presets -->
@@ -241,14 +241,14 @@
                     <div class="bg-slate-50 dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
                         <div class="space-y-2">
                             <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">
-                                <i class="fa-solid fa-shirt"></i> Gợi Ý Mix Đồ & Săn Ảnh
+                                <i class="fa-solid fa-circle-info text-[#863c20]"></i> Khuyến Nghị Khí Hậu & Lịch Trình
                             </div>
                             <p id="weatherAdvice" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                                 {{ $weatherData['advice'] ?? 'Chuẩn bị trang phục thoáng mát hoặc áo khoác nhẹ tùy vào vùng cao hoặc biển. Mang theo kem chống nắng và kính râm khi dạo biển.' }}
                             </p>
                         </div>
                         <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs text-orange-700 dark:text-orange-400">
-                            <span class="font-medium">Độ hoàn hảo du lịch:</span>
+                            <span class="font-medium">Điều kiện thời tiết:</span>
                             <span id="weatherScore" class="font-bold {{ $weatherData['scoreColor'] ?? 'text-amber-600' }} {{ $weatherData['scoreBg'] ?? 'bg-amber-100' }} border border-white/50 px-3 py-1 rounded-full shadow-sm">
                                 {{ $weatherData['scoreText'] ?? '9.8 / 10 Tuyệt Vời' }}
                             </span>
@@ -284,10 +284,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
                 <div>
-                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-50 border border-rose-200/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
-                        <i class="fa-solid fa-fire text-rose-500"></i> Xu hướng thịnh hành
-                    </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Top Tour Nổi Bật Được Quan Tâm Nhất</h2>
+                    <span class="stamp-badge mb-3">
+       <i class="fa-solid fa-compass text-[#863c20]"></i> Tuyển Chọn Lữ Hành
+   </span>
+   <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Hành Trình Được Yêu Thích Nhất 2026</h2>
                     <p class="text-slate-500 text-sm mt-1">Các tour có số lượt xem và đặt chỗ cao nhất từ hệ thống</p>
                 </div>
                 <a href="{{ route('user.tours') }}" class="inline-flex items-center gap-2 text-sm font-bold text-orange-600 hover:text-orange-700 group transition-colors">
@@ -305,11 +305,9 @@
                             @php
                                 $imgSrc = $tour->image ? (Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image)) : 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=700&q=80';
                             @endphp
-                            <img src="{{ $imgSrc }}" alt="{{ $tour->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <img src="{{ $imgSrc }}" alt="{{ str_replace(['Check-in Sống Ảo & Ẩm Thực', 'Check-in Sống Ảo', 'VIP Luxury Thượng Lưu'], ['Khám Phá Cảnh Sắc & Ẩm Thực', 'Trải Nghiệm Văn Hóa', 'Hành Trình Thượng Uyển Nghỉ Dưỡng'], $tour->name) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10"></div>
-                            <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-rose-600 text-xs font-extrabold px-3 py-1 rounded-full shadow-lg border border-rose-100">
-                                <i class="fa-solid fa-fire"></i> Hot {{ $tour->total_views ?? 0 }} views
-                            </span>
+                            <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-xs text-[#863c20] text-[11px] font-bold px-3 py-1 rounded-lg shadow-xs border border-[#e8dfd1]"><i class="fa-solid fa-star text-amber-500 mr-1 text-[10px]"></i> Tour Tiêu Điểm</span>
                             <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-white text-xs font-semibold px-2.5 py-1 rounded-full border border-slate-700">
                                 <i class="fa-regular fa-clock"></i> {{ $tour->time ?? $tour->duration ?? '3N2Đ' }}
                             </span>
@@ -326,7 +324,7 @@
                                 </div>
                                 <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="block">
                                     <h3 class="text-base font-bold text-slate-900 group-hover:text-orange-600 transition-colors line-clamp-2 leading-snug">
-                                        {{ $tour->name }}
+                                        {{ str_replace(['Check-in Sống Ảo & Ẩm Thực', 'Check-in Sống Ảo', 'VIP Luxury Thượng Lưu'], ['Khám Phá Cảnh Sắc & Ẩm Thực', 'Trải Nghiệm Văn Hóa', 'Hành Trình Thượng Uyển Nghỉ Dưỡng'], $tour->name) }}
                                     </h3>
                                 </a>
                                 <p class="mt-2 text-xs text-slate-500 line-clamp-2">
@@ -362,10 +360,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14">
                 <span class="stamp-badge mb-3">
-                    <i class="fa-solid fa-earth-americas text-orange-600"></i> Điểm đến nổi bật
-                </span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Điểm Đến Hấp Dẫn Không Thể Bỏ Lỡ</h2>
-                <p class="text-slate-500 text-sm mt-2">Dù bạn thích lên rừng săn mây hay xuống biển đón nắng vàng, mọi cảnh sắc Việt Nam đều sẵn sàng chào đón</p>
+       <i class="fa-solid fa-map-location-dot text-[#863c20]"></i> Bản Đồ Điểm Đến
+   </span>
+   <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Những Miền Đất Đậm Đà Bản Sắc</h2>
+   <p class="text-slate-500 text-sm mt-2">Từ non cao Tây Bắc hùng vĩ, vịnh biển di sản đến những phố cổ trầm mặc và biển đảo phương Nam</p>
             </div>
 
             <!-- Loop Destinations from Controller -->
@@ -382,7 +380,7 @@
                             {{ $item->total_tours }} Tours
                         </span>
                         <div class="absolute bottom-5 left-5 right-5 text-white">
-                            <span class="text-[10px] text-amber-300 font-bold uppercase tracking-wider block mb-1">Điểm hẹn lý tưởng</span>
+                            <span class="text-[10px] text-amber-200 font-semibold tracking-wider uppercase block mb-1">Danh lam thắng cảnh</span>
                             <h3 class="text-xl font-bold group-hover:text-orange-300 group-hover:translate-x-1 transition-all">
                                 {{ $item->end_location }}
                             </h3>
@@ -407,7 +405,7 @@
                         <i class="fa-solid fa-book-open-reader text-orange-600"></i> Cẩm nang du lịch
                     </span>
                     <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Kinh Nghiệm & Review Du Lịch</h2>
-                    <p class="text-slate-500 text-sm mt-1">Những bài viết chia sẻ thực tế, bí kíp săn ảnh triệu view và mẹo du lịch tiết kiệm</p>
+                    <p class="text-slate-500 text-sm mt-1">Những bài viết chia sẻ thực tế, lịch trình thực tế và cẩm nang hữu ích và mẹo du lịch tiết kiệm</p>
                 </div>
                 <a href="{{ route('blog.index') }}" class="text-sm font-bold text-orange-600 hover:text-orange-700 flex items-center gap-2 transition-colors">
                     <span>Xem tất cả bài viết</span>
@@ -476,7 +474,7 @@
                             Bạn cần tư vấn về tour, lịch trình hay đặt dịch vụ? Hãy để chúng tôi giúp bạn!
                         </h2>
                         <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base mt-4 font-normal leading-relaxed">
-                            Đội ngũ travel planner trẻ trung của WanderVibe luôn sẵn sàng lên kế hoạch chi tiết, tiết kiệm và tối ưu trải nghiệm check-in sống ảo nhất cho chuyến đi của bạn.
+                            Đội ngũ chuyên viên tư vấn giàu kinh nghiệm của WanderVibe luôn sẵn sàng hỗ trợ thiết kế lịch trình chuyên sâu, minh bạch chi phí và chuẩn hóa dịch vụ cho Quý khách.
                         </p>
 
                         <div class="mt-8 space-y-5">
