@@ -162,6 +162,35 @@ class TourDetailController extends Controller
 
         $avgRating = Review::whereIn('order_id', $orderIds)->avg('rating');
 
+        // Danh sách các đợt khởi hành cố định sắp tới của tour
+        $startBase = $tour->start_date ? \Carbon\Carbon::parse($tour->start_date) : now()->addDays(3);
+        if ($startBase->isPast()) {
+            $startBase = now()->next(\Carbon\Carbon::FRIDAY);
+        }
+
+        $upcomingDates = [
+            [
+                'date' => $startBase->format('Y-m-d'),
+                'label' => 'Đợt 1: ' . $startBase->format('d/m/Y'),
+                'note' => 'Khởi hành định kỳ (Còn ' . max($slots, 1) . ' chỗ)',
+            ],
+            [
+                'date' => $startBase->copy()->addDays(7)->format('Y-m-d'),
+                'label' => 'Đợt 2: ' . $startBase->copy()->addDays(7)->format('d/m/Y'),
+                'note' => 'Tuần tiếp theo (Đang nhận chỗ)',
+            ],
+            [
+                'date' => $startBase->copy()->addDays(14)->format('Y-m-d'),
+                'label' => 'Đợt 3: ' . $startBase->copy()->addDays(14)->format('d/m/Y'),
+                'note' => 'Đợt 2 tuần tới (Đang nhận chỗ)',
+            ],
+            [
+                'date' => $startBase->copy()->addDays(28)->format('Y-m-d'),
+                'label' => 'Đợt 4: ' . $startBase->copy()->addDays(28)->format('d/m/Y'),
+                'note' => 'Đợt tháng tới (Đặt chỗ sớm)',
+            ],
+        ];
+
         return view('users.tourDetail', compact(
             'tour',
             'categories',
@@ -176,7 +205,8 @@ class TourDetailController extends Controller
             'reviews',
             'avgRating',
             'notifications',
-            'unreadCount'
+            'unreadCount',
+            'upcomingDates'
         ));
     }
 

@@ -1,7 +1,7 @@
 /* Hallmark: Wanderlust Travel · editorial · floor 0 fail */
 /**
- * Wanderlust Travel - Editorial Design System (Anti-AI Aesthetic)
- * Typography: Playfair Display (Headings) + Be Vietnam Pro (Body)
+ * Wanderlust Travel - Clean Editorial Design System
+ * Universal Font: Be Vietnam Pro (100% Native Vietnamese Typography)
  * Palette: Terracotta / Heritage Ochre & Deep Forest Pine
  */
 
@@ -22,17 +22,20 @@ html, body {
   overflow-x: clip;
 }
 
+body, h1, h2, h3, h4, h5, h6, .font-serif, .font-editorial, .font-sans {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
 body {
   background-color: var(--color-canvas);
   color: var(--color-ink);
-  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
   letter-spacing: -0.01em;
 }
 
-/* Editorial Serif Headings */
+/* Confident Bold Headings with Flawless Vietnamese Diacritics */
 h1, h2, h3, .font-serif, .font-editorial {
-  font-family: 'Lora', 'Playfair Display', Georgia, serif !important;
-  letter-spacing: normal !important;
+  font-weight: 800;
+  letter-spacing: -0.015em;
   overflow-wrap: break-word;
   min-width: 0;
 }
@@ -46,7 +49,7 @@ h1, h2, h3, .font-serif, .font-editorial {
 }
 .travel-card:hover, .premium-card:hover {
   border-color: #cf8a6e;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: 0 4px 8px -1px rgba(21, 23, 25, 0.05), 0 16px 28px -6px rgba(184, 94, 58, 0.10);
 }
 
@@ -105,7 +108,6 @@ html.dark .premium-card {
   color: #f1f4f7 !important;
 }
 
-/* Prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -114,5 +116,3 @@ html.dark .premium-card {
     scroll-behavior: auto !important;
   }
 }
-
-

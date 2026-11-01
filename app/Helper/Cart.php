@@ -23,24 +23,17 @@ class Cart
 
 
 
-    public function add($tour, $quantity, $transport, $tour_type, $startDate = null)
+    public function add($tour, $quantity, $transport, $tour_type, $startDate = null, $unitPrice = null)
     {
         $selectedDate = !empty($startDate) ? $startDate : $tour->start_date;
+        $finalPrice = ($unitPrice && $unitPrice > 0) ? $unitPrice : ($tour->sale_price > 0 ? $tour->sale_price : $tour->price);
         $item = [
-
             'tour_id' => $tour->id,
-
             'tour_name' => $tour->name,
-
             'transport' => $transport,
-
             'tour_type' => $tour_type,
-
             'image' => $tour->image,
-
-            'price' => $tour->sale_price > 0
-                ? $tour->sale_price
-                : $tour->price,
+            'price' => $finalPrice,
 
             'quantity' => max(1, $quantity),
 
