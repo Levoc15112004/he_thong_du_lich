@@ -73,11 +73,14 @@ class CartController extends Controller
 
         $cart = new Cart;
 
+        $startDate = $req->departure_date ?: ($req->custom_departure_date ?: $tour->start_date);
+
         $cart->add(
             $tour,
             $req->quantity,
             $req->transport,
-            $req->tour_type
+            $req->tour_type,
+            $startDate
         );
 
         return redirect()->route('user.cart');

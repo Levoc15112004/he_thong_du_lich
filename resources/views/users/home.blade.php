@@ -42,19 +42,28 @@
             </div>
 
             <!-- Quick Destination Switcher -->
-            <div class="mt-10 sm:mt-12 flex items-center gap-2 overflow-x-auto no-scrollbar max-w-full p-1.5 bg-white/20 backdrop-blur-2xl rounded-2xl border border-white/35">
-                <button onclick="switchHeroVideo('hagiang')" class="hero-switcher-btn active px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-white text-orange-600 shadow-lg shadow-black/5 flex items-center gap-1.5">
-                    <span>Hà Giang</span>
-                </button>
-                <button onclick="switchHeroVideo('phuquoc')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
-                    <span>Phú Quốc</span>
-                </button>
-                <button onclick="switchHeroVideo('dalat')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
-                    <span>Đà Lạt</span>
-                </button>
-                <button onclick="switchHeroVideo('halong')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
-                    <span>Vịnh Hạ Long</span>
-                </button>
+            <div class="mt-8 flex flex-col items-center">
+                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar max-w-full p-1.5 bg-white/15 backdrop-blur-md rounded-2xl border border-white/25">
+                    <button onclick="switchHeroVideo('hagiang')" class="hero-switcher-btn active px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white text-[#863c20] shadow-sm flex items-center gap-1.5">
+                        <span>Hà Giang</span>
+                    </button>
+                    <button onclick="switchHeroVideo('phuquoc')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
+                        <span>Phú Quốc</span>
+                    </button>
+                    <button onclick="switchHeroVideo('dalat')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
+                        <span>Đà Lạt</span>
+                    </button>
+                    <button onclick="switchHeroVideo('halong')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
+                        <span>Vịnh Hạ Long</span>
+                    </button>
+                </div>
+                <div class="mt-3.5">
+                    <a id="heroDestActionLink" href="{{ route('user.destination', ['location' => 'Hà Giang']) }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#863c20] hover:bg-[#a34c2a] text-white text-xs sm:text-sm font-bold shadow-md transition-all">
+                        <i class="fa-solid fa-map-pin text-amber-300"></i>
+                        <span id="heroDestActionText">Xem danh sách tour tại Hà Giang</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
             </div>
 
             <div class="absolute bottom-6 right-6 z-30 hidden sm:flex items-center gap-2.5">
@@ -123,7 +132,10 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <div class="travel-card rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 bg-white dark:bg-[#1a1e22] border border-[#e8e3d8] dark:border-[#2b3239]">
                 <div class="w-11 h-11 rounded-xl bg-[#faf6f0] dark:bg-[#231b17] text-[#863c20] dark:text-[#cf8a6e] flex items-center justify-center shrink-0 border border-[#e8dfd1] dark:border-[#4a2818]">
-                    <i class="fa-solid fa-certificate text-lg"></i>
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="m9 12 2 2 4-4"/>
+                    </svg>
                 </div>
                 <div>
                     <h4 class="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm">Bảo Hiểm Lữ Hành</h4>
@@ -615,12 +627,20 @@
                                         suggestionsBox.classList.remove('hidden');
                                     }
                                 })
-                                .catch(error => console.error('Error fetching search suggestions:', error));
-                        }, 250); 
-                    } else {
-                        suggestionsBox.classList.add('hidden');
-                        suggestionsBox.innerHTML = '';
-                    }
+                                .catch(error => {
+                                    if (error.name !== 'AbortError') {
+                                        console.error('Error fetching search suggestions:', error);
+                                    }
+                                });
+                };
+
+                let debounceTimer = null;
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(debounceTimer);
+                    const kw = this.value.trim();
+                    debounceTimer = setTimeout(() => {
+                        handleSearchInput(kw);
+                    }, 350);
                 });
 
                 // Hide suggestions when clicking outside

@@ -133,50 +133,65 @@
                 <!-- ================= LEFT CONTENT ================= -->
                 <div class="lg:col-span-2 space-y-8">
 
-                    <!-- ===== GALLERY ===== -->
-                    <div class="bg-white rounded-2xl travel-card overflow-hidden shadow-sm border border-slate-100 p-2">
-                        <div class="relative h-[350px] md:h-[500px] rounded-[1.5rem] overflow-hidden">
-                            <img id="mainImage" src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" alt="{{ $tour->name }}"
-                                class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
-                        </div>
+                    <!-- ===== GALLERY SLIDER & VIDEO ===== -->
+@php
+    $galleryList = collect([$tour->image])->concat($images->pluck('image'))->filter()->unique()->values();
+@endphp
+<div class="bg-white dark:bg-[#1a1e22] rounded-2xl travel-card overflow-hidden border border-[#e8e3d8] dark:border-[#2b3239] p-3 shadow-sm">
+    <div id="tourCarouselStage" class="relative h-[360px] md:h-[500px] rounded-xl overflow-hidden group">
+        @foreach($galleryList as $idx => $img)
+            @php $imgUrl = Str::startsWith($img, ['http://', 'https://']) ? $img : asset($img); @endphp
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out {{ $idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none' }}" data-index="{{ $idx }}">
+                <img src="{{ $imgUrl }}" alt="{{ $tour->name }} - Ảnh {{ $idx + 1 }}" class="w-full h-full object-cover">
+            </div>
+        @endforeach
 
-                        <style>
-                            .tour-gallery-grid {
-                                display: grid;
-                                gap: 8px;
-                                padding: 8px;
-                                grid-template-columns: repeat(4, 1fr);
-                            }
-                            @media (min-width: 640px) {
-                                .tour-gallery-grid { grid-template-columns: repeat(6, 1fr); }
-                            }
-                            @media (min-width: 768px) {
-                                .tour-gallery-grid { grid-template-columns: repeat(8, 1fr); }
-                            }
-                            .tour-gallery-grid img {
-                                width: 100%;
-                                height: 64px;
-                                object-fit: cover;
-                                border-radius: 6px;
-                                cursor: pointer;
-                                transition: opacity 0.3s;
-                            }
-                            @media (min-width: 768px) {
-                                .tour-gallery-grid img { height: 80px; }
-                            }
-                            .tour-gallery-grid img:hover {
-                                opacity: 0.8;
-                            }
-                        </style>
-                        <div class="tour-gallery-grid">
-                            @foreach ($images as $image)
-                                <img src="{{ Str::startsWith($image->image, ['http://', 'https://']) ? $image->image : asset($image->image) }}" class="thumbnail">
-                            @endforeach
-                        </div>
-                    </div>
+        <button type="button" id="carouselPrevBtn" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+            <i class="fa-solid fa-chevron-left text-sm"></i>
+        </button>
+        <button type="button" id="carouselNextBtn" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+            <i class="fa-solid fa-chevron-right text-sm"></i>
+        </button>
 
+        <div class="absolute bottom-4 left-4 z-20 flex items-center gap-2">
+            <span id="carouselCounter" class="bg-black/60 backdrop-blur-md text-white text-xs font-mono px-3 py-1 rounded-full border border-white/20">
+                1 / {{ $galleryList->count() }}
+            </span>
+            <span class="bg-black/60 backdrop-blur-md text-emerald-300 text-xs font-medium px-3 py-1 rounded-full border border-white/20">
+                <i class="fa-solid fa-camera mr-1"></i> Ảnh thực tế
+            </span>
+        </div>
 
-                    <!-- ===== THÔNG TIN TOUR ===== -->
+        <button type="button" onclick="openTourVideoModal()" class="absolute bottom-4 right-4 z-20 bg-[#863c20] hover:bg-[#a34c2a] text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-md transition-all flex items-center gap-2">
+            <i class="fa-solid fa-play text-[10px]"></i>
+            <span>Video Review</span>
+        </button>
+    </div>
+
+    <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar pt-3 px-1" id="carouselThumbnails">
+        @foreach($galleryList as $idx => $img)
+            @php $imgUrl = Str::startsWith($img, ['http://', 'https://']) ? $img : asset($img); @endphp
+            <button type="button" onclick="goToCarouselSlide({{ $idx }})" class="carousel-thumb relative shrink-0 w-20 h-14 md:w-24 md:h-16 rounded-lg overflow-hidden border-2 transition-all {{ $idx === 0 ? 'border-[#863c20] ring-2 ring-[#863c20]/20' : 'border-transparent opacity-60 hover:opacity-100' }}" data-index="{{ $idx }}">
+                <img src="{{ $imgUrl }}" class="w-full h-full object-cover">
+            </button>
+        @endforeach
+    </div>
+</div>
+
+<div id="tourVideoModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+        <div class="flex items-center justify-between p-3 bg-slate-900 border-b border-slate-800 text-white">
+            <span class="text-xs font-bold flex items-center gap-2"><i class="fa-solid fa-film text-[#cf8a6e]"></i> Video Trải Nghiệm Tour: {{ $tour->name }}</span>
+            <button type="button" onclick="closeTourVideoModal()" class="w-8 h-8 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="relative aspect-video w-full bg-black">
+            <iframe id="tourVideoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+<!-- ===== THÔNG TIN TOUR ===== -->
                     <div class="bg-white rounded-2xl travel-card shadow-sm border border-slate-100 p-8 space-y-8">
 
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
@@ -422,48 +437,97 @@
                         </button>
 
                         <!-- ===== FORM ===== -->
-                        <form action="{{ route('user.cart.add', $tour->id) }}" method="POST" class="space-y-4 text-slate-800">
-                            @csrf
-
-                            <!-- TRANSPORT -->
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1">
-                                    Phương tiện di chuyển
-                                </label>
-
-                                <div class="grid grid-cols-1 gap-3 text-sm">
-                                    @foreach ($transportValues as $value)
-                                        <label
-                                            class="flex items-center justify-between px-4 py-3 rounded-xl bg-slate-50 border border-slate-200
-                                             hover:border-orange-500 hover:bg-white cursor-pointer transition-all shadow-sm group">
-                                            <span class="font-semibold text-slate-700 group-hover:text-[#b85e3a] z-10">{{ $value }}</span>
-                                            <input type="radio" name="transport" value="{{ $value }}"
-                                                {{ $loop->first ? 'checked' : '' }} class="text-orange-500 focus:ring-orange-500 z-10 focus:ring-2">
-                                        </label>
-                                    @endforeach
-                                </div>
+<form action="{{ route('user.cart.add', $tour->id) }}" method="POST" class="space-y-4 text-slate-800 dark:text-slate-100">
+    @csrf
+    <!-- 1. DEPARTURE DATES -->
+    <div class="border-b border-slate-100 dark:border-slate-700/80 pb-3">
+        <label class="block text-xs font-bold text-slate-800 dark:text-slate-100 mb-2 flex items-center justify-between">
+            <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar-check text-[#863c20]"></i> Ngày khởi hành</span>
+            <span class="text-[10px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded">Có chỗ trống</span>
+        </label>
+        <div class="space-y-2 text-xs">
+            <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 cursor-pointer hover:border-[#b85e3a]">
+                <div class="flex items-center gap-2.5">
+                    <input type="radio" name="departure_date" value="{{ $tour->start_date }}" checked class="text-[#863c20]">
+                    <div>
+                        <span class="font-bold text-slate-800 dark:text-white block">Đợt gần nhất (Mặc định)</span>
+                        <span class="text-slate-500">{{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}</span>
+                    </div>
+                </div>
+                <span class="text-[10px] text-slate-400">Tiêu chuẩn</span>
+            </label>
+            <label class="flex items-center justify-between p-3 rounded-xl border border-rose-200 bg-rose-50/50 dark:bg-rose-950/30 cursor-pointer hover:border-rose-400">
+                <div class="flex items-center gap-2.5">
+                    <input type="radio" name="departure_date" value="2026-02-18" class="text-rose-600">
+                    <div>
+                        <span class="font-bold text-rose-700 dark:text-rose-300 block">🧧 Đợt Tết Nguyên Đán 2026</span>
+                        <span class="text-rose-600">18/02/2026 (Mùng 2 Tết)</span>
+                    </div>
+                </div>
+                <span class="text-[10px] bg-rose-100 text-rose-700 font-bold px-2 py-0.5 rounded">Tết Âm Lịch</span>
+            </label>
+        </div>
+        <div class="mt-2.5 pt-2 border-t border-dashed border-slate-200 dark:border-slate-700">
+            <label class="text-[11px] text-slate-500 block mb-1">Hoặc chọn ngày khởi hành khác:</label>
+            <input type="date" name="custom_departure_date" min="{{ date('Y-m-d') }}"
+                class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-white focus:outline-none focus:border-[#b85e3a]">
+        </div>
+    </div>
+    <!-- 2. TRANSPORT -->
+    <div>
+        <label class="block text-xs font-bold text-slate-800 dark:text-slate-100 mb-2">
+            <i class="fa-solid fa-van-shuttle text-[#863c20] mr-1"></i> Phương tiện di chuyển
+        </label>
+        <div class="space-y-2 text-xs">
+            @foreach ($transportValues as $value)
+                @php $isFlight = Str::contains(mb_strtolower($value), ['máy bay', 'bay', 'flight']); @endphp
+                <label class="flex items-start justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#b85e3a] cursor-pointer">
+                    <div class="flex items-start gap-2.5">
+                        <input type="radio" name="transport" value="{{ $value }}" {{ $loop->first ? 'checked' : '' }} class="mt-0.5 text-[#863c20]">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-800 dark:text-white">{{ $value }}</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded font-semibold {{ $isFlight ? 'bg-blue-100 text-blue-700' : 'bg-emerald-100 text-emerald-700' }}">
+                                    {{ $isFlight ? 'Nhanh chóng & Tiện nghi' : 'Tiêu chuẩn trọn gói' }}
+                                </span>
                             </div>
-
-                            <!-- TOUR TYPE -->
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1 mt-2">
-                                    Loại hình lưu trú
-                                </label>
-
-                                <div class="grid grid-cols-1 gap-3 text-sm">
-                                    @foreach ($tourTypeValues as $value)
-                                        <label
-                                            class="flex items-center justify-between px-4 py-3 rounded-xl bg-slate-50 border border-slate-200
-                                            hover:border-orange-500 hover:bg-white cursor-pointer transition-all shadow-sm group">
-                                            <span class="font-semibold text-slate-700 group-hover:text-[#b85e3a] z-10">{{ $value }}</span>
-                                            <input type="radio" name="tour_type" value="{{ $value }}"
-                                                {{ $loop->first ? 'checked' : '' }} class="text-orange-500 focus:ring-orange-500 z-10 focus:ring-2">
-                                        </label>
-                                    @endforeach
-                                </div>
+                            <p class="text-[11px] text-slate-500 mt-1">
+                                {{ $isFlight ? 'Vé máy bay khứ hồi (20kg ký gửi) & Xe đón tiễn sân bay.' : 'Xe du lịch máy lạnh đời mới, ghế da ngả lưng êm ái, wifi miễn phí.' }}
+                            </p>
+                        </div>
+                    </div>
+                </label>
+            @endforeach
+        </div>
+    </div>
+    <!-- 3. TOUR TYPE -->
+    <div>
+        <label class="block text-xs font-bold text-slate-800 dark:text-slate-100 mb-2 mt-2">
+            <i class="fa-solid fa-hotel text-[#863c20] mr-1"></i> Tiêu chuẩn lưu trú
+        </label>
+        <div class="space-y-2 text-xs">
+            @foreach ($tourTypeValues as $value)
+                @php $isLuxury = Str::contains(mb_strtolower($value), ['4', '5', 'cao cấp', 'luxury']); @endphp
+                <label class="flex items-start justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#b85e3a] cursor-pointer">
+                    <div class="flex items-start gap-2.5">
+                        <input type="radio" name="tour_type" value="{{ $value }}" {{ $loop->first ? 'checked' : '' }} class="mt-0.5 text-[#863c20]">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-slate-800 dark:text-white">{{ $value }}</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded font-semibold {{ $isLuxury ? 'bg-amber-100 text-amber-800' : 'bg-slate-200 text-slate-700' }}">
+                                    {{ $isLuxury ? 'Trải nghiệm thượng lưu' : 'Tối ưu ngân sách' }}
+                                </span>
                             </div>
-
-                            <!-- QUANTITY -->
+                            <p class="text-[11px] text-slate-500 mt-1">
+                                {{ $isLuxury ? 'Phòng Deluxe ban công ngắm cảnh, hồ bơi vô cực, kèm buffet sáng 5 sao.' : 'Phòng tiện nghi sạch sẽ, điều hòa, vị trí trung tâm thuận tiện.' }}
+                            </p>
+                        </div>
+                    </div>
+                </label>
+            @endforeach
+        </div>
+    </div>
+    <!-- QUANTITY -->
                             <div>
                                 <label class="flex justify-between items-center text-xs font-bold text-slate-700 mb-1 mt-2">
                                     <span>Hành khách</span>

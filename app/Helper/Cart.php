@@ -23,8 +23,9 @@ class Cart
 
 
 
-    public function add($tour, $quantity, $transport, $tour_type)
+    public function add($tour, $quantity, $transport, $tour_type, $startDate = null)
     {
+        $selectedDate = !empty($startDate) ? $startDate : $tour->start_date;
         $item = [
 
             'tour_id' => $tour->id,
@@ -43,11 +44,11 @@ class Cart
 
             'quantity' => max(1, $quantity),
 
-            'start_date' => $tour->start_date,
+            'start_date' => $selectedDate,
 
         ];
 
-        $key = $tour->id.$transport.$tour_type;
+        $key = $tour->id . ($transport ?? '') . ($tour_type ?? '') . $selectedDate;
 
         if (isset($this->items[$key])) {
 
