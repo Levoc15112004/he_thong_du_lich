@@ -690,80 +690,132 @@
 
     <script>
         const heroVideos = {
-            hagiang: {
-                locationName: 'Hà Giang',
-                title: 'Chạm Vào Cực Bắc Kỳ Vĩ Hà Giang',
-                subtitle: 'Lướt trên cung đèo Mã Pí Lèng huyền thoại, dong thuyền ngắm dòng Nho Quế màu ngọc bích và cảm nhận vẻ đẹp hùng vĩ của non sông.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-mountain-landscape-with-thick-white-clouds-40285-large.mp4',
-                poster: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80'
-            },
-            phuquoc: {
-                locationName: 'Phú Quốc',
-                title: 'Thiên Đường Biển Đảo Phú Quốc',
-                subtitle: 'Thưởng ngoạn làn nước lam ngọc quần đảo An Thới, trải nghiệm lặn ngắm san hô tự nhiên và hoàng hôn buông xuống đại dương.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
-                poster: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'
-            },
-            dalat: {
-                locationName: 'Đà Lạt',
-                title: 'Sương Mờ & Rừng Thông Đà Lạt',
-                subtitle: 'Đón ánh bình minh xuyên qua ngàn thông Cầu Đất, tận hưởng tiết trời se lạnh trong lành và không gian nghỉ dưỡng thanh bình.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
-                poster: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1920&q=80'
-            },
-            halong: {
-                locationName: 'Hà Long',
-                title: 'Kỳ Quan Thiên Nhiên Thế Giới Vịnh Hạ Long',
-                subtitle: 'Hành trình du thuyền 5 sao lướt qua hàng nghìn đảo đá vôi kỳ vĩ soi bóng mặt vịnh xanh thẳm, chèo kayak qua hang luồn nguyên sơ.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-boat-traveling-on-a-calm-sea-at-sunset-41457-large.mp4',
-                poster: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80'
-            }
-        };
+    "hagiang": {
+        "locationName": "Hà Giang",
+        "title": "Chạm Vào Cực Bắc Kỳ Vĩ <span class=\"text-amber-300 font-extrabold\">Hà Giang</span>",
+        "subtitle": "Lướt trên cung đèo Mã Pí Lèng huyền thoại, dong thuyền ngắm dòng Nho Quế màu ngọc bích và cảm nhận vẻ đẹp hùng vĩ của non sông.",
+        "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-mountain-landscape-with-thick-white-clouds-40285-large.mp4",
+        "poster": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
+    },
+    "phuquoc": {
+        "locationName": "Phú Quốc",
+        "title": "Thiên Đường Biển Đảo <span class=\"text-amber-300 font-extrabold\">Phú Quốc</span>",
+        "subtitle": "Thưởng ngoạn làn nước lam ngọc quần đảo An Thới, trải nghiệm lặn ngắm san hô tự nhiên và hoàng hôn buông xuống đại dương.",
+        "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4",
+        "poster": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
+    },
+    "dalat": {
+        "locationName": "Đà Lạt",
+        "title": "Sương Mờ & Rừng Thông <span class=\"text-amber-300 font-extrabold\">Đà Lạt</span>",
+        "subtitle": "Đón ánh bình minh xuyên qua ngàn thông Cầu Đất, tận hưởng tiết trời se lạnh trong lành và không gian nghỉ dưỡng thanh bình.",
+        "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4",
+        "poster": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1920&q=80"
+    },
+    "halong": {
+        "locationName": "Hạ Long",
+        "title": "Kỳ Quan Thiên Nhiên <span class=\"text-amber-300 font-extrabold\">Vịnh Hạ Long</span>",
+        "subtitle": "Hành trình du thuyền 5 sao lướt qua hàng nghìn đảo đá vôi kỳ vĩ soi bóng mặt vịnh xanh thẳm, chèo kayak qua hang luồn nguyên sơ.",
+        "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-boat-traveling-on-a-calm-sea-at-sunset-41457-large.mp4",
+        "poster": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80"
+    }
+};
 
-        function switchHeroVideo(key) {
+        const heroKeys = ['hagiang', 'phuquoc', 'dalat', 'halong'];
+        let currentHeroIndex = 0;
+        let heroAutoSlideTimer = null;
+
+        function switchHeroVideo(key, isManual = false) {
             const data = heroVideos[key];
-            if (!data) return;
+
+            currentHeroIndex = heroKeys.indexOf(key);
 
             const titleEl = document.getElementById('heroTitle');
             const subEl = document.getElementById('heroSubtitle');
             const videoEl = document.getElementById('heroVideo');
 
             document.querySelectorAll('.hero-switcher-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-lg', 'shadow-orange-500/30');
-                btn.classList.add('bg-white/5', 'text-slate-300');
+                const btnKey = btn.getAttribute('data-hero-key') || '';
+                const btnOnclick = btn.getAttribute('onclick') || '';
+                if (btnKey === key || btnOnclick.includes(key)) {
+                    btn.classList.add('active', 'bg-white', 'text-[#863c20]', 'shadow-sm');
+                    btn.classList.remove('bg-transparent', 'text-slate-100');
+                } else {
+                    btn.classList.remove('active', 'bg-white', 'text-[#863c20]', 'shadow-sm');
+                    btn.classList.add('bg-transparent', 'text-slate-100');
+                }
             });
-
-            if (window.event && window.event.currentTarget) {
-                const activeBtn = window.event.currentTarget;
-                activeBtn.classList.add('active', 'bg-orange-500', 'text-white', 'shadow-lg', 'shadow-orange-500/30');
-                activeBtn.classList.remove('bg-white/5', 'text-slate-300');
-            }
 
             if (titleEl) {
                 titleEl.style.opacity = '0';
-                titleEl.style.transform = 'translateY(10px)';
+                titleEl.style.transform = 'translateY(8px)';
                 setTimeout(() => {
                     titleEl.innerHTML = data.title;
                     titleEl.style.opacity = '1';
                     titleEl.style.transform = 'translateY(0)';
-                }, 250);
+                }, 180);
             }
 
             if (subEl) {
                 subEl.style.opacity = '0';
-                subEl.style.transform = 'translateY(10px)';
+                subEl.style.transform = 'translateY(8px)';
                 setTimeout(() => {
                     subEl.textContent = data.subtitle;
                     subEl.style.opacity = '1';
                     subEl.style.transform = 'translateY(0)';
-                }, 250);
+                }, 180);
             }
 
             if (videoEl) {
                 videoEl.poster = data.poster;
-                videoEl.play().catch(() => {});
+                if (data.videoUrl) {
+                    const source = videoEl.querySelector('source');
+                    if (source) {
+                        source.src = data.videoUrl;
+                    } else {
+                        videoEl.src = data.videoUrl;
+                    }
+                    videoEl.load();
+                    videoEl.play().catch(() => {});
+                }
+            }
+
+            const actionLink = document.getElementById('heroDestActionLink');
+            const actionText = document.getElementById('heroDestActionText');
+            const searchInput = document.getElementById('searchDestination');
+
+            if (actionLink && actionText && data.locationName) {
+                actionLink.href = '/destination/' + encodeURIComponent(data.locationName);
+                actionText.textContent = 'Xem ngay các tour tại ' + data.locationName;
+            }
+            if (searchInput && data.locationName) {
+                searchInput.value = data.locationName;
+            }
+
+            if (isManual) {
+                startHeroAutoSlide();
             }
         }
+
+        function startHeroAutoSlide() {
+            if (heroAutoSlideTimer) clearInterval(heroAutoSlideTimer);
+            heroAutoSlideTimer = setInterval(() => {
+                currentHeroIndex = (currentHeroIndex + 1) % heroKeys.length;
+                switchHeroVideo(heroKeys[currentHeroIndex], false);
+            }, 4500);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.getElementById('hero');
+            if (heroSection) {
+                startHeroAutoSlide();
+                heroSection.addEventListener('mouseenter', () => {
+                    if (heroAutoSlideTimer) clearInterval(heroAutoSlideTimer);
+                });
+                heroSection.addEventListener('mouseleave', () => {
+                    startHeroAutoSlide();
+                });
+            }
+        });
 
         const toggleVideoPlayBtn = document.getElementById('toggleVideoPlayBtn');
         if (toggleVideoPlayBtn) {

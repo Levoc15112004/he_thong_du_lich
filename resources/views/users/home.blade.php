@@ -21,12 +21,12 @@
       <span>Tuyển Tập Lữ Hành Việt Nam 2026</span>
   </div>
 
-            <h1 id="heroTitle" class="font-serif leading-[1.12] max-w-4xl transition-colors duration-200 drop-shadow-md">
-                {!! $firstBanner->name ?? $firstBanner->title ?? 'Hành Trình Khám Phá Bản Sắc Việt Nam' !!}
+            <h1 id="heroTitle" class="font-serif text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.15] max-w-4xl transition-all duration-300 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+                Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-amber-300 font-extrabold">Hà Giang</span>
             </h1>
 
-            <p id="heroSubtitle" class="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-slate-100 max-w-2xl font-normal leading-relaxed transition-colors duration-500 drop-shadow">
-                {{ $firstBanner->description ?? 'Tuyển chọn hơn 200+ hành trình du lịch trọn gói cao cấp khắp ba miền. Dịch vụ chuẩn mực 5 sao, hướng dẫn viên bản địa am hiểu sâu sắc và bảo hiểm toàn diện.' }}
+            <p id="heroSubtitle" class="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-stone-100 max-w-2xl font-medium leading-relaxed transition-all duration-300 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+                Lướt trên cung đèo Mã Pí Lèng huyền thoại, dong thuyền ngắm dòng Nho Quế màu ngọc bích và cảm nhận vẻ đẹp hùng vĩ của non sông.
             </p>
 
             <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -44,16 +44,16 @@
             <!-- Quick Destination Switcher -->
             <div class="mt-8 flex flex-col items-center">
                 <div class="flex items-center gap-2 overflow-x-auto no-scrollbar max-w-full p-1.5 bg-white/15 backdrop-blur-md rounded-2xl border border-white/25">
-                    <button onclick="switchHeroVideo('hagiang')" class="hero-switcher-btn active px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-colors bg-white text-[#863c20] shadow-sm flex items-center gap-1.5">
+                    <button onclick="switchHeroVideo('hagiang', true)" data-hero-key="hagiang" class="hero-switcher-btn active px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-colors bg-white text-[#863c20] shadow-sm flex items-center gap-1.5">
                         <span>Hà Giang</span>
                     </button>
-                    <button onclick="switchHeroVideo('phuquoc')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
+                    <button onclick="switchHeroVideo('phuquoc', true)" data-hero-key="phuquoc" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
                         <span>Phú Quốc</span>
                     </button>
-                    <button onclick="switchHeroVideo('dalat')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
+                    <button onclick="switchHeroVideo('dalat', true)" data-hero-key="dalat" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
                         <span>Đà Lạt</span>
                     </button>
-                    <button onclick="switchHeroVideo('halong')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
+                    <button onclick="switchHeroVideo('halong', true)" data-hero-key="halong" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
                         <span>Vịnh Hạ Long</span>
                     </button>
                 </div>
