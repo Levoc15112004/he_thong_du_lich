@@ -8,7 +8,7 @@
     <section class="relative pt-28 sm:pt-36 pb-16 bg-[#faf8f5] dark:bg-[#151719] border-b border-[#e8e3d8] dark:border-[#2b3239]">
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
             <div class="stamp-badge mb-6"><i class="fa-solid fa-headset mr-1"></i> Tư Vấn Lữ Hành 24/7</div>
-            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">
+            <h1 class="font-serif mb-4">
                 Kết Nối Với WanderVibe
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-base md:text-lg max-w-2xl mx-auto leading-relaxed">

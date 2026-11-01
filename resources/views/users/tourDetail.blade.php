@@ -1114,4 +1114,37 @@
     setTimeout(updateLivePrice, 100);
 </script>
 
+
+<script>
+    const tourVideosByDest = {
+        'Phú Quốc': 'https://www.youtube.com/embed/5K1uK2s2L8Y?autoplay=1',
+        'Hà Giang': 'https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1',
+        'Đà Lạt': 'https://www.youtube.com/embed/bL7x4k8qVGs?autoplay=1',
+        'Hạ Long': 'https://www.youtube.com/embed/8w1b2_M7c4k?autoplay=1',
+        'Sa Pa': 'https://www.youtube.com/embed/n4B6s7c4m0g?autoplay=1'
+    };
+
+    function openTourVideoModal() {
+        const modal = document.getElementById('tourVideoModal');
+        const iframe = document.getElementById('tourVideoIframe');
+        const dest = "{{ $tour->end_location ?? '' }}";
+        const src = tourVideosByDest[dest] || "https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1";
+        if (iframe) iframe.src = src;
+        if (modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+    }
+
+    function closeTourVideoModal() {
+        const modal = document.getElementById('tourVideoModal');
+        const iframe = document.getElementById('tourVideoIframe');
+        if (iframe) iframe.src = "";
+        if (modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    }
+</script>
+
 @endsection

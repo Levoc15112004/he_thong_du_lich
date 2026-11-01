@@ -321,7 +321,7 @@
                     <i class="fa-solid fa-compass text-xl md:text-2xl"></i>
                 </div>
                 <div class="flex flex-col hidden sm:flex">
-                    <span id="logoText" class="text-xl md:text-2xl font-serif font-bold tracking-tight {{ $isHomePage ? 'text-white' : 'text-slate-900 dark:text-white' }} leading-none transition-colors duration-300">
+                    <span id="logoText" class="text-xl md:text-2xl font-serif {{ $isHomePage ? 'text-white' : 'text-slate-900 dark:text-white' }} leading-none transition-colors duration-300">
       Wander<span class="text-[#cf8a6e]">lust</span>
   </span>
   <span id="logoSubtext" class="text-[9px] md:text-[10px] tracking-[0.22em] uppercase {{ $isHomePage ? 'text-slate-200' : 'text-slate-500 dark:text-slate-400' }} font-semibold mt-1 transition-colors duration-300">VIETNAM TRAVEL</span>

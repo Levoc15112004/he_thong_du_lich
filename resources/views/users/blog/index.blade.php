@@ -11,7 +11,7 @@
                 <i class="fa-solid fa-book-open-reader text-orange-500"></i>
                 Cẩm Nang Du Lịch 2026
             </div>
-            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">
+            <h1 class="font-serif mb-4">
                 Nhật Ký Hành Trình Du Lịch
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">

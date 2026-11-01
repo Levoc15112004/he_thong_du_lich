@@ -11,7 +11,7 @@
                 <i class="fa-solid fa-magnifying-glass text-orange-500"></i>
                 Kết Quả Tìm Kiếm Tour
             </div>
-            <h1 class="font-serif text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
+            <h1 class="font-serif mb-3">
                 Tìm Thấy {{ $tours->total() }} Hành Trình Phù Hợp
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">

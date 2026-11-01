@@ -11,7 +11,7 @@
                 <i class="fa-solid fa-compass text-orange-500"></i>
                 Khám Phá Theo Cách Riêng Của Bạn
             </div>
-            <h1 class="font-serif text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
+            <h1 class="font-serif mb-3">
                 Hành Trình {{ $currentCategory->name ?? 'Khám Phá' }}
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">

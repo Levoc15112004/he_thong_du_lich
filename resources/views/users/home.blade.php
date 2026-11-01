@@ -21,7 +21,7 @@
       <span>Tuyển Tập Lữ Hành Việt Nam 2026</span>
   </div>
 
-            <h1 id="heroTitle" class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.12] max-w-4xl transition-colors duration-200 drop-shadow-md">
+            <h1 id="heroTitle" class="font-serif leading-[1.12] max-w-4xl transition-colors duration-200 drop-shadow-md">
                 {!! $firstBanner->name ?? $firstBanner->title ?? 'Hành Trình Khám Phá Bản Sắc Việt Nam' !!}
             </h1>
 
@@ -281,7 +281,7 @@
                     <span class="stamp-badge mb-3">
        <i class="fa-solid fa-compass text-[#863c20]"></i> Tuyển Chọn Lữ Hành
    </span>
-   <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Hành Trình Được Yêu Thích Nhất 2026</h2>
+   <h2 class="font-serif">Hành Trình Được Yêu Thích Nhất 2026</h2>
                     <p class="text-slate-500 text-sm mt-1">Các tour có số lượt xem và đặt chỗ cao nhất từ hệ thống</p>
                 </div>
                 <a href="{{ route('user.tours') }}" class="inline-flex items-center gap-2 text-sm font-bold text-orange-600 hover:text-orange-700 group transition-colors">
@@ -356,7 +356,7 @@
                 <span class="stamp-badge mb-3">
        <i class="fa-solid fa-map-location-dot text-[#863c20]"></i> Bản Đồ Điểm Đến
    </span>
-   <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Những Miền Đất Đậm Đà Bản Sắc</h2>
+   <h2 class="font-serif">Những Miền Đất Đậm Đà Bản Sắc</h2>
    <p class="text-slate-500 text-sm mt-2">Từ non cao Tây Bắc hùng vĩ, vịnh biển di sản đến những phố cổ trầm mặc và biển đảo phương Nam</p>
             </div>
 
@@ -398,7 +398,7 @@
                     <span class="stamp-badge mb-3">
                         <i class="fa-solid fa-book-open-reader text-orange-600"></i> Cẩm nang du lịch
                     </span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Kinh Nghiệm & Review Du Lịch</h2>
+                    <h2 class="font-serif">Kinh Nghiệm & Review Du Lịch</h2>
                     <p class="text-slate-500 text-sm mt-1">Những bài viết chia sẻ thực tế, lịch trình thực tế và cẩm nang hữu ích và mẹo du lịch tiết kiệm</p>
                 </div>
                 <a href="{{ route('blog.index') }}" class="text-sm font-bold text-orange-600 hover:text-orange-700 flex items-center gap-2 transition-colors">
