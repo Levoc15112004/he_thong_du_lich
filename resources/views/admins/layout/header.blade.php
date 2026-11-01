@@ -20,7 +20,7 @@
             </div>
             <div class="flex flex-col">
                 <span class="text-lg sm:text-xl font-black tracking-tight text-slate-800 dark:text-white leading-tight">
-                    Wander<span class="text-[#b85e3a]">Admin</span>
+                    Wanderlust <span class="text-[#b85e3a] font-serif">Admin</span>
                 </span>
                 <span class="text-[9px] font-medium text-slate-400 font-bold -mt-0.5">Control Panel</span>
             </div>

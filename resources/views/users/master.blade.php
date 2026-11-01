@@ -85,7 +85,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap&subset=vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
@@ -925,37 +925,26 @@
                 // Update active tab buttons if present
                 if (activeButton) {
                     document.querySelectorAll('.weather-tab-btn').forEach(b => {
-                        b.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/30');
-                        b.classList.add('bg-transparent', 'text-slate-600');
+                        b.classList.remove('active', 'bg-[#863c20]', 'text-white', 'shadow-xs');
+                        b.classList.add('text-slate-700', 'dark:text-slate-300');
                     });
-                    activeButton.classList.add('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/30');
-                    activeButton.classList.remove('bg-transparent', 'text-slate-600');
-                } else {
-                    document.querySelectorAll('.weather-tab-btn').forEach(b => {
-                        b.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/30');
-                        b.classList.add('bg-transparent', 'text-slate-600');
-                    });
+                    activeButton.classList.add('active', 'bg-[#863c20]', 'text-white', 'shadow-xs');
+                    activeButton.classList.remove('text-slate-700', 'dark:text-slate-300');
                 }
 
                 // Update DOM elements using data.current
                 if (data.current) {
-                    document.getElementById('weatherTemp').textContent = (data.current.temp || 0) + '°C';
-                    document.getElementById('weatherCity').textContent = data.current.city + ', Việt Nam';
-                    document.getElementById('weatherStatusText').textContent = data.current.desc || '';
-                    document.getElementById('weatherIconContainer').innerHTML = `<img src="https://openweathermap.org/img/wn/${data.current.icon}@2x.png" alt="icon" class="w-20 h-20 scale-125 drop-shadow-md pb-1">`;
+                    const tempEl = document.getElementById('weatherTemp');
+                    if (tempEl) tempEl.textContent = (data.current.temp || 0) + '°C';
+                    const cityEl = document.getElementById('weatherCity');
+                    if (cityEl) cityEl.textContent = data.current.city + ', Việt Nam';
+                    const statusEl = document.getElementById('weatherStatusText');
+                    if (statusEl) statusEl.textContent = data.current.desc || 'Se lạnh, sương mù nhẹ';
                     
-                    // Update advice and score
+                    // Update advice
                     if (data.current.advice) {
                         const adviceEl = document.getElementById('weatherAdvice');
                         if (adviceEl) adviceEl.textContent = data.current.advice;
-                    }
-
-                    if (data.current.scoreText) {
-                        const scoreEl = document.getElementById('weatherScore');
-                        if (scoreEl) {
-                            scoreEl.textContent = data.current.scoreText;
-                            scoreEl.className = `text-[11px] font-bold px-3 py-1 rounded-full ${data.current.scoreBg} ${data.current.scoreColor}`;
-                        }
                     }
                 }
 
@@ -966,17 +955,13 @@
                         forecastContainer.innerHTML = '';
                         data.forecast.forEach(day => {
                             forecastContainer.innerHTML += `
-                                <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm text-center hover:-translate-y-1 transition-transform">
-                                    <p class="text-xs font-bold text-slate-500 mb-2">${day.date}</p>
-                                    <div class="w-14 h-14 mx-auto bg-gradient-to-br from-indigo-400 to-sky-400 rounded-full flex items-center justify-center mb-3 shadow-md border border-indigo-300 overflow-hidden">
-                                        <img src="https://openweathermap.org/img/wn/${day.icon}@2x.png" alt="icon" class="w-16 h-16 object-contain scale-110 drop-shadow-md pb-1">
-                                    </div>
-                                    <p class="text-lg font-bold text-slate-800">${day.temp}°C</p>
+                                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239] text-center">
+                                    <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-1">${day.date}</p>
+                                    <p class="font-serif text-2xl font-bold text-slate-900 dark:text-white">${day.temp}°C</p>
+                                    <span class="text-[10px] text-slate-400 mt-0.5 block">${day.desc || 'Nắng ráo'}</span>
                                 </div>
                             `;
                         });
-                        const visibilityEl = document.getElementById('weatherVisibility');
-                        if (visibilityEl) visibilityEl.textContent = data.forecast.length + ' mốc dự báo';
                     }
                 }
             } catch (error) {

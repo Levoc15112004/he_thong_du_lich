@@ -26,7 +26,7 @@
           <!-- KPI 1: Doanh thu -->
           <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold font-medium text-slate-400">Tổng Doanh Thu</span>
+              <span class="text-xs font-medium text-slate-400">Tổng Doanh Thu</span>
               <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-coins"></i>
               </div>
@@ -45,7 +45,7 @@
           <!-- KPI 2: Tổng số lượt đặt chỗ -->
           <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold font-medium text-slate-400">Đơn Tháng Này</span>
+              <span class="text-xs font-medium text-slate-400">Đơn Tháng Này</span>
               <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-ticket"></i>
               </div>
@@ -64,7 +64,7 @@
           <!-- KPI 3: Khách hàng mới -->
           <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold font-medium text-slate-400">Tổng Người Dùng</span>
+              <span class="text-xs font-medium text-slate-400">Tổng Người Dùng</span>
               <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-user-plus"></i>
               </div>
@@ -83,7 +83,7 @@
           <!-- KPI 4: Tỷ lệ lấp đầy tour -->
           <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold font-medium text-slate-400">Lượt Truy Cập</span>
+              <span class="text-xs font-medium text-slate-400">Lượt Truy Cập</span>
               <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-eye"></i>
               </div>
@@ -194,7 +194,7 @@
                   <canvas id="userSourceChart"></canvas>
                   <!-- Center cutout stat -->
                   <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                    <span class="text-xs text-slate-400 font-bold font-medium">Tổng User</span>
+                    <span class="text-xs text-slate-400 font-medium">Tổng User</span>
                     <span class="text-2xl font-bold text-slate-900 tracking-tight">{{ number_format($totalUsers ?? 0) }}</span>
                     <span class="text-[10px] text-orange-600 font-extrabold">+{{ abs($userChange ?? 0) }}% tháng này</span>
                   </div>

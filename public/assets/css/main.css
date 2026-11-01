@@ -31,8 +31,8 @@ body {
 
 /* Editorial Serif Headings */
 h1, h2, h3, .font-serif, .font-editorial {
-  font-family: 'Playfair Display', Georgia, serif !important;
-  letter-spacing: -0.015em;
+  font-family: 'Lora', 'Playfair Display', Georgia, serif !important;
+  letter-spacing: normal !important;
   overflow-wrap: break-word;
   min-width: 0;
 }

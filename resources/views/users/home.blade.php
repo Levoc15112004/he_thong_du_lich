@@ -183,111 +183,93 @@
                     <div class="stamp-badge mb-3">
                         <i class="fa-solid fa-compass text-[#863c20]"></i> Cẩm Nang Khí Hậu Điểm Đến
                     </div>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">Khí Hậu & Thời Điểm Lý Tưởng Du Lịch</h2>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Khí Hậu & Thời Điểm Lý Tưởng Du Lịch</h2>
                     <p class="text-slate-500 text-sm mt-1">Thông tin khí tượng thực tế hỗ trợ Quý khách lên kế hoạch hành trình thuận lợi nhất</p>
                 </div>
-                <div class="flex flex-col xl:flex-row items-center gap-3">
-                    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar p-1.5 bg-white/60 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-sm" id="weatherTabs">
-                        <button data-loc="Đà Lạt" class="weather-tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-colors bg-orange-500 text-white shadow-md shadow-xs">Đà Lạt</button>
-                        <button data-loc="Sa Pa" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-colors bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Sa Pa</button>
-                        <button data-loc="Phú Quốc" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-colors bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Phú Quốc</button>
-                        <button data-loc="Đà Nẵng" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-colors bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Đà Nẵng</button>
-                    </div>
-                    <form id="weatherSearchForm" class="flex items-center gap-2 w-full xl:w-auto">
-                        <input type="text" id="weatherCityInput" placeholder="Nhập tên thành phố..." class="flex-1 xl:flex-none px-4 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 xl:min-w-[200px]" required>
-                        <button type="submit" class="px-4 py-2 bg-slate-800 text-white rounded-xl text-sm font-bold hover:bg-slate-700 transition-colors shrink-0">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <div id="weatherContent" class="glass-panel-light rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-colors duration-500 border border-slate-200 dark:border-slate-800 shadow-xl">
-                
-                
-                
-                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                    <!-- OpenWeather Backend Data Fallback to UI Presets -->
-                    <div class="flex items-center gap-6 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-700 pb-6 lg:pb-0 lg:pr-6">
-                        <div id="weatherIconContainer" class="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-400 to-sky-400 border border-indigo-300 shadow-lg flex items-center justify-center text-5xl text-white">
-                            @if(!empty($weatherData['icon']))
-                                <img src="https://openweathermap.org/img/wn/{{ $weatherData['icon'] }}@2x.png" alt="icon" class="w-20 h-20 scale-125 drop-shadow-md pb-1">
-                            @else
-                                <i class="fa-solid fa-cloud-sun drop-shadow-md"></i>
-                            @endif
-                        </div>
-                        <div>
-                            <div class="flex items-baseline gap-2">
-                                <span id="weatherTemp" class="text-5xl sm:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
-                                    {{ $weatherData['temp'] ?? 19 }}°C
-                                </span>
-                                <span class="text-orange-600 dark:text-orange-400 text-sm font-semibold capitalize" id="weatherStatusText">
-                                    {{ $weatherData['desc'] ?? 'Mát mẻ dễ chịu' }}
-                                </span>
-                            </div>
-                            <h3 id="weatherCity" class="text-xl font-bold mt-1 text-slate-800 dark:text-white">{{ $weatherData['city'] ?? 'Hà Nội' }}, Việt Nam</h3>
-                            <p id="weatherDesc" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Dự báo theo thời gian thực trạm khí tượng vệ tinh</p>
-                        </div>
-                    </div>
-
-                    <!-- Metrics -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3.5">
-                        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 border border-slate-100 dark:border-slate-700 shadow-sm">
-                            <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-droplet text-cyan-500"></i> Độ ẩm</span>
-                            <span id="weatherHumidity" class="text-lg font-bold mt-1 block text-slate-800 dark:text-white">78%</span>
-                        </div>
-                        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 border border-slate-100 dark:border-slate-700 shadow-sm">
-                            <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-wind text-rose-500"></i> Gió nhẹ</span>
-                            <span id="weatherWind" class="text-lg font-bold mt-1 block text-slate-800 dark:text-white">12 km/h</span>
-                        </div>
-                        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 border border-slate-100 dark:border-slate-700 shadow-sm">
-                            <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-sun text-amber-500"></i> Chỉ số UV</span>
-                            <span id="weatherUV" class="text-lg font-bold mt-1 block text-slate-800 dark:text-white">3 - Thấp</span>
-                        </div>
-                        <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 border border-slate-100 dark:border-slate-700 shadow-sm">
-                            <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-calendar-days text-orange-500"></i> 5 Ngày Tới</span>
-                            <span id="weatherVisibility" class="text-lg font-bold mt-1 block text-slate-800 dark:text-white">{{ count($forecastData) }} mốc dự báo</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-50 dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
-                        <div class="space-y-2">
-                            <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 text-xs font-bold font-medium">
-                                <i class="fa-solid fa-circle-info text-[#863c20]"></i> Khuyến Nghị Khí Hậu & Lịch Trình
-                            </div>
-                            <p id="weatherAdvice" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                                {{ $weatherData['advice'] ?? 'Chuẩn bị trang phục thoáng mát hoặc áo khoác nhẹ tùy vào vùng cao hoặc biển. Mang theo kem chống nắng và kính râm khi dạo biển.' }}
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs text-orange-700 dark:text-orange-400">
-                            <span class="font-medium">Điều kiện thời tiết:</span>
-                            <span id="weatherScore" class="font-bold {{ $weatherData['scoreColor'] ?? 'text-amber-600' }} {{ $weatherData['scoreBg'] ?? 'bg-amber-100' }} border border-white/50 px-3 py-1 rounded-full shadow-sm">
-                                {{ $weatherData['scoreText'] ?? '9.8 / 10 Tuyệt Vời' }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5 Day Forecast Layout -->
-                <div class="relative z-10 mt-8 pt-8 border-t border-slate-200/60 dark:border-slate-700/60">
-                    <h4 class="text-sm font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-calendar-week text-orange-500"></i> Dự báo 5 ngày tiếp theo</h4>
-                    <div id="forecastContainer" class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                        @if(!empty($forecastData))
-                            @foreach($forecastData as $day)
-                                <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 border border-slate-100 dark:border-slate-700 shadow-sm text-center hover:-translate-y-1 transition-transform">
-                                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2">{{ $day['date'] ?? '' }}</p>
-                                    <div class="w-14 h-14 mx-auto bg-gradient-to-br from-indigo-400 to-sky-400 rounded-full flex items-center justify-center mb-3 shadow-md border border-indigo-300 overflow-hidden">
-                                        <img src="https://openweathermap.org/img/wn/{{ $day['icon'] ?? '01d' }}@2x.png" alt="icon" class="w-16 h-16 object-contain scale-110 drop-shadow-md pb-1">
-                                    </div>
-                                    <p class="text-lg font-bold text-slate-800 dark:text-white">{{ $day['temp'] ?? 0 }}°</p>
-                                </div>
-                            @endforeach
-                        @else
-                            <p class="col-span-5 text-sm text-slate-500 dark:text-slate-400 text-center py-4">Chưa có dữ liệu dự báo</p>
-                        @endif
+                <div>
+                    <div class="inline-flex items-center gap-1.5 p-1 rounded-xl bg-[#faf8f5] dark:bg-[#1a1e22] border border-[#e8dfd1] dark:border-[#333d47]" id="weatherTabs">
+                        <button data-loc="Đà Lạt" class="weather-tab-btn active px-4 py-2 rounded-lg text-xs font-bold transition-colors bg-[#863c20] text-white shadow-xs">Đà Lạt</button>
+                        <button data-loc="Sa Pa" class="weather-tab-btn px-4 py-2 rounded-lg text-xs font-medium transition-colors text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-[#252b31]">Sa Pa</button>
+                        <button data-loc="Phú Quốc" class="weather-tab-btn px-4 py-2 rounded-lg text-xs font-medium transition-colors text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-[#252b31]">Phú Quốc</button>
+                        <button data-loc="Đà Nẵng" class="weather-tab-btn px-4 py-2 rounded-lg text-xs font-medium transition-colors text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-[#252b31]">Đà Nẵng</button>
                     </div>
                 </div>
             </div>
+
+            <div id="weatherContent" class="travel-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#1a1e22] border border-[#e8e3d8] dark:border-[#2b3239] shadow-sm">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#e8e3d8] dark:border-[#2b3239] pb-6 lg:pb-0 lg:pr-6">
+            <div class="flex items-baseline gap-3">
+                <span id="weatherTemp" class="font-serif text-5xl sm:text-6xl font-bold text-slate-900 dark:text-white">
+                    {{ !empty($weatherData['temp']) ? $weatherData['temp'] . '°C' : '19°C' }}
+                </span>
+                <span id="weatherStatusText" class="text-xs font-medium text-[#863c20] dark:text-[#cf8a6e]">
+                    {{ $weatherData['desc'] ?? 'Se lạnh, sương mù nhẹ' }}
+                </span>
+            </div>
+            <h3 id="weatherCity" class="font-serif text-xl font-bold text-slate-800 dark:text-slate-100 mt-2">
+                {{ $weatherData['city'] ?? 'Đà Lạt' }}, Việt Nam
+            </h3>
+            <p class="text-xs text-slate-400 mt-1">Dữ liệu khí tượng cập nhật theo thời gian thực</p>
+        </div>
+
+        <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#e8e3d8] dark:border-[#2b3239] pb-6 lg:pb-0 lg:pr-6">
+            <div class="grid grid-cols-2 gap-3">
+                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239]">
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">Độ ẩm không khí</span>
+                    <span id="weatherHumidity" class="font-serif text-lg font-bold mt-0.5 block text-slate-800 dark:text-white">78%</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239]">
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">Tốc độ gió</span>
+                    <span id="weatherWind" class="font-serif text-lg font-bold mt-0.5 block text-slate-800 dark:text-white">12 km/h</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239]">
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">Chỉ số UV</span>
+                    <span id="weatherUV" class="font-serif text-lg font-bold mt-0.5 block text-slate-800 dark:text-white">3 (Thấp)</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239]">
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">Thời điểm vàng</span>
+                    <span class="font-serif text-lg font-bold mt-0.5 block text-slate-800 dark:text-white">Tháng 11 - 4</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-4 flex flex-col justify-between h-full">
+            <div>
+                <span class="text-xs font-bold text-[#863c20] dark:text-[#cf8a6e] block mb-1.5">Khuyến Nghị Hành Trình</span>
+                <p id="weatherAdvice" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {{ $weatherData['advice'] ?? 'Thời tiết se lạnh về đêm và sáng sớm, ban ngày nắng ráo dịu mát. Quý khách nên chuẩn bị áo khoác nhẹ và khăn mỏng. Rất thích hợp tham quan đồi thông và thưởng ngoạn cà phê săn mây.' }}
+                </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-[#e8e3d8] dark:border-[#2b3239] flex items-center justify-between text-xs">
+                <span class="text-slate-500">Điều kiện khởi hành:</span>
+                <span id="weatherScore" class="font-bold text-emerald-700 bg-emerald-50 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 px-3 py-1 rounded-lg">
+                    Khí hậu thuận lợi
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-[#e8e3d8] dark:border-[#2b3239]">
+        <h4 class="text-xs font-bold text-slate-800 dark:text-white mb-3">Dự báo xu hướng 5 ngày tiếp theo</h4>
+        <div id="forecastContainer" class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+            @if(!empty($forecastData))
+                @foreach($forecastData as $day)
+                    <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239] text-center">
+                        <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-1">{{ $day['date'] ?? '' }}</p>
+                        <p class="font-serif text-2xl font-bold text-slate-900 dark:text-white">{{ $day['temp'] ?? 0 }}°C</p>
+                        <span class="text-[10px] text-slate-400 mt-0.5 block">Nắng ráo</span>
+                    </div>
+                @endforeach
+            @else
+                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239] text-center"><p class="text-[11px] text-slate-500">02/11</p><p class="font-serif text-xl font-bold">18°C</p></div>
+                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239] text-center"><p class="text-[11px] text-slate-500">03/11</p><p class="font-serif text-xl font-bold">21°C</p></div>
+                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239] text-center"><p class="text-[11px] text-slate-500">04/11</p><p class="font-serif text-xl font-bold">19°C</p></div>
+                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239] text-center"><p class="text-[11px] text-slate-500">05/11</p><p class="font-serif text-xl font-bold">20°C</p></div>
+                <div class="p-3.5 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#2b3239] text-center"><p class="text-[11px] text-slate-500">06/11</p><p class="font-serif text-xl font-bold">17°C</p></div>
+            @endif
+        </div>
+    </div>
+</div>
         </div>
     </section>
 
