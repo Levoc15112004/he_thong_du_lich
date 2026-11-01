@@ -12,7 +12,7 @@
                 Cẩm Nang Du Lịch 2026
             </div>
             <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">
-                Nhật Ký <span class="text-[#b85e3a] font-serif italic">Hành Trình Du Lịch</span>
+                Nhật Ký Hành Trình Du Lịch
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                 Khám phá những câu chuyện, kinh nghiệm thực tế và nguồn cảm hứng bất tận cho chuyến đi tiếp theo của bạn cùng WanderVibe.
@@ -27,7 +27,7 @@
             {{-- FEATURED POST (LEFT) --}}
             @if($featuredBlog)
             <div class="lg:col-span-8">
-                <a href="{{ route('blog.show', $featuredBlog->id) }}" class="relative block group h-[350px] md:h-[550px] rounded-2xl overflow-hidden shadow-2xl transition-all duration-700">
+                <a href="{{ route('blog.show', $featuredBlog->id) }}" class="relative block group h-[350px] md:h-[550px] rounded-2xl overflow-hidden shadow-2xl transition-colors duration-700">
                     <img src="{{ asset($featuredBlog->image) }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent"></div>
 
@@ -80,7 +80,7 @@
                     <p class="text-xs font-bold text-[#cf8a6e]   mb-2">Đăng ký bản tin</p>
                     <h5 class="text-lg font-bold mb-4  leading-tight">Nhận ưu đãi du lịch <br> mới nhất qua Email</h5>
                     <div class="flex gap-2">
-                        <input type="text" placeholder="Email của bạn..." class="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs w-full outline-none focus:border-blue-500 transition-all">
+                        <input type="text" placeholder="Email của bạn..." class="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs w-full outline-none focus:border-blue-500 transition-colors">
                         <button class="bg-blue-600 p-2 rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-900/20"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>

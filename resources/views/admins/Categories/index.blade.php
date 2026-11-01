@@ -22,7 +22,7 @@
 
             <div class="flex items-center gap-3 mt-4 sm:mt-0">
                 <a href="{{ route('categories.create') }}"
-                   class="flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300 group">
+                   class="flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-colors duration-200 group">
                     <i class="fa-solid fa-plus group-hover:rotate-90 transition-transform duration-300"></i>
                     <span>Thêm danh mục mới</span>
                 </a>

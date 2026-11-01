@@ -80,7 +80,7 @@
                 <div class="absolute -bottom-10 -right-10 w-56 h-56 bg-rose-300 rounded-full blur-2xl"></div>
             </div>
 
-            <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white border border-white/30 px-5 py-2 rounded-full mb-6 font-bold text-xs uppercase tracking-wider shadow-sm">
+            <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white border border-white/30 px-5 py-2 rounded-full mb-6 font-bold text-xs font-medium shadow-sm">
                 <i class="fa-solid fa-flag-checkered"></i>
                 Hoàn tất bước cuối cùng
             </div>
@@ -155,7 +155,7 @@
                         
                         <div class="border-t border-slate-200 border-dashed pt-4 mt-2">
                             <div class="flex flex-col text-right">
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Thanh toán nốt (70%)</span>
+                                <span class="text-[10px] font-bold text-slate-400 font-medium mb-1">Thanh toán nốt (70%)</span>
                                 <span class="text-3xl font-bold text-orange-600 drop-shadow-sm">{{ number_format($remain_amount, 0, ',', '.') }}đ</span>
                             </div>
                         </div>
@@ -247,7 +247,7 @@
                     <!-- MoMo Button -->
                     <form method="POST" action="{{ route('momo.final', $order->id) }}" id="form-momo" class="relative z-10 w-full">
                         @csrf
-                        <button type="submit" class="w-full bg-gradient-to-r from-[#A50064] to-[#C8107A] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-pink-500/20 flex items-center justify-center gap-3">
+                        <button type="submit" class="w-full bg-gradient-to-r from-[#A50064] to-[#C8107A] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-colors duration-200 shadow-xl shadow-pink-500/20 flex items-center justify-center gap-3">
                             <i class="fa-solid fa-qrcode text-lg"></i> Thanh toán dư nợ bằng MoMo ({{ number_format($remain_amount) }}đ)
                         </button>
                     </form>
@@ -255,7 +255,7 @@
                     <!-- PayPal Button -->
                     <form action="{{ route('paypal.createFinal', $order->id) }}" method="POST" id="form-paypal" class="hidden relative z-10 w-full">
                         @csrf
-                        <button type="submit" class="w-full bg-gradient-to-r from-[#0070BA] to-[#003087] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-blue-500/20 flex items-center justify-center gap-3">
+                        <button type="submit" class="w-full bg-gradient-to-r from-[#0070BA] to-[#003087] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-colors duration-200 shadow-xl shadow-blue-500/20 flex items-center justify-center gap-3">
                             <i class="fa-brands fa-paypal text-xl"></i> Thanh toán dư nợ qua PayPal (~${{ number_format(round($remain_amount / 24000, 2), 2) }} USD)
                         </button>
                         <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">
@@ -266,7 +266,7 @@
                     <!-- Direct/Cash Button -->
                     <div id="wrapper-cash" class="hidden relative z-10 w-full">
                         <a href="{{ route('tour.thankyou.final', $order->id) }}?method=cash" 
-                           class="block w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-xs">
+                           class="block w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-colors duration-200 shadow-xl shadow-xs">
                             <i class="fa-solid fa-check-double mr-2"></i> Xác nhận thanh toán trực tiếp
                         </a>
                         <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">

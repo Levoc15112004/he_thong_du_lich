@@ -73,7 +73,7 @@
 
     <!-- Container Chính -->
     <div id="main-container"
-        class="relative w-full min-h-screen lg:h-[700px] lg:min-h-[700px] lg:max-w-[1100px] lg:rounded-[2.5rem] lg:shadow-2xl lg:overflow-hidden bg-white flex flex-col lg:flex-row transition-all duration-700">
+        class="relative w-full min-h-screen lg:h-[700px] lg:min-h-[700px] lg:max-w-[1100px] lg:rounded-[2.5rem] lg:shadow-2xl lg:overflow-hidden bg-white flex flex-col lg:flex-row transition-colors duration-700">
 
         <!-- SIDE 1: HÌNH ẢNH (Mặc định bên trái) -->
         <div
@@ -135,7 +135,7 @@
                     </div>
 
                     <a href="{{ route('google.login') }}"  onclick="handleGoogleLogin()"
-                        class="w-full flex items-center justify-center gap-3 bg-white border border-slate-200 py-3.5 px-4 rounded-2xl font-semibold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all mb-6 group">
+                        class="w-full flex items-center justify-center gap-3 bg-white border border-slate-200 py-3.5 px-4 rounded-2xl font-semibold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-colors mb-6 group">
                         <svg class="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
                             <path fill="#4285F4"
                                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -190,11 +190,11 @@
                                     nhớ</span>
                             </label>
                             <a href="{{ route('password.request') }}"
-                                class="text-sm font-bold text-blue-600 hover:text-blue-700 underline decoration-2 underline-offset-4 transition-all">Quên
+                                class="text-sm font-bold text-blue-600 hover:text-blue-700 underline decoration-2 underline-offset-4 transition-colors">Quên
                                 mật khẩu?</a>
                         </div>
                         <button type="submit"
-                            class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2 mt-4">
+                            class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-0.5 active:translate-y-0 transition-colors flex items-center justify-center gap-2 mt-4">
                             <span>Đăng nhập</span>
                             <i data-lucide="arrow-right" class="w-5 h-5"></i>
                         </button>
@@ -258,7 +258,7 @@
                             </label>
                         </div>
                         <button type="submit"
-                            class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-0.5 active:translate-y-0 transition-all mt-2">
+                            class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-0.5 active:translate-y-0 transition-colors mt-2">
                             Đăng ký tài khoản
                         </button>
                     </form>
@@ -277,7 +277,7 @@
     </div>
 
     <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-8 right-8 translate-x-32 opacity-0 transition-all duration-500 z-50">
+    <div id="toast" class="fixed bottom-8 right-8 translate-x-32 opacity-0 transition-colors duration-500 z-50">
         <div class="bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
             <i data-lucide="check-circle" class="w-5 h-5 text-blue-400"></i>
             <p id="toast-msg" class="text-sm font-bold"></p>

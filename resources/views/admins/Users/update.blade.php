@@ -21,7 +21,7 @@
             </div>
 
             <a href="{{ route('admin.users.index') }}"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-all duration-300 shadow-sm group">
+               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 <span>Quay lại danh sách</span>
             </a>
@@ -67,7 +67,7 @@
                                 Tên hiển thị <span class="text-rose-500">*</span>
                             </label>
                             <input type="text" name="name" value="{{ old('name', $user->name) }}" required
-                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 {{ $errors->has('name') ? 'border-rose-300 focus:border-rose-500 focus:ring-rose-500/20' : '' }}">
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 {{ $errors->has('name') ? 'border-rose-300 focus:border-rose-500 focus:ring-rose-500/20' : '' }}">
                         </div>
 
                         {{-- Email --}}
@@ -90,7 +90,7 @@
                             <div class="relative">
                                 <i class="fa-solid fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                                 <input type="text" name="phone" value="{{ old('phone', $user->phone) }}" 
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 {{ $errors->has('phone') ? 'border-rose-300' : '' }}">
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 {{ $errors->has('phone') ? 'border-rose-300' : '' }}">
                                 </div>
                         </div>
 
@@ -114,13 +114,13 @@
                             <div class="flex gap-4">
                                 <label class="flex-1 cursor-pointer">
                                     <input type="radio" name="status" value="dang_hoat_dong" class="peer sr-only" {{ old('status', $user->status) === 'dang_hoat_dong' ? 'checked' : '' }}>
-                                    <div class="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-600 transition-all">
+                                    <div class="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-600 transition-colors">
                                         <i class="fa-solid fa-circle-check mr-2"></i> Cho phép hoạt động
                                     </div>
                                 </label>
                                 <label class="flex-1 cursor-pointer">
                                     <input type="radio" name="status" value="dung_hoat_dong" class="peer sr-only" {{ old('status', $user->status) === 'dung_hoat_dong' ? 'checked' : '' }}>
-                                    <div class="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-slate-400 peer-checked:bg-slate-100 peer-checked:text-slate-600 transition-all">
+                                    <div class="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-center font-bold text-slate-400 hover:bg-slate-50 peer-checked:border-slate-400 peer-checked:bg-slate-100 peer-checked:text-slate-600 transition-colors">
                                         <i class="fa-solid fa-lock mr-2"></i> Khóa tài khoản
                                     </div>
                                 </label>
@@ -146,7 +146,7 @@
                         {{-- Gender --}}
                         <div>
                             <label class="block text-slate-700 font-semibold mb-2">Giới tính</label>
-                            <select name="gender" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                            <select name="gender" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                                 <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>Nam</option>
                                 <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>Nữ</option>
                                 <option value="other" {{ old('gender', $user->gender) == 'other' ? 'selected' : '' }}>Khác</option>
@@ -157,7 +157,7 @@
                         <div>
                             <label class="block text-slate-700 font-semibold mb-2">Ngày sinh</label>
                             <input type="date" name="birthday" value="{{ old('birthday', $user->birthday) }}" 
-                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                         </div>
                         
                         {{-- Avatar Upload --}}
@@ -178,7 +178,7 @@
                             <div class="relative">
                                 <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                                 <input type="text" name="address" value="{{ old('address', $user->address) }}" placeholder="Số nhà, đường, xã/phường, quận/huyện, tỉnh/thành phố..."
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
                         </div>
 
@@ -206,7 +206,7 @@
                 {{-- SUBMIT --}}
                 <div class="flex flex-col sm:flex-row justify-end gap-4 pt-2">
                     <button type="submit"
-                        class="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-200/50 hover:shadow-xl hover:shadow-orange-300/50 hover:-translate-y-0.5 transition-all duration-300 text-sm">
+                        class="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-200/50 hover:shadow-xl hover:shadow-orange-300/50 hover:-translate-y-0.5 transition-colors duration-200 text-sm">
                         <i class="fa-solid fa-save text-lg"></i> Lưu thay đổi hồ sơ
                     </button>
                 </div>

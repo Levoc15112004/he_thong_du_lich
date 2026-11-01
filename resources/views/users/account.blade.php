@@ -92,16 +92,16 @@
     <div class="absolute inset-0 bg-slate-900/40"></div>
 
     <!-- Back to Home Button -->
-    <a href="{{ url('/') }}" class="absolute top-6 left-6 lg:top-8 lg:left-8 z-50 flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded-full text-white font-medium transition-all group">
+    <a href="{{ url('/') }}" class="absolute top-6 left-6 lg:top-8 lg:left-8 z-50 flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded-full text-white font-medium transition-colors group">
         <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
         <span>Về trang chủ</span>
     </a>
 
     <!-- Container Chính -->
-    <div id="main-container" class="relative z-10 w-full max-w-[1200px] min-h-[680px] lg:h-[720px] rounded-2xl shadow-2xl overflow-hidden glass-morphism flex flex-col lg:flex-row transition-all duration-700">
+    <div id="main-container" class="relative z-10 w-full max-w-[1200px] min-h-[680px] lg:h-[720px] rounded-2xl shadow-2xl overflow-hidden glass-morphism flex flex-col lg:flex-row transition-colors duration-700">
 
         <!-- SIDE 1: HÌNH ẢNH (Mặc định bên trái) -->
-        <div class="image-side hidden lg:flex lg:w-[55%] relative overflow-hidden z-20 transition-all duration-700 ease-in-out order-1">
+        <div class="image-side hidden lg:flex lg:w-[55%] relative overflow-hidden z-20 transition-colors duration-700 ease-in-out order-1">
             <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=2070" 
                  class="absolute inset-0 w-full h-full object-cover" alt="Travel Vibes">
                  
@@ -116,7 +116,7 @@
                         <span class="text-3xl font-bold tracking-tight">WanderVibe</span>
                     </div>
                     
-                    <div id="image-content" class="transition-all duration-500">
+                    <div id="image-content" class="transition-colors duration-500">
                         <h2 class="font-serif text-5xl font-bold leading-tight mb-6">Mở khóa <br><span class="text-[#cf8a6e]">cửa sổ</span> thế giới.</h2>
                         <p class="text-slate-200 text-lg max-w-md leading-relaxed font-medium">
                             Hệ sinh thái du lịch dành cho thế hệ trẻ. Trải nghiệm những chuyến đi cảm xúc, gắn kết và mang đậm dấu ấn cá nhân.
@@ -179,7 +179,7 @@
                     @endif
 
                     <a href="{{ route('google.login') }}"
-                        class="w-full flex items-center justify-center gap-3 bg-white border-2 border-slate-100 py-3.5 px-4 rounded-2xl font-bold text-slate-700 hover:bg-slate-50 hover:border-slate-200 hover:-translate-y-0.5 transition-all mb-8 shadow-sm">
+                        class="w-full flex items-center justify-center gap-3 bg-white border-2 border-slate-100 py-3.5 px-4 rounded-2xl font-bold text-slate-700 hover:bg-slate-50 hover:border-slate-200 hover:-translate-y-0.5 transition-colors mb-8 shadow-sm">
                         <svg class="w-5 h-5" viewBox="0 0 24 24">
                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -194,7 +194,7 @@
                             <div class="w-full border-t border-slate-200"></div>
                         </div>
                         <div class="relative flex justify-center text-xs">
-                            <span class="px-4 bg-white text-slate-400 font-bold uppercase tracking-wider">Hoặc Email</span>
+                            <span class="px-4 bg-white text-slate-400 font-bold font-medium">Hoặc Email</span>
                         </div>
                     </div>
 
@@ -227,10 +227,10 @@
                                 <input type="checkbox" name="remember" class="w-4 h-4 rounded border-slate-300 text-orange-500 focus:ring-orange-500/20 cursor-pointer">
                                 <span class="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors">Ghi nhớ đăng nhập</span>
                             </label>
-                            <a href="{{ route('password.request') }}" class="text-sm font-bold text-orange-600 hover:text-orange-700 transition-all">Quên mật khẩu?</a>
+                            <a href="{{ route('password.request') }}" class="text-sm font-bold text-orange-600 hover:text-orange-700 transition-colors">Quên mật khẩu?</a>
                         </div>
                         
-                        <button type="submit" class="w-full bg-gradient-to-r from-[#b85e3a] to-[#863c20] text-white py-4 rounded-2xl font-bold shadow-lg shadow-orange-500/30 hover:bg-[#a34c2a] hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full bg-gradient-to-r from-[#b85e3a] to-[#863c20] text-white py-4 rounded-2xl font-bold shadow-lg shadow-orange-500/30 hover:bg-[#a34c2a] hover:-translate-y-0.5 transition-colors flex items-center justify-center gap-2">
                             <span>Đăng Nhập</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </button>
@@ -258,7 +258,7 @@
                     @endif
 
                     <a href="{{ route('google.login') }}"
-                        class="w-full flex items-center justify-center gap-3 bg-white border-2 border-slate-100 py-3 px-4 rounded-2xl font-bold text-slate-700 hover:bg-slate-50 hover:border-slate-200 hover:-translate-y-0.5 transition-all mb-5 shadow-sm text-sm">
+                        class="w-full flex items-center justify-center gap-3 bg-white border-2 border-slate-100 py-3 px-4 rounded-2xl font-bold text-slate-700 hover:bg-slate-50 hover:border-slate-200 hover:-translate-y-0.5 transition-colors mb-5 shadow-sm text-sm">
                         <svg class="w-4 h-4" viewBox="0 0 24 24">
                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -273,7 +273,7 @@
                             <div class="w-full border-t border-slate-200"></div>
                         </div>
                         <div class="relative flex justify-center text-xs">
-                            <span class="px-4 bg-white text-slate-400 font-bold uppercase tracking-wider">Hoặc điền thông tin</span>
+                            <span class="px-4 bg-white text-slate-400 font-bold font-medium">Hoặc điền thông tin</span>
                         </div>
                     </div>
 
@@ -317,7 +317,7 @@
                             </label>
                         </div>
                         
-                        <button type="submit" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold shadow-lg shadow-slate-900/20 hover:bg-slate-800 hover:-translate-y-0.5 transition-all mt-4 flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold shadow-lg shadow-slate-900/20 hover:bg-slate-800 hover:-translate-y-0.5 transition-colors mt-4 flex items-center justify-center gap-2">
                             <span>Tạo Tài Khoản Mới</span>
                             <i class="fa-solid fa-user-plus text-xs"></i>
                         </button>

@@ -21,7 +21,7 @@
             </div>
 
             <a href="{{ route('admin.tours.index') }}"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-all duration-300 shadow-sm group">
+               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 <span>Quay lại</span>
             </a>
@@ -64,14 +64,14 @@
                             <label class="block text-slate-700 font-semibold mb-2">
                                 Tên tour <span class="text-rose-500">*</span>
                             </label>
-                            <input type="text" name="name" value="{{ old('name', $tour->name) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 @error('name') border-rose-500 @enderror">
+                            <input type="text" name="name" value="{{ old('name', $tour->name) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 @error('name') border-rose-500 @enderror">
                         </div>
 
                         <div>
                             <label class="block text-slate-700 font-semibold mb-2">Giá niêm yết (Gốc)</label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-medium">VNĐ</span>
-                                <input type="number" name="price" value="{{ old('price', $tour->price) }}" placeholder="Tự tính nếu để trống" min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-14 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                                <input type="number" name="price" value="{{ old('price', $tour->price) }}" placeholder="Tự tính nếu để trống" min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-14 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
                         </div>
 
@@ -79,7 +79,7 @@
                             <label class="block text-slate-700 font-semibold mb-2">Giá bán / Khuyến mãi <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-medium">VNĐ</span>
-                                <input type="number" name="sale_price" value="{{ old('sale_price', $tour->sale_price) }}" min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-14 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 @error('sale_price') border-rose-500 @enderror">
+                                <input type="number" name="sale_price" value="{{ old('sale_price', $tour->sale_price) }}" min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-14 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 @error('sale_price') border-rose-500 @enderror">
                             </div>
                         </div>
 
@@ -87,7 +87,7 @@
                             <label class="block text-slate-700 font-semibold mb-2">
                                 Danh mục <span class="text-rose-500">*</span>
                             </label>
-                            <select name="category_id" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 cursor-pointer">
+                            <select name="category_id" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer">
                                 <option value="">-- Chọn danh mục --</option>
                                 @foreach ($categoryOptions as $opt)
                                     <option value="{{ $opt['id'] }}" {{ old('category_id', $tour->category_id) == $opt['id'] ? 'selected' : '' }}>
@@ -115,7 +115,7 @@
                             <label class="block text-slate-700 font-semibold mb-2">Điểm bắt đầu <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                <input type="text" name="start_location" value="{{ old('start_location', $tour->start_location) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                                <input type="text" name="start_location" value="{{ old('start_location', $tour->start_location) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
                         </div>
 
@@ -123,7 +123,7 @@
                             <label class="block text-slate-700 font-semibold mb-2">Điểm kết thúc <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <i class="fa-solid fa-flag-checkered absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                <input type="text" name="end_location" value="{{ old('end_location', $tour->end_location) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                                <input type="text" name="end_location" value="{{ old('end_location', $tour->end_location) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
                         </div>
                     </div>
@@ -131,17 +131,17 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
                             <label class="block text-slate-700 font-semibold mb-2">Thời lượng <span class="text-rose-500">*</span></label>
-                            <input type="text" name="time" value="{{ old('time', $tour->time) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                            <input type="text" name="time" value="{{ old('time', $tour->time) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                         </div>
 
                         <div>
                             <label class="block text-slate-700 font-semibold mb-2">Khởi hành lúc <span class="text-rose-500">*</span></label>
-                            <input type="date" name="start_date" value="{{ old('start_date', optional($tour->start_date)->format('Y-m-d')) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 cursor-pointer">
+                            <input type="date" name="start_date" value="{{ old('start_date', optional($tour->start_date)->format('Y-m-d')) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer">
                         </div>
                         
                         <div>
                             <label class="block text-slate-700 font-semibold mb-2">Số khách (Tối đa) <span class="text-rose-500">*</span></label>
-                            <input type="number" name="quantity" min="1" value="{{ old('quantity', $tour->quantity) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                            <input type="number" name="quantity" min="1" value="{{ old('quantity', $tour->quantity) }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                         </div>
                     </div>
                 </section>
@@ -214,7 +214,7 @@
                             @foreach ($tourType as $attr)
                                 <label class="relative inline-flex items-center outline-none cursor-pointer group">
                                     <input type="checkbox" name="attr[]" value="{{ $attr->id }}" class="peer sr-only" {{ in_array($attr->id, old('attr', $tour->attrTours->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                    <div class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-600 font-medium text-sm transition-all duration-300 peer-checked:bg-orange-500 peer-checked:text-white peer-checked:border-orange-500 hover:bg-slate-100 peer-checked:hover:bg-orange-600 shadow-sm">
+                                    <div class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-600 font-medium text-sm transition-colors duration-200 peer-checked:bg-orange-500 peer-checked:text-white peer-checked:border-orange-500 hover:bg-slate-100 peer-checked:hover:bg-orange-600 shadow-sm">
                                         {{ $attr->value }}
                                     </div>
                                     <i class="fa-solid fa-check absolute top-0 right-0 -mt-2 -mr-2 bg-rose-500 text-white p-1 rounded-full text-[8px] opacity-0 peer-checked:opacity-100 transition-opacity z-10 shadow-sm border-2 border-white"></i>
@@ -226,12 +226,12 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-slate-700 font-semibold mb-2">Mô tả Tour</label>
-                            <textarea name="description" rows="5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">{{ old('description', $tour->description) }}</textarea>
+                            <textarea name="description" rows="5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">{{ old('description', $tour->description) }}</textarea>
                         </div>
                         
                         <div>
                             <label class="block text-slate-700 font-semibold mb-2">Trạng thái phát hành</label>
-                            <select name="status" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 cursor-pointer mb-4">
+                            <select name="status" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer mb-4">
                                 <option value="1" {{ old('status', $tour->status) == 1 ? 'selected' : '' }}>Hoạt động (Hiển thị ngay)</option>
                                 <option value="0" {{ old('status', $tour->status) == 0 ? 'selected' : '' }}>Ẩn (Bản nháp)</option>
                             </select>
@@ -244,12 +244,12 @@
                 {{-- ACTION BUTTONS --}}
                 <div class="flex flex-col sm:flex-row justify-end gap-4 pt-2">
                     <a href="{{ route('admin.tours.index') }}"
-                        class="inline-flex justify-center items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-8 py-3.5 rounded-xl font-bold transition-all duration-300 text-sm">
+                        class="inline-flex justify-center items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-8 py-3.5 rounded-xl font-bold transition-colors duration-200 text-sm">
                         <i class="fa-solid fa-xmark text-lg"></i> Hủy
                     </a>
                     
                     <button type="submit"
-                        class="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-200/50 hover:shadow-xl hover:shadow-orange-300/50 hover:-translate-y-0.5 transition-all duration-300 text-sm">
+                        class="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-200/50 hover:shadow-xl hover:shadow-orange-300/50 hover:-translate-y-0.5 transition-colors duration-200 text-sm">
                         <i class="fa-solid fa-check text-lg"></i> Lưu thay đổi
                     </button>
                 </div>

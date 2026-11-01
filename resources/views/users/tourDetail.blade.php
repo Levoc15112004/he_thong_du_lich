@@ -146,10 +146,10 @@
             </div>
         @endforeach
 
-        <button type="button" id="carouselPrevBtn" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+        <button type="button" id="carouselPrevBtn" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100">
             <i class="fa-solid fa-chevron-left text-sm"></i>
         </button>
-        <button type="button" id="carouselNextBtn" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100">
+        <button type="button" id="carouselNextBtn" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100">
             <i class="fa-solid fa-chevron-right text-sm"></i>
         </button>
 
@@ -162,7 +162,7 @@
             </span>
         </div>
 
-        <button type="button" onclick="openTourVideoModal()" class="absolute bottom-4 right-4 z-20 bg-[#863c20] hover:bg-[#a34c2a] text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-md transition-all flex items-center gap-2">
+        <button type="button" onclick="openTourVideoModal()" class="absolute bottom-4 right-4 z-20 bg-[#863c20] hover:bg-[#a34c2a] text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-md transition-colors flex items-center gap-2">
             <i class="fa-solid fa-play text-[10px]"></i>
             <span>Video Review</span>
         </button>
@@ -171,7 +171,7 @@
     <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar pt-3 px-1" id="carouselThumbnails">
         @foreach($galleryList as $idx => $img)
             @php $imgUrl = Str::startsWith($img, ['http://', 'https://']) ? $img : asset($img); @endphp
-            <button type="button" onclick="goToCarouselSlide({{ $idx }})" class="carousel-thumb relative shrink-0 w-20 h-14 md:w-24 md:h-16 rounded-lg overflow-hidden border-2 transition-all {{ $idx === 0 ? 'border-[#863c20] ring-2 ring-[#863c20]/20' : 'border-transparent opacity-60 hover:opacity-100' }}" data-index="{{ $idx }}">
+            <button type="button" onclick="goToCarouselSlide({{ $idx }})" class="carousel-thumb relative shrink-0 w-20 h-14 md:w-24 md:h-16 rounded-lg overflow-hidden border-2 transition-colors {{ $idx === 0 ? 'border-[#863c20] ring-2 ring-[#863c20]/20' : 'border-transparent opacity-60 hover:opacity-100' }}" data-index="{{ $idx }}">
                 <img src="{{ $imgUrl }}" class="w-full h-full object-cover">
             </button>
         @endforeach
@@ -408,7 +408,7 @@
 
                         <!-- ===== PRICE ===== -->
                         <div class="space-y-1">
-                            <p class="text-sm font-medium text-slate-400 uppercase tracking-widest mb-1">Giá hành trình</p>
+                            <p class="text-sm font-medium text-slate-400 font-medium mb-1">Giá hành trình</p>
                             <p class="text-4xl font-bold text-rose-500 tracking-tight">
                                 {{ number_format($tour->sale_price) }}<span class="text-xl ml-1 text-slate-500 font-medium">đ</span>
                             </p>
@@ -431,7 +431,7 @@
                         </div>
 
                         <button onclick="openItineraryModal({{ $tour->id }})"
-                            class="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-orange-100/60 rounded-2xl mb-6 hover:bg-orange-50 hover:border-orange-200 transition-all text-orange-600 font-semibold group shadow-sm bg-white">
+                            class="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-orange-100/60 rounded-2xl mb-6 hover:bg-orange-50 hover:border-orange-200 transition-colors text-orange-600 font-semibold group shadow-sm bg-white">
                             <i data-lucide="map" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                             <span>Xem bản đồ lịch trình</span>
                         </button>
@@ -460,7 +460,7 @@
                 <div class="flex items-center gap-2.5">
                     <input type="radio" name="departure_date" value="2026-02-18" class="text-rose-600">
                     <div>
-                        <span class="font-bold text-rose-700 dark:text-rose-300 block">🧧 Đợt Tết Nguyên Đán 2026</span>
+                        <span class="font-bold text-rose-700 dark:text-rose-300 block">Đợt Tết Nguyên Đán 2026</span>
                         <span class="text-rose-600">18/02/2026 (Mùng 2 Tết)</span>
                     </div>
                 </div>
@@ -531,14 +531,14 @@
                             <div>
                                 <label class="flex justify-between items-center text-xs font-bold text-slate-700 mb-1 mt-2">
                                     <span>Hành khách</span>
-                                    <span id="seat-status-label" class="text-[10px] uppercase tracking-wider text-rose-600 bg-rose-100 border border-rose-200 px-2 py-0.5 rounded-full shadow-sm">
+                                    <span id="seat-status-label" class="text-[10px] font-medium text-rose-600 bg-rose-100 border border-rose-200 px-2 py-0.5 rounded-full shadow-sm">
                                         Còn trống: {{ max($slots - 1, 0) }}
                                     </span>
                                 </label>
 
                                 <input type="number" id="tour-quantity-input" name="quantity" value="1" min="1"
                                     max="{{ $slots }}" placeholder="Nhập số lượng"
-                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-orange-500 focus:bg-white focus:ring-4 focus:ring-orange-500/10 transition-all">
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-orange-500 focus:bg-white focus:ring-4 focus:ring-orange-500/10 transition-colors">
 
                                 @if ($slots == 0)
                                     <p class="text-rose-500 text-xs mt-2 font-bold flex items-center gap-1.5 bg-rose-50 border border-rose-100 px-3 py-2 rounded-xl">
@@ -552,7 +552,7 @@
 
                             <!-- CTA -->
                             <button type="submit" id="book-tour-btn" {{ $slots == 0 ? 'disabled' : '' }}
-                                class="w-full py-3.5 mt-2 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm uppercase tracking-wider shadow-xs transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                class="w-full py-3.5 mt-2 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm font-medium shadow-xs transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                                 <i class="fa-solid fa-bookmark mr-2"></i> Giữ Chỗ Ngay
                             </button>
 
@@ -611,7 +611,7 @@
                 @foreach ($tourRelate as $item)
                     <div
                         class="bg-white rounded-2xl travel-card shadow-sm border border-slate-100 hover:shadow-xl overflow-hidden
-                hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group cursor-pointer"
+                hover:-translate-y-1.5 transition-colors duration-200 flex flex-col h-full group cursor-pointer"
                         onclick="window.location.href='{{ route('user.tourDetail.index', $item->id) }}'">
 
                         <!-- Ảnh -->
@@ -635,7 +635,7 @@
 
                                 <div class="flex items-end justify-between mt-2">
                                     <div>
-                                        <p class="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-1">Chỉ từ</p>
+                                        <p class="text-[11px] font-medium text-slate-400 font-medium mb-1">Chỉ từ</p>
                                         <p class="text-2xl font-bold text-rose-500">
                                             {{ number_format($item->sale_price, 0, '.', '.') }}<span class="text-sm ml-0.5 text-slate-500 font-normal">đ</span>
                                         </p>
@@ -645,7 +645,7 @@
 
                             <div class="mt-6">
                                 <a href="{{ route('user.tourDetail.index', $item->id) }}"
-                                    class="w-full py-3.5 rounded-xl bg-orange-50 text-orange-700 hover:bg-orange-500 hover:text-white font-bold text-sm transition-all flex items-center justify-center gap-2 border border-orange-100 group shadow-sm"
+                                    class="w-full py-3.5 rounded-xl bg-orange-50 text-orange-700 hover:bg-orange-500 hover:text-white font-bold text-sm transition-colors flex items-center justify-center gap-2 border border-orange-100 group shadow-sm"
                                     onclick="event.stopPropagation()">
                                     <span>Xem chi tiết chuyến đi</span>
                                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
@@ -663,7 +663,7 @@
             <div id="modalContent"
                 class="bg-white w-full max-w-6xl rounded-3xl shadow-2xl
                 max-h-[88vh] flex flex-col
-                transform scale-95 opacity-0 transition-all duration-300 overflow-hidden">
+                transform scale-95 opacity-0 transition-colors duration-200 overflow-hidden">
 
                 <!-- HEADER -->
                 <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 shrink-0 bg-slate-50/50">
@@ -699,7 +699,7 @@
                         <!-- NAVIGATION BUTTON -->
                         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-[1000] w-max">
                             <a id="directionsButton" target="_blank" href="#"
-                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/90 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm rounded-full shadow-xl backdrop-blur-md border border-white/20 transition-all hover:scale-105 active:scale-95">
+                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/90 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm rounded-full shadow-xl backdrop-blur-md border border-white/20 transition-colors hover:scale-105 active:scale-95">
                                 <i class="fa-solid fa-route text-orange-400"></i>
                                 <span>Mở chỉ đường trên Google Maps</span>
                             </a>
@@ -923,7 +923,7 @@
                 html += `
                     <div onclick="focusScheduleDay(${item.day_number}, ${item.latitude}, ${item.longitude})"
                         id="timeline-item-${item.day_number}"
-                        class="p-3.5 rounded-2xl border transition-all cursor-pointer ${isActive ? 'bg-orange-50/70 border-orange-300 shadow-sm' : 'bg-white border-slate-200 hover:border-orange-200 hover:bg-slate-50'}">
+                        class="p-3.5 rounded-2xl border transition-colors cursor-pointer ${isActive ? 'bg-orange-50/70 border-orange-300 shadow-sm' : 'bg-white border-slate-200 hover:border-orange-200 hover:bg-slate-50'}">
                         <div class="flex items-start gap-2.5">
                             <span class="w-7 h-7 rounded-xl ${isActive ? 'bg-orange-600 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                                 N${item.day_number}

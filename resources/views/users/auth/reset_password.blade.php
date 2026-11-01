@@ -19,7 +19,7 @@
                 <div class="relative group">
                     <i class="fa-solid fa-shield-halved absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-green-500 transition-colors"></i>
                     <input type="text" name="otp" placeholder="Nhập mã OTP..."
-                        class="w-full pl-14 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all text-slate-900 font-medium tracking-widest" required>
+                        class="w-full pl-14 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-colors text-slate-900 font-medium tracking-widest" required>
                 </div>
                 @error('otp')
                     <p class="text-red-500 text-sm mt-2 ml-1 font-medium flex items-center"><i class="fa-solid fa-circle-exclamation mr-1.5"></i>{{ $message }}</p>
@@ -31,7 +31,7 @@
                 <div class="relative group">
                     <i class="fa-solid fa-lock absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-green-500 transition-colors"></i>
                     <input type="password" name="password" placeholder="Nhập mật khẩu mới..."
-                        class="w-full pl-14 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all text-slate-900 font-medium" required>
+                        class="w-full pl-14 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-colors text-slate-900 font-medium" required>
                 </div>
                 @error('password')
                     <p class="text-red-500 text-sm mt-2 ml-1 font-medium flex items-center"><i class="fa-solid fa-circle-exclamation mr-1.5"></i>{{ $message }}</p>
@@ -43,11 +43,11 @@
                 <div class="relative group">
                     <i class="fa-solid fa-check-double absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-green-500 transition-colors"></i>
                     <input type="password" name="password_confirmation" placeholder="Xác nhận lại mật khẩu..."
-                        class="w-full pl-14 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all text-slate-900 font-medium" required>
+                        class="w-full pl-14 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-colors text-slate-900 font-medium" required>
                 </div>
             </div>
 
-            <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-green-200 hover:bg-green-700 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2 mt-6">
+            <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-green-200 hover:bg-green-700 hover:-translate-y-1 active:translate-y-0 transition-colors duration-200 flex items-center justify-center gap-2 mt-6">
                 Đổi mật khẩu
                 <i class="fa-solid fa-check ml-1"></i>
             </button>

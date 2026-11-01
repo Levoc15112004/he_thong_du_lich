@@ -26,7 +26,7 @@
                         <i class="fa-solid fa-receipt text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Tổng đơn</p>
+                        <p class="text-[10px] text-slate-400 font-medium font-bold">Tổng đơn</p>
                         <p class="text-base font-extrabold text-slate-800 dark:text-slate-100">{{ $totalCount ?? $orders->total() }}</p>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="flex-1 flex flex-col sm:flex-row gap-3">
                     <div class="relative flex-1">
                         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                        <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="Tìm theo Mã đơn, Tên khách hàng, SĐT, Email..." class="w-full pl-11 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                        <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="Tìm theo Mã đơn, Tên khách hàng, SĐT, Email..." class="w-full pl-11 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors">
                     </div>
                     <select name="status" class="px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 cursor-pointer">
                         <option value="all" {{ request('status') === 'all' || !request()->has('status') ? 'selected' : '' }}>Tất cả trạng thái</option>
@@ -69,12 +69,12 @@
                     </select>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl shadow-sm transition-all flex items-center gap-2 justify-center">
+                    <button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl shadow-sm transition-colors flex items-center gap-2 justify-center">
                         <i class="fa-solid fa-filter text-xs"></i>
                         <span>Lọc kết quả</span>
                     </button>
                     @if(request()->has('keyword') || (request()->has('status') && request('status') !== 'all'))
-                        <a href="{{ route('admin.orders.index') }}" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium rounded-xl transition-all">
+                        <a href="{{ route('admin.orders.index') }}" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium rounded-xl transition-colors">
                             Xóa lọc
                         </a>
                     @endif
@@ -87,7 +87,7 @@
             
             <table class="w-full text-left border-collapse relative z-10">
                 <thead>
-                    <tr class="bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                    <tr class="bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-600 dark:text-slate-400 font-medium">
                         <th class="px-6 py-4 w-16">#Đơn</th>
                         <th class="px-6 py-4">Khách hàng</th>
                         <th class="px-6 py-4 w-1/3">Chi tiết Tour & Hành trình</th>
@@ -164,11 +164,11 @@
                             <td class="px-6 py-4 text-center">
                                 <div class="flex items-center justify-center gap-1.5">
                                     <a href="{{ route('admin.orders.show', $order->id) }}"
-                                       class="w-8 h-8 flex items-center justify-center text-blue-600 bg-blue-50 dark:bg-blue-900/40 hover:bg-blue-600 hover:text-white rounded-lg transition-all" title="Xem chi tiết đơn">
+                                       class="w-8 h-8 flex items-center justify-center text-blue-600 bg-blue-50 dark:bg-blue-900/40 hover:bg-blue-600 hover:text-white rounded-lg transition-colors" title="Xem chi tiết đơn">
                                         <i class="fa-solid fa-eye text-xs"></i>
                                     </a>
                                     <a href="{{ route('admin.orders.edit', $order->id) }}"
-                                       class="w-8 h-8 flex items-center justify-center text-amber-600 bg-amber-50 dark:bg-amber-900/40 hover:bg-amber-600 hover:text-white rounded-lg transition-all" title="Đổi trạng thái đơn">
+                                       class="w-8 h-8 flex items-center justify-center text-amber-600 bg-amber-50 dark:bg-amber-900/40 hover:bg-amber-600 hover:text-white rounded-lg transition-colors" title="Đổi trạng thái đơn">
                                         <i class="fa-solid fa-pen text-xs"></i>
                                     </a>
                                 </div>

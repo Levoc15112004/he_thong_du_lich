@@ -26,7 +26,7 @@
                 </div>
 
                 <a href="{{ route('admin.tour_schedules.index') }}"
-                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-all duration-300 shadow-sm group">
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                     <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                     <span>Quay lại danh sách</span>
                 </a>
@@ -70,7 +70,7 @@
                                 <label class="block text-slate-700 font-semibold mb-2">
                                     Giải đoạn / Tour <span class="text-rose-500">*</span>
                                 </label>
-                                <select name="tour_id" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300 cursor-pointer">
+                                <select name="tour_id" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 cursor-pointer">
                                     @foreach ($tours as $tour)
                                         <option value="{{ $tour->id }}" {{ $schedule->tour_id == $tour->id ? 'selected' : '' }}>
                                             {{ $tour->name }}
@@ -86,7 +86,7 @@
                                 </label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-medium"><i class="fa-regular fa-sun"></i></span>
-                                    <input type="number" min="1" name="day_number" value="{{ $schedule->day_number }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-12 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                                    <input type="number" min="1" name="day_number" value="{{ $schedule->day_number }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-12 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                                 </div>
                             </div>
 
@@ -95,13 +95,13 @@
                                 <label class="block text-slate-700 font-semibold mb-2">
                                     Tiêu đề (Hoạt động) <span class="text-rose-500">*</span>
                                 </label>
-                                <input type="text" name="title" value="{{ $schedule->title }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                                <input type="text" name="title" value="{{ $schedule->title }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                             </div>
 
                             {{-- Mô tả --}}
                             <div class="md:col-span-2">
                                 <label class="block text-slate-700 font-semibold mb-2">Mô tả chi tiết</label>
-                                <textarea name="description" rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">{{ $schedule->description }}</textarea>
+                                <textarea name="description" rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">{{ $schedule->description }}</textarea>
                             </div>
                         </div>
                     </section>
@@ -122,7 +122,7 @@
                                 <label class="block text-slate-700 font-semibold mb-2">Tên địa điểm / Khu vực</label>
                                 <div class="relative">
                                     <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                    <input type="text" name="location_name" value="{{ $schedule->location_name }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300">
+                                    <input type="text" name="location_name" value="{{ $schedule->location_name }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200">
                                 </div>
                             </div>
                             <div>
@@ -162,7 +162,7 @@
                     {{-- SUBMIT --}}
                     <div class="flex flex-col sm:flex-row justify-end gap-4 pt-2">
                         <button type="submit"
-                            class="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-200/50 hover:shadow-xl hover:shadow-orange-300/50 hover:-translate-y-0.5 transition-all duration-300 text-sm">
+                            class="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-200/50 hover:shadow-xl hover:shadow-orange-300/50 hover:-translate-y-0.5 transition-colors duration-200 text-sm">
                             <i class="fa-solid fa-save text-lg"></i> Lưu thay đổi
                         </button>
                     </div>

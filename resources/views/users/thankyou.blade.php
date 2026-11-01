@@ -287,17 +287,17 @@
                     
                     <div class="step-item step-completed">
                         <div class="step-circle"><i class="fas fa-check"></i></div>
-                        <span class="step-text uppercase tracking-wider">Thông tin</span>
+                        <span class="step-text font-medium">Thông tin</span>
                     </div>
                     
                     <div class="step-item step-completed">
                         <div class="step-circle"><i class="fas fa-check"></i></div>
-                        <span class="step-text uppercase tracking-wider">Thanh toán</span>
+                        <span class="step-text font-medium">Thanh toán</span>
                     </div>
                     
                     <div class="step-item step-current">
                         <div class="step-circle"><i class="fas fa-flag-checkered"></i></div>
-                        <span class="step-text uppercase tracking-wider">Hoàn tất</span>
+                        <span class="step-text font-medium">Hoàn tất</span>
                     </div>
                 </div>
             </div>
@@ -309,14 +309,14 @@
                     <div class="glass-panel p-6 sm:p-8 h-full flex flex-col shadow-sm">
                         <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-200 border-opacity-70">
                             <div>
-                                <p class="text-xs uppercase tracking-widest font-bold text-slate-400 mb-1">Mã xác nhận</p>
+                                <p class="text-xs font-medium font-bold text-slate-400 mb-1">Mã xác nhận</p>
                                 <div class="flex items-center gap-3">
                                     <h3 class="text-3xl font-bold text-slate-900">#{{ $booking['code'] ?? 'VT-'.rand(1000, 9999) }}</h3>
                                     <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-md border border-orange-200">Đã cọc 30%</span>
                                 </div>
                             </div>
                             <div class="text-left md:text-right bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
-                                <p class="text-xs uppercase tracking-widest font-bold text-slate-400 mb-1">Ngày giao dịch</p>
+                                <p class="text-xs font-medium font-bold text-slate-400 mb-1">Ngày giao dịch</p>
                                 <p class="text-sm font-bold text-slate-700 flex items-center gap-2">
                                     <i class="far fa-clock text-blue-500"></i>
                                     {{ now()->format('d/m/Y - H:i') }}
@@ -325,7 +325,7 @@
                         </div>
 
                         <!-- Tour Block -->
-                        <div class="flex sm:flex-row flex-col gap-5 mb-8 p-4 bg-white rounded-2xl shadow-sm border border-slate-100 group hover:shadow-md transition-all cursor-pointer"
+                        <div class="flex sm:flex-row flex-col gap-5 mb-8 p-4 bg-white rounded-2xl shadow-sm border border-slate-100 group hover:shadow-md transition-colors cursor-pointer"
                             onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
                             <div class="relative shrink-0 overflow-hidden rounded-xl h-24 sm:h-auto sm:w-32">
                                 <img src="{{ asset($tour->image ?? 'images/default-tour.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -378,7 +378,7 @@
 
                             <div class="pt-2 flex justify-between items-end">
                                 <div>
-                                    <p class="text-[11px] uppercase tracking-widest font-bold text-rose-500 mb-1">Số tiền còn lại</p>
+                                    <p class="text-[11px] font-medium font-bold text-rose-500 mb-1">Số tiền còn lại</p>
                                     <p class="text-xs font-semibold text-slate-400 bg-white px-2 py-1 rounded inline-block shadow-sm">Thanh toán bổ sung sau</p>
                                 </div>
                                 <div class="text-right">
@@ -432,17 +432,17 @@
                         <a href="{{ route('user.payment.final', $order->id) }}" class="col-span-1 sm:col-span-2 btn-glow p-4 rounded-2xl text-center text-white font-bold group flex justify-center items-center gap-3 shadow-lg shadow-blue-500/30">
                             <span class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center shadow-inner"><i class="fas fa-credit-card"></i></span>
                             Thanh toán phần còn lại ngay
-                            <i class="fas fa-arrow-right opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                            <i class="fas fa-arrow-right opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-colors"></i>
                         </a>
                         
-                        <a href="{{ route('user.tourDetail.index', $tour->id ?? 1) }}" class="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-50 transition-all group font-bold text-slate-700 text-sm">
+                        <a href="{{ route('user.tourDetail.index', $tour->id ?? 1) }}" class="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-50 transition-colors group font-bold text-slate-700 text-sm">
                             <div class="w-10 h-10 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
                                 <i class="fas fa-map"></i>
                             </div>
                             Xem lại Tour
                         </a>
                         
-                        <a href="{{ route('user.home') }}" class="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-50 transition-all group font-bold text-slate-700 text-sm">
+                        <a href="{{ route('user.home') }}" class="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-50 transition-colors group font-bold text-slate-700 text-sm">
                             <div class="w-10 h-10 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-orange-50 group-hover:text-orange-600 transition-colors">
                                 <i class="fas fa-home"></i>
                             </div>

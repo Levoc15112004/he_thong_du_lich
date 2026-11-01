@@ -78,13 +78,13 @@
 
                     <div class="flex flex-col sm:flex-row gap-3">
                         <button type="button" onclick="openRandomAssignModal()"
-                            class="inline-flex items-center justify-center px-5 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl text-sm font-bold shadow-xl shadow-amber-500/20 transition-all active:scale-95">
+                            class="inline-flex items-center justify-center px-5 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl text-sm font-bold shadow-xl shadow-amber-500/20 transition-colors active:scale-95">
                             <i class="fa-solid fa-bolt mr-2 text-lg"></i>
                             Phát ngẫu nhiên
                         </button>
 
                         <button type="button" onclick="openAssignModal()"
-                            class="inline-flex items-center justify-center px-5 py-3 bg-[#863c20] hover:bg-[#a34c2a] text-white rounded-2xl text-sm font-bold shadow-xl shadow-xs transition-all active:scale-95">
+                            class="inline-flex items-center justify-center px-5 py-3 bg-[#863c20] hover:bg-[#a34c2a] text-white rounded-2xl text-sm font-bold shadow-xl shadow-xs transition-colors active:scale-95">
                             <i class="fa-solid fa-plus-circle mr-2 text-lg"></i>
                             Gán Voucher Mới
                         </button>
@@ -98,7 +98,7 @@
                             class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                         <input type="text" name="search" value="{{ request('search') }}"
                             placeholder="Tìm kiếm người dùng hoặc mã voucher..."
-                            class="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none text-sm font-medium shadow-sm">
+                            class="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none text-sm font-medium shadow-sm">
                     </form>
                 </div>
 
@@ -232,7 +232,7 @@
                                                 method="POST" onsubmit="return confirm('Xác nhận thu hồi voucher?')">
                                                 @csrf @method('DELETE')
                                                 <button type="submit"
-                                                    class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all">
+                                                    class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors">
                                                     <i class="fa-solid fa-trash-can text-sm"></i>
                                                 </button>
                                             </form>
@@ -346,14 +346,14 @@
     <div id="assignModal"
         class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden">
         <div id="modalContainer"
-            class="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden transform transition-all scale-95 opacity-0 duration-300 border border-white/20">
+            class="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden transform transition-colors scale-95 opacity-0 duration-300 border border-white/20">
             <div class="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/30">
                 <div>
                     <h3 class="text-xl sm:text-3xl font-bold text-slate-900  ">Gán Voucher cho khách hàng</h3>
                     <p class="text-xs text-slate-400 font-medium mt-1">Chọn đối tượng và mã giảm giá áp dụng</p>
                 </div>
                 <button type="button" onclick="closeAssignModal()"
-                    class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-2xl transition-all active:scale-90">
+                    class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-90">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
@@ -367,7 +367,7 @@
                         <i
                             class="fa-solid fa-user-tag absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-emerald-500 transition-colors"></i>
                         <select name="user_id" id="userSelect" required
-                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-all outline-none appearance-none shadow-inner">
+                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-colors outline-none appearance-none shadow-inner">
                             <option value="" disabled selected>Chọn người dùng từ danh sách...</option>
                             @foreach ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }} ({{ $user->email }})</option>
@@ -390,7 +390,7 @@
                         <i
                             class="fa-solid fa-filter absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-emerald-500 transition-colors"></i>
                         <input type="text" id="voucherSearch" placeholder="Lọc nhanh theo mã hoặc giá trị..."
-                            class="w-full pl-10 pr-4 py-3 bg-slate-50/50 border-none rounded-xl text-xs font-medium text-slate-900 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-all outline-none shadow-inner placeholder:text-gray-300">
+                            class="w-full pl-10 pr-4 py-3 bg-slate-50/50 border-none rounded-xl text-xs font-medium text-slate-900 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white transition-colors outline-none shadow-inner placeholder:text-gray-300">
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-64 overflow-y-auto pr-2 custom-scrollbar"
@@ -406,12 +406,12 @@
                                 <input type="checkbox" name="voucher_ids[]" value="{{ $voucher->id }}"
                                     class="voucher-checkbox peer sr-only">
                                 <div
-                                    class="p-4 bg-slate-50 border border-slate-100 rounded-2xl peer-checked:bg-emerald-50 peer-checked:border-emerald-200 peer-checked:shadow-lg peer-checked:shadow-emerald-50 transition-all hover:bg-slate-50/80 active:scale-[0.98]">
+                                    class="p-4 bg-slate-50 border border-slate-100 rounded-2xl peer-checked:bg-emerald-50 peer-checked:border-emerald-200 peer-checked:shadow-lg peer-checked:shadow-emerald-50 transition-colors hover:bg-slate-50/80 active:scale-[0.98]">
                                     <div class="flex justify-between items-start mb-3">
                                         <span
                                             class="text-sm font-bold text-emerald-600 bg-white px-2 py-1 rounded-lg shadow-sm border border-emerald-100">{{ $voucher->code }}</span>
                                         <div
-                                            class="w-5 h-5 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center peer-checked:border-emerald-500 peer-checked:bg-emerald-500 transition-all">
+                                            class="w-5 h-5 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center peer-checked:border-emerald-500 peer-checked:bg-emerald-500 transition-colors">
                                             <i
                                                 class="fa-solid fa-check text-sm text-white opacity-0 peer-checked:opacity-100"></i>
                                         </div>
@@ -433,10 +433,10 @@
 
                 <div class="flex gap-4 pt-4 border-t border-slate-50">
                     <button type="button" onclick="closeAssignModal()"
-                        class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-all active:scale-95">Hủy
+                        class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-colors active:scale-95">Hủy
                         bỏ</button>
                     <button type="submit" id="btnSubmit" disabled
-                        class="flex-1 px-6 py-4 bg-[#863c20] text-white font-bold text-xs rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">Xác
+                        class="flex-1 px-6 py-4 bg-[#863c20] text-white font-bold text-xs rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-colors active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">Xác
                         nhận gán (0)</button>
                 </div>
             </form>
@@ -447,14 +447,14 @@
     <div id="randomAssignModal"
         class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm hidden">
         <div id="randomModalContainer"
-            class="bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden transform transition-all scale-95 opacity-0 duration-300 border border-white/20">
+            class="bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden transform transition-colors scale-95 opacity-0 duration-300 border border-white/20">
             <div class="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/30">
                 <div>
                     <h3 class="text-xl sm:text-3xl font-bold text-slate-900  ">Phát Voucher Ngẫu Nhiên</h3>
                     <p class="text-xs text-slate-400 font-medium mt-1">Hệ thống tự động chọn người dùng chưa có mã</p>
                 </div>
                 <button type="button" onclick="closeRandomAssignModal()"
-                    class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-2xl transition-all active:scale-90">
+                    class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-90">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
@@ -468,7 +468,7 @@
                         <i
                             class="fa-solid fa-ticket absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-orange-500 transition-colors"></i>
                         <select name="voucher_id" id="random_voucher_id" required
-                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-800 focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-all outline-none appearance-none shadow-inner">
+                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-800 focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-colors outline-none appearance-none shadow-inner">
                             <option value="">-- Chọn voucher từ kho --</option>
                             @foreach ($summerVouchers as $voucher)
                                 <option value="{{ $voucher->id }}">{{ $voucher->name }} (Còn:
@@ -487,17 +487,17 @@
                             class="fa-solid fa-users-viewfinder absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-orange-500 transition-colors"></i>
                         <input type="number" id="random_total_users" name="total_users" min="1" step="1"
                             required
-                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-all outline-none shadow-inner placeholder:text-gray-300"
+                            class="w-full bg-slate-50 border-none rounded-2xl pl-12 pr-6 py-4 text-sm font-medium text-slate-900 focus:ring-4 focus:ring-orange-500/10 focus:bg-white transition-colors outline-none shadow-inner placeholder:text-gray-300"
                             placeholder="Nhập số lượng user (Ví dụ: 50)">
                     </div>
                 </div>
 
                 <div class="flex gap-4 pt-4 border-t border-slate-50">
                     <button type="button" onclick="closeRandomAssignModal()"
-                        class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-all active:scale-95">Hủy
+                        class="flex-1 px-6 py-4 bg-white border border-slate-200 text-slate-500 font-bold text-xs rounded-2xl hover:bg-slate-50 transition-colors active:scale-95">Hủy
                         bỏ</button>
                     <button type="submit"
-                        class="flex-1 px-6 py-4 bg-[#863c20] text-white font-bold text-xs rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-all active:scale-95">Xác
+                        class="flex-1 px-6 py-4 bg-[#863c20] text-white font-bold text-xs rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-colors active:scale-95">Xác
                         nhận phát</button>
                 </div>
             </form>

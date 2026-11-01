@@ -16,7 +16,7 @@
                 Bộ Sưu Tập Tour Toàn Quốc
             </div>
             <h1 class="font-serif text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
-                Tất Cả <span class="text-[#b85e3a] font-serif italic">Hành Trình Du Lịch</span>
+                Tất Cả Hành Trình Du Lịch
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                 Hơn {{ $tours->total() }} điểm đến hấp dẫn khắp 3 miền Việt Nam với lịch trình tối ưu và giá tốt nhất.
@@ -28,7 +28,7 @@
         {{-- Lưới hiển thị tour --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse ($tours as $tour)
-                <div class="travel-card group flex flex-col h-full overflow-hidden bg-white travel-card rounded-2xl transition-all duration-300 cursor-pointer"
+                <div class="travel-card group flex flex-col h-full overflow-hidden bg-white travel-card rounded-2xl transition-colors duration-200 cursor-pointer"
                      onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
                     {{-- Tour Image Area --}}
                     <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="relative h-52 overflow-hidden block">
@@ -64,7 +64,7 @@
                         <div class="mt-auto pt-3 border-t border-slate-100">
                             <div class="flex items-baseline justify-between mb-3">
                                 <div>
-                                    <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Giá hành trình</p>
+                                    <p class="text-[11px] font-semibold text-slate-400 font-medium">Giá hành trình</p>
                                     <p class="text-xl font-extrabold text-[#b85e3a] font-serif">
                                         {{ number_format($tour->sale_price ?? $tour->price) }}<span class="text-sm font-semibold ml-0.5">đ</span>
                                     </p>
@@ -77,7 +77,7 @@
                             </div>
 
                             <a href="{{ route('user.tourDetail.index', $tour->id) }}"
-                               class="w-full block text-center py-2.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-xs uppercase tracking-wider shadow-xs transition-all"
+                               class="w-full block text-center py-2.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-xs font-medium shadow-xs transition-colors"
                                onclick="event.stopPropagation()">
                                 Xem Chi Tiết & Đặt Tour
                             </a>

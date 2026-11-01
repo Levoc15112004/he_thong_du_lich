@@ -23,7 +23,7 @@
             <div class="flex flex-col sm:flex-row items-center gap-3">
                 <form action="" method="GET" class="relative w-full sm:w-auto">
                     <input type="text" name="search" value="{{ $search ?? '' }}" placeholder="Tìm SĐT, tên khách..."
-                           class="w-full sm:w-64 pl-10 pr-4 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all shadow-sm">
+                           class="w-full sm:w-64 pl-10 pr-4 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors shadow-sm">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                 </form>
 
@@ -32,7 +32,7 @@
                         <i class="fa-solid fa-bell"></i>
                     </div>
                     <div>
-                        <p class="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Tổng yêu cầu</p>
+                        <p class="text-[10px] text-slate-500 dark:text-slate-400 font-bold font-medium">Tổng yêu cầu</p>
                         <p class="text-sm font-bold text-slate-800 dark:text-white">{{ $consultations->total() }} lượt</p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse text-sm">
                     <thead>
-                        <tr class="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                        <tr class="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-500 dark:text-slate-400 font-medium">
                             <th class="py-4 px-6">STT</th>
                             <th class="py-4 px-6">Khách hàng</th>
                             <th class="py-4 px-6">Thông tin chi tiết yêu cầu</th>

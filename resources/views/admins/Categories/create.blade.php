@@ -21,7 +21,7 @@
             </div>
 
             <a href="{{ route('categories.index') }}"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-all duration-300 shadow-sm group">
+               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                <span>Quay lại</span>
             </a>
@@ -67,7 +67,7 @@
                                        class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3
                                        text-slate-700 placeholder-slate-400 font-medium
                                        focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 focus:bg-white
-                                       transition-all duration-300
+                                       transition-colors duration-200
                                        @error('name') border-rose-500 ring-rose-500/20 focus:ring-rose-500/20 focus:border-rose-500 @enderror">
                             </div>
                             @error('name')
@@ -88,7 +88,7 @@
                                         class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3
                                         text-slate-700 font-medium appearance-none
                                         focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 focus:bg-white
-                                        transition-all duration-300
+                                        transition-colors duration-200
                                         @error('parent_id') border-rose-500 focus:border-rose-500 @enderror">
                                     <option value="">-- Thuộc danh mục gốc --</option>
                                     @foreach($flat as $cat)
@@ -127,7 +127,7 @@
                                        class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3
                                        text-slate-700 placeholder-slate-400 font-medium
                                        focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 focus:bg-white
-                                       transition-all duration-300
+                                       transition-colors duration-200
                                        @error('link') border-rose-500 focus:border-rose-500 @enderror">
                             </div>
                             @error('link')
@@ -147,7 +147,7 @@
                         </a>
 
                         <button type="submit"
-                                class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#863c20] hover:bg-[#a34c2a] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300">
+                                class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#863c20] hover:bg-[#a34c2a] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-colors duration-200">
                             <i class="fa-solid fa-check"></i>
                             <span>Lưu danh mục</span>
                         </button>

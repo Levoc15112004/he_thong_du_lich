@@ -26,7 +26,7 @@
 
             <div class="flex items-center gap-3">
                 <a href="{{ route('admin.blogs.create') }}"
-                    class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 group">
+                    class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-colors duration-200 group">
                     <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform duration-300"></i>
                     <span>Tạo bài viết mới</span>
                 </a>
@@ -38,7 +38,7 @@
             <div class="relative flex-1 group">
                 <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                 <input type="text" placeholder="Tìm kiếm tiêu đề bài viết..."
-                    class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none placeholder:text-slate-400">
+                    class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none placeholder:text-slate-400">
             </div>
             <div class="w-full sm:w-auto relative group">
                 <i class="fa-solid fa-filter absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors pointer-events-none z-10"></i>
@@ -97,13 +97,13 @@
                             <td class="px-6 py-4">
                                 <div class="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <a href="{{ route('admin.blogs.edit', $blog->id) }}"
-                                        class="w-10 h-10 flex items-center justify-center text-amber-500 bg-amber-50 border border-amber-200 rounded-xl hover:bg-amber-500 hover:text-white transition-all shadow-sm">
+                                        class="w-10 h-10 flex items-center justify-center text-amber-500 bg-amber-50 border border-amber-200 rounded-xl hover:bg-amber-500 hover:text-white transition-colors shadow-sm">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
                                     <form action="{{ route('admin.blogs.destroy', $blog->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa bài viết này?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="w-10 h-10 flex items-center justify-center text-rose-500 bg-rose-50 border border-rose-200 rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-sm">
+                                        <button type="submit" class="w-10 h-10 flex items-center justify-center text-rose-500 bg-rose-50 border border-rose-200 rounded-xl hover:bg-rose-500 hover:text-white transition-colors shadow-sm">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
@@ -144,9 +144,9 @@
                             <h5 class="font-bold text-slate-800 text-base leading-tight mb-2 line-clamp-2">{{ $blog->title }}</h5>
                             <div class="flex items-center flex-wrap gap-2">
                                 @if($blog->status)
-                                    <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-lg text-[10px] font-bold border border-orange-100 uppercase tracking-wider">Public</span>
+                                    <span class="px-2.5 py-1 bg-orange-50 text-orange-700 rounded-lg text-[10px] font-bold border border-orange-100 font-medium">Public</span>
                                 @else
-                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-500 rounded-lg text-[10px] font-bold border border-slate-200 uppercase tracking-wider">Draft</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-500 rounded-lg text-[10px] font-bold border border-slate-200 font-medium">Draft</span>
                                 @endif
                                 <span class="text-[10px] font-semibold text-slate-400"><i class="fa-regular fa-calendar mr-1"></i>{{ $blog->created_at->format('d/m/Y') }}</span>
                             </div>

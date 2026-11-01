@@ -115,7 +115,7 @@
         <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
           Wander<span class="text-orange-400">Vibe</span>
         </h1>
-        <span class="px-2 py-0.5 rounded-full bg-orange-500/20 border border-orange-400/30 text-[10px] font-extrabold text-orange-300 uppercase tracking-widest">
+        <span class="px-2 py-0.5 rounded-full bg-orange-500/20 border border-orange-400/30 text-[10px] font-extrabold text-orange-300 font-medium">
           Admin Portal
         </span>
       </div>
@@ -139,7 +139,7 @@
       
       <!-- Trường Email Quản trị -->
       <div>
-        <label for="adminEmail" class="block text-xs font-bold text-slate-200 uppercase tracking-wider mb-1.5">
+        <label for="adminEmail" class="block text-xs font-bold text-slate-200 font-medium mb-1.5">
           Email Quản Trị Viên
         </label>
         <div class="relative">
@@ -166,7 +166,7 @@
       <!-- Trường Mật khẩu -->
       <div>
         <div class="flex items-center justify-between mb-1.5">
-          <label for="adminPassword" class="block text-xs font-bold text-slate-200 uppercase tracking-wider">
+          <label for="adminPassword" class="block text-xs font-bold text-slate-200 font-medium">
             Mật Khẩu Quản Trị
           </label>
           <button type="button" onclick="openForgotPasswordModal()" class="text-xs font-bold text-orange-400 hover:text-orange-300 hover:underline">
@@ -214,7 +214,7 @@
       <button 
         type="submit" 
         id="loginSubmitBtn"
-        class="w-full mt-3 py-3.5 px-6 rounded-2xl bg-[#863c20] hover:bg-[#a34c2a] text-white font-extrabold text-sm shadow-xl shadow-orange-500/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group"
+        class="w-full mt-3 py-3.5 px-6 rounded-2xl bg-[#863c20] hover:bg-[#a34c2a] text-white font-extrabold text-sm shadow-xl shadow-orange-500/30 hover:scale-[1.01] active:scale-[0.99] transition-colors duration-150 flex items-center justify-center gap-2 group"
       >
         <span id="loginBtnText">Đăng Nhập Quản Trị Viên</span>
         <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" id="loginBtnIcon"></i>
@@ -272,10 +272,10 @@
         </div>
 
         <div class="pt-2 flex items-center justify-end gap-2.5">
-          <button type="button" onclick="closeForgotPasswordModal()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-slate-300 font-bold transition-all">
+          <button type="button" onclick="closeForgotPasswordModal()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-slate-300 font-bold transition-colors">
             Hủy bỏ
           </button>
-          <button type="submit" class="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold shadow-md shadow-emerald-500/25 transition-all">
+          <button type="submit" class="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold shadow-md shadow-emerald-500/25 transition-colors">
             Gửi Mã OTP Khôi Phục
           </button>
         </div>
@@ -365,7 +365,7 @@
       if (!container) return;
 
       const toast = document.createElement('div');
-      toast.className = 'pointer-events-auto px-4 py-3 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-white/15 text-white text-xs font-semibold shadow-2xl flex items-center gap-3 transform translate-y-3 opacity-0 transition-all duration-300';
+      toast.className = 'pointer-events-auto px-4 py-3 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-white/15 text-white text-xs font-semibold shadow-2xl flex items-center gap-3 transform translate-y-3 opacity-0 transition-colors duration-200';
 
       const icon = type === 'success' 
         ? '<i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>' 

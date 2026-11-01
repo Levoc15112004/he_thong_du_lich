@@ -113,11 +113,11 @@
                     @forelse($payment->transactions as $tran)
                         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                             <!-- Icon/Dot -->
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-50 group-[.is-active]:bg-orange-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-all duration-300">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-50 group-[.is-active]:bg-orange-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors duration-200">
                                 <i class="fa-solid {{ $tran->status == 'success' ? 'fa-check' : ($tran->status == 'pending' ? 'fa-clock' : 'fa-xmark') }} text-sm"></i>
                             </div>
                             <!-- Content -->
-                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl bg-slate-50/50 border border-slate-100 shadow-sm group-hover:bg-white transition-all duration-300">
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl bg-slate-50/50 border border-slate-100 shadow-sm group-hover:bg-white transition-colors duration-200">
                                 <div class="flex items-center justify-between space-x-2 mb-1">
                                     <div class="text-sm font-bold text-slate-400  ">
                                         @if ($tran->transaction_type === 'init') Khởi tạo @elseif($tran->transaction_type === 'confirm') Xác nhận @else Giao dịch @endif
@@ -142,11 +142,11 @@
 
         <!-- ACTIONS -->
         <div class="flex flex-col sm:flex-row gap-4 pt-4">
-            <a href="{{ route('admin.payments.index') }}" class="flex-1 flex items-center justify-center gap-2 py-4 bg-white border border-slate-200 text-slate-500 text-sm font-bold   rounded-2xl hover:bg-slate-50 transition-all active:scale-95 shadow-sm">
+            <a href="{{ route('admin.payments.index') }}" class="flex-1 flex items-center justify-center gap-2 py-4 bg-white border border-slate-200 text-slate-500 text-sm font-bold   rounded-2xl hover:bg-slate-50 transition-colors active:scale-95 shadow-sm">
                 <i class="fa-solid fa-arrow-left"></i>
                 Quay lại danh sách
             </a>
-            <button onclick="window.print()" class="flex-1 flex items-center justify-center gap-2 py-4 bg-gray-900 text-white text-sm font-bold   rounded-2xl hover:bg-black transition-all active:scale-95 shadow-lg shadow-slate-200">
+            <button onclick="window.print()" class="flex-1 flex items-center justify-center gap-2 py-4 bg-gray-900 text-white text-sm font-bold   rounded-2xl hover:bg-black transition-colors active:scale-95 shadow-lg shadow-slate-200">
                 <i class="fa-solid fa-print"></i>
                 In hóa đơn giao dịch
             </button>

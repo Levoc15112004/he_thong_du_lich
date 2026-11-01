@@ -52,9 +52,9 @@
                            name="search"
                            value="{{ request('search') }}"
                            placeholder="Tìm kiếm Email hoặc tên khách hàng..."
-                           class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none placeholder:text-slate-400">
+                           class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none placeholder:text-slate-400">
                 </div>
-                <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-[#863c20] text-white rounded-xl font-bold shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
+                <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-[#863c20] text-white rounded-xl font-bold shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-colors duration-200 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-search"></i> Tìm kiếm
                 </button>
             </form>
@@ -126,13 +126,13 @@
                             <td class="px-6 py-4">
                                 <div class="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <a href="{{ route('admin.chat.show', $session->id) }}"
-                                        class="w-10 h-10 flex items-center justify-center text-orange-600 bg-orange-50 border border-orange-200 rounded-xl hover:bg-orange-500 hover:text-white transition-all shadow-sm tooltip" title="Xem chi tiết chat">
+                                        class="w-10 h-10 flex items-center justify-center text-orange-600 bg-orange-50 border border-orange-200 rounded-xl hover:bg-orange-500 hover:text-white transition-colors shadow-sm tooltip" title="Xem chi tiết chat">
                                         <i class="fa-regular fa-comment-dots"></i>
                                     </a>
                                     <form action="{{ route('admin.chat.destroy', $session->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa vĩnh viễn đoạn hội thoại này không?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="w-10 h-10 flex items-center justify-center text-rose-500 bg-rose-50 border border-rose-200 rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-sm tooltip" title="Xóa hội thoại">
+                                        <button type="submit" class="w-10 h-10 flex items-center justify-center text-rose-500 bg-rose-50 border border-rose-200 rounded-xl hover:bg-rose-500 hover:text-white transition-colors shadow-sm tooltip" title="Xóa hội thoại">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

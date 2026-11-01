@@ -86,7 +86,7 @@
                             </label>
                             <textarea name="comment" rows="5" required
                                 class="w-full border border-slate-200 rounded-2xl p-4 text-slate-700 text-sm md:text-base
-                                focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none resize-none bg-slate-50 focus:bg-white"
+                                focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-colors outline-none resize-none bg-slate-50 focus:bg-white"
                                 placeholder="Điều gì làm bạn ấn tượng nhất về chuyến đi? Cảm nhận của bạn về hướng dẫn viên, khách sạn, món ăn..."></textarea>
                         </div>
 
@@ -95,7 +95,7 @@
                             <a href="{{ route('user.tourDetail.index', $tour->id ?? 1) }}" class="px-8 py-3.5 rounded-xl text-slate-600 font-bold bg-slate-100 hover:bg-slate-200 hover:text-slate-900 transition-colors text-center">
                                 Huỷ bỏ
                             </a>
-                            <button type="submit" class="px-8 py-3.5 rounded-xl text-white font-bold bg-gradient-to-r from-blue-600 to-indigo-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+                            <button type="submit" class="px-8 py-3.5 rounded-xl text-white font-bold bg-gradient-to-r from-blue-600 to-indigo-600 hover:shadow-lg hover:shadow-blue-500/30 transition-colors hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-paper-plane"></i>
                                 Gửi Đánh Giá
                             </button>

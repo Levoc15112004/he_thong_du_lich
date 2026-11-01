@@ -22,7 +22,7 @@
                 <span class="text-lg sm:text-xl font-black tracking-tight text-slate-800 dark:text-white leading-tight">
                     Wander<span class="text-[#b85e3a]">Admin</span>
                 </span>
-                <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold -mt-0.5">Control Panel</span>
+                <span class="text-[9px] font-medium text-slate-400 font-bold -mt-0.5">Control Panel</span>
             </div>
         </a>
     </div>
@@ -31,7 +31,7 @@
     <div class="flex items-center gap-2 sm:gap-4">
 
         <!-- Dark / Light Mode Toggle Button -->
-        <button type="button" class="theme-toggle-btn w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-all cursor-pointer shadow-sm" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Dark Mode">
+        <button type="button" class="theme-toggle-btn w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors cursor-pointer shadow-sm" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Dark Mode">
             <i class="fa-solid fa-moon text-base dark:hidden pointer-events-none"></i>
             <i class="fa-solid fa-sun text-base hidden dark:inline-block pointer-events-none text-amber-400"></i>
         </button>
@@ -58,7 +58,7 @@
                 class="absolute right-0 mt-2 w-48
                        bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-xl rounded-2xl py-2
                        opacity-0 invisible
-                       transition-all duration-150 z-50">
+                       transition-colors duration-150 z-50">
 
                 <li class="px-4 py-2 border-b border-slate-100 dark:border-slate-700">
                     <p class="text-xs text-slate-400">Đăng nhập với tư cách</p>

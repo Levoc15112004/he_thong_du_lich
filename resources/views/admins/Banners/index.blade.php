@@ -22,7 +22,7 @@
 
             <div class="flex items-center gap-3">
                 <a href="{{ route('admin.banners.create') }}"
-                    class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 group">
+                    class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-colors duration-200 group">
                     <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform duration-300"></i>
                     <span>Thêm banner mới</span>
                 </a>
@@ -94,13 +94,13 @@
                             <td class="px-6 py-4">
                                 <div class="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <a href="{{ route('admin.banners.edit', $banner->id) }}"
-                                        class="w-10 h-10 flex items-center justify-center text-amber-500 bg-amber-50 border border-amber-200 rounded-xl hover:bg-amber-500 hover:text-white transition-all shadow-sm">
+                                        class="w-10 h-10 flex items-center justify-center text-amber-500 bg-amber-50 border border-amber-200 rounded-xl hover:bg-amber-500 hover:text-white transition-colors shadow-sm">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
                                     <form action="{{ route('admin.banners.destroy', $banner->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa banner này không?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="w-10 h-10 flex items-center justify-center text-rose-500 bg-rose-50 border border-rose-200 rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-sm">
+                                        <button type="submit" class="w-10 h-10 flex items-center justify-center text-rose-500 bg-rose-50 border border-rose-200 rounded-xl hover:bg-rose-500 hover:text-white transition-colors shadow-sm">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

@@ -12,7 +12,7 @@
                 Khám Phá Theo Cách Riêng Của Bạn
             </div>
             <h1 class="font-serif text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
-                Hành Trình <span class="text-[#b85e3a] font-serif italic">{{ $currentCategory->name ?? 'Khám Phá' }}</span>
+                Hành Trình {{ $currentCategory->name ?? 'Khám Phá' }}
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                 Tìm kiếm điểm đến lý tưởng và trải nghiệm những khoảnh khắc đáng nhớ cùng WanderVibe.
@@ -26,12 +26,12 @@
         <div class="mb-12 flex justify-center">
             <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-full border border-slate-200/80 dark:border-slate-700 shadow-sm inline-flex flex-wrap justify-center gap-2">
                 <a href="{{ route('user.tours') }}"
-                   class="cate-pill px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-slate-700">
+                   class="cate-pill px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-colors text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-slate-700">
                    Tất cả hành trình
                 </a>
                 @foreach ($categories as $cate)
                     <a href="{{ route('user.category', $cate->id) }}"
-                       class="cate-pill px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all
+                       class="cate-pill px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-colors
                        {{ $id == $cate->id ? 'bg-[#b85e3a] text-white shadow-xs' : 'text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-slate-700' }}">
                         {{ $cate->name }}
                     </a>
@@ -42,7 +42,7 @@
         {{-- LƯỚI HIỂN THỊ TOUR --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse ($tourCate as $tour)
-                <div class="travel-card group flex flex-col h-full overflow-hidden bg-white travel-card rounded-2xl transition-all duration-300 cursor-pointer"
+                <div class="travel-card group flex flex-col h-full overflow-hidden bg-white travel-card rounded-2xl transition-colors duration-200 cursor-pointer"
                      onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
                     {{-- Tour Image Area --}}
                     <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="relative h-52 overflow-hidden block">
@@ -78,7 +78,7 @@
                         <div class="mt-auto pt-3 border-t border-slate-100">
                             <div class="flex items-baseline justify-between mb-3">
                                 <div>
-                                    <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Giá hành trình</p>
+                                    <p class="text-[11px] font-semibold text-slate-400 font-medium">Giá hành trình</p>
                                     <p class="text-xl font-extrabold text-[#b85e3a] font-serif">
                                         {{ number_format($tour->sale_price ?? $tour->price) }}<span class="text-sm font-semibold ml-0.5">đ</span>
                                     </p>
@@ -91,7 +91,7 @@
                             </div>
 
                             <a href="{{ route('user.tourDetail.index', $tour->id) }}"
-                               class="w-full block text-center py-2.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-xs uppercase tracking-wider shadow-xs transition-all"
+                               class="w-full block text-center py-2.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-xs font-medium shadow-xs transition-colors"
                                onclick="event.stopPropagation()">
                                 Chi tiết & đặt Tour
                             </a>
@@ -105,7 +105,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-2">Chưa có tour trong danh mục này</h3>
                     <p class="text-slate-500 font-medium mb-6">WanderVibe đang chuẩn bị những hành trình mới, hãy khám phá các điểm đến khác nhé!</p>
-                    <a href="{{ route('user.tours') }}" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#863c20] text-white font-bold text-sm shadow-md shadow-xs hover:bg-[#a34c2a] transition-all">
+                    <a href="{{ route('user.tours') }}" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#863c20] text-white font-bold text-sm shadow-md shadow-xs hover:bg-[#a34c2a] transition-colors">
                         Khám phá tất cả tour
                     </a>
                 </div>
@@ -136,7 +136,7 @@
                     Hãy để đội ngũ travel planner của WanderVibe thiết kế tour cá nhân hóa dựa trên sở thích, số lượng người và ngân sách riêng của bạn.
                 </p>
             </div>
-            <a href="{{ route('contact') }}" class="relative z-10 whitespace-nowrap bg-[#863c20] hover:bg-[#a34c2a] text-white px-8 py-4 rounded-2xl font-extrabold text-sm sm:text-base shadow-xl shadow-xs hover:scale-105 active:scale-95 transition-all">
+            <a href="{{ route('contact') }}" class="relative z-10 whitespace-nowrap bg-[#863c20] hover:bg-[#a34c2a] text-white px-8 py-4 rounded-2xl font-extrabold text-sm sm:text-base shadow-xl shadow-xs hover:scale-105 active:scale-95 transition-colors">
                 Nhận Tư Vấn Ngay <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
             </a>
         </div>

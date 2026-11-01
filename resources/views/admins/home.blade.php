@@ -24,9 +24,9 @@
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           
           <!-- KPI 1: Doanh thu -->
-          <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-all duration-300">
+          <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Tổng Doanh Thu</span>
+              <span class="text-xs font-bold font-medium text-slate-400">Tổng Doanh Thu</span>
               <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-coins"></i>
               </div>
@@ -43,9 +43,9 @@
           </div>
 
           <!-- KPI 2: Tổng số lượt đặt chỗ -->
-          <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-all duration-300">
+          <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Đơn Tháng Này</span>
+              <span class="text-xs font-bold font-medium text-slate-400">Đơn Tháng Này</span>
               <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-ticket"></i>
               </div>
@@ -62,9 +62,9 @@
           </div>
 
           <!-- KPI 3: Khách hàng mới -->
-          <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-all duration-300">
+          <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Tổng Người Dùng</span>
+              <span class="text-xs font-bold font-medium text-slate-400">Tổng Người Dùng</span>
               <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-user-plus"></i>
               </div>
@@ -81,9 +81,9 @@
           </div>
 
           <!-- KPI 4: Tỷ lệ lấp đầy tour -->
-          <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-all duration-300">
+          <div class="dashboard-card dashboard-card-hover rounded-2xl p-5 relative overflow-hidden border border-slate-100 shadow-sm transition-colors duration-200">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Lượt Truy Cập</span>
+              <span class="text-xs font-bold font-medium text-slate-400">Lượt Truy Cập</span>
               <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-eye"></i>
               </div>
@@ -112,15 +112,15 @@
               
               <!-- Metric Switcher Tabs -->
               <div class="flex flex-wrap items-center gap-2" id="metricTabs">
-                <button onclick="switchAnalyticsMetric('revenue')" id="tabBtnRevenue" class="metric-tab active px-4 py-2.5 rounded-2xl text-xs font-extrabold transition-all duration-200 bg-[#b85e3a] text-white shadow-xs flex items-center gap-2">
+                <button onclick="switchAnalyticsMetric('revenue')" id="tabBtnRevenue" class="metric-tab active px-4 py-2.5 rounded-2xl text-xs font-extrabold transition-colors duration-150 bg-[#b85e3a] text-white shadow-xs flex items-center gap-2">
                   <i class="fa-solid fa-coins"></i>
                   <span>Doanh Thu & Lợi Nhuận</span>
                 </button>
-                <button onclick="switchAnalyticsMetric('bookings')" id="tabBtnBookings" class="metric-tab px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-2">
+                <button onclick="switchAnalyticsMetric('bookings')" id="tabBtnBookings" class="metric-tab px-4 py-2.5 rounded-2xl text-xs font-bold transition-colors duration-150 bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-2">
                   <i class="fa-solid fa-receipt"></i>
                   <span>Đơn Đặt Tour & Giữ Chỗ</span>
                 </button>
-                <button onclick="switchAnalyticsMetric('users')" id="tabBtnUsers" class="metric-tab px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-2">
+                <button onclick="switchAnalyticsMetric('users')" id="tabBtnUsers" class="metric-tab px-4 py-2.5 rounded-2xl text-xs font-bold transition-colors duration-150 bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-2">
                   <i class="fa-solid fa-user-check"></i>
                   <span>Tài Khoản Đăng Ký & Người Dùng</span>
                 </button>
@@ -194,7 +194,7 @@
                   <canvas id="userSourceChart"></canvas>
                   <!-- Center cutout stat -->
                   <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                    <span class="text-xs text-slate-400 font-bold uppercase tracking-wider">Tổng User</span>
+                    <span class="text-xs text-slate-400 font-bold font-medium">Tổng User</span>
                     <span class="text-2xl font-bold text-slate-900 tracking-tight">{{ number_format($totalUsers ?? 0) }}</span>
                     <span class="text-[10px] text-orange-600 font-extrabold">+{{ abs($userChange ?? 0) }}% tháng này</span>
                   </div>
@@ -347,7 +347,7 @@
               </div>
             </div>
 
-            <a href="{{ route('blog.index') }}" class="w-full mt-4 py-2.5 block rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all text-center">
+            <a href="{{ route('blog.index') }}" class="w-full mt-4 py-2.5 block rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors text-center">
               Quản Lý Kho Bài Viết
             </a>
           </div>
@@ -681,7 +681,7 @@
       const container = document.getElementById('toastContainer');
       if (!container) return;
       const toast = document.createElement('div');
-      toast.className = 'pointer-events-auto px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 text-slate-800 text-xs font-semibold shadow-xl flex items-center gap-3 transform translate-y-3 opacity-0 transition-all duration-300';
+      toast.className = 'pointer-events-auto px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 text-slate-800 text-xs font-semibold shadow-xl flex items-center gap-3 transform translate-y-3 opacity-0 transition-colors duration-200';
       toast.innerHTML = `<span>${message}</span>`;
       container.appendChild(toast);
       requestAnimationFrame(() => toast.classList.remove('translate-y-3', 'opacity-0'));

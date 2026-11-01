@@ -21,7 +21,7 @@
             </div>
 
             <a href="{{ route('admin.banners.index') }}"
-               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-all duration-300 shadow-sm group">
+               class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 <span>Quay lại danh sách</span>
             </a>
@@ -70,7 +70,7 @@
                                 oninvalid="this.setCustomValidity('Vui lòng nhập tên banner')"
                                 oninput="this.setCustomValidity('')"
                                 placeholder="Nhập tên banner..."
-                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all duration-300 {{ $errors->has('name') ? 'border-rose-300' : '' }}">
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors duration-200 {{ $errors->has('name') ? 'border-rose-300' : '' }}">
                         </div>
 
                         {{-- Image Upload --}}
@@ -100,7 +100,7 @@
                                     oninvalid="this.setCustomValidity('Vui lòng nhập đúng định dạng URL liên kết (https://...)')"
                                     oninput="this.setCustomValidity('')"
                                     placeholder="VD: https://hethongdulich.com/tour-khuyen-mai"
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all duration-300">
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors duration-200">
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                 {{-- SUBMIT --}}
                 <div class="flex justify-end pt-2">
                     <button type="submit"
-                        class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-200/50 hover:shadow-xl hover:shadow-orange-300/50 hover:-translate-y-0.5 transition-all duration-300 text-sm">
+                        class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-orange-200/50 hover:shadow-xl hover:shadow-orange-300/50 hover:-translate-y-0.5 transition-colors duration-200 text-sm">
                         <i class="fa-solid fa-floppy-disk text-lg"></i> Lưu thay đổi Banner
                     </button>
                 </div>

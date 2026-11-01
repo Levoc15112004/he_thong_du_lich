@@ -54,7 +54,7 @@
             <div class="relative flex justify-between items-center">
                 <!-- Lines ->
                 <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] bg-slate-200 rounded-full z-0"></div>
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 h-[3px] bg-[#b85e3a] rounded-full z-0 transition-all duration-700 w-[50%] sm:w-[35%]"></div>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 h-[3px] bg-[#b85e3a] rounded-full z-0 transition-colors duration-700 w-[50%] sm:w-[35%]"></div>
 
                 <!-- Step 1 -->
                 <div class="flex flex-col items-center relative z-10 group">
@@ -95,12 +95,12 @@
                         <div class="w-12 h-12 bg-[#863c20] rounded-2xl flex items-center justify-center text-white shadow-md shadow-xs">
                             <i class="fa-solid fa-user-astronaut text-xl"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Người đặt <span class="text-[#b85e3a] font-serif italic">hành trình</span></h2>
+                        <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Người đặt hành trình</h2>
                     </div>
 
                     @if (auth()->check())
                         <div class="mb-10 group/profile">
-                            <div id="profileCard" class="cursor-pointer bg-white border border-slate-100/80 hover:border-orange-300 rounded-[1.5rem] p-5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hover:shadow-xl hover:shadow-orange-500/10 active:scale-[0.98]">
+                            <div id="profileCard" class="cursor-pointer bg-white border border-slate-100/80 hover:border-orange-300 rounded-[1.5rem] p-5 transition-colors duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hover:shadow-xl hover:shadow-orange-500/10 active:scale-[0.98]">
                                 <div class="flex items-center gap-4">
                                     <div class="relative">
                                         <img src="{{ auth()->user()->avatar_url }}"
@@ -113,7 +113,7 @@
                                         <p class="text-sm text-slate-500 font-medium">{{ auth()->user()->email }}</p>
                                     </div>
                                 </div>
-                                <button type="button" id="profileStatus" class="shrink-0 px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-orange-50 hover:bg-orange-500 text-[#b85e3a] hover:text-white border border-orange-100 hover:border-orange-500 hover:shadow-lg hover:shadow-xs">
+                                <button type="button" id="profileStatus" class="shrink-0 px-6 py-2.5 rounded-xl text-sm font-bold transition-colors duration-200 bg-orange-50 hover:bg-orange-500 text-[#b85e3a] hover:text-white border border-orange-100 hover:border-orange-500 hover:shadow-lg hover:shadow-xs">
                                     <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Tự động điền
                                 </button>
                             </div>
@@ -125,7 +125,7 @@
 
                         <!-- Họ tên -->
                         <div class="group">
-                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Họ và tên khách hàng <span class="text-rose-500">*</span></label>
+                            <label class="text-xs font-bold text-slate-500 font-medium mb-2 block ml-1">Họ và tên khách hàng <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <i class="fa-regular fa-user text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
@@ -138,7 +138,7 @@
                         <div class="grid sm:grid-cols-2 gap-6">
                             <!-- Email -->
                             <div class="group">
-                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Email <span class="text-rose-500">*</span></label>
+                                <label class="text-xs font-bold text-slate-500 font-medium mb-2 block ml-1">Email <span class="text-rose-500">*</span></label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                         <i class="fa-regular fa-envelope text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
@@ -150,7 +150,7 @@
                             
                             <!-- Phone -->
                             <div class="group">
-                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Số điện thoại <span class="text-rose-500">*</span></label>
+                                <label class="text-xs font-bold text-slate-500 font-medium mb-2 block ml-1">Số điện thoại <span class="text-rose-500">*</span></label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                         <i class="fa-solid fa-phone text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
@@ -163,7 +163,7 @@
 
                         <!-- Địa chỉ -->
                         <div class="group">
-                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Địa chỉ thường trú <span class="text-rose-500">*</span></label>
+                            <label class="text-xs font-bold text-slate-500 font-medium mb-2 block ml-1">Địa chỉ thường trú <span class="text-rose-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <i class="fa-solid fa-map-location-dot text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
@@ -175,7 +175,7 @@
 
                         <!-- Ghi chú -->
                         <div class="group">
-                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block ml-1">Ghi chú thêm</label>
+                            <label class="text-xs font-bold text-slate-500 font-medium mb-2 block ml-1">Ghi chú thêm</label>
                             <div class="relative">
                                 <div class="absolute top-3.5 left-0 pl-4 flex items-start pointer-events-none">
                                     <i class="fa-regular fa-comment-dots text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
@@ -198,7 +198,7 @@
                         @endforeach
 
                         <div class="pt-6">
-                            <button type="submit" class="w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-4 rounded-2xl font-extrabold text-base transition-all duration-300 shadow-lg shadow-xs flex items-center justify-center gap-3 hover:-translate-y-1">
+                            <button type="submit" class="w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-4 rounded-2xl font-extrabold text-base transition-colors duration-200 shadow-lg shadow-xs flex items-center justify-center gap-3 hover:-translate-y-1">
                                 Tiếp tục thanh toán <i class="fa-solid fa-arrow-right-long text-sm"></i>
                             </button>
                         </div>
@@ -223,7 +223,7 @@
                             @foreach ($items as $item)
                                 @php $tour = \App\Models\Tour::find($item['tour_id']); @endphp
                                 @if ($tour)
-                                    <div class="group relative flex gap-4 p-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-orange-200 transition-all duration-300 cursor-pointer"
+                                    <div class="group relative flex gap-4 p-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-orange-200 transition-colors duration-200 cursor-pointer"
                                         onclick="window.open('{{ route('user.tourDetail.index', $tour->id) }}', '_blank')">
                                         <img src="{{ Str::startsWith($tour->image, ['http://', 'https://']) ? $tour->image : asset($tour->image) }}" class="w-20 h-20 rounded-xl object-cover shrink-0 group-hover:scale-105 transition-transform" alt="{{ $tour->name }}">
                                         <div class="flex flex-col justify-center flex-1">
@@ -288,7 +288,7 @@
                     @endif
 
                     <!-- Trust Badge -->
-                    <div class="mt-8 p-4 rounded-2xl bg-white/80 border border-orange-100 flex items-start gap-4 shadow-sm hover:shadow-md transition-all duration-300 group">
+                    <div class="mt-8 p-4 rounded-2xl bg-white/80 border border-orange-100 flex items-start gap-4 shadow-sm hover:shadow-md transition-colors duration-200 group">
                         <div class="shrink-0 w-10 h-10 rounded-[10px] bg-gradient-to-br from-orange-100 to-rose-50 flex items-center justify-center text-[#b85e3a] shadow-inner group-hover:scale-105 transition-transform duration-300">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>

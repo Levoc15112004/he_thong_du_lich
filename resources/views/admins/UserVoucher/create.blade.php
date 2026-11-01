@@ -61,19 +61,19 @@
             </div>
         </div>
         <nav class="flex-1 px-4 space-y-1">
-            <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all">
+            <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                 </svg>
                 <span class="font-medium">Tổng quan</span>
             </a>
-            <a href="#" class="sidebar-item active flex items-center gap-3 px-4 py-3 rounded-xl transition-all shadow-lg shadow-orange-100">
+            <a href="#" class="sidebar-item active flex items-center gap-3 px-4 py-3 rounded-xl transition-colors shadow-lg shadow-orange-100">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
                 <span class="font-medium">Quản lý User</span>
             </a>
-            <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-slate-600">
+            <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-colors text-slate-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 11h.01M7 15h.01M11 7h.01M11 11h.01M11 15h.01M15 7h.01M15 11h.01M15 15h.01M19 7h.01M19 11h.01M19 15h.01M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -81,7 +81,7 @@
             </a>
             <div class="pt-10">
                 <p class="px-4 text-xs font-semibold text-slate-400  mb-2">Hệ thống</p>
-                <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-slate-600">
+                <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl transition-colors text-slate-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -222,7 +222,7 @@
 
     <!-- Modal: Gán Nhiều Voucher -->
     <div id="assignModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
-        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden transform transition-all scale-95 opacity-0 duration-300" id="modalContainer">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden transform transition-colors scale-95 opacity-0 duration-300" id="modalContainer">
             <!-- Modal Header -->
             <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                 <div>
@@ -273,7 +273,7 @@
                         <!-- Voucher Item -->
                         <label class="relative block cursor-pointer group">
                             <input type="checkbox" name="voucher_type" value="SUMMER" data-label="SUMMER24" data-val="Giảm 50%" class="voucher-checkbox peer sr-only">
-                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-all flex flex-col h-full">
+                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-2">
                                     <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded uppercase">SUMMER24</span>
                                     <div class="w-4 h-4 rounded-full border border-slate-300 peer-checked:bg-emerald-600 peer-checked:border-emerald-600 flex items-center justify-center transition-colors">
@@ -287,7 +287,7 @@
 
                         <label class="relative block cursor-pointer group">
                             <input type="checkbox" name="voucher_type" value="FREESHIP" data-label="SHIP0" data-val="Freeship" class="voucher-checkbox peer sr-only">
-                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-all flex flex-col h-full">
+                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-2">
                                     <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded uppercase">SHIP0</span>
                                     <div class="w-4 h-4 rounded-full border border-slate-300 peer-checked:bg-emerald-600 peer-checked:border-emerald-600 flex items-center justify-center transition-colors"></div>
@@ -299,7 +299,7 @@
 
                         <label class="relative block cursor-pointer group">
                             <input type="checkbox" name="voucher_type" value="NEWBIE" data-label="WELCOME" data-val="Giảm 20k" class="voucher-checkbox peer sr-only">
-                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-all flex flex-col h-full">
+                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-2">
                                     <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded uppercase">WELCOME</span>
                                     <div class="w-4 h-4 rounded-full border border-slate-300 peer-checked:bg-emerald-600 peer-checked:border-emerald-600 flex items-center justify-center transition-colors"></div>
@@ -311,7 +311,7 @@
 
                         <label class="relative block cursor-pointer group">
                             <input type="checkbox" name="voucher_type" value="VIP10" data-label="VIPPRO" data-val="Giảm 10%" class="voucher-checkbox peer sr-only">
-                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-all flex flex-col h-full">
+                            <div class="p-4 border border-slate-200 rounded-2xl group-hover:border-emerald-300 transition-colors flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-2">
                                     <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded uppercase">VIPPRO</span>
                                     <div class="w-4 h-4 rounded-full border border-slate-300 peer-checked:bg-emerald-600 peer-checked:border-emerald-600 flex items-center justify-center transition-colors"></div>
@@ -345,7 +345,7 @@
     </div>
 
     <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-8 right-8 bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-24 transition-all duration-300 opacity-0 z-[60]">
+    <div id="toast" class="fixed bottom-8 right-8 bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-24 transition-colors duration-200 opacity-0 z-[60]">
         <div class="bg-emerald-500 p-1 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />

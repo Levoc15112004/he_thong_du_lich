@@ -18,7 +18,7 @@
             </div>
             <div class="flex items-center gap-3">
                 <a href="{{ route('admin.vouchers.create') }}"
-                   class="flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-medium rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-all active:scale-95 group">
+                   class="flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-medium rounded-2xl shadow-xl shadow-xs hover:bg-[#a34c2a] transition-colors active:scale-95 group">
                     <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform duration-300"></i>
                     <span class="text-sm font-medium ">Thêm voucher mới</span>
                 </a>
@@ -104,7 +104,7 @@
                                             <span class="text-slate-400">{{ round($percent) }}%</span>
                                         </div>
                                         <div class="w-full bg-slate-50 h-1.5 rounded-full overflow-hidden shadow-inner">
-                                            <div class="bg-blue-500 h-full rounded-full transition-all duration-500" style="width: {{ $percent }}%"></div>
+                                            <div class="bg-blue-500 h-full rounded-full transition-colors duration-500" style="width: {{ $percent }}%"></div>
                                         </div>
                                     </div>
                                 </td>

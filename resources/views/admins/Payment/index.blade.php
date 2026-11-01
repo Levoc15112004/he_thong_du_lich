@@ -83,7 +83,7 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-5 whitespace-nowrap text-right">
-                                    <a href="{{ route('admin.payments.show', $payment->id) }}" class="p-2 text-blue-600 hover:bg-blue-50 rounded-xl transition-all active:scale-90 inline-block" title="Chi tiết">
+                                    <a href="{{ route('admin.payments.show', $payment->id) }}" class="p-2 text-blue-600 hover:bg-blue-50 rounded-xl transition-colors active:scale-90 inline-block" title="Chi tiết">
                                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
                                     </a>
                                 </td>
@@ -144,7 +144,7 @@
                                 </div>
                             @endif
 
-                            <a href="{{ route('admin.payments.show', $payment->id) }}" class="flex-[1.5] flex items-center justify-center gap-2 py-3 bg-[#863c20] text-white rounded-2xl text-sm font-bold  shadow-lg shadow-xs active:scale-95 transition-all">
+                            <a href="{{ route('admin.payments.show', $payment->id) }}" class="flex-[1.5] flex items-center justify-center gap-2 py-3 bg-[#863c20] text-white rounded-2xl text-sm font-bold  shadow-lg shadow-xs active:scale-95 transition-colors">
                                 <i class="fa-solid fa-eye"></i>
                                 Chi tiết giao dịch
                             </a>

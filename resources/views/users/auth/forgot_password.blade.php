@@ -19,14 +19,14 @@
                 <div class="relative group">
                     <i class="fa-solid fa-envelope absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-blue-500 transition-colors"></i>
                     <input type="email" name="email" placeholder="Nhập email của bạn..."
-                        class="w-full pl-14 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all text-slate-900 font-medium" required>
+                        class="w-full pl-14 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-colors text-slate-900 font-medium" required>
                 </div>
                 @error('email')
                     <p class="text-red-500 text-sm mt-2 ml-1 font-medium flex items-center"><i class="fa-solid fa-circle-exclamation mr-1.5"></i>{{ $message }}</p>
                 @enderror
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2 mt-4">
+            <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 active:translate-y-0 transition-colors duration-200 flex items-center justify-center gap-2 mt-4">
                 Gửi mã xác nhận
                 <i class="fa-solid fa-arrow-right ml-1"></i>
             </button>

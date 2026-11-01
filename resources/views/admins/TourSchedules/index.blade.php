@@ -21,7 +21,7 @@
             </div>
 
             <a href="{{ route('admin.tour_schedules.create') }}"
-                class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 group">
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-colors duration-200 group">
                 <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform duration-300"></i>
                 <span>Thêm lịch trình mới</span>
             </a>
@@ -51,17 +51,17 @@
                     <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors"></i>
                     <input type="text" name="keyword" value="{{ request('keyword') }}"
                         placeholder="Tìm kiếm theo tên tour, địa điểm, tiêu đề..."
-                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-all outline-none placeholder:text-slate-400">
+                        class="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 font-medium focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 transition-colors outline-none placeholder:text-slate-400">
                 </div>
                 <div class="flex gap-3 w-full sm:w-auto">
                     @if (request('keyword'))
                         <a href="{{ route('admin.tour_schedules.index') }}"
-                            class="flex-1 sm:flex-none px-6 py-3.5 bg-slate-100 text-slate-600 rounded-xl font-bold hover:bg-slate-200 transition-all flex items-center justify-center">
+                            class="flex-1 sm:flex-none px-6 py-3.5 bg-slate-100 text-slate-600 rounded-xl font-bold hover:bg-slate-200 transition-colors flex items-center justify-center">
                             Xóa lọc
                         </a>
                     @endif
                     <button type="submit"
-                        class="flex-1 sm:flex-none px-8 py-3.5 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-900 transition-all shadow-lg shadow-slate-200">
+                        class="flex-1 sm:flex-none px-8 py-3.5 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-900 transition-colors shadow-lg shadow-slate-200">
                         Tìm kiếm
                     </button>
                 </div>
@@ -74,11 +74,11 @@
                 <table class="w-full text-left border-collapse min-w-[850px]">
                     <thead>
                         <tr class="bg-slate-50/80 border-b border-slate-100">
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-20 text-center">Ảnh</th>
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider min-w-[220px]">Tên Tour</th>
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center w-28">Ngày</th>
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider min-w-[280px]">Tiêu đề & Địa điểm</th>
-                            <th class="px-5 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center w-28">Thao tác</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium w-20 text-center">Ảnh</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium min-w-[220px]">Tên Tour</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium text-center w-28">Ngày</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium min-w-[280px]">Tiêu đề & Địa điểm</th>
+                            <th class="px-5 py-4 text-xs font-bold text-slate-500 font-medium text-center w-28">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
@@ -116,14 +116,14 @@
                                 <td class="px-5 py-4 text-center">
                                     <div class="flex items-center justify-center gap-2">
                                         <a href="{{ route('admin.tour_schedules.edit', $schedule->id) }}"
-                                            class="inline-flex items-center justify-center w-9 h-9 text-amber-600 bg-amber-50 hover:bg-amber-500 hover:text-white rounded-xl border border-amber-200 transition-all shadow-sm"
+                                            class="inline-flex items-center justify-center w-9 h-9 text-amber-600 bg-amber-50 hover:bg-amber-500 hover:text-white rounded-xl border border-amber-200 transition-colors shadow-sm"
                                             title="Chỉnh sửa">
                                             <i class="fa-solid fa-pen text-xs"></i>
                                         </a>
                                         <form action="{{ route('admin.tour_schedules.destroy', $schedule->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa lịch trình này?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="inline-flex items-center justify-center w-9 h-9 text-rose-600 bg-rose-50 hover:bg-rose-500 hover:text-white rounded-xl border border-rose-200 transition-all shadow-sm"
+                                            <button class="inline-flex items-center justify-center w-9 h-9 text-rose-600 bg-rose-50 hover:bg-rose-500 hover:text-white rounded-xl border border-rose-200 transition-colors shadow-sm"
                                                 title="Xóa">
                                                 <i class="fa-solid fa-trash text-xs"></i>
                                             </button>

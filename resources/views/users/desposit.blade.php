@@ -154,7 +154,7 @@
                     <!-- MoMo Button -->
                     <form action="{{ route('momo.deposit', $order->id) }}" method="POST" id="form-momo" class="relative z-10 w-full">
                         @csrf
-                        <button type="submit" class="w-full bg-gradient-to-r from-[#A50064] to-[#C8107A] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-pink-500/20 flex items-center justify-center gap-3">
+                        <button type="submit" class="w-full bg-gradient-to-r from-[#A50064] to-[#C8107A] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-colors duration-200 shadow-xl shadow-pink-500/20 flex items-center justify-center gap-3">
                             <i class="fa-solid fa-qrcode text-lg"></i> Thanh toán bằng MoMo ({{ number_format($deposit_amount) }}đ)
                         </button>
                     </form>
@@ -162,7 +162,7 @@
                     <!-- PayPal Button -->
                     <form action="{{ route('paypal.create', $order->id) }}" method="POST" id="form-paypal" class="hidden relative z-10 w-full">
                         @csrf
-                        <button type="submit" class="w-full bg-gradient-to-r from-[#0070BA] to-[#003087] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-blue-500/20 flex items-center justify-center gap-3">
+                        <button type="submit" class="w-full bg-gradient-to-r from-[#0070BA] to-[#003087] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-colors duration-200 shadow-xl shadow-blue-500/20 flex items-center justify-center gap-3">
                             <i class="fa-brands fa-paypal text-xl"></i> Thanh toán bằng PayPal (~${{ number_format(round($deposit_amount / 24000, 2), 2) }} USD)
                         </button>
                         <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">
@@ -173,7 +173,7 @@
                     <!-- Direct/Cash Button -->
                     <div id="wrapper-cash" class="hidden relative z-10 w-full">
                         <a href="{{ route('tour.thankyou', $order->id) }}?method=cash" 
-                           class="block w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-xs">
+                           class="block w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-colors duration-200 shadow-xl shadow-xs">
                             <i class="fa-solid fa-check-to-slot mr-2"></i> Xác nhận & Thanh toán tại văn phòng
                         </a>
                         <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">
@@ -237,7 +237,7 @@
                         <div class="border-t border-slate-200 border-dashed pt-4 mt-1">
                             <div class="flex justify-between items-end">
                                 <div>
-                                    <span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-1 rounded uppercase tracking-wider">Thanh toán cọc 30%</span>
+                                    <span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-1 rounded font-medium">Thanh toán cọc 30%</span>
                                 </div>
                                 <span class="text-2xl font-bold text-orange-600">{{ number_format($deposit_amount) }}₫</span>
                             </div>

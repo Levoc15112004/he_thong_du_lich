@@ -4,7 +4,7 @@
     <div @click="open = !open"
         class="flex flex-col sm:flex-row sm:items-center sm:justify-between
                bg-white border border-slate-100 p-3 sm:p-4 rounded-2xl
-               shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] hover:shadow-[0_8px_20px_-6px_rgba(249,115,22,0.15)] hover:border-orange-200 transition-all duration-300 cursor-pointer gap-4 group mt-2">
+               shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] hover:shadow-[0_8px_20px_-6px_rgba(249,115,22,0.15)] hover:border-orange-200 transition-colors duration-200 cursor-pointer gap-4 group mt-2">
 
         <!-- Left: Toggle + Name -->
         <div class="flex items-center gap-4 min-w-0 flex-1">
@@ -46,7 +46,7 @@
             <a href="{{ route('categories.edit', $node->id) }}"
                 class="w-9 h-9 flex items-center justify-center text-orange-600 hover:text-white
                        rounded-xl bg-orange-50 hover:bg-orange-500 hover:shadow-lg hover:shadow-xs
-                       transition-all duration-300" title="Chỉnh sửa">
+                       transition-colors duration-200" title="Chỉnh sửa">
                 <i class="fa-solid fa-pen-to-square text-sm"></i>
             </a>
 
@@ -59,7 +59,7 @@
                 <button type="submit"
                     class="w-9 h-9 flex items-center justify-center text-rose-500 hover:text-white
                            rounded-xl bg-rose-50 hover:bg-rose-500 hover:shadow-lg hover:shadow-rose-200/50
-                           transition-all duration-300" title="Xóa">
+                           transition-colors duration-200" title="Xóa">
                     <i class="fa-solid fa-trash-can text-sm"></i>
                 </button>
             </form>

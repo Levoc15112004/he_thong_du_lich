@@ -38,11 +38,11 @@
                 </div>
                 <div class="flex items-center gap-3">
                     <a href="{{ route('admin.vouchers.index') }}"
-                        class="px-5 py-2.5 border border-slate-200 text-slate-600 font-medium rounded-xl hover:bg-white transition-all">
+                        class="px-5 py-2.5 border border-slate-200 text-slate-600 font-medium rounded-xl hover:bg-white transition-colors">
                         Hủy bỏ
                     </a>
                     <button type="submit"
-                        class="px-6 py-2.5 gradient-primary text-white font-semibold rounded-xl shadow-lg shadow-blue-200 hover:opacity-90 transition-all">
+                        class="px-6 py-2.5 gradient-primary text-white font-semibold rounded-xl shadow-lg shadow-blue-200 hover:opacity-90 transition-colors">
                         Lưu Voucher
                     </button>
                 </div>
@@ -63,7 +63,7 @@
                                 <label class="text-sm font-semibold text-slate-700">Tên chương trình ưu đãi</label>
                                 <input type="text" name="name" value="{{ old('name') }}"
                                     placeholder="Ví dụ: Ưu đãi Hè Rực Rỡ 2024"
-                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all @error('name') border-red-500 @enderror">
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-colors @error('name') border-red-500 @enderror">
                                 @error('name')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
@@ -74,9 +74,9 @@
                                 <div class="relative">
                                     <input type="text" id="voucherCode" name="code" value="{{ old('code') }}"
                                         placeholder="HELLO2024"
-                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none  font-mono font-bold transition-all @error('code') border-red-500 @enderror">
+                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none  font-mono font-bold transition-colors @error('code') border-red-500 @enderror">
                                     <button type="button" onclick="generateCode()"
-                                        class="absolute right-2 top-1.5 px-3 py-1.5 text-xs font-bold text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-all">
+                                        class="absolute right-2 top-1.5 px-3 py-1.5 text-xs font-bold text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
                                         <i class="fas fa-random mr-1"></i> Tự động
                                     </button>
                                 </div>

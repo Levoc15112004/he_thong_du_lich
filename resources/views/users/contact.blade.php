@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
             <div class="stamp-badge mb-6"><i class="fa-solid fa-headset mr-1"></i> Tư Vấn Lữ Hành 24/7</div>
             <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">
-                Kết Nối Với <span class="text-[#b85e3a] font-serif italic">WanderVibe</span>
+                Kết Nối Với WanderVibe
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                 Chúng tôi luôn sẵn sàng lắng nghe và đồng hành cùng bạn trong mọi chuyến hành trình khám phá thế giới.
@@ -27,8 +27,8 @@
             <!-- LEFT: CONTACT INFO (BENTO STYLE) -->
             <div class="lg:col-span-4 space-y-6">
                 {{-- Address --}}
-                <div class="bg-white dark:bg-slate-800/90 travel-card rounded-2xl p-6 transition-all duration-300 group">
-                    <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                <div class="bg-white dark:bg-slate-800/90 travel-card rounded-2xl p-6 transition-colors duration-200 group">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                     <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-1.5">Trụ Sở Chính</h3>
@@ -41,24 +41,24 @@
                 </div>
 
                 {{-- Phone --}}
-                <div class="bg-white dark:bg-slate-800/90 travel-card rounded-2xl p-6 transition-all duration-300 group">
-                    <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                <div class="bg-white dark:bg-slate-800/90 travel-card rounded-2xl p-6 transition-colors duration-200 group">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                         <i class="fa-solid fa-phone-volume"></i>
                     </div>
                     <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-1">Hotline Đặt Tour 24/7</h3>
-                    <p class="text-orange-600 dark:text-orange-400 text-xs font-bold uppercase tracking-wider mb-2">Tư vấn miễn phí 24/7</p>
+                    <p class="text-orange-600 dark:text-orange-400 text-xs font-bold font-medium mb-2">Tư vấn miễn phí 24/7</p>
                     <a href="tel:1900888999" class="text-2xl font-black text-slate-900 dark:text-white hover:text-orange-500 transition-colors block">
                         1900 888 999
                     </a>
                 </div>
 
                 {{-- Email --}}
-                <div class="bg-white dark:bg-slate-800/90 travel-card rounded-2xl p-6 transition-all duration-300 group">
-                    <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all">
+                <div class="bg-white dark:bg-slate-800/90 travel-card rounded-2xl p-6 transition-colors duration-200 group">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xl mb-5 shadow-sm group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                     <h3 class="text-base font-extrabold text-slate-900 dark:text-white mb-1">Email Tư Vấn & Báo Giá</h3>
-                    <p class="text-orange-600 dark:text-orange-400 text-xs font-bold uppercase tracking-wider mb-2">Phản hồi trong 10 phút</p>
+                    <p class="text-orange-600 dark:text-orange-400 text-xs font-bold font-medium mb-2">Phản hồi trong 10 phút</p>
                     <a href="mailto:hello@wandervibe.me" class="text-base font-extrabold text-slate-900 dark:text-white hover:text-orange-500 transition-colors block">
                         hello@wandervibe.me
                     </a>
@@ -82,36 +82,36 @@
                             @csrf
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                    <label class="text-xs font-bold font-medium text-slate-700 dark:text-slate-300 mb-2 block">
                                         Họ và tên <span class="text-rose-500">*</span>
                                     </label>
                                     <input type="text" name="name" required placeholder="VD: Nguyễn Văn A"
-                                        class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-all">
+                                        class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-colors">
                                 </div>
                                 <div>
-                                    <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                    <label class="text-xs font-bold font-medium text-slate-700 dark:text-slate-300 mb-2 block">
                                         Số điện thoại / Zalo <span class="text-rose-500">*</span>
                                     </label>
                                     <input type="tel" name="phone" required placeholder="09xx xxx xxx"
-                                        class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-all">
+                                        class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-colors">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                    <label class="text-xs font-bold font-medium text-slate-700 dark:text-slate-300 mb-2 block">
                                         Địa chỉ Email
                                     </label>
                                     <input type="email" name="email" placeholder="example@email.com"
-                                        class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-all">
+                                        class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-colors">
                                 </div>
 
                                 <div>
-                                    <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                    <label class="text-xs font-bold font-medium text-slate-700 dark:text-slate-300 mb-2 block">
                                         Loại hình Tour quan tâm
                                     </label>
                                     <div class="relative">
-                                        <select name="tour_type" class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white appearance-none cursor-pointer focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-all">
+                                        <select name="tour_type" class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white appearance-none cursor-pointer focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-colors">
                                             <option value="">-- Chọn loại hình tour --</option>
                                             <option value="Tour Biển đảo nghỉ dưỡng">Tour Biển đảo nghỉ dưỡng</option>
                                             <option value="Tour Khám phá vùng núi & săn mây">Tour Khám phá vùng núi & săn mây</option>
@@ -124,17 +124,17 @@
                             </div>
 
                             <div>
-                                <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 block">
+                                <label class="text-xs font-bold font-medium text-slate-700 dark:text-slate-300 mb-2 block">
                                     Lời nhắn hoặc yêu cầu đặc biệt
                                 </label>
                                 <textarea name="message" rows="4" placeholder="Hãy cho chúng tôi biết điểm đến mong muốn, số lượng người, thời gian khởi hành..."
-                                    class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-all resize-none"></textarea>
+                                    class="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-colors resize-none"></textarea>
                             </div>
 
-                            <div id="formStatus" class="hidden p-4 rounded-xl text-xs sm:text-sm font-semibold transition-all"></div>
+                            <div id="formStatus" class="hidden p-4 rounded-xl text-xs sm:text-sm font-semibold transition-colors"></div>
 
                             <button type="submit" id="contactSubmitBtn"
-                                class="w-full py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-2">
+                                class="w-full py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm font-medium shadow-xs transition-colors flex items-center justify-center gap-2">
                                 <span>Gửi Yêu Cầu Tư Vấn Ngay</span>
                                 <i class="fa-solid fa-paper-plane text-sm"></i>
                             </button>
@@ -153,16 +153,16 @@
                 <p class="text-slate-300 text-sm font-medium">Cập nhật những điểm đến mới nhất và ưu đãi độc quyền hàng ngày.</p>
             </div>
             <div class="flex items-center gap-3 shrink-0">
-                <a href="#" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-orange-500 text-white border border-white/10 hover:border-orange-400 flex items-center justify-center text-lg transition-all duration-300 shadow-sm" title="Facebook">
+                <a href="#" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-orange-500 text-white border border-white/10 hover:border-orange-400 flex items-center justify-center text-lg transition-colors duration-200 shadow-sm" title="Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-pink-600 text-white border border-white/10 hover:border-pink-500 flex items-center justify-center text-lg transition-all duration-300 shadow-sm" title="Instagram">
+                <a href="#" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-pink-600 text-white border border-white/10 hover:border-pink-500 flex items-center justify-center text-lg transition-colors duration-200 shadow-sm" title="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-slate-700 text-white border border-white/10 hover:border-white/20 flex items-center justify-center text-lg transition-all duration-300 shadow-sm" title="TikTok">
+                <a href="#" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-slate-700 text-white border border-white/10 hover:border-white/20 flex items-center justify-center text-lg transition-colors duration-200 shadow-sm" title="TikTok">
                     <i class="fab fa-tiktok"></i>
                 </a>
-                <a href="https://zalo.me" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-orange-600 text-white border border-white/10 hover:border-orange-400 flex items-center justify-center text-lg transition-all duration-300 shadow-sm" title="Zalo">
+                <a href="https://zalo.me" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-2xl bg-white/10 hover:bg-orange-600 text-white border border-white/10 hover:border-orange-400 flex items-center justify-center text-lg transition-colors duration-200 shadow-sm" title="Zalo">
                     <i class="fa-solid fa-comment-dots"></i>
                 </a>
             </div>
@@ -186,7 +186,7 @@
 
                 if (formStatus) {
                     formStatus.classList.add('hidden');
-                    formStatus.className = 'hidden p-4 rounded-xl text-xs sm:text-sm font-semibold transition-all';
+                    formStatus.className = 'hidden p-4 rounded-xl text-xs sm:text-sm font-semibold transition-colors';
                 }
 
                 try {

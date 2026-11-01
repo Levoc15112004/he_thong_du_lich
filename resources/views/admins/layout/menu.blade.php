@@ -148,7 +148,7 @@
 
                 <!-- MAIN MENU -->
                 <button
-                    class="menu-toggle w-full flex items-center justify-between px-3 py-3 rounded-xl transition-all duration-200 ease-in-out border border-transparent
+                    class="menu-toggle w-full flex items-center justify-between px-3 py-3 rounded-xl transition-colors duration-150 ease-in-out border border-transparent
                     {{ $isActiveGroup ? 'bg-orange-50 text-orange-700 shadow-sm border-orange-100' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
 
                     <div class="flex items-center space-x-3.5">
@@ -164,7 +164,7 @@
 
 
                 <!-- SUBMENU -->
-                <ul class="submenu overflow-hidden transition-all duration-300 {{ $isActiveGroup ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0' }}">
+                <ul class="submenu overflow-hidden transition-colors duration-200 {{ $isActiveGroup ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0' }}">
                     <div class="pl-5 pr-2 py-1 space-y-1 relative before:content-[''] before:absolute before:left-[22px] before:top-2 before:bottom-2 before:w-[1.5px] before:bg-slate-200">
                         @foreach ($item['submenu'] as $sub)
                             @php
@@ -175,7 +175,7 @@
                                 <div class="absolute left-[-11px] top-1/2 -translate-y-1/2 w-3 h-[1.5px] {{ $isActiveItem ? 'bg-orange-500' : 'bg-transparent' }} transition-colors"></div>
                                 
                                 <a href="{{ $sub['route'] }}"
-                                    class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-[13.5px] font-medium transition-all duration-200
+                                    class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-[13.5px] font-medium transition-colors duration-150
                                    {{ $isActiveItem ? 'bg-[#863c20] text-white shadow-md shadow-xs' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900' }}">
 
                                     <i data-feather="{{ $sub['icon'] }}"

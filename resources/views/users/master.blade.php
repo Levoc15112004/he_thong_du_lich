@@ -317,7 +317,7 @@
             
             <!-- LOGO AREA -->
             <a href="{{ url('/') }}" class="flex items-center gap-3 shrink-0 group">
-                <div class="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-[#863c20] text-white flex items-center justify-center shadow-xs group-hover:bg-[#a34c2a] transition-all duration-200">
+                <div class="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-[#863c20] text-white flex items-center justify-center shadow-xs group-hover:bg-[#a34c2a] transition-colors duration-150">
                     <i class="fa-solid fa-compass text-xl md:text-2xl"></i>
                 </div>
                 <div class="flex flex-col hidden sm:flex">
@@ -330,7 +330,7 @@
 
             <!-- NAVIGATION MAIN (More spaced out, no heavy pill background) -->
             <nav id="mainNav" class="hidden xl:flex flex-1 items-center justify-center gap-1 2xl:gap-2 flex-nowrap shrink-0">
-                <a href="{{ url('/') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-all">Trang chủ</a>
+                <a href="{{ url('/') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-colors">Trang chủ</a>
                 
                 @php
                     $navCategories = \App\Models\Category::where('status', 1)
@@ -342,13 +342,13 @@
                 @foreach ($navCategories as $cat)
                     @if($cat->children->count() > 0)
                         <div class="relative group shrink-0">
-                            <button class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-all flex items-center gap-1.5 focus:outline-none">
+                            <button class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-colors flex items-center gap-1.5 focus:outline-none">
                                 <span>{{ $cat->name }}</span>
                                 <i class="fa-solid fa-angle-down text-[10px] opacity-70 group-hover:-rotate-180 transition-transform duration-300"></i>
                             </button>
                             <!-- Dropdown -->
-                            <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                                <div class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 p-2 transform scale-95 group-hover:scale-100 transition-all origin-top">
+                            <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-colors duration-200 z-50">
+                                <div class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 p-2 transform scale-95 group-hover:scale-100 transition-colors origin-top">
                                     @foreach($cat->children as $child)
                                         <a href="{{ route('user.category', $child->id) }}" class="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0] rounded-xl transition-colors whitespace-nowrap">
                                             <i class="fa-solid fa-hashtag text-orange-400/50 text-xs"></i> {{ $child->name }}
@@ -360,13 +360,13 @@
                     @else
                         <!-- Filter out exact duplicates if data is messy, otherwise render normally -->
                         @if(strtolower($cat->name) !== 'trang chủ' && strtolower($cat->name) !== 'liên hệ')
-                            <a href="{{ route('user.category', $cat->id) }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-all shrink-0">
+                            <a href="{{ route('user.category', $cat->id) }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-colors shrink-0">
                                 {{ $cat->name }}
                             </a>
                         @endif
                     @endif
                 @endforeach
-                <a href="{{ route('contact') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-all shrink-0">Liên hệ</a>
+                <a href="{{ route('contact') }}" class="nav-link whitespace-nowrap px-3 2xl:px-4 py-2 rounded-full text-[14px] 2xl:text-[15px] font-bold {{ $isHomePage ? 'text-slate-200 hover:text-white hover:bg-white/15' : 'text-slate-700 hover:text-[#b85e3a] hover:bg-[#faf6f0]' }} transition-colors shrink-0">Liên hệ</a>
             </nav>
 
             <!-- RIGHT ACTIONS -->
@@ -378,7 +378,7 @@
                         <i class="fa-solid fa-phone-volume text-[13px] {{ $isHomePage ? '' : 'text-[#b85e3a]' }}"></i>
                     </div>
                     <div class="flex flex-col hidden xl:flex">
-                        <span class="text-[10px] font-bold uppercase tracking-wider opacity-70">Tổng đài CSKH</span>
+                        <span class="text-[10px] font-bold font-medium opacity-70">Tổng đài CSKH</span>
                         <span class="text-sm font-extrabold leading-tight">1900 888 999</span>
                     </div>
                 </a>
@@ -391,7 +391,7 @@
                         $cartBadgeCount += (int)($cItem['quantity'] ?? 1);
                     }
                 @endphp
-                <a href="{{ route('user.cart') }}" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-[#b85e3a]' }} flex items-center justify-center transition-all cursor-pointer" title="Giỏ hàng">
+                <a href="{{ route('user.cart') }}" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-[#b85e3a]' }} flex items-center justify-center transition-colors cursor-pointer" title="Giỏ hàng">
                     <i class="fa-solid fa-cart-shopping text-[15px] md:text-base pointer-events-none"></i>
                     @if($cartBadgeCount > 0)
                         <span class="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 rounded-full bg-[#b85e3a] text-[10px] md:text-xs font-bold flex items-center justify-center text-white pointer-events-none border-2 border-transparent">
@@ -401,7 +401,7 @@
                 </a>
 
                 <!-- Dark / Light Mode Toggle Button -->
-                <button type="button" class="theme-toggle-btn relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm text-slate-700 dark:text-amber-400 hover:bg-slate-50 dark:hover:bg-slate-700' }} flex items-center justify-center transition-all cursor-pointer" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Dark Mode">
+                <button type="button" class="theme-toggle-btn relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm text-slate-700 dark:text-amber-400 hover:bg-slate-50 dark:hover:bg-slate-700' }} flex items-center justify-center transition-colors cursor-pointer" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon text-[15px] md:text-base dark:hidden pointer-events-none"></i>
                     <i class="fa-solid fa-sun text-[15px] md:text-base hidden dark:inline-block pointer-events-none text-amber-400"></i>
                 </button>
@@ -409,7 +409,7 @@
                 <!-- Notifications Bell -->
                 @if(isset($notifications))
                     <div class="relative inline-block z-20" id="notificationDropdownTrigger">
-                        <button id="notificationBtn" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-[#b85e3a]' }} flex items-center justify-center transition-all cursor-pointer">
+                        <button id="notificationBtn" class="relative w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 shadow-sm text-slate-700 hover:bg-slate-50 hover:border-orange-200 hover:text-[#b85e3a]' }} flex items-center justify-center transition-colors cursor-pointer">
                             <i class="fa-regular fa-bell text-[15px] md:text-base pointer-events-none"></i>
                             @if(isset($unreadCount) && $unreadCount > 0)
                                 <span class="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 rounded-full bg-rose-500 text-[10px] md:text-xs font-bold flex items-center justify-center text-white pointer-events-none border-2 border-transparent">
@@ -419,7 +419,7 @@
                         </button>
                         
                         <!-- Notifications Dropdown -->
-                        <div id="notificationDropdownMenu" class="absolute right-0 top-[120%] w-80 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-3xl shadow-2xl opacity-0 invisible transition-all duration-300 transform origin-top translate-y-2 z-50 text-slate-800">
+                        <div id="notificationDropdownMenu" class="absolute right-0 top-[120%] w-80 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-3xl shadow-2xl opacity-0 invisible transition-colors duration-200 transform origin-top translate-y-2 z-50 text-slate-800">
                             <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/80 rounded-t-3xl">
                                 <h4 class="text-sm font-bold text-slate-800">Thông báo</h4>
                                 @if(isset($unreadCount) && $unreadCount > 0)
@@ -462,7 +462,7 @@
                 <!-- Authentication UI -->
                 @guest('web')
                     <div class="pl-1 border-l border-white/20 ml-1 flex items-center">
-                        <a href="{{ route('account') }}" class="px-5 py-2.5 md:px-6 md:py-2.5 rounded-full bg-white text-[#b85e3a] hover:bg-[#faf6f0] hover:text-orange-700 font-extrabold text-[13px] md:text-sm shadow-xl shadow-orange-900/10 hover:shadow-orange-900/20 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 border border-slate-100 uppercase tracking-wide">
+                        <a href="{{ route('account') }}" class="px-5 py-2.5 md:px-6 md:py-2.5 rounded-full bg-white text-[#b85e3a] hover:bg-[#faf6f0] hover:text-orange-700 font-extrabold text-[13px] md:text-sm shadow-xl shadow-orange-900/10 hover:shadow-orange-900/20 hover:-translate-y-0.5 active:translate-y-0 transition-colors flex items-center gap-2 border border-slate-100 font-medium">
                             <i class="fa-solid fa-user-circle text-lg hidden sm:inline"></i> 
                             <span class="inline">Đăng Nhập</span>
                         </a>
@@ -478,7 +478,7 @@
                         </div>
                         
                         <!-- Dropdown Menu -->
-                        <div class="absolute right-0 top-[110%] w-60 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-3xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-3 z-50 overflow-hidden">
+                        <div class="absolute right-0 top-[110%] w-60 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-3xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-colors duration-200 transform origin-top group-hover:translate-y-0 translate-y-3 z-50 overflow-hidden">
                             <div class="p-5 border-b border-slate-100 bg-slate-50/80">
                                 <p class="text-sm font-extrabold text-slate-900 truncate">{{ Auth::user()->name }}</p>
                                 <p class="text-xs font-medium text-slate-500 truncate mt-0.5">{{ Auth::user()->email }}</p>
@@ -500,7 +500,7 @@
                             <div class="p-3 border-t border-slate-100 bg-slate-50/50">
                                 <form action="{{ route('user.logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-bold text-rose-500 hover:text-white hover:bg-rose-500 rounded-xl transition-all border border-rose-100 hover:border-transparent">
+                                    <button type="submit" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-bold text-rose-500 hover:text-white hover:bg-rose-500 rounded-xl transition-colors border border-rose-100 hover:border-transparent">
                                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
                                     </button>
                                 </form>
@@ -509,7 +509,7 @@
                     </div>
                 @endauth
                 
-                <button id="mobileMenuBtn" class="xl:hidden w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:text-[#b85e3a]' }} flex items-center justify-center transition-all shadow-sm">
+                <button id="mobileMenuBtn" class="xl:hidden w-10 h-10 md:w-11 md:h-11 rounded-full border {{ $isHomePage ? 'bg-white/10 border-white/20 text-white hover:bg-white/25' : 'bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:text-[#b85e3a]' }} flex items-center justify-center transition-colors shadow-sm">
                     <i class="fa-solid fa-bars text-[15px] md:text-base" id="mobileMenuIcon"></i>
                 </button>
             </div>
@@ -585,15 +585,15 @@
                         Hệ sinh thái du lịch và trải nghiệm phong cách mới dành cho thế hệ trẻ. Khám phá cảnh sắc Việt Nam qua những góc nhìn chân thực, giàu cảm xúc và gắn kết cộng đồng.
                     </p>
                     <div class="flex items-center gap-3 pt-2">
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-instagram text-sm"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-tiktok text-sm"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-youtube text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-tiktok text-sm"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 hover:bg-[#faf6f0]0 hover:text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="text-slate-900 text-sm font-bold uppercase tracking-wider mb-4">Tour Nổi Bật</h4>
+                    <h4 class="text-slate-900 text-sm font-bold font-medium mb-4">Tour Nổi Bật</h4>
                     <ul class="space-y-2.5 text-sm">
                         @if(isset($hotTours) && $hotTours->count())
                             @foreach($hotTours->take(4) as $item)
@@ -607,7 +607,7 @@
                 </div>
 
                 <div>
-                    <h4 class="text-slate-900 text-sm font-bold uppercase tracking-wider mb-4">Điểm Đến Hot</h4>
+                    <h4 class="text-slate-900 text-sm font-bold font-medium mb-4">Điểm Đến Hot</h4>
                     <ul class="space-y-2.5 text-sm">
                         @if(isset($destinations) && $destinations->count())
                             @foreach($destinations->take(4) as $dest)
@@ -621,11 +621,11 @@
                 </div>
 
                 <div>
-                    <h4 class="text-slate-900 text-sm font-bold uppercase tracking-wider mb-4">Nhận Voucher 200k</h4>
+                    <h4 class="text-slate-900 text-sm font-bold font-medium mb-4">Nhận Voucher 200k</h4>
                     <p class="text-xs text-slate-500 mb-3">Đăng ký email để nhận ưu đãi tour hè và cẩm nang phượt độc quyền hàng tuần.</p>
                     <form id="newsletterForm" class="space-y-2">
-                        <input type="email" required placeholder="Nhập email của bạn..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 focus:bg-white transition-all">
-                        <button type="submit" class="w-full py-2.5 rounded-xl bg-[#863c20] hover:bg-[#a34c2a] text-white font-bold text-xs transition-all shadow-md shadow-xs">
+                        <input type="email" required placeholder="Nhập email của bạn..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 focus:bg-white transition-colors">
+                        <button type="submit" class="w-full py-2.5 rounded-xl bg-[#863c20] hover:bg-[#a34c2a] text-white font-bold text-xs transition-colors shadow-md shadow-xs">
                             Đăng Ký Ngay
                         </button>
                     </form>
@@ -679,7 +679,7 @@
                         <input type="date" id="quickTravelDate" required
                             class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none">
                     </div>
-                    <button type="submit" class="w-full py-3.5 mt-2 rounded-xl bg-[#863c20] hover:bg-[#a34c2a] text-white font-extrabold text-sm shadow-lg shadow-xs transition-all">
+                    <button type="submit" class="w-full py-3.5 mt-2 rounded-xl bg-[#863c20] hover:bg-[#a34c2a] text-white font-extrabold text-sm shadow-lg shadow-xs transition-colors">
                         Xác Nhận Giữ Chỗ & Nhận Báo Giá
                     </button>
                 </form>
@@ -694,28 +694,28 @@
         const heroVideos = {
             hagiang: {
                 locationName: 'Hà Giang',
-                title: 'Chạm Vào Cực Bắc Kỳ Vĩ <span class="text-[#cf8a6e] font-serif italic">Hà Giang</span>',
+                title: 'Chạm Vào Cực Bắc Kỳ Vĩ Hà Giang',
                 subtitle: 'Lướt trên cung đèo Mã Pí Lèng huyền thoại, dong thuyền ngắm dòng Nho Quế màu ngọc bích và cảm nhận vẻ đẹp hùng vĩ của non sông.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80'
             },
             phuquoc: {
                 locationName: 'Phú Quốc',
-                title: 'Thiên Đường Biển Đảo <span class="text-[#cf8a6e] font-serif italic">Phú Quốc</span>',
+                title: 'Thiên Đường Biển Đảo Phú Quốc',
                 subtitle: 'Thưởng ngoạn làn nước lam ngọc quần đảo An Thới, trải nghiệm lặn ngắm san hô tự nhiên và hoàng hôn buông xuống đại dương.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80'
             },
             dalat: {
                 locationName: 'Đà Lạt',
-                title: 'Sương Mờ & Rừng Thông <span class="text-[#cf8a6e] font-serif italic">Đà Lạt</span>',
+                title: 'Sương Mờ & Rừng Thông Đà Lạt',
                 subtitle: 'Đón ánh bình minh xuyên qua ngàn thông Cầu Đất, tận hưởng tiết trời se lạnh trong lành và không gian nghỉ dưỡng thanh bình.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'
             },
             halong: {
                 locationName: 'Hạ Long',
-                title: 'Kỳ Quan Thiên Nhiên Thế Giới <span class="text-[#cf8a6e] font-serif italic">Vịnh Hạ Long</span>',
+                title: 'Kỳ Quan Thiên Nhiên Thế Giới Vịnh Hạ Long',
                 subtitle: 'Hành trình du thuyền 5 sao lướt qua hàng nghìn đảo đá vôi kỳ vĩ soi bóng mặt vịnh xanh thẳm, chèo kayak qua hang luồn nguyên sơ.',
                 videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4',
                 poster: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1920&q=80'
@@ -1082,7 +1082,7 @@
             const container = document.getElementById('toastContainer');
             if (!container) return;
             const toast = document.createElement('div');
-            toast.className = 'pointer-events-auto px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 text-slate-800 text-xs font-semibold shadow-xl flex items-center gap-3 transform translate-y-3 opacity-0 transition-all duration-300';
+            toast.className = 'pointer-events-auto px-4 py-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 text-slate-800 text-xs font-semibold shadow-xl flex items-center gap-3 transform translate-y-3 opacity-0 transition-colors duration-200';
             const icon = type === 'success' 
                 ? '<i class="fa-solid fa-circle-check text-[#b85e3a] text-sm"></i>' 
                 : (type === 'warning' ? '<i class="fa-solid fa-triangle-exclamation text-amber-500 text-sm"></i>' : '<i class="fa-solid fa-circle-info text-cyan-600 text-sm"></i>');
@@ -1123,13 +1123,13 @@
     </script>
 
     <!-- Global Floating Theme Toggle Button -->
-    <button type="button" class="theme-toggle-btn fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-amber-400 shadow-2xl border border-slate-200 dark:border-slate-700 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Theme">
+    <button type="button" class="theme-toggle-btn fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-amber-400 shadow-2xl border border-slate-200 dark:border-slate-700 flex items-center justify-center transition-colors duration-200 hover:scale-110 active:scale-95 group focus:outline-none" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Theme">
         <i class="fa-solid fa-moon text-lg dark:hidden group-hover:rotate-12 transition-transform"></i>
         <i class="fa-solid fa-sun text-lg hidden dark:inline-block text-amber-400 group-hover:rotate-45 transition-transform"></i>
     </button>
 
     <!-- Quick Hotline Floating Button -->
-    <a href="tel:1900888999" class="fixed bottom-28 md:bottom-32 right-7 lg:right-9 z-40 w-12 h-12 rounded-full bg-[#863c20] text-white shadow-xl shadow-orange-500/30 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group" title="Gọi Hotline Tư Vấn 1900 888 999" aria-label="Hotline Tư Vấn">
+    <a href="tel:1900888999" class="fixed bottom-28 md:bottom-32 right-7 lg:right-9 z-40 w-12 h-12 rounded-full bg-[#863c20] text-white shadow-xl shadow-orange-500/30 flex items-center justify-center transition-colors duration-200 hover:scale-110 active:scale-95 group" title="Gọi Hotline Tư Vấn 1900 888 999" aria-label="Hotline Tư Vấn">
         <i class="fa-solid fa-phone-volume text-lg group-hover:rotate-12 transition-transform"></i>
         <div class="absolute right-[125%] whitespace-nowrap bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
             Hotline 24/7: 1900 888 999
@@ -1154,7 +1154,7 @@
         </button>
 
         <!-- Chat Window -->
-        <div id="chatbotWindow" class="absolute bottom-[85px] md:bottom-[95px] right-0 w-[340px] md:w-[380px] h-[520px] max-h-[75vh] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-10 scale-95 pointer-events-none transition-all duration-300 origin-bottom-right z-50">
+        <div id="chatbotWindow" class="absolute bottom-[85px] md:bottom-[95px] right-0 w-[340px] md:w-[380px] h-[520px] max-h-[75vh] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl flex flex-col overflow-hidden opacity-0 translate-y-10 scale-95 pointer-events-none transition-colors duration-200 origin-bottom-right z-50">
             <!-- Header -->
             <div class="bg-[#863c20] p-4 text-white flex items-center justify-between shrink-0 shadow-sm relative z-10">
                 <div class="flex items-center gap-3">
@@ -1193,7 +1193,7 @@
                 <form id="chatbotForm" class="flex items-center gap-2 relative">
                     <input type="text" id="chatbotInput" placeholder="Nhập câu hỏi tại đây..." autocomplete="off"
                         class="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-[13px] md:text-sm text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-colors pr-12">
-                    <button type="submit" class="absolute right-1 top-1 bottom-1 w-9 h-9 rounded-full bg-[#863c20] hover:bg-[#a34c2a] text-white flex items-center justify-center transition-all shadow-md shadow-xs active:scale-95">
+                    <button type="submit" class="absolute right-1 top-1 bottom-1 w-9 h-9 rounded-full bg-[#863c20] hover:bg-[#a34c2a] text-white flex items-center justify-center transition-colors shadow-md shadow-xs active:scale-95">
                         <i class="fa-solid fa-paper-plane text-xs pr-0.5 pt-0.5"></i>
                     </button>
                 </form>

@@ -157,13 +157,13 @@
                     <div class="glass-panel p-6 sm:p-8 h-full flex flex-col shadow-sm">
                         <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-200 border-opacity-70">
                             <div>
-                                <p class="text-xs uppercase tracking-widest font-bold text-slate-400 mb-1">Mã đơn hàng</p>
+                                <p class="text-xs font-medium font-bold text-slate-400 mb-1">Mã đơn hàng</p>
                                 <div class="flex items-center gap-3">
                                     <h3 class="text-3xl font-bold text-slate-900">#ORDER-{{ $order->id }}</h3>
                                 </div>
                             </div>
                             <div class="text-left md:text-right bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
-                                <p class="text-xs uppercase tracking-widest font-bold text-slate-400 mb-1">Ngày hoàn tất</p>
+                                <p class="text-xs font-medium font-bold text-slate-400 mb-1">Ngày hoàn tất</p>
                                 <p class="text-sm font-bold text-slate-700 flex items-center gap-2">
                                     <i class="far fa-calendar-check text-orange-500"></i>
                                     {{ $order->updated_at->format('d/m/Y - H:i') }}
@@ -172,7 +172,7 @@
                         </div>
 
                         <!-- Tour Block -->
-                        <div class="flex sm:flex-row flex-col gap-5 mb-8 p-4 bg-white rounded-2xl shadow-sm border border-slate-100 group hover:shadow-md transition-all cursor-pointer"
+                        <div class="flex sm:flex-row flex-col gap-5 mb-8 p-4 bg-white rounded-2xl shadow-sm border border-slate-100 group hover:shadow-md transition-colors cursor-pointer"
                             onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id ?? $order->tour->id) }}'">
                             <div class="relative shrink-0 overflow-hidden rounded-xl h-24 sm:h-auto sm:w-32">
                                 <img src="{{ asset($tour->image ?? 'images/default-tour.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -213,7 +213,7 @@
                             
                             <div class="bg-gradient-to-r from-orange-50 to-orange-100/50 p-5 rounded-2xl border border-orange-200 flex items-center justify-between shadow-sm">
                                 <div>
-                                    <p class="text-xs uppercase tracking-widest font-bold text-orange-600 mb-1">Trạng thái tài chính</p>
+                                    <p class="text-xs font-medium font-bold text-orange-600 mb-1">Trạng thái tài chính</p>
                                     <p class="text-lg font-bold text-orange-800 flex items-center gap-2">
                                         <i class="fas fa-check-circle text-orange-500"></i> Đã thanh toán TOÀN BỘ
                                     </p>
@@ -268,14 +268,14 @@
                             <i class="fas fa-download"></i> Tải Xuất Hóa Đơn PDF
                         </a>
                         
-                        <a href="{{ route('user.home') }}" class="flex flex-col items-center justify-center gap-2 p-5 bg-white rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                        <a href="{{ route('user.home') }}" class="flex flex-col items-center justify-center gap-2 p-5 bg-white rounded-2xl border border-slate-200 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1 transition-colors group">
                             <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
                                 <i class="fas fa-home text-xl"></i>
                             </div>
                             <span class="font-bold text-slate-700 text-sm group-hover:text-blue-600 transition-colors">Trang chủ</span>
                         </a>
                         
-                        <a href="{{ route('review.create', $order->id) }}" class="flex flex-col items-center justify-center gap-2 p-5 bg-white rounded-2xl border border-slate-200 hover:border-amber-300 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                        <a href="{{ route('review.create', $order->id) }}" class="flex flex-col items-center justify-center gap-2 p-5 bg-white rounded-2xl border border-slate-200 hover:border-amber-300 hover:shadow-lg hover:-translate-y-1 transition-colors group">
                             <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 group-hover:bg-amber-50 group-hover:text-amber-500 transition-colors">
                                 <i class="fas fa-star text-xl"></i>
                             </div>
@@ -287,7 +287,7 @@
 
             <!-- Footer Help -->
             <div class="mt-12 pt-8 border-t border-slate-200 text-center animate-fadeInUp delay-300 flex flex-col md:flex-row items-center justify-between gap-6">
-                <p class="text-sm font-bold text-slate-500 uppercase tracking-widest">TravelGo Đồng Hành Cùng Bạn 24/7</p>
+                <p class="text-sm font-bold text-slate-500 font-medium">TravelGo Đồng Hành Cùng Bạn 24/7</p>
                 
                 <div class="flex items-center gap-4">
                     <a href="tel:1900123456" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-sm flex items-center gap-2">

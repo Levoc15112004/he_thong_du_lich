@@ -1,5 +1,6 @@
+/* Hallmark: Wanderlust Travel · editorial · floor 0 fail */
 /**
- * WanderVibe Travel - Editorial Design System (Anti-AI Aesthetic)
+ * Wanderlust Travel - Editorial Design System (Anti-AI Aesthetic)
  * Typography: Playfair Display (Headings) + Be Vietnam Pro (Body)
  * Palette: Terracotta / Heritage Ochre & Deep Forest Pine
  */
@@ -17,6 +18,10 @@
   --color-sand: #faf6f0;
 }
 
+html, body {
+  overflow-x: clip;
+}
+
 body {
   background-color: var(--color-canvas);
   color: var(--color-ink);
@@ -28,6 +33,8 @@ body {
 h1, h2, h3, .font-serif, .font-editorial {
   font-family: 'Playfair Display', Georgia, serif !important;
   letter-spacing: -0.015em;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 /* Tactile travel card */
@@ -35,7 +42,7 @@ h1, h2, h3, .font-serif, .font-editorial {
   background: var(--color-paper);
   border: 1px solid var(--color-border);
   box-shadow: 0 1px 3px rgba(21, 23, 25, 0.04), 0 6px 20px -4px rgba(21, 23, 25, 0.05);
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .travel-card:hover, .premium-card:hover {
   border-color: #cf8a6e;
@@ -51,8 +58,6 @@ h1, h2, h3, .font-serif, .font-editorial {
   padding: 0.25rem 0.75rem;
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   border-radius: 9999px;
   border: 1px solid #e8dfd1;
   background: var(--color-sand);
@@ -65,11 +70,17 @@ h1, h2, h3, .font-serif, .font-editorial {
   color: #ffffff;
   font-weight: 700;
   border-radius: 0.75rem;
-  transition: background-color 0.2s, transform 0.2s;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 .btn-terracotta:hover {
   background-color: var(--color-terracotta-dark);
   transform: translateY(-1px);
+}
+
+/* Focus-visible */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 2px;
 }
 
 /* Dark mode */
@@ -93,4 +104,15 @@ html.dark .premium-card {
   border-color: #2b3239 !important;
   color: #f1f4f7 !important;
 }
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 

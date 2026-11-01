@@ -8,7 +8,7 @@
     <section id="hero" class="relative w-full h-[100dvh] min-h-[640px] flex items-center justify-center overflow-hidden">
         <video id="heroVideo" autoplay muted loop playsinline
             poster="{{ $firstBanner && $firstBanner->image ? (Str::startsWith($firstBanner->image, ['http://', 'https://']) ? $firstBanner->image : asset($firstBanner->image)) : 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80' }}"
-            class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-all duration-1000 filter brightness-95">
+            class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-colors duration-1000 filter brightness-95">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-waves-crashing-on-a-rocky-shore-41484-large.mp4" type="video/mp4">
             Trình duyệt của bạn không hỗ trợ video HTML5.
         </video>
@@ -16,26 +16,26 @@
         <div class="absolute inset-0 hero-cinematic-overlay pointer-events-none"></div>
 
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-16 sm:pt-20 text-center flex flex-col items-center">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-stone-200 text-xs font-semibold uppercase tracking-wider mb-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-stone-200 text-xs font-semibold font-medium mb-5">
       <i class="fa-solid fa-compass text-[#cf8a6e]"></i>
       <span>Tuyển Tập Lữ Hành Việt Nam 2026</span>
   </div>
 
-            <h1 id="heroTitle" class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.12] max-w-4xl transition-all duration-300 drop-shadow-md">
-                {!! $firstBanner->name ?? $firstBanner->title ?? 'Hành Trình Khám Phá <span class="text-[#cf8a6e] font-serif italic">Bản Sắc Việt Nam</span>' !!}
+            <h1 id="heroTitle" class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[1.12] max-w-4xl transition-colors duration-200 drop-shadow-md">
+                {!! $firstBanner->name ?? $firstBanner->title ?? 'Hành Trình Khám Phá Bản Sắc Việt Nam' !!}
             </h1>
 
-            <p id="heroSubtitle" class="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-slate-100 max-w-2xl font-normal leading-relaxed transition-all duration-500 drop-shadow">
+            <p id="heroSubtitle" class="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-slate-100 max-w-2xl font-normal leading-relaxed transition-colors duration-500 drop-shadow">
                 {{ $firstBanner->description ?? 'Tuyển chọn hơn 200+ hành trình du lịch trọn gói cao cấp khắp ba miền. Dịch vụ chuẩn mực 5 sao, hướng dẫn viên bản địa am hiểu sâu sắc và bảo hiểm toàn diện.' }}
             </p>
 
             <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <a href="#tours" class="px-7 py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm sm:text-base shadow-sm hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center gap-2.5 group">
+                <a href="#tours" class="px-7 py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm sm:text-base shadow-sm hover:-translate-y-0.5 active:translate-y-0 transition-colors duration-150 flex items-center gap-2.5 group">
                     <i class="fa-solid fa-compass group-hover:rotate-45 transition-transform duration-300 text-lg"></i>
                     <span>Khám Phá Tour Ngay</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1.5 transition-transform"></i>
                 </a>
-                <a href="#destinations" class="px-6 py-3.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2">
+                <a href="#destinations" class="px-6 py-3.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-sm sm:text-base transition-colors duration-150 hover:-translate-y-0.5 flex items-center gap-2">
                     <i class="fa-solid fa-map-location-dot text-amber-300"></i>
                     <span>Xem Điểm Đến Hot</span>
                 </a>
@@ -44,21 +44,21 @@
             <!-- Quick Destination Switcher -->
             <div class="mt-8 flex flex-col items-center">
                 <div class="flex items-center gap-2 overflow-x-auto no-scrollbar max-w-full p-1.5 bg-white/15 backdrop-blur-md rounded-2xl border border-white/25">
-                    <button onclick="switchHeroVideo('hagiang')" class="hero-switcher-btn active px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white text-[#863c20] shadow-sm flex items-center gap-1.5">
+                    <button onclick="switchHeroVideo('hagiang')" class="hero-switcher-btn active px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-colors bg-white text-[#863c20] shadow-sm flex items-center gap-1.5">
                         <span>Hà Giang</span>
                     </button>
-                    <button onclick="switchHeroVideo('phuquoc')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
+                    <button onclick="switchHeroVideo('phuquoc')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
                         <span>Phú Quốc</span>
                     </button>
-                    <button onclick="switchHeroVideo('dalat')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
+                    <button onclick="switchHeroVideo('dalat')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
                         <span>Đà Lạt</span>
                     </button>
-                    <button onclick="switchHeroVideo('halong')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
+                    <button onclick="switchHeroVideo('halong')" class="hero-switcher-btn px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors bg-transparent text-slate-100 hover:bg-white/20 hover:text-white flex items-center gap-1.5">
                         <span>Vịnh Hạ Long</span>
                     </button>
                 </div>
                 <div class="mt-3.5">
-                    <a id="heroDestActionLink" href="{{ route('user.destination', ['location' => 'Hà Giang']) }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#863c20] hover:bg-[#a34c2a] text-white text-xs sm:text-sm font-bold shadow-md transition-all">
+                    <a id="heroDestActionLink" href="{{ route('user.destination', ['location' => 'Hà Giang']) }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#863c20] hover:bg-[#a34c2a] text-white text-xs sm:text-sm font-bold shadow-md transition-colors">
                         <i class="fa-solid fa-map-pin text-amber-300"></i>
                         <span id="heroDestActionText">Xem danh sách tour tại Hà Giang</span>
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
@@ -67,7 +67,7 @@
             </div>
 
             <div class="absolute bottom-6 right-6 z-30 hidden sm:flex items-center gap-2.5">
-                <button id="toggleVideoPlayBtn" class="px-3.5 py-2 rounded-xl bg-white/20 backdrop-blur-xl border border-white/30 text-white hover:bg-white/30 text-xs font-bold transition-all flex items-center gap-2">
+                <button id="toggleVideoPlayBtn" class="px-3.5 py-2 rounded-xl bg-white/20 backdrop-blur-xl border border-white/30 text-white hover:bg-white/30 text-xs font-bold transition-colors flex items-center gap-2">
                     <i class="fa-solid fa-pause" id="playIcon"></i>
                     <span id="playText">Dừng video</span>
                 </button>
@@ -91,17 +91,17 @@
                         </div>
                         <input type="text" name="keyword" id="searchDestination" value="{{ request('keyword') }}"
                             placeholder="Bạn muốn xách balo đến đâu? (VD: Hà Giang, Sa Pa...)" autocomplete="off"
-                            class="w-full pl-12 sm:pl-14 pr-11 py-4 rounded-2xl bg-white border border-slate-200 text-slate-800 placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 shadow-sm relative z-20">
+                            class="w-full pl-12 sm:pl-14 pr-11 py-4 rounded-2xl bg-white border border-slate-200 text-slate-800 placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-colors duration-200 shadow-sm relative z-20">
                         <button type="button" id="clearSearchBtn" class="hidden absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 transition-colors z-20" title="Xóa tìm kiếm">
                             <i class="fa-solid fa-circle-xmark text-lg"></i>
                         </button>
 
                         <!-- Auto-suggest Dropdown -->
-                        <div id="searchSuggestions" class="hidden absolute top-[calc(100%+8px)] left-0 right-0 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 overflow-hidden z-50 max-h-72 overflow-y-auto w-full transition-all duration-300">
+                        <div id="searchSuggestions" class="hidden absolute top-[calc(100%+8px)] left-0 right-0 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-100 overflow-hidden z-50 max-h-72 overflow-y-auto w-full transition-colors duration-200">
                             <!-- JS will populate suggestions here -->
                         </div>
                     </div>
-                    <button type="submit" class="px-7 py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm sm:text-base shadow-sm hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap z-10">
+                    <button type="submit" class="px-7 py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm sm:text-base shadow-sm hover:-translate-y-0.5 active:translate-y-0 transition-colors duration-150 flex items-center justify-center gap-2 whitespace-nowrap z-10">
                         <i class="fa-solid fa-magnifying-glass text-base group-hover/btn:rotate-12 transition-transform"></i>
                         <span>Tìm Điểm Đến</span>
                         <i class="fa-solid fa-arrow-right text-xs group-hover/btn:translate-x-1 transition-transform"></i>
@@ -114,9 +114,9 @@
                         <i class="fa-solid fa-compass text-[#b85e3a]"></i> Điểm đến:
                     </span>
                     @forelse($destinations->take(6) as $dest)
-                        <button type="button" class="quick-tag px-3 py-1 rounded-lg bg-[#faf6f0] dark:bg-[#231b17] hover:border-[#b85e3a] text-slate-700 dark:text-slate-300 font-medium text-xs border border-[#e8dfd1] dark:border-[#4a2818] transition-all flex items-center gap-1 hover:-translate-y-0.5"
+                        <button type="button" class="quick-tag px-3 py-1 rounded-lg bg-[#faf6f0] dark:bg-[#231b17] hover:border-[#b85e3a] text-slate-700 dark:text-slate-300 font-medium text-xs border border-[#e8dfd1] dark:border-[#4a2818] transition-colors flex items-center gap-1 hover:-translate-y-0.5"
                             data-query="{{ $dest->end_location }}">
-                            <span>📍 {{ $dest->end_location }}</span>
+                            <span>{{ $dest->end_location }}</span>
                         </button>
                     @empty
                         <button type="button" class="quick-tag px-3.5 py-1.5 rounded-full bg-slate-50 text-slate-600 border border-slate-200" data-query="Hà Giang">Hà Giang</button>
@@ -188,10 +188,10 @@
                 </div>
                 <div class="flex flex-col xl:flex-row items-center gap-3">
                     <div class="flex items-center gap-2 overflow-x-auto no-scrollbar p-1.5 bg-white/60 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-sm" id="weatherTabs">
-                        <button data-loc="Đà Lạt" class="weather-tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-orange-500 text-white shadow-md shadow-xs">Đà Lạt</button>
-                        <button data-loc="Sa Pa" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Sa Pa</button>
-                        <button data-loc="Phú Quốc" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Phú Quốc</button>
-                        <button data-loc="Đà Nẵng" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Đà Nẵng</button>
+                        <button data-loc="Đà Lạt" class="weather-tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-colors bg-orange-500 text-white shadow-md shadow-xs">Đà Lạt</button>
+                        <button data-loc="Sa Pa" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-colors bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Sa Pa</button>
+                        <button data-loc="Phú Quốc" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-colors bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Phú Quốc</button>
+                        <button data-loc="Đà Nẵng" class="weather-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-colors bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900">Đà Nẵng</button>
                     </div>
                     <form id="weatherSearchForm" class="flex items-center gap-2 w-full xl:w-auto">
                         <input type="text" id="weatherCityInput" placeholder="Nhập tên thành phố..." class="flex-1 xl:flex-none px-4 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 xl:min-w-[200px]" required>
@@ -202,7 +202,7 @@
                 </div>
             </div>
 
-            <div id="weatherContent" class="glass-panel-light rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-500 border border-slate-200 dark:border-slate-800 shadow-xl">
+            <div id="weatherContent" class="glass-panel-light rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-colors duration-500 border border-slate-200 dark:border-slate-800 shadow-xl">
                 
                 
                 
@@ -252,7 +252,7 @@
 
                     <div class="bg-slate-50 dark:bg-slate-800/80 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
                         <div class="space-y-2">
-                            <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">
+                            <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 text-xs font-bold font-medium">
                                 <i class="fa-solid fa-circle-info text-[#863c20]"></i> Khuyến Nghị Khí Hậu & Lịch Trình
                             </div>
                             <p id="weatherAdvice" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -311,7 +311,7 @@
             <!-- Loop Hot Tours from Controller -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @forelse($hotTours->take(8) as $tour)
-                    <div class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col group cursor-pointer bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+                    <div class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col group cursor-pointer bg-white transition-colors duration-200 hover:-translate-y-1.5 hover:shadow-xl"
                         onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
                         <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="relative h-56 overflow-hidden block">
                             @php
@@ -350,7 +350,7 @@
                                     </div>
                                 </div>
                                 <a href="{{ route('user.tourDetail.index', $tour->id) }}"
-                                    class="px-4 py-2 rounded-xl bg-orange-50 text-orange-700 group-hover:bg-[#b85e3a] group-hover:text-white font-bold text-xs transition-all flex items-center gap-1.5 border border-orange-100 shadow-sm"
+                                    class="px-4 py-2 rounded-xl bg-orange-50 text-orange-700 group-hover:bg-[#b85e3a] group-hover:text-white font-bold text-xs transition-colors flex items-center gap-1.5 border border-orange-100 shadow-sm"
                                     onclick="event.stopPropagation()">
                                     <span>Xem Chi Tiết</span>
                                     <i class="fa-solid fa-chevron-right text-[10px]"></i>
@@ -385,7 +385,7 @@
                         $destImg = $item->image ? (Str::startsWith($item->image, ['http://', 'https://']) ? $item->image : asset($item->image)) : 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80';
                     @endphp
                     <a href="{{ route('user.destination', ['location' => $item->end_location]) }}"
-                        class="group relative h-72 rounded-3xl overflow-hidden shadow-xl border border-slate-200 hover:border-orange-400/50 cursor-pointer transition-all duration-500 hover:-translate-y-2">
+                        class="group relative h-72 rounded-3xl overflow-hidden shadow-xl border border-slate-200 hover:border-orange-400/50 cursor-pointer transition-colors duration-500 hover:-translate-y-2">
                         <img src="{{ $destImg }}" alt="{{ $item->end_location }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
                         <span class="absolute top-4 right-4 bg-white/95 backdrop-blur-md text-orange-700 text-xs px-3 py-1 rounded-full font-bold border border-slate-200 shadow-sm">
@@ -393,7 +393,7 @@
                         </span>
                         <div class="absolute bottom-5 left-5 right-5 text-white">
                             <span class="text-[10px] text-amber-200 font-semibold tracking-wider uppercase block mb-1">Danh lam thắng cảnh</span>
-                            <h3 class="text-xl font-bold group-hover:text-orange-300 group-hover:translate-x-1 transition-all">
+                            <h3 class="text-xl font-bold group-hover:text-orange-300 group-hover:translate-x-1 transition-colors">
                                 {{ $item->end_location }}
                             </h3>
                             <p class="text-xs text-slate-200 line-clamp-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Khám phá trải nghiệm độc đáo tại {{ $item->end_location }}</p>
@@ -431,7 +431,7 @@
                     @php
                         $postImg = $post->image ? (Str::startsWith($post->image, ['http://', 'https://']) ? $post->image : asset($post->image)) : 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80';
                     @endphp
-                    <article class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col group cursor-pointer bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+                    <article class="glass-card-interactive rounded-3xl overflow-hidden flex flex-col group cursor-pointer bg-white transition-colors duration-200 hover:-translate-y-1.5 hover:shadow-xl"
                         onclick="window.location.href='{{ route('blog.show', $post->id ?? 1) }}'">
                         <a href="{{ route('blog.show', $post->id ?? 1) }}" class="relative h-48 overflow-hidden block">
                             <img src="{{ $postImg }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -479,7 +479,7 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                     <div>
-                        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-orange-700 dark:text-orange-300 bg-orange-50 dark:bg-orange-950/60 border border-orange-200/80 dark:border-orange-800/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+                        <span class="inline-flex items-center gap-2 text-xs font-bold font-medium text-orange-700 dark:text-orange-300 bg-orange-50 dark:bg-orange-950/60 border border-orange-200/80 dark:border-orange-800/80 px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
                             <i class="fa-solid fa-headset text-orange-600 dark:text-orange-400"></i> Hỗ trợ 24/7 tận tâm
                         </span>
                         <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
@@ -495,7 +495,7 @@
                                     <i class="fa-solid fa-phone-volume"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs font-semibold text-slate-500 dark:text-orange-400/90 block uppercase tracking-wider">Hotline đặt tour nhanh</span>
+                                    <span class="text-xs font-semibold text-slate-500 dark:text-orange-400/90 block font-medium">Hotline đặt tour nhanh</span>
                                     <span class="text-lg sm:text-xl font-extrabold tracking-wide text-slate-900 dark:text-white">1900 888 999 (Nhánh 1)</span>
                                 </div>
                             </div>
@@ -504,7 +504,7 @@
                                     <i class="fa-regular fa-envelope"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs font-semibold text-slate-500 dark:text-orange-400/90 block uppercase tracking-wider">Email tư vấn & báo giá</span>
+                                    <span class="text-xs font-semibold text-slate-500 dark:text-orange-400/90 block font-medium">Email tư vấn & báo giá</span>
                                     <a href="mailto:hello@wandervibe.me" class="text-lg sm:text-xl font-extrabold tracking-wide text-slate-900 dark:text-white hover:text-orange-500 dark:hover:text-orange-400 transition-colors">hello@wandervibe.me</a>
                                 </div>
                             </div>
@@ -513,7 +513,7 @@
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs font-semibold text-slate-500 dark:text-orange-400/90 block uppercase tracking-wider">Văn phòng chính</span>
+                                    <span class="text-xs font-semibold text-slate-500 dark:text-orange-400/90 block font-medium">Văn phòng chính</span>
                                     <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug block">Tòa nhà Keangnam Landmark 72, Đường Phạm Hùng, Nam Từ Liêm, Hà Nội</span>
                                 </div>
                             </div>
@@ -528,33 +528,33 @@
                         <form id="contactForm" method="POST" action="{{ route('consultation.send') }}" class="space-y-4">
                             @csrf
                             <div>
-                                <label for="contactName" class="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">Họ và tên của bạn</label>
+                                <label for="contactName" class="block text-xs font-bold text-slate-700 dark:text-slate-200 font-medium mb-1.5">Họ và tên của bạn</label>
                                 <input type="text" name="name" id="contactName" value="{{ $user->name ?? '' }}" required placeholder="Ví dụ: Hoàng Minh"
-                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-all">
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-colors">
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label for="contactPhone" class="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">Số điện thoại / Zalo</label>
+                                    <label for="contactPhone" class="block text-xs font-bold text-slate-700 dark:text-slate-200 font-medium mb-1.5">Số điện thoại / Zalo</label>
                                     <input type="tel" name="phone" id="contactPhone" value="{{ $user->phone ?? '' }}" required placeholder="0909 xxx xxx"
-                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-all">
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-colors">
                                 </div>
                                 <div>
-                                    <label for="contactDestination" class="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">Điểm đến quan tâm</label>
+                                    <label for="contactDestination" class="block text-xs font-bold text-slate-700 dark:text-slate-200 font-medium mb-1.5">Điểm đến quan tâm</label>
                                     <input type="text" name="destination" id="contactDestination" placeholder="Hà Giang, Sa Pa..."
-                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-all">
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-colors">
                                 </div>
                             </div>
 
                             <div>
-                                <label for="contactMessage" class="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">Yêu cầu đặc biệt</label>
+                                <label for="contactMessage" class="block text-xs font-bold text-slate-700 dark:text-slate-200 font-medium mb-1.5">Yêu cầu đặc biệt</label>
                                 <textarea name="message" id="contactMessage" rows="3" placeholder="Nhóm mình gồm 4 bạn trẻ muốn đi vào cuối tuần này..."
-                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-all resize-none"></textarea>
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 dark:placeholder-slate-500 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-orange-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-orange-500/10 transition-colors resize-none"></textarea>
                             </div>
 
-                            <div id="homeConsultationFeedback" class="hidden rounded-xl p-3 text-xs font-semibold text-center transition-all"></div>
+                            <div id="homeConsultationFeedback" class="hidden rounded-xl p-3 text-xs font-semibold text-center transition-colors"></div>
 
-                            <button type="submit" id="homeConsultationBtn" class="w-full py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-xs hover:scale-[1.01] active:scale-[0.99] transition-all">
+                            <button type="submit" id="homeConsultationBtn" class="w-full py-3.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-extrabold text-sm font-medium shadow-lg shadow-xs hover:scale-[1.01] active:scale-[0.99] transition-colors">
                                 <i class="fa-solid fa-paper-plane mr-2"></i> Nhận tư vấn nhanh
                             </button>
                         </form>
@@ -674,7 +674,7 @@
                     
                     if (homeFeedback) {
                         homeFeedback.classList.add('hidden');
-                        homeFeedback.className = 'hidden rounded-xl p-3 text-xs font-semibold text-center transition-all';
+                        homeFeedback.className = 'hidden rounded-xl p-3 text-xs font-semibold text-center transition-colors';
                     }
 
                     try {
@@ -693,7 +693,7 @@
                         if (response.ok && data.success) {
                             if (homeFeedback) {
                                 homeFeedback.textContent = data.message || 'Cảm ơn bạn! Yêu cầu tư vấn đã được gửi thành công. WanderVibe sẽ liên hệ lại qua SĐT trong ít phút!';
-                                homeFeedback.className = 'block rounded-xl p-3 text-xs font-semibold text-center bg-orange-50 text-orange-700 border border-orange-200 transition-all';
+                                homeFeedback.className = 'block rounded-xl p-3 text-xs font-semibold text-center bg-orange-50 text-orange-700 border border-orange-200 transition-colors';
                             }
                             homeContactForm.reset();
                         } else {
@@ -702,7 +702,7 @@
                     } catch (err) {
                         if (homeFeedback) {
                             homeFeedback.textContent = err.message || 'Không thể gửi yêu cầu lúc này. Vui lòng liên hệ hotline 1900 888 999!';
-                            homeFeedback.className = 'block rounded-xl p-3 text-xs font-semibold text-center bg-rose-50 text-rose-700 border border-rose-200 transition-all';
+                            homeFeedback.className = 'block rounded-xl p-3 text-xs font-semibold text-center bg-rose-50 text-rose-700 border border-rose-200 transition-colors';
                         }
                     } finally {
                         homeSubmitBtn.disabled = false;

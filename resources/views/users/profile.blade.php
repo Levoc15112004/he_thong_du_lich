@@ -227,7 +227,7 @@
                                 <!-- Button -->
                                 <div class="pt-4">
                                     <button type="submit"
-                                        class="bg-gray-800 text-white px-5 py-2 rounded-xl font-bold hover:bg-gray-900 transition-all">
+                                        class="bg-gray-800 text-white px-5 py-2 rounded-xl font-bold hover:bg-gray-900 transition-colors">
                                         Cập nhật mật khẩu
                                     </button>
                                 </div>

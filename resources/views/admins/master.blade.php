@@ -112,7 +112,7 @@
         <div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden lg:hidden z-30 transition-opacity duration-300"></div>
 
         <!-- CONTENT -->
-        <div class="flex-1 min-w-0 pt-20 lg:pt-24 p-4 sm:p-6 text-[13px] transition-all duration-300
+        <div class="flex-1 min-w-0 pt-20 lg:pt-24 p-4 sm:p-6 text-[13px] transition-colors duration-200
                 lg:pl-64">
             <div class="max-w-[1600px] mx-auto w-full">
                 @yield('home')
@@ -122,7 +122,7 @@
     </div>
 
     <!-- Floating Theme Switcher Button -->
-    <button type="button" class="theme-toggle-btn fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-amber-400 shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Theme">
+    <button type="button" class="theme-toggle-btn fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-amber-400 shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center transition-colors duration-200 hover:scale-110 active:scale-95 group focus:outline-none" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Toggle Theme">
         <i class="fa-solid fa-moon text-base dark:hidden group-hover:rotate-12 transition-transform"></i>
         <i class="fa-solid fa-sun text-base hidden dark:inline-block text-amber-400 group-hover:rotate-45 transition-transform"></i>
     </button>

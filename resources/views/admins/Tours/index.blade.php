@@ -23,13 +23,13 @@
             <div class="flex flex-col sm:flex-row items-center gap-3">
                 <form action="" method="GET" class="relative w-full sm:w-auto">
                     <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="Tìm tên, địa điểm..."
-                           class="w-full sm:w-64 pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all shadow-sm">
+                           class="w-full sm:w-64 pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors shadow-sm">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                     @if(request('status') !== null) <input type="hidden" name="status" value="{{ request('status') }}"> @endif
                 </form>
 
                 <form action="" method="GET" class="w-full sm:w-auto min-w-[150px] relative">
-                    <select name="status" onchange="this.form.submit()" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all shadow-sm cursor-pointer appearance-none">
+                    <select name="status" onchange="this.form.submit()" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors shadow-sm cursor-pointer appearance-none">
                         <option value="">Tất cả trạng thái</option>
                         <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Đang hoạt động</option>
                         <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Đã ẩn</option>
@@ -40,13 +40,13 @@
 
                 <form action="{{ route('admin.tours.seed') }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn nạp 190+ tour mẫu và lộ trình chi tiết?');" class="w-full sm:w-auto">
                     @csrf
-                    <button type="submit" class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 bg-amber-50 hover:bg-amber-100 text-amber-700 font-bold border border-amber-200 rounded-xl transition-all shadow-sm">
+                    <button type="submit" class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 bg-amber-50 hover:bg-amber-100 text-amber-700 font-bold border border-amber-200 rounded-xl transition-colors shadow-sm">
                         <i class="fa-solid fa-cloud-arrow-down"></i>
                         <span>Nạp 190+ Tour Mẫu</span>
                     </button>
                 </form>
 
-                <a href="{{ route('admin.tours.create') }}" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] hover:bg-[#a34c2a] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300 group">
+                <a href="{{ route('admin.tours.create') }}" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[#863c20] hover:bg-[#a34c2a] text-white font-semibold rounded-xl shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-colors duration-200 group">
                     <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform"></i>
                     <span>Tạo Tour mới</span>
                 </a>
@@ -58,12 +58,12 @@
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="bg-slate-50/80 border-b border-slate-100">
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Thông tin Tour</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Giá bán</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Thời gian</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Số chỗ</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Trạng thái</th>
-                        <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Thao tác</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium">Thông tin Tour</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-center">Giá bán</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-center">Thời gian</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-center">Số chỗ</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-center">Trạng thái</th>
+                        <th class="px-6 py-4 text-xs font-bold text-slate-500 font-medium text-right">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
@@ -71,7 +71,7 @@
                         <tr class="hover:bg-slate-50/50 transition-colors group">
                             <td class="px-6 py-5">
                                 <div class="flex items-center gap-5">
-                                    <div class="w-24 h-24 rounded-2xl overflow-hidden shadow-md shadow-slate-200 shrink-0 border border-slate-100 relative group-hover:shadow-lg transition-all">
+                                    <div class="w-24 h-24 rounded-2xl overflow-hidden shadow-md shadow-slate-200 shrink-0 border border-slate-100 relative group-hover:shadow-lg transition-colors">
                                         <img src="{{ asset($tour->image) }}" onerror="this.src='/default.png'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                     </div>
                                     <div class="flex flex-col min-w-0 max-w-md">
@@ -95,7 +95,7 @@
                             <td class="px-6 py-5 text-center">
                                 <div class="inline-flex flex-col items-center">
                                     <span class="text-lg font-bold text-slate-700 leading-none">{{ $tour->quantity ?? '0' }}</span>
-                                    <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-400 mt-1">Khách</span>
+                                    <span class="text-[10px] font-medium font-semibold text-slate-400 mt-1">Khách</span>
                                 </div>
                             </td>
                             <td class="px-6 py-5 text-center">
@@ -113,12 +113,12 @@
                             <td class="px-6 py-5 text-right">
                                 <div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <a href="{{ route('admin.tours.edit', $tour->id) }}" 
-                                       class="w-10 h-10 flex items-center justify-center text-orange-600 bg-orange-50 hover:bg-orange-500 hover:text-white rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-xs" title="Chỉnh sửa">
+                                       class="w-10 h-10 flex items-center justify-center text-orange-600 bg-orange-50 hover:bg-orange-500 hover:text-white rounded-xl transition-colors duration-200 hover:shadow-lg hover:shadow-xs" title="Chỉnh sửa">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <form action="{{ route('admin.tours.destroy', $tour->id) }}" method="POST" onsubmit="return confirm('Xác nhận xóa Tour này? Mọi dữ liệu liên quan sẽ bị ảnh hưởng.');">
                                         @csrf @method('DELETE')
-                                        <button class="w-10 h-10 flex items-center justify-center text-rose-500 bg-rose-50 hover:bg-rose-500 hover:text-white rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-rose-200/50" title="Xóa">
+                                        <button class="w-10 h-10 flex items-center justify-center text-rose-500 bg-rose-50 hover:bg-rose-500 hover:text-white rounded-xl transition-colors duration-200 hover:shadow-lg hover:shadow-rose-200/50" title="Xóa">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                     </form>
@@ -160,7 +160,7 @@
                             ];
                             $cfg = $statusConfig[$tour->status] ?? ['class' => 'bg-amber-500', 'text' => 'Chờ'];
                         @endphp
-                        <span class="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-white {{ $cfg['class'] }} px-2.5 py-1.5 rounded-xl shadow-inner">
+                        <span class="flex items-center gap-1.5 text-[10px] font-bold font-medium text-white {{ $cfg['class'] }} px-2.5 py-1.5 rounded-xl shadow-inner">
                             <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> {{ $cfg['text'] }}
                         </span>
                     </div>
@@ -183,11 +183,11 @@
 
                     <div class="grid grid-cols-2 gap-3 mt-4">
                         <div class="bg-slate-50 rounded-2xl p-3 flex flex-col items-center justify-center border border-slate-100">
-                            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-1">Thời gian</span>
+                            <span class="text-[10px] font-semibold text-slate-400 font-medium mb-1">Thời gian</span>
                             <span class="text-xs font-bold text-slate-700">{{ $tour->time ?? '---' }}</span>
                         </div>
                         <div class="bg-slate-50 rounded-2xl p-3 flex flex-col items-center justify-center border border-slate-100">
-                            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-1">Số chỗ</span>
+                            <span class="text-[10px] font-semibold text-slate-400 font-medium mb-1">Số chỗ</span>
                             <span class="text-xs font-bold text-slate-700">{{ $tour->quantity ?? '0' }} Khách</span>
                         </div>
                     </div>

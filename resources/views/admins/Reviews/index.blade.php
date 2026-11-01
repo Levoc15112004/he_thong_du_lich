@@ -26,7 +26,7 @@
                         <i class="fa-solid fa-comment-dots"></i>
                     </div>
                     <div>
-                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Tổng Đánh Giá</p>
+                        <p class="text-[10px] text-slate-500 font-bold font-medium">Tổng Đánh Giá</p>
                         <p class="text-sm font-bold text-slate-800">{{ $reviews->total() }} Lượt</p>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse text-sm">
                     <thead>
-                        <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                        <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 font-medium">
                             <th class="py-4 px-6">ID</th>
                             <th class="py-4 px-6">Khách hàng</th>
                             <th class="py-4 px-6">Đơn hàng / Tour</th>

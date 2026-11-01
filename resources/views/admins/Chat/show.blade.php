@@ -24,7 +24,7 @@
             </div>
 
             <a href="{{ route('admin.chat.index') }}"
-                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-all duration-300 shadow-sm group shrink-0">
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl transition-colors duration-200 shadow-sm group shrink-0">
                 <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 <span>Trở lại danh sách</span>
             </a>
@@ -41,7 +41,7 @@
                         <i class="fa-regular fa-clock text-slate-400 text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Bắt đầu lúc</p>
+                        <p class="text-[10px] font-bold text-slate-400 font-medium mb-0.5">Bắt đầu lúc</p>
                         <p class="text-sm font-bold text-slate-700">{{ optional($session->started_at)->format('H:i - d/m/Y') }}</p>
                     </div>
                 </div>

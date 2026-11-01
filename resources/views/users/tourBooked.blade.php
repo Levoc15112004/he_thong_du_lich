@@ -331,7 +331,7 @@
                 <div id="modalContent"
                     class="bg-white w-full max-w-6xl mx-4 rounded-3xl shadow-2xl
                 max-h-[80vh] flex flex-col
-                transform scale-95 opacity-0 transition-all duration-300">
+                transform scale-95 opacity-0 transition-colors duration-200">
 
                     <!-- HEADER -->
                     <div class="flex items-center justify-between p-6 border-b shrink-0">
@@ -475,7 +475,7 @@
             schedules.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className =
-                    `p-4 rounded-2xl border transition-all cursor-pointer ${index === 0 ? 'bg-indigo-50/70 border-indigo-300 shadow-sm' : 'bg-white border-slate-200 hover:border-indigo-200 hover:bg-slate-50'}`;
+                    `p-4 rounded-2xl border transition-colors cursor-pointer ${index === 0 ? 'bg-indigo-50/70 border-indigo-300 shadow-sm' : 'bg-white border-slate-200 hover:border-indigo-200 hover:bg-slate-50'}`;
                 div.innerHTML = `
                 <div class="flex gap-3">
                     <div class="w-8 h-8 shrink-0 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">

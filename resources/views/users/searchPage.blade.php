@@ -12,7 +12,7 @@
                 Kết Quả Tìm Kiếm Tour
             </div>
             <h1 class="font-serif text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
-                Tìm Thấy <span class="text-[#b85e3a] font-serif italic">{{ $tours->total() }}</span> Hành Trình Phù Hợp
+                Tìm Thấy {{ $tours->total() }} Hành Trình Phù Hợp
             </h1>
             <p class="text-slate-600 dark:text-slate-300 font-normal text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                 Khám phá các tour du lịch trọn gói chất lượng cao cùng WanderVibe với lịch trình linh hoạt và giá ưu đãi nhất.
@@ -24,7 +24,7 @@
         {{-- Lưới hiển thị tour --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse ($tours as $tour)
-                <div class="travel-card group flex flex-col h-full overflow-hidden bg-white dark:bg-slate-800/90 rounded-3xl border border-slate-100 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                <div class="travel-card group flex flex-col h-full overflow-hidden bg-white dark:bg-slate-800/90 rounded-3xl border border-slate-100 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-colors duration-200 cursor-pointer"
                      onclick="window.location.href='{{ route('user.tourDetail.index', $tour->id) }}'">
                     {{-- Tour Image Area --}}
                     <a href="{{ route('user.tourDetail.index', $tour->id) }}" class="relative h-52 overflow-hidden block">
@@ -73,7 +73,7 @@
                             </div>
 
                             <a href="{{ route('user.tourDetail.index', $tour->id) }}"
-                               class="w-full block text-center py-2.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-xs uppercase tracking-wider shadow-xs transition-all"
+                               class="w-full block text-center py-2.5 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-xs font-medium shadow-xs transition-colors"
                                onclick="event.stopPropagation()">
                                 Xem Chi Tiết & Đặt Tour
                             </a>
@@ -87,7 +87,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Không Tìm Thấy Tour Nào</h3>
                     <p class="text-slate-500 dark:text-slate-400 font-medium mb-6">Rất tiếc, chúng tôi chưa tìm thấy hành trình phù hợp với từ khóa của bạn. Hãy thử tìm địa danh khác nhé!</p>
-                    <a href="{{ route('user.home') }}" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#863c20] text-white font-bold text-sm shadow-md shadow-xs hover:bg-[#a34c2a] transition-all">
+                    <a href="{{ route('user.home') }}" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#863c20] text-white font-bold text-sm shadow-md shadow-xs hover:bg-[#a34c2a] transition-colors">
                         Trở Về Trang Chủ
                     </a>
                 </div>

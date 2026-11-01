@@ -115,7 +115,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
             @foreach($relatedBlogs as $item)
-                <div class="bg-white dark:bg-slate-800/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700/80 group">
+                <div class="bg-white dark:bg-slate-800/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-colors duration-200 border border-slate-100 dark:border-slate-700/80 group">
 
                     <a href="{{ route('blog.show', $item->id) }}" class="block overflow-hidden h-48">
                         <img src="{{ asset($item->image) }}"

@@ -21,7 +21,7 @@
             </div>
             
             <div class="flex items-center gap-3">
-                <div class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm text-[10px] text-slate-500 font-bold uppercase tracking-wider flex items-center gap-2">
+                <div class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm text-[10px] text-slate-500 font-bold font-medium flex items-center gap-2">
                     <i class="fa-solid fa-calendar-day text-orange-500 text-sm"></i>
                     Hôm nay: {{ \Carbon\Carbon::now()->format('d/m/Y') }}
                 </div>
@@ -42,7 +42,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
                     {{-- Month --}}
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Chọn Tháng</label>
+                        <label class="block text-xs font-bold text-slate-500 font-medium mb-2">Chọn Tháng</label>
                         <div class="relative">
                             <i class="fa-solid fa-calendar-days absolute left-4 top-1/2 -translate-y-1/2 text-orange-500 z-10"></i>
                             <select name="month" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 appearance-none relative z-0">
@@ -59,7 +59,7 @@
 
                     {{-- Year --}}
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Chọn Năm</label>
+                        <label class="block text-xs font-bold text-slate-500 font-medium mb-2">Chọn Năm</label>
                         <div class="relative">
                             <i class="fa-solid fa-calendar absolute left-4 top-1/2 -translate-y-1/2 text-blue-500 z-10"></i>
                             <select name="year" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-slate-700 font-bold focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 appearance-none relative z-0">
@@ -75,7 +75,7 @@
 
                     {{-- Button --}}
                     <div class="lg:col-span-2 flex items-end">
-                        <button class="w-full lg:w-48 bg-[#863c20] hover:bg-[#a34c2a] text-white py-3 px-6 rounded-xl font-bold shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 transition-all active:scale-95 flex items-center justify-center gap-2">
+                        <button class="w-full lg:w-48 bg-[#863c20] hover:bg-[#a34c2a] text-white py-3 px-6 rounded-xl font-bold shadow-lg shadow-xs hover:shadow-xl hover:shadow-orange-500/35 transition-colors active:scale-95 flex items-center justify-center gap-2">
                             <i class="fa-solid fa-magnifying-glass-chart"></i> Áp Dụng Lọc
                         </button>
                     </div>
@@ -94,7 +94,7 @@
                         <i class="fa-solid fa-wallet"></i>
                     </div>
                     <div>
-                        <h6 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Tổng Doanh Thu</h6>
+                        <h6 class="text-xs font-bold text-slate-400 font-medium mb-1">Tổng Doanh Thu</h6>
                         <p class="text-3xl font-bold bg-clip-text text-transparent bg-[#863c20]">{{ number_format($totalRevenue) }} ₫</p>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
                     <div>
-                        <h6 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Đơn Hàng Giao Dịch</h6>
+                        <h6 class="text-xs font-bold text-slate-400 font-medium mb-1">Đơn Hàng Giao Dịch</h6>
                         <p class="text-3xl font-bold text-slate-800">{{ number_format($totalOrders) }} <span class="text-base text-slate-400 font-bold">Đơn</span></p>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                         <i class="fa-solid fa-users"></i>
                     </div>
                     <div>
-                        <h6 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Người Dùng Mới</h6>
+                        <h6 class="text-xs font-bold text-slate-400 font-medium mb-1">Người Dùng Mới</h6>
                         <p class="text-3xl font-bold text-slate-800">{{ number_format($totalUsers) }} <span class="text-base text-slate-400 font-bold">Người</span></p>
                     </div>
                 </div>
