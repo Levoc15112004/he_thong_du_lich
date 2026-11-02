@@ -170,18 +170,15 @@
                            class="block w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3.5 px-6 rounded-xl font-bold text-sm text-center transition-colors shadow-xs">
                             <i class="fa-solid fa-check-circle mr-2"></i> Tôi đã chuyển khoản cọc thành công
                         </a>
+
+                        <div class="pt-2 text-center">
+                            <a href="{{ route('vietqr.test.pay', $order->id) }}" class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 hover:underline font-semibold">
+                                <i class="fa-solid fa-flask"></i> [Bấm vào đây để Test giả lập: Tiền đã về tài khoản]
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- 3. PayPal Button -->
-                    <form action="{{ route('paypal.create', $order->id) }}" method="POST" id="form-paypal" class="hidden relative z-10 w-full">
-                        @csrf
-                        <button type="submit" class="w-full bg-[#003087] hover:bg-[#00205b] text-white py-3.5 px-6 rounded-xl font-bold text-sm transition-colors shadow-sm flex items-center justify-center gap-2.5">
-                            <i class="fa-brands fa-paypal text-base"></i> Thanh toán bằng PayPal (~${{ number_format(round($deposit_amount / 24000, 2), 2) }} USD)
-                        </button>
-                        <p class="text-center text-[11px] text-slate-500 dark:text-slate-400 mt-3">Hỗ trợ số dư tài khoản PayPal và thẻ Visa / MasterCard quốc tế.</p>
-                    </form>
-
-                    <!-- 4. Direct/Cash Button -->
+                    <!-- 3. Direct/Cash Button -->
                     <div id="wrapper-cash" class="hidden relative z-10 w-full space-y-4">
                         <div class="p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 space-y-2">
                             <p class="font-bold text-sm text-[#863c20] dark:text-amber-400"><i class="fa-solid fa-location-dot mr-1.5"></i> Văn phòng giao dịch Wanderlust Travel:</p>
@@ -278,26 +275,21 @@
 <script>
     const momoRadio = document.getElementById('payment_momo');
     const bankRadio = document.getElementById('payment_bank');
-    const paypalRadio = document.getElementById('payment_paypal');
     const cashRadio = document.getElementById('payment_cash');
 
     const momoForm = document.getElementById('form-momo');
     const bankWrapper = document.getElementById('wrapper-bank');
-    const paypalForm = document.getElementById('form-paypal');
     const cashWrapper = document.getElementById('wrapper-cash');
 
     function togglePaymentButtons() {
         if (momoForm) momoForm.classList.add('hidden');
         if (bankWrapper) bankWrapper.classList.add('hidden');
-        if (paypalForm) paypalForm.classList.add('hidden');
         if (cashWrapper) cashWrapper.classList.add('hidden');
 
         if (momoRadio && momoRadio.checked) {
             if (momoForm) momoForm.classList.remove('hidden');
         } else if (bankRadio && bankRadio.checked) {
             if (bankWrapper) bankWrapper.classList.remove('hidden');
-        } else if (paypalRadio && paypalRadio.checked) {
-            if (paypalForm) paypalForm.classList.remove('hidden');
         } else if (cashRadio && cashRadio.checked) {
             if (cashWrapper) cashWrapper.classList.remove('hidden');
         }
@@ -305,10 +297,37 @@
 
     if (momoRadio) momoRadio.addEventListener('change', togglePaymentButtons);
     if (bankRadio) bankRadio.addEventListener('change', togglePaymentButtons);
-    if (paypalRadio) paypalRadio.addEventListener('change', togglePaymentButtons);
     if (cashRadio) cashRadio.addEventListener('change', togglePaymentButtons);
 
     // Initial check
     togglePaymentButtons();
+
+    // ================= REALTIME POLLING KIỂM TRA TIỀN ĐÃ VỀ TÀI KHOẢN =================
+    // Khi khách quét mã QR VietQR hoặc thanh toán MoMo, hệ thống tự động kiểm tra mỗi 3 giây
+    let isRedirecting = false;
+    const pollingInterval = setInterval(() => {
+        if (isRedirecting) return;
+
+        fetch('/api/order/check-status/{{ $order->id }}')
+            .then(res => res.json())
+            .then(data => {
+                if (data.paid && !isRedirecting) {
+                    isRedirecting = true;
+                    clearInterval(pollingInterval);
+                    
+                    // Bật thông báo thành công
+                    if (typeof showToast === 'function') {
+                        showToast('Thanh toán cọc thành công! Tiền đã vào tài khoản.', 'success');
+                    } else {
+                        alert('Thanh toán cọc thành công! Tiền đã vào tài khoản và đơn tour của bạn đã được kích hoạt.');
+                    }
+
+                    setTimeout(() => {
+                        window.location.href = data.redirect_url || '{{ route("tour.thankyou", $order->id) }}?method=bank';
+                    }, 1200);
+                }
+            })
+            .catch(() => {});
+    }, 3000);
 </script>
 @endsection

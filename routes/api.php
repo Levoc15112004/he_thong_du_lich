@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\User\ChatbotController;
+use App\Http\Controllers\User\VietQRController;
 use Illuminate\Http\Request;
-// use App\Http\Controllers\Admin\ChatbotController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-
 });
-// Route::post('/chat', [ChatbotController::class, 'generateContent']);
 
 Route::match(['get', 'post'], '/chat', [ChatbotController::class, 'chat']);
 Route::get('/chat/history', [ChatbotController::class, 'history']);
+
+// VietQR Webhook & Order Realtime Status Polling
+Route::post('/vietqr/transaction-sync', [VietQRController::class, 'handleTransactionSync']);
+Route::get('/order/check-status/{order_id}', [VietQRController::class, 'checkOrderStatus']);
+

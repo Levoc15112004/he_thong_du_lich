@@ -222,6 +222,7 @@ Route::middleware('checkUser')->group(function () {
     Route::get('/order/thanh-toan-coc/{order_id}', [BookingController::class, 'showDepositPage'])->name('user.tour.deposit');
     Route::post('/tour/deposit/pay', [BookingController::class, 'processPayment'])->name('user.tour.deposit.pay');
     Route::get('/payment/final/{order_id}', [BookingController::class, 'showFinalPaymentPage'])->name('user.payment.final');
+    Route::get('/order/test-vietqr-pay/{order_id}', [\App\Http\Controllers\User\VietQRController::class, 'simulateSuccessPayment'])->name('vietqr.test.pay');
 
     Route::post('/paypal/create-order/{order_id}', [PayPalController::class, 'createPayment'])->name('paypal.create');
     // Capture thanh toán 30%
