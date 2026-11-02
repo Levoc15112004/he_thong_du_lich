@@ -411,232 +411,229 @@
                 <!-- ================= RIGHT BOOKING ================= -->
                 <div class="lg:col-span-1">
                     <div
-                        class="bg-white rounded-2xl travel-card shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-slate-100
-                        p-6 lg:p-8 sticky top-28 space-y-6">
+                        class="bg-white dark:bg-slate-900 rounded-2xl travel-card shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-slate-200/80 dark:border-slate-800
+                        p-5 lg:p-6 sticky top-24 space-y-4">
 
-                        <!-- ===== TITLE ===== -->
-                        <h2 class="text-2xl font-bold text-slate-800 leading-snug brand-font border-b border-slate-100 pb-4">
-                            Đặt chỗ ngay
-                        </h2>
-
-                        <!-- ===== PRICE ===== -->
-                        <div class="space-y-1">
-                            <p class="text-sm font-medium text-slate-400 font-medium mb-1">Giá hành trình</p>
-                            <p class="text-4xl font-bold text-rose-500 tracking-tight">
-                                {{ number_format($tour->sale_price) }}<span class="text-xl ml-1 text-slate-500 font-medium">đ</span>
-                            </p>
+                        <!-- ===== HEADER: TITLE & PRICE ===== -->
+                        <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <h2 class="text-xl font-bold text-slate-800 dark:text-white leading-tight brand-font">
+                                    Đặt chỗ ngay
+                                </h2>
+                                <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-200/60 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Đang mở bán
+                                </span>
+                            </div>
+                            <div class="flex items-baseline justify-between">
+                                <div>
+                                    <div class="flex items-baseline gap-1">
+                                        <span id="topDisplayTourPrice" class="text-3xl font-extrabold text-rose-600 tracking-tight">
+                                            {{ number_format($tour->sale_price ?: $tour->price) }}<span class="text-lg font-medium text-slate-500">đ</span>
+                                        </span>
+                                        <span class="text-xs text-slate-400">/ khách</span>
+                                    </div>
+                                    <p id="topPricePackageNote" class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Gói xe du lịch tiêu chuẩn</p>
+                                </div>
+                                @if($tour->price > $tour->sale_price && $tour->sale_price > 0)
+                                    <span class="text-xs px-2 py-1 rounded-lg bg-rose-50 text-rose-600 font-bold border border-rose-100">
+                                        -{{ round((($tour->price - $tour->sale_price) / $tour->price) * 100) }}%
+                                    </span>
+                                @endif
+                            </div>
                         </div>
 
-                        <!-- ===== QUICK INFO ===== -->
-                        <div class="grid grid-cols-2 gap-4 text-xs mt-6 mb-4">
-                            <div class="bg-orange-50/50 rounded-2xl p-4">
-                                <p class="text-slate-400 mb-1 font-medium">Khởi hành</p>
-                                <p class="font-bold text-sm text-slate-700">
-                                    {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}
-                                </p>
+                        <!-- ===== QUICK INFO COMPACT ROW ===== -->
+                        <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-orange-50/60 dark:bg-slate-800/60 border border-orange-100/70 dark:border-slate-700 text-xs">
+                            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300 min-w-0">
+                                <div class="flex items-center gap-1.5 truncate">
+                                    <i class="fa-regular fa-calendar text-[#863c20]"></i>
+                                    <span class="font-semibold">{{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}</span>
+                                </div>
+                                <span class="text-orange-300">•</span>
+                                <div class="flex items-center gap-1.5 truncate">
+                                    <i class="fa-regular fa-clock text-[#863c20]"></i>
+                                    <span class="font-semibold">{{ $tour->time }}</span>
+                                </div>
                             </div>
-                            <div class="bg-orange-50/50 rounded-2xl p-4">
-                                <p class="text-slate-400 mb-1 font-medium">Lịch trình</p>
-                                <p class="font-bold text-sm text-slate-700">
-                                    {{ $tour->time }}
-                                </p>
-                            </div>
+                            <button type="button" onclick="openItineraryModal({{ $tour->id }})"
+                                class="shrink-0 text-[11px] font-bold text-orange-600 hover:text-orange-700 bg-white hover:bg-orange-50 dark:bg-slate-700 dark:text-orange-400 px-2.5 py-1 rounded-lg border border-orange-200/80 dark:border-slate-600 transition shadow-2xs flex items-center gap-1">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                <span>Bản đồ</span>
+                            </button>
                         </div>
-
-                        <button onclick="openItineraryModal({{ $tour->id }})"
-                            class="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-orange-100/60 rounded-2xl mb-6 hover:bg-orange-50 hover:border-orange-200 transition-colors text-orange-600 font-semibold group shadow-sm bg-white">
-                            <i data-lucide="map" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                            <span>Xem bản đồ lịch trình</span>
-                        </button>
 
                         <!-- ===== FORM ===== -->
-<form action="{{ route('user.cart.add', $tour->id) }}" method="POST" class="space-y-4 text-slate-800 dark:text-slate-100">
+<form action="{{ route('user.cart.add', $tour->id) }}" method="POST" class="space-y-3.5 text-slate-800 dark:text-slate-100">
     @csrf
-    <!-- 1. LỊCH KHỞI HÀNH CỐ ĐỊNH CỦA TOUR -->
-    <div class="border-b border-slate-100 dark:border-slate-700/80 pb-3">
-        <label class="block text-xs font-bold text-slate-800 dark:text-slate-100 mb-2 flex items-center justify-between">
-            <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar-check text-[#863c20]"></i> Lịch khởi hành cố định</span>
-            <span class="text-[10px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded">Mở bán</span>
-        </label>
-        <div class="space-y-2 text-xs">
-            @if(!empty($upcomingDates))
-                @foreach($upcomingDates as $idx => $dep)
-                    <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 cursor-pointer hover:border-[#b85e3a] transition-colors">
-                        <div class="flex items-center gap-2.5">
-                            <input type="radio" name="departure_date" value="{{ $dep['date'] }}" {{ $idx === 0 ? 'checked' : '' }} class="text-[#863c20]">
-                            <div>
-                                <span class="font-bold text-slate-800 dark:text-white block">{{ $dep['label'] }}</span>
-                                <span class="text-slate-500">{{ $dep['note'] }}</span>
-                            </div>
-                        </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200">Nhận chỗ</span>
-                    </label>
-                @endforeach
-            @else
-                <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 cursor-pointer hover:border-[#b85e3a]">
-                    <div class="flex items-center gap-2.5">
-                        <input type="radio" name="departure_date" value="{{ $tour->start_date }}" checked class="text-[#863c20]">
-                        <div>
-                            <span class="font-bold text-slate-800 dark:text-white block">Khởi hành: {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}</span>
-                            <span class="text-slate-500">Lịch định kỳ</span>
-                        </div>
-                    </div>
-                </label>
-            @endif
+    <!-- 1. LỊCH KHỞI HÀNH CỐ ĐỊNH -->
+    <div class="space-y-1.5">
+        <div class="flex items-center justify-between text-xs">
+            <label class="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
+                <i class="fa-regular fa-calendar-check text-[#863c20]"></i> Lịch khởi hành
+            </label>
+            <span class="text-[10px] text-emerald-600 font-semibold bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded">Lịch định kỳ</span>
+        </div>
+        <div class="relative">
+            <select name="departure_date" class="w-full text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-white focus:outline-none focus:border-[#b85e3a] cursor-pointer appearance-none pr-8">
+                @if(!empty($upcomingDates))
+                    @foreach($upcomingDates as $idx => $dep)
+                        <option value="{{ $dep['date'] }}" {{ $idx === 0 ? 'selected' : '' }}>
+                            {{ $dep['label'] }} — {{ $dep['note'] }}
+                        </option>
+                    @endforeach
+                @else
+                    <option value="{{ $tour->start_date }}">Khởi hành: {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }} (Lịch định kỳ)</option>
+                @endif
+            </select>
+            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none"></i>
         </div>
     </div>
     <!-- 2. PHƯƠNG TIỆN DI CHUYỂN -->
-    <div>
-        <label class="block text-xs font-bold text-slate-800 dark:text-slate-100 mb-2">
+    <div class="space-y-1.5">
+        <label class="block text-xs font-bold text-slate-800 dark:text-slate-100">
             <i class="fa-solid fa-van-shuttle text-[#863c20] mr-1"></i> Phương tiện di chuyển
         </label>
-        <div class="space-y-2 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
             @foreach ($transportValues as $value)
                 @php
                     $isFlight = Str::contains(mb_strtolower($value), ['máy bay', 'bay', 'flight']);
                     $transSurcharge = $isFlight ? 1800000 : 0;
                 @endphp
-                <label class="flex items-start justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#b85e3a] cursor-pointer transition-colors group">
-                    <div class="flex items-start gap-2.5">
-                        <input type="radio" name="transport" value="{{ $value }}" data-surcharge="{{ $transSurcharge }}" {{ $loop->first ? 'checked' : '' }} class="mt-0.5 text-[#863c20] transport-radio">
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="font-bold text-slate-800 dark:text-white group-hover:text-[#b85e3a]">{{ $value }}</span>
-                                <span class="text-[10px] px-2 py-0.5 rounded font-semibold {{ $isFlight ? 'bg-blue-100 text-blue-700' : 'bg-emerald-100 text-emerald-700' }}">
-                                    {{ $isFlight ? '+1.800.000đ/khách (Bay khứ hồi)' : 'Đã bao gồm trong giá vé' }}
-                                </span>
-                            </div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-normal">
-                                {{ $isFlight ? 'Vé máy bay khứ hồi (20kg ký gửi) & Xe riêng đón tiễn sân bay.' : 'Xe du lịch máy lạnh đời mới, ghế da ngả lưng êm ái, wifi miễn phí.' }}
-                            </p>
-                        </div>
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#b85e3a] cursor-pointer transition-all group has-[:checked]:border-[#b85e3a] has-[:checked]:bg-[#faf5f0] dark:has-[:checked]:bg-[#2a231f]">
+                    <input type="radio" name="transport" value="{{ $value }}" data-surcharge="{{ $transSurcharge }}" {{ $loop->first ? 'checked' : '' }} class="text-[#863c20] transport-radio accent-[#863c20]">
+                    <div class="min-w-0 flex-1">
+                        <span class="font-bold text-[11px] text-slate-800 dark:text-white block truncate" title="{{ $value }}">{{ $value }}</span>
+                        <span class="text-[10px] block mt-0.5 {{ $isFlight ? 'text-blue-600 font-bold' : 'text-emerald-600 font-semibold' }}">
+                            {{ $isFlight ? '+1.800k (Khứ hồi)' : 'Đã bao gồm' }}
+                        </span>
                     </div>
                 </label>
             @endforeach
         </div>
     </div>
+
     <!-- 3. TIÊU CHUẨN LƯU TRÚ -->
-    <div>
-        <label class="block text-xs font-bold text-slate-800 dark:text-slate-100 mb-2 mt-2">
+    <div class="space-y-1.5">
+        <label class="block text-xs font-bold text-slate-800 dark:text-slate-100">
             <i class="fa-solid fa-hotel text-[#863c20] mr-1"></i> Tiêu chuẩn lưu trú
         </label>
-        <div class="space-y-2 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
             @foreach ($tourTypeValues as $value)
-    @php
-        $isLuxury = Str::contains(mb_strtolower($value), ['4', '5', 'cao cấp', 'luxury']);
-        $hotelSurcharge = $isLuxury ? 800000 : 0;
-    @endphp
-    <label class="flex items-start justify-between p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#b85e3a] cursor-pointer transition-colors group">
-        <div class="flex items-start gap-2.5">
-            <input type="radio" name="tour_type" value="{{ $value }}" data-surcharge="{{ $hotelSurcharge }}" {{ $loop->first ? 'checked' : '' }} class="mt-0.5 text-[#863c20] hotel-radio">
+                @php
+                    $isLuxury = Str::contains(mb_strtolower($value), ['4', '5', 'cao cấp', 'luxury']);
+                    $hotelSurcharge = $isLuxury ? 800000 : 0;
+                @endphp
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#b85e3a] cursor-pointer transition-all group has-[:checked]:border-[#b85e3a] has-[:checked]:bg-[#faf5f0] dark:has-[:checked]:bg-[#2a231f]">
+                    <input type="radio" name="tour_type" value="{{ $value }}" data-surcharge="{{ $hotelSurcharge }}" {{ $loop->first ? 'checked' : '' }} class="text-[#863c20] hotel-radio accent-[#863c20]">
+                    <div class="min-w-0 flex-1">
+                        <span class="font-bold text-[11px] text-slate-800 dark:text-white block truncate" title="{{ $value }}">{{ $value }}</span>
+                        <span class="text-[10px] block mt-0.5 {{ $isLuxury ? 'text-amber-700 dark:text-amber-400 font-bold' : 'text-slate-500 font-semibold' }}">
+                            {{ $isLuxury ? '+800k (Hạng 5★)' : 'Đã bao gồm' }}
+                        </span>
+                    </div>
+                </label>
+            @endforeach
+        </div>
+    </div>
+    <!-- 4. SỐ LƯỢNG HÀNH KHÁCH -->
+    <div class="space-y-1.5">
+        <div class="flex justify-between items-center text-xs">
+            <label class="font-bold text-slate-800 dark:text-slate-100">
+                <i class="fa-solid fa-user-group text-[#863c20] mr-1"></i> Số lượng khách
+            </label>
+            <span id="seat-status-label" class="text-[10px] font-semibold text-rose-600 bg-rose-50 border border-rose-200/80 px-2 py-0.5 rounded-full">
+                Còn trống: {{ max($slots - 1, 0) }}
+            </span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button type="button" onclick="stepQuantity(-1)" class="w-10 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold transition flex items-center justify-center text-sm disabled:opacity-40">
+                <i class="fa-solid fa-minus"></i>
+            </button>
+            <input type="number" id="tour-quantity-input" name="quantity" value="1" min="1" max="{{ $slots }}" class="flex-1 text-center font-bold text-sm py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:border-[#b85e3a] transition">
+            <button type="button" onclick="stepQuantity(1)" class="w-10 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold transition flex items-center justify-center text-sm disabled:opacity-40">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+        @if ($slots == 0)
+            <p class="text-rose-500 text-xs mt-1 font-semibold flex items-center gap-1.5 bg-rose-50 border border-rose-100 px-2.5 py-1.5 rounded-lg">
+                <i class="fa-solid fa-triangle-exclamation"></i> Tour hiện đã kín chỗ
+            </p>
+        @endif
+        <p id="quantity-error-msg" class="text-rose-500 text-xs mt-1 font-semibold flex items-center gap-1.5 hidden bg-rose-50 border border-rose-100 px-2.5 py-1.5 rounded-lg">
+            <i class="fa-solid fa-triangle-exclamation"></i> Vượt quá số chỗ còn trống
+        </p>
+    </div>
+
+    <!-- 5. TỔNG THANH TOÁN COMPACT -->
+    <div class="p-3 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#38424d] text-xs space-y-1.5">
+        <div class="flex items-center justify-between text-slate-500 dark:text-slate-400 text-[11px]">
+            <span>Phụ thu di chuyển: <strong id="displayTransSurcharge" class="text-[#863c20] dark:text-[#e08969] font-bold">+0đ</strong></span>
+            <span>Lưu trú: <strong id="displayHotelSurcharge" class="text-[#863c20] dark:text-[#e08969] font-bold">+0đ</strong></span>
+        </div>
+        <div class="pt-2 border-t border-slate-200/80 dark:border-slate-700 flex justify-between items-end">
             <div>
-                <div class="flex items-center gap-2 flex-wrap">
-                    <span class="font-bold text-slate-800 dark:text-white group-hover:text-[#b85e3a]">{{ $value }}</span>
-                    <span class="text-[10px] px-2 py-0.5 rounded font-bold {{ $isLuxury ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' : 'bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300' }}">
-                        {{ $isLuxury ? '+800.000đ (Nâng hạng phòng 5 sao)' : 'Tiêu chuẩn trọn gói' }}
-                    </span>
-                </div>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-normal">
-                    {{ $isLuxury ? 'Phòng Deluxe ban công ngắm cảnh, hồ bơi vô cực, kèm buffet sáng quốc tế 5 sao.' : 'Phòng tiêu chuẩn sạch sẽ, điều hòa, phòng tắm riêng, gần trung tâm.' }}
-                </p>
-                <p class="text-xs font-bold text-[#863c20] dark:text-[#cf8a6e] mt-1.5">
-                    {{ $isLuxury ? 'Phụ thu: +800.000đ / khách' : 'Đã bao gồm trong giá gốc' }}
-                </p>
+                <span class="text-xs text-slate-600 dark:text-slate-300 font-bold block">Tổng thanh toán:</span>
+                <span class="text-[10px] text-slate-400">(<span id="displayQtyCount">1</span> khách x <span id="displayPerPersonPrice">{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>)</span>
             </div>
+            <span id="displayDynamicPrice" class="text-2xl font-black text-[#b85e3a] leading-none">{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>
         </div>
-    </label>
-@endforeach
-</div>
-</div>
-<!-- LIVE PRICE SUMMARY -->
-<div class="p-4 rounded-xl bg-[#faf8f5] dark:bg-[#151719] border border-[#e8dfd1] dark:border-[#38424d] space-y-2 text-xs">
-    <div class="flex justify-between text-slate-500">
-        <span>Gói cơ bản (Xe ô tô + KS 3*):</span>
-        <span class="font-semibold">{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>
     </div>
-    <div class="flex justify-between text-slate-500">
-        <span>Phụ thu phương tiện:</span>
-        <span id="displayTransSurcharge" class="font-bold text-[#863c20]">+0đ</span>
-    </div>
-    <div class="flex justify-between text-slate-500">
-        <span>Phụ thu lưu trú:</span>
-        <span id="displayHotelSurcharge" class="font-bold text-[#863c20]">+0đ</span>
-    </div>
-    <div class="pt-2.5 border-t border-slate-200 dark:border-slate-700 flex justify-between items-baseline">
-        <div>
-            <span class="font-bold text-slate-800 dark:text-white block">Tổng thanh toán:</span>
-            <span class="text-[10px] text-slate-400">(<span id="displayQtyCount">1</span> khách x <span id="displayPerPersonPrice">{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>)</span>
-        </div>
-        <span id="displayDynamicPrice" class="text-2xl font-bold text-[#b85e3a]">{{ number_format($tour->sale_price ?: $tour->price) }}đ</span>
-    </div>
-</div>
-<input type="hidden" name="unit_price" id="unitPriceInput" value="{{ $tour->sale_price ?: $tour->price }}">
-    <!-- QUANTITY -->
-                            <div>
-                                <label class="flex justify-between items-center text-xs font-bold text-slate-700 mb-1 mt-2">
-                                    <span>Hành khách</span>
-                                    <span id="seat-status-label" class="text-[10px] font-medium text-rose-600 bg-rose-100 border border-rose-200 px-2 py-0.5 rounded-full shadow-sm">
-                                        Còn trống: {{ max($slots - 1, 0) }}
-                                    </span>
-                                </label>
+    <input type="hidden" name="unit_price" id="unitPriceInput" value="{{ $tour->sale_price ?: $tour->price }}">
 
-                                <input type="number" id="tour-quantity-input" name="quantity" value="1" min="1"
-                                    max="{{ $slots }}" placeholder="Nhập số lượng"
-                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 placeholder-slate-400 text-sm focus:outline-none focus:border-orange-500 focus:bg-white focus:ring-4 focus:ring-orange-500/10 transition-colors">
+    <!-- CTA -->
+    <button type="submit" id="book-tour-btn" {{ $slots == 0 ? 'disabled' : '' }}
+        class="w-full py-3 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Giữ Chỗ Ngay</span>
+    </button>
 
-                                @if ($slots == 0)
-                                    <p class="text-rose-500 text-xs mt-2 font-bold flex items-center gap-1.5 bg-rose-50 border border-rose-100 px-3 py-2 rounded-xl">
-                                        <i class="fa-solid fa-triangle-exclamation"></i> Rất tiếc, tour đã kín chỗ
-                                    </p>
-                                @endif
-                                <p id="quantity-error-msg" class="text-rose-500 text-xs mt-2 font-bold flex items-center gap-1.5 hidden bg-rose-50 border border-rose-100 px-3 py-2 rounded-xl">
-                                    <i class="fa-solid fa-triangle-exclamation"></i> Vượt quá số chỗ còn trống
-                                </p>
-                            </div>
+    <script>
+        function stepQuantity(delta) {
+            const qtyInput = document.getElementById('tour-quantity-input');
+            if (!qtyInput) return;
+            const current = parseInt(qtyInput.value) || 1;
+            const max = parseInt(qtyInput.getAttribute('max')) || 999;
+            const nextVal = Math.min(Math.max(1, current + delta), max);
+            qtyInput.value = nextVal;
+            qtyInput.dispatchEvent(new Event('input'));
+        }
 
-                            <!-- CTA -->
-                            <button type="submit" id="book-tour-btn" {{ $slots == 0 ? 'disabled' : '' }}
-                                class="w-full py-3.5 mt-2 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm font-medium shadow-xs transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                <i class="fa-solid fa-bookmark mr-2"></i> Giữ Chỗ Ngay
-                            </button>
+        document.addEventListener('DOMContentLoaded', () => {
+            const maxSlots = {{ $slots }};
+            const qtyInput = document.getElementById('tour-quantity-input');
+            const seatLabel = document.getElementById('seat-status-label');
+            const bookBtn = document.getElementById('book-tour-btn');
+            const errMsg = document.getElementById('quantity-error-msg');
 
-                            <script>
-                                document.addEventListener('DOMContentLoaded', () => {
-                                    const maxSlots = {{ $slots }};
-                                    const qtyInput = document.getElementById('tour-quantity-input');
-                                    const seatLabel = document.getElementById('seat-status-label');
-                                    const bookBtn = document.getElementById('book-tour-btn');
-                                    const errMsg = document.getElementById('quantity-error-msg');
+            if(qtyInput) {
+                qtyInput.addEventListener('input', () => {
+                    let currentVal = parseInt(qtyInput.value) || 0;
+                    
+                    if (currentVal < 0) {
+                        currentVal = 1;
+                        qtyInput.value = 1;
+                    }
 
-                                    if(qtyInput) {
-                                        qtyInput.addEventListener('input', () => {
-                                            let currentVal = parseInt(qtyInput.value) || 0;
-                                            
-                                            if (currentVal < 0) {
-                                                currentVal = 1;
-                                                qtyInput.value = 1;
-                                            }
-
-                                            // Hiển thị số lượng còn dư
-                                            let remaining = maxSlots - currentVal;
-                                            
-                                            if (remaining < 0) {
-                                                seatLabel.innerHTML = 'Còn trống: 0';
-                                                seatLabel.classList.replace('text-rose-600', 'text-white');
-                                                seatLabel.classList.replace('bg-rose-100', 'bg-rose-500');
-                                                errMsg.classList.remove('hidden');
-                                                bookBtn.disabled = true;
-                                            } else {
-                                                seatLabel.innerHTML = 'Còn trống: ' + remaining;
-                                                seatLabel.classList.replace('text-white', 'text-rose-600');
-                                                seatLabel.classList.replace('bg-rose-500', 'bg-rose-100');
-                                                errMsg.classList.add('hidden');
-                                                bookBtn.disabled = (maxSlots === 0);
-                                            }
-                                        });
-                                    }
-                                });
-                            </script>
+                    // Hiển thị số lượng còn dư
+                    let remaining = maxSlots - currentVal;
+                    
+                    if (remaining < 0) {
+                        seatLabel.innerHTML = 'Còn trống: 0';
+                        seatLabel.classList.replace('text-rose-600', 'text-white');
+                        seatLabel.classList.replace('bg-rose-50', 'bg-rose-500');
+                        errMsg.classList.remove('hidden');
+                        bookBtn.disabled = true;
+                    } else {
+                        seatLabel.innerHTML = 'Còn trống: ' + remaining;
+                        seatLabel.classList.replace('text-white', 'text-rose-600');
+                        seatLabel.classList.replace('bg-rose-500', 'bg-rose-50');
+                        errMsg.classList.add('hidden');
+                        bookBtn.disabled = (maxSlots === 0);
+                    }
+                });
+            }
+        });
+    </script>
 
                         </form>
 
