@@ -171,28 +171,35 @@
                         </div>
 
                         <div>
-                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Cập nhật (Thêm/Sửa) ảnh mô tả phụ</label>
-                            <label class="flex flex-col items-center justify-center w-full h-48 border-2 border-slate-200 dark:border-slate-800 border-dashed rounded-2xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                            <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Thêm ảnh mô tả phụ vào bộ sưu tập</label>
+                            <label class="flex flex-col items-center justify-center w-full h-40 border-2 border-slate-200 dark:border-slate-800 border-dashed rounded-2xl cursor-pointer bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                     <i class="fa-regular fa-images text-3xl text-slate-400 mb-2"></i>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400 font-medium"><span class="text-orange-500">Tải nhiều ảnh mới lên</span> (sẽ ghi đè)</p>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 font-medium"><span class="text-orange-500">Tải thêm ảnh lên</span></p>
                                 </div>
-                                <input type="file" name="files[]" multiple class="hidden" accept="image/*" onchange="previewGallery(event)">
+                                <input type="file" id="edit-gallery-input" name="files[]" multiple class="hidden" accept="image/*" onchange="previewGallery(event)">
                             </label>
+
+                            <div id="new-gallery-preview" class="mt-4 grid grid-cols-3 sm:grid-cols-4 gap-3 hidden"></div>
                             
                             @if(count($tour->images))
-                                <div id="gallery-wrapper" class="mt-4">
-                                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">Các ảnh hiện tại:</p>
-                                    <div class="grid grid-cols-4 sm:grid-cols-5 gap-2">
+                                <div id="gallery-wrapper" class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 flex items-center justify-between">
+                                        <span>Các ảnh phụ hiện tại (bấm nút x để xóa ảnh lỗi):</span>
+                                        <span class="text-[10px] text-slate-400">{{ count($tour->images) }} ảnh</span>
+                                    </p>
+                                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
                                         @foreach ($tour->images as $img)
-                                            <div class="aspect-square rounded-lg overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800">
-                                                <img src="{{ asset($img->image) }}" class="w-full h-full object-cover">
+                                            <div class="relative aspect-square rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 group" id="existing-img-{{ $img->id }}">
+                                                <img src="{{ Str::startsWith($img->image, ['http://', 'https://']) ? $img->image : asset($img->image) }}" class="w-full h-full object-cover">
+                                                <button type="button" onclick="deleteExistingImage({{ $img->id }})" class="absolute top-1.5 right-1.5 w-6 h-6 bg-rose-600 hover:bg-rose-700 text-white rounded-full flex items-center justify-center text-xs shadow-md transition-colors" title="Xóa ảnh này">
+                                                    <i class="fa-solid fa-xmark"></i>
+                                                </button>
                                             </div>
                                         @endforeach
                                     </div>
                                 </div>
                             @endif
-                            <div id="gallery-preview" class="mt-4 grid grid-cols-4 gap-2 hidden"></div>
                         </div>
                     </div>
                 </section>
@@ -266,26 +273,82 @@
         }
     }
 
+    let editGalleryDT = new DataTransfer();
+
     function previewGallery(event) {
-        const files = event.target.files;
-        const container = document.getElementById('gallery-preview');
-        const wrapper = document.getElementById('gallery-wrapper');
-        
-        container.innerHTML = ''; 
-        if(files.length > 0) {
+        const input = document.getElementById('edit-gallery-input');
+        if (!input) return;
+
+        for (let i = 0; i < event.target.files.length; i++) {
+            editGalleryDT.items.add(event.target.files[i]);
+        }
+        input.files = editGalleryDT.files;
+        renderNewGalleryPreview();
+    }
+
+    function removeNewGalleryItem(index) {
+        const input = document.getElementById('edit-gallery-input');
+        const newDT = new DataTransfer();
+        for (let i = 0; i < editGalleryDT.files.length; i++) {
+            if (i !== index) {
+                newDT.items.add(editGalleryDT.files[i]);
+            }
+        }
+        editGalleryDT = newDT;
+        if (input) input.files = editGalleryDT.files;
+        renderNewGalleryPreview();
+    }
+
+    function renderNewGalleryPreview() {
+        const container = document.getElementById('new-gallery-preview');
+        if (!container) return;
+        container.innerHTML = '';
+
+        if (editGalleryDT.files.length > 0) {
             container.classList.remove('hidden');
-            if(wrapper) wrapper.classList.add('hidden'); // Ẩn ảnh cũ khi chọn ảnh mới
-            
-            for (let i = 0; i < files.length; i++) {
-                const img = document.createElement('img');
-                img.src = URL.createObjectURL(files[i]);
-                img.className = 'w-full aspect-square object-cover rounded-lg shadow-sm border border-slate-100 dark:border-slate-800';
-                container.appendChild(img);
+            for (let i = 0; i < editGalleryDT.files.length; i++) {
+                const file = editGalleryDT.files[i];
+                const div = document.createElement('div');
+                div.className = 'relative aspect-square rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 group';
+                div.innerHTML = `
+                    <img src="${URL.createObjectURL(file)}" class="w-full h-full object-cover">
+                    <button type="button" onclick="removeNewGalleryItem(${i})" class="absolute top-1.5 right-1.5 w-6 h-6 bg-rose-600 hover:bg-rose-700 text-white rounded-full flex items-center justify-center text-xs shadow-md transition-colors" title="Bỏ ảnh này">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                container.appendChild(div);
             }
         } else {
             container.classList.add('hidden');
-            if(wrapper) wrapper.classList.remove('hidden');
         }
+    }
+
+    function deleteExistingImage(imgId) {
+        if (!confirm('Bạn có chắc chắn muốn xóa ảnh phụ này khỏi tour?')) return;
+
+        const csrfToken = '{{ csrf_token() }}';
+        const url = '{{ route("admin.tours.deleteImage", ":id") }}'.replace(':id', imgId);
+
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Accept': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                const el = document.getElementById('existing-img-' + imgId);
+                if (el) el.remove();
+            } else {
+                alert('Không thể xóa ảnh. Vui lòng thử lại!');
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Lỗi kết nối khi xóa ảnh!');
+        });
     }
 </script>
 @endsection

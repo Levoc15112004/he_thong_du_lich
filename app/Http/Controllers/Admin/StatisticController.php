@@ -50,51 +50,82 @@ class StatisticController extends Controller
         );
     }
 
-    // báo cáo theo tuần
+    // báo cáo tổng hợp doanh thu
     public function index(Request $request)
     {
         $month = $request->month;
-        $year  = $request->year;
+        $year  = $request->year ?? date('Y');
 
-        // lưu tuần hiện tại
+        // Snapshot tuần hiện tại
         $this->saveWeeklyStatistics(now());
 
-       //truy vấn thống kê từ DB
-        $statisticsQuery = DB::table('statistics');
+        // Truy vấn đơn hàng hợp lệ (không tính đơn hủy status = 4)
+        $ordersBaseQuery = DB::table('orders')->where('status', '!=', 4);
 
-        // filter theo tháng (các tuần trong tháng)
         if ($month) {
-            $statisticsQuery
-                ->whereMonth('date', $month)
-                ->whereYear('date', $year ?? date('Y'));
-        }
-        // filter theo năm
-        elseif ($year) {
-            $statisticsQuery->whereYear('date', $year);
-        }
-        // mặc định năm hiện tại
-        else {
-            $statisticsQuery->whereYear('date', date('Y'));
+            $ordersBaseQuery->whereMonth('created_at', $month)->whereYear('created_at', $year);
+        } elseif ($year) {
+            $ordersBaseQuery->whereYear('created_at', $year);
         }
 
-        // tổng quan
-        $totalRevenue = (clone $statisticsQuery)->sum('total_revenue');
-        $totalOrders  = (clone $statisticsQuery)->sum('total_orders');
+        // Tổng doanh thu & tổng đơn hàng từ orders
+        $totalRevenue = (clone $ordersBaseQuery)->sum('total_price');
+        $totalOrders  = (clone $ordersBaseQuery)->count();
         $totalUsers   = DB::table('users')->count();
 
-        // doanh thu theo tuần
-        $revenueByWeek = (clone $statisticsQuery)
+        // Nếu filter không có đơn, lấy toàn bộ đơn không hủy làm số liệu tổng quan
+        if ($totalRevenue == 0 && !$month && $year == date('Y')) {
+            $totalRevenue = DB::table('orders')->where('status', '!=', 4)->sum('total_price');
+            $totalOrders  = DB::table('orders')->where('status', '!=', 4)->count();
+        }
+
+        // Dữ liệu biểu đồ theo chu kỳ
+        if ($month) {
+            $revenueByWeek = DB::table('orders')
+                ->where('status', '!=', 4)
+                ->whereMonth('created_at', $month)
+                ->whereYear('created_at', $year)
+                ->select(
+                    DB::raw('DATE(created_at) as week_start'),
+                    DB::raw('SUM(total_price) as revenue'),
+                    DB::raw('COUNT(id) as total_orders')
+                )
+                ->groupBy(DB::raw('DATE(created_at)'))
+                ->orderBy('week_start')
+                ->get();
+        } else {
+            $revenueByWeek = DB::table('orders')
+                ->where('status', '!=', 4)
+                ->whereYear('created_at', $year)
+                ->select(
+                    DB::raw('MIN(DATE(created_at)) as week_start'),
+                    DB::raw('MONTH(created_at) as month_num'),
+                    DB::raw('SUM(total_price) as revenue'),
+                    DB::raw('COUNT(id) as total_orders')
+                )
+                ->groupBy(DB::raw('MONTH(created_at)'))
+                ->orderBy('month_num')
+                ->get();
+        }
+
+        // Doanh thu theo tháng
+        $revenueByMonth = DB::table('orders')
+            ->where('status', '!=', 4)
             ->select(
-                'date as week_start',
-                'total_revenue as revenue',
-                'total_orders'
+                DB::raw('YEAR(created_at) as year'),
+                DB::raw('MONTH(created_at) as month'),
+                DB::raw('SUM(total_price) as revenue'),
+                DB::raw('COUNT(id) as orders')
             )
-            ->orderBy('week_start')
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
             ->get();
 
-        // top tour
+        // Top tour bán chạy
         $topTours = DB::table('orders')
             ->join('tours', 'orders.tour_id', '=', 'tours.id')
+            ->where('orders.status', '!=', 4)
             ->select(
                 'tours.name',
                 DB::raw('COUNT(orders.id) as total_orders'),
@@ -102,7 +133,7 @@ class StatisticController extends Controller
             )
             ->when($month, function ($q) use ($month, $year) {
                 $q->whereMonth('orders.created_at', $month)
-                  ->whereYear('orders.created_at', $year ?? date('Y'));
+                  ->whereYear('orders.created_at', $year);
             })
             ->when(!$month && $year, function ($q) use ($year) {
                 $q->whereYear('orders.created_at', $year);
@@ -112,60 +143,32 @@ class StatisticController extends Controller
             ->limit(10)
             ->get();
 
-            //  so sánh tuần
-        $currentWeek = now()->startOfWeek(Carbon::MONDAY)->toDateString();
-        $previousWeek = now()->subWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
+        // So sánh tuần này vs tuần trước
+        $startThisWeek = now()->startOfWeek(Carbon::MONDAY);
+        $endThisWeek   = now()->endOfWeek(Carbon::SUNDAY);
+        $startLastWeek = now()->subWeek()->startOfWeek(Carbon::MONDAY);
+        $endLastWeek   = now()->subWeek()->endOfWeek(Carbon::SUNDAY);
 
-        $currentWeekRevenue = DB::table('statistics')
-            ->where('date', $currentWeek)
-            ->value('total_revenue') ?? 0;
-
-        $previousWeekRevenue = DB::table('statistics')
-            ->where('date', $previousWeek)
-            ->value('total_revenue') ?? 0;
+        $currentWeekRevenue  = DB::table('orders')->where('status', '!=', 4)->whereBetween('created_at', [$startThisWeek, $endThisWeek])->sum('total_price');
+        $previousWeekRevenue = DB::table('orders')->where('status', '!=', 4)->whereBetween('created_at', [$startLastWeek, $endLastWeek])->sum('total_price');
 
         $revenueChangePercent = 0;
         if ($previousWeekRevenue > 0) {
-            $revenueChangePercent =
-                (($currentWeekRevenue - $previousWeekRevenue) / $previousWeekRevenue) * 100;
+            $revenueChangePercent = (($currentWeekRevenue - $previousWeekRevenue) / $previousWeekRevenue) * 100;
+        } elseif ($currentWeekRevenue > 0) {
+            $revenueChangePercent = 100;
         }
 
-        // doanh thu theo tháng
-        $revenueByMonth = DB::table('statistics')
-            ->select(
-                DB::raw('YEAR(date) as year'),
-                DB::raw('MONTH(date) as month'),
-                DB::raw('SUM(total_revenue) as revenue'),
-                DB::raw('SUM(total_orders) as orders')
-            )
-            ->groupBy('year', 'month')
-            ->orderBy('year', 'desc')
-            ->orderBy('month', 'desc')
-            ->get();
-
-
         return view('admins.Reports.index', [
-
-            // tổng quan
             'totalRevenue' => $totalRevenue,
             'totalOrders'  => $totalOrders,
             'totalUsers'   => $totalUsers,
-
-            // theo tuần
             'revenueByWeek' => $revenueByWeek,
-
-            // theo tháng
             'revenueByMonth' => $revenueByMonth,
-
-            // so sánh
             'currentWeekRevenue'  => $currentWeekRevenue,
             'previousWeekRevenue' => $previousWeekRevenue,
             'revenueChangePercent' => round($revenueChangePercent, 2),
-
-            // top
             'topTours' => $topTours,
-
-            // filter
             'filter' => [
                 'month' => $month,
                 'year'  => $year,

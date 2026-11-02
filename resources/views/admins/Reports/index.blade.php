@@ -205,8 +205,12 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     @php
-        $labels = $revenueByWeek->map(function ($item) {
-            return 'Ngày ' . \Carbon\Carbon::parse($item->week_start)->format('d/m');
+        $labels = $revenueByWeek->map(function ($item) use ($filter) {
+            $isMonthFilter = !empty($filter['month']);
+            if ($isMonthFilter) {
+                return 'Ngày ' . \Carbon\Carbon::parse($item->week_start)->format('d/m');
+            }
+            return isset($item->month_num) ? 'Tháng ' . $item->month_num : 'Ngày ' . \Carbon\Carbon::parse($item->week_start)->format('d/m');
         });
     @endphp
 

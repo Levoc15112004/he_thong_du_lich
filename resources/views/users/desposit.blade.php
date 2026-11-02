@@ -83,24 +83,38 @@
                     <i class="fa-solid fa-wallet text-orange-500"></i> Chọn phương thức giao dịch
                 </h2>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 mb-8">
                     
                     <!-- MOMO BLOCK -->
                     <label class="payment-option cursor-pointer block h-full">
                         <input type="radio" id="payment_momo" name="payment_method" value="momo" class="hidden" checked>
-                        <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-5 flex flex-col items-center justify-center text-center gap-3 overflow-hidden">
-                            <!-- Selected Ring -->
-                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
-                                <i class="fa-solid fa-check text-[10px]"></i>
+                        <div class="payment-card h-full relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-3.5 flex flex-col items-center justify-center text-center gap-2 overflow-hidden">
+                            <div class="card-ring absolute top-2.5 right-2.5 w-5 h-5 rounded-full bg-[#863c20] text-white flex items-center justify-center shadow-xs">
+                                <i class="fa-solid fa-check text-[9px]"></i>
                             </div>
-                            
-                            <div class="w-16 h-16 bg-[#A50064]/10 rounded-2xl flex items-center justify-center p-2 mb-1 shadow-sm">
+                            <div class="w-12 h-12 bg-[#A50064]/10 rounded-xl flex items-center justify-center p-1.5 shadow-sm">
                                 <img src="{{ asset('fontend/img/momo.svg') }}" class="w-full h-full object-contain" alt="Ví MoMo">
                             </div>
-                            
                             <div>
-                                <h3 class="text-sm sm:text-base font-bold text-slate-800">Ví MoMo</h3>
-                                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Quét mã QR siêu tốc</p>
+                                <h3 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-white">Ví MoMo</h3>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Quét QR tức thì</p>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- VIETQR BANK TRANSFER BLOCK -->
+                    <label class="payment-option cursor-pointer block h-full">
+                        <input type="radio" id="payment_bank" name="payment_method" value="bank" class="hidden">
+                        <div class="payment-card h-full relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-3.5 flex flex-col items-center justify-center text-center gap-2 overflow-hidden">
+                            <div class="card-ring absolute top-2.5 right-2.5 w-5 h-5 rounded-full bg-[#863c20] text-white flex items-center justify-center shadow-xs">
+                                <i class="fa-solid fa-check text-[9px]"></i>
+                            </div>
+                            <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-950/60 rounded-xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-2xl shadow-sm">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-white">Chuyển Khoản</h3>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">VietQR 24/7</p>
                             </div>
                         </div>
                     </label>
@@ -108,19 +122,16 @@
                     <!-- PAYPAL BLOCK -->
                     <label class="payment-option cursor-pointer block h-full">
                         <input type="radio" id="payment_paypal" name="payment_method" value="paypal" class="hidden">
-                        <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-5 flex flex-col items-center justify-center text-center gap-3 overflow-hidden">
-                            <!-- Selected Ring -->
-                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
-                                <i class="fa-solid fa-check text-[10px]"></i>
+                        <div class="payment-card h-full relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-3.5 flex flex-col items-center justify-center text-center gap-2 overflow-hidden">
+                            <div class="card-ring absolute top-2.5 right-2.5 w-5 h-5 rounded-full bg-[#863c20] text-white flex items-center justify-center shadow-xs">
+                                <i class="fa-solid fa-check text-[9px]"></i>
                             </div>
-                            
-                            <div class="w-16 h-16 bg-[#003087]/10 rounded-2xl flex items-center justify-center p-2 mb-1 shadow-sm text-[#003087]">
-                                <i class="fa-brands fa-paypal text-3xl"></i>
+                            <div class="w-12 h-12 bg-[#003087]/10 rounded-xl flex items-center justify-center text-[#003087] text-2xl shadow-sm">
+                                <i class="fa-brands fa-paypal"></i>
                             </div>
-                            
                             <div>
-                                <h3 class="text-sm sm:text-base font-bold text-slate-800">Cổng PayPal</h3>
-                                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Thẻ Visa/Mastercard</p>
+                                <h3 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-white">Cổng PayPal</h3>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Visa/Mastercard</p>
                             </div>
                         </div>
                     </label>
@@ -128,57 +139,81 @@
                     <!-- DIRECT/CASH BLOCK -->
                     <label class="payment-option cursor-pointer block h-full">
                         <input type="radio" id="payment_cash" name="payment_method" value="cash" class="hidden">
-                        <div class="payment-card h-full relative bg-white/80 backdrop-blur-sm border-2 border-slate-200/60 rounded-3xl p-5 flex flex-col items-center justify-center text-center gap-3 overflow-hidden">
-                            <!-- Selected Ring -->
-                            <div class="card-ring absolute top-4 right-4 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
-                                <i class="fa-solid fa-check text-[10px]"></i>
+                        <div class="payment-card h-full relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-3.5 flex flex-col items-center justify-center text-center gap-2 overflow-hidden">
+                            <div class="card-ring absolute top-2.5 right-2.5 w-5 h-5 rounded-full bg-[#863c20] text-white flex items-center justify-center shadow-xs">
+                                <i class="fa-solid fa-check text-[9px]"></i>
                             </div>
-                            
-                            <div class="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center p-2 mb-1 text-orange-500 shadow-sm">
-                                <i class="fa-solid fa-store text-3xl"></i>
+                            <div class="w-12 h-12 bg-amber-50 dark:bg-amber-950/60 rounded-xl flex items-center justify-center text-[#863c20] text-2xl shadow-sm">
+                                <i class="fa-solid fa-building-columns"></i>
                             </div>
-                            
                             <div>
-                                <h3 class="text-sm sm:text-base font-bold text-slate-800">Tại quầy</h3>
-                                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Nộp tiền trực tiếp</p>
+                                <h3 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-white">Tại văn phòng</h3>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Nộp tiền trực tiếp</p>
                             </div>
                         </div>
                     </label>
                 </div>
 
                 <!-- DYNAMIC ACTION BUTTON AREA -->
-                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-bl-full pointer-events-none"></div>
-                    <p class="text-sm font-bold text-slate-800 mb-4 relative z-10">Tiến hành thanh toán</p>
+                <div class="bg-white dark:bg-slate-800/90 p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden">
+                    <p class="text-xs sm:text-sm font-bold text-slate-800 dark:text-white mb-4">Chi tiết thanh toán đã chọn</p>
                     
-                    <!-- MoMo Button -->
+                    <!-- 1. MoMo Button -->
                     <form action="{{ route('momo.deposit', $order->id) }}" method="POST" id="form-momo" class="relative z-10 w-full">
                         @csrf
-                        <button type="submit" class="w-full bg-gradient-to-r from-[#A50064] to-[#C8107A] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-colors duration-200 shadow-xl shadow-pink-500/20 flex items-center justify-center gap-3">
-                            <i class="fa-solid fa-qrcode text-lg"></i> Thanh toán bằng MoMo ({{ number_format($deposit_amount) }}đ)
+                        <button type="submit" class="w-full bg-[#A50064] hover:bg-[#850050] text-white py-3.5 px-6 rounded-xl font-bold text-sm transition-colors shadow-sm flex items-center justify-center gap-2.5">
+                            <i class="fa-solid fa-qrcode text-base"></i> Thanh toán cọc qua Ví MoMo ({{ number_format($deposit_amount) }}đ)
                         </button>
+                        <p class="text-center text-[11px] text-slate-500 dark:text-slate-400 mt-3">Quét mã QR MoMo để thanh toán cọc tức thì.</p>
                     </form>
 
-                    <!-- PayPal Button -->
+                    <!-- 2. VietQR Bank Transfer Box -->
+                    <div id="wrapper-bank" class="hidden relative z-10 w-full space-y-4">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center gap-5">
+                            <div class="w-36 h-36 bg-white p-2 rounded-xl shadow-xs border border-slate-200 shrink-0 flex items-center justify-center">
+                                <img src="https://img.vietqr.io/image/MB-0909888999-compact2.png?amount={{ (int)$deposit_amount }}&addInfo=WANDERLUST%20DH{{ $order->id }}&accountName=CONG%20TY%20DU%20LICH%20WANDERLUST" 
+                                     class="w-full h-full object-contain" alt="VietQR MBBank">
+                            </div>
+                            <div class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300 w-full">
+                                <p><span class="text-slate-400">Ngân hàng:</span> <strong class="text-slate-900 dark:text-white">MB Bank (Quân Đội)</strong></p>
+                                <p><span class="text-slate-400">Số tài khoản:</span> <strong class="text-slate-900 dark:text-white font-mono text-sm">0909888999</strong></p>
+                                <p><span class="text-slate-400">Chủ tài khoản:</span> <strong class="text-slate-900 dark:text-white">CONG TY DU LICH WANDERLUST</strong></p>
+                                <p><span class="text-slate-400">Số tiền cọc (30%):</span> <strong class="text-emerald-600 font-bold text-sm">{{ number_format($deposit_amount) }}đ</strong></p>
+                                <p><span class="text-slate-400">Nội dung CK:</span> <strong class="text-[#863c20] font-mono font-bold">WANDERLUST DH{{ $order->id }}</strong></p>
+                            </div>
+                        </div>
+
+                        <a href="{{ route('tour.thankyou', $order->id) }}?method=bank" 
+                           class="block w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3.5 px-6 rounded-xl font-bold text-sm text-center transition-colors shadow-xs">
+                            <i class="fa-solid fa-check-circle mr-2"></i> Tôi đã chuyển khoản cọc thành công
+                        </a>
+                    </div>
+
+                    <!-- 3. PayPal Button -->
                     <form action="{{ route('paypal.create', $order->id) }}" method="POST" id="form-paypal" class="hidden relative z-10 w-full">
                         @csrf
-                        <button type="submit" class="w-full bg-gradient-to-r from-[#0070BA] to-[#003087] text-white py-4 px-6 rounded-2xl font-extrabold text-base hover:brightness-110 hover:-translate-y-1 transition-colors duration-200 shadow-xl shadow-blue-500/20 flex items-center justify-center gap-3">
-                            <i class="fa-brands fa-paypal text-xl"></i> Thanh toán bằng PayPal (~${{ number_format(round($deposit_amount / 24000, 2), 2) }} USD)
+                        <button type="submit" class="w-full bg-[#003087] hover:bg-[#00205b] text-white py-3.5 px-6 rounded-xl font-bold text-sm transition-colors shadow-sm flex items-center justify-center gap-2.5">
+                            <i class="fa-brands fa-paypal text-base"></i> Thanh toán bằng PayPal (~${{ number_format(round($deposit_amount / 24000, 2), 2) }} USD)
                         </button>
-                        <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">
-                            <i class="fa-solid fa-shield-halved text-blue-500"></i> Hỗ trợ số dư PayPal và thẻ Visa/Mastercard quốc tế.
-                        </p>
+                        <p class="text-center text-[11px] text-slate-500 dark:text-slate-400 mt-3">Hỗ trợ số dư tài khoản PayPal và thẻ Visa / MasterCard quốc tế.</p>
                     </form>
 
-                    <!-- Direct/Cash Button -->
-                    <div id="wrapper-cash" class="hidden relative z-10 w-full">
+                    <!-- 4. Direct/Cash Button -->
+                    <div id="wrapper-cash" class="hidden relative z-10 w-full space-y-4">
+                        <div class="p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 space-y-2">
+                            <p class="font-bold text-sm text-[#863c20] dark:text-amber-400"><i class="fa-solid fa-location-dot mr-1.5"></i> Văn phòng giao dịch Wanderlust Travel:</p>
+                            <p><strong>Địa chỉ:</strong> Tòa nhà Keangnam Landmark 72, Đường Phạm Hùng, Nam Từ Liêm, Hà Nội</p>
+                            <p><strong>Giờ làm việc:</strong> 08:00 - 18:00 (Thứ 2 đến Thứ 7)</p>
+                            <p><strong>Hotline:</strong> 1900 888 999 • Hotline tư vấn 24/7</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 border-t border-amber-200 dark:border-amber-800/60">
+                                <i>Lưu ý: Chỗ của Quý khách sẽ được tạm giữ trong 24 giờ để hoàn tất nộp tiền cọc tại văn phòng.</i>
+                            </p>
+                        </div>
+
                         <a href="{{ route('tour.thankyou', $order->id) }}?method=cash" 
-                           class="block w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-4 px-6 rounded-2xl font-extrabold text-base text-center hover:-translate-y-1 transition-colors duration-200 shadow-xl shadow-xs">
-                            <i class="fa-solid fa-check-to-slot mr-2"></i> Xác nhận & Thanh toán tại văn phòng
+                           class="block w-full bg-[#863c20] hover:bg-[#a34c2a] text-white py-3.5 px-6 rounded-xl font-bold text-sm text-center transition-colors shadow-xs">
+                            <i class="fa-solid fa-check-to-slot mr-2"></i> Xác nhận giữ chỗ & Nộp cọc tại văn phòng
                         </a>
-                        <p class="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5 font-medium">
-                            <i class="fa-solid fa-circle-info text-amber-500"></i> Giữ chỗ sẽ được kích hoạt tức thì.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -255,30 +290,34 @@
 
 <script>
     const momoRadio = document.getElementById('payment_momo');
+    const bankRadio = document.getElementById('payment_bank');
     const paypalRadio = document.getElementById('payment_paypal');
     const cashRadio = document.getElementById('payment_cash');
 
     const momoForm = document.getElementById('form-momo');
+    const bankWrapper = document.getElementById('wrapper-bank');
     const paypalForm = document.getElementById('form-paypal');
     const cashWrapper = document.getElementById('wrapper-cash');
 
     function togglePaymentButtons() {
+        if (momoForm) momoForm.classList.add('hidden');
+        if (bankWrapper) bankWrapper.classList.add('hidden');
+        if (paypalForm) paypalForm.classList.add('hidden');
+        if (cashWrapper) cashWrapper.classList.add('hidden');
+
         if (momoRadio && momoRadio.checked) {
-            momoForm.classList.remove('hidden');
-            if (paypalForm) paypalForm.classList.add('hidden');
-            cashWrapper.classList.add('hidden');
+            if (momoForm) momoForm.classList.remove('hidden');
+        } else if (bankRadio && bankRadio.checked) {
+            if (bankWrapper) bankWrapper.classList.remove('hidden');
         } else if (paypalRadio && paypalRadio.checked) {
-            momoForm.classList.add('hidden');
             if (paypalForm) paypalForm.classList.remove('hidden');
-            cashWrapper.classList.add('hidden');
-        } else {
-            momoForm.classList.add('hidden');
-            if (paypalForm) paypalForm.classList.add('hidden');
-            cashWrapper.classList.remove('hidden');
+        } else if (cashRadio && cashRadio.checked) {
+            if (cashWrapper) cashWrapper.classList.remove('hidden');
         }
     }
 
     if (momoRadio) momoRadio.addEventListener('change', togglePaymentButtons);
+    if (bankRadio) bankRadio.addEventListener('change', togglePaymentButtons);
     if (paypalRadio) paypalRadio.addEventListener('change', togglePaymentButtons);
     if (cashRadio) cashRadio.addEventListener('change', togglePaymentButtons);
 

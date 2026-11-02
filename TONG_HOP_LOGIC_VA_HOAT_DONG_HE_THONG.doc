@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head><meta charset="utf-8">
+<title>Tài Liệu Tổng Hợp Toàn Bộ Logic, Hoạt Động Component & API - Wanderlust Travel</title>
+<!--[if gte mso 9]>
+<xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml>
+<![endif]-->
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1a1e22; padding: 30px; }
+  h1 { font-size: 24pt; color: #863c20; border-bottom: 2pt solid #863c20; padding-bottom: 8px; font-family: 'Georgia', serif; }
+  h2 { font-size: 16pt; color: #1a443c; border-bottom: 1pt solid #cbd5e1; padding-bottom: 5px; margin-top: 25px; font-family: 'Georgia', serif; }
+  h3 { font-size: 13pt; color: #863c20; margin-top: 18px; font-weight: bold; }
+  p, li { font-size: 10.5pt; color: #334155; text-align: justify; }
+  table { width: 100%; border-collapse: collapse; margin: 15px 0 25px 0; font-size: 10pt; }
+  th { background-color: #f1f5f9; color: #0f172a; font-weight: bold; border: 1px solid #cbd5e1; padding: 10px; text-align: left; }
+  td { border: 1px solid #e2e8f0; padding: 8px 10px; vertical-align: top; }
+  tr:nth-child(even) { background-color: #fafaf9; }
+  .badge { display: inline-block; padding: 2px 8px; font-size: 8.5pt; font-weight: bold; border-radius: 4px; }
+  .badge-get { background: #e0f2fe; color: #0369a1; }
+  .badge-post { background: #dcfce7; color: #15803d; }
+  .callout { background: #faf8f5; border-left: 4px solid #b85e3a; padding: 12px 16px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+  code { background: #f1f5f9; color: #b85e3a; padding: 2px 5px; border-radius: 4px; font-family: Consolas, monospace; }
+  pre { background: #0f172a; color: #f8fafc; padding: 12px; border-radius: 6px; font-family: Consolas, monospace; font-size: 9pt; }
+</style>
+</head><body>
+<h1>TÀI LIỆU KỸ THUẬT: TỔNG HỢP LOGIC, CÁCH THỨC HOẠT ĐỘNG CÁC COMPONENT VÀ HỆ THỐNG API</h1>
+<p><strong>Dự án:</strong> Hệ Thống Lữ Hành & Đặt Tour Du Lịch Toàn Quốc (Wanderlust Travel Vietnam)</p>
+<p><strong>Tech Stack:</strong> Laravel 9 (PHP 8.1), MySQL / TiDB Cloud, Apache 2.4, Docker, Tailwind CSS, Leaflet Maps, MoMo, PayPal SDK, Gemini & Groq AI Engine.</p>
+<hr/>
+<h2>PHẦN 1: KIẾN TRÚC HỆ THỐNG & TECH STACK</h2>
+<p>Dự án được xây dựng theo kiến trúc Monolith MVC (Model - View - Controller) mở rộng:</p>
+<ul>
+  <li><strong>Backend Core:</strong> Laravel 9 Framework trên nền PHP 8.1, sử dụng Eloquent ORM, Session Handler, Queue/Jobs và Middleware phân quyền (RBAC).</li>
+  <li><strong>Database Layer:</strong> MySQL 8.0 tương thích 100% với TiDB Cloud Serverless (phục vụ môi trường Cloud Production không độ trễ).</li>
+  <li><strong>Frontend Layer:</strong> Blade Template Engine kết hợp Tailwind CSS (Universal Dark/Light Theme System), Font Awesome 6, bản đồ tương tác Leaflet.js và JavaScript ES6+.</li>
+  <li><strong>AI Integration:</strong> Module tư vấn lữ hành tự động kết hợp Google Gemini 2.0 Flash / Groq LLM API và Rule Engine tra cứu trực tiếp Database.</li>
+  <li><strong>Payment Gateways:</strong> Cổng thanh toán MoMo QR Code (xác thực HMAC SHA256) và PayPal REST API Client SDK quốc tế.</li>
+</ul>
+<hr/>
+<h2>PHẦN 2: LOGIC & CƠ CHẾ HOẠT ĐỘNG CÁC COMPONENT FRONTEND (CLIENT)</h2>
+<h3>1. Master Layout (users/master.blade.php)</h3>
+<div class="callout">Khung xương toàn bộ giao diện khách hàng, chứa logic nạp CSS/JS, chế độ giao diện Sáng/Tối, Header điều hướng, Hotline, Giỏ hàng, Drawer Mobile và Widget Tư vấn trực tuyến.</div>
+<ul>
+  <li><strong>Cơ chế Universal Dark/Light Theme:</strong> Kiểm tra <code>localStorage.getItem('theme')</code> ngay tại <code>&lt;head&gt;</code> trước khi render DOM. Nếu là <code>dark</code>, gắn class <code>dark</code> vào thẻ <code>&lt;html&gt;</code>. Toàn bộ các biến màu CSS Token tự động đồng bộ, không gây chớp nháy (FOUC).</li>
+  <li><strong>Header Dynamic Sticky & Scroll Transition:</strong> Tại Hero Banner thanh trong suốt. Khi cuộn trang quá 60px, JavaScript tự động chuyển sang nền trắng mờ và chữ tự đổi màu tương phản.</li>
+  <li><strong>Widget Tư Vấn Lữ Hành (Concierge Chat Widget):</strong> Biểu tượng tai nghe tư vấn bản địa cố định góc dưới bên phải. Khi mở, kết nối tới API <code>/api/chat</code>. Tự động chuyển đổi các link Markdown trong câu trả lời thành các nút bấm hành động đất nung dẫn thẳng đến trang chi tiết tour.</li>
+  <li><strong>Hero Banner Auto-Slide Engine:</strong> Tự động xoay tua cảnh sau mỗi 4.5 giây (Hà Giang &rarr; Phú Quốc &rarr; Đà Lạt &rarr; Hạ Long). Tự động thay đổi đồng bộ: Video MP4 nền, ảnh poster, tiêu đề tương phản cao, mô tả và nút CTA hành động trực tiếp. Rê chuột vào tự dừng để khách đọc thoải mái.</li>
+</ul>
+
+<h3>2. Trang Chủ (users/home.blade.php)</h3>
+<ul>
+  <li><strong>Thanh Tìm Kiếm (Debounce 350ms & AbortController):</strong> Ô tìm kiếm tích hợp Debounce 350ms. Khi người dùng nhập liên tục, <code>AbortController</code> tự động hủy bỏ request cũ để chống spam server, chỉ gửi 1 request cuối cùng để lấy kết quả gợi ý vào dropdown auto-suggest. Thẻ xu hướng bên dưới bấm vào tự điền và kích hoạt tìm kiếm.</li>
+  <li><strong>Cẩm Nang Khí Hậu & Trạm Thời Tiết:</strong> Tích hợp OpenWeatherMap API, hỗ trợ chuyển đổi nhanh 4 trạm khí tượng: Đà Lạt, Sa Pa, Phú Quốc, Đà Nẵng. Hiển thị nhiệt độ (ngăn ngừa bẻ gãy dòng với <code>whitespace-nowrap</code>), độ ẩm, tốc độ gió, chỉ số UV, khuyến nghị lịch trình và dự báo nhiệt độ 5 ngày tới.</li>
+  <li><strong>Lưới Tour Tiêu Điểm:</strong> Hiển thị các tour có lượt xem và số lượt đặt chỗ cao nhất. Thẻ tour thiết kế chuẩn <code>.travel-card</code>, hiển thị ảnh, số ngày đêm, điểm đến, đánh giá sao và đơn giá khởi điểm kèm chú thích rõ ràng: <em>"Giá từ • Gói xe du lịch"</em>.</li>
+  <li><strong>Form Nhận Tư Vấn Nhanh:</strong> Khách nhập tên, SĐT/Zalo, điểm đến và yêu cầu. Gửi AJAX POST lên <code>/tu-van</code>, tự động lưu thành Notification gửi tới ban quản trị.</li>
+</ul>
+
+<h3>3. Trang Chi Tiết Tour (users/tourDetail.blade.php)</h3>
+<div class="callout">Tích hợp Trình diễn hình ảnh đa phương tiện (Slider & Video Modal), Bản đồ lộ trình vệ tinh Leaflet.js, Timeline khung giờ và Bộ tính giá động thời gian thực (Dynamic Live Pricing).</div>
+<ul>
+  <li><strong>Carousel Trượt Ảnh Tự Động:</strong> Tự động trượt ảnh sau mỗi 3.5 giây, rê chuột vào tự dừng. Có nút tiến/lùi, bộ đếm số ảnh và thanh thumbnail đồng bộ bên dưới.</li>
+  <li><strong>Trình Phát Video Thực Tế 4K (Native HTML5 Video Player Modal):</strong> Nút <em>"Video Review"</em> mở cửa sổ popup phát video 4K chất lượng cao của từng điểm đến bằng thẻ <code>&lt;video controls playsinline&gt;</code>. Triệt tiêu hoàn toàn lỗi chặn bản quyền trên web bên thứ 3 của YouTube.</li>
+  <li><strong>Timeline Lịch Trình Chi Tiết:</strong> Tự động bóc tách mô tả từng ngày thành các block khung giờ: Buổi Sáng (07:30 - 11:30), Buổi Trưa (12:00 - 13:30), Buổi Chiều (14:00 - 17:30) và Buổi Tối (18:30 - 21:30). Không còn ảnh lọ dầu gội lặp lại, hiển thị dạng dòng thời gian full-width chuyên nghiệp.</li>
+  <li><strong>Bản Đồ Lộ Trình Tương Tác (Leaflet.js):</strong> Đọc tọa độ GPS từ API <code>/tour/schedule/{id}/json</code>. Vẽ đường đa tuyến Polyline nối liền các chặng dừng và cắm mốc đánh số từng ngày, kèm nút mở Google Maps dẫn đường.</li>
+  <li><strong>Bộ Chọn Đợt Khởi Hành Định Kỳ:</strong> Cung cấp danh sách các đợt khởi hành cố định sắp tới (Đợt 1 gần nhất, Đợt 2 tuần sau, Đợt 3, Đợt 4 đặt trước) kèm số lượng chỗ còn nhận.</li>
+  <li><strong>Cơ Chế Dynamic Live Pricing (Tính Giá Động):</strong>
+    <p>• Xe ô tô du lịch: +0đ (Đã bao gồm trong giá vé cơ sở).</p>
+    <p>• Vé máy bay khứ hồi (20kg ký gửi) & Đón tiễn: Phụ thu +1.800.000đ/khách.</p>
+    <p>• Khách sạn 3 sao: +0đ (Tiêu chuẩn trọn gói).</p>
+    <p>• Khách sạn 4-5 sao (Deluxe): Phụ thu +800.000đ/khách.</p>
+    <pre>Unit_Price = Base_Price + Transport_Surcharge + Hotel_Surcharge
+Total_Price = Unit_Price * Quantity</pre>
+    <p>Khi khách tick chọn phương tiện, khách sạn hoặc tăng/giảm số khách, giá lớn ở đầu cột và bảng tổng thanh toán nhảy số trực tiếp trên màn hình mà không cần reload trang.</p>
+  </li>
+</ul>
+
+<h3>4. Giỏ Hàng & Thanh Toán (users/cart.blade.php, users/order.blade.php)</h3>
+<ul>
+  <li><strong>Helper Cart (app/Helper/Cart.php):</strong> Lưu trữ giỏ hàng trong Session với Unique Key: <code>$key = $tour->id . $transport . $tour_type . $start_date;</code>. Cho phép đặt cùng 1 tour nhưng khác phương tiện, khách sạn hoặc ngày khởi hành mà không bị trùng đè.</li>
+  <li><strong>Voucher Khuyến Mãi:</strong> Hỗ trợ giảm theo phần trăm (<code>percent</code> kèm mức trần <code>max_discount</code>) hoặc giảm trực tiếp tiền mặt (<code>fixed</code>), kiểm tra giá trị đơn hàng tối thiểu.</li>
+  <li><strong>Checkout Stepper 3 Bước:</strong> Bước 1: Nhập thông tin người đặt & ghi chú. Bước 2: Chọn phương thức thanh toán (MoMo QR Code, PayPal quốc tế, hoặc Tiền mặt). Bước 3: Xác nhận đơn và nhận mã đặt chỗ điện tử.</li>
+</ul>
+<hr/>
+<h2>PHẦN 3: LOGIC & CƠ CHẾ HOẠT ĐỘNG CÁC COMPONENT QUẢN TRỊ (ADMIN PANEL)</h2>
+<h3>1. Admin Layout & Theme System (admins/master.blade.php)</h3>
+<ul>
+  <li><strong>Bảo Mật Phân Quyền (Middleware CheckAdmin):</strong> Chỉ cho phép tài khoản có <code>role === 'admin'</code> truy cập <code>/admin/*</code>. Người dùng thường hoặc khách chưa đăng nhập bị chặn và chuyển hướng về <code>/login-admin</code>.</li>
+  <li><strong>Cấu Hình Tailwind Dark Mode Chuẩn Xác:</strong> Script Tailwind CDN được tải trước khi nạp <code>tailwind.config</code>, đảm bảo toàn bộ giao diện quản trị nhận diện đúng Dark/Light mode theo nút chuyển đổi, triệt tiêu hoàn toàn lỗi vỡ màu hay khối trắng lóa mắt.</li>
+</ul>
+
+<h3>2. Dashboard Báo Cáo Doanh Thu (admins/home.blade.php)</h3>
+<ul>
+  <li><strong>Thống Kê KPI Tự Động:</strong> Tính toán tổng doanh thu lũy kế, tổng số đơn đặt tour trong tháng, tổng người dùng mới, tổng lượt xem tour, kèm tỷ lệ phần trăm tăng/giảm so với tháng trước.</li>
+  <li><strong>Biểu Đồ Doanh Thu Đa Chỉ Số (Chart.js):</strong> Chuyển đổi tab linh hoạt giữa 3 góc nhìn: <em>Doanh Thu & Lợi Nhuận</em>, <em>Đơn Đặt Tour & Giữ Chỗ</em>, <em>Tài Khoản Đăng Ký</em> với các bộ lọc 7 ngày, 30 ngày và Cả năm.</li>
+</ul>
+
+<h3>3. Quản Lý Nghiệp Vụ Tour & Lộ Trình</h3>
+<ul>
+  <li><strong>TourController:</strong> CRUD Tour, tính giá gốc/giá sale, tải ảnh bìa đại diện, thiết lập số lượng khách, quản lý tiện ích (<code>tour_attr</code>).</li>
+  <li><strong>Nạp Tour Mẫu Tự Động (seedSample):</strong> Kích hoạt Seeder <code>Tour200Seeder</code>, nạp hơn 190+ tour mẫu chuẩn ba miền kèm lộ trình GPS hoàn chỉnh vào hệ thống chỉ bằng 1 click.</li>
+  <li><strong>TourScheduleController:</strong> Quản lý lộ trình từng ngày, nhập tọa độ GPS (Latitude, Longitude) phục vụ vẽ bản đồ vệ tinh cho khách.</li>
+  <li><strong>AttrController:</strong> Quản lý thuộc tính phương tiện (<code>transport</code>), hạng lưu trú (<code>tour_type</code>).</li>
+</ul>
+
+<h3>4. Quản Lý Danh Mục, Đơn Hàng & Vận Hành</h3>
+<ul>
+  <li><strong>CategoryController:</strong> Quản lý cây danh mục đa cấp bằng package <code>kalnoy/nestedset</code>, kéo thả sắp xếp thứ tự danh mục bằng <code>Nestable.js</code> qua route <code>/admin/categories/reorder</code>.</li>
+  <li><strong>OrderController & PaymentController:</strong> Duyệt đơn hàng theo vòng đời (Chờ xử lý &rarr; Đã cọc 30% &rarr; Đã thanh toán 100% &rarr; Hoàn tất / Hủy đơn), in hóa đơn, xuất PDF, quản lý mã giao dịch MoMo/PayPal.</li>
+  <li><strong>VoucherController & UserVoucherController:</strong> Tạo mã giảm giá, cấp phát voucher ngẫu nhiên cho tập người dùng.</li>
+  <li><strong>AdminController@consultations:</strong> Tiếp nhận và xử lý yêu cầu tư vấn gửi từ trang chủ, lọc theo SĐT và trạng thái xử lý.</li>
+  <li><strong>ChatmessageController:</strong> Hỗ trợ trực tiếp giữa Admin và khách hàng qua Session chat.</li>
+</ul>
+<hr/>
+<h2>PHẦN 4: HỆ THỐNG API & CƠ CHẾ GIAO TIẾP DỮ LIỆU</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 15%;">Phương Thức</th>
+      <th style="width: 25%;">Endpoint</th>
+      <th style="width: 25%;">Bộ Xử Lý (Handler)</th>
+      <th style="width: 35%;">Mô Tả Chức Năng & Nghiệp Vụ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="badge badge-post">POST</span> <span class="badge badge-get">GET</span></td>
+      <td><code>/api/chat</code></td>
+      <td><code>ChatbotController@chat</code></td>
+      <td>Tiếp nhận tin nhắn của khách, kích hoạt AI Engine (Gemini 2.0 / Groq / Smart Fallback), trả lời tư vấn kèm link chi tiết tour dạng Markdown.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-get">GET</span></td>
+      <td><code>/api/chat/history</code></td>
+      <td><code>ChatbotController@history</code></td>
+      <td>Lấy danh sách các tin nhắn đã trao đổi trong phiên làm việc hiện tại của khách hàng.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-get">GET</span></td>
+      <td><code>/search</code></td>
+      <td><code>HomeController@search</code></td>
+      <td>API tìm kiếm nhanh tour (Auto-suggest). Debounce 350ms & AbortController. Trả về JSON ảnh, tên, giá, điểm đến.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-get">GET</span></td>
+      <td><code>/weather/ajax</code></td>
+      <td><code>WeatherController@searchAjax</code></td>
+      <td>Lấy dữ liệu thời tiết thực tế theo thành phố từ trạm khí tượng vệ tinh, trả về nhiệt độ, độ ẩm, gió, UV và dự báo 5 ngày.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-get">GET</span></td>
+      <td><code>/tour/schedule/{id}/json</code></td>
+      <td><code>TourDetailController@getScheduleByTour</code></td>
+      <td>Trả về JSON danh sách chặng dừng chân kèm tọa độ GPS (lat, lng) phục vụ vẽ bản đồ Leaflet.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-post">POST</span></td>
+      <td><code>/tu-van</code></td>
+      <td><code>HomeController@sendConsultation</code></td>
+      <td>Tiếp nhận form yêu cầu báo giá từ trang chủ, tạo Notification gửi tới admin.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-get">GET</span></td>
+      <td><code>/momo/payment/{id}/{type}</code></td>
+      <td><code>MomoController@payment</code></td>
+      <td>Khởi tạo giao diện thanh toán MoMo QR Code (cọc 30% hoặc thanh toán 100%).</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-post">POST</span></td>
+      <td><code>/momo/ipn</code></td>
+      <td><code>MomoController@ipn</code></td>
+      <td>Webhook IPN từ MoMo gửi về khi khách quét mã thành công. Kiểm tra chữ ký HMAC SHA256 và cập nhật đơn hàng.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-get">GET</span></td>
+      <td><code>/paypal/payment/{id}</code></td>
+      <td><code>PayPalController@createPayment</code></td>
+      <td>Tạo phiên thanh toán PayPal quốc tế qua Client SDK, quy đổi VNĐ &rarr; USD.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-get">GET</span></td>
+      <td><code>/paypal/success</code></td>
+      <td><code>PayPalController@paymentSuccess</code></td>
+      <td>Xác nhận và capture khoản tiền từ PayPal, cập nhật đơn hàng thành Đã đặt cọc.</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-get">GET</span></td>
+      <td><code>/ping</code>, <code>/health</code></td>
+      <td>Inline Closure</td>
+      <td>Health check endpoint phục vụ GitHub Actions tự động ping 10 phút/lần chống Render ngủ đông (Keep-alive).</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2>PHẦN 5: CÁC LUỒNG DỮ LIỆU ĐẶC THÙ (CORE WORKFLOWS)</h2>
+
+<h3>1. Luồng Tính Giá Động (Dynamic Live Pricing)</h3>
+<pre>Khách chọn Tour -> Chọn Đợt Khởi Hành -> Chọn Phương Tiện (Xe/Bay) -> Chọn Lưu Trú (3*/5*)
+       |
+       v
+Sự kiện JS 'change' kích hoạt updateLivePrice()
+       |
+       v
+Tính toán: Unit_Price = Base_Price + Trans_Surcharge + Hotel_Surcharge
+           Total_Price = Unit_Price * Quantity
+       |
+       v
+Giao diện nhảy số trực tiếp -> Form POST lên CartController@add -> Lưu Session Giỏ Hàng</pre>
+
+<h3>2. Luồng Tư Vấn Lữ Hành Tự Động (AI Concierge)</h3>
+<pre>Khách gửi câu hỏi qua Widget Chat -> POST /api/chat
+       |
+       v
+Kiểm tra API Key (Google Gemini 2.0 / Groq LLM)
+       |
+   +---+-------------------------------+
+   | (Có API Key)                      | (Không có / Lỗi mạng)
+Gọi LLM kèm Context 12 Tour          Kích hoạt Smart Fallback Engine
+& URL trực tiếp                      Bóc tách từ khóa không dấu, tra cứu DB
+   |                                   |
+   +-------------------+---------------+
+                       v
+Sinh câu trả lời kèm link Markdown [Xem chi tiết & Đặt vé](URL)
+                       |
+                       v
+JavaScript phía Client tự động parse link thành nút bấm đất nung dẫn thẳng trang tour</pre>
+
+<p style="text-align: center; color: #64748b; font-size: 9pt; margin-top: 30px;">
+  <em>Tài liệu được kết xuất từ mã nguồn dự án Wanderlust Travel Platform. Bản quyền &copy; 2026.</em>
+</p>
+</body></html>

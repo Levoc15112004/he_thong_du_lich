@@ -159,26 +159,31 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Ảnh đại diện chính <span class="text-rose-500">*</span></label>
-                            <label class="flex flex-col items-center justify-center w-full h-40 border-2 border-slate-200 dark:border-slate-800 border-dashed rounded-2xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                            <label id="main-dropzone" class="flex flex-col items-center justify-center w-full h-40 border-2 border-slate-200 dark:border-slate-800 border-dashed rounded-2xl cursor-pointer bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                     <i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-400 mb-2"></i>
                                     <p class="text-sm text-slate-500 dark:text-slate-400 font-medium"><span class="text-orange-500">Tải ảnh lên</span> hoặc kéo thả</p>
                                 </div>
-                                <input type="file" name="file" class="hidden" accept="image/*" onchange="previewMain(event)">
+                                <input type="file" id="main-file-input" name="file" class="hidden" accept="image/*" onchange="previewMain(event)">
                             </label>
-                            <img id="main-preview" class="hidden mt-4 w-full h-48 object-cover rounded-xl shadow-md border border-slate-100 dark:border-slate-800">
+                            <div id="main-preview-wrap" class="hidden relative mt-4">
+                                <img id="main-preview" class="w-full h-48 object-cover rounded-xl shadow-md border border-slate-200 dark:border-slate-800">
+                                <button type="button" onclick="removeMainImage()" class="absolute top-3 right-3 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-lg shadow-md flex items-center gap-1.5 transition-colors">
+                                    <i class="fa-solid fa-trash-can"></i> Xóa ảnh vừa chọn
+                                </button>
+                            </div>
                         </div>
 
                         <div>
                             <label class="block text-slate-700 dark:text-slate-200 font-semibold mb-2">Ảnh mô tả phụ (Nhiều ảnh)</label>
-                            <label class="flex flex-col items-center justify-center w-full h-40 border-2 border-slate-200 dark:border-slate-800 border-dashed rounded-2xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                            <label class="flex flex-col items-center justify-center w-full h-40 border-2 border-slate-200 dark:border-slate-800 border-dashed rounded-2xl cursor-pointer bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                     <i class="fa-regular fa-images text-3xl text-slate-400 mb-2"></i>
                                     <p class="text-sm text-slate-500 dark:text-slate-400 font-medium"><span class="text-orange-500">Tải nhiều ảnh lên</span></p>
                                 </div>
-                                <input type="file" name="files[]" multiple class="hidden" accept="image/*" onchange="previewGallery(event)">
+                                <input type="file" id="gallery-file-input" name="files[]" multiple class="hidden" accept="image/*" onchange="previewGallery(event)">
                             </label>
-                            <div id="gallery-preview" class="mt-4 grid grid-cols-4 gap-2"></div>
+                            <div id="gallery-preview" class="mt-4 grid grid-cols-3 sm:grid-cols-4 gap-3"></div>
                         </div>
                     </div>
                 </section>
@@ -257,21 +262,64 @@
         const file = event.target.files[0];
         if (file) {
             const preview = document.getElementById('main-preview');
+            const wrap = document.getElementById('main-preview-wrap');
             preview.src = URL.createObjectURL(file);
-            preview.classList.remove('hidden');
+            wrap.classList.remove('hidden');
         }
     }
 
+    function removeMainImage() {
+        const input = document.getElementById('main-file-input');
+        const preview = document.getElementById('main-preview');
+        const wrap = document.getElementById('main-preview-wrap');
+        if (input) input.value = '';
+        if (preview) preview.src = '';
+        if (wrap) wrap.classList.add('hidden');
+    }
+
+    let galleryDT = new DataTransfer();
+
     function previewGallery(event) {
-        const files = event.target.files;
+        const input = document.getElementById('gallery-file-input');
+        if (!input) return;
+
+        // Add newly selected files to DataTransfer
+        for (let i = 0; i < event.target.files.length; i++) {
+            galleryDT.items.add(event.target.files[i]);
+        }
+        input.files = galleryDT.files;
+        renderGalleryPreview();
+    }
+
+    function removeGalleryItem(index) {
+        const input = document.getElementById('gallery-file-input');
+        const newDT = new DataTransfer();
+        for (let i = 0; i < galleryDT.files.length; i++) {
+            if (i !== index) {
+                newDT.items.add(galleryDT.files[i]);
+            }
+        }
+        galleryDT = newDT;
+        if (input) input.files = galleryDT.files;
+        renderGalleryPreview();
+    }
+
+    function renderGalleryPreview() {
         const container = document.getElementById('gallery-preview');
-        container.innerHTML = ''; 
-        
-        for (let i = 0; i < files.length; i++) {
-            const img = document.createElement('img');
-            img.src = URL.createObjectURL(files[i]);
-            img.className = 'w-full aspect-square object-cover rounded-lg shadow-sm border border-slate-100 dark:border-slate-800';
-            container.appendChild(img);
+        if (!container) return;
+        container.innerHTML = '';
+
+        for (let i = 0; i < galleryDT.files.length; i++) {
+            const file = galleryDT.files[i];
+            const div = document.createElement('div');
+            div.className = 'relative aspect-square rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 group';
+            div.innerHTML = `
+                <img src="${URL.createObjectURL(file)}" class="w-full h-full object-cover">
+                <button type="button" onclick="removeGalleryItem(${i})" class="absolute top-1.5 right-1.5 w-6 h-6 bg-rose-600 hover:bg-rose-700 text-white rounded-full flex items-center justify-center text-xs shadow-md transition-colors" title="Bỏ ảnh này">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            `;
+            container.appendChild(div);
         }
     }
 </script>

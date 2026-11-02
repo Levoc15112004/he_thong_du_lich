@@ -94,11 +94,11 @@ class TourController extends Controller
             'time' => 'required|string|max:255',
             'price' => 'nullable|numeric|min:0',
             'sale_price' => 'required|numeric|min:0',
-            'file' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'files.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'file' => 'required|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'files.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
             'start_location' => 'required|string|max:255',
             'end_location' => 'required|string|max:255',
-            'start_date' => 'required|date|after_or_equal:today',
+            'start_date' => 'required|date',
             'quantity' => 'required|integer|min:1',
             'status' => 'required|boolean',
             'description' => 'nullable|string',
@@ -119,11 +119,19 @@ class TourController extends Controller
             'sale_price.min' => 'Giá tour không được nhỏ hơn 0',
         ]);
 
+        // ---- Đảm bảo thư mục lưu ảnh tồn tại ----
+        if (!File::exists(public_path('images/tours'))) {
+            File::makeDirectory(public_path('images/tours'), 0755, true);
+        }
+        if (!File::exists(public_path('images/tour_images'))) {
+            File::makeDirectory(public_path('images/tour_images'), 0755, true);
+        }
+
         // ---- Upload hình đại diện ----
         $mainImage = null;
         if ($request->hasFile('file')) {
-            $fileName = time().'_'.$request->file->getClientOriginalName();
-            $request->file->move(public_path('images/tours'), $fileName);
+            $fileName = time().'_'.$request->file('file')->getClientOriginalName();
+            $request->file('file')->move(public_path('images/tours'), $fileName);
             $mainImage = 'images/tours/'.$fileName;
         }
 
@@ -269,18 +277,11 @@ class TourController extends Controller
             'image' => $validated['image'] ?? $tour->image,
         ]);
 
-        // 4. Upload ảnh mô tả (nếu có)
+        // 4. Upload ảnh mô tả (nếu có - thêm vào bộ sưu tập)
         if ($request->hasFile('files')) {
-            // Xóa ảnh cũ
-            $oldImages = $tour->images;
-            foreach ($oldImages as $oldImg) {
-                if (\Illuminate\Support\Facades\File::exists(public_path($oldImg->image))) {
-                    \Illuminate\Support\Facades\File::delete(public_path($oldImg->image));
-                }
-                $oldImg->delete();
+            if (!File::exists(public_path('images/tour_images'))) {
+                File::makeDirectory(public_path('images/tour_images'), 0755, true);
             }
-
-            // Lưu ảnh mới
             foreach ($request->file('files') as $file) {
                 $fileName = time().'_'.$file->getClientOriginalName();
                 $file->move(public_path('images/tour_images'), $fileName);
@@ -297,6 +298,23 @@ class TourController extends Controller
         return redirect()
             ->route('admin.tours.index')
             ->with('success', 'Cập nhật Tour du lịch thành công!');
+    }
+
+    /**
+     * Xóa 1 ảnh mô tả cụ thể của Tour qua AJAX
+     */
+    public function deleteImage($id)
+    {
+        $img = ImageTour::findOrFail($id);
+        if ($img->image && File::exists(public_path($img->image))) {
+            File::delete(public_path($img->image));
+        }
+        $img->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Đã xóa ảnh thành công!',
+        ]);
     }
 
     /**
