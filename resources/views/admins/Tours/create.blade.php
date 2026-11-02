@@ -27,6 +27,20 @@
             </a>
         </div>
 
+        {{-- SESSION ALERT --}}
+        @if (session('error'))
+            <div class="mb-6 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-rose-700 flex items-center gap-3">
+                <i class="fa-solid fa-circle-exclamation text-rose-500 text-lg"></i>
+                <p class="font-semibold text-sm">{{ session('error') }}</p>
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-700 flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
+                <p class="font-semibold text-sm">{{ session('success') }}</p>
+            </div>
+        @endif
+
         {{-- ERROR --}}
         @if ($errors->any())
             <div class="mb-6 rounded-2xl border border-rose-200 bg-rose-50/50 p-5 backdrop-blur-sm">

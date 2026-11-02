@@ -89,95 +89,108 @@ class TourController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:tours,name',
-            'time' => 'required|string|max:255',
-            'price' => 'nullable|numeric|min:0',
-            'sale_price' => 'required|numeric|min:0',
-            'file' => 'required|image|mimes:jpg,jpeg,png,webp|max:4096',
-            'files.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
-            'start_location' => 'required|string|max:255',
-            'end_location' => 'required|string|max:255',
-            'start_date' => 'required|date',
-            'quantity' => 'required|integer|min:1',
-            'status' => 'required|boolean',
-            'description' => 'nullable|string',
-            'category_id' => 'required|exists:categories,id',
+        try {
+            $validated = $request->validate([
+                'name' => 'required|string|max:255|unique:tours,name',
+                'time' => 'required|string|max:255',
+                'price' => 'nullable|numeric|min:0',
+                'sale_price' => 'required|numeric|min:0',
+                'file' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+                'start_location' => 'required|string|max:255',
+                'end_location' => 'required|string|max:255',
+                'start_date' => 'required|date',
+                'quantity' => 'required|integer|min:1',
+                'status' => 'required|boolean',
+                'description' => 'nullable|string',
+                'category_id' => 'required|exists:categories,id',
+            ], [
+                'name.required' => 'Tên tour không được để trống',
+                'name.unique' => 'Tên tour đã tồn tại trên hệ thống',
+                'file.required' => 'Ảnh đại diện chính không được để trống',
+                'file.image' => 'Ảnh đại diện phải là tệp hình ảnh (jpg, png, webp)',
+                'file.max' => 'Dung lượng ảnh đại diện tối đa 5MB',
+                'start_location.required' => 'Vui lòng nhập điểm bắt đầu',
+                'end_location.required' => 'Vui lòng nhập điểm kết thúc',
+                'start_date.required' => 'Vui lòng chọn ngày khởi hành',
+                'category_id.required' => 'Vui lòng chọn danh mục tour',
+                'quantity.min' => 'Số lượng chỗ phải lớn hơn 0',
+                'sale_price.required' => 'Giá tour không được để trống',
+                'sale_price.numeric' => 'Giá tour phải là số',
+                'sale_price.min' => 'Giá tour không được nhỏ hơn 0',
+            ]);
 
-        ], [
-            'name.required' => 'Tên tour không được để trống',
-            'name.unique' => 'Tên tour đã tồn tại',
-            'file.required' => 'Ảnh đại diện không được để trống',
-            'file.image' => 'Ảnh đại diện phải là hình ảnh',
-            'start_location.required' => 'Vui lòng nhập điểm bắt đầu',
-            'end_location.required' => 'Vui lòng nhập điểm kết thúc',
-            'start_date.required' => 'Vui lòng chọn ngày khởi hành',
-            'category_id.required' => 'Vui lòng chọn danh mục tour',
-            'quantity.min' => 'Số chỗ phải lớn hơn 0',
-            'sale_price.required' => 'Giá tour không được để trống',
-            'sale_price.numeric' => 'Giá tour phải là số',
-            'sale_price.min' => 'Giá tour không được nhỏ hơn 0',
-        ]);
-
-        // ---- Đảm bảo thư mục lưu ảnh tồn tại ----
-        if (!File::exists(public_path('images/tours'))) {
-            File::makeDirectory(public_path('images/tours'), 0755, true);
-        }
-        if (!File::exists(public_path('images/tour_images'))) {
-            File::makeDirectory(public_path('images/tour_images'), 0755, true);
-        }
-
-        // ---- Upload hình đại diện ----
-        $mainImage = null;
-        if ($request->hasFile('file')) {
-            $fileName = time().'_'.$request->file('file')->getClientOriginalName();
-            $request->file('file')->move(public_path('images/tours'), $fileName);
-            $mainImage = 'images/tours/'.$fileName;
-        }
-
-        // ---- Tạo tour ----
-        $calculatedPrice = !empty($request->price) && $request->price > 0 
-            ? $request->price 
-            : round($request->sale_price * 1.15);
-
-        $tour = Tour::create([
-            'name' => $validated['name'],
-            'time' => $request->time,
-            'price' => $calculatedPrice,
-            'sale_price' => $request->sale_price,
-            'image' => $mainImage,
-            'start_location' => $request->start_location,
-            'end_location' => $request->end_location,
-            'category_id' => $request->category_id,
-            'status' => $request->status,
-            'description' => $request->description,
-            'quantity' => $request->quantity,
-            'start_date' => $request->start_date,
-        ]);
-
-        // ---- Upload nhiều ảnh mô tả ----
-        if ($request->hasFile('files')) {
-            foreach ($request->file('files') as $file) {
-                $fileName = time().'_'.$file->getClientOriginalName();
-                $file->move(public_path('images/tour_images'), $fileName);
-
-                $tour->images()->create([
-                    'image' => 'images/tour_images/'.$fileName,
+            // Validate ảnh phụ nếu người dùng thực sự chọn file
+            if ($request->hasFile('files')) {
+                $request->validate([
+                    'files.*' => 'image|mimes:jpg,jpeg,png,webp|max:5120',
+                ], [
+                    'files.*.image' => 'Ảnh mô tả phụ phải là định dạng hình ảnh hợp lệ',
+                    'files.*.max' => 'Mỗi ảnh mô tả phụ tối đa 5MB',
                 ]);
             }
-        }
 
-        $attr = $request->attr;
-        if (! empty($attr)) {
-            foreach ($attr as $value) {
-                TourAttr::create([
-                    'attr_tour_id' => $value,
-                    'tour_id' => $tour->id,
-                ]);
+            // Đảm bảo thư mục lưu ảnh tồn tại
+            if (!File::exists(public_path('images/tours'))) {
+                File::makeDirectory(public_path('images/tours'), 0777, true, true);
             }
-        }
+            if (!File::exists(public_path('images/tour_images'))) {
+                File::makeDirectory(public_path('images/tour_images'), 0777, true, true);
+            }
 
-        return redirect()->route('admin.tours.index')->with('success', 'Thêm Tour thành công!');
+            // Upload hình đại diện
+            $mainImage = null;
+            if ($request->hasFile('file')) {
+                $fileName = time() . '_' . uniqid() . '.' . $request->file('file')->getClientOriginalExtension();
+                $request->file('file')->move(public_path('images/tours'), $fileName);
+                $mainImage = 'images/tours/' . $fileName;
+            }
+
+            // Tạo tour
+            $calculatedPrice = !empty($request->price) && $request->price > 0 
+                ? $request->price 
+                : round($request->sale_price * 1.15);
+
+            $tour = Tour::create([
+                'name' => $validated['name'],
+                'time' => $request->time,
+                'price' => $calculatedPrice,
+                'sale_price' => $request->sale_price,
+                'image' => $mainImage,
+                'start_location' => $request->start_location,
+                'end_location' => $request->end_location,
+                'category_id' => $request->category_id,
+                'status' => $request->status,
+                'description' => $request->description,
+                'quantity' => $request->quantity,
+                'start_date' => $request->start_date,
+            ]);
+
+            // Upload nhiều ảnh mô tả phụ
+            if ($request->hasFile('files')) {
+                foreach ($request->file('files') as $file) {
+                    if ($file && $file->isValid()) {
+                        $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                        $file->move(public_path('images/tour_images'), $fileName);
+
+                        $tour->images()->create([
+                            'image' => 'images/tour_images/' . $fileName,
+                        ]);
+                    }
+                }
+            }
+
+            // Gắn thuộc tính qua belongsToMany relationship sync an toàn
+            if (!empty($request->attr)) {
+                $tour->attrTours()->sync($request->attr);
+            }
+
+            return redirect()->route('admin.tours.index')->with('success', 'Thêm Tour mới thành công!');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            throw $e;
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::error('Lỗi thêm tour: ' . $e->getMessage());
+            return redirect()->back()->withInput()->with('error', 'Lỗi lưu tour: ' . $e->getMessage());
+        }
     }
 
     /**

@@ -395,31 +395,52 @@
                                 <span>Tổng giá trị tour</span>
                                 <span class="text-slate-900 text-base">{{ number_format($total, 0, ',', '.') }} đ</span>
                             </div>
-                            <div class="flex justify-between items-center text-sm font-bold pb-3 border-b border-slate-200 {{ $isPaidOnline ? 'text-emerald-700' : 'text-amber-800' }}">
-                                <span class="flex items-center gap-2">
-                                    <span class="w-6 h-6 rounded-full {{ $isPaidOnline ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-800' }} flex items-center justify-center">
-                                        <i class="fas {{ $isPaidOnline ? 'fa-check' : 'fa-clock' }} text-xs"></i>
-                                    </span>
-                                    {{ $isPaidOnline ? 'Đã thanh toán (Cọc 30%)' : 'Tiền cọc cần nộp (30%)' }}
-                                </span>
-                                <span class="text-base">{{ $isPaidOnline ? '-' : '' }}{{ number_format($deposit, 0, ',', '.') }} đ</span>
-                            </div>
 
-                            <div class="pt-2 flex justify-between items-end">
-                                <div>
-                                    <p class="text-[11px] font-bold text-slate-500 mb-1">
-                                        {{ $isPaidOnline ? 'Số tiền còn lại (70%)' : 'Trạng thái cọc' }}
-                                    </p>
-                                    <p class="text-xs font-semibold text-slate-600 bg-white px-2 py-1 rounded inline-block shadow-sm">
-                                        {{ $isPaidOnline ? 'Thu khi lên xe / khởi hành' : ($isBank ? 'Đang chờ đối soát ngân hàng' : 'Nộp tiền tại văn phòng công ty') }}
-                                    </p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-                                        {{ number_format($remain, 0, ',', '.') }}<span class="text-lg text-slate-500 ml-1">đ</span>
+                            @if ($isPaidOnline)
+                                <div class="flex justify-between items-center text-sm font-bold pb-3 border-b border-slate-200 text-emerald-700">
+                                    <span class="flex items-center gap-2">
+                                        <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                                            <i class="fas fa-check text-xs"></i>
+                                        </span>
+                                        Đã thanh toán (Cọc 30%)
                                     </span>
+                                    <span class="text-base">-{{ number_format($deposit, 0, ',', '.') }} đ</span>
                                 </div>
-                            </div>
+
+                                <div class="pt-2 flex justify-between items-end">
+                                    <div>
+                                        <p class="text-[11px] font-bold text-slate-500 mb-1">Số tiền còn lại (70%)</p>
+                                        <p class="text-xs font-semibold text-slate-600 bg-white px-2 py-1 rounded inline-block shadow-sm">
+                                            Thu khi lên xe / khởi hành
+                                        </p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+                                            {{ number_format($remain, 0, ',', '.') }}<span class="text-lg text-slate-500 ml-1">đ</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="flex justify-between items-center text-sm font-bold pb-3 border-b border-slate-200 text-slate-500">
+                                    <span>Đã thanh toán</span>
+                                    <span class="text-base font-bold text-slate-600">0 đ (Chưa thanh toán)</span>
+                                </div>
+
+                                <div class="pt-2 flex justify-between items-end">
+                                    <div>
+                                        <p class="text-[11px] font-bold text-amber-700 mb-1">Tiền cọc cần nộp (30%)</p>
+                                        <p class="text-xs font-semibold text-slate-600 bg-white px-2 py-1 rounded inline-block shadow-sm">
+                                            {{ $isBank ? 'Nộp qua chuyển khoản MB Bank' : 'Nộp trực tiếp tại quầy văn phòng' }}
+                                        </p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-3xl sm:text-4xl font-bold text-[#863c20] tracking-tight">
+                                            {{ number_format($deposit, 0, ',', '.') }}<span class="text-lg text-slate-500 ml-1">đ</span>
+                                        </span>
+                                        <span class="text-[10px] text-slate-400 block mt-1">(Còn lại 70%: {{ number_format($remain, 0, ',', '.') }}đ thu khi đi)</span>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

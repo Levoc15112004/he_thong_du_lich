@@ -1,16 +1,22 @@
 #!/bin/bash
 set -e
 
-# Make sure storage and bootstrap directories exist
+# Make sure storage, bootstrap and public images directories exist
 mkdir -p /var/www/html/storage/framework/cache/data \
          /var/www/html/storage/framework/sessions \
          /var/www/html/storage/framework/views \
          /var/www/html/storage/logs \
          /var/www/html/storage/app/public \
-         /var/www/html/bootstrap/cache
+         /var/www/html/bootstrap/cache \
+         /var/www/html/public/images/tours \
+         /var/www/html/public/images/tour_images \
+         /var/www/html/public/images/schedules \
+         /var/www/html/public/images/blogs \
+         /var/www/html/public/images/banners
 
 # Fix permissions
-chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
+chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public/images 2>/dev/null || true
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public/images 2>/dev/null || true
 
 # Generate temporary APP_KEY if missing so app does not crash 500
 if [ -z "$APP_KEY" ]; then
