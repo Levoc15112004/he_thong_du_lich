@@ -48,4 +48,12 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_REDIRECT_URI', env('APP_URL', 'http://localhost') . '/auth/google/callback'),
     ],
+
+    'vietqr' => [
+        'username' => env('VIETQR_USERNAME'),
+        'password' => env('VIETQR_PASSWORD'),
+        'bank_id' => env('VIETQR_BANK_ID', 'MB'),
+        'account_no' => env('VIETQR_ACCOUNT_NO'),
+        'account_name' => env('VIETQR_ACCOUNT_NAME', 'CONG TY DU LICH WANDERLUST'),
+    ],
 ];

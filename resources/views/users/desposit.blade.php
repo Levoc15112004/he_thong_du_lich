@@ -152,15 +152,20 @@
 
                     <!-- 2. VietQR Bank Transfer Box -->
                     <div id="wrapper-bank" class="hidden relative z-10 w-full space-y-4">
+                        @php
+                            $bankId = config('services.vietqr.bank_id', env('VIETQR_BANK_ID', 'MB'));
+                            $accountNo = config('services.vietqr.account_no', env('VIETQR_ACCOUNT_NO'));
+                            $accountName = config('services.vietqr.account_name', env('VIETQR_ACCOUNT_NAME', 'CONG TY DU LICH WANDERLUST'));
+                        @endphp
                         <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center gap-5">
                             <div class="w-36 h-36 bg-white p-2 rounded-xl shadow-xs border border-slate-200 shrink-0 flex items-center justify-center">
-                                <img src="https://img.vietqr.io/image/MB-0909888999-compact2.png?amount={{ (int)$deposit_amount }}&addInfo=WANDERLUST%20DH{{ $order->id }}&accountName=CONG%20TY%20DU%20LICH%20WANDERLUST" 
-                                     class="w-full h-full object-contain" alt="VietQR MBBank">
+                                <img src="https://img.vietqr.io/image/{{ $bankId }}-{{ $accountNo }}-compact2.png?amount={{ (int)$deposit_amount }}&addInfo=WANDERLUST%20DH{{ $order->id }}&accountName={{ urlencode($accountName) }}" 
+                                     class="w-full h-full object-contain" alt="VietQR {{ $bankId }}">
                             </div>
                             <div class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300 w-full">
-                                <p><span class="text-slate-400">Ngân hàng:</span> <strong class="text-slate-900 dark:text-white">MB Bank (Quân Đội)</strong></p>
-                                <p><span class="text-slate-400">Số tài khoản:</span> <strong class="text-slate-900 dark:text-white font-mono text-sm">0909888999</strong></p>
-                                <p><span class="text-slate-400">Chủ tài khoản:</span> <strong class="text-slate-900 dark:text-white">CONG TY DU LICH WANDERLUST</strong></p>
+                                <p><span class="text-slate-400">Ngân hàng:</span> <strong class="text-slate-900 dark:text-white">{{ $bankId }} Bank</strong></p>
+                                <p><span class="text-slate-400">Số tài khoản:</span> <strong class="text-slate-900 dark:text-white font-mono text-sm">{{ $accountNo }}</strong></p>
+                                <p><span class="text-slate-400">Chủ tài khoản:</span> <strong class="text-slate-900 dark:text-white">{{ $accountName }}</strong></p>
                                 <p><span class="text-slate-400">Số tiền cọc (30%):</span> <strong class="text-emerald-600 font-bold text-sm">{{ number_format($deposit_amount) }}đ</strong></p>
                                 <p><span class="text-slate-400">Nội dung CK:</span> <strong class="text-[#863c20] font-mono font-bold">WANDERLUST DH{{ $order->id }}</strong></p>
                             </div>
