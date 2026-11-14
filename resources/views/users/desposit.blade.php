@@ -154,17 +154,31 @@
                     <div id="wrapper-bank" class="hidden relative z-10 w-full space-y-4">
                         @php
                             $bankId = config('services.vietqr.bank_id', env('VIETQR_BANK_ID', 'MB'));
-                            $accountNo = config('services.vietqr.account_no', env('VIETQR_ACCOUNT_NO'));
-                            $accountName = config('services.vietqr.account_name', env('VIETQR_ACCOUNT_NAME', 'CONG TY DU LICH WANDERLUST'));
+                            $accountNo = config('services.vietqr.account_no', env('VIETQR_ACCOUNT_NO', '151515112004'));
+                            $accountName = config('services.vietqr.account_name', env('VIETQR_ACCOUNT_NAME', 'LE THI VOC'));
                         @endphp
                         <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center gap-5">
-                            <div class="w-36 h-36 bg-white p-2 rounded-xl shadow-xs border border-slate-200 shrink-0 flex items-center justify-center">
-                                <img src="https://img.vietqr.io/image/{{ $bankId }}-{{ $accountNo }}-compact2.png?amount={{ (int)$deposit_amount }}&addInfo=WANDERLUST%20DH{{ $order->id }}&accountName={{ urlencode($accountName) }}" 
-                                     class="w-full h-full object-contain" alt="VietQR {{ $bankId }}">
+                            <div class="w-36 h-36 bg-white p-2 rounded-xl shadow-xs border border-slate-200 shrink-0 flex items-center justify-center overflow-hidden">
+                                @if(!empty($accountNo))
+                                    <img src="https://img.vietqr.io/image/{{ $bankId }}-{{ $accountNo }}-compact2.png?amount={{ (int)$deposit_amount }}&addInfo=WANDERLUST%20DH{{ $order->id }}&accountName={{ urlencode($accountName) }}" 
+                                         class="w-full h-full object-contain" alt="VietQR {{ $bankId }}">
+                                @else
+                                    <div class="text-center p-2 text-rose-500 flex flex-col items-center justify-center h-full">
+                                        <i class="fa-solid fa-qrcode text-3xl mb-1 text-slate-300"></i>
+                                        <p class="text-[10px] font-bold text-rose-500">Chưa có STK</p>
+                                        <span class="text-[9px] text-slate-400">Thiếu cấu hình</span>
+                                    </div>
+                                @endif
                             </div>
                             <div class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300 w-full">
                                 <p><span class="text-slate-400">Ngân hàng:</span> <strong class="text-slate-900 dark:text-white">{{ $bankId }} Bank</strong></p>
-                                <p><span class="text-slate-400">Số tài khoản:</span> <strong class="text-slate-900 dark:text-white font-mono text-sm">{{ $accountNo }}</strong></p>
+                                <p><span class="text-slate-400">Số tài khoản:</span> 
+                                    @if(!empty($accountNo))
+                                        <strong class="text-slate-900 dark:text-white font-mono text-sm tracking-wider">{{ $accountNo }}</strong>
+                                    @else
+                                        <span class="text-rose-500 font-semibold italic text-[11px]">(Chưa cài VIETQR_ACCOUNT_NO trong .env)</span>
+                                    @endif
+                                </p>
                                 <p><span class="text-slate-400">Chủ tài khoản:</span> <strong class="text-slate-900 dark:text-white">{{ $accountName }}</strong></p>
                                 <p><span class="text-slate-400">Số tiền cọc (30%):</span> <strong class="text-emerald-600 font-bold text-sm">{{ number_format($deposit_amount) }}đ</strong></p>
                                 <p><span class="text-slate-400">Nội dung CK:</span> <strong class="text-[#863c20] font-mono font-bold">WANDERLUST DH{{ $order->id }}</strong></p>
