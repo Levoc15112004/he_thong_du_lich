@@ -41,12 +41,18 @@ class BookingController extends Controller
             return back()->with('error', 'Không tìm thấy đơn hàng.');
         }
 
+        if ((int) $order->user_id !== (int) Auth::id() && Auth::user()->role !== 'admin') {
+            abort(403, 'Bạn không có quyền truy cập đơn hàng này.');
+        }
+
         // Lấy tour từ order
         $tour = Tour::find($order->tour_id);
 
         if (! $tour) {
             return back()->with('error', 'Tour không tồn tại.');
         }
+
+        $departureDate = $order->time ?: $tour->start_date;
 
         // Thông tin khách hàng
         $customer = [
@@ -55,7 +61,7 @@ class BookingController extends Controller
             'phone' => $order->phone,
             'address' => $order->address,
             'note' => $order->note,
-            'time' => $order->time,
+            'time' => $departureDate,
             'quantity' => $order->quantity,
         ];
 
@@ -65,7 +71,7 @@ class BookingController extends Controller
 
         // Các biến đang dùng trong Blade
         $quantity = $order->quantity;
-        $startDate = $order->start_date;
+        $startDate = $departureDate;
 
         return view('users.desposit', compact(
             'tour',
@@ -110,6 +116,10 @@ class BookingController extends Controller
             return back()->with('error', 'Không tìm thấy đơn hàng.');
         }
 
+        if ((int) $order->user_id !== (int) Auth::id() && Auth::user()->role !== 'admin') {
+            abort(403, 'Bạn không có quyền truy cập đơn hàng này.');
+        }
+
         // Lấy tour
         $tour = Tour::find($order->tour_id);
         if (! $tour) {
@@ -138,6 +148,8 @@ class BookingController extends Controller
             return back()->with('error', 'Đơn hàng đã thanh toán đầy đủ.');
         }
 
+        $departureDate = $order->time ?: $tour->start_date;
+
         // Thông tin khách hàng
         $customer = [
             'name' => $order->name,
@@ -145,7 +157,7 @@ class BookingController extends Controller
             'phone' => $order->phone,
             'address' => $order->address,
             'note' => $order->note,
-            'time' => $order->time,
+            'time' => $departureDate,
             'quantity' => $order->quantity,
         ];
 

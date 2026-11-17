@@ -143,6 +143,22 @@ class StatisticController extends Controller
             ->limit(10)
             ->get();
 
+        // Fallback nếu không chọn bộ lọc năm/tháng cụ thể mà năm hiện tại chưa có đơn nào
+        if ($topTours->isEmpty() && !$request->filled('month') && !$request->filled('year')) {
+            $topTours = DB::table('orders')
+                ->join('tours', 'orders.tour_id', '=', 'tours.id')
+                ->where('orders.status', '!=', 4)
+                ->select(
+                    'tours.name',
+                    DB::raw('COUNT(orders.id) as total_orders'),
+                    DB::raw('SUM(orders.total_price) as revenue')
+                )
+                ->groupBy('tours.name')
+                ->orderByDesc('total_orders')
+                ->limit(10)
+                ->get();
+        }
+
         // So sánh tuần này vs tuần trước
         $startThisWeek = now()->startOfWeek(Carbon::MONDAY);
         $endThisWeek   = now()->endOfWeek(Carbon::SUNDAY);

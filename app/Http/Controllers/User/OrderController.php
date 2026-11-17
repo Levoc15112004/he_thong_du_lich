@@ -65,6 +65,21 @@ class OrderController extends Controller
 
     public function addOrder(Request $req)
     {
+        $rawPhone = $req->input('phone');
+        if (is_string($rawPhone)) {
+            $req->merge(['phone' => preg_replace('/[\s.\-]+/', '', trim($rawPhone))]);
+        }
+
+        $req->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => ['required', 'regex:/^(0|\+84)[0-9]{8,10}$/'],
+            'address' => 'required|string|max:500',
+            'note' => 'nullable|string|max:2000',
+        ], [
+            'phone.regex' => 'Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại Việt Nam hợp lệ (10–11 chữ số, bắt đầu bằng 0 hoặc +84).',
+        ]);
+
         $cart = new Cart;
         $items = $cart->getItems();
 
@@ -78,15 +93,21 @@ class OrderController extends Controller
         $finalPrice = $cart->getFinalPrice();
 
         $voucher = session('voucher');
+        $voucherId = is_array($voucher) ? ($voucher['id'] ?? null) : ($voucher->id ?? null);
 
         $firstItem = reset($items);
 
         $tourId = $firstItem['tour_id'] ?? null;
-        $time = $firstItem['time'] ?? null;
+        $time = $firstItem['start_date'] ?? ($firstItem['time'] ?? null);
         $qtyForOrder = (int) ($firstItem['quantity'] ?? $totalQuantity);
 
         if (! $tourId) {
             return redirect()->back()->with('error', 'Không tìm thấy tour_id trong giỏ hàng.');
+        }
+
+        if (empty($time)) {
+            $tour = \App\Models\Tour::find($tourId);
+            $time = $tour?->start_date;
         }
 
         $transport = $firstItem['transport'] ?? '';
@@ -108,7 +129,7 @@ class OrderController extends Controller
             'total_price' => $finalPrice, // giá sau giảm
             'discount_amount' => $discount,
 
-            'voucher_id' => $voucher->id ?? null,
+            'voucher_id' => $voucherId,
 
             'quantity' => $qtyForOrder,
             'tour_id' => $tourId,
@@ -118,9 +139,9 @@ class OrderController extends Controller
 
          if ($order) {
             // Nếu có voucher thì cập nhật trạng thái user_vouchers = 2
-            if ($voucher && isset($voucher['id'])) {
+            if ($voucherId) {
                 $userVoucher = UserVoucher::where('user_id', auth()->id())
-                    ->where('voucher_id', $voucher['id'])
+                    ->where('voucher_id', $voucherId)
                     ->where('status', 0)
                     ->latest()
                     ->first();

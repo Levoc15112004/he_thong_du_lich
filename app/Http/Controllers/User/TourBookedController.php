@@ -114,6 +114,10 @@ class TourBookedController extends Controller
             },
         ])->findOrFail($order_id);
 
+        if ((int) $order->user_id !== (int) Auth::id() && Auth::user()?->role !== 'admin') {
+            abort(403, 'Bạn không có quyền truy cập lịch trình của đơn hàng này.');
+        }
+
         $tour = $order->tour;
 
         return view('users.tourBooked', [
@@ -131,6 +135,10 @@ class TourBookedController extends Controller
                 $q->orderBy('day_number', 'asc');
             },
         ])->findOrFail($order_id);
+
+        if ((int) $order->user_id !== (int) Auth::id() && Auth::user()?->role !== 'admin') {
+            abort(403, 'Bạn không có quyền truy cập dữ liệu của đơn hàng này.');
+        }
 
         $tour = $order->tour;
         $schedules = $tour->schedules ?? collect();

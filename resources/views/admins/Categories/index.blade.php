@@ -30,6 +30,13 @@
         </div>
 
         <!-- Card -->
+        @if (session('success'))
+            <div class="mb-6 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-2xl flex items-center gap-3 shadow-sm">
+                <i class="fa-solid fa-circle-check text-lg"></i>
+                <span class="text-sm font-bold">{{ session('success') }}</span>
+            </div>
+        @endif
+
         <div class="bg-white/80 backdrop-blur-xl border border-white shadow-2xl shadow-slate-200/50 rounded-3xl p-6 sm:p-8 overflow-hidden">
             @if($tree->isEmpty())
                 <div class="flex flex-col items-center justify-center py-12 text-center">
@@ -59,8 +66,10 @@
     </div>
 </div>
 
-<!-- Nestable Script -->
+<!-- jQuery & Nestable & Alpine Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Nestable/2012-10-15/jquery.nestable.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <style>
 /* Tweak nestable drag styling */

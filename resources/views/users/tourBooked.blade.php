@@ -95,7 +95,7 @@
                                             <i data-lucide="calendar-check" class="w-4 h-4 mr-2 text-indigo-500"></i>
                                             Khởi hành:
                                             <span class="font-medium ml-1">
-                                                {{ date('d/m/Y', strtotime($tour->start_date)) }}
+                                                {{ date('d/m/Y', strtotime($order->time ?: $tour->start_date)) }}
                                             </span>
                                         </div>
 
@@ -308,7 +308,7 @@
                                     <span>
                                         Email:
                                         <span class="font-semibold text-indigo-600">
-                                            travelgo@gmail.com
+                                            hello@wandervibe.me
                                         </span>
                                     </span>
                                 </div>

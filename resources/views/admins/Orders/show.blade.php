@@ -123,7 +123,7 @@
                             <div class="flex justify-between items-start py-1">
                                 <span class="text-slate-500 dark:text-slate-400">Ngày khởi hành:</span>
                                 <span class="font-bold text-slate-800 dark:text-white">
-                                    {{ \Carbon\Carbon::parse($order->start_date ?: $order->tour->start_date)->format('d/m/Y') }}
+                                    {{ \Carbon\Carbon::parse($order->time ?: $order->tour->start_date)->format('d/m/Y') }}
                                 </span>
                             </div>
                             <div class="flex justify-between items-start py-1">

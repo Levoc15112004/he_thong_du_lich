@@ -6,11 +6,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- ================= SEO META TAGS ================= --}}
-    <title>@yield('meta_title', 'Wanderlust - Tour Du Lịch Việt Nam Uy Tín & Giá Tốt Nhất 2026')</title>
-    <meta name="description" content="@yield('meta_description', 'Khám phá hơn 200+ tour du lịch trọn gói cao cấp khắp Việt Nam: Hạ Long, Sapa, Đà Nẵng, Hội An, Phú Quốc, Đà Lạt cùng Wanderlust. Giữ chỗ tức thì, bảo hiểm 100tr, cam kết giá tốt.')">
+    <title>@yield('meta_title', 'WanderVibe - Tour Du Lịch Việt Nam Uy Tín & Giá Tốt Nhất 2026')</title>
+    <meta name="description" content="@yield('meta_description', 'Khám phá hơn 200+ tour du lịch trọn gói cao cấp khắp Việt Nam: Hạ Long, Sapa, Đà Nẵng, Hội An, Phú Quốc, Đà Lạt cùng WanderVibe. Giữ chỗ tức thì, bảo hiểm 100tr, cam kết giá tốt.')">
     <meta name="keywords" content="@yield('meta_keywords', 'tour du lich, du lich viet nam, tour ha long, tour sapa, tour da nang, tour phu quoc, tour da lat, dat tour gia re, tour cao cap, wandervibe')">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="author" content="Wanderlust Travel Vietnam">
+    <meta name="author" content="WanderVibe Travel Vietnam">
     <link rel="canonical" href="@yield('canonical', url()->current())">
     <link rel="alternate" hreflang="vi-VN" href="@yield('canonical', url()->current())">
 
@@ -23,16 +23,16 @@
     {{-- ================= OPEN GRAPH / SOCIAL ================= --}}
     <meta property="og:locale" content="vi_VN">
     <meta property="og:type" content="@yield('og_type', 'website')">
-    <meta property="og:site_name" content="Wanderlust">
+    <meta property="og:site_name" content="WanderVibe">
     <meta property="og:url" content="@yield('canonical', url()->current())">
-    <meta property="og:title" content="@yield('meta_title', 'Wanderlust - Đặt Tour Du Lịch Trọn Gói Uy Tín')">
+    <meta property="og:title" content="@yield('meta_title', 'WanderVibe - Đặt Tour Du Lịch Trọn Gói Uy Tín')">
     <meta property="og:description" content="@yield('meta_description', 'Khám phá 200+ tour du lịch khắp Việt Nam với giá ưu đãi, hành trình hấp dẫn và dịch vụ chuẩn 5 sao.')">
     <meta property="og:image" content="@yield('og_image', asset('assets/img/logo_title.svg'))">
 
     {{-- ================= TWITTER CARDS ================= --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('meta_title', 'Wanderlust - Tour Du Lịch Việt Nam')">
-    <meta name="twitter:description" content="@yield('meta_description', 'Khám phá 200+ tour du lịch khắp Việt Nam với giá ưu đãi cùng Wanderlust.')">
+    <meta name="twitter:title" content="@yield('meta_title', 'WanderVibe - Tour Du Lịch Việt Nam')">
+    <meta name="twitter:description" content="@yield('meta_description', 'Khám phá 200+ tour du lịch khắp Việt Nam với giá ưu đãi cùng WanderVibe.')">
     <meta name="twitter:image" content="@yield('og_image', asset('assets/img/logo_title.svg'))">
 
     {{-- ================= STRUCTURED DATA SCHEMA (JSON-LD) ================= --}}
@@ -44,7 +44,7 @@
           "@type": "WebSite",
           "@id": "{{ url('/') }}#website",
           "url": "{{ url('/') }}",
-          "name": "Wanderlust",
+          "name": "WanderVibe",
           "description": "Nền tảng đặt tour du lịch trực tuyến số 1 Việt Nam",
           "potentialAction": {
             "@type": "SearchAction",
@@ -55,7 +55,7 @@
         {
           "@type": "TravelAgency",
           "@id": "{{ url('/') }}#agency",
-          "name": "Wanderlust Travel Vietnam",
+          "name": "WanderVibe Travel Vietnam",
           "url": "{{ url('/') }}",
           "logo": "{{ asset('assets/img/logo_title.svg') }}",
           "telephone": "+841900888999",
@@ -320,7 +320,7 @@
                 </div>
                 <div class="flex flex-col hidden sm:flex">
                     <span id="logoText" class="text-xl md:text-2xl font-serif {{ $isHomePage ? 'text-white' : 'text-slate-900 dark:text-white' }} leading-none transition-colors duration-300">
-      Wander<span class="text-[#cf8a6e]">lust</span>
+      Wander<span class="text-[#cf8a6e]">Vibe</span>
   </span>
   <span id="logoSubtext" class="text-[9px] md:text-[10px] tracking-[0.22em] uppercase {{ $isHomePage ? 'text-slate-200' : 'text-slate-500 dark:text-slate-400' }} font-semibold mt-1 transition-colors duration-300">VIETNAM TRAVEL</span>
                 </div>
@@ -577,7 +577,7 @@
                         <div class="w-9 h-9 rounded-xl bg-[#863c20] flex items-center justify-center text-white shadow-xs">
                             <i class="fa-solid fa-compass text-xl"></i>
                         </div>
-                        <span class="text-2xl font-bold tracking-tight text-slate-900">Wanderlust</span>
+                        <span class="text-2xl font-bold tracking-tight text-slate-900">WanderVibe</span>
                     </div>
                     <p class="text-sm text-slate-500 max-w-sm leading-relaxed">
                         Hệ sinh thái du lịch và trải nghiệm phong cách mới dành cho thế hệ trẻ. Khám phá cảnh sắc Việt Nam qua những góc nhìn chân thực, giàu cảm xúc và gắn kết cộng đồng.
@@ -631,7 +631,7 @@
             </div>
 
             <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-                <p>© {{ date('Y') }} Wanderlust Hành Trình Bản Sắc Co., Ltd. Giấy phép Lữ hành Quốc tế số 79-0128/TCDL-GP LHQT.</p>
+                <p>© {{ date('Y') }} WanderVibe Hành Trình Bản Sắc Co., Ltd. Giấy phép Lữ hành Quốc tế số 79-0128/TCDL-GP LHQT.</p>
                 <div class="flex items-center gap-4">
                     <span class="hover:text-slate-600 cursor-pointer">Chính sách bảo mật</span>
                     <span>•</span>
@@ -1217,7 +1217,7 @@
                         <i class="fa-solid fa-user-tie text-xs text-[#863c20] dark:text-[#cf8a6e]"></i>
                     </div>
                     <div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-xl rounded-tl-none border border-slate-200 dark:border-slate-700 shadow-xs text-slate-800 dark:text-slate-100 text-xs sm:text-sm leading-relaxed">
-                        Kính chào Quý khách! 👋 Em là chuyên viên hỗ trợ lữ hành của <b>Wanderlust</b>. Quý khách đang lên kế hoạch khám phá điểm đến nào hay cần hỗ trợ giữ chỗ tour, em sẵn sàng tư vấn chi tiết ngay ạ!
+                        Kính chào Quý khách! 👋 Em là chuyên viên hỗ trợ lữ hành của <b>WanderVibe</b>. Quý khách đang lên kế hoạch khám phá điểm đến nào hay cần hỗ trợ giữ chỗ tour, em sẵn sàng tư vấn chi tiết ngay ạ!
                     </div>
                 </div>
 
@@ -1233,7 +1233,7 @@
                     </button>
                 </form>
                 <div class="text-[9px] text-center text-slate-400 dark:text-slate-500 mt-2.5 font-semibold flex flex-col items-center justify-center gap-0.5">
-                    <span>Wanderlust Travel Vietnam • Hỗ trợ tư vấn lịch trình chuyên nghiệp</span>
+                    <span>WanderVibe Travel Vietnam • Hỗ trợ tư vấn lịch trình chuyên nghiệp</span>
                 </div>
             </div>
         </div>

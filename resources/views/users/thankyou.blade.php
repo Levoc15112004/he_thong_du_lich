@@ -287,7 +287,7 @@
                         Thanh Toán Tiền Cọc <span class="text-gradient">Thành Công!</span>
                     </h1>
                     <p class="text-slate-500 font-medium text-lg max-w-2xl mx-auto">
-                        Cảm ơn bạn đã tin tưởng chọn Wanderlust Travel. Khoản thanh toán cọc 30% đã được ghi nhận vào hệ thống.
+                        Cảm ơn bạn đã tin tưởng chọn WanderVibe Travel. Khoản thanh toán cọc 30% đã được ghi nhận vào hệ thống.
                     </p>
                 @elseif ($isBank)
                     <h1 class="text-3xl md:text-5xl font-extrabold mb-4 text-slate-900 tracking-tight">
@@ -377,7 +377,7 @@
                                         <div class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-2">
                                             <i class="far fa-calendar-alt text-xs"></i>
                                         </div>
-                                        {{ isset($tour->start_date) ? date('d/m/Y', strtotime($tour->start_date)) : 'Chưa xác định' }}
+                                        {{ ($order->time || isset($tour->start_date)) ? date('d/m/Y', strtotime($order->time ?: $tour->start_date)) : 'Chưa xác định' }}
                                     </span>
                                     <span class="text-sm font-bold text-slate-600 flex items-center bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
                                         <div class="w-6 h-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mr-2">
@@ -486,7 +486,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-white mb-0.5">Đối soát ngân hàng</p>
-                                        <p class="text-slate-400 leading-relaxed">MB Bank 0909888999 - Cú pháp: WANDERLUST DH{{ $order->id }}.</p>
+                                        <p class="text-slate-400 leading-relaxed">MB Bank 0909888999 - Cú pháp: WANDERVIBE DH{{ $order->id }}.</p>
                                     </div>
                                 </li>
                             @else

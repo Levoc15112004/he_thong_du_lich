@@ -15,7 +15,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $tree = Category::get()->toTree();
+        $tree = Category::defaultOrder()->get()->toTree();
+
+        if ($tree->isEmpty() && Category::count() > 0) {
+            Category::fixTree();
+            $tree = Category::defaultOrder()->get()->toTree();
+        }
 
         return view('admins.Categories.index', compact('tree'));
     }
@@ -57,7 +62,7 @@ class CategoryController extends Controller
             $cat->saveAsRoot();
         }
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Thêm danh mục thành công.');
     }
 
     /**

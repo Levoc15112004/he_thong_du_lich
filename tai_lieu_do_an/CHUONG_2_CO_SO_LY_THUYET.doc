@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>Chương 2: Cơ Sở Lý Thuyết - Đồ Án Tốt Nghiệp Wanderlust Travel</title>
+<!--[if gte mso 9]>
+<xml>
+  <w:WordDocument>
+    <w:View>Print</w:View>
+    <w:Zoom>100</w:Zoom>
+    <w:DoNotOptimizeForBrowser/>
+  </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 25mm 20mm 20mm 30mm; /* Chuẩn lề đồ án: Trên 2.5cm, Dưới 2cm, Phải 2cm, Trái 3cm */
+  }
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    line-height: 1.5;
+    color: #111827;
+    text-align: justify;
+    padding: 10px;
+  }
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18pt;
+    font-weight: bold;
+    color: #863c20;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 30pt;
+    margin-bottom: 12pt;
+    page-break-before: always;
+  }
+  h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15pt;
+    font-weight: bold;
+    color: #1a443c;
+    margin-top: 20pt;
+    margin-bottom: 8pt;
+    border-bottom: 1.5pt solid #863c20;
+    padding-bottom: 4pt;
+  }
+  h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13.5pt;
+    font-weight: bold;
+    color: #863c20;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+  }
+  h4 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    font-weight: bold;
+    font-style: italic;
+    color: #374151;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+  }
+  p {
+    margin-top: 4pt;
+    margin-bottom: 6pt;
+    text-indent: 1cm; /* Thụt đầu dòng chuẩn đồ án tốt nghiệp */
+  }
+  ul, ol {
+    margin-top: 4pt;
+    margin-bottom: 8pt;
+    padding-left: 1.5cm;
+  }
+  li {
+    margin-bottom: 4pt;
+    text-align: justify;
+  }
+  .divider {
+    border: none;
+    border-top: 1pt dashed #cbd5e1;
+    margin: 20pt 0;
+  }
+  .code-block {
+    background-color: #f8fafc;
+    border: 1pt solid #cbd5e1;
+    border-left: 3pt solid #863c20;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 10pt;
+    line-height: 1.4;
+    padding: 10pt;
+    margin: 10pt 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    color: #0f172a;
+  }
+  .inline-code {
+    background-color: #f1f5f9;
+    border: 0.5pt solid #e2e8f0;
+    font-family: 'Consolas', monospace;
+    font-size: 11pt;
+    padding: 1pt 4pt;
+    border-radius: 3pt;
+    color: #c2410c;
+  }
+  .content-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14pt 0;
+    font-size: 11.5pt;
+  }
+  .content-table th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: bold;
+    border: 1pt solid #94a3b8;
+    padding: 8pt;
+    text-align: center;
+  }
+  .content-table td {
+    border: 1pt solid #cbd5e1;
+    padding: 7pt 9pt;
+    vertical-align: top;
+  }
+  .content-table tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+</style>
+</head>
+<body>
+<h1>CHƯƠNG 2: CƠ SỞ LÝ THUYẾT VÀ CÔNG NGHỆ NỀN TẢNG</h1>
+<h2>ĐỒ ÁN TỐT NGHIỆP: HỆ THỐNG QUẢN LÝ VÀ ĐẶT TOUR DU LỊCH TRỰC TUYẾN THÔNG MINH (WANDERLUST TRAVEL VIETNAM)</h2>
+
+<hr class="divider"/>
+
+<h2>2.1. TỔNG QUAN BÀI TOÁN LỮ HÀNH SỐ VÀ MÔ HÌNH ĐẠI LÝ DU LỊCH TRỰC TUYẾN (OTA)</h2>
+
+<h3>2.1.1. Bối cảnh và thách thức chuyển đổi số trong ngành du lịch Việt Nam</h3>
+<p>Ngành du lịch và lữ hành là một trong những ngành kinh tế mũi nhọn, đóng góp tỷ trọng lớn vào GDP của Việt Nam. Tuy nhiên, các phương thức vận hành lữ hành truyền thống đang bộc lộ nhiều điểm nghẽn nghiêm trọng:</p>
+<ul>
+<li><strong>Quy trình thủ công, độ trễ cao:</strong> Khách hàng phải liên hệ qua điện thoại, nhắn tin hoặc đến trực tiếp phòng vé để hỏi lịch trình, kiểm tra số chỗ trống và nhận báo giá. Việc chốt đơn phụ thuộc hoàn toàn vào nhân sự tư vấn, dẫn đến quá tải vào mùa cao điểm (lễ, Tết, kỳ nghỉ hè).</li>
+<li><strong>Thiếu tính minh bạch và cá nhân hóa:</strong> Giá tour biến động phụ thuộc vào dịch vụ phát sinh (phương tiện di chuyển, hạng sao khách sạn, phụ thu phòng đơn, trẻ em). Phương thức truyền thống không cho phép khách hàng tự tùy biến gói dịch vụ và xem giá nhảy số trực tiếp theo thời gian thực (Live Dynamic Pricing).</li>
+<li><strong>Rủi ro quản trị dữ liệu phân tán:</strong> Việc quản lý lịch trình, số chỗ còn nhận, danh sách hành khách bằng file bảng tính (Excel/Sheets) dẫn đến tình trạng đặt trùng chỗ (overbooking), sót đơn, sai lệch thông tin thanh toán và khó khăn trong việc đối soát dòng tiền.</li>
+<li><strong>Dịch vụ khách hàng 24/7 bị giới hạn:</strong> Khách du lịch hiện đại thường tìm kiếm và lên kế hoạch chuyến đi vào buổi tối hoặc ngày nghỉ. Thiếu vắng một trợ lý tư vấn tự động, hiểu biết sâu về lộ trình và văn hóa bản địa khiến doanh nghiệp đánh mất lượng lớn khách hàng tiềm năng.</li>
+</ul>
+
+<h3>2.1.2. Mô hình Đại lý Du lịch Trực tuyến (Online Travel Agency - OTA)</h3>
+<p>Mô hình OTA (Online Travel Agency) là mô hình kinh doanh nền tảng số hóa cho phép kết nối trực tiếp hoặc phân phối các sản phẩm du lịch (tour trọn gói, vé máy bay, phòng khách sạn, vé tham quan) tới người dùng cuối thông qua môi trường mạng Internet.</p>
+
+<p>Hệ thống <strong>Wanderlust Travel Vietnam</strong> được định vị là một nền tảng OTA chuyên biệt cho du lịch trải nghiệm văn hóa bản địa Việt Nam, kết hợp các đặc tính công nghệ hiện đại:</p>
+<ul>
+<li><strong>Cung cấp thông tin đa chiều:</strong> Tích hợp mô tả chi tiết, hình ảnh chất lượng cao, đánh giá thực tế từ du khách và bản đồ định vị GPS trực quan hóa từng chặng dừng chân.</li>
+<li><strong>Tính toán chi phí linh hoạt và minh bạch:</strong> Tự động điều chỉnh tổng giá theo dịch vụ cộng thêm và mã giảm giá khuyến mãi (Voucher Engine).</li>
+<li><strong>Đa kênh thanh toán trực tuyến:</strong> Hỗ trợ thanh toán nhanh qua mã QR ví điện tử MoMo, thẻ thanh toán quốc tế PayPal và chuyển khoản ngân hàng chuẩn VietQR.</li>
+<li><strong>Tư vấn thông minh tích hợp Trí tuệ nhân tạo (AI Concierge):</strong> Ứng dụng mô hình ngôn ngữ lớn (LLM) để tiếp nhận ngôn ngữ tự nhiên của khách hàng, phân tích nhu cầu và gợi ý lộ trình phù hợp ngay trong phiên trò chuyện.</li>
+</ul>
+
+<hr class="divider"/>
+
+<h2>2.2. KIẾN TRÚC PHẦN MỀM VÀ CÁC MÔ HÌNH THIẾT KẾ (SOFTWARE ARCHITECTURE & PATTERNS)</h2>
+
+<h3>2.2.1. Mô hình Kiến trúc MVC (Model - View - Controller)</h3>
+<p>Mô hình kiến trúc MVC là mẫu thiết kế kinh điển và chuẩn mực trong kỹ thuật phần mềm web hiện đại, phân tách hệ thống thành 3 thành phần có trách nhiệm độc lập:</p>
+
+<p>1. <strong>Model (Mô hình dữ liệu):</strong></p>
+<ul>
+<li>Đại diện cho cấu trúc dữ liệu, các quy tắc nghiệp vụ (Business Rules) và logic thao tác với cơ sở dữ liệu.</li>
+<li>Trong dự án Wanderlust Travel, Model được cài đặt thông qua Eloquent ORM của Laravel (như <code class="inline-code">Tour</code>, <code class="inline-code">Order</code>, <code class="inline-code">TourSchedule</code>, <code class="inline-code">Category</code>, <code class="inline-code">Payment</code>). Model quản lý các mối quan hệ thực thể, ràng buộc dữ liệu, bộ lọc phạm vi (<code class="inline-code">scopes</code>) và các sự kiện vòng đời bản ghi (<code class="inline-code">model events</code>).</li>
+</ul>
+<p>2. <strong>View (Tầng hiển thị):</strong></p>
+<ul>
+<li>Chịu trách nhiệm trực quan hóa dữ liệu và cung cấp giao diện tương tác cho người dùng.</li>
+<li>Hệ thống sử dụng Laravel Blade Template kết hợp Tailwind CSS, nhận dữ liệu đã được xử lý từ Controller để sinh mã HTML trả về cho trình duyệt. View hoàn toàn tách biệt khỏi các logic truy vấn cơ sở dữ liệu phức tạp.</li>
+</ul>
+<p>3. <strong>Controller (Bộ điều khiển):</strong></p>
+<ul>
+<li>Đóng vai trò cầu nối điều phối giữa View và Model.</li>
+<li>Tiếp nhận HTTP Request từ phía Client (thông qua hệ thống Routing), xác thực dữ liệu đầu vào (<code class="inline-code">Form Request Validation</code>), gọi các phương thức nghiệp vụ từ Model/Service, và quyết định phản hồi trả về (render View Blade hoặc trả về cấu trúc dữ liệu JSON cho các API call).</li>
+</ul>
+
+<pre class="code-block">
+<p>+-------------------------------------------------------+</p>
+<table class="content-table"><thead><tr><th>HTTP Request</th></tr></thead><tbody></tbody></table>
+<p>+---------------------------+---------------------------+</p>
+<table class="content-table"><thead><tr></tr></thead><tbody></tbody></table>
+<p>v</p>
+<p>+-------------------------------------------------------+</p>
+<table class="content-table"><thead><tr><th>ROUTING</th></tr></thead><tbody></tbody></table>
+<p>+---------------------------+---------------------------+</p>
+<table class="content-table"><thead><tr></tr></thead><tbody></tbody></table>
+<p>v</p>
+<p>+-------------------------------------------------------+</p>
+<table class="content-table"><thead><tr><th>CONTROLLER</th></tr></thead><tbody><tr><td>(Xác thực input, điều phối nghiệp vụ, tính giá)</td></tr></tbody></table>
+<p>+---------------+-----------------------+---------------+</p>
+<table class="content-table"><thead><tr><th></th></tr></thead><tbody></tbody></table>
+<p>Truy vấn/Cập nhật dữ liệu         Truyền View Model</p>
+<p>v                       v</p>
+<p>+-----------------------+       +-----------------------+</p>
+<table class="content-table"><thead><tr><th>MODEL</th><th></th><th>VIEW</th></tr></thead><tbody><tr><td>(Eloquent ORM)</td><td></td><td>(Blade + Tailwind)</td></tr></tbody></table>
+<p>+-----------+-----------+       +-----------+-----------+</p>
+<table class="content-table"><thead><tr><th></th></tr></thead><tbody></tbody></table>
+<p>v                               v</p>
+<p>+-----------------------+       +-----------------------+</p>
+<table class="content-table"><thead><tr><th>DATABASE ENGINE</th><th></th><th>CLIENT BROWSER</th></tr></thead><tbody><tr><td>(MySQL / TiDB Cloud)</td><td></td><td>(HTML/CSS/JS Output)</td></tr></tbody></table>
+<p>+-----------------------+       +-----------------------+</p>
+</pre>
+
+<p><strong>Lợi ích kỹ thuật của việc áp dụng MVC trong đồ án:</strong></p>
+<ul>
+<li><strong>Tính phân tách rõ ràng (Separation of Concerns):</strong> Giúp mã nguồn dễ bảo trì, cho phép các thành viên hoặc các giai đoạn phát triển giao diện (Frontend) và logic nghiệp vụ (Backend) diễn ra song song mà không xung đột.</li>
+<li><strong>Khả năng mở rộng và tái sử dụng:</strong> Dữ liệu từ Model có thể phục vụ đồng thời cho cả tầng giao diện web truyền thống lẫn tầng dịch vụ API cho thiết bị di động hoặc widget nhúng ngoài.</li>
+</ul>
+
+<h3>2.2.2. Kiến trúc Monolith mở rộng phân tầng (Multi-tier Layered Architecture)</h3>
+<p>Hệ thống được xây dựng theo kiến trúc phân tầng (Layered Architecture) bên trong một khối ứng dụng đồng nhất (Modular Monolith), đảm bảo tối ưu chi phí vận hành hạ tầng mà vẫn giữ được tính mô-đun hóa cao:</p>
+<ul>
+<li><strong>Tầng Trình bày (Presentation Layer):</strong> Gồm hệ thống giao diện Blade Templates, các thành phần UI Tailwind, widget JavaScript tương tác bất đồng bộ (AJAX Fetch API).</li>
+<li><strong>Tầng Kiểm soát & Định tuyến (Routing & Middleware Layer):</strong> Đảm nhiệm việc lọc lưu lượng mạng, kiểm tra an toàn bảo mật (CSRF, XSS filter), xác thực phân quyền người dùng (<code class="inline-code">CheckAdmin</code>, <code class="inline-code">CheckUser</code>).</li>
+<li><strong>Tầng Dịch vụ Nghiệp vụ (Business Application Layer):</strong> Các Controller chuyên trách (Booking, Payment, TourDetail, Chatbot, Weather), kết hợp với các Service Client gọi ra ngoài.</li>
+<li><strong>Tầng Truy xuất Dữ liệu (Data Access Layer):</strong> Eloquent ORM và Query Builder, thực thi các truy vấn tối ưu xuống cơ sở dữ liệu quan hệ.</li>
+<li><strong>Tầng Dịch vụ Mở rộng (External Integration Layer):</strong> Tích hợp dịch vụ đám mây của bên thứ ba bao gồm MoMo Payment Gateway, PayPal SDK, VietQR Webhook, OpenWeatherMap API, Google Gemini AI, Groq LPU API.</li>
+</ul>
+
+<h3>2.2.3. Chuẩn thiết kế RESTful API Architecture</h3>
+<p>REST (Representational State Transfer) là kiểu kiến trúc phần mềm sử dụng các giao thức chuẩn của World Wide Web để truyền tải dữ liệu giữa máy khách và máy chủ:</p>
+<ul>
+<li><strong>Tính phi trạng thái (Stateless):</strong> Mỗi yêu cầu từ Client gửi lên Server phải chứa đầy đủ mọi thông tin cần thiết để Server hiểu và xử lý. Máy chủ không lưu giữ ngữ cảnh phiên làm việc của Client giữa các request API, giúp hệ thống dễ dàng mở rộng theo chiều ngang.</li>
+<li><strong>Giao diện đồng nhất (Uniform Interface):</strong> Hệ thống định danh tài nguyên thông qua định dạng URI (Uniform Resource Identifier) chuẩn hóa và sử dụng các phương thức HTTP chuẩn:</li>
+<li><code class="inline-code">GET</code>: Truy xuất dữ liệu tài nguyên (Ví dụ: <code class="inline-code">GET /api/chat/history</code>, <code class="inline-code">GET /tour/schedule/{id}/json</code>).</li>
+<li><code class="inline-code">POST</code>: Tạo mới tài nguyên hoặc kích hoạt tác vụ nghiệp vụ có payload (Ví dụ: <code class="inline-code">POST /api/chat</code>, <code class="inline-code">POST /momo/ipn</code>, <code class="inline-code">POST /paypal/create</code>).</li>
+<li><strong>Mã phản hồi tiêu chuẩn (HTTP Status Codes):</strong></li>
+<li><code class="inline-code">200 OK</code>: Yêu cầu thực thi thành công và trả về dữ liệu.</li>
+<li><code class="inline-code">201 Created</code>: Bản ghi mới đã được tạo thành công trong cơ sở dữ liệu.</li>
+<li><code class="inline-code">400 Bad Request</code>: Tham số đầu vào không hợp lệ hoặc thiếu trường bắt buộc.</li>
+<li><code class="inline-code">401 Unauthorized</code> / <code class="inline-code">403 Forbidden</code>: Khách chưa xác thực danh tính hoặc không đủ quyền hạn.</li>
+<li><code class="inline-code">404 Not Found</code>: Tài nguyên yêu cầu không tồn tại trên hệ thống.</li>
+<li><code class="inline-code">500 Internal Server Error</code>: Lỗi phát sinh trong quá trình xử lý nội bộ của máy chủ.</li>
+</ul>
+
+<hr class="divider"/>
+
+<h2>2.3. NỀN TẢNG BACKEND VÀ NGÔN NGỮ LẬP TRÌNH</h2>
+
+<h3>2.3.1. Ngôn ngữ lập trình PHP 8.1 và những cải tiến hiệu năng</h3>
+<p>PHP (Hypertext Preprocessor) là ngôn ngữ kịch bản phía máy chủ chiếm thị phần lớn nhất thế giới trong phát triển ứng dụng web. Phiên bản PHP 8.1 mang lại những đột phá công nghệ vượt bậc được khai thác trong dự án:</p>
+<ul>
+<li><strong>JIT Compiler (Just-In-Time Compilation):</strong> Trình biên dịch JIT dịch trực tiếp mã trung gian (Opcode) thành mã máy nguyên bản của CPU tại thời điểm chạy. Điều này cải thiện vượt bậc tốc độ xử lý các tác vụ nặng tính toán như thuật toán bóc tách từ khóa tiếng Việt không dấu, giải mã JSON kích thước lớn từ AI API và tính toán ma trận ma trận giá tour phức tạp.</li>
+<li><strong>Strict Typing & Readonly Properties:</strong> Hệ thống khai báo kiểu dữ liệu chặt chẽ giúp phát hiện lỗi sai kiểu dữ liệu ngay tại giai đoạn biên dịch/thông dịch, giảm thiểu tối đa các lỗi ngoại lệ runtime trong quá trình giao dịch tài chính.</li>
+<li><strong>Fibers (Xử lý đồng thời nhẹ - Lightweight Concurrency):</strong> Cung cấp cơ chế Coroutines để quản lý các tác vụ I/O không khóa (non-blocking I/O), hỗ trợ hiệu quả khi hệ thống phải đồng thời gửi nhiều request ra các dịch vụ ngoài (MoMo, PayPal, Weather, Gemini).</li>
+</ul>
+
+<h3>2.3.2. Framework Laravel 9 và Hệ sinh thái</h3>
+<p>Laravel là framework PHP mã nguồn mở theo chuẩn doanh nghiệp, nổi tiếng với cú pháp tao nhã, cấu trúc chặt chẽ và hệ sinh thái toàn diện:</p>
+<ul>
+<li><strong>Chu trình vòng đời của một HTTP Request (Request Lifecycle):</strong></li>
+</ul>
+<p>1. Yêu cầu từ Client đi qua máy chủ Web (Apache với module <code class="inline-code">mod_rewrite</code>) và được chuyển hướng về tập tin khởi đầu duy nhất: <code class="inline-code">public/index.php</code>.</p>
+<p>2. Nạp Composer Autoloader và khởi tạo thể hiện của ứng dụng (<code class="inline-code">Illuminate\Foundation\Application</code>).</p>
+<p>3. Chuyển Request vào HTTP Kernel (<code class="inline-code">App\Http\Kernel</code>), tại đây các dịch vụ cốt lõi (<code class="inline-code">Service Providers</code>) được đăng ký và khởi động (Bootstrapping: nạp cấu hình, cấu hình môi trường <code class="inline-code">.env</code>, kết nối CSDL).</p>
+<p>4. Request đi qua chuỗi Middleware toàn cục và Middleware theo nhóm route (kiểm tra trạng thái bảo trì, mã hóa cookie, xác thực CSRF Token).</p>
+<p>5. Router ánh xạ URI tới Controller hoặc Closure tương ứng. Request đi qua các Middleware cục bộ (<code class="inline-code">CheckAdmin</code>, <code class="inline-code">CheckUser</code>).</p>
+<p>6. Controller thực thi logic nghiệp vụ, tương tác với Model/Service và trả về đối tượng <code class="inline-code">Response</code>.</p>
+<p>7. Response quay ngược lại qua chuỗi Middleware (gắn cookie, header bảo mật) và được gửi về trình duyệt của khách hàng.</p>
+
+<h3>2.3.3. Tầng ánh xạ quan hệ thực thể Eloquent ORM</h3>
+<p>Eloquent ORM trong Laravel cài đặt mẫu kiến trúc <strong>Active Record</strong>, trong đó mỗi lớp Model đại diện cho một bảng trong CSDL, và mỗi thể hiện của Model đại diện cho một dòng dữ liệu:</p>
+<ul>
+<li><strong>Cơ chế quan hệ liên kết dữ liệu phong phú:</strong></li>
+<li><em>One to Many (1-N):</em> Một danh mục <code class="inline-code">Category</code> có nhiều tour <code class="inline-code">tours()</code>; Một tour <code class="inline-code">Tour</code> có nhiều chặng lịch trình <code class="inline-code">tourSchedules()</code> và nhiều hình ảnh <code class="inline-code">images()</code>.</li>
+<li><em>Many to Many (N-N):</em> Quan hệ giữa tour và các tiện ích đặc thù thông qua bảng trung gian <code class="inline-code">tour_attr</code> (<code class="inline-code">belongsToMany(AttrTour::class)</code>).</li>
+<li><em>One to One Polymorphic:</em> Quản lý thanh toán giao dịch liên kết trực tiếp với đơn đặt tour <code class="inline-code">order()</code>.</li>
+<li><strong>Giải quyết triệt để bài toán N+1 Query:</strong></li>
+<li>Bài toán N+1 query xảy ra khi truy vấn danh sách N tour, sau đó trong vòng lặp lại thực hiện N câu truy vấn con để lấy hình ảnh hoặc danh mục, gây nghẽn đường truyền và sụt giảm nghiêm trọng hiệu năng CSDL.</li>
+<li>Dự án ứng dụng kỹ thuật <strong>Eager Loading</strong> (<code class="inline-code">Tour::with(['category', 'images', 'tourSchedules'])->get()</code>), gom toàn bộ các khóa ngoại và chỉ thực thi đúng 2 đến 3 câu lệnh SQL tối ưu với mệnh đề <code class="inline-code">IN (...)</code>, giảm thời gian phản hồi trang từ 1.8 giây xuống dưới 120ms.</li>
+</ul>
+
+<h3>2.3.4. Cơ chế Service Container & Dependency Injection</h3>
+<p>Service Container là trái tim của framework Laravel, đóng vai trò một thùng chứa đảo ngược điều khiển (Inversion of Control - IoC):</p>
+<ul>
+<li><strong>Dependency Injection (Tiêm phụ thuộc):</strong> Cho phép các Controller khai báo trực tiếp các lớp phụ thuộc (như <code class="inline-code">Request</code>, <code class="inline-code">TourService</code>, <code class="inline-code">ChatSession</code>) vào phương thức khởi tạo (<code class="inline-code">__construct</code>) hoặc phương thức xử lý. Container tự động sử dụng Reflection API để khởi tạo và truyền các đối tượng cần thiết.</li>
+<li><strong>Lợi ích:</strong> Giảm sự phụ thuộc cứng (tight coupling) giữa các lớp, thuận lợi tối đa cho việc viết mã kiểm thử đơn vị (Unit Test) và hoán đổi dịch vụ (ví dụ hoán đổi giữa Gemini AI Service và Groq AI Service mà không cần sửa đổi mã nguồn Controller).</li>
+</ul>
+
+<h3>2.3.5. Cơ chế Middleware Pipeline</h3>
+<p>Middleware đóng vai trò như các lớp lọc trung gian bao bọc lấy ứng dụng:</p>
+<ul>
+<li><strong>Kiểm tra quyền truy cập:</strong> <code class="inline-code">CheckAdmin</code> đảm bảo người dùng đã xác thực và có trường <code class="inline-code">role === 'admin'</code>, ngăn chặn truy cập trái phép vào các tài nguyên nhạy cảm như quản trị doanh thu, cập nhật trạng thái đơn hàng.</li>
+<li><strong>Bảo vệ toàn vẹn phiên:</strong> <code class="inline-code">CheckUser</code> xác thực tài khoản du khách khi thực hiện quy trình thanh toán hoặc xem lịch sử hóa đơn.</li>
+</ul>
+
+<hr class="divider"/>
+
+<h2>2.4. CÔNG NGHỆ CƠ SỞ DỮ LIỆU VÀ CẤU TRÚC DỮ LIỆU PHÂN CẤP</h2>
+
+<h3>2.4.1. Hệ quản trị Cơ sở dữ liệu Quan hệ MySQL 8.0</h3>
+<p>MySQL là hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở phổ biến nhất thế giới:</p>
+<ul>
+<li><strong>Đảm bảo tính toàn vẹn giao dịch (ACID - Atomicity, Consistency, Isolation, Durability):</strong> Toàn bộ quy trình đặt tour và thanh toán được thực thi trong một Transaction. Nếu bước tạo giao dịch thanh toán hoặc trừ số lượng chỗ thất bại, toàn bộ thao tác thêm đơn hàng sẽ được hoàn tác (<code class="inline-code">DB::rollBack()</code>), loại bỏ hoàn toàn hiện tượng dữ liệu rác hoặc sai lệch số dư.</li>
+<li><strong>Cơ chế lưu trữ InnoDB:</strong> Hỗ trợ khóa cấp dòng (Row-level Locking) và ràng buộc khóa ngoại (Foreign Key Constraints) với các tùy chọn <code class="inline-code">ON DELETE CASCADE</code> và <code class="inline-code">ON DELETE SET NULL</code>, tự động duy trì tính nhất quán khi xóa tour hoặc người dùng.</li>
+<li><strong>Chỉ mục B-Tree (B-Tree Indexing):</strong> Tối ưu hóa tốc độ tìm kiếm các trường thường xuyên lọc như <code class="inline-code">status</code>, <code class="inline-code">category_id</code>, <code class="inline-code">start_date</code>, <code class="inline-code">price</code>.</li>
+</ul>
+
+<h3>2.4.2. Hệ quản trị CSDL Phân tán TiDB Cloud Serverless (NewSQL)</h3>
+<p>Nhằm giải quyết bài toán chịu tải và sẵn sàng cho môi trường điện toán đám mây hiện đại, dự án sử dụng TiDB Cloud Serverless:</p>
+<ul>
+<li><strong>Bản chất kiến trúc NewSQL:</strong> TiDB kết hợp các ưu điểm tốt nhất của hai thế giới: Tính toàn vẹn giao dịch ACID mạnh mẽ của CSDL quan hệ truyền thống và khả năng mở rộng vô hạn theo chiều ngang (Horizontal Scalability) của NoSQL.</li>
+<li><strong>Tương thích giao thức MySQL:</strong> TiDB hỗ trợ hoàn toàn giao thức dây (MySQL Wire Protocol) và cú pháp SQL của MySQL 8.0. Ứng dụng Laravel kết nối tới TiDB Cloud thông qua driver <code class="inline-code">mysql</code> tiêu chuẩn mà không cần viết lại bất kỳ dòng mã truy vấn nào.</li>
+<li><strong>Kiến trúc tách rời Tính toán và Lưu trữ (Disaggregated Compute-Storage):</strong></li>
+<li><em>Tầng Tính toán (TiDB Nodes):</em> Tiếp nhận kết nối, phân tích cú pháp SQL và tối ưu hóa kế hoạch thực thi, hoàn toàn không lưu trạng thái (Stateless).</li>
+<li><em>Tầng Lưu trữ (TiKV Nodes):</em> Lưu trữ dữ liệu phân tán theo cấu trúc Key-Value dựa trên thuật toán đồng thuận Raft Consensus, tự động nhân bản (Multi-replica replication) đảm bảo dữ liệu không bao giờ bị mất ngay cả khi một trung tâm dữ liệu gặp sự cố.</li>
+<li><strong>Cơ chế bảo mật kết nối TLS/SSL:</strong> TiDB Cloud Serverless bắt buộc mã hóa toàn bộ dữ liệu truyền tải trên mạng. Ứng dụng Laravel được cấu hình sử dụng chứng chỉ số <code class="inline-code">/etc/ssl/certs/ca-certificates.crt</code> trong Linux container để thiết lập kênh truyền mã hóa an toàn.</li>
+</ul>
+
+<h3>2.4.3. Cấu trúc dữ liệu Cây lồng nhau (Nested Set Model / MPTT) trong Quản lý Danh mục</h3>
+<p>Trong một nền tảng du lịch, danh mục điểm đến có cấu trúc phân cấp đa tầng phức tạp (Ví dụ: <em>Du lịch Trong Nước -> Miền Bắc -> Hà Giang -> Tour Khám Phá Đồng Văn</em>).</p>
+
+<p><strong>So sánh hai mô hình lưu trữ phân cấp:</strong></p>
+
+<table class="content-table"><thead><tr><th>Tiêu chí</th><th>Mô hình Danh sách Kề (Adjacency List - <code class="inline-code">parent_id</code>)</th><th>Mô hình Cây lồng nhau (Nested Set Model - MPTT)</th></tr></thead><tbody><tr><td><strong>Cơ chế lưu trữ</strong></td><td>Chỉ lưu <code class="inline-code">id</code> của danh mục cha trong trường <code class="inline-code">parent_id</code>.</td><td>Lưu hai chỉ số biên độ <code class="inline-code">_lft</code> (Left) và <code class="inline-code">_rgt</code> (Right) biểu diễn bao đóng tập hợp.</td></tr><tr><td><strong>Truy vấn danh mục con</strong></td><td>Bắt buộc dùng đệ quy hoặc vòng lặp nhiều lần (độ phức tạp $O(N)$ truy vấn).</td><td>Thực hiện đúng <strong>1 câu lệnh SQL duy nhất</strong> ($O(1)$ truy vấn).</td></tr><tr><td><strong>Hiệu năng hệ thống</strong></td><td>Chậm chạp, dễ tràn ngăn xếp (Stack Overflow) khi cây danh mục sâu.</td><td>Tối ưu hóa cực đại với chỉ mục B-Tree trên cặp trường <code class="inline-code">_lft</code> và <code class="inline-code">_rgt</code>.</td></tr><tr><td><strong>Mức độ phức tạp khi ghi</strong></td><td>Rất đơn giản khi thêm/xóa nút.</td><td>Cần cập nhật lại giá trị left/right của các nút liên quan.</td></tr></tbody></table>
+
+<pre class="code-block">
+<p>Mô phỏng gán nhãn Left/Right trong Nested Set Model:</p>
+
+<p>[Du lịch Trong Nước] (1, 10)</p>
+<p>/                  \</p>
+<p>[Miền Bắc] (2, 7)               [Miền Trung] (8, 9)</p>
+<p>/           \</p>
+<p>[Hà Giang] (3, 4)  [Sa Pa] (5, 6)</p>
+</pre>
+
+<ul>
+<li><strong>Nguyên lý toán học của Nested Set:</strong></li>
+</ul>
+<p>Một danh mục $B$ là danh mục con của $A$ khi và chỉ khi:</p>
+<p>$$\text{Left}(A) < \text{Left}(B) < \text{Right}(B) < \text{Right}(A)$$</p>
+<p>Để lấy toàn bộ cây con của "Miền Bắc" ($\_lft=2, \_rgt=7$), hệ thống chỉ cần thực thi:</p>
+<p><code class="inline-code">SELECT <em> FROM categories WHERE _lft BETWEEN 2 AND 7 ORDER BY _lft ASC;</code></p>
+<ul>
+<li><strong>Ứng dụng trong dự án:</strong></li>
+</ul>
+<p>Dự án tích hợp gói thư viện chuyên dụng <code class="inline-code">kalnoy/nestedset</code>, kết hợp với thư viện giao diện <code class="inline-code">Nestable.js</code> trên Admin Panel. Quản trị viên có thể kéo thả thay đổi vị trí phân cấp của danh mục điểm đến trực quan, hệ thống tự động tái tính toán toàn bộ chỉ số <code class="inline-code">_lft</code> và <code class="inline-code">_rgt</code> trong cơ sở dữ liệu một cách nhất quán.</p>
+
+<hr class="divider"/>
+
+<h2>2.5. CÔNG NGHỆ FRONTEND VÀ TRỰC QUAN HÓA DỮ LIỆU</h2>
+
+<h3>2.5.1. Laravel Blade Template Engine</h3>
+<p>Blade là công cụ tạo mẫu giao diện mạnh mẽ nhưng vô cùng trực quan của Laravel:</p>
+<ul>
+<li><strong>Cơ chế kế thừa Layout thông minh:</strong> Sử dụng chỉ thị <code class="inline-code">@extends('users.master')</code>, <code class="inline-code">@section('content')</code>, <code class="inline-code">@yield('content')</code> giúp tái sử dụng cấu trúc Header, Footer, Widget điều hướng trên toàn bộ các trang con, tránh lặp lại mã nguồn (nguyên lý DRY - Don't Repeat Yourself).</li>
+<li><strong>Phòng chống tấn công XSS mặc định:</strong> Khi xuất dữ liệu bằng cú pháp <code class="inline-code">{{ $variable }}</code>, Blade tự động chuyển đổi các ký tự nguy hiểm thành thực thể HTML thông qua hàm <code class="inline-code">htmlspecialchars()</code>. Chỉ khi người quản trị chủ động cho phép render nội dung phong phú mới sử dụng cú pháp đặc biệt <code class="inline-code">{!! $htmlContent !!}</code>.</li>
+</ul>
+
+<h3>2.5.2. Tailwind CSS Framework và Hệ thống Thiết kế Universal Dark/Light Theme</h3>
+<p>Tailwind CSS là framework CSS theo triết lý <strong>Utility-First</strong>, cung cấp các lớp tiện ích có thể kết hợp trực tiếp trong mã HTML:</p>
+<ul>
+<li><strong>Tối ưu hóa dung lượng (JIT Compiler):</strong> Trình biên dịch JIT phân tích toàn bộ mã nguồn template và chỉ sinh ra các lớp CSS thực sự được sử dụng, giúp giảm dung lượng tập tin CSS từ hàng Megabyte xuống chỉ còn khoảng 15KB - 30KB ở chế độ Production.</li>
+<li><strong>Hệ thống Universal Theme Token System:</strong></li>
+<li>Không dựa vào các lớp màu cứng (hardcoded colors), giao diện xây dựng trên hệ thống biến CSS Token:</li>
+</ul>
+<p><code class="inline-code">--color-canvas</code> (màu nền tổng thể), <code class="inline-code">--color-paper</code> (màu thẻ card/bảng biểu), <code class="inline-code">--color-ink</code> (màu chữ nội dung), <code class="inline-code">--color-primary</code> (màu thương hiệu đất nung Terracotta <code class="inline-code">#863c20</code>).</p>
+<ul>
+<li>Đoạn mã JavaScript khởi tạo chạy ngay trong thẻ <code class="inline-code"><head></code> trước khi trình duyệt dựng giao diện DOM để kiểm tra <code class="inline-code">localStorage.getItem('theme')</code>, gắn lớp <code class="inline-code">dark</code> ngay lập tức nếu cần, triệt tiêu hoàn toàn hiện tượng nhấp nháy giao diện khó chịu (FOUC - Flash of Unstyled Content).</li>
+</ul>
+
+<h3>2.5.3. Hệ thống Thông tin Địa lý (Web GIS) và Thư viện Leaflet.js</h3>
+<p>Trong ứng dụng du lịch, trực quan hóa lộ trình và các điểm dừng chân trên bản đồ là tính năng trọng tâm nâng cao trải nghiệm khách hàng:</p>
+<ul>
+<li><strong>Khái niệm Web GIS và Tọa độ WGS84:</strong> Mỗi điểm dừng trong lịch trình du lịch (<code class="inline-code">tour_schedules</code>) được định danh bởi cặp tọa độ địa lý chuẩn quốc tế: Vĩ độ (<code class="inline-code">latitude</code>) và Kinh độ (<code class="inline-code">longitude</code>) dưới dạng số thực dấu phẩy động (<code class="inline-code">decimal(10, 6)</code>).</li>
+<li><strong>Thư viện bản đồ tương tác Leaflet.js:</strong></li>
+<li>Leaflet là thư viện JavaScript mã nguồn mở hàng đầu với dung lượng siêu nhẹ (~42KB), tương thích hoàn hảo trên cả máy tính để bàn và thiết bị di động cảm ứng.</li>
+<li>Hệ thống nạp lớp bản đồ nền từ <strong>OpenStreetMap TileLayer</strong> (không giới hạn chi phí và không phụ thuộc API Key hạn chế như Google Maps).</li>
+<li>Sử dụng đối tượng <code class="inline-code">L.marker</code> để ghim các vị trí danh lam thắng cảnh, gắn kèm thông tin <code class="inline-code">Popup</code> (tên địa danh, mô tả vắn tắt, hình ảnh đại diện) và sử dụng <code class="inline-code">L.polyline</code> để vẽ đường nét đứt mô phỏng lộ trình di chuyển xuyên suốt giữa các ngày.</li>
+<li>Dữ liệu tọa độ được Controller nạp bất đồng bộ thông qua endpoint API JSON <code class="inline-code">/tour/schedule/{id}/json</code> giúp trang chi tiết tour tải nhanh và mượt mà.</li>
+</ul>
+
+<hr class="divider"/>
+
+<h2>2.6. TRÍ TUỆ NHÂN TẠO VÀ MÔ HÌNH NGÔN NGỮ LỚN (AI & LLMS)</h2>
+
+<h3>2.6.1. Khái niệm Mô hình Ngôn ngữ Lớn (LLM) và Cơ chế Sinh Phản hồi</h3>
+<p>Mô hình ngôn ngữ lớn (Large Language Model - LLM) là các mạng nơ-ron học sâu dựa trên kiến trúc <strong>Transformer</strong> với cơ chế tự chú ý (Self-Attention Mechanism). Mô hình có khả năng hiểu ngữ cảnh văn bản phức tạp, suy luận logic và sinh ngôn ngữ tự nhiên mạch lạc như con người.</p>
+
+<p>Thay vì dựa vào các kịch bản cứng nhắc kiểu cây quyết định (decision tree) cổ điển, hệ thống tích hợp LLM để đóng vai trò một "Chuyên viên tư vấn lữ hành bản địa" (Travel Concierge), có khả năng thấu hiểu các câu hỏi linh hoạt của du khách (ví dụ: </em>"Mình có 4 ngày nghỉ lễ, thích biển đẹp và yên tĩnh, ngân sách tầm 5 triệu thì đi đâu hợp lý?"<em>).</p>
+
+<h3>2.6.2. Google Gemini 2.0 Flash API và Groq LPU Inference Engine</h3>
+<p>Hệ thống hỗ trợ tích hợp kép các nền tảng LLM tiên tiến nhất hiện nay:</p>
+<ul>
+<li><strong>Google Gemini 2.0 Flash:</strong></li>
+<li>Mô hình thế hệ mới của Google với khả năng suy luận ngữ cảnh vượt trội, độ dài ngữ cảnh (Context Window) lớn và tối ưu hóa cho tác vụ phản hồi nhanh (low-latency conversational AI).</li>
+<li>Kết nối thông qua giao thức REST API HTTPS chuẩn: <code class="inline-code">https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={API_KEY}</code>.</li>
+<li><strong>Groq LPU (Language Processing Unit):</strong></li>
+<li>Groq là kiến trúc phần cứng xử lý AI chuyên biệt, thay thế GPU truyền thống bằng chip LPU có khả năng tính toán ma trận với băng thông cực cao.</li>
+<li>Tốc độ sinh phản hồi đạt ngưỡng kinh ngạc: <strong>400 - 600 tokens/giây</strong>, triệt tiêu hoàn toàn thời gian chờ đợi của khách hàng khi chat trên website.</li>
+<li>Sử dụng giao thức tương thích OpenAI Specification, giúp dễ dàng tích hợp và dự phòng.</li>
+</ul>
+
+<h3>2.6.3. Kỹ thuật Kỹ nghệ Câu lệnh (Prompt Engineering) và Bơm ngữ cảnh động (Context Injection)</h3>
+<p>Một thách thức cố hữu của các mô hình LLM là hiện tượng ảo giác (Hallucination - mô hình tự bịa ra thông tin không có thật, tự sáng tạo ra tour và giá không tồn tại).</p>
+
+<p>Hệ thống Wanderlust Travel giải quyết triệt để vấn đề này bằng mô hình <strong>RAG thu nhỏ (Retrieval-Augmented Generation / Grounding Context Injection)</strong>:</p>
+<p>1. <strong>Thiết kế System Prompt định vị vai trò:</strong></p>
+<p>Thiết lập nghiêm ngặt bản sắc của bot: Là chuyên viên tư vấn lịch thiệp của Wanderlust Travel Vietnam, chỉ được tư vấn các điểm đến có thật tại Việt Nam, ngôn phong ấm áp, hiếu khách.</p>
+<p>2. <strong>Bơm ngữ cảnh dữ liệu động từ Database:</strong></p>
+<p>Trước khi gửi câu hỏi của khách hàng tới AI, Controller truy vấn 12 tour du lịch thực tế mới nhất từ bảng <code class="inline-code">tours</code> (gồm tên tour, điểm đến, thời lượng, giá niêm yết và URL chi tiết). Toàn bộ khối dữ liệu này được chuyển hóa thành ngữ cảnh thực tế kèm theo System Prompt:</p>
+<pre class="code-block">
+<p>Bạn CHỈ ĐƯỢC gợi ý các tour có trong danh sách sau đây.</p>
+<p>Khi nhắc tới tour, bắt buộc chèn liên kết định dạng Markdown [Xem chi tiết & Đặt vé](URL):</p>
+<ul>
+<li>Tour: Hà Giang Mùa Hoa Tam Giác Mạch | Giá: 3,500,000 VNĐ | URL: https://dulichvoc.onrender.com/tour-detail/1</li>
+<li>Tour: Phú Quốc Thiên Đường Nghỉ Dưỡng | Giá: 5,200,000 VNĐ | URL: https://dulichvoc.onrender.com/tour-detail/2</li>
+</ul>
+</pre>
+<p>3. <strong>Bộ chuyển đổi định dạng tại Client (Markdown to Interactive UI):</strong></p>
+<p>Đoạn mã JavaScript phía giao diện tiếp nhận phản hồi từ bot, sử dụng biểu thức chính quy (Regex) quét các chuỗi liên kết Markdown <code class="inline-code">[...](URL)</code> và tự động render thành các nút bấm hành động (CTA Button) màu đất nung nổi bật, dẫn du khách trực tiếp tới trang đặt vé của tour tương ứng.</p>
+
+<h3>2.6.4. Thuật toán Dự phòng Thông minh (Smart Fallback Rule-Based Engine)</h3>
+<p>Để đảm bảo tính khả dụng cao nhất (High Availability), hệ thống không phụ thuộc hoàn toàn vào dịch vụ bên ngoài. Khi xảy ra sự cố nghẽn mạng quốc tế hoặc tài khoản AI hết hạn mức (Quota Exceeded), hệ thống tự động chuyển sang <strong>Smart Fallback Engine</strong>:</p>
+<p>1. Chuẩn hóa chuỗi văn bản đầu vào: Chuyển về chữ thường và loại bỏ toàn bộ dấu thanh tiếng Việt thông qua hàm giải thuật toán loại bỏ ký tự Unicode.</p>
+<p>2. Quét ma trận từ khóa địa danh và nhu cầu: "ha giang", "phu quoc", "da lat", "da nang", "sapa", "nha trang", "gia re", "bien", "nui".</p>
+<p>3. Thực hiện truy vấn mềm (Fuzzy Search) bằng Eloquent ORM: <code class="inline-code">Tour::where('name', 'LIKE', "%{$keyword}%")->take(3)->get()</code>.</p>
+<p>4. Tổng hợp câu trả lời tự động bằng tiếng Việt chuẩn mực, kèm theo danh sách thẻ tour có sẵn, đảm bảo người dùng luôn nhận được kết quả tư vấn hữu ích trong mọi tình huống.</p>
+
+<hr class="divider"/>
+
+<h2>2.7. TÍCH HỢP CỔNG THANH TOÁN TRỰC TUYẾN VÀ AN TOÀN GIAO DỊCH</h2>
+
+<h3>2.7.1. Cổng thanh toán Ví điện tử MoMo và Cơ chế Chữ ký số HMAC-SHA256</h3>
+<p>MoMo là một trong những hệ sinh thái ví điện tử lớn nhất Việt Nam. Hệ thống tích hợp phương thức thanh toán <strong>MoMo All-in-One QR Code & App-to-App Payment</strong>:</p>
+<ul>
+<li><strong>Nguyên lý Chữ ký điện tử HMAC-SHA256 (Hash-based Message Authentication Code):</strong></li>
+<li>Nhằm ngăn chặn tin tặc sửa đổi các thông số quan trọng (như số tiền thanh toán <code class="inline-code">amount</code>, mã đơn hàng <code class="inline-code">orderId</code>) trên đường truyền giữa Client và Server.</li>
+<li>Thuật toán ghép nối các tham số cấu hình (<code class="inline-code">accessKey</code>, <code class="inline-code">amount</code>, <code class="inline-code">extraData</code>, <code class="inline-code">ipnUrl</code>, <code class="inline-code">orderId</code>, <code class="inline-code">orderInfo</code>, <code class="inline-code">partnerCode</code>, <code class="inline-code">redirectUrl</code>, <code class="inline-code">requestId</code>, <code class="inline-code">requestType</code>) theo một thứ tự từ điển cố định nghiêm ngặt thành chuỗi <code class="inline-code">rawHash</code>.</li>
+<li>Sử dụng khóa bí mật (<code class="inline-code">Secret Key</code>) băm chuỗi <code class="inline-code">rawHash</code> bằng thuật toán SHA-256 để sinh ra chuỗi chữ ký số <code class="inline-code">signature</code>:</li>
+</ul>
+<p>$$\text{Signature} = \text{HMAC-SHA256}(\text{SecretKey}, \text{RawHash})$$</p>
+<ul>
+<li>Phía máy chủ MoMo thực hiện thuật toán băm tương tự. Nếu hai chữ ký khớp hoàn toàn, giao dịch mới được phê duyệt.</li>
+<li><strong>Cơ chế Webhook IPN (Instant Payment Notification):</strong></li>
+<li>Sau khi khách quét mã thanh toán thành công, máy chủ MoMo sẽ gọi trực tiếp một HTTP POST Request độc lập tới endpoint <code class="inline-code">/momo/ipn</code> của Wanderlust Travel.</li>
+<li>Phía Controller kiểm tra lại chữ ký số gửi kèm từ MoMo, kiểm tra mã phản hồi (<code class="inline-code">resultCode == 0</code>), cập nhật trạng thái đơn hàng sang "Đã thanh toán / Đã đặt cọc" và kích hoạt sự kiện gửi email vé điện tử.</li>
+<li>Cơ chế IPN đảm bảo đơn hàng không bao giờ bị rớt ngay cả khi khách hàng mất kết nối 4G hoặc tắt trình duyệt ngay sau khi chuyển khoản.</li>
+</ul>
+
+<h3>2.7.2. Cổng thanh toán Quốc tế PayPal REST API & Chuẩn OAuth 2.0</h3>
+<p>Để phục vụ du khách nước ngoài hoặc kiều bào, hệ thống tích hợp cổng thanh toán toàn cầu PayPal:</p>
+<ul>
+<li><strong>Chuẩn xác thực OAuth 2.0 Client Credentials Grant:</strong></li>
+</ul>
+<p>Ứng dụng sử dụng cặp khóa <code class="inline-code">client_id</code> và <code class="inline-code">client_secret</code> để gửi yêu cầu lấy Token xác thực (<code class="inline-code">Bearer Access Token</code>) từ máy chủ ủy quyền của PayPal. Mọi yêu cầu tạo và xử lý đơn tiếp theo đều phải đính kèm Token này trong HTTP Header <code class="inline-code">Authorization</code>.</p>
+<ul>
+<li><strong>Quy trình Thanh toán 2 Bước (Two-phase Transaction):</strong></li>
+</ul>
+<p>1. </em>Tạo đơn (Create Order):<em> Hệ thống gửi thông tin giỏ hàng lên PayPal với ý định thanh toán <code class="inline-code">intent = 'CAPTURE'</code>. PayPal trả về mã giao dịch và liên kết phê duyệt thanh toán (<code class="inline-code">approve link</code>).</p>
+<p>2. </em>Bắt giữ tiền giao dịch (Capture Order):<em> Sau khi khách hàng đăng nhập tài khoản PayPal và nhấn đồng ý trên trang phê duyệt, PayPal chuyển hướng khách về <code class="inline-code">/paypal/success</code>. Tại đây Controller gọi lệnh <code class="inline-code">OrdersCaptureRequest</code> để thực sự rút tiền từ tài khoản người dùng về tài khoản doanh nghiệp.</p>
+<ul>
+<li><strong>Xử lý Chuyển đổi Tỷ giá tiền tệ:</strong></li>
+</ul>
+<p>Đơn vị tiền tệ chính trong CSDL là Việt Nam Đồng (VNĐ), trong khi PayPal chưa hỗ trợ trực tiếp đơn vị VNĐ cho một số loại tài khoản thương gia thông thường. Hệ thống thực hiện quy đổi tỷ giá sang Đô la Mỹ (USD) dựa trên tỷ giá cố định thời gian thực, làm tròn chính xác 2 chữ số thập phân trước khi gửi sang PayPal API.</p>
+
+<h3>2.7.3. Cổng chuyển khoản VietQR Napas247 và Cơ chế Đồng bộ Biến động Số dư</h3>
+<p>Bên cạnh ví điện tử, chuyển khoản ngân hàng qua quét mã QR động là thói quen thanh toán phổ biến nhất của người Việt:</p>
+<ul>
+<li><strong>Tiêu chuẩn VietQR:</strong> Tuân thủ tiêu chuẩn thanh toán bằng mã phản hồi nhanh của Hiệp hội Thanh toán Quốc tế (EMVCo) và mạng lưới Napas247.</li>
+<li><strong>Cơ chế Webhook Transaction Sync:</strong> Tích hợp bộ tiếp nhận Webhook tại <code class="inline-code">VietQRController@handleTransactionSync</code>. Khi tiền vào tài khoản ngân hàng của doanh nghiệp, máy chủ thanh toán gửi thông báo biến động số dư. Hệ thống tự động phân tích cú pháp nội dung chuyển khoản để trích xuất mã hóa đơn, đối soát số tiền và hoàn tất đơn tự động mà không cần nhân viên kế toán kiểm tra thủ công.</li>
+</ul>
+
+<hr class="divider"/>
+
+<h2>2.8. AN TOÀN THÔNG TIN VÀ BẢO MẬT ỨNG DỤNG WEB (OWASP TOP 10)</h2>
+
+<h3>2.8.1. Cơ chế Phòng ngừa các Lỗ hổng Bảo mật Phổ biến</h3>
+<p>Dự án tuân thủ nghiêm ngặt các hướng dẫn an toàn phần mềm của tổ chức OWASP (Open Web Application Security Project):</p>
+<ul>
+<li><strong>Phòng chống tấn công Giả mạo Yêu cầu Chéo (CSRF - Cross-Site Request Forgery):</strong></li>
+<li>Kẻ tấn công có thể lừa người dùng đã đăng nhập nhấn vào một liên kết độc hại nhằm bí mật gửi yêu cầu thay đổi mật khẩu hoặc thanh toán đơn hàng.</li>
+<li>Laravel triển khai giải pháp <strong>Synchronizer Token Pattern</strong>: Mỗi phiên làm việc sinh một mã Token CSRF ngẫu nhiên, bí mật và được mã hóa lưu trong Session. Mọi biểu mẫu POST, PUT, DELETE đều bắt buộc đính kèm thẻ <code class="inline-code">@csrf</code>. Middleware <code class="inline-code">VerifyCsrfToken</code> kiểm tra tính hợp lệ của token, nếu sai lệch sẽ lập tức chặn đứng yêu cầu với mã lỗi <code class="inline-code">419 Page Expired</code>.</li>
+<li><strong>Phòng chống Chèn mã độc kịch bản (XSS - Cross-Site Scripting):</strong></li>
+<li>Xảy ra khi dữ liệu người dùng nhập (như tên tài khoản, nội dung đánh giá tour) chứa mã JavaScript độc hại được hiển thị lại trên trình duyệt của người dùng khác.</li>
+<li>Blade Template tự động mã hóa ký tự đặc biệt (<code class="inline-code"><</code>, <code class="inline-code">></code>, <code class="inline-code">&</code>, <code class="inline-code">"</code>, <code class="inline-code">'</code>) thành các thực thể HTML an toàn thông qua cơ chế <code class="inline-code">{{ }}</code>, vô hiệu hóa hoàn toàn mã kịch bản độc hại.</li>
+<li><strong>Phòng chống Tiêm mã SQL (SQL Injection):</strong></li>
+<li>Lỗ hổng nguy hiểm cho phép kẻ tấn công sửa đổi cấu trúc câu truy vấn để đánh cắp hoặc phá hủy toàn bộ cơ sở dữ liệu.</li>
+<li>100% các thao tác dữ liệu trong dự án sử dụng <strong>Eloquent ORM</strong> và <strong>PDO Parameter Binding</strong> (liên kết tham số). Dữ liệu người dùng nhập luôn được coi là các giá trị thuần túy, hoàn toàn tách biệt khỏi câu lệnh SQL, triệt tiêu mọi khả năng bị tấn công SQL Injection.</li>
+</ul>
+
+<h3>2.8.2. Bảo mật Mật khẩu và Quản lý Phiên làm việc</h3>
+<ul>
+<li><strong>Thuật toán Băm Mật khẩu Bcrypt:</strong></li>
+<li>Hệ thống tuyệt đối không lưu mật khẩu ở dạng văn bản rõ (Plaintext). Mật khẩu được mã hóa một chiều bằng hàm băm Bcrypt (dựa trên thuật toán mã hóa khối Blowfish).</li>
+<li>Bcrypt tự động sinh chuỗi muối ngẫu nhiên (Salt) dài 16 bytes cho mỗi mật khẩu, ngăn chặn hoàn toàn hình thức tấn công bằng bảng tính sẵn (Rainbow Table).</li>
+<li>Tích hợp hệ số chi phí tính toán (Work Factor / Cost = 10 đến 12), cố tình làm chậm tốc độ tính toán băm để triệt tiêu khả năng tấn công vét cạn (Brute-force) bằng siêu máy tính hoặc GPU đào coin.</li>
+<li><strong>Bảo mật Phiên làm việc (Session Management):</strong></li>
+<li>Mã định danh phiên (Session ID) được lưu trữ trong Cookie với cờ <code class="inline-code">HttpOnly</code> (ngăn chặn JavaScript đọc cookie, chống đánh cắp phiên qua XSS) và cờ <code class="inline-code">SameSite=Lax</code> (ngăn chặn tấn công CSRF thông qua cookie bên thứ ba).</li>
+</ul>
+
+<hr class="divider"/>
+
+<h2>2.9. ẢO HÓA CONTAINER VÀ TRIỂN KHAI ĐÁM MÂY (DEVOPS & CLOUD INFRASTRUCTURE)</h2>
+
+<h3>2.9.1. Công nghệ Container hóa với Docker</h3>
+<p>Docker là nền tảng ảo hóa ở cấp độ hệ điều hành (OS-level Virtualization), cho phép đóng gói toàn bộ ứng dụng, mã nguồn, môi trường thực thi PHP, máy chủ web Apache và các thư viện phụ thuộc thành một đơn vị duy nhất gọi là <strong>Container Image</strong>:</p>
+<ul>
+<li><strong>Đảm bảo tính nhất quán môi trường (Environment Parity):</strong> Xóa bỏ hoàn toàn định kiến </em>"mã chạy được trên máy tôi nhưng lỗi trên máy chủ"<em>. Môi trường phát triển tại máy cá nhân và môi trường Production trên Cloud hoạt động hoàn toàn giống nhau.</li>
+<li><strong>Phân tích tệp cấu hình Dockerfile đa tầng của dự án:</strong></li>
+<li></em>Base Image:<em> <code class="inline-code">php:8.1-apache</code>, cung cấp nền tảng PHP ổn định trên nền hệ điều hành Debian Linux thu nhỏ.</li>
+<li></em>Cài đặt Extension:<em> Cài đặt các mô-đun cần thiết cho ứng dụng lữ hành: <code class="inline-code">pdo_mysql</code>, <code class="inline-code">mbstring</code>, <code class="inline-code">zip</code>, <code class="inline-code">gd</code> (xử lý hình ảnh tour), <code class="inline-code">bcmath</code> (tính toán tiền tệ chính xác).</li>
+<li></em>Cấu hình Apache:<em> Kích hoạt module <code class="inline-code">mod_rewrite</code>, định tuyến thư mục gốc của trang web về <code class="inline-code">/var/www/html/public</code>.</li>
+<li></em>Cài đặt chứng chỉ số SSL:* Tích hợp gói <code class="inline-code">ca-certificates</code> để PHP thiết lập các kết nối bảo mật ra bên ngoài (kết nối TiDB Cloud, MoMo, PayPal, Gemini).</li>
+<li><strong>Tập lệnh Khởi động Tự động hóa (<code class="inline-code">entrypoint.sh</code>):</strong></li>
+</ul>
+<p>Trước khi máy chủ Apache bắt đầu tiếp nhận lưu lượng mạng, script tự động thực thi chuỗi tác vụ tối ưu hóa:</p>
+<pre class="code-block">bash
+<p>php artisan config:cache    # Đóng gói cấu hình vào một tập tin duy nhất</p>
+<p>php artisan route:cache     # Biên dịch bảng định tuyến thành mảng phẳng tốc độ cao</p>
+<p>php artisan view:cache      # Biên dịch trước toàn bộ giao diện Blade</p>
+<p>exec apache2-foreground     # Khởi chạy Apache ở tiến trình tiền cảnh (PID 1)</p>
+</pre>
+
+<h3>2.9.2. Nền tảng Đám mây PaaS Render và Cơ chế Duy trì Kết nối (Keep-Alive)</h3>
+<ul>
+<li><strong>Nền tảng Render Web Service:</strong> Cung cấp môi trường triển khai ứng dụng đám mây tự động liên kết với kho lưu trữ GitHub (Continuous Deployment - CD). Mỗi khi có commit mới trên nhánh <code class="inline-code">main</code>, Render tự động kích hoạt tiến trình Build Docker Image và cập nhật phiên bản mới không gián đoạn dịch vụ (Zero-Downtime Deployment).</li>
+<li><strong>Giải quyết bài toán Ngủ đông của máy chủ Miễn phí (Cold-Start Problem):</strong></li>
+<li>Các gói điện toán đám mây miễn phí thường tự động đưa dịch vụ vào trạng thái ngủ đông (Sleep Mode) nếu không có lưu lượng truy cập sau 15 phút, khiến khách hàng tiếp theo phải chờ đợi từ 50 - 60 giây để máy chủ khởi động lại.</li>
+<li>Dự án giải quyết triệt để vấn đề này bằng cách thiết kế endpoint kiểm tra sức khỏe siêu nhẹ: <code class="inline-code">GET /ping</code> và <code class="inline-code">GET /health</code>, kết hợp với dịch vụ giám sát tự động (như UptimeRobot hoặc Cron Job định kỳ) gửi tín hiệu giữ nhịp 10 phút một lần, đảm bảo ứng dụng luôn trong trạng thái nóng (Hot Standby) và phản hồi tức thì.</li>
+</ul>
+
+<hr class="divider"/>
+
+<h2>2.10. TÓM TẮT CHƯƠNG 2</h2>
+<p>Chương 2 đã trình bày một cách có hệ thống và toàn diện toàn bộ cơ sở lý thuyết, kiến trúc phần mềm, nguyên lý thuật toán và các nền tảng công nghệ mũi nhọn được ứng dụng trong dự án Wanderlust Travel.</p>
+
+<p>Việc lựa chọn kết hợp <strong>Laravel 9 (PHP 8.1)</strong>, cơ sở dữ liệu NewSQL phân tán <strong>TiDB Cloud / MySQL</strong>, thuật toán cây phân cấp <strong>Nested Set Model</strong>, giao diện tiện ích <strong>Tailwind CSS</strong>, bản đồ GIS tương tác <strong>Leaflet.js</strong>, trí tuệ nhân tạo <strong>LLM (Gemini / Groq)</strong> và các cổng thanh toán bảo mật chuẩn <strong>HMAC / OAuth 2.0 (MoMo, PayPal, VietQR)</strong> trên nền tảng <strong>Docker Container</strong> đã tạo nên một nền móng công nghệ vững chắc. Đây là căn cứ khoa học trực tiếp để tiến hành các phân tích, thiết kế chi tiết hệ thống được trình bày trong Chương 3.</p>
+
+</body>
+</html>

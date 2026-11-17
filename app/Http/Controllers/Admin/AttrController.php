@@ -17,7 +17,9 @@ class AttrController extends Controller
     {
         $attrTransport = AttrTour::where('name', 'transport')->get();
         $tourType = AttrTour::where('name', 'tour_type')->get();
-        return view('admins.AttrsTour.index', compact('attrTransport', 'tourType',));
+        $otherAttrs = AttrTour::whereNotIn('name', ['transport', 'tour_type'])->get();
+
+        return view('admins.AttrsTour.index', compact('attrTransport', 'tourType', 'otherAttrs'));
     }
 
     /**
@@ -51,7 +53,7 @@ class AttrController extends Controller
             'name' => $request->name,
             'value' => $request->value,
         ]);
-        return redirect()->route('admin.attr.index');
+        return redirect()->route('admin.attr.index')->with('success', 'Thêm thuộc tính thành công.');
     }
 
     /**
@@ -88,16 +90,16 @@ class AttrController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'value'=> ['required','unique:attr_tours'],
+            'value' => ['required', 'unique:attr_tours,value,' . $id],
         ],[
             'name.required'=>'Tên loại thuộc tính không được để trống',
             'value.required'=>'Tên thuộc tính không được để trống',
             'value.unique'=>'Tên thuộc tính đã tồn tại',
 
         ]);
-        $attr = AttrTour::find($id);
+        $attr = AttrTour::findOrFail($id);
         $attr->update($request->only('name', 'value'));
-        return redirect()->route('admin.attr.index');
+        return redirect()->route('admin.attr.index')->with('success', 'Cập nhật thuộc tính thành công.');
     }
 
     /**
@@ -108,8 +110,8 @@ class AttrController extends Controller
      */
     public function destroy($id)
     {
-        $attr = AttrTour::find($id);
+        $attr = AttrTour::findOrFail($id);
         $attr->delete();
-        return redirect()->route('admin.attr.index');
+        return redirect()->route('admin.attr.index')->with('success', 'Xóa thuộc tính thành công.');
     }
 }

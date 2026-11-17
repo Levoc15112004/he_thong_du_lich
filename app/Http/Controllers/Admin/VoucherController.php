@@ -154,7 +154,7 @@ class VoucherController extends Controller
             'event_type' => $request->event_type,
         ]);
 
-        return redirect()->route('admin.vouchers.index')->with('success', 'Voucher được câp nhật thành công.');
+        return redirect()->route('admin.vouchers.index')->with('success', 'Voucher được cập nhật thành công.');
     }
 
     /**
@@ -168,6 +168,6 @@ class VoucherController extends Controller
         $voucher = Voucher::findOrFail($id);
         $voucher->delete();
 
-        return redirect()->route('admin.vouchers.index')->with('success', 'Voucher deleted successfully.');
+        return redirect()->route('admin.vouchers.index')->with('success', 'Đã xóa voucher thành công.');
     }
 }

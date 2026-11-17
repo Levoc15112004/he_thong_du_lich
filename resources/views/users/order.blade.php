@@ -52,7 +52,7 @@
         <!-- STEPPER SECTION -->
         <div class="max-w-3xl mx-auto mb-16 px-4">
             <div class="relative flex justify-between items-center">
-                <!-- Lines ->
+                <!-- Lines -->
                 <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] bg-slate-200 rounded-full z-0"></div>
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 h-[3px] bg-[#b85e3a] rounded-full z-0 transition-colors duration-700 w-[50%] sm:w-[35%]"></div>
 
@@ -117,6 +117,22 @@
                                     <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Tự động điền
                                 </button>
                             </div>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium relative z-10">
+                            <ul class="list-disc pl-5 space-y-1">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium relative z-10">
+                            {{ session('error') }}
                         </div>
                     @endif
 
@@ -230,7 +246,7 @@
                                             <h4 class="text-sm font-bold text-slate-800 line-clamp-2 leading-tight group-hover:text-[#b85e3a] transition-colors">{{ $tour->name }}</h4>
                                             <div class="flex flex-wrap items-center gap-2.5 mt-2">
                                                 <p class="text-[10px] text-slate-500 font-semibold flex items-center gap-1">
-                                                    <i class="fa-regular fa-calendar text-orange-500"></i> {{ \Carbon\Carbon::parse($tour->start_date)->format('d/m/Y') }}
+                                                    <i class="fa-regular fa-calendar text-orange-500"></i> {{ \Carbon\Carbon::parse($item['start_date'] ?? $tour->start_date)->format('d/m/Y') }}
                                                 </p>
                                                 <p class="text-[10px] text-slate-500 font-semibold flex items-center gap-1">
                                                     <i class="fa-solid fa-user-group text-orange-500"></i> {{ $item['quantity'] }} KH
@@ -293,7 +309,7 @@
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <p class="text-[11px] text-slate-600 font-medium leading-relaxed pt-0.5">
-                            <strong class="text-orange-700">TravelGo</strong> cam kết bảo mật thông tin khách hàng tuyệt đối theo tiêu chuẩn quốc tế.
+                            <strong class="text-orange-700">WanderVibe</strong> cam kết bảo mật thông tin khách hàng tuyệt đối theo tiêu chuẩn quốc tế.
                         </p>
                     </div>
                 </div>

@@ -137,8 +137,8 @@ class ChatbotController extends Controller
             $context = $this->buildTourContext();
             $recentHistory = $this->getRecentHistoryFromDB($sessionId);
 
-            $systemPrompt = "Bạn là chuyên viên tư vấn lữ hành của công ty du lịch Wanderlust Travel Vietnam.\n"
-                . "Mục tiêu: Tư vấn lịch trình và dịch vụ du lịch chuyên nghiệp, lịch sự, xưng 'em' hoặc 'Wanderlust' và gọi khách là 'Quý khách' hoặc 'Anh/Chị'. Tuyệt đối không tự xưng là AI, bot hay người máy.\n"
+            $systemPrompt = "Bạn là chuyên viên tư vấn lữ hành của công ty du lịch WanderVibe Travel Vietnam.\n"
+                . "Mục tiêu: Tư vấn lịch trình và dịch vụ du lịch chuyên nghiệp, lịch sự, xưng 'em' hoặc 'WanderVibe' và gọi khách là 'Quý khách' hoặc 'Anh/Chị'. Tuyệt đối không tự xưng là AI, bot hay người máy.\n"
                 . "QUY TẮC:\n"
                 . "- Dựa vào danh sách tour thực tế dưới đây để cung cấp tên tour, giá vé, thời gian, điểm đến chính xác.\n"
                 . "- Nếu khách hỏi tour không có trong danh sách, giải thích khéo léo và gợi ý tour tương đương.\n"
@@ -193,7 +193,7 @@ class ChatbotController extends Controller
             $context = $this->buildTourContext();
             $recentHistory = $this->getRecentHistoryFromDB($sessionId);
 
-            $systemPrompt = "Bạn là Chuyên viên tư vấn - Trợ lý du lịch của Wanderlust. Xưng 'mình', gọi 'bạn'. Tư vấn tour ngắn gọn, hấp dẫn dựa trên danh sách tour sau:\n"
+            $systemPrompt = "Bạn là Chuyên viên tư vấn - Trợ lý du lịch của WanderVibe. Xưng 'mình', gọi 'bạn'. Tư vấn tour ngắn gọn, hấp dẫn dựa trên danh sách tour sau:\n"
                 . $context . "\n"
                 . "Hotline: 1900 888 999 | Email: hello@wandervibe.me.\n"
                 . "Lịch sử trò chuyện gần nhất:\n" . $recentHistory;
@@ -236,7 +236,7 @@ class ChatbotController extends Controller
 
         // 1. Chào hỏi
         if (preg_match("/\\b(chao|hi|hello|alo|xin chao|helo|hey|tro ly|bot|wanderbot)\\b/i", $normalized)) {
-            return "Chào bạn! 👋 Mình là **Chuyên viên tư vấn** - Trợ lý du lịch ảo của **Wanderlust**.\n\n"
+            return "Chào bạn! 👋 Mình là **Chuyên viên tư vấn** - Trợ lý du lịch ảo của **WanderVibe**.\n\n"
                 . "Mình có thể hỗ trợ bạn:\n"
                 . "• 🏝️ Gợi ý các tour hot theo điểm đến (Đà Lạt, Sa Pa, Phú Quốc, Hạ Long, Miền Tây...)\n"
                 . "• 💰 Tìm tour theo tầm giá hoặc ngân sách tiết kiệm\n"
@@ -246,7 +246,7 @@ class ChatbotController extends Controller
 
         // 2. Hotline, Email, Liên hệ, Văn phòng
         if (preg_match("/\\b(lien he|hotline|sdt|so dien thoai|tong dai|email|dia chi|van phong|tu van)\\b/i", $normalized)) {
-            return "Đội ngũ CSKH **Wanderlust** luôn sẵn sàng hỗ trợ bạn:\n\n"
+            return "Đội ngũ CSKH **WanderVibe** luôn sẵn sàng hỗ trợ bạn:\n\n"
                 . "📞 **Hotline tư vấn 24/7:** 1900 888 999 (Nhánh 1)\n"
                 . "📧 **Email tư vấn & báo giá:** hello@wandervibe.me\n"
                 . "📍 **Văn phòng:** Tòa nhà Keangnam Landmark 72, Đường Phạm Hùng, Nam Từ Liêm, Hà Nội\n\n"
@@ -255,7 +255,7 @@ class ChatbotController extends Controller
 
         // 3. Quy trình đặt tour & thanh toán
         if (preg_match("/\\b(dat tour|dat ve|thanh toan|momo|vnpay|paypal|tien mat|chuyen khoan|huy tour|hoan tien)\\b/i", $normalized)) {
-            return "Đặt tour tại **Wanderlust** cực kỳ đơn giản qua 3 bước:\n\n"
+            return "Đặt tour tại **WanderVibe** cực kỳ đơn giản qua 3 bước:\n\n"
                 . "1. Chọn tour ưng ý trên website và bấm **Đặt Tour**.\n"
                 . "2. Chọn ngày khởi hành, số khách và phương tiện (máy bay, ô tô hoặc tàu hỏa).\n"
                 . "3. Thanh toán tiện lợi và bảo mật qua **MoMo, VNPay, PayPal** hoặc thanh toán trực tiếp.\n\n"
@@ -344,7 +344,7 @@ class ChatbotController extends Controller
         }
 
         if ($tours->count() > 0) {
-            $out = "Wanderlust có tour rất tuyệt vời phù hợp với mong muốn của bạn đây ạ:\n\n";
+            $out = "WanderVibe có tour rất tuyệt vời phù hợp với mong muốn của bạn đây ạ:\n\n";
             foreach ($tours as $t) {
                 $priceStr = number_format($t->sale_price, 0, ",", ".") . "đ";
                 $oldPriceStr = number_format($t->price, 0, ",", ".") . "đ";
@@ -359,7 +359,7 @@ class ChatbotController extends Controller
 
         // 6. Gợi ý mặc định các tour nổi bật nhất
         $featuredTours = Tour::where("status", 1)->orderBy("id", "desc")->take(3)->get();
-        $out = "Hiện tại Wanderlust đang có các tour du lịch được yêu thích nhất mùa này:\n\n";
+        $out = "Hiện tại WanderVibe đang có các tour du lịch được yêu thích nhất mùa này:\n\n";
         foreach ($featuredTours as $t) {
             $priceStr = number_format($t->sale_price, 0, ",", ".") . "đ";
             $out .= "🔥 **{$t->name}** ({$t->time}) - Giá ưu đãi: **{$priceStr}**\n";

@@ -26,7 +26,7 @@
     <p><strong>Tên tour:</strong> {{ $tour->name }}</p>
     <p><strong>Điểm đi:</strong> {{ $tour->start_location }}</p>
     <p><strong>Điểm đến:</strong> {{ $tour->end_location }}</p>
-    <p><strong>Ngày khởi hành:</strong> {{ $tour->start_date }}</p>
+    <p><strong>Ngày khởi hành:</strong> {{ ($order->time || $tour->start_date) ? \Carbon\Carbon::parse($order->time ?: $tour->start_date)->format('d/m/Y') : '---' }}</p>
     <p><strong>Thời gian:</strong> {{ $tour->time }} ngày</p>
 
     <hr>
@@ -62,7 +62,7 @@
 
     <p style="text-align:center;">
         Cảm ơn quý khách đã sử dụng dịch vụ của <strong>WanderVibe</strong><br>
-        Hotline: 0123 456 789 | Email: travelgo@gmail.com
+        Hotline: 1900 888 999 | Email: hello@wandervibe.me
     </p>
 
 </div>

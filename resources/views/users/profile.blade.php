@@ -106,6 +106,23 @@
                             <p class="text-sm text-gray-500 mt-1">Cập nhật thông tin tài khoản</p>
                         </div>
 
+                        @if (session('success'))
+                            <div class="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-semibold flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>{{ session('success') }}</span>
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium">
+                                <ul class="list-disc pl-5 space-y-1">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form action="{{ route('user.updateProfile') }}" method="POST" enctype="multipart/form-data"
                             class="space-y-6">
                             @csrf
@@ -119,8 +136,11 @@
                                 <!-- Name -->
                                 <div>
                                     <label class="text-base font-semibold">Họ và tên</label>
-                                    <input name="name" value="{{ $user->name }}"
-                                        class="w-full mt-1 text-sm px-4 py-3 rounded-xl bg-gray-50 focus:ring-2 focus:ring-brand-500">
+                                    <input name="name" value="{{ old('name', $user->name) }}" required
+                                        class="w-full mt-1 text-sm px-4 py-3 rounded-xl bg-gray-50 focus:ring-2 focus:ring-brand-500 @error('name') border border-rose-500 @enderror">
+                                    @error('name')
+                                        <p class="text-rose-500 text-xs mt-1 font-medium">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <!-- Email -->
@@ -133,14 +153,18 @@
                                 <!-- Phone -->
                                 <div>
                                     <label class="text-base font-semibold">Số điện thoại</label>
-                                    <input name="phone" value="{{ $user->phone }}"
-                                        class="w-full mt-1 text-sm px-4 py-3 rounded-xl bg-gray-50 focus:ring-2 focus:ring-brand-500">
+                                    <input type="tel" name="phone" value="{{ old('phone', $user->phone) }}"
+                                        placeholder="VD: 0912345678"
+                                        class="w-full mt-1 text-sm px-4 py-3 rounded-xl bg-gray-50 focus:ring-2 focus:ring-brand-500 @error('phone') border border-rose-500 @enderror">
+                                    @error('phone')
+                                        <p class="text-rose-500 text-xs mt-1 font-medium">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <!-- Address -->
                                 <div>
                                     <label class="text-base font-semibold">Địa chỉ</label>
-                                    <input name="address" value="{{ $user->address }}"
+                                    <input name="address" value="{{ old('address', $user->address) }}"
                                         class="w-full mt-1 px-4 text-sm py-3 rounded-xl bg-gray-50 focus:ring-2 focus:ring-brand-500">
                                 </div>
 
@@ -148,10 +172,10 @@
                                 <div>
                                     <label class="text-base font-semibold">Giới tính</label>
                                     <select name="gender" class="w-full mt-1 text-sm px-4 py-3 rounded-xl bg-gray-50">
-                                        <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>Nam</option>
-                                        <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>Nữ
+                                        <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>Nam</option>
+                                        <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>Nữ
                                         </option>
-                                        <option value="orther" {{ $user->gender == 'orther' ? 'selected' : '' }}>Khác
+                                        <option value="other" {{ old('gender', $user->gender) == 'other' ? 'selected' : '' }}>Khác
                                         </option>
                                     </select>
                                 </div>
@@ -159,20 +183,23 @@
                                 <!-- Birthday -->
                                 <div>
                                     <label class="text-base font-semibold">Ngày sinh</label>
-                                    <input type="date" name="birthday" value="{{ $user->birthday }}"
-                                        class="w-full mt-1 text-sm px-4 py-3 rounded-xl bg-gray-50">
+                                    <input type="date" name="birthday" value="{{ old('birthday', $user->birthday ? $user->birthday->format('Y-m-d') : '') }}"
+                                        class="w-full mt-1 text-sm px-4 py-3 rounded-xl bg-gray-50 @error('birthday') border border-rose-500 @enderror">
+                                    @error('birthday')
+                                        <p class="text-rose-500 text-xs mt-1 font-medium">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
                             <!-- About -->
                             <div>
                                 <label class="text-base font-semibold">Giới thiệu</label>
-                                <textarea name="about" rows="3" class="w-full mt-1 p-4 rounded-xl bg-gray-50">{{ $user->about }}</textarea>
+                                <textarea name="about" rows="3" class="w-full mt-1 p-4 rounded-xl bg-gray-50">{{ old('about', $user->about ?? '') }}</textarea>
                             </div>
 
                             <div class="flex justify-end">
                                 <button
-                                    class="bg-brand-600 hover:bg-brand-700 text-base px-8 py-3 rounded-xl font-bold shadow">
+                                    class="bg-brand-600 hover:bg-brand-700 text-white text-base px-8 py-3 rounded-xl font-bold shadow">
                                     Lưu thay đổi
                                 </button>
                             </div>

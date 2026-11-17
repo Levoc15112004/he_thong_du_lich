@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -95,6 +96,10 @@ class MomoController extends Controller
 
     public function createDeposit(Order $order)
     {
+        if (! Auth::check() || ((int) $order->user_id !== (int) Auth::id() && Auth::user()->role !== 'admin')) {
+            abort(403, 'Bạn không có quyền thanh toán đơn hàng này.');
+        }
+
         $amount = (int) round($order->total_price * 0.3);
 
         return $this->createMomo($order, $amount, 'Thanh toán cọc 30%', 'deposit');
@@ -102,6 +107,10 @@ class MomoController extends Controller
 
     public function createFinal(Order $order)
     {
+        if (! Auth::check() || ((int) $order->user_id !== (int) Auth::id() && Auth::user()->role !== 'admin')) {
+            abort(403, 'Bạn không có quyền thanh toán đơn hàng này.');
+        }
+
         $amount = (int) round($order->total_price * 0.7);
 
         return $this->createMomo($order, $amount, 'Thanh toán 70%', 'final');

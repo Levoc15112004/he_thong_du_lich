@@ -183,6 +183,48 @@
 
         </div>
 
+        {{-- MONTHLY REVENUE TABLE --}}
+        <div class="bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50">
+            <div class="flex items-center justify-between mb-5 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <h5 class="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-table-list text-emerald-500"></i> Thống kê Doanh thu Theo Tháng
+                </h5>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700">
+                            <th class="px-4 py-3 font-bold">Thời gian</th>
+                            <th class="px-4 py-3 font-bold text-center">Số đơn hàng</th>
+                            <th class="px-4 py-3 font-bold text-right">Tổng doanh thu</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                        @forelse($revenueByMonth as $row)
+                            <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                                <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200">
+                                    Tháng {{ str_pad($row->month, 2, '0', STR_PAD_LEFT) }}/{{ $row->year }}
+                                </td>
+                                <td class="px-4 py-3 text-center font-bold text-blue-600 dark:text-blue-400">
+                                    {{ number_format($row->orders) }} đơn
+                                </td>
+                                <td class="px-4 py-3 text-right font-extrabold text-orange-600 dark:text-orange-400">
+                                    {{ number_format($row->revenue) }} ₫
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3" class="px-4 py-8 text-center text-slate-400">
+                                    Chưa có dữ liệu đơn hàng nào trong hệ thống.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>
 

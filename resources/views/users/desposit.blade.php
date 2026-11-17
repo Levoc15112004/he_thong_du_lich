@@ -153,17 +153,19 @@
                     <!-- 2. VietQR Bank Transfer Box -->
                     <div id="wrapper-bank" class="hidden relative z-10 w-full space-y-4">
                         @php
-                            $bankId = config('services.vietqr.bank_id', env('VIETQR_BANK_ID', 'MB'));
-                            $accountNo = config('services.vietqr.account_no', env('VIETQR_ACCOUNT_NO', '151515112004'));
-                            $accountName = config('services.vietqr.account_name', env('VIETQR_ACCOUNT_NAME', 'LE THI VOC'));
+                            $bankId = trim((string) (config('services.vietqr.bank_id') ?: (env('VIETQR_BANK_ID') ?: 'MB')));
+                            $accountNo = trim((string) (config('services.vietqr.account_no') ?: (env('VIETQR_ACCOUNT_NO') ?: '151515112004')));
+                            $accountName = trim((string) (config('services.vietqr.account_name') ?: (env('VIETQR_ACCOUNT_NAME') ?: 'LE THI VOC')));
+                            $vietqrUrl = 'https://img.vietqr.io/image/' . rawurlencode($bankId) . '-' . rawurlencode($accountNo) . '-compact2.svg?amount=' . (int)$deposit_amount . '&addInfo=' . rawurlencode('WANDERVIBE DH' . $order->id) . '&accountName=' . rawurlencode($accountName);
                         @endphp
                         <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center gap-5">
-                            <div class="w-36 h-36 bg-white p-2 rounded-xl shadow-xs border border-slate-200 shrink-0 flex items-center justify-center overflow-hidden">
+                            <div class="w-44 sm:w-48 bg-white p-2 rounded-xl shadow-xs border border-slate-200 shrink-0 flex items-center justify-center overflow-hidden">
                                 @if(!empty($accountNo))
-                                    <img src="https://img.vietqr.io/image/{{ $bankId }}-{{ $accountNo }}-compact2.png?amount={{ (int)$deposit_amount }}&addInfo=WANDERLUST%20DH{{ $order->id }}&accountName={{ urlencode($accountName) }}" 
-                                         class="w-full h-full object-contain" alt="VietQR {{ $bankId }}">
+                                    <img src="{{ $vietqrUrl }}"
+                                         onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src=this.src.replace('compact2.svg','compact2.png');}"
+                                         class="w-full h-auto object-contain" alt="VietQR {{ $bankId }}">
                                 @else
-                                    <div class="text-center p-2 text-rose-500 flex flex-col items-center justify-center h-full">
+                                    <div class="text-center p-4 text-rose-500 flex flex-col items-center justify-center h-36">
                                         <i class="fa-solid fa-qrcode text-3xl mb-1 text-slate-300"></i>
                                         <p class="text-[10px] font-bold text-rose-500">Chưa có STK</p>
                                         <span class="text-[9px] text-slate-400">Thiếu cấu hình</span>
@@ -181,7 +183,7 @@
                                 </p>
                                 <p><span class="text-slate-400">Chủ tài khoản:</span> <strong class="text-slate-900 dark:text-white">{{ $accountName }}</strong></p>
                                 <p><span class="text-slate-400">Số tiền cọc (30%):</span> <strong class="text-emerald-600 font-bold text-sm">{{ number_format($deposit_amount) }}đ</strong></p>
-                                <p><span class="text-slate-400">Nội dung CK:</span> <strong class="text-[#863c20] font-mono font-bold">WANDERLUST DH{{ $order->id }}</strong></p>
+                                <p><span class="text-slate-400">Nội dung CK:</span> <strong class="text-[#863c20] font-mono font-bold">WANDERVIBE DH{{ $order->id }}</strong></p>
                             </div>
                         </div>
 
@@ -190,17 +192,19 @@
                             <i class="fa-solid fa-check-circle mr-2"></i> Tôi đã chuyển khoản cọc thành công
                         </a>
 
+                        @if(!app()->environment('production') && config('services.vietqr.allow_test_pay', false))
                         <div class="pt-2 text-center">
                             <a href="{{ route('vietqr.test.pay', $order->id) }}" class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 hover:underline font-semibold">
                                 <i class="fa-solid fa-flask"></i> [Bấm vào đây để Test giả lập: Tiền đã về tài khoản]
                             </a>
                         </div>
+                        @endif
                     </div>
 
                     <!-- 3. Direct/Cash Button -->
                     <div id="wrapper-cash" class="hidden relative z-10 w-full space-y-4">
                         <div class="p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 space-y-2">
-                            <p class="font-bold text-sm text-[#863c20] dark:text-amber-400"><i class="fa-solid fa-location-dot mr-1.5"></i> Văn phòng giao dịch Wanderlust Travel:</p>
+                            <p class="font-bold text-sm text-[#863c20] dark:text-amber-400"><i class="fa-solid fa-location-dot mr-1.5"></i> Văn phòng giao dịch WanderVibe Travel:</p>
                             <p><strong>Địa chỉ:</strong> Tòa nhà Keangnam Landmark 72, Đường Phạm Hùng, Nam Từ Liêm, Hà Nội</p>
                             <p><strong>Giờ làm việc:</strong> 08:00 - 18:00 (Thứ 2 đến Thứ 7)</p>
                             <p><strong>Hotline:</strong> 1900 888 999 • Hotline tư vấn 24/7</p>
@@ -239,7 +243,7 @@
                             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                                 <i class="fa-regular fa-calendar-check text-orange-500 mb-1 block"></i>
                                 <p class="text-[10px] text-slate-400 font-semibold mb-0.5 uppercase">Khởi hành</p>
-                                <p class="text-xs font-bold text-slate-800">{{ \Carbon\Carbon::parse($customer['time'])->format('d/m/Y') }}</p>
+                                <p class="text-xs font-bold text-slate-800">{{ \Carbon\Carbon::parse($customer['time'] ?: $tour->start_date)->format('d/m/Y') }}</p>
                             </div>
                             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                                 <i class="fa-solid fa-user-group text-orange-500 mb-1 block"></i>

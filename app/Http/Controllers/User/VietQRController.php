@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class VietQRController extends Controller
@@ -48,7 +49,7 @@ class VietQRController extends Controller
             $transactionId = $item['transactionid'] ?? ($item['referenceCode'] ?? $item['id'] ?? ('TX' . time()));
             $transType = strtoupper($item['transType'] ?? ($item['type'] ?? 'C'));
 
-            if (!$orderId && preg_match('/(?:WANDERLUST\s*)?DH(\d+)/i', $content, $matches)) {
+            if (!$orderId && preg_match('/(?:(?:WANDERLUST|WANDERVIBE)\s*)?DH(\d+)/i', $content, $matches)) {
                 $orderId = $matches[1];
             }
 
@@ -158,19 +159,27 @@ class VietQRController extends Controller
     }
 
     /**
-     * Giả lập thanh toán thành công (Phục vụ Demo / Test nhanh)
+     * Giả lập thanh toán thành công (Phục vụ Demo / Test nhanh - chỉ bật khi không phải production và cấu hình cho phép)
      */
     public function simulateSuccessPayment($order_id)
     {
+        if (app()->environment('production') || !config('services.vietqr.allow_test_pay', false)) {
+            abort(404);
+        }
+
         $order = Order::findOrFail($order_id);
+        if ((int) $order->user_id !== (int) Auth::id() && Auth::user()?->role !== 'admin') {
+            abort(403, 'Bạn không có quyền thao tác trên đơn hàng này.');
+        }
+
         $depositAmount = round($order->total_price * 0.3, 0);
-        $expectedPass = config('services.vietqr.password', env('VIETQR_PASSWORD'));
+        $expectedPass = config('services.vietqr.password') ?: env('VIETQR_PASSWORD');
 
         $dummyRequest = new Request([
-            'bankaccount' => config('services.vietqr.account_no', env('VIETQR_ACCOUNT_NO')),
+            'bankaccount' => config('services.vietqr.account_no') ?: env('VIETQR_ACCOUNT_NO'),
             'amount' => $depositAmount,
             'transType' => 'C',
-            'content' => "WANDERLUST DH{$order->id}",
+            'content' => "WANDERVIBE DH{$order->id}",
             'transactionid' => 'VQR_TEST_' . time(),
             'transactiontime' => now()->timestamp * 1000,
             'orderId' => (string)$order->id,
@@ -190,8 +199,8 @@ class VietQRController extends Controller
      */
     private function verifyAuth(Request $request): bool
     {
-        $expectedUser = config('services.vietqr.username', env('VIETQR_USERNAME'));
-        $expectedPass = config('services.vietqr.password', env('VIETQR_PASSWORD'));
+        $expectedUser = config('services.vietqr.username') ?: env('VIETQR_USERNAME');
+        $expectedPass = config('services.vietqr.password') ?: env('VIETQR_PASSWORD');
 
         // Chưa cấu hình xác thực thì bỏ qua
         if (!$expectedUser && !$expectedPass) {

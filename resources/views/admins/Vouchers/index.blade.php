@@ -25,6 +25,20 @@
             </div>
         </div>
 
+        @if (session('success'))
+            <div class="mb-6 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 rounded-2xl flex items-center gap-3 shadow-sm">
+                <i class="fa-solid fa-circle-check text-lg"></i>
+                <span class="text-sm font-bold">{{ session('success') }}</span>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="mb-6 bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-2xl flex items-center gap-3 shadow-sm">
+                <i class="fa-solid fa-circle-exclamation text-lg"></i>
+                <span class="text-sm font-bold">{{ session('error') }}</span>
+            </div>
+        @endif
+
         <!-- Stats Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             <div class="bg-white p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-5">
@@ -200,7 +214,5 @@
         </div>
     </div>
 </div>
-
-    </main>
 @endsection
 

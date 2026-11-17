@@ -553,66 +553,65 @@
             let searchTimeout = null;
 
             if (searchInput && suggestionsBox) {
-                searchInput.addEventListener('input', function() {
-                    clearTimeout(searchTimeout);
-                    const keyword = this.value.trim();
-
+                const handleSearchInput = (keyword) => {
                     if (keyword.length > 0) {
-                        searchTimeout = setTimeout(() => {
-                            fetch(`{{ route('user.search') }}?keyword=${encodeURIComponent(keyword)}`)
-                                .then(response => response.json())
-                                .then(data => {
-                                    suggestionsBox.innerHTML = '';
-                                    if (data && data.length > 0) {
-                                        data.forEach(tour => {
-                                            const item = document.createElement('div');
-                                            item.className = 'px-4 py-3 hover:bg-orange-50 cursor-pointer flex items-center gap-3 border-b border-slate-100 last:border-0 transition-colors bg-white';
-                                            
-                                            // Handle relative/absolute image paths
-                                            let imgSrc = tour.image || '';
-                                            if (imgSrc && !imgSrc.startsWith('http')) {
-                                                imgSrc = '{{ asset("") }}' + imgSrc;
-                                            } else if (!imgSrc) {
-                                                imgSrc = 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=100&q=80';
-                                            }
+                        fetch(`{{ route('user.search') }}?keyword=${encodeURIComponent(keyword)}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                suggestionsBox.innerHTML = '';
+                                if (data && data.length > 0) {
+                                    data.forEach(tour => {
+                                        const item = document.createElement('div');
+                                        item.className = 'px-4 py-3 hover:bg-orange-50 cursor-pointer flex items-center gap-3 border-b border-slate-100 last:border-0 transition-colors bg-white';
+                                        
+                                        // Handle relative/absolute image paths
+                                        let imgSrc = tour.image || '';
+                                        if (imgSrc && !imgSrc.startsWith('http')) {
+                                            imgSrc = '{{ asset("") }}' + imgSrc;
+                                        } else if (!imgSrc) {
+                                            imgSrc = 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=100&q=80';
+                                        }
 
-                                            const locationStr = tour.end_location ? `<span class="text-[10px] px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 font-bold whitespace-nowrap"><i class="fa-solid fa-location-dot mr-1"></i>${tour.end_location}</span>` : '';
-                                            const priceFormated = new Intl.NumberFormat('vi-VN', { style: 'decimal' }).format(tour.price) + 'đ';
-                                            
-                                            item.innerHTML = `
-                                                <div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-slate-100 shadow-sm border border-slate-200">
-                                                    <img src="${imgSrc}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=100&q=80'" alt="tour image">
+                                        const locationStr = tour.end_location ? `<span class="text-[10px] px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 font-bold whitespace-nowrap"><i class="fa-solid fa-location-dot mr-1"></i>${tour.end_location}</span>` : '';
+                                        const priceFormated = new Intl.NumberFormat('vi-VN', { style: 'decimal' }).format(tour.price) + 'đ';
+                                        
+                                        item.innerHTML = `
+                                            <div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-slate-100 shadow-sm border border-slate-200">
+                                                <img src="${imgSrc}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=100&q=80'" alt="tour image">
+                                            </div>
+                                            <div class="flex-1 min-w-0 flex flex-col justify-center">
+                                                <h4 class="text-xs sm:text-sm font-bold text-slate-800 line-clamp-1 group-hover:text-orange-600 transition-colors">${tour.name}</h4>
+                                                <div class="flex items-center gap-2 mt-1">
+                                                    ${locationStr}
+                                                    <span class="text-[11px] sm:text-xs font-bold text-rose-500">${priceFormated}</span>
                                                 </div>
-                                                <div class="flex-1 min-w-0 flex flex-col justify-center">
-                                                    <h4 class="text-xs sm:text-sm font-bold text-slate-800 line-clamp-1 group-hover:text-orange-600 transition-colors">${tour.name}</h4>
-                                                    <div class="flex items-center gap-2 mt-1">
-                                                        ${locationStr}
-                                                        <span class="text-[11px] sm:text-xs font-bold text-rose-500">${priceFormated}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text-slate-300 px-1 opacity-50 shrink-0">
-                                                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                                                </div>
-                                            `;
-                                            
-                                            item.addEventListener('click', () => {
-                                                // Redirect to detail page when suggestion is clicked
-                                                window.location.href = `/tour-detail/${tour.id}`;
-                                            });
-                                            
-                                            suggestionsBox.appendChild(item);
+                                            </div>
+                                            <div class="text-slate-300 px-1 opacity-50 shrink-0">
+                                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                                            </div>
+                                        `;
+                                        
+                                        item.addEventListener('click', () => {
+                                            window.location.href = `/tour-detail/${tour.id}`;
                                         });
-                                        suggestionsBox.classList.remove('hidden');
-                                    } else {
-                                        suggestionsBox.innerHTML = '<div class="px-5 py-6 text-sm text-slate-500 text-center flex flex-col items-center gap-2 bg-white"><i class="fa-regular fa-face-frown-open text-2xl text-slate-300"></i><p>Không tìm thấy địa điểm/tour phù hợp với từ khóa này</p></div>';
-                                        suggestionsBox.classList.remove('hidden');
-                                    }
-                                })
-                                .catch(error => {
-                                    if (error.name !== 'AbortError') {
-                                        console.error('Error fetching search suggestions:', error);
-                                    }
-                                });
+                                        
+                                        suggestionsBox.appendChild(item);
+                                    });
+                                    suggestionsBox.classList.remove('hidden');
+                                } else {
+                                    suggestionsBox.innerHTML = '<div class="px-5 py-6 text-sm text-slate-500 text-center flex flex-col items-center gap-2 bg-white"><i class="fa-regular fa-face-frown-open text-2xl text-slate-300"></i><p>Không tìm thấy địa điểm/tour phù hợp với từ khóa này</p></div>';
+                                    suggestionsBox.classList.remove('hidden');
+                                }
+                            })
+                            .catch(error => {
+                                if (error.name !== 'AbortError') {
+                                    console.error('Error fetching search suggestions:', error);
+                                }
+                            });
+                    } else {
+                        suggestionsBox.innerHTML = '';
+                        suggestionsBox.classList.add('hidden');
+                    }
                 };
 
                 let debounceTimer = null;

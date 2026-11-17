@@ -123,9 +123,9 @@
                                     {{ $order->tour->name ?? 'Tour không còn tồn tại' }}
                                 </h6>
                                 <div class="flex flex-wrap items-center gap-2 text-xs font-semibold">
-                                    @if($order->tour && $order->tour->start_date)
+                                    @if($order->time || ($order->tour && $order->tour->start_date))
                                         <span class="bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-300 px-2 py-0.5 rounded-md border border-blue-100 dark:border-blue-900">
-                                            <i class="fa-regular fa-calendar mr-1"></i>{{ \Carbon\Carbon::parse($order->tour->start_date)->format('d/m/Y') }}
+                                            <i class="fa-regular fa-calendar mr-1"></i>{{ \Carbon\Carbon::parse($order->time ?: $order->tour->start_date)->format('d/m/Y') }}
                                         </span>
                                     @endif
                                     <span class="bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-300 px-2 py-0.5 rounded-md border border-amber-100 dark:border-amber-900">

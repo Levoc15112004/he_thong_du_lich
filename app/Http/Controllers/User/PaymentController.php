@@ -101,6 +101,10 @@ class PaymentController extends Controller
             return back()->with('error', 'Không tìm thấy đơn hàng.');
         }
 
+        if (! Auth::check() || ((int) $order->user_id !== (int) Auth::id() && Auth::user()->role !== 'admin')) {
+            abort(403, 'Bạn không có quyền truy cập đơn hàng này.');
+        }
+
         $tour = Tour::find($order->tour_id);
 
         if (! $tour) {
@@ -137,6 +141,10 @@ class PaymentController extends Controller
         if (! $order) {
             return redirect()->route('user.order.index')
                 ->with('error', 'Không tìm thấy đơn hàng.');
+        }
+
+        if (! Auth::check() || ((int) $order->user_id !== (int) Auth::id() && Auth::user()->role !== 'admin')) {
+            abort(403, 'Bạn không có quyền truy cập đơn hàng này.');
         }
 
         if ($order->status != 2) {

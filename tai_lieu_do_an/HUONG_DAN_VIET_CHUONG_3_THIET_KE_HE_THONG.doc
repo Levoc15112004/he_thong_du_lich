@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>Hướng Dẫn Viết Chương 3: Thiết Kế Hệ Thống - Wanderlust Travel</title>
+<!--[if gte mso 9]>
+<xml>
+  <w:WordDocument>
+    <w:View>Print</w:View>
+    <w:Zoom>100</w:Zoom>
+    <w:DoNotOptimizeForBrowser/>
+  </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 25mm 20mm 20mm 30mm;
+  }
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    line-height: 1.5;
+    color: #111827;
+    text-align: justify;
+    padding: 10px;
+  }
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18pt;
+    font-weight: bold;
+    color: #863c20;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 25pt;
+    margin-bottom: 10pt;
+  }
+  h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15pt;
+    font-weight: bold;
+    color: #1a443c;
+    margin-top: 20pt;
+    margin-bottom: 8pt;
+    border-bottom: 1.5pt solid #863c20;
+    padding-bottom: 4pt;
+  }
+  h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13.5pt;
+    font-weight: bold;
+    color: #863c20;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+  }
+  h4 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    font-weight: bold;
+    font-style: italic;
+    color: #374151;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+  }
+  p {
+    margin-top: 4pt;
+    margin-bottom: 6pt;
+    text-indent: 1cm;
+  }
+  ul, ol {
+    margin-top: 4pt;
+    margin-bottom: 8pt;
+    padding-left: 1.5cm;
+  }
+  li {
+    margin-bottom: 4pt;
+    text-align: justify;
+  }
+  .divider {
+    border: none;
+    border-top: 1pt dashed #cbd5e1;
+    margin: 20pt 0;
+  }
+  .code-block {
+    background-color: #f8fafc;
+    border: 1pt solid #cbd5e1;
+    border-left: 3pt solid #863c20;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 10pt;
+    line-height: 1.4;
+    padding: 10pt;
+    margin: 10pt 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    color: #0f172a;
+  }
+  .inline-code {
+    background-color: #f1f5f9;
+    border: 0.5pt solid #e2e8f0;
+    font-family: 'Consolas', monospace;
+    font-size: 11pt;
+    padding: 1pt 4pt;
+    border-radius: 3pt;
+    color: #c2410c;
+  }
+</style>
+</head>
+<body>
+<h1>ĐỀ CƯƠNG & HƯỚNG DẪN VIẾT CHƯƠNG 3: THIẾT KẾ HỆ THỐNG</h1>
+<h2>HỆ THỐNG QUẢN LÝ VÀ ĐẶT TOUR DU LỊCH TRỰC TUYẾN (WANDERLUST TRAVEL VIETNAM)</h2>
+<h3>CĂN CỨ VÀO TẬP HỢP 10 SƠ ĐỒ DRAW.IO CHUẨN ĐỒ ÁN TỐT NGHIỆP</h3>
+
+<hr class="divider"/>
+
+<h2>1. TỔNG QUAN VỊ TRÍ VÀ VAI TRÒ CỦA CHƯƠNG 3 TRONG BÁO CÁO</h2>
+<p>Chương 3 (<strong>Thiết kế hệ thống</strong> - <em>System Design</em>) là phần trọng tâm kỹ thuật của đồ án tốt nghiệp ngành Công nghệ thông tin / Kỹ thuật phần mềm.</p>
+<p>Nhiệm vụ của chương là chuyển hóa các yêu cầu bài toán (Chương 1) và nền tảng công nghệ (Chương 2) thành các mô hình kiến trúc, biểu đồ hướng đối tượng UML, cấu trúc cơ sở dữ liệu và thiết kế giao diện cụ thể.</p>
+
+<p>Tất cả các sơ đồ trong chương 3 đã được vẽ sẵn chuẩn xác trong thư mục <code class="inline-code">tai_lieu_do_an/so_do_drawio/</code>. Sinh viên chỉ cần xuất ảnh (PNG 300 DPI hoặc SVG) và dán tương ứng vào các mục theo đề cương dưới đây.</p>
+
+<hr class="divider"/>
+
+<h2>2. KHUNG MỤC LỤC CHUẨN CỦA CHƯƠNG 3</h2>
+
+<pre class="code-block">
+<p>CHƯƠNG 3: THIẾT KẾ HỆ THỐNG (SYSTEM DESIGN)</p>
+<p>├── 3.1. Thiết kế Kiến trúc tổng thể hệ thống (System Architecture)</p>
+<p>│   ├── 3.1.1. Mô hình kiến trúc phân tầng (4-Tier Architecture)</p>
+<p>│   └── 3.1.2. Mối liên kết giữa các tầng và cơ chế giao tiếp API</p>
+<p>├── 3.2. Thiết kế Mô hình Chức năng và Biểu đồ Use Case (Use Case Design)</p>
+<p>│   ├── 3.2.1. Biểu đồ Use Case tổng quan toàn hệ thống</p>
+<p>│   ├── 3.2.2. Phân rã Use Case phân hệ Khách hàng & Đặt tour</p>
+<p>│   ├── 3.2.3. Phân rã Use Case phân hệ Quản trị hệ thống (Admin)</p>
+<p>│   └── 3.2.4. Bảng đặc tả chi tiết các Use Case chính (Use Case Specs)</p>
+<p>├── 3.3. Thiết kế Luồng hoạt động nghiệp vụ (Activity Diagram Design)</p>
+<p>│   ├── 3.3.1. Sơ đồ hoạt động luồng Đặt tour và Thanh toán trực tuyến</p>
+<p>│   ├── 3.3.2. Sơ đồ hoạt động luồng Trợ lý ảo AI Concierge</p>
+<p>│   └── 3.3.3. Sơ đồ hoạt động luồng Xác thực tài khoản & Khôi phục mật khẩu</p>
+<p>├── 3.4. Thiết kế Tương tác đối tượng và Tuần tự (Sequence Diagram Design)</p>
+<p>│   ├── 3.4.1. Sơ đồ tuần tự Quy trình Đặt tour và Thanh toán MoMo / PayPal</p>
+<p>│   └── 3.4.2. Sơ đồ tuần tự Luồng Tư vấn du lịch thông minh bằng AI</p>
+<p>├── 3.5. Thiết kế Cơ sở dữ liệu (Database Design)</p>
+<p>│   ├── 3.5.1. Sơ đồ mối quan hệ thực thể (ERD)</p>
+<p>│   ├── 3.5.2. Chuẩn hóa dữ liệu về dạng chuẩn 3NF</p>
+<p>│   └── 3.5.3. Từ điển dữ liệu chi tiết các bảng (Data Dictionary)</p>
+<p>├── 3.6. Thiết kế Giao diện người dùng và Luồng màn hình (UI/UX Design)</p>
+<p>│   ├── 3.6.1. Thiết kế giao diện phân hệ Khách hàng (Client Portal)</p>
+<p>│   └── 3.6.2. Thiết kế giao diện phân hệ Quản trị (Admin Dashboard)</p>
+<p>└── 3.7. Tóm tắt Chương 3</p>
+</pre>
+
+<hr class="divider"/>
+
+<h2>3. CHI TIẾT CÁCH TRIỂN KHAI TỪNG MỤC VÀ GẮN KẾT VỚI CÁC FILE DRAW.IO</h2>
+
+<h3>3.1. Thiết kế Kiến trúc tổng thể hệ thống (System Architecture)</h3>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">09_kien_truc_he_thong_architecture.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Giới thiệu mô hình 4 tầng kiến trúc của Wanderlust Travel:</li>
+</ul>
+<p>1. <em>Tầng Trình diễn (Client Layer):</em> Trình duyệt web máy tính và thiết bị di động, render giao diện Blade, Tailwind CSS Universal Theme, bản đồ Leaflet.js và JavaScript tương tác.</p>
+<p>2. <em>Tầng Cổng & Máy chủ Web (Gateway / Web Server Layer):</em> Apache 2.4 đặt trong Docker Container trên nền tảng Render PaaS, xử lý mã hóa SSL/TLS, định tuyến mod_rewrite.</p>
+<p>3. <em>Tầng Nghiệp vụ ứng dụng (Application / Business Logic Layer):</em> Laravel 9 Framework gồm hệ thống Routing, Middleware bảo vệ (CheckAdmin, CheckUser, VerifyCsrfToken), tầng Controllers, Services và Eloquent ORM.</p>
+<p>4. <em>Tầng Dữ liệu & Dịch vụ bên thứ ba (Data & External Services Layer):</em> Hệ quản trị CSDL phân tán TiDB Cloud Serverless (MySQL Protocol), cổng thanh toán MoMo (HMAC SHA-256), cổng quốc tế PayPal (REST API), ngân hàng VietQR, OpenWeatherMap API, Google Gemini AI / Groq LLM API.</p>
+<ul>
+<li>Phân tích cơ chế bảo mật trên đường truyền giữa các tầng.</li>
+</ul>
+
+<hr class="divider"/>
+
+<h3>3.2. Thiết kế Mô hình Chức năng và Biểu đồ Use Case (Use Case Design)</h3>
+
+<h4>3.2.1. Biểu đồ Use Case tổng quan toàn hệ thống</h4>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">01_use_case_tong_quan.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Định nghĩa các Tác nhân (Actors) tham gia vào hệ thống:</li>
+<li><em>Khách vãng lai (Guest):</em> Xem danh sách tour, tìm kiếm địa danh, xem thời tiết, tương tác hỏi đáp với Trợ lý AI Concierge, đăng ký/đăng nhập tài khoản.</li>
+<li><em>Khách hàng thành viên (Member/User):</em> Đặt tour, tùy chọn dịch vụ phụ trợ, áp dụng voucher, thanh toán MoMo/PayPal/VietQR, theo dõi trạng thái đơn hàng, viết đánh giá tour.</li>
+<li><em>Quản trị viên (Admin):</em> Quản lý kho tour và lịch trình GPS, quản lý danh mục cây phân cấp, duyệt/hủy đơn hàng, quản lý mã voucher, thống kê doanh thu và báo cáo lượt xem.</li>
+<li><em>Hệ thống bên ngoài (External Systems):</em> Máy chủ MoMo (xác thực IPN), PayPal Server (capture thanh toán), VietQR Bank Gateway, OpenWeather API, Google Gemini / Groq API.</li>
+<li>Chèn ảnh xuất từ file <code class="inline-code">01_use_case_tong_quan.drawio</code>.</li>
+</ul>
+
+<h4>3.2.2. Phân rã Use Case phân hệ Khách hàng & Đặt tour</h4>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">02_use_case_dat_tour_va_thanh_toan.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Phân tích sâu quy trình đặt tour phía khách hàng.</li>
+<li>Các mối quan hệ <code class="inline-code"><<include>></code> (Bắt buộc): Chọn tour phải <em><<include>></em> Kiểm tra số chỗ còn nhận (<code class="inline-code">TourSchedule</code>), Đặt hàng phải <em><<include>></em> Cung cấp thông tin liên hệ.</li>
+<li>Các mối quan hệ <code class="inline-code"><<extend>></code> (Mở rộng tùy chọn): Áp dụng mã giảm giá Voucher (<em><<extend>></em>), Chọn phương tiện đưa đón và hạng khách sạn (<em><<extend>></em>), Chọn phương thức đặt cọc 30% thay vì trả 100% (<em><<extend>></em>).</li>
+</ul>
+
+<h4>3.2.3. Phân rã Use Case phân hệ Quản trị hệ thống (Admin)</h4>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">03_use_case_quan_tri_admin.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Phân tích các phân hệ nghiệp vụ của người điều hành:</li>
+<li>Quản lý Tour & Lộ trình chi tiết: Thêm mới, upload nhiều ảnh, gán tiện ích, nhập tọa độ GPS cho Leaflet map.</li>
+<li>Quản lý Cây danh mục (Nested Set Model): Kéo thả thay đổi thứ tự và cấp độ cha-con.</li>
+<li>Quản lý Đơn hàng: Kiểm tra thông tin thanh toán, chuyển trạng thái đơn (Chờ xử lý, Đã cọc 30%, Đã thanh toán 100%, Hoàn tất, Hủy đơn).</li>
+<li>Quản lý Khuyến mãi: Thiết lập mã voucher (giảm %, giảm tiền mặt, số lượng, hạn dùng).</li>
+<li>Báo cáo thống kê: Thống kê doanh thu theo kỳ, biểu đồ xu hướng Chart.js.</li>
+</ul>
+
+<h4>3.2.4. Bảng đặc tả chi tiết các Use Case chính</h4>
+<p>Sinh viên kẻ các bảng đặc tả chuẩn công nghệ phần mềm:</p>
+<ul>
+<li><strong>Bảng đặc tả UC-01: Đặt tour du lịch và Tùy biến dịch vụ</strong> (Actor, Điều kiện tiên quyết, Luồng sự kiện chính từ lúc bấm "Đặt tour" tới khi vào giỏ hàng, Luồng ngoại lệ: Hết chỗ, ngày khởi hành đã qua).</li>
+<li><strong>Bảng đặc tả UC-02: Thanh toán trực tuyến qua MoMo QR</strong> (Actor, Điều kiện tiên quyết, Luồng sự kiện chính: Chọn MoMo -> Sinh chữ ký HMAC -> Hiển thị QR -> Khách quét mã -> MoMo gọi IPN Webhook -> Cập nhật CSDL, Luồng ngoại lệ: Chữ ký không hợp lệ, hết hạn thanh toán).</li>
+<li><strong>Bảng đặc tả UC-03: Tư vấn lữ hành tự động qua AI Concierge</strong> (Actor, Điều kiện tiên quyết, Luồng sự kiện: Mở widget -> Gõ câu hỏi -> API gọi Gemini với System Prompt & 12 tour mẫu -> Nhận phản hồi kèm link Markdown -> Render nút bấm chi tiết).</li>
+</ul>
+
+<hr class="divider"/>
+
+<h3>3.3. Thiết kế Luồng hoạt động nghiệp vụ (Activity Diagram Design)</h3>
+
+<h4>3.3.1. Sơ đồ hoạt động luồng Đặt tour và Thanh toán trực tuyến</h4>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">04_activity_luong_dat_tour_va_thanh_toan.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Mô tả chuỗi hành động có rẽ nhánh điều kiện: Khách chọn tour -> Hệ thống kiểm tra số lượng chỗ trống -> Khách chọn ngày/dịch vụ phụ trợ -> Tính live price -> Nhập voucher (hợp lệ thì trừ tiền, không hợp lệ báo lỗi) -> Chọn cổng thanh toán (MoMo/PayPal/VietQR) -> Xử lý giao dịch -> Kiểm tra kết quả giao dịch (Thành công: Cập nhật CSDL, trừ số lượng, gửi email vé; Thất bại: Giữ nguyên đơn, thông báo lỗi cho khách).</li>
+</ul>
+
+<h4>3.3.2. Sơ đồ hoạt động luồng Trợ lý ảo AI Concierge</h4>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">05_activity_luong_ai_concierge.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Mô tả luồng xử lý thông minh: Khách gửi tin nhắn -> ChatbotController tiếp nhận -> Kiểm tra cấu hình API Key (Google Gemini / Groq) -> Nếu có kết nối: Truy vấn 12 tour CSDL, ghép System Context, gửi prompt tới LLM -> Nếu mất kết nối hoặc lỗi: Chuyển sang Smart Fallback Engine (xóa dấu tiếng Việt, tìm từ khóa địa danh trong CSDL) -> Trả lời khách hàng kèm link Markdown dẫn thẳng trang tour.</li>
+</ul>
+
+<h4>3.3.3. Sơ đồ hoạt động luồng Xác thực tài khoản & Khôi phục mật khẩu</h4>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">06_activity_luong_xac_thuc_va_quen_mat_khau.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Mô tả luồng đăng ký (kiểm tra email trùng lặp, băm mật khẩu Bcrypt), đăng nhập và luồng quên mật khẩu (nhập email -> sinh token ngẫu nhiên lưu bảng <code class="inline-code">password_resets</code> -> gửi link qua email -> khách click đặt lại mật khẩu mới).</li>
+</ul>
+
+<hr class="divider"/>
+
+<h3>3.4. Thiết kế Tương tác đối tượng và Tuần tự (Sequence Diagram Design)</h3>
+
+<h4>3.4.1. Sơ đồ tuần tự Đặt tour và Xử lý Thanh toán MoMo / PayPal</h4>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">07_sequence_dat_tour_va_thanh_toan.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Mô tả các thông điệp trao đổi giữa các đối tượng (Lifelines):</li>
+</ul>
+<p>1. <code class="inline-code">User</code>: Tác nhân người dùng.</p>
+<p>2. <code class="inline-code">TourDetailView</code>: Giao diện chi tiết tour.</p>
+<p>3. <code class="inline-code">CartController</code>: Điều khiển giỏ hàng và tính giá động.</p>
+<p>4. <code class="inline-code">OrderController</code>: Tạo hóa đơn đặt tour.</p>
+<p>5. <code class="inline-code">MomoController</code> / <code class="inline-code">PayPalController</code>: Xử lý giao dịch thanh toán.</p>
+<p>6. <code class="inline-code">PaymentGateway</code> (MoMo API / PayPal API): Máy chủ thanh toán đối tác.</p>
+<p>7. <code class="inline-code">Database</code> (TiDB / MySQL): Lưu trữ trạng thái đơn hàng.</p>
+<p>8. <code class="inline-code">MailService</code>: Gửi email xác nhận vé điện tử.</p>
+
+<h4>3.4.2. Sơ đồ tuần tự Luồng Tư vấn du lịch thông minh bằng AI</h4>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">08_sequence_tu_van_ai.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Thể hiện tương tác thời gian thực:</li>
+</ul>
+<p><code class="inline-code">User</code> &rarr; <code class="inline-code">ChatWidget (JS)</code> &rarr; <code class="inline-code">POST /api/chat</code> &rarr; <code class="inline-code">ChatbotController</code> &rarr; <code class="inline-code">Tour Model</code> (lấy 12 tour mới) &rarr; <code class="inline-code">Gemini / Groq API</code> &rarr; Phản hồi chuỗi Markdown &rarr; <code class="inline-code">ChatMessage Model</code> (ghi lịch sử) &rarr; Trả về JSON &rarr; JavaScript bóc tách Markdown render nút đặt vé tương tác.</p>
+
+<hr class="divider"/>
+
+<h3>3.5. Thiết kế Cơ sở dữ liệu (Database Design)</h3>
+
+<h4>3.5.1. Sơ đồ Mối quan hệ Thực thể liên kết (ERD)</h4>
+<ul>
+<li><strong>Tập tin Draw.io tích hợp:</strong> <code class="inline-code">10_so_do_thuc_the_erd_database.drawio</code></li>
+<li><strong>Nội dung cần viết:</strong></li>
+<li>Giới thiệu tổng thể 15+ bảng thực thể, quan hệ 1-N (Users - Orders, Categories - Tours, Tours - TourSchedules, Orders - Payments) và quan hệ N-N (Tours - AttrTours, Users - Vouchers).</li>
+</ul>
+
+<h4>3.5.2. Chuẩn hóa dữ liệu về Dạng chuẩn 3 (3NF)</h4>
+<ul>
+<li>Trình bày quá trình chuẩn hóa:</li>
+<li>Dạng chuẩn 1 (1NF): Mọi thuộc tính đều là nguyên tố (nguyên tử), không chứa mảng lặp lại.</li>
+<li>Dạng chuẩn 2 (2NF): Đạt 1NF và mọi thuộc tính không khóa đều phụ thuộc hàm toàn bộ vào khóa chính.</li>
+<li>Dạng chuẩn 3 (3NF): Đạt 2NF và không có thuộc tính không khóa nào phụ thuộc bắc cầu vào khóa chính (Ví dụ tách bảng <code class="inline-code">tour_schedules</code>, <code class="inline-code">payments</code>, <code class="inline-code">vouchers</code> thành các thực thể riêng thay vì gộp chung vào bảng <code class="inline-code">orders</code>).</li>
+</ul>
+
+<h4>3.5.3. Từ điển Dữ liệu chi tiết các bảng (Data Dictionary)</h4>
+<p>Sinh viên lập bảng chi tiết cho các thực thể quan trọng nhất:</p>
+<p>1. <strong>Bảng <code class="inline-code">users</code>:</strong> Quản lý tài khoản (id, name, email, password, phone, address, role, status...).</p>
+<p>2. <strong>Bảng <code class="inline-code">tours</code>:</strong> Quản lý sản phẩm tour (id, name, price, sale_price, category_id, start_location, end_location, time, quantity...).</p>
+<p>3. <strong>Bảng <code class="inline-code">categories</code>:</strong> Quản lý danh mục cây lồng nhau (id, name, category_id, _lft, _rgt, parent_id, status...).</p>
+<p>4. <strong>Bảng <code class="inline-code">tour_schedules</code>:</strong> Lịch trình chi tiết từng ngày và tọa độ GPS (id, tour_id, day_number, title, description, location_name, latitude, longitude...).</p>
+<p>5. <strong>Bảng <code class="inline-code">orders</code>:</strong> Đơn đặt tour (id, tour_id, user_id, name, phone, email, total_price, voucher_id, discount_amount, status...).</p>
+<p>6. <strong>Bảng <code class="inline-code">payments</code> & <code class="inline-code">transactions</code>:</strong> Lịch sử thanh toán và mã giao dịch MoMo/PayPal/VietQR.</p>
+<p>7. <strong>Bảng <code class="inline-code">vouchers</code> & <code class="inline-code">user_vouchers</code>:</strong> Mã giảm giá và cấp phát người dùng.</p>
+<p>8. <strong>Bảng <code class="inline-code">chat_messages</code> & <code class="inline-code">chat_sessions</code>:</strong> Phiên và tin nhắn tư vấn AI.</p>
+
+<hr class="divider"/>
+
+<h3>3.6. Thiết kế Giao diện người dùng và Luồng màn hình (UI/UX Design)</h3>
+<ul>
+<li><strong>3.6.1. Phân hệ Khách hàng (Client Portal):</strong></li>
+<li>Chèn ảnh chụp hoặc wireframe các màn hình chính:</li>
+</ul>
+<p>1. Trang chủ: Hero Banner Video Auto-Slide, Thanh tìm kiếm Debounce 350ms, Trạm khí hậu OpenWeatherMap.</p>
+<p>2. Trang Chi tiết Tour: Thư viện ảnh, Lộ trình ngày 1/2/3 tích hợp bản đồ Leaflet ghim tọa độ GPS, Widget tính giá động Live Pricing.</p>
+<p>3. Trang Giỏ hàng & Thanh toán: Chọn cọc 30% / 100%, nhập mã Voucher, chọn cổng MoMo / PayPal / VietQR.</p>
+<p>4. Widget Trợ lý lữ hành AI Concierge (cố định góc phải màn hình).</p>
+<ul>
+<li><strong>3.6.2. Phân hệ Quản trị viên (Admin Panel):</strong></li>
+<li>Chèn ảnh màn hình:</li>
+</ul>
+<p>1. Bảng điều khiển KPI Dashboard: Biểu đồ Chart.js thống kê doanh thu đa mốc thời gian.</p>
+<p>2. Quản lý danh mục kéo thả Nestable.js.</p>
+<p>3. Thêm mới / Chỉnh sửa Tour và cấu hình tọa độ GPS Leaflet.</p>
+<p>4. Quản lý Đơn hàng và Lịch sử thanh toán.</p>
+
+<hr class="divider"/>
+
+<h2>4. TỔNG KẾT VÀ LỜI KHUYÊN CHO SINH VIÊN KHI TRÌNH BÀY</h2>
+<ul>
+<li><strong>Tính đồng bộ tuyệt đối:</strong> Tên bảng và tên trường trong mục 3.5 (CSDL) phải khớp 100% với file <code class="inline-code">10_so_do_thuc_the_erd_database.drawio</code> và mã nguồn migration của Laravel.</li>
+<li><strong>Thuyết minh rõ ràng:</strong> Với mỗi hình vẽ xuất từ draw.io, luôn có đoạn văn giới thiệu trước hình và phân tích ý nghĩa sau hình, không bao giờ để "hình ảnh đứng bơ vơ" mà không có lời giải thích.</li>
+<li><strong>Độ sắc nét hình ảnh:</strong> Trong draw.io chọn Export as PNG với độ phân giải <strong>300 DPI</strong> hoặc chọn Zoom <strong>200%</strong>, ảnh khi in ra khổ A4 sẽ vô cùng sắc nét, được hội đồng đánh giá rất cao.</li>
+</ul>
+
+</body>
+</html>

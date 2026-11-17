@@ -112,7 +112,7 @@
                             <li class="grid grid-cols-2 gap-4 pt-1">
                                 <div>
                                     <span class="text-xs font-bold text-slate-400 font-medium mb-1.5 opacity-80 block">Khởi hành</span>
-                                    <span class="text-sm font-bold text-slate-800 dark:text-white bg-white px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm inline-block"><i class="fa-regular fa-calendar text-blue-500 mr-1.5"></i>{{ \Carbon\Carbon::parse($order->tour->start_date)->format('d/m/Y') }}</span>
+                                    <span class="text-sm font-bold text-slate-800 dark:text-white bg-white px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm inline-block"><i class="fa-regular fa-calendar text-blue-500 mr-1.5"></i>{{ \Carbon\Carbon::parse($order->time ?: $order->tour->start_date)->format('d/m/Y') }}</span>
                                 </div>
                                 <div class="text-right">
                                     <span class="text-xs font-bold text-slate-400 font-medium mb-1.5 opacity-80 block">Thời lượng</span>

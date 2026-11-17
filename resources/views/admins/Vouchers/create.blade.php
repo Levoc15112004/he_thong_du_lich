@@ -283,7 +283,7 @@
         function updatePreview() {
             // Cập nhật Mã
             const code = document.getElementById("voucherCode").value || "HELLO2024";
-            document.getElementById("previewCode").innerText = code.to();
+            document.getElementById("previewCode").innerText = code.toUpperCase();
 
             // Cập nhật Giá trị
             const type = document.getElementById("discountType").value;

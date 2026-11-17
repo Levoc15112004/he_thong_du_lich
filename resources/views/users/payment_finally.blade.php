@@ -115,7 +115,7 @@
                             <img src="{{ asset($tour->image) }}" class="w-16 h-16 rounded-xl object-cover shrink-0 border border-slate-100 shadow-sm">
                             <div>
                                 <h4 class="text-sm font-bold text-slate-800 leading-snug mb-2 line-clamp-2">{{ $tour->name }}</h4>
-                                <p class="text-[11px] font-bold text-slate-500"><i class="fa-regular fa-calendar text-orange-500 mr-1"></i> Khởi hành: {{ $tour->start_date->format('d/m/Y') }}</p>
+                                <p class="text-[11px] font-bold text-slate-500"><i class="fa-regular fa-calendar text-orange-500 mr-1"></i> Khởi hành: {{ \Carbon\Carbon::parse($order->time ?: $tour->start_date)->format('d/m/Y') }}</p>
                             </div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100/50">
                         <i class="fa-solid fa-shield-halved text-blue-500 text-lg mt-0.5"></i>
                         <p class="text-[11px] text-slate-500 font-medium leading-relaxed">
-                            Bằng cách xác nhận thanh toán, bạn đồng ý với <a href="#" class="text-blue-600 font-bold underline decoration-blue-300 underline-offset-2">Quy định & điều khoản</a> của TravelGo.
+                            Bằng cách xác nhận thanh toán, bạn đồng ý với <a href="#" class="text-blue-600 font-bold underline decoration-blue-300 underline-offset-2">Quy định & điều khoản</a> của WanderVibe.
                         </p>
                     </div>
                 </div>

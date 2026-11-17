@@ -197,7 +197,7 @@
         </div>
         <div class="px-4 py-3 bg-slate-900 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
             <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Video trải nghiệm thực tế 4K Ultra HD</span>
-            <span class="text-[#cf8a6e] font-semibold">Wanderlust Travel Vietnam</span>
+            <span class="text-[#cf8a6e] font-semibold">WanderVibe Travel Vietnam</span>
         </div>
     </div>
 </div>

@@ -279,7 +279,7 @@
         function updatePreview() {
             // Cập nhật Code
             const code = document.getElementById("voucherCode").value || "VIVUXXXX";
-            document.getElementById("previewCode").innerText = code.to();
+            document.getElementById("previewCode").innerText = code.toUpperCase();
 
             // Cập nhật Giá trị giảm & Đơn tối thiểu
             const type = document.getElementById("discountType").value;

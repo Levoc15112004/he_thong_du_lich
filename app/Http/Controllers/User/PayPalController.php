@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
@@ -29,6 +30,9 @@ class PayPalController extends Controller
     public function createPayment(Request $request, $order_id)
     {
         $order = Order::findOrFail($order_id);
+        if ((int) $order->user_id !== (int) Auth::id() && Auth::user()?->role !== 'admin') {
+            abort(403, 'Bạn không có quyền thanh toán đơn hàng này.');
+        }
         $depositAmount = round($order->total_price * 0.3, 0);
 
         //  Tạo payment
@@ -222,6 +226,9 @@ class PayPalController extends Controller
     public function createFinalPayment(Request $request, $order_id)
     {
         $order = Order::findOrFail($order_id);
+        if ((int) $order->user_id !== (int) Auth::id() && Auth::user()?->role !== 'admin') {
+            abort(403, 'Bạn không có quyền thanh toán đơn hàng này.');
+        }
         $finalAmount = round($order->total_price * 0.7, 0);  // 70%
 
         // Tạo payment final

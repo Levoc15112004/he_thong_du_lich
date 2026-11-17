@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hành Trình Mới - TravelGo</title>
+    <title>Hành Trình Mới - WanderVibe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -88,12 +88,12 @@
                         <div class="bg-white/20 backdrop-blur-md p-2 rounded-xl">
                             <i data-lucide="palmtree" class="w-8 h-8 text-white"></i>
                         </div>
-                        <span class="text-2xl font-extrabold ">TravelGo</span>
+                        <span class="text-2xl font-extrabold ">WanderVibe</span>
                     </div>
                     <div id="image-content">
                         <h2 class="text-5xl font-bold leading-tight mb-6">Khám phá <br> những chân trời.</h2>
                         <p class="text-blue-100 text-lg max-w-md leading-relaxed">
-                            Cùng TravelGo viết nên câu chuyện du lịch tuyệt vời nhất của bạn tại những vùng đất mới.
+                            Cùng WanderVibe viết nên câu chuyện du lịch tuyệt vời nhất của bạn tại những vùng đất mới.
                         </p>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     <div class="bg-blue-600 p-2 rounded-xl">
                         <i data-lucide="palmtree" class="w-6 h-6 text-white"></i>
                     </div>
-                    <span class="text-2xl font-bold text-slate-900 ">TravelGo</span>
+                    <span class="text-2xl font-bold text-slate-900 ">WanderVibe</span>
                 </div>
 
                 <!-- LOGIN FORM SECTION -->
@@ -317,7 +317,7 @@
                 imgContent.innerHTML = `
                     <h2 class="text-5xl font-bold leading-tight mb-6">Khám phá <br> những chân trời.</h2>
                     <p class="text-blue-100 text-lg max-w-md leading-relaxed">
-                        Cùng TravelGo viết nên câu chuyện du lịch tuyệt vời nhất của bạn tại những vùng đất mới.
+                        Cùng WanderVibe viết nên câu chuyện du lịch tuyệt vời nhất của bạn tại những vùng đất mới.
                     </p>
                 `;
             }

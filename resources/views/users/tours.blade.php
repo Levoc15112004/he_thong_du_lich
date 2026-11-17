@@ -25,6 +25,65 @@
     </section>
 
     <main class="max-w-7xl mx-auto px-6 pb-24">
+        {{-- THANH TÌM KIẾM & BỘ LỌC --}}
+        <div class="mt-8 mb-10 bg-white dark:bg-[#1a1e22] rounded-2xl border border-[#e8e3d8] dark:border-[#2b3239] p-4 sm:p-6 shadow-sm">
+            <form action="{{ route('user.tours') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-end">
+                <div class="lg:col-span-4">
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5">Từ khóa tìm kiếm</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" name="keyword" value="{{ request('keyword') }}"
+                            placeholder="Tên tour, điểm đến, điểm khởi hành..."
+                            class="w-full pl-9 pr-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white focus:outline-none focus:border-[#b85e3a]">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5">Danh mục</label>
+                    <select name="category_id" class="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white focus:outline-none focus:border-[#b85e3a]">
+                        <option value="">Tất cả danh mục</option>
+                        @foreach(($allCategories ?? $categories) as $cat)
+                            <option value="{{ $cat->id }}" {{ request('category_id') == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5">Điểm đến</label>
+                    <select name="destination" class="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white focus:outline-none focus:border-[#b85e3a]">
+                        <option value="">Tất cả điểm đến</option>
+                        @if(isset($destinationsList))
+                            @foreach($destinationsList as $destName)
+                                <option value="{{ $destName }}" {{ request('destination') == $destName ? 'selected' : '' }}>{{ $destName }}</option>
+                            @endforeach
+                        @endif
+                    </select>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5">Mức giá</label>
+                    <select name="price_range" class="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-white focus:outline-none focus:border-[#b85e3a]">
+                        <option value="">Mọi mức giá</option>
+                        <option value="under_3m" {{ request('price_range') === 'under_3m' ? 'selected' : '' }}>Dưới 3 triệu</option>
+                        <option value="3m_5m" {{ request('price_range') === '3m_5m' ? 'selected' : '' }}>3 - 5 triệu</option>
+                        <option value="5m_8m" {{ request('price_range') === '5m_8m' ? 'selected' : '' }}>5 - 8 triệu</option>
+                        <option value="over_8m" {{ request('price_range') === 'over_8m' ? 'selected' : '' }}>Trên 8 triệu</option>
+                    </select>
+                </div>
+
+                <div class="lg:col-span-2 flex items-center gap-2">
+                    <button type="submit" class="flex-1 py-2.5 px-4 rounded-xl bg-[#b85e3a] hover:bg-[#a34c2a] text-white font-bold text-sm transition-colors flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-filter text-xs"></i> Lọc
+                    </button>
+                    @if(request()->anyFilled(['keyword', 'category_id', 'destination', 'price_range', 'sort']))
+                        <a href="{{ route('user.tours') }}" class="py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-xs transition-colors" title="Đặt lại bộ lọc">
+                            Xóa
+                        </a>
+                    @endif
+                </div>
+            </form>
+        </div>
+
         {{-- Lưới hiển thị tour --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @forelse ($tours as $tour)

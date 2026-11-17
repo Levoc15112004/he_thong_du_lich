@@ -146,7 +146,7 @@
                     <i class="fas fa-shield-check mr-2"></i>Thanh toán 100% thành công
                 </p>
                 <p class="text-slate-500 font-medium text-base max-w-2xl mx-auto mt-2">
-                    Mọi thủ tục đã hoàn tất. Hành trang đã sẵn sàng, hãy chuẩn bị cho một chuyến đi không thể nào quên cùng TravelGo!
+                    Mọi thủ tục đã hoàn tất. Hành trang đã sẵn sàng, hãy chuẩn bị cho một chuyến đi không thể nào quên cùng WanderVibe!
                 </p>
             </div>
 
@@ -192,7 +192,7 @@
                                         <div class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-2">
                                             <i class="far fa-calendar-alt text-xs"></i>
                                         </div>
-                                        {{ $order->tour->start_date?->format('d/m/Y') ?? '---' }}
+                                        {{ ($order->time || $order->tour->start_date) ? \Carbon\Carbon::parse($order->time ?: $order->tour->start_date)->format('d/m/Y') : '---' }}
                                     </span>
                                     <span class="text-sm font-bold text-slate-600 flex items-center bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
                                         <div class="w-6 h-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mr-2">
@@ -287,7 +287,7 @@
 
             <!-- Footer Help -->
             <div class="mt-12 pt-8 border-t border-slate-200 text-center animate-fadeInUp delay-300 flex flex-col md:flex-row items-center justify-between gap-6">
-                <p class="text-sm font-bold text-slate-500 font-medium">TravelGo Đồng Hành Cùng Bạn 24/7</p>
+                <p class="text-sm font-bold text-slate-500 font-medium">WanderVibe Đồng Hành Cùng Bạn 24/7</p>
                 
                 <div class="flex items-center gap-4">
                     <a href="tel:1900123456" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-sm flex items-center gap-2">

@@ -50,10 +50,11 @@ return [
     ],
 
     'vietqr' => [
-        'username' => env('VIETQR_USERNAME', 'customer-wandertest-user26723'),
-        'password' => env('VIETQR_PASSWORD', 'Y3VzdG9tZXItd2FuZGVydGVzdC11c2VyMjY3MjM='),
-        'bank_id' => env('VIETQR_BANK_ID', 'MB'),
-        'account_no' => env('VIETQR_ACCOUNT_NO', '151515112004'),
-        'account_name' => env('VIETQR_ACCOUNT_NAME', 'LE THI VOC'),
+        'username' => env('VIETQR_USERNAME') ?: 'customer-wandertest-user26723',
+        'password' => env('VIETQR_PASSWORD') ?: 'Y3VzdG9tZXItd2FuZGVydGVzdC11c2VyMjY3MjM=',
+        'bank_id' => env('VIETQR_BANK_ID') ?: 'MB',
+        'account_no' => env('VIETQR_ACCOUNT_NO') ?: '151515112004',
+        'account_name' => env('VIETQR_ACCOUNT_NAME') ?: 'LE THI VOC',
+        'allow_test_pay' => env('VIETQR_ALLOW_TEST_PAY', false),
     ],
 ];

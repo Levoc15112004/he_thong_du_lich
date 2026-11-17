@@ -258,7 +258,7 @@ class HomeController extends Controller
         ));
     }
 
-    public function allTours()
+    public function allTours(Request $request)
     {
         $this->ensureToursSeeded();
 
@@ -268,13 +268,76 @@ class HomeController extends Controller
             ->take(10)
             ->get();
 
+        $allCategories = Category::where('status', 1)
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $destinationsList = Tour::where('status', 1)
+            ->whereNotNull('end_location')
+            ->where('end_location', '!=', '')
+            ->distinct()
+            ->orderBy('end_location', 'asc')
+            ->pluck('end_location');
+
         $userId = Auth::id();
         $notifications = $userId ? Notification::where('user_id', $userId)->orderByDesc('created_at')->take(10)->get() : collect();
         $unreadCount = $userId ? Notification::where('user_id', $userId)->where('status', 'unread')->count() : 0;
 
-        $tours = Tour::where('status', 1)->orderByDesc('id')->paginate(12)->withQueryString();
+        $keyword = trim((string) $request->query('keyword', ''));
+        $categoryId = $request->query('category_id');
+        $destination = $request->query('destination');
+        $priceRange = $request->query('price_range');
+        $sort = $request->query('sort', 'latest');
 
-        return view('users.tours', compact('tours', 'categories', 'notifications', 'unreadCount'));
+        $query = Tour::where('status', 1);
+
+        if ($keyword !== '') {
+            $query->where(function ($q) use ($keyword) {
+                $q->where('name', 'like', "%{$keyword}%")
+                    ->orWhere('end_location', 'like', "%{$keyword}%")
+                    ->orWhere('start_location', 'like', "%{$keyword}%");
+            });
+        }
+
+        if (! empty($categoryId)) {
+            $query->where('category_id', $categoryId);
+        }
+
+        if (! empty($destination)) {
+            $query->where('end_location', $destination);
+        }
+
+        if (! empty($priceRange)) {
+            $effectivePriceSql = 'CASE WHEN sale_price > 0 THEN sale_price ELSE price END';
+            if ($priceRange === 'under_3m') {
+                $query->whereRaw("{$effectivePriceSql} < ?", [3000000]);
+            } elseif ($priceRange === '3m_5m') {
+                $query->whereRaw("{$effectivePriceSql} BETWEEN ? AND ?", [3000000, 5000000]);
+            } elseif ($priceRange === '5m_8m') {
+                $query->whereRaw("{$effectivePriceSql} BETWEEN ? AND ?", [5000000, 8000000]);
+            } elseif ($priceRange === 'over_8m') {
+                $query->whereRaw("{$effectivePriceSql} > ?", [8000000]);
+            }
+        }
+
+        if ($sort === 'price_asc') {
+            $query->orderByRaw('CASE WHEN sale_price > 0 THEN sale_price ELSE price END ASC');
+        } elseif ($sort === 'price_desc') {
+            $query->orderByRaw('CASE WHEN sale_price > 0 THEN sale_price ELSE price END DESC');
+        } else {
+            $query->orderByDesc('id');
+        }
+
+        $tours = $query->paginate(12)->withQueryString();
+
+        return view('users.tours', compact(
+            'tours',
+            'categories',
+            'allCategories',
+            'destinationsList',
+            'notifications',
+            'unreadCount'
+        ));
     }
 
     public function ajax(Request $request)
@@ -471,6 +534,10 @@ class HomeController extends Controller
 
     public function profile($id)
     {
+        if ((int) $id !== (int) Auth::id()) {
+            abort(403, 'Bạn không có quyền xem hồ sơ của người dùng khác.');
+        }
+
         $categories = Category::where('status', 1)
             ->whereNull('parent_id')
             ->with('children')
@@ -487,7 +554,7 @@ class HomeController extends Controller
             ->where('status', 'unread')
             ->count();
 
-        $user = User::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
 
         return view('users.profile', compact('user', 'categories', 'notifications', 'unreadCount'));
     }
@@ -496,23 +563,45 @@ class HomeController extends Controller
     {
         $user = User::findOrFail(Auth::id());
 
+        $rawPhone = $request->input('phone');
+        if (is_string($rawPhone)) {
+            $normalized = preg_replace('/[\s.\-]+/', '', trim($rawPhone));
+            $request->merge(['phone' => $normalized === '' ? null : $normalized]);
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => ['nullable', 'regex:/^(0|\+84)[0-9]{8,10}$/'],
+            'address' => 'nullable|string|max:255',
+            'gender' => 'nullable|in:male,female,other',
+            'birthday' => 'nullable|date|before:today',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ], [
+            'name.required' => 'Vui lòng nhập họ và tên.',
+            'phone.regex' => 'Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại Việt Nam hợp lệ (10–11 chữ số, bắt đầu bằng 0 hoặc +84).',
+            'gender.in' => 'Giới tính không hợp lệ.',
+            'birthday.date' => 'Ngày sinh không hợp lệ.',
+            'birthday.before' => 'Ngày sinh phải trước ngày hôm nay.',
+            'avatar.image' => 'Ảnh đại diện phải là tệp hình ảnh.',
+            'avatar.max' => 'Ảnh đại diện không được vượt quá 2MB.',
+        ]);
+
         $avatarPath = $user->avatar;
 
         if ($request->hasFile('avatar')) {
             $file = $request->file('avatar');
-            $filename = time().'_'.$file->getClientOriginalName();
+            $filename = time().'_'.preg_replace('/[^a-zA-Z0-9._-]/', '_', $file->getClientOriginalName());
             $file->move(public_path('fontend/img'), $filename);
 
             $avatarPath = 'fontend/img/'.$filename;
         }
 
         $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'gender' => $request->gender,
-            'birthday' => $request->birthday,
+            'name' => $validated['name'],
+            'phone' => $validated['phone'] ?? null,
+            'address' => $validated['address'] ?? null,
+            'gender' => $validated['gender'] ?? null,
+            'birthday' => $validated['birthday'] ?? null,
             'avatar' => $avatarPath,
         ]);
 

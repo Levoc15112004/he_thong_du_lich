@@ -135,7 +135,7 @@
 
             <p>
                 <strong>Ngày khởi hành:</strong>
-                {{ $tour->start_date?->format('d/m/Y') ?? '---' }}
+                {{ ($order->time || $tour->start_date) ? \Carbon\Carbon::parse($order->time ?: $tour->start_date)->format('d/m/Y') : '---' }}
             </p>
 
             <p><strong>Thời gian:</strong> {{ $tour->time }}</p>
@@ -178,7 +178,7 @@
     {{-- FOOTER --}}
     <div class="footer">
         Cảm ơn quý khách đã sử dụng dịch vụ của <strong>WanderVibe</strong> ✈️ <br>
-        Hotline: 0123 456 789 | Email: travelgo@gmail.com
+        Hotline: 1900 888 999 | Email: hello@wandervibe.me
     </div>
 
 </div>
